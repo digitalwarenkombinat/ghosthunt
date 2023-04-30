@@ -1,0 +1,13 @@
+{
+  "short_name": "Ghost Hunt",
+  "name": "Ghost Hunt",
+  "theme_color": "#dd8d0e",
+  "background_color": "#33006c",
+  "display": "standalone",
+  "start_url": "/ghosthunt/",
+  "scope": "/",
+  "icons": [
+    { "src": "./icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "./icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any maskable" }
+  ]
+}
