@@ -831,8 +831,8 @@ class CircularGeofenceRegion {
 setup.storyinit = function () {
     const fence1 = new CircularGeofenceRegion({
       id: 'johannistorturm',
-      latitude: 51.757310,
-      longitude: 11.458328,
+      latitude: 51.325011,
+      longitude: 12.395977,
       radius: 30, // meters
       alreadyEntered: false
     });
@@ -1064,7 +1064,7 @@ setup.storyinit = function () {
 
   };
 
-}());</script><tw-tag name="fightRoom" color="red"></tw-tag>,<tw-tag name="fightroom" color="red"></tw-tag>,<tw-tag name="saeulengang" color="yellow"></tw-tag><tw-passagedata pid="1" name="StoryInit" tags="" position="400,200" size="100,100">--------------------------AUDIO---------------------------------------
+}());</script><tw-tag name="fightRoom" color="red"></tw-tag>,<tw-tag name="fightroom" color="red"></tw-tag>,<tw-tag name="saeulengang" color="yellow"></tw-tag><tw-passagedata pid="1" name="StoryInit" tags="" position="398.3333333333333,201.66666666666666" size="100,100">--------------------------AUDIO---------------------------------------
 
 &lt;&lt;cacheaudio &quot;bg&quot; &quot;audio/bg.mp3&quot;&gt;&gt;
 
@@ -1080,7 +1080,7 @@ setup.storyinit = function () {
 
 &lt;&lt;set $fences to setup.storyinit()&gt;&gt;
 &lt;&lt;set $accessToken to &#39;pk.eyJ1IjoiZ3JlZ2dlciIsImEiOiJjaXl1N3picTcwMDZkMzJyczB4Y3MxMGVxIn0.voeDl_IRyEmggYlnYhDXoQ&#39;&gt;&gt;
-&lt;&lt;set $style to &#39;mapbox://styles/gregger/clajppe3c003b14o0rezukph6&#39;&gt;&gt;
+&lt;&lt;set $style to &#39;mapbox://styles/gregger/cjpkxg68s0fb22sqnjhzm8vvb&#39;&gt;&gt;
 
 -------------------------STARTVARIABLEN-------------------------------
 
@@ -2175,13 +2175,15 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
 &lt;div class=&quot;btn-group&quot;&gt;
 &lt;&lt;nobr&gt;&gt;
 &lt;&lt;if $maptip is 0&gt;&gt; 
-&lt;span id=&quot;heading&quot;&gt;&lt;h2&gt;Bewegt euch, bis ihr in dem roten Kreis steht.&lt;/h2&gt;
+&lt;span id=&quot;heading&quot;&gt;&lt;h2&gt;Du musst deinem Browser Zugriff auf deine Position erlauben.&lt;/h2&gt;
     &lt;&lt;button &quot;Ok&quot;&gt;&gt;
         &lt;&lt;replace &quot;#heading&quot;&gt;&gt;
-            &lt;h2&gt;Der Kreis wird grün, sobald ihr drin steht.&lt;/h2&gt;
+            &lt;h2&gt;Bewege dich, bis du in einem der roten Kreise 
+stehst.&lt;/h2&gt;
             &lt;&lt;button &quot;Ok&quot;&gt;&gt;
                 &lt;&lt;replace &quot;#heading&quot;&gt;&gt;
-                &lt;h2&gt;Jetzt könnt ihr in anklicken.&lt;/h2&gt;
+                &lt;h2&gt;Wenn der Kreis grün wird kannst du ihn 
+anklicken.&lt;/h2&gt;
                     &lt;&lt;button &quot;Ok&quot;&gt;&gt;
                         &lt;&lt;replace &quot;#heading&quot;&gt;&gt;
                         &lt;&lt;/replace&gt;&gt;
@@ -4017,7 +4019,7 @@ Danach könnt ihr noch alle Tiere einsammeln, die ihr noch nicht gefunden
 &lt;&lt;audio &quot;click&quot; play&gt;&gt;	
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="gps" tags="" position="503.33333333333337,1603.3333333333335" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="gps" tags="" position="501.6666666666667,1603.3333333333335" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;&lt;set
  $is_safari to navigator.userAgent.indexOf(&#39;Safari&#39;) &gt; -1 &amp;&amp; 
