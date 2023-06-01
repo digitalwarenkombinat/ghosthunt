@@ -132,6 +132,22 @@ html * {
 /* Macht den Geolocate-Button unsichtbar */
 .mapboxgl-ctrl-group button.mapboxgl-ctrl-geolocate { display: none }
 
+/*Dies ist ein Kommentar in CSS :) in diesen Bereichen kann man schreiben was man will!*/
+
+/* Hier kann man externe CSS Dateien oder auch Schriftarten importieren*/
+
+ @import url("https://use.typekit.net/mph1xdw.css");
+html * {
+    box-sizing: border-box;
+}
+
+@font-face {
+  font-family: para;
+  src: url(fonts/para.otf);
+}
+
+
+/* Style the video: 100% width and height to cover the entire window */
 #myVideo {
   position: fixed;
   bottom: 0;
@@ -146,21 +162,7 @@ html * {
   display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
-}
-
-.image2 {
-  display: block;
-    margin-left: auto;
-    margin-right: auto;
     width: 60%;
-}
-
-.title {
-  display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
 }
 
 audio, canvas, progress, video {
@@ -169,42 +171,38 @@ audio, canvas, progress, video {
 }
 
 body{
-  background-color: #ffffff;		
+  background-color: #000000;		
   color: #323140;							
   font-family: 'Roboto Slab', serif;	
   font-size:16px;						
   margin: 0 auto;
   max-width: 1024px;
   height: 100%;
-  
 }
 
 
 h1 {
-  font-family: asl;
-font-weight: 800;
+font-family: taurunum-ferrum-iron, sans-serif;
+font-weight: 400;
 font-style: normal;
-  color: #000000;
-  font-size: 8vh;
+  color: #D7F207;
+  font-size: 9vh;
   line-height: 8vh;
-  margin-top: 30px;
-  margin-left: 30px;
-  margin-right: 30px;
+  margin-left: 2vw;
+  margin-right: 2vw;
   text-align: center;
   margin-bottom: 1rem;
   word-break: break-word;
-  text-transform: uppercase;
 }
 
 
 h2 {
-  font-family: asl;
-  font-weight: 900;
+  font-family: transat, sans-serif;
+  font-weight: 600;
   font-style: normal;
-  color: #000000;
-  font-size: 4vh;
-  line-height: 5vh;
-    margin-top: 0;
+  color: #ffffff;
+  font-size: 3vh;
+  line-height: 4vh;
   margin-left: 20px;
   margin-right: 30px;
   text-align: center;
@@ -212,24 +210,24 @@ h2 {
 }
 
 h3 {
-font-family: asl;
+font-family: transat, sans-serif;
 font-weight: 900;
 font-style: normal;
-  color: #F25E5E;
-  font-size: 5vh;
-  line-height: 5vh;
+  color: #D7F207;
+  font-size: 4vh;
+  line-height: 4vh;
   text-align: center;
   word-break: break-word;
-    margin-top: 0;
+  margin: 0;
 }
 
 h5 {
-font-family: asl;
-font-weight: 800;
+font-family: transat, sans-serif;
+font-weight: 400;
 font-style: normal;
   color: #ffffff;
-  font-size: 5vh;
-  line-height: 5vh;
+  font-size: 3vh;
+  line-height: 4vh;
   margin-left: 2vw;
   margin-right: 2vw;
   text-align: center;
@@ -238,22 +236,23 @@ font-style: normal;
 }
 
 h4 {
-font-family: asl;
-    color: #000000;
-    font-size: 15vh;
+font-family: 'Caveat Brush', cursive;
+    color: #ffffff;
+    font-size: 9vh;
     line-height: 6vh;
-    margin-left: 2vw;
-    margin-right: 2vw;
-    font-weight: normal;
-    text-align: center;
-    margin-bottom: 1rem;
-    word-break: break-word;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  font-weight: normal;
+  text-align: center;
+  margin-bottom: 1rem;
+  word-break: break-word;
+    -webkit-text-stroke: 1px black;
 }
 
 h6 {
 
 font-family: 'Caveat Brush', cursive;
-  color: #FEAAE4;
+  color: #F2F2F2;
   font-size: 15vh;
   line-height: 12vh;
   margin-top: 0;
@@ -267,12 +266,12 @@ font-family: 'Caveat Brush', cursive;
 }
 
 p {
-  font-family: asl;
-  font-weight: 900;
+  font-family: transat, sans-serif;
+  font-weight: 400;
   font-style: normal;
-  color: #000000;
-  font-size: 4vh;
-  line-height: 5vh;
+  color: #ffffff;
+  font-size: 3vh;
+  line-height: 4vh;
   margin-left: 20px;
   margin-right: 30px;
   text-align: center;
@@ -281,7 +280,7 @@ p {
 
 p1 {
 font-family: para;
-  color: #FEAAE4;
+  color: #D7F207;
   font-size: 5vh;
   line-height: 4vh;
   font-weight: normal;
@@ -293,7 +292,7 @@ font-family: para;
 
 p2 {
 font-family: para;
-  color: #FEAAE4;
+  color: #D7F207;
   font-size: 6vh;
   line-height: 5vh;
   font-weight: normal;
@@ -304,23 +303,23 @@ font-family: para;
 }
 
 a {
-  font-family: asl;
-  font-weight: 900;
+  font-family: transat, sans-serif;
+  font-weight: 700;
   font-style: normal;
-  color: #F25E5E;
-  font-size: 4vh;
-  line-height: 5vh;
+  color: #D7F207;
+  font-size: 3vh;
+  line-height: 4vh;
   //margin-left: 20px;
   //margin-right: 30px;
   text-align: center;
 }
 
 button {
-  font-family: asl;
-  font-weight: 900;
+  font-family: itc-benguiat-condensed, sans-serif;
+  font-weight: 400;
   font-style: normal;
   background: #ffffff;
-  color: #F25E5E;
+  color: #262626;
   font-size: 3vh;
   line-height: 4vh;
   border: 2px solid #000000; 
@@ -332,7 +331,6 @@ button {
   display: inline-block;
   box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
   margin-top: 1vh;
-  text-transform: uppercase;
 }
 
 button:hover {
@@ -397,22 +395,24 @@ button:hover {
   text-align: center;
   margin-bottom: 2vh;
   margin-top: 2vh;
-  z-index: 2;
 }
 
 .btn-group button {
-  background: #ffffff;
-  font-family: asl;
+  background: #00000070;
+  font-family: transat, sans-serif;
   font-weight: 900;
   font-style: normal;
-  font-size: 4vh;
-  border: 4px solid #000000; 
-  border-radius: 5px;
-  color: #000000;
+  font-size: 3vh;
+  font-weight: 3vh;
+  border: 2px solid #000000; 
+  border-radius: 4px;
+  border-color: #D7F207;
+  color: #D7F207;
   padding: auto;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+  //min-width: 150px;
   display: inline-block;
   box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
   margin-top: 1vh;
@@ -420,11 +420,7 @@ button:hover {
   margin-right: 2vh;
   padding-right: 2vh;
   padding-left: 2vh;
-  text-transform: uppercase;
-}
-
-.symbols {
-  padding: 25vw;
+  z-index: 2;
 }
 
 h1#ui-dialog-title {
@@ -432,10 +428,6 @@ h1#ui-dialog-title {
 }
 
 #ui-dialog-body {
-  background-color: #fff;
-}
-
-#ui-dialog-body.restart {
   background-color: #fff;
 }
 
@@ -530,7 +522,7 @@ h1#ui-dialog-title {
     display: block;
     padding: .25em .75em;
     border: 1px solid transparent;
-    color: #000000;
+    color: #ffffff;
     text-transform: uppercase;
   font-size: 3vh;
 }
@@ -560,6 +552,18 @@ h1#ui-dialog-title {
 //li#menu-item-share a:hover{
   background: transparent;
   border:none;
+}
+
+#ui-dialog-body {
+  background-color: #000;
+}
+
+h1#ui-dialog-title {
+    background-color: #000;
+}
+
+#ui-dialog-body {
+  background-color: #000;
 }
 
 #ui-dialog-body.list li a {
@@ -592,10 +596,8 @@ display: none;
 
 #ui-bar-toggle {
   display: block;
-  position: sticky;
+  position: fixed;
   top: 0;
-  left: 0;
-  right: none;
   border-right: none;
   padding: .3em .45em .25em;
   margin-top: 2vh;
@@ -608,8 +610,8 @@ display: none;
 
 #ui-bar-body {
   height: 100%;
-  background-color: #ffffff;
-    //background-image: url('https://geomazing.com/aschersleben/bilder/bg.4.png');
+  background-color: #000000;
+    background-image: url('https://geomazing.com/ghosthunt/bilder/bg.jpg');
   background-position: center;
   margin: 0;
   width: 34vh;
@@ -786,29 +788,22 @@ tw-hook[name="fade-out"] {
         }
 
   body { margin: 0; padding: 0; }
-  
-  #passage-anleitung {
-    margin: -4vh 0;
-    height: 100vh;
-}
-  
-#passage-map {
-    margin: -4vh 0;
-    height: 100vh;
-}
-  
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
   
   /* Resizable element style */
 .resizable {
 	display: inline-block;
-	overflow: auto;
+	overflow: hidden;
 	line-height: 0;
 	resize: both;
 }
 .resizable img {
-  position: relative;
+  position: fixed;
   bottom: 0;
+  width: auto;
+  height: 100%;
+  margin-left: 50vw;
+  transform: translate(-50%);
 }
 
 /* Area element style */
@@ -818,23 +813,6 @@ area {
 area:focus {
 	outline: 2px solid black;
 }
-
-  .img {
-    width: 1024px;
-    height: 1366px;
-    overflow: auto;
-}
-  
-#textbox--answer {
-    border: 2px solid #d715ff;
-    background-color: #ffffff;
-    color: black;
-    font-size: 5vw;
-    margin-left: 5vw;
-    margin-right: 5vw;
-}
-  
-
 	</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* Autosave */
 Config.saves.autosave = ["autosave"];
 
@@ -1151,7 +1129,7 @@ setup.storyinit = function () {
 &lt;&lt;set $truthahn to 0&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="StoryHeader" tags="" position="600,200" size="100,100"></tw-passagedata><tw-passagedata pid="3" name="StoryCaption" tags="" position="800,200" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;h2&gt;Punkte&lt;/h2&gt;
 &lt;h3&gt;$koinz / 210&lt;/h3&gt;
-&lt;h2&gt;Flamingo Geheimname&lt;/h2&gt;
+&lt;h2&gt;Lösungswort&lt;/h2&gt;
 &lt;h3&gt;
 &lt;&lt;if $letter1 is 1&gt;&gt;
 	R
@@ -1298,7 +1276,7 @@ Umgebung lösen. Findet die Ort auf dem Bild und studiert sie genau. Dann
 
 &lt;/div&gt;
 
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="StoryMenu" tags="" position="200,200" size="100,100">&lt;&lt;link &quot;Meine Tiere&quot;&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="StoryMenu" tags="" position="198.33333333333334,200" size="100,100">&lt;&lt;link &quot;Inventar&quot;&gt;&gt;
 	&lt;&lt;addclass &quot;#ui-bar&quot; &quot;stowed&quot;&gt;&gt;
 	&lt;&lt;goto &quot;Tiere&quot;&gt;&gt;
 &lt;&lt;/link&gt;&gt;
@@ -2063,7 +2041,7 @@ poster=&quot;bilder/loading.png&quot;
 
 &lt;/div&gt;
 
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="mapbox" tags="autosave" position="1701,401" size="100,100">&lt;div id=&quot;map&quot;&gt;&lt;/div&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="mapbox" tags="autosave" position="1699.3333333333333,401" size="100,100">&lt;div id=&quot;map&quot;&gt;&lt;/div&gt;
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function() {
   setup.mapboxLoaded.then(function () {
@@ -4039,7 +4017,7 @@ Danach könnt ihr noch alle Tiere einsammeln, die ihr noch nicht gefunden
 &lt;&lt;audio &quot;click&quot; play&gt;&gt;	
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="gps" tags="" position="501.6666666666667,1603.3333333333335" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="gps" tags="" position="503.33333333333337,1603.3333333333335" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;&lt;set
  $is_safari to navigator.userAgent.indexOf(&#39;Safari&#39;) &gt; -1 &amp;&amp; 
@@ -4135,7 +4113,7 @@ if (window.matchMedia(&#39;(display-mode: standalone)&#39;).matches) {
 &lt;&lt;audio &quot;ring&quot; loop play&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
-&lt;img src=&quot;bilder/kommissar.png&quot; class=&quot;image1&quot; /&gt;
+&lt;img src=&quot;bilder/holger.png&quot; class=&quot;image1&quot; /&gt;
 &lt;h1&gt;Anruf Holger&lt;/h1&gt;
 
 &lt;/div&gt;
@@ -4151,7 +4129,6 @@ if (window.matchMedia(&#39;(display-mode: standalone)&#39;).matches) {
 &lt;&lt;audio &quot;:playing:&quot; stop&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
-&lt;img src=&quot;bilder/kommissar.png&quot; class=&quot;image1&quot; /&gt;
 &lt;h1&gt;Holger&lt;/h1&gt;
 &lt;h2&gt;Hallo!? Ja, hi, hier ist der Holger von Spuk &amp; Söhne. 
 &lt;br&gt;
@@ -4188,7 +4165,6 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 &lt;&lt;audio &quot;:playing:&quot; stop&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
-&lt;img src=&quot;bilder/kommissar.png&quot; class=&quot;image1&quot; /&gt;
 &lt;h1&gt;Installation&lt;/h1&gt;
 &lt;h2&gt;Wunderbar! Ich weiß eure Flexibilität zu schätzen. 
 &lt;br&gt;
