@@ -1103,7 +1103,7 @@ setup.storyinit = function () {
 
 &lt;&lt;set $flamingo to 0&gt;&gt;
 
-&lt;&lt;set $affe to 0&gt;&gt;
+&lt;&lt;set $affe to 1&gt;&gt;
 
 &lt;&lt;set $eule to 0&gt;&gt;
 
@@ -3538,9 +3538,9 @@ poster=&quot;bilder/loading.png&quot;
 &lt;model-viewer ar
               ar-modes=&quot;scene-viewer webxr quick-look&quot;
 poster=&quot;bilder/loading.png&quot;
-			  src=&quot;models/affe/affe.glb&quot;
-              ios-src=&quot;models/affe/affe.usdz&quot;
-              alt=&quot;Affe&quot;
+			  src=&quot;models/butcher/butcher.glb&quot;
+              ios-src=&quot;models/butcher/butcher.usdz&quot;
+              alt=&quot;Butcher&quot;
 			  auto-rotate&gt;
 &lt;/model-viewer&gt;
 &lt;&lt;/if&gt;&gt;
@@ -4020,7 +4020,7 @@ Danach könnt ihr noch alle Tiere einsammeln, die ihr noch nicht gefunden
 &lt;&lt;audio &quot;click&quot; play&gt;&gt;	
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="gps" tags="" position="499.3333333333333,2216.3333333333335" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="gps" tags="" position="499,2216" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
   &lt;source src=&quot;videos/demo.mp4&quot; type=&quot;video/mp4&quot;&gt;
@@ -4058,7 +4058,7 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="AR" tags="" position="504,1805.6666666666667" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="AR" tags="" position="504,1805" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
 &lt;h1&gt;Augmented Reality&lt;/h1&gt;
@@ -4089,7 +4089,7 @@ Wenn alles richtig funktioniert, solltet ihr hier jetzt unseren Hausgeist &quot;
 &lt;&lt;audio &quot;click&quot; play&gt;&gt;	
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="splash" tags="" position="500.6666666666667,599.6666666666666" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="splash" tags="" position="500,599" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;script&gt;
   $(&#39;#story&#39;).attr(&#39;style&#39;, &#39;background-image:url(https://geomazing.com/ghosthunt/bilder/bg.jpg)&#39;);
@@ -4121,8 +4121,8 @@ if (window.matchMedia(&#39;(display-mode: standalone)&#39;).matches) {
 &lt;&lt;audio &quot;ring&quot; loop play&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
-&lt;img src=&quot;bilder/holger.png&quot; class=&quot;image1&quot; /&gt;
 &lt;h1&gt;Anruf Holger&lt;/h1&gt;
+&lt;img src=&quot;bilder/holger.png&quot; class=&quot;image1&quot; /&gt;
 
 &lt;/div&gt;
 
@@ -4139,9 +4139,9 @@ if (window.matchMedia(&#39;(display-mode: standalone)&#39;).matches) {
 &lt;h2&gt;Hallo!? Ja, hi, hier ist Holger von Geisterjäger24.de
 &lt;br&gt;
 &lt;br&gt;Ihr habt habt euch doch bei mir beworben, oder?
-Die Sache ist die ... mein Kollege ist heute kurzfrisitg ausgefallen und ihr könntet seinen Fall übernehmen. 
+Die Sache ist die ... mein Kollege ist heute kurzfristig ausgefallen und ihr könntet seinen Fall übernehmen. 
 &lt;br&gt;
-&lt;br&gt;Es geht um eine Geister-Störung im Friedenspark. Nichts dramatisches, aber eigentlich perfekt für euren ersten Tag.
+&lt;br&gt;Es geht um eine Geister-Störung im Friedenspark. Nichts dramatisches, also perfekt für euren ersten Tag.
 &lt;br&gt;
 &lt;br&gt;Ich selbst bin nur gerade unterwegs zu ner anderen Location. Aber ich könnte euch über das Telefon begleiten. 
 &lt;br&gt;
@@ -4160,7 +4160,7 @@ Was denkt ihr? Wollen wir das so machen?
 &lt;&lt;audio &quot;click&quot; play&gt;&gt;	
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="installation" tags="" position="496.66666666666663,1603" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="installation" tags="" position="496,1603" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;&lt;set
  $is_safari to navigator.userAgent.indexOf(&#39;Safari&#39;) &gt; -1 &amp;&amp; 
@@ -4168,15 +4168,13 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 &lt;&lt;set $is_chrome to navigator.userAgent.indexOf(&#39;Chrome&#39;) &gt; 
 -1&gt;&gt;
 
-&lt;&lt;audio &quot;:playing:&quot; stop&gt;&gt;
-
 &lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
-  &lt;source src=&quot;videos/demo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  &lt;source src=&quot;videos/installation.android.mp4&quot; type=&quot;video/mp4&quot;&gt;
 &lt;/video&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
 &lt;h1&gt;Installation&lt;/h1&gt;
-&lt;h2&gt;Wunderbar! Ich hab euch im System. Die nächsten Schritte müsst ihr auf beiden Handys ausführen. 
+&lt;h2&gt;Wunderbar! Ich hab euch im System. Die nächsten Schritte müsst ihr auf allen Handys ausführen. 
 &lt;br&gt;
 &lt;br&gt;Als erstes müsst ihr diese App auf eure Homescreens legen. Dadurch läuft das alles stabiler und wir haben keine Datenverluste. 
 &lt;br&gt;
@@ -4211,7 +4209,7 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 &lt;div class=&quot;btn-group&quot;&gt;
 
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="multiplayer" tags="" position="501.6666666666667,1200" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="multiplayer" tags="" position="501,1200" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;&lt;audio &quot;:playing:&quot; stop&gt;&gt;
 
@@ -4221,13 +4219,13 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
 &lt;h1&gt;Multiplayer&lt;/h1&gt;
-&lt;h2&gt;Super. Ihr seid zu zweit richtig?
+&lt;h2&gt;Super. Wie viele seid ihr eigentlich?
 &lt;br&gt;
-&lt;br&gt;Unsere Geisterjäger sind immer in 2er Teams unterwegs. Dann seid ihr nicht allein, falls mal was schiefgeht. Sicherheit geht vor!
+&lt;br&gt;Unsere Geisterjäger:innen sind immer in Teams unterwegs. Dann seid ihr nicht allein, falls mal was schiefgeht. Sicherheit geht vor!
 &lt;br&gt;
 &lt;br&gt;Heißt ihr braucht auch zwei Handys. Das ist wichtig. 
 &lt;br&gt;
-&lt;br&gt;Ich schicke euch mal eine QR Code. Scannt den mit dem 2. Handy ab, damit ich weiß wer dazu gehört.  
+&lt;br&gt;Ich schicke euch mal einen QR-Code. Scannt den mit dem anderen Handys ab, damit ich weiß wer dazu gehört.  
 &lt;/h2&gt;
 &lt;/div&gt;
 
@@ -4241,11 +4239,11 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 &lt;&lt;audio &quot;click&quot; play&gt;&gt;	
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="qr" tags="" position="495,1403.3333333333333" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="qr" tags="" position="495,1403" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
 &lt;h1&gt;QR&lt;/h1&gt;
-&lt;h2&gt;Scannt den Code mit dem 2. Handy, um die Session zu initalisieren.&lt;/h2&gt;
+&lt;h2&gt;Scannt den Code mit den anderen Handys, um die Session zu starten.&lt;/h2&gt;
 &lt;img src=&quot;bilder/qr.png&quot; class=&quot;image1&quot; /&gt;
 
 &lt;/div&gt;
@@ -4260,7 +4258,7 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 &lt;&lt;audio &quot;click&quot; play&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="friedenspark" tags="" position="503.33333333333326,2001.6666666666667" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="friedenspark" tags="" position="503,2001" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
   &lt;source src=&quot;videos/demo.mp4&quot; type=&quot;video/mp4&quot;&gt;
