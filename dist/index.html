@@ -10,7 +10,6 @@
 <link href="bilder/Icon-192.png" rel="icon" sizes="192x192">
 <link rel="apple-touch-icon" href="bilder/Icon-192.png" />
 <link rel="manifest" href="manifest.json" />
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
 <title>Ghosthunt</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -1227,7 +1226,8 @@ setup.storyinit = function () {
 
 }());
 
-// Handles loading the events for <model-viewer>'s slotted progress bar
+/* Handles loading the events for <model-viewer>'s slotted progress bar */
+
 const onProgress = (event) => {
   const progressBar = event.target.querySelector('.progress-bar');
   const updatingBar = event.target.querySelector('.update-bar');
@@ -3708,15 +3708,7 @@ poster=&quot;bilder/loading.png&quot;
 &lt;h2&gt;Hier findest du alle Tiere, die du bereits eingesammelt hast.
 &lt;&lt;if $affe is 1&gt;&gt;
 
-&lt;model-viewer 
-src=&quot;hanging.glb&quot;  
-ios-src=&quot;models/hanging/hanging.usdz&quot; 
-ar ar-modes=&quot;webxr scene-viewer quick-look&quot; 
-camera-controls poster=&quot;poster.webp&quot; 
-shadow-intensity=&quot;2&quot; 
-autoplay animation-name=&quot;CountAction_Finger Tapping&quot; 
-environment-image=&quot;music_hall_01_1k.hdr&quot; shadow-softness=&quot;0&quot; 
-camera-target=&quot;0m 0m 0m&quot;&gt;
+&lt;model-viewer src=&quot;models/hanging/hanging.glb&quot; ios-src=&quot;models/hanging/hanging.usdz&quot; ar ar-modes=&quot;webxr scene-viewer quick-look&quot; camera-controls poster=&quot;poster.webp&quot; shadow-intensity=&quot;2&quot; autoplay animation-name=&quot;CountAction_Finger Tapping&quot; environment-image=&quot;music_hall_01_1k.hdr&quot; shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
     &lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-2&quot; data-surface=&quot;25 0 4324 4250 4289 0.257 0.599 0.144&quot; data-visibility-attribute=&quot;visible&quot;&gt;
         &lt;div class=&quot;HotspotAnnotation&quot;&gt;Animation&lt;/div&gt;
     &lt;/button&gt;&lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-3&quot; data-surface=&quot;24 0 3912 3791 3608 0.272 0.439 0.289&quot; data-visibility-attribute=&quot;visible&quot;&gt;
@@ -3732,6 +3724,7 @@ camera-target=&quot;0m 0m 0m&quot;&gt;
         &lt;img src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
     &lt;/div&gt;
 &lt;/model-viewer&gt;
+
 
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
@@ -4306,7 +4299,7 @@ if (window.matchMedia(&#39;(display-mode: standalone)&#39;).matches) {
 
 &lt;/div&gt;
 
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="anruf" tags="" position="499,800" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="anruf" tags="" position="500,800" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;&lt;audio &quot;ring&quot; loop play&gt;&gt;
 
