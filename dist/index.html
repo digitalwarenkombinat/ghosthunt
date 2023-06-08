@@ -13,6 +13,7 @@
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <title>Ghosthunt</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+
 <!--
 
 SugarCube (v2.36.1): A free (gratis and libre) story format.
@@ -1224,22 +1225,7 @@ setup.storyinit = function () {
 
   };
 
-}());
-
-/* Handles loading the events for <model-viewer>'s slotted progress bar */
-
-const onProgress = (event) => {
-  const progressBar = event.target.querySelector('.progress-bar');
-  const updatingBar = event.target.querySelector('.update-bar');
-  updatingBar.style.width = `${event.detail.totalProgress * 100}%`;
-  if (event.detail.totalProgress === 1) {
-    progressBar.classList.add('hide');
-    event.target.removeEventListener('progress', onProgress);
-  } else {
-    progressBar.classList.remove('hide');
-  }
-};
-document.querySelector('model-viewer').addEventListener('progress', onProgress);</script><tw-tag name="fightRoom" color="red"></tw-tag><tw-tag name="fightroom" color="red"></tw-tag><tw-tag name="saeulengang" color="yellow"></tw-tag><tw-passagedata pid="1" name="StoryInit" tags="" position="398,201" size="100,100">--------------------------AUDIO---------------------------------------
+}());</script><tw-tag name="fightRoom" color="red"></tw-tag><tw-tag name="fightroom" color="red"></tw-tag><tw-tag name="saeulengang" color="yellow"></tw-tag><tw-passagedata pid="1" name="StoryInit" tags="" position="398,201" size="100,100">--------------------------AUDIO---------------------------------------
 
 &lt;&lt;cacheaudio &quot;bg&quot; &quot;audio/bg.mp3&quot;&gt;&gt;
 
