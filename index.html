@@ -13,7 +13,6 @@
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <title>Ghosthunt</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-
 <!--
 
 SugarCube (v2.36.1): A free (gratis and libre) story format.
@@ -806,175 +805,7 @@ tw-hook[name="fade-out"] {
   height: 100%;
   margin-left: 50vw;
   transform: translate(-50%);
-}
-
-/* Area element style */
-area {
-	cursor: pointer;
-}
-area:focus {
-	outline: 2px solid black;
-}
-  
-  model-viewer {
-  width: 100%;
-  height: 90%;
-  background-color: #ffffff;
-}
-
-.Hotspot {
-  background: #fff;
-  border-radius: 32px;
-  border: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-  box-sizing: border-box;
-  cursor: pointer;
-  height: 24px;
-  padding: 8px;
-  position: relative;
-  transition: opacity 0.3s;
-  width: 24px;
-}
-
-.Hotspot:not([data-visible]) {
-  background: transparent;
-  border: 4px solid #fff;
-  box-shadow: none;
-  height: 32px;
-  pointer-events: none;
-  width: 32px;
-}
-
-.Hotspot:focus {
-  border: 4px solid rgb(0, 128, 200);
-  height: 32px;
-  outline: none;
-  width: 32px;
-}
-
-.Hotspot > * {
-  opacity: 1;
-  transform: translateY(-50%);
-}
-
-.HotspotAnnotation{
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-  color: rgba(0, 0, 0, 0.8);
-  display: block;
-  font-family: Futura, Helvetica Neue, sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  left: calc(100% + 1em);
-  max-width: 128px;
-  overflow-wrap: break-word;
-  padding: 0.5em 1em;
-  position: absolute;
-  top: 50%;
-  width: max-content;
-}
-
-.Hotspot:not([data-visible]) > * {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(calc(-50% + 4px));
-  transition: transform 0.3s, opacity 0.3s;
-}
-
-
-.progress-bar {
-  display: block;
-  width: 33%;
-  height: 10%;
-  max-height: 2%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate3d(-50%, -50%, 0);
-  border-radius: 25px;
-  box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.5), 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.progress-bar.hide {
-  visibility: hidden;
-  transition: visibility 0.3s;
-}
-
-.update-bar {
-  background-color: rgba(255, 255, 255, 0.9);
-  width: 0%;
-  height: 100%;
-  border-radius: 25px;
-  float: left;
-  transition: width 0.3s;
-}
-
-#ar-button {
-  background-image: url(ar_icon.png);
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  background-position: 12px 50%;
-  background-color: #fff;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  bottom: 16px;
-  padding: 0px 16px 0px 40px;
-  font-family: Roboto Regular, Helvetica Neue, sans-serif;
-  font-size: 14px;
-  color:#4285f4;
-  height: 36px;
-  line-height: 36px;
-  border-radius: 18px;
-  border: 1px solid #DADCE0;
-}
-
-#ar-button:active {
-  background-color: #E8EAED;
-}
-
-#ar-button:focus {
-  outline: none;
-}
-
-#ar-button:focus-visible {
-  outline: 1px solid #4285f4;
-}
-
-@keyframes circle {
-  from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
-  to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
-}
-
-@keyframes elongate {
-  from { transform: translateX(100px); }
-  to   { transform: translateX(-100px); }
-}
-
-model-viewer > #ar-prompt {
-  position: absolute;
-  left: 50%;
-  bottom: 60px;
-  animation: elongate 2s infinite ease-in-out alternate;
-  display: none;
-}
-
-model-viewer[ar-status="session-started"] > #ar-prompt {
-  display: block;
-}
-
-model-viewer > #ar-prompt > img {
-  animation: circle 4s linear infinite;
-}
-  
-  :not(:defined) > * {
-  display: none;
-}
-	</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* Autosave */
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* Autosave */
 Config.saves.autosave = ["autosave"];
 
 /* Mapbox und Javascript wird geladen */
@@ -3691,24 +3522,15 @@ poster=&quot;bilder/loading.png&quot;
 
 &lt;div class=&quot;wrapper&quot;&gt;
 &lt;h1&gt;Inventar&lt;/h1&gt;
-&lt;h2&gt;Hier findest du alle Tiere, die du bereits eingesammelt hast.
 &lt;&lt;if $affe is 1&gt;&gt;
 
-&lt;model-viewer src=&quot;models/hanging/hanging.glb&quot; ios-src=&quot;models/hanging/hanging.usdz&quot; ar ar-modes=&quot;webxr scene-viewer quick-look&quot; camera-controls poster=&quot;poster.webp&quot; shadow-intensity=&quot;2&quot; autoplay animation-name=&quot;CountAction_Finger Tapping&quot; environment-image=&quot;music_hall_01_1k.hdr&quot; shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
-    &lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-2&quot; data-surface=&quot;25 0 4324 4250 4289 0.257 0.599 0.144&quot; data-visibility-attribute=&quot;visible&quot;&gt;
-        &lt;div class=&quot;HotspotAnnotation&quot;&gt;Animation&lt;/div&gt;
-    &lt;/button&gt;&lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-3&quot; data-surface=&quot;24 0 3912 3791 3608 0.272 0.439 0.289&quot; data-visibility-attribute=&quot;visible&quot;&gt;
-        &lt;div class=&quot;HotspotAnnotation&quot;&gt;Hangman&lt;/div&gt;
-    &lt;/button&gt;
-    &lt;div class=&quot;progress-bar hide&quot; slot=&quot;progress-bar&quot;&gt;
-        &lt;div class=&quot;update-bar&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;button slot=&quot;ar-button&quot; id=&quot;ar-button&quot;&gt;
-        View in your space
-    &lt;/button&gt;
-    &lt;div id=&quot;ar-prompt&quot;&gt;
-        &lt;img src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
-    &lt;/div&gt;
+&lt;model-viewer ar
+              ar-modes=&quot;scene-viewer webxr quick-look&quot;
+poster=&quot;bilder/loading.png&quot;
+              src=&quot;models/witch/witch.glb&quot;
+              ios-src=&quot;models/witch/witch.usdz&quot;
+			  alt=&quot;Flamingo&quot;
+			  auto-rotate&gt;
 &lt;/model-viewer&gt;
 
 
@@ -3869,7 +3691,7 @@ poster=&quot;bilder/loading.png&quot;
 			  auto-rotate&gt;
 &lt;/model-viewer&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;/h2&gt;
+
 &lt;/div&gt;
 
 &lt;div class=&quot;btn-group&quot;&gt;
