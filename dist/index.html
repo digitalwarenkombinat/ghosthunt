@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="mobile-web-app-capable" content="yes">
-		<meta name="theme-color" content="#000000"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#000000"/>
 <link rel="canonical" href="https://github.com/digitalwarenkombinat/ghosthunt.git"/>
 <link href="bilder/Icon-192.png" rel="icon" sizes="192x192">
 <link rel="apple-touch-icon" href="bilder/Icon-192.png" />
@@ -1056,7 +1056,16 @@ setup.storyinit = function () {
 
   };
 
-}());</script><tw-tag name="fightRoom" color="red"></tw-tag><tw-tag name="fightroom" color="red"></tw-tag><tw-tag name="saeulengang" color="yellow"></tw-tag><tw-passagedata pid="1" name="StoryInit" tags="" position="398,201" size="100,100">--------------------------AUDIO---------------------------------------
+}());</script><tw-tag name="fightRoom" color="red"></tw-tag><tw-tag name="fightroom" color="red"></tw-tag><tw-tag name="saeulengang" color="yellow"></tw-tag><tw-passagedata pid="1" name="StoryInit" tags="" position="398,201" size="100,100">-------------------------SETUP-------------------------------
+
+&lt;&lt;set $is_pwa to window.matchMedia(&#39;(display-mode: standalone)&#39;).matches&gt;&gt;
+&lt;&lt;set
+ $is_safari to navigator.userAgent.indexOf(&#39;Safari&#39;) &gt; -1 &amp;&amp; 
+navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
+&lt;&lt;set $is_chrome to navigator.userAgent.indexOf(&#39;Chrome&#39;) &gt; 
+-1&gt;&gt;
+
+--------------------------AUDIO---------------------------------------
 
 &lt;&lt;cacheaudio &quot;bg&quot; &quot;audio/bg.mp3&quot;&gt;&gt;
 
@@ -1650,9 +1659,10 @@ diesem Zweck verarbeiten.
  $letter5 is 1 and $letter6 is 1 and $letter7 is 1 and $ende is 
 0&gt;&gt;
 	&lt;&lt;goto &quot;ende.1&quot;&gt;&gt;
+&lt;&lt;elseif !$is_pwa&gt;&gt;
+&lt;&lt;goto &quot;installation&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;goto &quot;mapbox&quot;&gt;&gt;
-&lt;&lt;/else&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="start.4" tags="" position="701,1400" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
@@ -4087,7 +4097,7 @@ Wenn alles richtig funktioniert, solltet ihr hier jetzt unseren Hausgeist &quot;
 &lt;/script&gt;
 
 &lt;&lt;script&gt;&gt;
-if (window.matchMedia(&#39;(display-mode: standalone)&#39;).matches) {
+if (State.variables.is_pwa) {
   $.wiki(&#39;&lt;&lt;goto &quot;gps&quot;&gt;&gt;&#39;)
 }
 &lt;&lt;/script&gt;&gt;
