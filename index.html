@@ -10,6 +10,8 @@
 <link href="bilder/Icon-192.png" rel="icon" sizes="192x192">
 <link rel="apple-touch-icon" href="bilder/Icon-192.png" />
 <link rel="manifest" href="manifest.json" />
+<link type="text/css" href="./model-viewer.css" rel="stylesheet"/>
+<script src="./model-viewer.js"></script>
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <title>Ghosthunt</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -3534,28 +3536,39 @@ poster=&quot;bilder/loading.png&quot;
 &lt;h1&gt;Inventar&lt;/h1&gt;
 &lt;&lt;if $affe is 1&gt;&gt;
 
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;bilder/loading.png&quot;
-              src=&quot;models/witch/witch.glb&quot;
-              ios-src=&quot;models/witch/witch.usdz&quot;
-			  alt=&quot;Flamingo&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
+    &lt;model-viewer src=&quot;models/witch/witch.glb&quot; ar ar-modes=&quot;webxr scene-viewer quick-look&quot; camera-controls poster=&quot;models/witch/poster.webp&quot; shadow-intensity=&quot;2&quot; autoplay animation-name=&quot;CountAction_Finger Tapping&quot; environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
+        &lt;div class=&quot;progress-bar hide&quot; slot=&quot;progress-bar&quot;&gt;
+            &lt;div class=&quot;update-bar&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button slot=&quot;ar-button&quot; id=&quot;ar-button&quot;&gt;
+            View in your space
+        &lt;/button&gt;
+        &lt;div id=&quot;ar-prompt&quot;&gt;
+            &lt;img src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
+        &lt;/div&gt;
+    &lt;/model-viewer&gt;
 
 
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
 &lt;br&gt;
 &lt;&lt;if $flamingo is 1&gt;&gt;
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;bilder/loading.png&quot;
-              src=&quot;models/hanging/hanging.glb&quot;
-              ios-src=&quot;models/hanging/hanging.usdz&quot;
-			  alt=&quot;Flamingo&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
+    &lt;model-viewer src=&quot;models/hanging/hanging.glb&quot; ar ar-modes=&quot;webxr scene-viewer quick-look&quot; camera-controls poster=&quot;models/hanging/poster.webp&quot; shadow-intensity=&quot;2&quot; autoplay animation-name=&quot;CountAction_Finger Tapping&quot; environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
+        &lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-2&quot; data-surface=&quot;25 0 4324 4250 4289 0.257 0.599 0.144&quot; data-visibility-attribute=&quot;visible&quot;&gt;
+            &lt;div class=&quot;HotspotAnnotation&quot;&gt;Animation&lt;/div&gt;
+        &lt;/button&gt;&lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-3&quot; data-surface=&quot;24 0 3912 3791 3608 0.272 0.439 0.289&quot; data-visibility-attribute=&quot;visible&quot;&gt;
+            &lt;div class=&quot;HotspotAnnotation&quot;&gt;Hangman&lt;/div&gt;
+        &lt;/button&gt;
+        &lt;div class=&quot;progress-bar hide&quot; slot=&quot;progress-bar&quot;&gt;
+            &lt;div class=&quot;update-bar&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button slot=&quot;ar-button&quot; id=&quot;ar-button&quot;&gt;
+            View in your space
+        &lt;/button&gt;
+        &lt;div id=&quot;ar-prompt&quot;&gt;
+            &lt;img src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
+        &lt;/div&gt;
+    &lt;/model-viewer&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
 &lt;br&gt;
