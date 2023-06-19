@@ -188,7 +188,7 @@ h1 {
 font-family: "shlop", sans-serif;
 font-weight: 400;
 font-style: normal;
-  color: #DAF035;
+  color: #ffffff;
   font-size: 9vh;
   line-height: 8vh;
   margin-left: 2vw;
@@ -202,7 +202,7 @@ font-style: normal;
 h2 {
 font-family: transat, sans-serif;
 font-weight: 500;
-font-style: italic;
+font-style: normal;
   color: #ffffff;
   font-size: 3vh;
   line-height: 4vh;
@@ -308,7 +308,7 @@ font-family: para;
 a {
 font-family: transat, sans-serif;
 font-weight: 500;
-font-style: italic;
+font-style: normal;
   color: #DAF035;
   font-size: 3vh;
   line-height: 4vh;
@@ -2203,7 +2203,7 @@ anklicken.&lt;/h2&gt;
 &lt;/span&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="34" name="menu" tags="" position="492,2712" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="34" name="menu" tags="" position="500,3000" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
 
@@ -3999,7 +3999,7 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="dauer" tags="" position="372,2700" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="dauer" tags="" position="375,3000" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;div
  class=&quot;wrapper&quot;&gt;
@@ -4034,7 +4034,7 @@ Danach könnt ihr noch alle Tiere einsammeln, die ihr noch nicht gefunden
 &lt;&lt;audio &quot;click&quot; play&gt;&gt;	
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="gps" tags="" position="500,2400" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="gps" tags="" position="500,2800" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
   &lt;source src=&quot;videos/demo.mp4&quot; type=&quot;video/mp4&quot;&gt;
@@ -4072,7 +4072,7 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="AR" tags="" position="500,2000" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="AR" tags="" position="500,2400" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
 &lt;h1&gt;Augmented Reality&lt;/h1&gt;
@@ -4108,12 +4108,6 @@ Wenn alles richtig funktioniert, solltet ihr hier jetzt unseren Hausgeist &quot;
 &lt;script&gt;
   $(&#39;#story&#39;).attr(&#39;style&#39;, &#39;background-image:url(https://geomazing.com/ghosthunt/bilder/bg.jpg)&#39;);
 &lt;/script&gt;
-
-&lt;&lt;script&gt;&gt;
-if (State.variables.is_pwa) {
-  $.wiki(&#39;&lt;&lt;goto &quot;gps&quot;&gt;&gt;&#39;)
-}
-&lt;&lt;/script&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
 &lt;h1&gt;Geisterjäger
@@ -4176,11 +4170,6 @@ Was denkt ihr? Wollen wir das so machen?
 &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="installation" tags="" position="500,1800" size="100,100">&lt;&lt;nobr&gt;&gt;
 
-&lt;&lt;set
- $is_safari to navigator.userAgent.indexOf(&#39;Safari&#39;) &gt; -1 &amp;&amp; 
-navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
-&lt;&lt;set $is_chrome to navigator.userAgent.indexOf(&#39;Chrome&#39;) &gt; 
--1&gt;&gt;
 
 &lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
   &lt;source src=&quot;videos/installation.android.mp4&quot; type=&quot;video/mp4&quot;&gt;
@@ -4188,40 +4177,20 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
 &lt;h1&gt;Installation&lt;/h1&gt;
-&lt;h2&gt;Wunderbar! Ich hab euch im System. Die nächsten Schritte müsst ihr auf allen Handys ausführen. 
+&lt;h2&gt;Wunderbar! Ich hab euch im System. 
 &lt;br&gt;
-&lt;br&gt;Als erstes müsst ihr diese App auf eure Homescreens legen. Dadurch läuft das alles stabiler und wir haben keine Datenverluste. 
+&lt;br&gt;Als nächstes müsst ihr die App installieren. Dadurch läuft das alles stabiler und wir haben keine Datenverluste. 
 &lt;br&gt;
 &lt;br&gt;
-&lt;&lt;if $is_safari&gt;&gt;
-    
-    Klickt auf &quot;Teilen&quot; und dann &quot;Zum Home-Bildschirm hinzufügen&quot;.
-	&lt;br&gt;
-	&lt;br&gt;
-	Danach erscheint ein App Symbol auf eurem Bildschirm. Öffnet die App und dann machen wir weiter.
-	&lt;br&gt;
-	&lt;br&gt;
-	Im [[Browser|AR]] fortfahren. (Entwickleroption)
-
-    &lt;&lt;elseif $is_chrome&gt;&gt;
-    
-	Klickt auf &quot;Teilen&quot; und dann &quot;Zum Home-Bildschirm 
-    hinzufügen&quot;
-	&lt;br&gt;
-	&lt;br&gt;
-	Danach erscheint ein App Symbol auf eurem Bildschirm. Öffnet die App und dann machen wir weiter. 
-	&lt;br&gt;
-	&lt;br&gt;
-	Im [[Browser|AR]] fortfahren. (Entwickleroption)
-    
-    &lt;&lt;else&gt;&gt;
-    Ihr müsst Chrome oder Safari Browser benutzen. 
-    &lt;&lt;/if&gt;&gt;
-    &lt;/h2&gt;
+Ich zeige euch wie&#39;s geht.
+ &lt;/h2&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;btn-group&quot;&gt;
-
+  &lt;&lt;button &quot;Weiter&quot;&gt;&gt;
+    &lt;&lt;goto &quot;installation.gif&quot;&gt;&gt;
+&lt;&lt;audio &quot;click&quot; play&gt;&gt;
+&lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="multiplayer" tags="" position="500,1400" size="100,100">&lt;&lt;nobr&gt;&gt;
 
@@ -4272,7 +4241,7 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 &lt;&lt;audio &quot;click&quot; play&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="friedenspark" tags="" position="500,2200" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="friedenspark" tags="" position="500,2600" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
   &lt;source src=&quot;videos/demo.mp4&quot; type=&quot;video/mp4&quot;&gt;
@@ -4309,6 +4278,12 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="Browser" tags="" position="500,600" size="100,100">&lt;&lt;nobr&gt;&gt;
 
+&lt;&lt;script&gt;&gt;
+if (State.variables.is_pwa) {
+  $.wiki(&#39;&lt;&lt;goto &quot;installation.erfolgreich&quot;&gt;&gt;&#39;)
+}
+&lt;&lt;/script&gt;&gt;
+
 &lt;&lt;set
  $is_safari to navigator.userAgent.indexOf(&#39;Safari&#39;) &gt; -1 &amp;&amp; 
 navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
@@ -4340,6 +4315,47 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 
 &lt;div class=&quot;btn-group&quot;&gt;
 
+&lt;/div&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="installation.gif" tags="" position="500,2000" size="100,100">&lt;&lt;nobr&gt;&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;
+
+&lt;h2&gt;
+    &lt;&lt;if $is_safari&gt;&gt;
+    
+    Safari
+    &lt;br&gt;
+    Klicke auf Teilen-&gt;Zum Home-Bildschirm hinzufügen.
+
+    &lt;&lt;elseif $is_chrome&gt;&gt;
+    
+    Chrome
+    &lt;br&gt;
+	Klicke auf Teilen-&gt;Zum Home-Bildschirm 
+    hinzufügen.
+    
+    &lt;&lt;/if&gt;&gt;
+&lt;/h2&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;btn-group&quot;&gt;
+
+&lt;/div&gt;
+
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="installation.erfolgreich" tags="" position="500,2200" size="100,100">&lt;&lt;nobr&gt;&gt;
+
+
+&lt;div class=&quot;wrapper&quot;&gt;
+&lt;h1&gt;Installation&lt;br&gt;erfolgreich&lt;/h1&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;btn-group&quot;&gt;
+&lt;&lt;/button&gt;&gt;
+  &lt;&lt;button &quot;Weiter&quot;&gt;&gt;
+    &lt;&lt;goto &quot;AR&quot;&gt;&gt;
+&lt;&lt;audio &quot;click&quot; play&gt;&gt;
+&lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
