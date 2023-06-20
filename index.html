@@ -1066,9 +1066,9 @@ setup.storyinit = function () {
 &lt;&lt;set $is_pwa to window.matchMedia(&#39;(display-mode: standalone)&#39;).matches&gt;&gt;
 &lt;&lt;set
  $is_safari to navigator.userAgent.indexOf(&#39;Safari&#39;) &gt; -1 &amp;&amp; 
-navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
+navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1 &amp;&amp; navigator.userAgent.indexOf(&quot;Edg&quot;) &lt;= -1&gt;&gt;
 &lt;&lt;set $is_chrome to navigator.userAgent.indexOf(&#39;Chrome&#39;) &gt; 
--1&gt;&gt;
+-1 &amp;&amp; navigator.userAgent.indexOf(&quot;Edg&quot;) &lt;= -1&gt;&gt;
 
 --------------------------AUDIO---------------------------------------
 
@@ -4270,23 +4270,17 @@ if (State.variables.is_pwa) {
 }
 &lt;&lt;/script&gt;&gt;
 
-&lt;&lt;set
- $is_safari to navigator.userAgent.indexOf(&#39;Safari&#39;) &gt; -1 &amp;&amp; 
-navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
-&lt;&lt;set $is_chrome to navigator.userAgent.indexOf(&#39;Chrome&#39;) &gt; 
--1&gt;&gt;
-
 &lt;div class=&quot;wrapper&quot;&gt;
 &lt;h1&gt;Browser Überprüfung&lt;/h1&gt;
 &lt;h2&gt;
-&lt;&lt;if $is_safari&gt;&gt;
+&lt;&lt;if State.variables.is_safari&gt;&gt;
     
     Du benutzt Safari. Wunderbar. 
 	&lt;br&gt;
 	&lt;br&gt;
 	[[Weiter|splash]]
 
-    &lt;&lt;elseif $is_chrome&gt;&gt;
+    &lt;&lt;elseif State.variables.is_chrome&gt;&gt;
     
     Du benutzt Chrome. Wunderbar. 
 	&lt;br&gt;
