@@ -1066,9 +1066,11 @@ setup.storyinit = function () {
 &lt;&lt;set $is_pwa to window.matchMedia(&#39;(display-mode: standalone)&#39;).matches&gt;&gt;
 &lt;&lt;set
  $is_safari to navigator.userAgent.indexOf(&#39;Safari&#39;) &gt; -1 &amp;&amp; 
-navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1 &amp;&amp; navigator.userAgent.indexOf(&quot;Edg&quot;) &lt;= -1&gt;&gt;
+navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1 &amp;&amp; navigator.userAgent.indexOf(&quot;Edg&quot;) &lt;= -1 &amp;&amp;
+navigator.userAgent.indexOf(&#39;SamsungBrowser&#39;) &lt;= - 1&gt;&gt;
 &lt;&lt;set $is_chrome to navigator.userAgent.indexOf(&#39;Chrome&#39;) &gt; 
--1 &amp;&amp; navigator.userAgent.indexOf(&quot;Edg&quot;) &lt;= -1&gt;&gt;
+-1 &amp;&amp; navigator.userAgent.indexOf(&quot;Edg&quot;) &lt;= -1 &amp;&amp;
+navigator.userAgent.indexOf(&#39;SamsungBrowser&#39;) &lt;= - 1&gt;&gt;
 
 --------------------------AUDIO---------------------------------------
 
