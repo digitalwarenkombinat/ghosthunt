@@ -290,8 +290,6 @@ font-family: para;
   line-height: 4vh;
   font-weight: normal;
   text-align: center;
-  margin-left: 5vw;
-  margin-right: 5vw;
   display: inherit;
 }
 
@@ -311,12 +309,10 @@ a {
 font-family: transat, sans-serif;
 font-weight: 500;
 font-style: normal;
-  color: #DAF035;
-  font-size: 3vh;
-  line-height: 4vh;
-  //margin-left: 20px;
-  //margin-right: 30px;
-  text-align: center;
+color: #DAF035;
+font-size: 3vh;
+line-height: 4vh;
+text-align: center;
 }
 
 button {
@@ -602,8 +598,8 @@ display: none;
 }
 
 #ui-bar-toggle:before {
-    content: "\e81d";
-    color: #DAF035;
+  content: "\e81d";
+  color: #DAF035;
 }
 
 #refresh {
@@ -648,6 +644,8 @@ display: none;
   color: #ffffff;
   position: fixed;
   left:0;
+  right: unset;
+  top: unset;
 }
 
 #ui-bar-toggle:hover {
@@ -3512,10 +3510,15 @@ poster=&quot;bilder/loading.png&quot;
 
 
 
-&lt;div class=&quot;wrapper&quot;&gt;
+&lt;div
+ class=&quot;wrapper&quot;&gt;
 &lt;h1&gt;Inventar&lt;/h1&gt;
 &lt;&lt;if $affe is 1&gt;&gt;
-    &lt;model-viewer src=&quot;models/witch/witch.glb&quot; ar ar-modes=&quot;webxr scene-viewer quick-look&quot; auto-rotate poster=&quot;models/witch/poster.webp&quot; shadow-intensity=&quot;2&quot; autoplay animation-name=&quot;CountAction_Finger Tapping&quot; environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
+    &lt;model-viewer src=&quot;models/witch/witch.glb&quot; ar ar-modes=&quot;webxr 
+scene-viewer quick-look&quot; auto-rotate poster=&quot;models/witch/poster.webp&quot; 
+shadow-intensity=&quot;2&quot; autoplay animation-name=&quot;CountAction_Finger 
+Tapping&quot; environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; 
+shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
         &lt;div class=&quot;progress-bar hide&quot; slot=&quot;progress-bar&quot;&gt;
             &lt;div class=&quot;update-bar&quot;&gt;&lt;/div&gt;
         &lt;/div&gt;
@@ -3523,17 +3526,27 @@ poster=&quot;bilder/loading.png&quot;
             In der Umgebung platzieren
         &lt;/button&gt;
         &lt;div id=&quot;ar-prompt&quot;&gt;
-            &lt;img src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
+            &lt;img 
+src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
         &lt;/div&gt;
     &lt;/model-viewer&gt;
 
 
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;if $flamingo is 1&gt;&gt;
-    &lt;model-viewer src=&quot;models/hanging/hanging.glb&quot; ar ar-modes=&quot;webxr scene-viewer quick-look&quot; auto-rotate poster=&quot;models/hanging/poster.webp&quot; shadow-intensity=&quot;2&quot; autoplay animation-name=&quot;CountAction_Finger Tapping&quot; environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
-        &lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-2&quot; data-surface=&quot;25 0 4324 4250 4289 0.257 0.599 0.144&quot; data-visibility-attribute=&quot;visible&quot;&gt;
+    &lt;model-viewer src=&quot;models/hanging/hanging.glb&quot; ar ar-modes=&quot;webxr
+ scene-viewer quick-look&quot; auto-rotate 
+poster=&quot;models/hanging/poster.webp&quot; shadow-intensity=&quot;2&quot; autoplay 
+animation-name=&quot;CountAction_Finger Tapping&quot; 
+environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; 
+shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
+        &lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-2&quot; data-surface=&quot;25 0 
+4324 4250 4289 0.257 0.599 0.144&quot; 
+data-visibility-attribute=&quot;visible&quot;&gt;
             &lt;div class=&quot;HotspotAnnotation&quot;&gt;Animation&lt;/div&gt;
-        &lt;/button&gt;&lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-3&quot; data-surface=&quot;24 0 3912 3791 3608 0.272 0.439 0.289&quot; data-visibility-attribute=&quot;visible&quot;&gt;
+        &lt;/button&gt;&lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-3&quot; 
+data-surface=&quot;24 0 3912 3791 3608 0.272 0.439 0.289&quot; 
+data-visibility-attribute=&quot;visible&quot;&gt;
             &lt;div class=&quot;HotspotAnnotation&quot;&gt;Hangman&lt;/div&gt;
         &lt;/button&gt;
         &lt;div class=&quot;progress-bar hide&quot; slot=&quot;progress-bar&quot;&gt;
@@ -3543,7 +3556,8 @@ poster=&quot;bilder/loading.png&quot;
             In der Umgebung platzieren
         &lt;/button&gt;
         &lt;div id=&quot;ar-prompt&quot;&gt;
-            &lt;img src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
+            &lt;img 
+src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
         &lt;/div&gt;
     &lt;/model-viewer&gt;
 &lt;&lt;/if&gt;&gt;
@@ -4012,7 +4026,8 @@ Danach könnt ihr noch alle Tiere einsammeln, die ihr noch nicht gefunden
 &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="58" name="gps" tags="" position="500,3400" size="100,100">&lt;&lt;nobr&gt;&gt;
 
-&lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
+&lt;video
+ autoplay loop id=&quot;myVideo&quot; playsinline&gt;
   &lt;source src=&quot;videos/demo.mp4&quot; type=&quot;video/mp4&quot;&gt;
 &lt;/video&gt;
 
@@ -4024,14 +4039,18 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
 	&lt;h1&gt;GPS&lt;/h1&gt;
-    &lt;h2&gt;Um euch die Koordinaten zu schicken, braucht ihr zwingend GPS. Ohne geht&#39;s nicht! Stellt sicher, dass ihr das aktiviert habt und euer Browser die Erlaubnis hat es zu nutzen. 
+    &lt;h2&gt;Um euch die Koordinaten zu schicken, braucht ihr zwingend 
+GPS. Ohne geht&#39;s nicht! Stellt sicher, dass ihr das aktiviert habt und 
+euer Browser die Erlaubnis hat es zu nutzen. 
     &lt;br&gt;
     &lt;br&gt;
     &lt;&lt;if $is_safari&gt;&gt;
-    Ihr findet das bei &quot;Einstellungen&quot; und dann &quot;Ortungsdienste&quot;. Erlaubt Safari &quot;Beim Verwenden der App&quot; euren Standort zu benutzen.
+    Ihr findet das bei &quot;Einstellungen&quot; und dann &quot;Ortungsdienste&quot;. 
+Erlaubt Safari &quot;Beim Verwenden der App&quot; euren Standort zu benutzen.
 
     &lt;&lt;elseif $is_chrome&gt;&gt;
-    Ihr findet das bei &quot;Einstellungen&quot; und dann &quot;Standort&quot;. Erlaubt Chrome &quot;Beim Verwenden der App&quot; euren Standort zu benutzen.
+    Ihr findet das bei &quot;Einstellungen&quot; und dann &quot;Standort&quot;. Erlaubt 
+Chrome &quot;Beim Verwenden der App&quot; euren Standort zu benutzen.
     
     &lt;&lt;else&gt;&gt;
     Bitte benutze entweder Chrome oder Safari Browser.
@@ -4050,16 +4069,22 @@ navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1&gt;&gt;
 
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="AR" tags="" position="500,2800" size="100,100">&lt;&lt;nobr&gt;&gt;
 
-&lt;div class=&quot;wrapper&quot;&gt;
+&lt;div
+ class=&quot;wrapper&quot;&gt;
 &lt;h1&gt;Geister Kamera&lt;/h1&gt;
 &lt;h2&gt;
-Super. Dann kommen wir mal zu eurem Hauptwerkzeug - der Kamera. Damit könnt ihr Geister aufspüren, die ihr mit dem bloßen Auge nicht sehen könnt.
+Super. Dann kommen wir mal zu eurem Hauptwerkzeug - der Kamera. Damit 
+könnt ihr Geister aufspüren, die ihr mit dem bloßen Auge nicht sehen 
+könnt.
 &lt;br&gt;
 &lt;br&gt;
-Außerdem könnt ihr damit wichtige Beweisfotos machen. Die brauchen wir für unsere Dokumentation. Sonst könnten die Kunden ja sagen, wir hätten gar nichts gemacht. 
+Außerdem könnt ihr damit wichtige Beweisfotos machen. Die brauchen wir 
+für unsere Dokumentation. Sonst könnten die Kunden ja sagen, wir hätten 
+gar nichts gemacht. 
 &lt;br&gt;
 &lt;br&gt;
-Probiert die Kamera mal aus. Wenn alles funktioniert, solltet ihr damit unsere Hausgeist sehen. 
+Probiert die Kamera mal aus. Wenn alles funktioniert, solltet ihr damit 
+unsere Hausgeist sehen. 
 &lt;/h2&gt;
 &lt;/div&gt;
 
@@ -4135,23 +4160,65 @@ Leipziger Friedenspark.
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="setup.2" tags="" position="500,800" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="setup.2" tags="" position="500,800" size="100,100">&lt;&lt;set $geolocationActivated to 0&gt;&gt;
 
-&lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
-  &lt;source src=&quot;videos/installation.mp4&quot; type=&quot;video/mp4&quot;&gt;
-&lt;/video&gt;
+&lt;&lt;script&gt;&gt;
+$(document).one(&quot;:passagedisplay&quot;, function() {
+const geolocationBtn = document.querySelector(&#39;.geolocation&#39;);
+const nextBtn = document.querySelector(&#39;.next&#39;);
+geolocationBtn.style.display = &#39;inline&#39;;
+nextBtn.style.display = &#39;none&#39;;
+
+const  success = function(pos) {
+  const crd = pos.coords;
+  console.log(`Latitude : ${crd.latitude}`);
+  console.log(`Longitude: ${crd.longitude}`);
+  State.variables.geolocationActivated = 1;
+  $.wiki(&#39;&lt;&lt;goto &quot;setup.3&quot;&gt;&gt;&#39;)
+}
+
+const  error = function(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+const options = {
+  enableHighAccuracy: false,
+  maximumAge: 30000,
+  timeout: 20000
+};
+
+geolocationBtn.onclick = function() {
+	navigator.permissions.query({name:&#39;geolocation&#39;}).then(function(result) {
+    if (result.state == &#39;granted&#39;) {
+      State.variables.geolocationActivated = 1;
+      $.wiki(&#39;&lt;&lt;goto &quot;setup.3&quot;&gt;&gt;&#39;)
+    } else if (result.state == &#39;prompt&#39;) {
+      navigator.geolocation.getCurrentPosition(success, error, options);
+    } else if (result.state == &#39;denied&#39;) {
+      State.variables.geolocationActivated = 0;
+      geolocationBtn.style.display = &#39;inline&#39;;
+      nextBtn.style.display = &#39;none&#39;;
+    }
+    report(result.state);
+  });
+}
+
+function report(state) {
+  console.log(&#39;Permission: &#39; + state);
+}
+});
+&lt;&lt;/script&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
-&lt;h1&gt;Setup 2/4&lt;/h1&gt;
-&lt;h2&gt;
-Wir benötigen deinen Standort, um sicherzustellen, dass du an der richtigen Stelle stehst um die Rätsel zu lösen. 
-[[Weiter|setup.3]]
- &lt;/h2&gt;
+  &lt;h1&gt;Setup 2 von 4&lt;/h1&gt;
+  &lt;h2&gt;Wir benötigen deinen Standort, um sicherzustellen, dass du an der richtigen Stelle stehst, damit du die Rätsel lösen kannst.
+  &lt;/h2&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;btn-group&quot;&gt;
-&lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="multiplayer" tags="" position="700,1400" size="100,100">&lt;&lt;nobr&gt;&gt;
+    &lt;button class=&quot;geolocation&quot;&gt;Standort freigeben&lt;/button&gt;
+    &lt;button class=&quot;next&quot;&gt;[[Weiter|setup.3]]&lt;/button&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="64" name="multiplayer" tags="" position="700,1400" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;&lt;audio &quot;:playing:&quot; stop&gt;&gt;
 
@@ -4210,7 +4277,8 @@ Wir benötigen deinen Standort, um sicherzustellen, dass du an der richtigen Ste
 &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="friedenspark" tags="" position="500,3200" size="100,100">&lt;&lt;nobr&gt;&gt;
 
-&lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
+&lt;video
+ autoplay loop id=&quot;myVideo&quot; playsinline&gt;
   &lt;source src=&quot;videos/demo.mp4&quot; type=&quot;video/mp4&quot;&gt;
 &lt;/video&gt;
 
@@ -4218,11 +4286,16 @@ Wir benötigen deinen Standort, um sicherzustellen, dass du an der richtigen Ste
 	&lt;h1&gt;Friedenspark&lt;/h1&gt;
     &lt;h2&gt;Großartig. Dann können wir starten.
 	&lt;br&gt;
-	&lt;br&gt;Ich schicke euch gleich die Koordinaten vom Friedenspark. Da müsst ihr hin.
+	&lt;br&gt;Ich schicke euch gleich die Koordinaten vom Friedenspark. Da 
+müsst ihr hin.
 	&lt;br&gt;
-	&lt;br&gt;Ich schätze wir brauchen dort so ein bis zwei Stunden. Also stellt sicher, dass eure Handys voll geladen sind und nehmt was zu essen und trinken mit. 
+	&lt;br&gt;Ich schätze wir brauchen dort so ein bis zwei Stunden. Also 
+stellt sicher, dass eure Handys voll geladen sind und nehmt was zu essen
+ und trinken mit. 
 	&lt;br&gt;
-	&lt;br&gt;Ihr könnt starten wann immer ihr bereit seid. Heute, morgen, übermorgen. Das dürft ihr selbst entscheiden. Ich empfehle euch aber in der Abenddämmerung zu gehen. Da sind die Spukis am aktivsten.
+	&lt;br&gt;Ihr könnt starten wann immer ihr bereit seid. Heute, morgen, 
+übermorgen. Das dürft ihr selbst entscheiden. Ich empfehle euch aber in 
+der Abenddämmerung zu gehen. Da sind die Spukis am aktivsten.
 	&lt;/h2&gt;
 &lt;/div&gt;
 
@@ -4237,63 +4310,51 @@ Wir benötigen deinen Standort, um sicherzustellen, dass du an der richtigen Ste
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="setup.1" tags="" position="500,600" size="100,100">&lt;&lt;nobr&gt;&gt;
-
-&lt;&lt;script&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="setup.1" tags="" position="500,600" size="100,100">&lt;&lt;script&gt;&gt;
 if (State.variables.is_pwa) {
   $.wiki(&#39;&lt;&lt;goto &quot;splash&quot;&gt;&gt;&#39;)
 }
 &lt;&lt;/script&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
-&lt;h1&gt;Setup 1/4&lt;/h1&gt;
-&lt;h2&gt;
-&lt;&lt;if State.variables.is_safari&gt;&gt;
-    
-    Du benutzt Safari. Wunderbar. 
-	&lt;br&gt;
-	&lt;br&gt;
-	[[Weiter|setup.2]]
-
+  &lt;h1&gt;Setup 1 von 4&lt;/h1&gt;
+  &lt;h2&gt;
+    &lt;&lt;if State.variables.is_safari&gt;&gt;
+      Du benutzt Safari. Wunderbar. 
     &lt;&lt;elseif State.variables.is_chrome&gt;&gt;
-    
-    Du benutzt Chrome. Wunderbar. 
-	&lt;br&gt;
-	&lt;br&gt;
-	[[Weiter|setup.2]]
-    
+      Du benutzt Chrome. Wunderbar. 
     &lt;&lt;else&gt;&gt;
-    Bitte benutze entweder den Chrome Browser (Android) oder Safari (iOS) um diesen Link zu öffnen. 
+      Bitte benutze entweder den Chrome Browser (Android) oder Safari (iOS) um diesen Link zu öffnen. 
     &lt;&lt;/if&gt;&gt;
-    &lt;/h2&gt;
+  &lt;/h2&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;btn-group&quot;&gt;
-
-&lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="setup.3" tags="" position="500,1000" size="100,100">&lt;&lt;nobr&gt;&gt;
-
-&lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
-  &lt;source src=&quot;videos/installation.mp4&quot; type=&quot;video/mp4&quot;&gt;
-&lt;/video&gt;
-
-&lt;div class=&quot;wrapper&quot;&gt;
-&lt;h1&gt;Setup 3/4&lt;/h1&gt;
-&lt;h2&gt;
-Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können. 
-[[Weiter|setup.4]]
- &lt;/h2&gt;
+  &lt;&lt;if State.variables.is_safari or State.variables.is_chrome&gt;&gt;
+    &lt;button class=&quot;next&quot;&gt;[[Weiter|setup.2]]&lt;/button&gt;
+  &lt;&lt;/if&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="68" name="setup.3" tags="" position="500,1000" size="100,100">&lt;div class=&quot;wrapper&quot;&gt;
+  &lt;h1&gt;Setup 3 von 4&lt;/h1&gt;
+  &lt;h2&gt;Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.
+  &lt;/h2&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;btn-group&quot;&gt;
-&lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="AR.ModelViewer" tags="" position="500,3000" size="100,100">&lt;&lt;nobr&gt;&gt;
+    &lt;button class=&quot;camera&quot;&gt;Kamera freigeben&lt;/button&gt;
+    &lt;button class=&quot;next&quot;&gt;[[Weiter|setup.4]]&lt;/button&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="69" name="AR.ModelViewer" tags="" position="500,3000" size="100,100">&lt;&lt;nobr&gt;&gt;
 
-&lt;div class=&quot;wrapper&quot;&gt;
+&lt;div
+ class=&quot;wrapper&quot;&gt;
 &lt;h1&gt;Model Viewer&lt;/h1&gt;
 &lt;h2&gt;Klickt auf &quot;View in your space&quot; und macht ein Foto.&lt;/h2&gt;
 
-    &lt;model-viewer src=&quot;models/witch/witch.glb&quot; ar ar-modes=&quot;webxr scene-viewer quick-look&quot; camera-controls poster=&quot;models/witch/poster.webp&quot; shadow-intensity=&quot;2&quot; autoplay animation-name=&quot;CountAction_Finger Tapping&quot; environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
+    &lt;model-viewer src=&quot;models/witch/witch.glb&quot; ar ar-modes=&quot;webxr 
+scene-viewer quick-look&quot; camera-controls 
+poster=&quot;models/witch/poster.webp&quot; shadow-intensity=&quot;2&quot; autoplay 
+animation-name=&quot;CountAction_Finger Tapping&quot; 
+environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; 
+shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
         &lt;div class=&quot;progress-bar hide&quot; slot=&quot;progress-bar&quot;&gt;
             &lt;div class=&quot;update-bar&quot;&gt;&lt;/div&gt;
         &lt;/div&gt;
@@ -4301,7 +4362,8 @@ Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.
             View in your space
         &lt;/button&gt;
         &lt;div id=&quot;ar-prompt&quot;&gt;
-            &lt;img src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
+            &lt;img 
+src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
         &lt;/div&gt;
     &lt;/model-viewer&gt;
 
@@ -4313,13 +4375,11 @@ Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.
 &lt;&lt;audio &quot;click&quot; play&gt;&gt;	
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="setup.4" tags="" position="500,1200" size="100,100">&lt;&lt;nobr&gt;&gt;
-
-&lt;div class=&quot;wrapper&quot;&gt;
-&lt;h1&gt;Setup 4/4&lt;/h1&gt;
-&lt;/div&gt;
-
-&lt;&lt;if $is_safari&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="setup.4" tags="" position="500,1200" size="100,100">&lt;div class=&quot;wrapper&quot;&gt;
+  &lt;h1&gt;Setup 4 von 4&lt;/h1&gt;
+  &lt;h2&gt;Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.
+  &lt;/h2&gt;
+  &lt;&lt;if $is_safari&gt;&gt;
     
     &lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
     &lt;source src=&quot;videos/installation.safari.mp4&quot; type=&quot;video/mp4&quot;&gt;
@@ -4332,12 +4392,11 @@ Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.
     &lt;/video&gt;
     
 &lt;&lt;/if&gt;&gt;
-
-&lt;div class=&quot;btn-group&quot;&gt;
-
 &lt;/div&gt;
 
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="rallye" tags="" position="700,1200" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;pwa&quot;&gt;App installieren&lt;/button&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="71" name="rallye" tags="" position="700,1200" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;&lt;audio &quot;:playing:&quot; stop&gt;&gt;
 
@@ -4387,8 +4446,13 @@ Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.
 &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="1.4" tags="" position="1700,1200" size="100,100">&lt;&lt;nobr&gt;&gt;
 
-&lt;div class=&quot;wrapper&quot;&gt;
-    &lt;model-viewer src=&quot;models/witch/witch.glb&quot; ar ar-modes=&quot;webxr scene-viewer quick-look&quot; auto-rotate poster=&quot;models/witch/poster.webp&quot; shadow-intensity=&quot;2&quot; autoplay animation-name=&quot;CountAction_Finger Tapping&quot; environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
+&lt;div
+ class=&quot;wrapper&quot;&gt;
+    &lt;model-viewer src=&quot;models/witch/witch.glb&quot; ar ar-modes=&quot;webxr 
+scene-viewer quick-look&quot; auto-rotate poster=&quot;models/witch/poster.webp&quot; 
+shadow-intensity=&quot;2&quot; autoplay animation-name=&quot;CountAction_Finger 
+Tapping&quot; environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; 
+shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
         &lt;div class=&quot;progress-bar hide&quot; slot=&quot;progress-bar&quot;&gt;
             &lt;div class=&quot;update-bar&quot;&gt;&lt;/div&gt;
         &lt;/div&gt;
@@ -4396,7 +4460,8 @@ Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.
             In der Umgebung platzieren
         &lt;/button&gt;
         &lt;div id=&quot;ar-prompt&quot;&gt;
-            &lt;img src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
+            &lt;img 
+src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
         &lt;/div&gt;
     &lt;/model-viewer&gt;
 &lt;/div&gt;
