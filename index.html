@@ -4169,7 +4169,7 @@ const nextBtn = document.querySelector(&#39;.next&#39;);
 geolocationBtn.style.display = &#39;inline&#39;;
 nextBtn.style.display = &#39;none&#39;;
 
-const  success = function(pos) {
+const success = function(pos) {
   const crd = pos.coords;
   console.log(`Latitude : ${crd.latitude}`);
   console.log(`Longitude: ${crd.longitude}`);
@@ -4177,7 +4177,7 @@ const  success = function(pos) {
   $.wiki(&#39;&lt;&lt;goto &quot;setup.3&quot;&gt;&gt;&#39;)
 }
 
-const  error = function(err) {
+const error = function(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
@@ -4333,7 +4333,45 @@ if (State.variables.is_pwa) {
   &lt;&lt;if State.variables.is_safari or State.variables.is_chrome&gt;&gt;
     &lt;button class=&quot;next&quot;&gt;[[Weiter|setup.2]]&lt;/button&gt;
   &lt;&lt;/if&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="68" name="setup.3" tags="" position="500,1000" size="100,100">&lt;div class=&quot;wrapper&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="68" name="setup.3" tags="" position="500,1000" size="100,100">&lt;&lt;set $cameraActivated to 0&gt;&gt;
+
+&lt;&lt;script&gt;&gt;
+$(document).one(&quot;:passagedisplay&quot;, function() {
+const cameraBtn = document.querySelector(&#39;.camera&#39;);
+const nextBtn = document.querySelector(&#39;.next&#39;);
+cameraBtn.style.display = &#39;inline&#39;;
+nextBtn.style.display = &#39;none&#39;;
+
+cameraBtn.onclick = function() {
+	navigator.permissions.query({name:&#39;camera&#39;}).then(function(result) {
+    if (result.state == &#39;granted&#39;) {
+      State.variables.cameraActivated = 1;
+      $.wiki(&#39;&lt;&lt;goto &quot;setup.3&quot;&gt;&gt;&#39;)
+    } else if (result.state == &#39;prompt&#39;) {
+      var now = Date.now();
+      navigator.mediaDevices.getUserMedia({audio: true, video: true})
+      .then(function(stream) {
+        console.log(&#39;Got stream, time diff :&#39;, Date.now() - now);
+      })
+     .catch(function(err) {
+       console.log(&#39;GUM failed with error, time diff: &#39;, Date.now() - now);
+      });
+    } else if (result.state == &#39;denied&#39;) {
+      State.variables.cameraActivated = 0;
+      cameraBtn.style.display = &#39;inline&#39;;
+      nextBtn.style.display = &#39;none&#39;;
+    }
+    report(result.state);
+  });
+}
+
+function report(state) {
+  console.log(&#39;Permission: &#39; + state);
+}
+});
+&lt;&lt;/script&gt;&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;
   &lt;h1&gt;Setup 3 von 4&lt;/h1&gt;
   &lt;h2&gt;Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.
   &lt;/h2&gt;
