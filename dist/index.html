@@ -4348,7 +4348,7 @@ cameraBtn.onclick = function() {
 	navigator.permissions.query({name:&#39;camera&#39;}).then(function(result) {
     if (result.state == &#39;granted&#39;) {
       State.variables.cameraActivated = 1;
-      $.wiki(&#39;&lt;&lt;goto &quot;setup.3&quot;&gt;&gt;&#39;)
+      $.wiki(&#39;&lt;&lt;goto &quot;setup.4&quot;&gt;&gt;&#39;)
     } else if (result.state == &#39;prompt&#39;) {
       var now = Date.now();
       navigator.mediaDevices.getUserMedia({audio: true, video: true})
