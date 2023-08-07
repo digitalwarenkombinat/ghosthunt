@@ -1063,7 +1063,7 @@ setup.storyinit = function () {
 
 }());</script><tw-tag name="fightRoom" color="red"></tw-tag><tw-tag name="fightroom" color="red"></tw-tag><tw-tag name="saeulengang" color="yellow"></tw-tag><tw-passagedata pid="1" name="StoryInit" tags="" position="400,200" size="100,100">-------------------------SETUP-------------------------------
 
-&lt;&lt;set $is_pwa to window.matchMedia(&#39;(display-mode: standalone)&#39;).matches&gt;&gt;
+&lt;&lt;set $is_pwa to window.matchMedia(&#39;(display-mode: window-controls-overlay)&#39;).matches || window.matchMedia(&#39;(display-mode: standalone)&#39;).matches&gt;&gt;
 &lt;&lt;set
  $is_safari to navigator.userAgent.indexOf(&#39;Safari&#39;) &gt; -1 &amp;&amp; 
 navigator.userAgent.indexOf(&#39;Chrome&#39;) &lt;= -1 &amp;&amp; navigator.userAgent.indexOf(&quot;Edg&quot;) &lt;= -1 &amp;&amp;
@@ -4179,6 +4179,7 @@ const success = function(pos) {
 
 const error = function(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
+  alert(&#39;Bitte gib deinen Standort in den Systemeinstellungen frei&#39;);
 }
 
 const options = {
@@ -4196,8 +4197,9 @@ geolocationBtn.onclick = function() {
       navigator.geolocation.getCurrentPosition(success, error, options);
     } else if (result.state == &#39;denied&#39;) {
       State.variables.geolocationActivated = 0;
-      geolocationBtn.style.display = &#39;inline&#39;;
-      nextBtn.style.display = &#39;none&#39;;
+      geolocationBtn.style.display = &#39;none&#39;;
+      nextBtn.style.display = &#39;inline&#39;;
+      // Hinweis hinzufügen
     }
     report(result.state);
   });
@@ -4217,7 +4219,7 @@ function report(state) {
 
 &lt;div class=&quot;btn-group&quot;&gt;
     &lt;button class=&quot;geolocation&quot;&gt;Standort freigeben&lt;/button&gt;
-    &lt;button class=&quot;next&quot;&gt;[[Weiter|setup.3]]&lt;/button&gt;
+    &lt;button class=&quot;next&quot;&gt;[[Weiter ohne Freigabe|setup.3]]&lt;/button&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="64" name="multiplayer" tags="" position="700,1400" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;&lt;audio &quot;:playing:&quot; stop&gt;&gt;
@@ -4355,11 +4357,15 @@ cameraBtn.onclick = function() {
       })
      .catch(function(err) {
        console.log(&#39;GUM failed with error, time diff: &#39;, Date.now() - now);
+       alert(&#39;Bitte gib deinen Kamera in den Systemeinstellungen frei&#39;);
+       nextBtn.style.display = &#39;inline&#39;;
       });
     } else if (result.state == &#39;denied&#39;) {
       State.variables.cameraActivated = 0;
-      cameraBtn.style.display = &#39;inline&#39;;
-      nextBtn.style.display = &#39;none&#39;;
+      cameraBtn.style.display = &#39;none&#39;;
+      nextBtn.style.display = &#39;inline&#39;;
+      // Hinweis hinzufügen
+
     }
     report(result.state);
   });
@@ -4379,7 +4385,7 @@ function report(state) {
 
 &lt;div class=&quot;btn-group&quot;&gt;
     &lt;button class=&quot;camera&quot;&gt;Kamera freigeben&lt;/button&gt;
-    &lt;button class=&quot;next&quot;&gt;[[Weiter|setup.4]]&lt;/button&gt;
+    &lt;button class=&quot;next&quot;&gt;[[Weiter ohne Freigabe|setup.4]]&lt;/button&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="69" name="AR.ModelViewer" tags="" position="500,3000" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;div
@@ -4413,28 +4419,47 @@ src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
 &lt;&lt;audio &quot;click&quot; play&gt;&gt;	
 &lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="setup.4" tags="" position="500,1200" size="100,100">&lt;div class=&quot;wrapper&quot;&gt;
-  &lt;h1&gt;Setup 4 von 4&lt;/h1&gt;
-  &lt;h2&gt;Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.
-  &lt;/h2&gt;
-  &lt;&lt;if $is_safari&gt;&gt;
-    
-    &lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
-    &lt;source src=&quot;videos/installation.safari.mp4&quot; type=&quot;video/mp4&quot;&gt;
-    &lt;/video&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="setup.4" tags="" position="500,1200" size="100,100">&lt;&lt;set $isInstallable to 0&gt;&gt;
 
-&lt;&lt;elseif $is_chrome&gt;&gt;
+&lt;&lt;script&gt;&gt;
+$(document).one(&quot;:passagedisplay&quot;, function() {
+    const pwaBtn = document.querySelector(&#39;.pwa&#39;);
+    let deferredPrompt;
+
+     window.addEventListener(&quot;beforeinstallprompt&quot;, (e) =&gt; {
+      e.preventDefault();
+      deferredPrompt = e;
+      State.variables.isInstallable = 1;
+    });
+
+    window.addEventListener(&#39;appinstalled&#39;, () =&gt; {
+      console.log(&#39;INSTALL: Success&#39;);
+    });
     
-    &lt;video autoplay loop id=&quot;myVideo&quot; playsinline&gt;
-    &lt;source src=&quot;videos/installation.android.mp4&quot; type=&quot;video/mp4&quot;&gt;
-    &lt;/video&gt;
-    
-&lt;&lt;/if&gt;&gt;
+      pwaBtn.onclick = function() {
+      State.variables.isInstallable = 0;
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) =&gt; {
+        if (choiceResult.outcome === &#39;accepted&#39;) {
+          console.log(&#39;User accepted the install prompt&#39;);
+        } else {
+          console.log(&#39;User dismissed the install prompt&#39;);
+        }
+      });
+  };
+    });
+&lt;&lt;/script&gt;&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;
+  &lt;h1&gt;Setup 4 von 4&lt;/h1&gt;
+  &lt;h2&gt;Installiere die App um eine bessere Nutzererfahrung zu haben.&lt;/h2&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;btn-group&quot;&gt;
     &lt;button class=&quot;pwa&quot;&gt;App installieren&lt;/button&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="71" name="rallye" tags="" position="700,1200" size="100,100">&lt;&lt;nobr&gt;&gt;
+    &lt;button class=&quot;next&quot;&gt;[[Jetzt nicht|splash]]&lt;/button&gt;
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="71" name="rallye" tags="" position="700,1200" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;&lt;audio &quot;:playing:&quot; stop&gt;&gt;
 
