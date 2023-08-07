@@ -4423,31 +4423,18 @@ src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
 
 &lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function() {
-    const pwaBtn = document.querySelector(&#39;.pwa&#39;);
     let deferredPrompt;
-
-     window.addEventListener(&quot;beforeinstallprompt&quot;, (e) =&gt; {
-      e.preventDefault();
-      deferredPrompt = e;
-      State.variables.isInstallable = 1;
+    window.addEventListener(&#39;beforeinstallprompt&#39;, (e) =&gt; {
+    	console.log(e);
+        deferredPrompt = e;
     });
 
-    window.addEventListener(&#39;appinstalled&#39;, () =&gt; {
-      console.log(&#39;INSTALL: Success&#39;);
-    });
-    
-      pwaBtn.onclick = function() {
-      State.variables.isInstallable = 0;
+    const buttonInstall = document.getElementById(&#39;pwa&#39;);
+    buttonInstall.addEventListener(&#39;click&#39;, function (e) {
+      // Show the install prompt
       deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) =&gt; {
-        if (choiceResult.outcome === &#39;accepted&#39;) {
-          console.log(&#39;User accepted the install prompt&#39;);
-        } else {
-          console.log(&#39;User dismissed the install prompt&#39;);
-        }
-      });
-  };
     });
+ });
 &lt;&lt;/script&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
@@ -4456,7 +4443,7 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
 &lt;/div&gt;
 
 &lt;div class=&quot;btn-group&quot;&gt;
-    &lt;button class=&quot;pwa&quot;&gt;App installieren&lt;/button&gt;
+    &lt;button id=&quot;pwa&quot;&gt;App installieren&lt;/button&gt;
     &lt;button class=&quot;next&quot;&gt;[[Jetzt nicht|splash]]&lt;/button&gt;
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="71" name="rallye" tags="" position="700,1200" size="100,100">&lt;&lt;nobr&gt;&gt;
