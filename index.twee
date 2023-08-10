@@ -3456,7 +3456,7 @@ $(document).one(":passagedisplay", function() {
 
   // Create error callback
   const positionError = function(error) {
-    alert('Bitte gib deinen Standort in den Systemeinstellungen frei ' + error);
+    alert('Bitte gib deinen Standort in den Systemeinstellungen frei');
     if (State.variables.is_safari) {
       settingsBtn.style.display = 'inline';
     }
@@ -3529,7 +3529,7 @@ $(document).one(":passagedisplay", function() {
               $.wiki('<<goto "setup.4">>')
             })
             .catch(function(error) {
-              alert('Bitte gib deine Kamera in den Systemeinstellungen frei ' + error);
+              alert('Bitte gib deine Kamera in den Systemeinstellungen frei');
               if (State.variables.is_safari) {
                 settingsBtn.style.display = 'inline';
               }
@@ -3566,6 +3566,9 @@ $(document).one(":passagedisplay", function() {
 $(document).one(":passagedisplay", function() {
   $('#story').attr('style', 'background-image:url(images/splash.jpg)');
   const installBtn = document.querySelector('.install');
+  const openBtn = document.querySelector('.open');
+  const nextBtn = document.querySelector('.next');
+  openBtn.style.display = 'none';
 
   installBtn.addEventListener('click', async () => {
     console.log('👍', 'installBtn-clicked');
@@ -3588,6 +3591,9 @@ $(document).one(":passagedisplay", function() {
     console.log('👍', 'appinstalled', event);
     // Clear the deferredPrompt so it can be garbage collected
     window.deferredPrompt = null;
+    installBtn.style.display = 'none';
+    openBtn.style.display = 'inline';
+    next.style.display = 'none';
   });
  });
 <</script>>
@@ -3599,6 +3605,7 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="install">App installieren</button>
+  <button class="open"><a href='https://digitalwarenkombinat.github.io/ghosthunt/' target='_blank'>App öffnen</a></button>
   <button class="next">[[Jetzt nicht|splash]]</button>
 </div>
 
