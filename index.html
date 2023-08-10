@@ -4034,7 +4034,7 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
 
   // Create error callback
   const positionError = function(error) {
-    alert(&#39;Bitte gib deinen Standort in den Systemeinstellungen frei &#39; + error);
+    alert(&#39;Bitte gib deinen Standort in den Systemeinstellungen frei&#39;);
     if (State.variables.is_safari) {
       settingsBtn.style.display = &#39;inline&#39;;
     }
@@ -4103,7 +4103,7 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
               $.wiki(&#39;&lt;&lt;goto &quot;setup.4&quot;&gt;&gt;&#39;)
             })
             .catch(function(error) {
-              alert(&#39;Bitte gib deine Kamera in den Systemeinstellungen frei &#39; + error);
+              alert(&#39;Bitte gib deine Kamera in den Systemeinstellungen frei&#39;);
               if (State.variables.is_safari) {
                 settingsBtn.style.display = &#39;inline&#39;;
               }
@@ -4136,6 +4136,9 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
 $(document).one(&quot;:passagedisplay&quot;, function() {
   $(&#39;#story&#39;).attr(&#39;style&#39;, &#39;background-image:url(images/splash.jpg)&#39;);
   const installBtn = document.querySelector(&#39;.install&#39;);
+  const openBtn = document.querySelector(&#39;.open&#39;);
+  const nextBtn = document.querySelector(&#39;.next&#39;);
+  openBtn.style.display = &#39;none&#39;;
 
   installBtn.addEventListener(&#39;click&#39;, async () =&gt; {
     console.log(&#39;👍&#39;, &#39;installBtn-clicked&#39;);
@@ -4158,6 +4161,9 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
     console.log(&#39;👍&#39;, &#39;appinstalled&#39;, event);
     // Clear the deferredPrompt so it can be garbage collected
     window.deferredPrompt = null;
+    installBtn.style.display = &#39;none&#39;;
+    openBtn.style.display = &#39;inline&#39;;
+    next.style.display = &#39;none&#39;;
   });
  });
 &lt;&lt;/script&gt;&gt;
@@ -4169,6 +4175,7 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
 
 &lt;div class=&quot;btn-group&quot;&gt;
   &lt;button class=&quot;install&quot;&gt;App installieren&lt;/button&gt;
+  &lt;button class=&quot;open&quot;&gt;&lt;a href=&#39;https://digitalwarenkombinat.github.io/ghosthunt/&#39; target=&#39;_blank&#39;&gt;App öffnen&lt;/a&gt;&lt;/button&gt;
   &lt;button class=&quot;next&quot;&gt;[[Jetzt nicht|splash]]&lt;/button&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="66" name="spiel" tags="" position="700,3200" size="100,100">&lt;&lt;nobr&gt;&gt;
 
