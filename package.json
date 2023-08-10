@@ -2,10 +2,16 @@
   "name": "ghosthunt",
   "version": "1.0.0",
   "description": "> A scavenger hunt progressive web application created with Twine and Mapbox GL JS.",
+  "scripts": {
+    "build": "MERGE_HTML_MINIFY=false merge-html index.html index_zusatz.html > dist/index.html"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/digitalwarenkombinat/ghosthunt.git"
   },
   "license": "ISC",
-  "homepage": "https://github.com/digitalwarenkombinat/ghosthunt#readme"
+  "homepage": "https://github.com/digitalwarenkombinat/ghosthunt#readme",
+  "dependencies": {
+    "@hugojosefson/merge-html": "^3.0.0"
+  }
 }

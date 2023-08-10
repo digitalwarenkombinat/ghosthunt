@@ -21,7 +21,7 @@ jobs:
           cache: npm
 
       - name: Merge HTML
-        run: MERGE_HTML_MINIFY=false npx --package @hugojosefson/merge-html merge-html index.html index_zusatz.html > dist/index.html
+        run: npm run build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
