@@ -14,9 +14,11 @@
 
 # production
 /build
+/dist/index.html
 
 # misc
 .DS_Store
+*.pem
 
 # debug
 npm-debug.log*
