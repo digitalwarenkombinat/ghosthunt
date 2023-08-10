@@ -14,6 +14,15 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Setup Node 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: npm
+
+      - name: Merge HTML
+        run: MERGE_HTML_MINIFY=false npx --package @hugojosefson/merge-html merge-html index.html index_zusatz.html > dist/index.html
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
