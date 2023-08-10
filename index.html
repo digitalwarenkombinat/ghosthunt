@@ -590,7 +590,7 @@ button#history-backward {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	padding: 0;
+	padding: 4vh 0;
 	margin: 0;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* Autosave */
 Config.saves.autosave = ["autosave"];
@@ -4078,8 +4078,10 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
   $(document).one(&quot;:passagedisplay&quot;, function() {
     $(&#39;#story&#39;).attr(&#39;style&#39;, &#39;background-image:url(images/splash.jpg)&#39;);
     const cameraBtn = document.querySelector(&#39;.camera&#39;);
+    const settingsBtn = document.querySelector(&#39;.settings&#39;);
     const nextBtn = document.querySelector(&#39;.next&#39;);
     cameraBtn.style.display = &#39;inline&#39;;
+    settingsBtn.style.display = &#39;none&#39;;
     nextBtn.style.display = &#39;none&#39;;
 
     function askCameraPermission() {
@@ -4096,6 +4098,9 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
             })
             .catch(function(error) {
               alert(&#39;Bitte gib deine Kamera in den Systemeinstellungen frei &#39; + error);
+              if (State.variables.is_safari) {
+                settingsBtn.style.display = &#39;inline&#39;;
+              }
               nextBtn.style.display = &#39;inline&#39;;
             });
         } else if (result.state == &#39;denied&#39;) {
@@ -4119,6 +4124,7 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
 
 &lt;div class=&quot;btn-group&quot;&gt;
   &lt;button class=&quot;camera&quot;&gt;Kamera freigeben&lt;/button&gt;
+  &lt;button class=&quot;settings&quot;&gt;&lt;a href=&quot;x-apple.systempreferences:com.apple.preference.security?Privacy_Camera&quot;&gt;Einstellungen öffnen&lt;/a&gt;&lt;/button&gt;
   &lt;button class=&quot;next&quot;&gt;[[Weiter ohne Freigabe|setup.4]]&lt;/button&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="65" name="setup.4" tags="" position="500,1200" size="100,100">&lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function() {
