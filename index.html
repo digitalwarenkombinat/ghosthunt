@@ -118,7 +118,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="Spuk &amp; Schreck" startnode="62" creator="Twine" creator-version="2.6.2" format="SugarCube" format-version="2.36.1" ifid="FB483649-96B3-4F0F-9531-A1D615413B45" options="" tags="" zoom="0.6" hidden=""><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* @import url("https://use.typekit.net/mph1xdw.css"); */
+	<tw-storydata name="Spuk &amp; Schreck" startnode="62" creator="Twine" creator-version="2.6.2" format="SugarCube" format-version="2.36.1" ifid="FB483649-96B3-4F0F-9531-A1D615413B45" options="" tags="" zoom="0.6" hidden=""><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://use.typekit.net/mph1xdw.css");
 
 :root {
   /* Primäre Farben */
@@ -126,8 +126,8 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
   --primary-dark-color: #000000;
 
   /* Sekundäre Farben */
-  --secondary-color: #DAF035;
-  --secondary-dark-color: ##DAF035;
+  --secondary-color: #FFDE03;
+  --secondary-dark-color: ##FFDE03;
 
   /* Hintergrundfarben */
   --background-color: #000000;
@@ -360,7 +360,7 @@ p {
   word-break: break-word;
 }
 
-p1 {
+.p1 {
   font-family: para;
   color: var(--secondary-color);
   font-size: 5vh;
@@ -370,7 +370,7 @@ p1 {
   display: inherit;
 }
 
-p2 {
+.p2 {
   font-family: para;
   color: var(--secondary-color);
   font-size: 10vh;
@@ -383,13 +383,13 @@ p2 {
 }
 
 a {
-font-family: transat, sans-serif;
-font-weight: 500;
-font-style: normal;
-color: var(--secondary-color);
-font-size: 3vh;
-line-height: 4vh;
-text-align: center;
+  font-family: transat, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: var(--secondary-color);
+  font-size: 3vh;
+  line-height: 4vh;
+  text-align: center;
 }
 
 button {
@@ -1129,9 +1129,9 @@ Punkte&lt;/h2&gt;&lt;&lt;/replace&gt;&gt;
 &lt;&lt;if $riddle is 4&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
-&lt;h1&gt;Symbol
-&lt;br&gt;gefunden&lt;/h1&gt;
-&lt;p2&gt;A&lt;/p2&gt;
+  &lt;h1&gt;Symbol
+  &lt;br&gt;gefunden&lt;/h1&gt;
+  &lt;p class=&quot;p2&quot;&gt;A&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;btn-group&quot;&gt;
@@ -3298,43 +3298,43 @@ diesem Zweck verarbeiten.
 &lt;h2&gt;Punkte&lt;/h2&gt;
 &lt;h3&gt;$koinz / 210&lt;/h3&gt;
 &lt;h2&gt;Symbole&lt;/h2&gt;
-&lt;p1&gt;
-&lt;&lt;if $letter1 is 1&gt;&gt;
-	R
-&lt;&lt;else&gt;&gt;
-_
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $letter2 is 1&gt;&gt;
-	O
-&lt;&lt;else&gt;&gt;
-_
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $letter3 is 1&gt;&gt;
-	S
-&lt;&lt;else&gt;&gt;
-_
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $letter4 is 1&gt;&gt;
-	A
-&lt;&lt;else&gt;&gt;
-_
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $letter5 is 1&gt;&gt;
-	L
-&lt;&lt;else&gt;&gt;
-_
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $letter6 is 1&gt;&gt;
-	I
-&lt;&lt;else&gt;&gt;
-_
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $letter7 is 1&gt;&gt;
-	E
-&lt;&lt;else&gt;&gt;
-_
-&lt;&lt;/if&gt;&gt;
-&lt;/p1&gt;
+&lt;p class=&quot;p1&quot;&gt;
+  &lt;&lt;if $letter1 is 1&gt;&gt;
+    R
+  &lt;&lt;else&gt;&gt;
+  _
+  &lt;&lt;/if&gt;&gt;
+  &lt;&lt;if $letter2 is 1&gt;&gt;
+    O
+  &lt;&lt;else&gt;&gt;
+  _
+  &lt;&lt;/if&gt;&gt;
+  &lt;&lt;if $letter3 is 1&gt;&gt;
+    S
+  &lt;&lt;else&gt;&gt;
+  _
+  &lt;&lt;/if&gt;&gt;
+  &lt;&lt;if $letter4 is 1&gt;&gt;
+    A
+  &lt;&lt;else&gt;&gt;
+  _
+  &lt;&lt;/if&gt;&gt;
+  &lt;&lt;if $letter5 is 1&gt;&gt;
+    L
+  &lt;&lt;else&gt;&gt;
+  _
+  &lt;&lt;/if&gt;&gt;
+  &lt;&lt;if $letter6 is 1&gt;&gt;
+    I
+  &lt;&lt;else&gt;&gt;
+  _
+  &lt;&lt;/if&gt;&gt;
+  &lt;&lt;if $letter7 is 1&gt;&gt;
+    E
+  &lt;&lt;else&gt;&gt;
+  _
+  &lt;&lt;/if&gt;&gt;
+&lt;/p&gt;
 
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="StoryHeader" tags="" position="600,200" size="100,100"></tw-passagedata><tw-passagedata pid="43" name="StoryInit" tags="" position="400,200" size="100,100">-------------------------SETUP-------------------------------
 
