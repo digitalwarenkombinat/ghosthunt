@@ -98,7 +98,27 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="Spuk &amp; Schreck" startnode="62" creator="Twine" creator-version="2.6.2" format="SugarCube" format-version="2.36.1" ifid="FB483649-96B3-4F0F-9531-A1D615413B45" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://use.typekit.net/mph1xdw.css");
+	<tw-storydata name="Spuk &amp; Schreck" startnode="62" creator="Twine" creator-version="2.6.2" format="SugarCube" format-version="2.36.1" ifid="FB483649-96B3-4F0F-9531-A1D615413B45" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* @import url("https://use.typekit.net/mph1xdw.css"); */
+
+:root {
+  /* Primäre Farben */
+  --primary-color: #000000;
+  --primary-dark-color: #000000;
+
+  /* Sekundäre Farben */
+  --secondary-color: #DAF035;
+  --secondary-dark-color: ##DAF035;
+
+  /* Hintergrundfarben */
+  --background-color: #000000;
+  --background-light-color: #FFFFFF;
+
+  /* Textfarben */
+  --text-color: #323140;
+  --text-hover-color: #F5553B;
+  --text-light-color: #FFFFFF;
+}
+
 html * {
     box-sizing: border-box;
 }
@@ -108,27 +128,21 @@ html * {
   src: url(fonts/asl2.otf);
 }
 
-
-/* dvh = Dynamic View High löst das Navigation Bar Problem */
-#map { height: 100vh; height: 100dvh }
-
-/* Macht den Geolocate-Button unsichtbar */
-.mapboxgl-ctrl-group button.mapboxgl-ctrl-geolocate { display: none }
-
-/*Dies ist ein Kommentar in CSS :) in diesen Bereichen kann man schreiben was man will!*/
-
-/* Hier kann man externe CSS Dateien oder auch Schriftarten importieren*/
-
- @import url("https://use.typekit.net/mph1xdw.css");
-html * {
-    box-sizing: border-box;
-}
-
 @font-face {
   font-family: para;
   src: url(fonts/para.otf);
 }
 
+/* dvh = Dynamic View High um die komplette Höhe der Navigation Bar zu nutzen */
+#map {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Macht den Geolocate-Button unsichtbar */
+.mapboxgl-ctrl-group button.mapboxgl-ctrl-geolocate { 
+  display: none;
+}
 
 /* Style the video: 100% width and height to cover the entire window */
 #myVideo {
@@ -144,32 +158,98 @@ html * {
 
 .image1 {
   display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  border: 1px solid #000;
+}
+
+@-webkit-keyframes fade-out {
+  0% {opacity: 1;}
+  100% {opacity: 0;} 
+}
+
+@keyframes fade-out {
+  0% {opacity: 1;}
+  100% {opacity: 0;} 
+} 
+
+tw-hook[name="fade-out"] {
+	-webkit-animation-name: fade-out;
+	-webkit-animation-duration: 10s;
+	-webkit-animation-fill-mode: both;
+	animation-name: fade-out;
+	animation-duration: 10s;
+	animation-fill-mode: both;
+}
+
+iframe {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  border: none;
+}
+        
+iframe {
+  display: block;
+  width: 100%;
+  border: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#map { 
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+  
+/* Resizable element style */
+.resizable {
+	display: inline-block;
+	overflow: hidden;
+	line-height: 0;
+	resize: both;
+}
+
+.resizable img {
+  position: fixed;
+  bottom: 0;
+  width: auto;
+  height: 100%;
+  margin-left: 50vw;
+  transform: translate(-50%);
 }
 
 audio, canvas, progress, video {
-    max-width: none;
-    vertical-align: middle;
+  max-width: none;
+  vertical-align: middle;
 }
 
 body{
-  background-color: #000000;		
-  color: #323140;							
+  background-color: var(--background-color);
+  color: var(--text-color);
   font-family: 'Roboto Slab', serif;	
   font-size:16px;						
-  margin: 0 auto;
   max-width: 1024px;
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-
 h1 {
-font-family: "shlop", sans-serif;
-font-weight: 400;
-font-style: normal;
-  color: #ffffff;
+  font-family: "shlop", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--text-light-color);
   font-size: 9vh;
   line-height: 10vh;
   margin-left: 2vw;
@@ -179,12 +259,11 @@ font-style: normal;
   word-break: keep-all;
 }
 
-
 h2 {
-font-family: transat, sans-serif;
-font-weight: 500;
-font-style: normal;
-  color: #ffffff;
+  font-family: transat, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: var(--text-light-color);
   font-size: 3vh;
   line-height: 4vh;
   margin-left: 20px;
@@ -194,10 +273,10 @@ font-style: normal;
 }
 
 h3 {
-font-family: transat, sans-serif;
-font-weight: 500;
-font-style: italic;
-  color: #D7F207;
+  font-family: transat, sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--secondary-color);
   font-size: 4vh;
   line-height: 4vh;
   text-align: center;
@@ -206,36 +285,35 @@ font-style: italic;
 }
 
 h5 {
-font-family: transat, sans-serif;
-font-weight: 500;
-font-style: italic;
-  color: #ffffff;
+  font-family: transat, sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--text-light-color);
   font-size: 3vh;
   line-height: 4vh;
   margin-left: 2vw;
   margin-right: 2vw;
   text-align: center;
   margin-top: 0px;
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 h4 {
-font-family: 'Caveat Brush', cursive;
-    color: #ffffff;
-    font-size: 9vh;
-    line-height: 6vh;
+  font-family: 'Caveat Brush', cursive;
+  color: var(--text-light-color);
+  font-size: 9vh;
+  line-height: 6vh;
   margin-left: 2vw;
   margin-right: 2vw;
   font-weight: normal;
   text-align: center;
   margin-bottom: 1rem;
   word-break: break-word;
-    -webkit-text-stroke: 1px black;
+  -webkit-text-stroke: 1px black;
 }
 
 h6 {
-
-font-family: 'Caveat Brush', cursive;
+  font-family: 'Caveat Brush', cursive;
   color: #F2F2F2;
   font-size: 15vh;
   line-height: 12vh;
@@ -250,10 +328,10 @@ font-family: 'Caveat Brush', cursive;
 }
 
 p {
-font-family: transat, sans-serif;
-font-weight: 500;
-font-style: italic;
-  color: #ffffff;
+  font-family: transat, sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--text-light-color);
   font-size: 3vh;
   line-height: 4vh;
   margin-left: 20px;
@@ -263,8 +341,8 @@ font-style: italic;
 }
 
 p1 {
-font-family: para;
-  color: #D7F207;
+  font-family: para;
+  color: var(--secondary-color);
   font-size: 5vh;
   line-height: 4vh;
   font-weight: normal;
@@ -273,8 +351,8 @@ font-family: para;
 }
 
 p2 {
-font-family: para;
-  color: #D7F207;
+  font-family: para;
+  color: var(--secondary-color);
   font-size: 10vh;
   line-height: 10vh;
   font-weight: normal;
@@ -288,7 +366,7 @@ a {
 font-family: transat, sans-serif;
 font-weight: 500;
 font-style: normal;
-color: #DAF035;
+color: var(--secondary-color);
 font-size: 3vh;
 line-height: 4vh;
 text-align: center;
@@ -298,7 +376,7 @@ button {
   font-family: itc-benguiat-condensed, sans-serif;
   font-weight: 400;
   font-style: normal;
-  background: #ffffff;
+  background: var(--background-light-color);
   color: #262626;
   font-size: 3vh;
   line-height: 4vh;
@@ -309,38 +387,35 @@ button {
   text-decoration: none;
   cursor: pointer;
   display: inline-block;
-  //box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
   margin-top: 1vh;
 }
 
 button:hover {
-    background-color: #F5553B;
-    border-color: #F5553B;
+  background-color: var(--text-hover-color);
+  border-color: var(--text-hover-color);
 }
 
 .imagefade {
-    
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
-    -webkit-animation: myfirst 5s ; /* Chrome, Safari, Opera */
-    animation: myfirst 5s ;
-  }
+  -webkit-animation: myfirst 5s ; /* Chrome, Safari, Opera */
+  animation: myfirst 5s ;
+}
 
-  /* Chrome, Safari, Opera */
-  @-webkit-keyframes myfirst {
-    from {opacity: 0.2;}
-    to {opacity: 1;}
-  }
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myfirst {
+  from {opacity: 0.2;}
+  to {opacity: 1;}
+}
 
-  /* Standard syntax */
-  @keyframes myfirst {
-    from {opacity: 0.2;}
-    to {opacity: 1;}
-  }
-
+/* Standard syntax */
+@keyframes myfirst {
+  from {opacity: 0.2;}
+  to {opacity: 1;}
+}
 
 .hide {
   display: none;
@@ -355,8 +430,6 @@ button:hover {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  //padding-top: 50px;
-  //border: 1px solid #000;
 }
 
 .passage {
@@ -381,20 +454,19 @@ button:hover {
 
 .btn-group button {
   background: #00000070;
-font-family: transat, sans-serif;
-font-weight: 900;
-font-style: normal;
+  font-family: transat, sans-serif;
+  font-weight: 900;
+  font-style: normal;
   font-size: 3vh;
   font-weight: 3vh;
   border: 2px solid #000000; 
   border-radius: 4px;
-  border-color: #D7F207;
-  color: #DAF035;
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
   padding: auto;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  //min-width: 150px;
   display: inline-block;
   box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
   margin-top: 1vh;
@@ -406,169 +478,64 @@ font-style: normal;
 }
 
 h1#ui-dialog-title {
-  background-color: #fff;
+  background-color: var(--background-light-color);
 }
 
 #ui-dialog-body {
-  background-color: #fff;
+  background-color: var(--background-light-color);
 }
 
 #ui-dialog-close {
-    background-color: #fff;
-    border-color: #000;
+  background-color: var(--background-light-color);
+  border-color: #000;
 }
 
 #ui-dialog-close:hover {
-    background-color: #F5553B;
-    border-color: #F5553B;
+  background-color: var(--text-hover-color);
+  border-color: var(--text-hover-color);
 }
 
 #passages {
   height: 100%;
 }
 
-  
-//li#menu-item-saves {
-  background: white;
-  margin-bottom: 2vh;
-  font-family: 'Lobster', cursive;
-  font-size: 3vh;
-  font-weight: 4vh;
-  border: 2px solid #000000; 
-  border-radius: 4px;
-  color: #000;
-  padding: auto;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  //min-width: 150px;
-  display: inline-block;
-  box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
-  margin-top: 2vh;
-  margin-right: 2vh;
-  margin-left: 2vh;
-}
-
-//li#menu-item-saves a{
-  color: #000;
-}
-
-//li#menu-item-saves a:hover{
-  background: transparent;
-  border:none;
-}
-
-//li#menu-item-restart {
-  background: white;
-  margin-bottom: 2vh;
-  font-family: 'Lobster', cursive;
-  font-size: 3vh;
-  font-weight: 4vh;
-  border: 2px solid #000000; 
-  border-radius: 4px;
-  color: #000;
-  padding: auto;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  //min-width: 150px;
-  display: inline-block;
-  box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
-  margin-top: 2vh;
-  margin-right: 2vh;
-  margin-left: 2vh;
-}
-
-//li#menu-item-restart a{
-  color: #000;
-}
-
-//li#menu-item-restart a:hover{
-  background: transparent;
-  border:none;
-}
-
-#menu-item-share {
-  display: none;
-}
-
-#menu-item-saves {
-  display: none;
-}
-
-#menu-item-settings {
+#menu-item-share, #menu-item-saves, #menu-item-settings {
   display: none;
 }
 
 #menu li a {
-    display: block;
-    padding: .25em .75em;
-    border: 1px solid transparent;
-    color: #ffffff;
-    text-transform: uppercase;
+  display: block;
+  padding: .25em .75em;
+  border: 1px solid transparent;
+  color: var(--text-light-color);
+  text-transform: uppercase;
   font-size: 3vh;
 }
 
-//li#menu-item-share {
-  background: white;  
-  margin-bottom: 2vh;
-  font-family: 'Lobster', cursive;
-  font-size: 3vh;
-  font-weight: 4vh;
-  border: 2px solid #000000; 
-  border-radius: 4px;
-  color: #000;
-  padding: auto;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  //min-width: 150px;
-  display: inline-block;
-  box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
+#ui-dialog-body {
+  background-color: var(--background-color);
 }
 
-//li#menu-item-share a{
-  color: #000;
+h1#ui-dialog-title {
+  background-color: var(--background-color);
 }
 
-//li#menu-item-share a:hover{
+#ui-dialog-body {
+  background-color: var(--background-color);
+}
+
+#ui-dialog-body.list li a {
+  color: var(--text-light-color);
+}
+
+#ui-dialog-body.list li a:hover {
   background: transparent;
   border:none;
 }
 
-#ui-dialog-body {
-  background-color: #000;
-}
-
-h1#ui-dialog-title {
-    background-color: #000;
-}
-
-#ui-dialog-body {
-  background-color: #000;
-}
-
-#ui-dialog-body.list li a {
-  color: #ffffff;
-}
-
-#ui-dialog-body.list li a:hover {
-   background: transparent;
-  border:none;
-}
-
-//ul#menu-core {
-  border: none;
-}
-
 #story-title {
-display: none;
-  //font-family: 'Permanent Marker', cursive;
-//color: #F5553B;
-//font-size: 5vh;
-//line-height: 6vh;
+  display: none;
 }
-
 
 #ui-bar {
   background-color: transparent;
@@ -578,7 +545,7 @@ display: none;
 
 #ui-bar-toggle:before {
   content: "\e81d";
-  color: #DAF035;
+  color: var(--secondary-color);
 }
 
 #refresh {
@@ -597,10 +564,9 @@ display: none;
   content:"e5cd";
 }
 
-
 #ui-bar-body {
   height: 100%;
-  background-color: #000000;
+  background-color: var(--background-color);
   background-image: url('images/menu.jpg');
   background-position: center;
   margin: 0;
@@ -611,7 +577,6 @@ display: none;
 #ui-bar-history {
   display: none;
 }
-
   
 #ui-bar-tray {
     position: absolute;
@@ -620,7 +585,7 @@ display: none;
 #ui-bar-toggle {
   font-size: 4vh;
   line-height: inherit;
-  color: #ffffff;
+  color: var(--text-light-color);
   position: fixed;
   left:0;
   right: unset;
@@ -628,14 +593,14 @@ display: none;
 }
 
 #ui-bar-toggle:hover {
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 }
 
 
 #ui-bar.stowed #ui-bar-toggle:before {
-    content: "\e81e";
-    color: #DAF035;
+  content: "\e81e";
+  color: var(--secondary-color);
 }
 
 #ui-bar.stowed #ui-bar-toggle {
@@ -643,46 +608,45 @@ display: none;
 }
 
 button #history-forward {
-    color: #ffffff;
+  color: var(--text-light-color);
 }
 
 #history-forward hover {
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 }
 
 button#history-backward {
-      color: #ffffff;
+  color: var(--text-light-color);
 }
 
 #ui-bar-history [id|=history]:hover {
-    background-color: transparent;
-    //border: 2px solid #000;
+  background-color: transparent;
 }
 
 #ui-bar-history [id|=history], #ui-bar-toggle {
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 }
 
 #ui-bar-history [id|=history]:disabled {
-    color: #E3E3E3;
-    background-color: transparent;
-    border-color: #000;
-    border: 2px solid #000;
-    border-radius: 4px;
+  color: #E3E3E3;
+  background-color: transparent;
+  border-color: #000;
+  border: 2px solid #000;
+  border-radius: 4px;
 }
 
 #story-header {
 	background-color: yellow;
 	color: black;
 	height: 10vh;
-   text-align: center;
-  	text-align: vertical;
+  text-align: center;
+  text-align: vertical;
   word-wrap: break-word;
-    padding: 10px;
-  background: white;
-   border-bottom: 2px solid #362F2A;
+  padding: 10px;
+  background: var(--background-light-color);
+  border-bottom: 2px solid #362F2A;
 }
 
 #story {
@@ -694,101 +658,34 @@ button#history-backward {
 	margin: 0;
 }
 
-@media screen and (max-width: 1136px) {
-  #story {
-    padding-left: 0;
-	padding-right: 0;
-	margin-left: 0;
-	margin-right: 0;
-  }
-  body {
-    font-size: 20px;
-  }
-}
-
-@media screen and (max-width: 1136px){
-#ui-bar.stowed~#story {
-    margin-left: 2em;
-}
-
 @media screen and (max-width: 768px) {
-  #story {
-    padding-left: 0;
-	padding-right: 0;
-	margin-left: 0;
-	margin-right: 0;
-  }
   body {
     font-size: 16px;
   }
+
+  #story {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
-  
-  
+
 @media screen and (max-width: 1136px) {
-#ui-bar.stowed~#story {
+  body {
+    font-size: 20px;
+  }
+
+  #story {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  #ui-bar.stowed~#story {
     margin-left: 0em;
   }
-  
-  @-webkit-keyframes fade-out {
-	0% {opacity: 1;}
-	100% {opacity: 0;} 
-} 
-
-@keyframes fade-out {
-	0% {opacity: 1;}
-	100% {opacity: 0;} 
-} 
-
-tw-hook[name="fade-out"] {
-	-webkit-animation-name: fade-out;
-	-webkit-animation-duration: 10s;
-	-webkit-animation-fill-mode: both;
-	animation-name: fade-out;
-	animation-duration: 10s;
-	animation-fill-mode: both;
-}
-  
-.logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  //padding-top: 50px;
-  border: 1px solid #000;
-}
-
-  iframe {
-            margin: 0px;
-            padding: 0px;
-            height: 100%;
-            border: none;
-        }
-          
-        iframe {
-            display: block;
-            width: 100%;
-            border: none;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-
-  body { margin: 0; padding: 0; }
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
-  
-  /* Resizable element style */
-.resizable {
-	display: inline-block;
-	overflow: hidden;
-	line-height: 0;
-	resize: both;
-}
-.resizable img {
-  position: fixed;
-  bottom: 0;
-  width: auto;
-  height: 100%;
-  margin-left: 50vw;
-  transform: translate(-50%);
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* Autosave */
 Config.saves.autosave = ["autosave"];
 
@@ -3942,13 +3839,10 @@ Chrome &quot;Beim Verwenden der App&quot; euren Standort zu benutzen.
 &lt;&lt;/button&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="map.init" tags="" position="1700,300" size="100,100">&lt;&lt;if
- $letter1 is 1 and $letter2 is 1 and $letter3 is 1 and $letter4 is 1 and
- $letter5 is 1 and $letter6 is 1 and $letter7 is 1 and $ende is 
-0&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="map.init" tags="" position="1700,300" size="100,100">&lt;&lt;if $letter1 is 1 and $letter2 is 1 and $letter3 is 1 and $letter4 is 1 and $letter5 is 1 and $letter6 is 1 and $letter7 is 1 and $ende is 0&gt;&gt;
 	&lt;&lt;goto &quot;ende.1&quot;&gt;&gt;
 &lt;&lt;elseif !$is_pwa&gt;&gt;
-&lt;&lt;goto &quot;installation&quot;&gt;&gt;
+  &lt;&lt;goto &quot;setup.1&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;goto &quot;mapbox&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="mapbox" tags="autosave" position="1699,401" size="100,100">&lt;div id=&quot;map&quot;&gt;&lt;/div&gt;
@@ -4194,9 +4088,17 @@ Ihr könnt das Spiel hier auch speichern oder neu starten.
 &lt;&lt;/timed&gt;&gt;
 &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="setup.1" tags="" position="500,600" size="100,100">&lt;&lt;script&gt;&gt;
+$(&#39;#story&#39;).attr(&#39;style&#39;, &#39;background-image:url(images/splash.jpg)&#39;);
 if (State.variables.is_pwa) {
   $.wiki(&#39;&lt;&lt;goto &quot;splash&quot;&gt;&gt;&#39;)
 }
+
+window.addEventListener(&#39;beforeinstallprompt&#39;, (event) =&gt; {
+  // Prevent the mini-infobar from appearing on mobile.
+  event.preventDefault();
+  console.log(&#39;👍&#39;, &#39;beforeinstallprompt&#39;, event);
+  // Stash the event so it can be triggered later.
+});
 &lt;&lt;/script&gt;&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
@@ -4218,6 +4120,7 @@ if (State.variables.is_pwa) {
   &lt;&lt;/if&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="63" name="setup.2" tags="" position="500,800" size="100,100">&lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function() {
+  $(&#39;#story&#39;).attr(&#39;style&#39;, &#39;background-image:url(images/splash.jpg)&#39;);
   const geolocationBtn = document.querySelector(&#39;.geolocation&#39;);
   const nextBtn = document.querySelector(&#39;.next&#39;);
   geolocationBtn.style.display = &#39;inline&#39;;
@@ -4282,6 +4185,7 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
   &lt;button class=&quot;next&quot;&gt;[[Weiter ohne Freigabe|setup.3]]&lt;/button&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="64" name="setup.3" tags="" position="500,1000" size="100,100">&lt;&lt;script&gt;&gt;
   $(document).one(&quot;:passagedisplay&quot;, function() {
+    $(&#39;#story&#39;).attr(&#39;style&#39;, &#39;background-image:url(images/splash.jpg)&#39;);
     const cameraBtn = document.querySelector(&#39;.camera&#39;);
     const nextBtn = document.querySelector(&#39;.next&#39;);
     cameraBtn.style.display = &#39;inline&#39;;
@@ -4333,9 +4237,9 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
   &lt;button class=&quot;next&quot;&gt;[[Weiter ohne Freigabe|setup.4]]&lt;/button&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="65" name="setup.4" tags="" position="500,1200" size="100,100">&lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function() {
+  $(&#39;#story&#39;).attr(&#39;style&#39;, &#39;background-image:url(images/splash.jpg)&#39;);
   const installDiv = document.querySelector(&quot;.btn-group&quot;);
   const installBtn = document.querySelector(&#39;.install&#39;);
-  
 
   window.addEventListener(&#39;beforeinstallprompt&#39;, (event) =&gt; {
     // Prevent the mini-infobar from appearing on mobile.
