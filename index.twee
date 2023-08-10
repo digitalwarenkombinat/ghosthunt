@@ -3442,8 +3442,10 @@ window.addEventListener('beforeinstallprompt', (event) => {
 $(document).one(":passagedisplay", function() {
   $('#story').attr('style', 'background-image:url(images/splash.jpg)');
   const geolocationBtn = document.querySelector('.geolocation');
+  const settingsBtn = document.querySelector('.settings');
   const nextBtn = document.querySelector('.next');
   geolocationBtn.style.display = 'inline';
+  settingsBtn.style.display = 'none';
   nextBtn.style.display = 'none';
 
   // Create success callback to store values
@@ -3455,6 +3457,9 @@ $(document).one(":passagedisplay", function() {
   // Create error callback
   const positionError = function(error) {
     alert('Bitte gib deinen Standort in den Systemeinstellungen frei ' + error);
+    if (State.variables.is_safari) {
+      settingsBtn.style.display = 'inline';
+    }
     nextBtn.style.display = 'inline';
   }
 
@@ -3495,6 +3500,7 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="geolocation">Standort freigeben</button>
+  <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices">Einstellungen öffnen</a></button>
   <button class="next">[[Weiter ohne Freigabe|setup.3]]</button>
 </div>
 
