@@ -1,0 +1,11 @@
+{
+  "name": "ghosthunt",
+  "version": "1.0.0",
+  "description": "> A scavenger hunt progressive web application created with Twine and Mapbox GL JS.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digitalwarenkombinat/ghosthunt.git"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/digitalwarenkombinat/ghosthunt#readme"
+}
