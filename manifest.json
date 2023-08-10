@@ -1,7 +1,7 @@
 {
-  "short_name": "Ghost Hunt",
-  "name": "Ghost Hunt",
-  "theme_color": "#dd8d0e",
+  "short_name": "Spuk & Schreck",
+  "name": "Spuk & Schreck",
+  "theme_color": "#000000",
   "background_color": "#33006c",
   "display": "standalone",
   "start_url": "/ghosthunt/",
