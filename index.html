@@ -139,10 +139,6 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
   --text-light-color: #FFFFFF;
 }
 
-html * {
-    box-sizing: border-box;
-}
-
 @font-face {
   font-family: asl;
   src: url(fonts/asl2.otf);
@@ -153,10 +149,28 @@ html * {
   src: url(fonts/para.otf);
 }
 
+html * {
+    box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Roboto Slab', serif;	
+  font-size: 16px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 /* dvh = Dynamic View High um die komplette Höhe der Navigation Bar zu nutzen */
 #map {
   height: 100vh;
   height: 100dvh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 /* Macht den Geolocate-Button unsichtbar */
@@ -164,16 +178,13 @@ html * {
   display: none;
 }
 
-/* Style the video: 100% width and height to cover the entire window */
 #myVideo {
   position: fixed;
   bottom: 0;
   width: auto;
   height: 100%;
-  z-index: -10;
   margin-left: 50vw;
   transform: translate(-50%);
-  z-index: 0;
 }
 
 .image1 {
@@ -181,14 +192,6 @@ html * {
   margin-left: auto;
   margin-right: auto;
   width: 60%;
-}
-
-.logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  border: 1px solid #000;
 }
 
 @-webkit-keyframes fade-out {
@@ -210,59 +213,9 @@ tw-hook[name="fade-out"] {
 	animation-fill-mode: both;
 }
 
-iframe {
-  margin: 0px;
-  padding: 0px;
-  height: 100%;
-  border: none;
-}
-        
-iframe {
-  display: block;
-  width: 100%;
-  border: none;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-#map { 
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-}
-  
-/* Resizable element style */
-.resizable {
-	display: inline-block;
-	overflow: hidden;
-	line-height: 0;
-	resize: both;
-}
-
-.resizable img {
-  position: fixed;
-  bottom: 0;
-  width: auto;
-  height: 100%;
-  margin-left: 50vw;
-  transform: translate(-50%);
-}
-
 audio, canvas, progress, video {
   max-width: none;
   vertical-align: middle;
-}
-
-body{
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: 'Roboto Slab', serif;	
-  font-size:16px;						
-  max-width: 1024px;
-  height: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 h1 {
@@ -384,8 +337,6 @@ p {
 
 a {
   font-family: transat, sans-serif;
-  font-weight: 500;
-  font-style: normal;
   color: var(--secondary-color);
   font-size: 3vh;
   line-height: 4vh;
@@ -415,28 +366,6 @@ button:hover {
   border-color: var(--text-hover-color);
 }
 
-.imagefade {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-
-  -webkit-animation: myfirst 5s ; /* Chrome, Safari, Opera */
-  animation: myfirst 5s ;
-}
-
-/* Chrome, Safari, Opera */
-@-webkit-keyframes myfirst {
-  from {opacity: 0.2;}
-  to {opacity: 1;}
-}
-
-/* Standard syntax */
-@keyframes myfirst {
-  from {opacity: 0.2;}
-  to {opacity: 1;}
-}
-
 .hide {
   display: none;
 }
@@ -458,43 +387,27 @@ button:hover {
   justify-content: space-between;
   height: 100%;
 }
+
 .wrapper {
   flex-grow: 1;
   height: 100%;
   overflow: auto;
-  z-index:1;
 }
+
 .btn-group {  
-  margin: 0 auto;
+  margin: 0 auto 2vh;
   text-align: center;
-  margin-bottom: 2vh;
-  margin-top: 2vh;
-  z-index:1;
 }
 
 .btn-group button {
   background: #00000070;
-  font-family: transat, sans-serif;
-  font-weight: 900;
-  font-style: normal;
-  font-size: 3vh;
-  font-weight: 3vh;
-  border: 2px solid #000000; 
   border-radius: 4px;
-  border-color: var(--secondary-color);
-  color: var(--secondary-color);
-  padding: auto;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  display: inline-block;
+  border: 2px solid var(--secondary-color);
   box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
-  margin-top: 1vh;
-  margin-left: 2vh;
-  margin-right: 2vh;
-  padding-right: 2vh;
-  padding-left: 2vh;
-  z-index: 1;
+  color: var(--secondary-color);
+  font-family: transat, sans-serif;
+  font-size: 3vh;
+  font-weight: 900;
 }
 
 h1#ui-dialog-title {
@@ -617,6 +530,9 @@ h1#ui-dialog-title {
   border: none;
 }
 
+#ui-bar.stowed~#story {
+  margin-left: 0;
+}
 
 #ui-bar.stowed #ui-bar-toggle:before {
   content: "\e81e";
@@ -627,7 +543,7 @@ h1#ui-dialog-title {
   font-size: 4vh;
 }
 
-button #history-forward {
+button#history-forward {
   color: var(--text-light-color);
 }
 
@@ -674,38 +590,8 @@ button#history-backward {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	padding: 4vh;
+	padding: 0;
 	margin: 0;
-}
-
-@media screen and (max-width: 768px) {
-  body {
-    font-size: 16px;
-  }
-
-  #story {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-@media screen and (max-width: 1136px) {
-  body {
-    font-size: 20px;
-  }
-
-  #story {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  #ui-bar.stowed~#story {
-    margin-left: 0em;
-  }
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* Autosave */
 Config.saves.autosave = ["autosave"];
 
@@ -722,180 +608,177 @@ class CircularGeofenceRegion {
 /* Fences werden initialisiert */
 
 setup.storyinit = function () {
-    const fence1 = new CircularGeofenceRegion({
-      id: 'johannistorturm',
-      latitude: 51.325011,
-      longitude: 12.395977,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
+  const fence1 = new CircularGeofenceRegion({
+    id: 'johannistorturm',
+    latitude: 51.325011,
+    longitude: 12.395977,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
 
-    const fence2 = new CircularGeofenceRegion({
-      id: 'marsfeld',
-      latitude: 51.755591,
-      longitude: 11.458664,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
+  const fence2 = new CircularGeofenceRegion({
+    id: 'marsfeld',
+    latitude: 51.755591,
+    longitude: 11.458664,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
 
-    const fence3 = new CircularGeofenceRegion({
-      id: 'grauer_hof',
-      latitude: 51.756137,
-      longitude: 11.453562,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
+  const fence3 = new CircularGeofenceRegion({
+    id: 'grauer_hof',
+    latitude: 51.756137,
+    longitude: 11.453562,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
 
-    const fence4 = new CircularGeofenceRegion({
-      id: 'markt',
-      latitude: 51.755471,
-      longitude: 11.455375,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-	    const fence5 = new CircularGeofenceRegion({
-      id: 'holzmarkt',
-      latitude: 51.755030,
-      longitude: 11.457358,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-	    const fence6 = new CircularGeofenceRegion({
-      id: 'halken',
-      latitude: 51.753586,
-      longitude: 11.455084,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence7 = new CircularGeofenceRegion({
-      id: 'rabenturm',
-      latitude: 51.757476,
-      longitude: 11.453929,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence8 = new CircularGeofenceRegion({
-      id: 'ozelot',
-      latitude: 51.757325,
-      longitude: 11.456485,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence9 = new CircularGeofenceRegion({
-      id: 'pferd',
-      latitude: 51.757570,
-      longitude: 11.453082,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence10 = new CircularGeofenceRegion({
-      id: 'schildkröte',
-      latitude: 51.755718,
-      longitude: 11.454497,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence11 = new CircularGeofenceRegion({
-      id: 'schlange',
-      latitude: 51.754062,
-      longitude: 11.455933,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence12 = new CircularGeofenceRegion({
-      id: 'schwein',
-      latitude: 51.753561,
-      longitude: 11.454144,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence13 = new CircularGeofenceRegion({
-      id: 'truthahn',
-      latitude: 51.752776,
-      longitude: 11.453532,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence14 = new CircularGeofenceRegion({
-      id: 'zebra',
-      latitude: 51.751645,
-      longitude: 11.453348,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence15 = new CircularGeofenceRegion({
-      id: 'affe',
-      latitude: 51.750972,
-      longitude: 11.454920,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence16 = new CircularGeofenceRegion({
-      id: 'eule',
-      latitude: 51.751370,
-      longitude: 11.457007,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence17 = new CircularGeofenceRegion({
-      id: 'gazelle',
-      latitude: 51.752479,
-      longitude: 11.458342,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence18 = new CircularGeofenceRegion({
-      id: 'katze',
-      latitude: 51.753686,
-      longitude: 11.458826,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence19 = new CircularGeofenceRegion({
-      id: 'krokodil',
-      latitude: 51.754571,
-      longitude: 11.458813,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
-	
-      const fence20 = new CircularGeofenceRegion({
-      id: 'lama',
-      latitude: 51.756125,
-      longitude: 11.459156,
-      radius: 30, // meters
-      alreadyEntered: false
-    });
+  const fence4 = new CircularGeofenceRegion({
+    id: 'markt',
+    latitude: 51.755471,
+    longitude: 11.455375,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence5 = new CircularGeofenceRegion({
+    id: 'holzmarkt',
+    latitude: 51.755030,
+    longitude: 11.457358,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence6 = new CircularGeofenceRegion({
+    id: 'halken',
+    latitude: 51.753586,
+    longitude: 11.455084,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence7 = new CircularGeofenceRegion({
+    id: 'rabenturm',
+    latitude: 51.757476,
+    longitude: 11.453929,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence8 = new CircularGeofenceRegion({
+    id: 'ozelot',
+    latitude: 51.757325,
+    longitude: 11.456485,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence9 = new CircularGeofenceRegion({
+    id: 'pferd',
+    latitude: 51.757570,
+    longitude: 11.453082,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence10 = new CircularGeofenceRegion({
+    id: 'schildkröte',
+    latitude: 51.755718,
+    longitude: 11.454497,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence11 = new CircularGeofenceRegion({
+    id: 'schlange',
+    latitude: 51.754062,
+    longitude: 11.455933,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence12 = new CircularGeofenceRegion({
+    id: 'schwein',
+    latitude: 51.753561,
+    longitude: 11.454144,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence13 = new CircularGeofenceRegion({
+    id: 'truthahn',
+    latitude: 51.752776,
+    longitude: 11.453532,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence14 = new CircularGeofenceRegion({
+    id: 'zebra',
+    latitude: 51.751645,
+    longitude: 11.453348,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence15 = new CircularGeofenceRegion({
+    id: 'affe',
+    latitude: 51.750972,
+    longitude: 11.454920,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence16 = new CircularGeofenceRegion({
+    id: 'eule',
+    latitude: 51.751370,
+    longitude: 11.457007,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence17 = new CircularGeofenceRegion({
+    id: 'gazelle',
+    latitude: 51.752479,
+    longitude: 11.458342,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence18 = new CircularGeofenceRegion({
+    id: 'katze',
+    latitude: 51.753686,
+    longitude: 11.458826,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence19 = new CircularGeofenceRegion({
+    id: 'krokodil',
+    latitude: 51.754571,
+    longitude: 11.458813,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
+
+  const fence20 = new CircularGeofenceRegion({
+    id: 'lama',
+    latitude: 51.756125,
+    longitude: 11.459156,
+    radius: 30, // meters
+    alreadyEntered: false
+  });
 
 /* Die oben definierten Fences müssen diesem Array zugewiesen werden */	
-	
-    const fences = [fence1, fence2, fence3, fence4, fence5, fence6, fence7, fence8, fence9, fence10, fence11, fence12, fence13, fence14, fence15, fence16, fence17, fence18, fence19, fence20]
-    return fences;
+  const fences = [fence1, fence2, fence3, fence4, fence5, fence6, fence7, fence8, fence9, fence10, fence11, fence12, fence13, fence14, fence15, fence16, fence17, fence18, fence19, fence20]
+  return fences;
 };
-
 
 (function () {
   
   window.geolocation = {
 
     available: function() {
-      return ("geolocation" in navigator
-        && typeof navigator.geolocation.getCurrentPosition === "function");
+      return ("geolocation" in navigator && typeof navigator.geolocation.getCurrentPosition === "function");
     },
 
 		/* Optionen für Mapbox Geolocation */
@@ -910,18 +793,17 @@ setup.storyinit = function () {
     },
     
 		/* Test ob ein Fence innerhalb der aktuellen Geokoordinaten ist */
-    inside: function(lat1, lon1, radius, lat2, lon2) {  
-		const R = 6371; // Earth's radius in km
-      	const dLat = (lat2-lat1) * Math.PI / 180;
-      	const dLon = (lon2-lon1) * Math.PI / 180;
-      	const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.cos(lat1 * Math.PI / 180 ) * Math.cos(lat2 * Math.PI / 180 ) *
-        Math.sin(dLon/2) * Math.sin(dLon/2);
-      	const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-      	const distance = R * c * 1000;
-      	console.log(distance)
-      	return distance < radius;
-	},
+    inside: function(lat1, lon1, radius, lat2, lon2) {
+		  const R = 6371; // Earth's radius in km
+      const dLat = (lat2-lat1) * Math.PI / 180;
+      const dLon = (lon2-lon1) * Math.PI / 180;
+      const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(lat1 * Math.PI / 180 ) * Math.cos(lat2 * Math.PI / 180 ) *
+      Math.sin(dLon/2) * Math.sin(dLon/2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      const distance = R * c * 1000;
+      return distance < radius;
+	  },
 		
     /* Erstellt einen sichtbaren Kreis um einen Fence */
     createGeoJSONCircle: function(center, radius) {
@@ -3293,50 +3175,256 @@ diesem Zweck verarbeiten.
 
 &lt;/div&gt;
 
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="StoryCaption" tags="" position="800,200" size="100,100">&lt;&lt;nobr&gt;&gt;
-&lt;h1&gt;Menu&lt;/h1&gt;
-&lt;h2&gt;Punkte&lt;/h2&gt;
-&lt;h3&gt;$koinz / 210&lt;/h3&gt;
-&lt;h2&gt;Symbole&lt;/h2&gt;
-&lt;p class=&quot;p1&quot;&gt;
-  &lt;&lt;if $letter1 is 1&gt;&gt;
-    R
-  &lt;&lt;else&gt;&gt;
-  _
-  &lt;&lt;/if&gt;&gt;
-  &lt;&lt;if $letter2 is 1&gt;&gt;
-    O
-  &lt;&lt;else&gt;&gt;
-  _
-  &lt;&lt;/if&gt;&gt;
-  &lt;&lt;if $letter3 is 1&gt;&gt;
-    S
-  &lt;&lt;else&gt;&gt;
-  _
-  &lt;&lt;/if&gt;&gt;
-  &lt;&lt;if $letter4 is 1&gt;&gt;
-    A
-  &lt;&lt;else&gt;&gt;
-  _
-  &lt;&lt;/if&gt;&gt;
-  &lt;&lt;if $letter5 is 1&gt;&gt;
-    L
-  &lt;&lt;else&gt;&gt;
-  _
-  &lt;&lt;/if&gt;&gt;
-  &lt;&lt;if $letter6 is 1&gt;&gt;
-    I
-  &lt;&lt;else&gt;&gt;
-  _
-  &lt;&lt;/if&gt;&gt;
-  &lt;&lt;if $letter7 is 1&gt;&gt;
-    E
-  &lt;&lt;else&gt;&gt;
-  _
-  &lt;&lt;/if&gt;&gt;
-&lt;/p&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="Inventar" tags="" position="200,600" size="100,100">&lt;&lt;nobr&gt;&gt;
 
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="StoryHeader" tags="" position="600,200" size="100,100"></tw-passagedata><tw-passagedata pid="43" name="StoryInit" tags="" position="400,200" size="100,100">-------------------------SETUP-------------------------------
+&lt;div class=&quot;wrapper&quot;&gt;
+  &lt;h1&gt;Inventar&lt;/h1&gt;
+  &lt;&lt;if $affe is 1&gt;&gt;
+    &lt;model-viewer src=&quot;models/witch/witch.glb&quot; ar ar-modes=&quot;webxr 
+scene-viewer quick-look&quot; auto-rotate poster=&quot;models/witch/poster.webp&quot; 
+shadow-intensity=&quot;2&quot; autoplay animation-name=&quot;CountAction_Finger 
+Tapping&quot; environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; 
+shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
+      &lt;div class=&quot;progress-bar hide&quot; slot=&quot;progress-bar&quot;&gt;
+          &lt;div class=&quot;update-bar&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;button slot=&quot;ar-button&quot; id=&quot;ar-button&quot;&gt;
+          In der Umgebung platzieren
+      &lt;/button&gt;
+      &lt;div id=&quot;ar-prompt&quot;&gt;
+          &lt;img 
+  src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
+      &lt;/div&gt;
+    &lt;/model-viewer&gt;
+
+
+  &lt;&lt;/if&gt;&gt;
+  &lt;&lt;if $flamingo is 1&gt;&gt;
+      &lt;model-viewer src=&quot;models/hanging/hanging.glb&quot; ar ar-modes=&quot;webxr
+  scene-viewer quick-look&quot; auto-rotate 
+  poster=&quot;models/hanging/poster.webp&quot; shadow-intensity=&quot;2&quot; autoplay 
+  animation-name=&quot;CountAction_Finger Tapping&quot; 
+  environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; 
+  shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
+          &lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-2&quot; data-surface=&quot;25 0 
+  4324 4250 4289 0.257 0.599 0.144&quot; 
+  data-visibility-attribute=&quot;visible&quot;&gt;
+              &lt;div class=&quot;HotspotAnnotation&quot;&gt;Animation&lt;/div&gt;
+          &lt;/button&gt;&lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-3&quot; 
+  data-surface=&quot;24 0 3912 3791 3608 0.272 0.439 0.289&quot; 
+  data-visibility-attribute=&quot;visible&quot;&gt;
+              &lt;div class=&quot;HotspotAnnotation&quot;&gt;Hangman&lt;/div&gt;
+          &lt;/button&gt;
+          &lt;div class=&quot;progress-bar hide&quot; slot=&quot;progress-bar&quot;&gt;
+              &lt;div class=&quot;update-bar&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;button slot=&quot;ar-button&quot; id=&quot;ar-button&quot;&gt;
+              In der Umgebung platzieren
+          &lt;/button&gt;
+          &lt;div id=&quot;ar-prompt&quot;&gt;
+              &lt;img 
+  src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
+          &lt;/div&gt;
+      &lt;/model-viewer&gt;
+  &lt;&lt;/if&gt;&gt;
+
+  &lt;&lt;if $eule is 1&gt;&gt;
+  &lt;model-viewer ar
+                ar-modes=&quot;scene-viewer webxr quick-look&quot;
+  poster=&quot;images/loading.png&quot;
+                src=&quot;models/eule/eule.glb&quot;
+                ios-src=&quot;models/eule/eule.usdz&quot;
+          alt=&quot;Eule&quot;
+          auto-rotate&gt;
+  &lt;/model-viewer&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  &lt;&lt;if $pferd is 1&gt;&gt;
+  &lt;model-viewer ar
+                ar-modes=&quot;scene-viewer webxr quick-look&quot;
+  poster=&quot;images/loading.png&quot;
+                src=&quot;models/pferd/pferd.glb&quot;
+                ios-src=&quot;models/pferd/pferd.usdz&quot;
+          alt=&quot;Pferd&quot;
+          auto-rotate&gt;
+  &lt;/model-viewer&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  &lt;&lt;if $zebra is 1&gt;&gt;
+  &lt;model-viewer ar
+                ar-modes=&quot;scene-viewer webxr quick-look&quot;
+  poster=&quot;images/loading.png&quot;
+                src=&quot;models/zebra/zebra.glb&quot;
+                ios-src=&quot;models/zebra/zebra.usdz&quot;
+          alt=&quot;Zebra&quot;
+          auto-rotate&gt;
+  &lt;/model-viewer&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  &lt;&lt;if $schildkröte is 1&gt;&gt;
+  &lt;model-viewer ar
+                ar-modes=&quot;scene-viewer webxr quick-look&quot;
+  poster=&quot;images/loading.png&quot;
+                src=&quot;models/schildkroete/schildkroete.glb&quot;
+                ios-src=&quot;models/schildkroete/schildkroete.usdz&quot;
+          alt=&quot;Schildkröte&quot;
+          auto-rotate&gt;
+  &lt;/model-viewer&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  &lt;&lt;if $schlange is 1&gt;&gt;
+  &lt;model-viewer ar
+                ar-modes=&quot;scene-viewer webxr quick-look&quot;
+  poster=&quot;images/loading.png&quot;
+                src=&quot;models/schlange/schlange.glb&quot;
+                ios-src=&quot;models/schlange/schlange.usdz&quot;
+          alt=&quot;Schlange&quot;
+          auto-rotate&gt;
+  &lt;/model-viewer&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  &lt;&lt;if $ozelot is 1&gt;&gt;
+  &lt;model-viewer ar
+                ar-modes=&quot;scene-viewer webxr quick-look&quot;
+  poster=&quot;images/loading.png&quot;
+                src=&quot;models/ozelot/ozelot.glb&quot;
+                ios-src=&quot;models/ozelot/ozelot.usdz&quot;
+          alt=&quot;Ozelot&quot;
+          auto-rotate&gt;
+  &lt;/model-viewer&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  &lt;&lt;if $truthahn is 1&gt;&gt;
+  &lt;model-viewer ar
+                ar-modes=&quot;scene-viewer webxr quick-look&quot;
+  poster=&quot;images/loading.png&quot;
+                src=&quot;models/truthahn/truthahn.glb&quot;
+                ios-src=&quot;models/truthahn/truthahn.usdz&quot;
+          alt=&quot;Truthahn&quot;
+          auto-rotate&gt;
+  &lt;/model-viewer&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  &lt;&lt;if $katze is 1&gt;&gt;
+  &lt;model-viewer ar
+                ar-modes=&quot;scene-viewer webxr quick-look&quot;
+  poster=&quot;images/loading.png&quot;
+                src=&quot;models/katze/katze.glb&quot;
+                ios-src=&quot;models/katze/katze.usdz&quot;
+          alt=&quot;Katze&quot;
+          auto-rotate&gt;
+  &lt;/model-viewer&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  &lt;&lt;if $schwein is 1&gt;&gt;
+  &lt;model-viewer ar
+                ar-modes=&quot;scene-viewer webxr quick-look&quot;
+  poster=&quot;images/loading.png&quot;
+                src=&quot;models/schwein/schwein.glb&quot;
+                ios-src=&quot;models/schwein/schwein.usdz&quot;
+          alt=&quot;Schwein&quot;
+          auto-rotate&gt;
+  &lt;/model-viewer&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  &lt;&lt;if $krokodil is 1&gt;&gt;
+  &lt;model-viewer ar
+                ar-modes=&quot;scene-viewer webxr quick-look&quot;
+  poster=&quot;images/loading.png&quot;
+                src=&quot;models/krokodil/krokodil.glb&quot;
+                ios-src=&quot;models/krokodil/krokodil.usdz&quot;
+          alt=&quot;Krokodil&quot;
+          auto-rotate&gt;
+  &lt;/model-viewer&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  &lt;&lt;if $lama is 1&gt;&gt;
+  &lt;model-viewer ar
+                ar-modes=&quot;scene-viewer webxr quick-look&quot;
+  poster=&quot;images/loading.png&quot;
+                src=&quot;models/lama/lama.glb&quot;
+                ios-src=&quot;models/lama/lama.usdz&quot;
+          alt=&quot;lama&quot;
+          auto-rotate&gt;
+  &lt;/model-viewer&gt;
+  &lt;&lt;/if&gt;&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  &lt;&lt;if $gazelle is 1&gt;&gt;
+  &lt;model-viewer ar
+                ar-modes=&quot;scene-viewer webxr quick-look&quot;
+  poster=&quot;images/loading.png&quot;
+                src=&quot;models/gazelle/gazelle.glb&quot;
+                ios-src=&quot;models/gazelle/gazelle.usdz&quot;
+          alt=&quot;Gazelle&quot;
+          auto-rotate&gt;
+  &lt;/model-viewer&gt;
+  &lt;&lt;/if&gt;&gt;
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;btn-group&quot;&gt;
+
+  &lt;&lt;button &quot;Zurück&quot;&gt;&gt;
+        &lt;&lt;goto &quot;map.init&quot;&gt;&gt;
+    &lt;&lt;audio &quot;click&quot; play&gt;&gt;
+  &lt;&lt;/button&gt;&gt;	
+
+&lt;/div&gt;
+
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="StoryCaption" tags="" position="800,200" size="100,100">&lt;&lt;nobr&gt;&gt;
+  &lt;h1&gt;Menu&lt;/h1&gt;
+  &lt;h2&gt;Punkte&lt;/h2&gt;
+  &lt;h3&gt;$koinz / 210&lt;/h3&gt;
+  &lt;h2&gt;Symbole&lt;/h2&gt;
+  &lt;p class=&quot;p1&quot;&gt;
+    &lt;&lt;if $letter1 is 1&gt;&gt;
+      R
+    &lt;&lt;else&gt;&gt;
+    _
+    &lt;&lt;/if&gt;&gt;
+    &lt;&lt;if $letter2 is 1&gt;&gt;
+      O
+    &lt;&lt;else&gt;&gt;
+    _
+    &lt;&lt;/if&gt;&gt;
+    &lt;&lt;if $letter3 is 1&gt;&gt;
+      S
+    &lt;&lt;else&gt;&gt;
+    _
+    &lt;&lt;/if&gt;&gt;
+    &lt;&lt;if $letter4 is 1&gt;&gt;
+      A
+    &lt;&lt;else&gt;&gt;
+    _
+    &lt;&lt;/if&gt;&gt;
+    &lt;&lt;if $letter5 is 1&gt;&gt;
+      L
+    &lt;&lt;else&gt;&gt;
+    _
+    &lt;&lt;/if&gt;&gt;
+    &lt;&lt;if $letter6 is 1&gt;&gt;
+      I
+    &lt;&lt;else&gt;&gt;
+    _
+    &lt;&lt;/if&gt;&gt;
+    &lt;&lt;if $letter7 is 1&gt;&gt;
+      E
+    &lt;&lt;else&gt;&gt;
+    _
+    &lt;&lt;/if&gt;&gt;
+  &lt;/p&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="43" name="StoryHeader" tags="" position="600,200" size="100,100"></tw-passagedata><tw-passagedata pid="44" name="StoryInit" tags="" position="400,200" size="100,100">-------------------------SETUP-------------------------------
 
 &lt;&lt;set $is_pwa to window.matchMedia(&#39;(display-mode: window-controls-overlay)&#39;).matches || window.matchMedia(&#39;(display-mode: standalone)&#39;).matches&gt;&gt;
 &lt;&lt;set
@@ -3405,9 +3493,9 @@ navigator.userAgent.indexOf(&#39;SamsungBrowser&#39;) &lt;= - 1&gt;&gt;
 
 &lt;&lt;set $lama to 0&gt;&gt;
 
-&lt;&lt;set $truthahn to 0&gt;&gt;</tw-passagedata><tw-passagedata pid="44" name="StoryMenu" tags="" position="198,200" size="100,100">&lt;&lt;link &quot;Inventar&quot;&gt;&gt;
+&lt;&lt;set $truthahn to 0&gt;&gt;</tw-passagedata><tw-passagedata pid="45" name="StoryMenu" tags="" position="198,200" size="100,100">&lt;&lt;link &quot;Inventar&quot;&gt;&gt;
 	&lt;&lt;addclass &quot;#ui-bar&quot; &quot;stowed&quot;&gt;&gt;
-	&lt;&lt;goto &quot;Tiere&quot;&gt;&gt;
+	&lt;&lt;goto &quot;Inventar&quot;&gt;&gt;
 &lt;&lt;/link&gt;&gt;
 &lt;&lt;link &quot;Hilfe&quot;&gt;&gt;
 	&lt;&lt;addclass &quot;#ui-bar&quot; &quot;stowed&quot;&gt;&gt;
@@ -3416,217 +3504,7 @@ navigator.userAgent.indexOf(&#39;SamsungBrowser&#39;) &lt;= - 1&gt;&gt;
 &lt;&lt;link &quot;Impressum&quot;&gt;&gt;
 	&lt;&lt;addclass &quot;#ui-bar&quot; &quot;stowed&quot;&gt;&gt;
 	&lt;&lt;goto &quot;Impressum&quot;&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="45" name="Tiere" tags="" position="200,600" size="100,100">&lt;&lt;nobr&gt;&gt;
-
-
-
-&lt;div
- class=&quot;wrapper&quot;&gt;
-&lt;h1&gt;Inventar&lt;/h1&gt;
-&lt;&lt;if $affe is 1&gt;&gt;
-    &lt;model-viewer src=&quot;models/witch/witch.glb&quot; ar ar-modes=&quot;webxr 
-scene-viewer quick-look&quot; auto-rotate poster=&quot;models/witch/poster.webp&quot; 
-shadow-intensity=&quot;2&quot; autoplay animation-name=&quot;CountAction_Finger 
-Tapping&quot; environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; 
-shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
-        &lt;div class=&quot;progress-bar hide&quot; slot=&quot;progress-bar&quot;&gt;
-            &lt;div class=&quot;update-bar&quot;&gt;&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;button slot=&quot;ar-button&quot; id=&quot;ar-button&quot;&gt;
-            In der Umgebung platzieren
-        &lt;/button&gt;
-        &lt;div id=&quot;ar-prompt&quot;&gt;
-            &lt;img 
-src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
-        &lt;/div&gt;
-    &lt;/model-viewer&gt;
-
-
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $flamingo is 1&gt;&gt;
-    &lt;model-viewer src=&quot;models/hanging/hanging.glb&quot; ar ar-modes=&quot;webxr
- scene-viewer quick-look&quot; auto-rotate 
-poster=&quot;models/hanging/poster.webp&quot; shadow-intensity=&quot;2&quot; autoplay 
-animation-name=&quot;CountAction_Finger Tapping&quot; 
-environment-image=&quot;models/hanging/music_hall_01_1k.hdr&quot; 
-shadow-softness=&quot;0&quot; camera-target=&quot;0m 0m 0m&quot;&gt;
-        &lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-2&quot; data-surface=&quot;25 0 
-4324 4250 4289 0.257 0.599 0.144&quot; 
-data-visibility-attribute=&quot;visible&quot;&gt;
-            &lt;div class=&quot;HotspotAnnotation&quot;&gt;Animation&lt;/div&gt;
-        &lt;/button&gt;&lt;button class=&quot;Hotspot&quot; slot=&quot;hotspot-3&quot; 
-data-surface=&quot;24 0 3912 3791 3608 0.272 0.439 0.289&quot; 
-data-visibility-attribute=&quot;visible&quot;&gt;
-            &lt;div class=&quot;HotspotAnnotation&quot;&gt;Hangman&lt;/div&gt;
-        &lt;/button&gt;
-        &lt;div class=&quot;progress-bar hide&quot; slot=&quot;progress-bar&quot;&gt;
-            &lt;div class=&quot;update-bar&quot;&gt;&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;button slot=&quot;ar-button&quot; id=&quot;ar-button&quot;&gt;
-            In der Umgebung platzieren
-        &lt;/button&gt;
-        &lt;div id=&quot;ar-prompt&quot;&gt;
-            &lt;img 
-src=&quot;https://modelviewer.dev/shared-assets/icons/hand.png&quot;&gt;
-        &lt;/div&gt;
-    &lt;/model-viewer&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if $eule is 1&gt;&gt;
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;images/loading.png&quot;
-              src=&quot;models/eule/eule.glb&quot;
-              ios-src=&quot;models/eule/eule.usdz&quot;
-			  alt=&quot;Eule&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;&lt;if $pferd is 1&gt;&gt;
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;images/loading.png&quot;
-              src=&quot;models/pferd/pferd.glb&quot;
-              ios-src=&quot;models/pferd/pferd.usdz&quot;
-			  alt=&quot;Pferd&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;&lt;if $zebra is 1&gt;&gt;
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;images/loading.png&quot;
-              src=&quot;models/zebra/zebra.glb&quot;
-              ios-src=&quot;models/zebra/zebra.usdz&quot;
-			  alt=&quot;Zebra&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;&lt;if $schildkröte is 1&gt;&gt;
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;images/loading.png&quot;
-              src=&quot;models/schildkroete/schildkroete.glb&quot;
-              ios-src=&quot;models/schildkroete/schildkroete.usdz&quot;
-			  alt=&quot;Schildkröte&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;&lt;if $schlange is 1&gt;&gt;
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;images/loading.png&quot;
-              src=&quot;models/schlange/schlange.glb&quot;
-              ios-src=&quot;models/schlange/schlange.usdz&quot;
-			  alt=&quot;Schlange&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;&lt;if $ozelot is 1&gt;&gt;
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;images/loading.png&quot;
-              src=&quot;models/ozelot/ozelot.glb&quot;
-              ios-src=&quot;models/ozelot/ozelot.usdz&quot;
-			  alt=&quot;Ozelot&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;&lt;if $truthahn is 1&gt;&gt;
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;images/loading.png&quot;
-              src=&quot;models/truthahn/truthahn.glb&quot;
-              ios-src=&quot;models/truthahn/truthahn.usdz&quot;
-			  alt=&quot;Truthahn&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;&lt;if $katze is 1&gt;&gt;
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;images/loading.png&quot;
-              src=&quot;models/katze/katze.glb&quot;
-              ios-src=&quot;models/katze/katze.usdz&quot;
-			  alt=&quot;Katze&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;&lt;if $schwein is 1&gt;&gt;
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;images/loading.png&quot;
-              src=&quot;models/schwein/schwein.glb&quot;
-              ios-src=&quot;models/schwein/schwein.usdz&quot;
-			  alt=&quot;Schwein&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;&lt;if $krokodil is 1&gt;&gt;
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;images/loading.png&quot;
-              src=&quot;models/krokodil/krokodil.glb&quot;
-              ios-src=&quot;models/krokodil/krokodil.usdz&quot;
-			  alt=&quot;Krokodil&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;&lt;if $lama is 1&gt;&gt;
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;images/loading.png&quot;
-              src=&quot;models/lama/lama.glb&quot;
-              ios-src=&quot;models/lama/lama.usdz&quot;
-			  alt=&quot;lama&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;&lt;if $gazelle is 1&gt;&gt;
-&lt;model-viewer ar
-              ar-modes=&quot;scene-viewer webxr quick-look&quot;
-poster=&quot;images/loading.png&quot;
-              src=&quot;models/gazelle/gazelle.glb&quot;
-              ios-src=&quot;models/gazelle/gazelle.usdz&quot;
-			  alt=&quot;Gazelle&quot;
-			  auto-rotate&gt;
-&lt;/model-viewer&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;btn-group&quot;&gt;
-
-&lt;&lt;button &quot;Zurück&quot;&gt;&gt;
-	    &lt;&lt;goto &quot;map.init&quot;&gt;&gt;
-	&lt;&lt;audio &quot;click&quot; play&gt;&gt;
-&lt;&lt;/button&gt;&gt;	
-
-&lt;/div&gt;
-
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="anruf" tags="" position="700,800" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="anruf" tags="" position="700,800" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;script&gt;
   $(&#39;#story&#39;).attr(&#39;style&#39;, &#39;background-image:url(images/holger.bg.jpg)&#39;);
@@ -3997,7 +3875,7 @@ Chrome &quot;Beim Verwenden der App&quot; euren Standort zu benutzen.
 &lt;div class=&quot;btn-group&quot;&gt;
   &lt;&lt;nobr&gt;&gt;
     &lt;&lt;if $maptip is 0&gt;&gt; 
-      &lt;span id=&quot;heading&quot;&gt;&lt;h2&gt;Diese Karte ist euer Hauptbildschrim.&lt;/h2&gt;
+      &lt;span id=&quot;heading&quot;&gt;&lt;h2&gt;Diese Karte ist euer Hauptbildschirm.&lt;/h2&gt;
         &lt;&lt;button &quot;Weiter&quot;&gt;&gt;
           &lt;&lt;replace &quot;#heading&quot;&gt;&gt;
             &lt;h2&gt;Hier seht ihr alle Geister-Hotspots, die ihr noch nicht besucht habt.&lt;/h2&gt;
@@ -4021,25 +3899,24 @@ Chrome &quot;Beim Verwenden der App&quot; euren Standort zu benutzen.
   &lt;&lt;/nobr&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="58" name="menu" tags="" position="500,3600" size="100,100">&lt;&lt;nobr&gt;&gt;
 
-&lt;div class=&quot;wrapper&quot;&gt;
-
-&lt;h1&gt;Seitenmenü&lt;/h1&gt;
-&lt;h2&gt;
-Über den Pfeil oben links öffnet Ihr das Seitenmenü.
-&lt;br&gt;
-&lt;br&gt;
-Dort findet Ihr euren Punktestand und alle bereits gesammelten Buchstaben für das Lösungswort.
-&lt;br&gt;
-&lt;br&gt;
-Ihr könnt das Spiel hier auch speichern oder neu starten. 
-&lt;/h2&gt;
-&lt;/div&gt;
-&lt;div class=&quot;btn-group&quot;&gt;
-	&lt;&lt;button &quot;Weiter&quot;&gt;&gt;
-    	&lt;&lt;goto &quot;title&quot;&gt;&gt;
-&lt;&lt;audio &quot;click&quot; play&gt;&gt;	
-&lt;&lt;/button&gt;&gt;
-&lt;/div&gt;
+  &lt;div class=&quot;wrapper&quot;&gt;
+    &lt;h1&gt;Seitenmenü&lt;/h1&gt;
+    &lt;h2&gt;
+    Über den Pfeil oben links öffnet Ihr das Seitenmenü.
+    &lt;br&gt;
+    &lt;br&gt;
+    Dort findet Ihr euren Punktestand und alle bereits gesammelten Buchstaben für das Lösungswort.
+    &lt;br&gt;
+    &lt;br&gt;
+    Ihr könnt das Spiel hier auch speichern oder neu starten. 
+    &lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;btn-group&quot;&gt;
+    &lt;&lt;button &quot;Weiter&quot;&gt;&gt;
+      &lt;&lt;goto &quot;title&quot;&gt;&gt;
+      &lt;&lt;audio &quot;click&quot; play&gt;&gt;	
+    &lt;&lt;/button&gt;&gt;
+  &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="multiplayer" tags="" position="700,1400" size="100,100">&lt;&lt;nobr&gt;&gt;
 
 &lt;&lt;audio &quot;:playing:&quot; stop&gt;&gt;
@@ -4118,6 +3995,7 @@ window.addEventListener(&#39;beforeinstallprompt&#39;, (event) =&gt; {
   event.preventDefault();
   console.log(&#39;👍&#39;, &#39;beforeinstallprompt&#39;, event);
   // Stash the event so it can be triggered later.
+  window.deferredPrompt = event;
 });
 &lt;&lt;/script&gt;&gt;
 
@@ -4148,10 +4026,7 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
 
   // Create success callback to store values
   const positionSuccess = function(pos) {
-    const crd = pos.coords;
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    State.variables.geolocationActivated = 1;
+    console.log(&#39;👍&#39;, &#39;Geolocation prompt successful&#39;, pos.coords);
     $.wiki(&#39;&lt;&lt;goto &quot;setup.3&quot;&gt;&gt;&#39;)
   }
 
@@ -4171,6 +4046,7 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
   function askGeolocationPermission() {
     navigator.permissions.query({name:&#39;geolocation&#39;}).then(function(result) {
       if (result.state == &#39;granted&#39;) {
+        console.log(&#39;👍&#39;, &#39;Geolocation permission granted&#39;);
         $.wiki(&#39;&lt;&lt;goto &quot;setup.3&quot;&gt;&gt;&#39;)
       } else if (result.state == &#39;prompt&#39;) {
         // Ask for location based on callbacks and options
@@ -4179,7 +4055,6 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
         geolocationBtn.style.display = &#39;none&#39;;
         nextBtn.style.display = &#39;inline&#39;;
       }
-      report(result.state);
     });
   }
 
@@ -4187,10 +4062,6 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
     if(window.geolocation.available()) {
       askGeolocationPermission();
     }
-  }
-
-  function report(state) {
-    console.log(&#39;Permission: &#39; + state);
   }
 });
 &lt;&lt;/script&gt;&gt;
@@ -4214,34 +4085,28 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
     function askCameraPermission() {
       navigator.permissions.query({name:&#39;camera&#39;}).then(function(result) {
         if (result.state == &#39;granted&#39;) {
+          console.log(&#39;👍&#39;, &#39;Camera permission granted&#39;);
           $.wiki(&#39;&lt;&lt;goto &quot;setup.4&quot;&gt;&gt;&#39;)
         } else if (result.state == &#39;prompt&#39;) {
           var now = Date.now();
-          navigator.mediaDevices.getUserMedia({audio: true, video: true})
+          navigator.mediaDevices.getUserMedia({audio: false, video: true})
             .then(function(stream) {
-              console.log(&#39;Got stream, time diff :&#39;, Date.now() - now);
-              $.wiki(&#39;&lt;&lt;goto &quot;setup.3&quot;&gt;&gt;&#39;)
+              console.log(&#39;👍&#39;, &#39;Camera prompt successful&#39;, Date.now() - now);
+              $.wiki(&#39;&lt;&lt;goto &quot;setup.4&quot;&gt;&gt;&#39;)
             })
             .catch(function(error) {
-              console.log(&#39;GUM failed with error, time diff: &#39;, Date.now() - now);
-              alert(&#39;Bitte gib deinen Kamera in den Systemeinstellungen frei &#39; + error);
+              alert(&#39;Bitte gib deine Kamera in den Systemeinstellungen frei &#39; + error);
               nextBtn.style.display = &#39;inline&#39;;
             });
         } else if (result.state == &#39;denied&#39;) {
-          State.variables.cameraActivated = 0;
           cameraBtn.style.display = &#39;none&#39;;
           nextBtn.style.display = &#39;inline&#39;;
         }
-        report(result.state);
       });
     }
 
     cameraBtn.onclick = function() {
       askCameraPermission();
-    }
-
-    function report(state) {
-      console.log(&#39;Permission: &#39; + state);
     }
   });
 &lt;&lt;/script&gt;&gt;
@@ -4258,18 +4123,7 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="65" name="setup.4" tags="" position="500,1200" size="100,100">&lt;&lt;script&gt;&gt;
 $(document).one(&quot;:passagedisplay&quot;, function() {
   $(&#39;#story&#39;).attr(&#39;style&#39;, &#39;background-image:url(images/splash.jpg)&#39;);
-  const installDiv = document.querySelector(&quot;.btn-group&quot;);
   const installBtn = document.querySelector(&#39;.install&#39;);
-
-  window.addEventListener(&#39;beforeinstallprompt&#39;, (event) =&gt; {
-    // Prevent the mini-infobar from appearing on mobile.
-    event.preventDefault();
-    console.log(&#39;👍&#39;, &#39;beforeinstallprompt&#39;, event);
-    // Stash the event so it can be triggered later.
-    window.deferredPrompt = event;
-    // Remove the &#39;hidden&#39; class from the install button container.
-    installDiv.classList.toggle(&#39;hide&#39;, false);
-  });
 
   installBtn.addEventListener(&#39;click&#39;, async () =&gt; {
     console.log(&#39;👍&#39;, &#39;installBtn-clicked&#39;);
@@ -4286,8 +4140,6 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
     // Reset the deferred prompt variable, since
     // prompt() can only be called once.
     window.deferredPrompt = null;
-    // Hide the install button.
-    installDiv.classList.toggle(&#39;hide&#39;, true);
   });
 
   window.addEventListener(&#39;appinstalled&#39;, (event) =&gt; {
@@ -4303,7 +4155,7 @@ $(document).one(&quot;:passagedisplay&quot;, function() {
   &lt;h2&gt;Installiere die App, um eine bessere Nutzererfahrung zu haben.&lt;/h2&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;btn-group&quot; class=&quot;hide&quot;&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
   &lt;button class=&quot;install&quot;&gt;App installieren&lt;/button&gt;
   &lt;button class=&quot;next&quot;&gt;[[Jetzt nicht|splash]]&lt;/button&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="66" name="spiel" tags="" position="700,3200" size="100,100">&lt;&lt;nobr&gt;&gt;
@@ -4336,19 +4188,18 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 &lt;/script&gt;
 
 &lt;div class=&quot;wrapper&quot;&gt;
-&lt;h1&gt;Spuk &amp;
-&lt;br&gt;Schreck&lt;/h1&gt;
-&lt;h2&gt;Die Geisterjagd durch den 
-&lt;br&gt;
-Leipziger Friedenspark. 
-&lt;/h2&gt;
-&lt;h1&gt;
-[[Start|anruf]]
-&lt;/h1&gt;
+  &lt;h1&gt;Spuk &amp;
+  &lt;br&gt;Schreck&lt;/h1&gt;
+  &lt;h2&gt;Die Geisterjagd durch den 
+  &lt;br&gt;
+  Leipziger Friedenspark. 
+  &lt;/h2&gt;
+  &lt;h1&gt;
+  [[Start|anruf]]
+  &lt;/h1&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;btn-group&quot;&gt;
-
 &lt;/div&gt;
 
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="start" tags="" position="700,1800" size="100,100">&lt;&lt;nobr&gt;&gt;
