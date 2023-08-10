@@ -3504,8 +3504,10 @@ $(document).one(":passagedisplay", function() {
   $(document).one(":passagedisplay", function() {
     $('#story').attr('style', 'background-image:url(images/splash.jpg)');
     const cameraBtn = document.querySelector('.camera');
+    const settingsBtn = document.querySelector('.settings');
     const nextBtn = document.querySelector('.next');
     cameraBtn.style.display = 'inline';
+    settingsBtn.style.display = 'none';
     nextBtn.style.display = 'none';
 
     function askCameraPermission() {
@@ -3522,6 +3524,9 @@ $(document).one(":passagedisplay", function() {
             })
             .catch(function(error) {
               alert('Bitte gib deine Kamera in den Systemeinstellungen frei ' + error);
+              if (State.variables.is_safari) {
+                settingsBtn.style.display = 'inline';
+              }
               nextBtn.style.display = 'inline';
             });
         } else if (result.state == 'denied') {
@@ -3545,6 +3550,7 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="camera">Kamera freigeben</button>
+  <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_Camera">Einstellungen öffnen</a></button>
   <button class="next">[[Weiter ohne Freigabe|setup.4]]</button>
 </div>
 
@@ -4558,6 +4564,6 @@ button#history-backward {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	padding: 0;
+	padding: 4vh 0;
 	margin: 0;
 }
