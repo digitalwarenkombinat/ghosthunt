@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@vv3
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
 
