@@ -5,8 +5,8 @@
   "scripts": {
     "build": "npx --package @hugojosefson/merge-html merge-html index.html index_zusatz.html > dist/index.html",
     "compile": "npx extwee -c -i ./index.twee -s ./format.js -o ./index.html",
-    "start": "npx nodemon -e twee --exec \"npm run compile && npx http-server ./\"",
-    "dev": "npx nodemon -e twee --exec \"npm run compile && npx http-server . -S -C cert.pem\""
+    "start": "npx nodemon -e twee --exec \"npm run compile && npm run build && npx http-server dist \"",
+    "dev": "npx nodemon -e twee --exec \"npm run compile && npm run build && npx http-server dist -S -C cert.pem\""
   },
   "repository": {
     "type": "git",

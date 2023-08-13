@@ -3402,7 +3402,19 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 :: intro {"position":"500,400","size":"100,100"}
 <<script>>
+  if (State.variables.is_pwa) {
+    $.wiki('<<goto "splash">>')
+  };
+
   $('#story').attr('style', 'background-image:url(images/splash.jpg)');
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    /* Prevent the mini-infobar from appearing on mobile. */
+    event.preventDefault();
+    console.log('👍', 'beforeinstallprompt', event);
+    /* Stash the event so it can be triggered later. */
+    window.deferredPrompt = event;
+  });
 <</script>>
 <<nobr>>
   <div class="wrapper">
@@ -3422,17 +3434,6 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 :: setup.1 {"position":"500,600","size":"100,100"}
 <<script>>
   $('#story').attr('style', 'background-image:url(images/splash.jpg)');
-  if (State.variables.is_pwa) {
-    $.wiki('<<goto "splash">>')
-  }
-
-  window.addEventListener('beforeinstallprompt', (event) => {
-    // Prevent the mini-infobar from appearing on mobile.
-    event.preventDefault();
-    console.log('👍', 'beforeinstallprompt', event);
-    // Stash the event so it can be triggered later.
-    window.deferredPrompt = event;
-  });
 <</script>>
 <<nobr>>
   <div class="wrapper">
@@ -3460,18 +3461,17 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 $(document).one(":passagedisplay", function() {
 
   setup.mapboxLoaded.then(function () {
-    mapboxgl.accessToken = State.variables.accessToken
+    mapboxgl.accessToken = State.variables.accessToken;
 
     const map = new mapboxgl.Map({
       container: 'map',
-      style: State.variables.style,
+      style: State.variables.style
     });
 
     const geolocate = new mapboxgl.GeolocateControl(window.geolocation.getGeolocateControl());
     map.addControl(geolocate);
-
     map.resize();
-  })
+  });
 
   const geolocationBtn = document.querySelector('.geolocation');
   const settingsBtn = document.querySelector('.settings');
@@ -3481,24 +3481,24 @@ $(document).one(":passagedisplay", function() {
   helpBtn.style.display = 'none';
   nextBtn.style.display = 'none';
 
-  // Create success callback to store values
+  /* Create success callback to store values */
   const positionSuccess = function(pos) {
     console.log('👍', 'Geolocation prompt successful', pos.coords);
     $(".mapboxgl-ctrl-geolocate").click();
     geolocationBtn.style.display = 'none';
     nextBtn.style.display = 'inline';
-  }
+  };
 
-  // Create error callback
+  /* Create error callback */
   const positionError = function(error) {
     alert('Bitte gib deinen Standort in den Systemeinstellungen frei');
     if (State.variables.is_safari) {
       settingsBtn.style.display = 'inline';
     }
     helpBtn.style.display = 'inline';
-  }
+  };
 
-  // Create initial options
+  /* Create initial options */
   const positionOptions = {
     enableHighAccuracy: false,
     maximumAge: 30000,
@@ -3513,19 +3513,19 @@ $(document).one(":passagedisplay", function() {
         geolocationBtn.style.display = 'none';
         nextBtn.style.display = 'inline';
       } else if (result.state == 'prompt') {
-        // Ask for location based on callbacks and options
+        /* Ask for location based on callbacks and options */
         navigator.geolocation.getCurrentPosition(positionSuccess, positionError, positionOptions);
       } else if (result.state == 'denied') {
         helpBtn.style.display = 'inline';
       }
     });
-  }
+  };
 
   geolocationBtn.onclick = function() {
     if(window.geolocation.available()) {
       askGeolocationPermission();
     }
-  }
+  };
 });
 <</script>>
 <<nobr>>
@@ -3560,7 +3560,7 @@ $(document).one(":passagedisplay", function() {
     cameraBtn.style.display = 'none';
     settingsBtn.style.display = 'none';
     helpBtn.style.display = 'none';
-    nextBtn.style.display = 'none';
+    nextBtn.style.display = 'inline';
 
     function askCameraPermission() {
       navigator.permissions.query({name:'camera'}).then(function(result) {
@@ -3598,9 +3598,8 @@ $(document).one(":passagedisplay", function() {
     </h2>
     <model-viewer id="model-viewer" src="models/witch/witch.glb" ar ar-modes="webxr 
       scene-viewer quick-look" auto-rotate poster="models/witch/poster.webp" 
-      shadow-intensity="2" autoplay animation-name="CountAction_Finger 
-      Tapping" environment-image="models/hanging/music_hall_01_1k.hdr" 
-      shadow-softness="0" camera-target="0m 0m 0m">
+      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
+      alt="A 3D model of a witch with graveyard" camera-controls touch-action="pan-y">
       <div class="progress-bar hide" slot="progress-bar">
         <div class="update-bar"></div>
       </div>
@@ -3632,22 +3631,22 @@ $(document).one(":passagedisplay", function() {
     console.log('👍', 'installBtn-clicked');
     const promptEvent = window.deferredPrompt;
     if (!promptEvent) {
-      // The deferred prompt isn't available.
+      /* The deferred prompt isn't available. */
       return;
     }
-    // Show the install prompt.
+    /* Show the install prompt. */
     promptEvent.prompt();
-    // Log the result
+    /* Log the result */
     const result = await promptEvent.userChoice;
     console.log('👍', 'userChoice', result);
-    // Reset the deferred prompt variable, since
-    // prompt() can only be called once.
+    /* Reset the deferred prompt variable, since */
+    /* prompt() can only be called once. */
     window.deferredPrompt = null;
   });
 
   window.addEventListener('appinstalled', (event) => {
     console.log('👍', 'appinstalled', event);
-    // Clear the deferredPrompt so it can be garbage collected
+    /* Clear the deferredPrompt so it can be garbage collected */
     window.deferredPrompt = null;
     installBtn.style.display = 'none';
     openBtn.style.display = 'inline';
