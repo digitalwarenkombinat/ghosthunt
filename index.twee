@@ -18,277 +18,250 @@ Spuk & Schreck
 
 
 :: 1.1 {"position":"1700,600","size":"100,100"}
+<<script>>
+  window.video.showButtonsOnVideoEnd();
+<</script>>
 <<nobr>>
+  <video autoplay id="myVideo" playsinline>
+    <source src="videos/1.1.mp4" type="video/mp4">
+  </video>
 
-<video autoplay id="myVideo" playsinline>
-  <source src="videos/1.1.mp4" type="video/mp4">
-</video>
+  <div class="wrapper"></div>
 
-<div class="wrapper">
-</div>
-
-<div class="btn-group">
-<<timed 28s>>
-  <<button "Nochmal">>
-          <<goto "1.1">>	
-  <<audio "click" play>>	
-  <</button>>
-	<<button "Ok">>
-    	<<goto "1.2">>	
-<<audio "click" play>>	
-<</button>>
-<</timed>>
-</div>
+  <div class="btn-group">
+    <<button "Nochmal">>
+      <<goto "1.1">>	
+      <<audio "click" play>>	
+    <</button>>
+    <<button "Ok">>
+      <<goto "1.2">>	
+      <<audio "click" play>>	
+    <</button>>
+  </div>
 <</nobr>>
 
 
 :: 1.2 {"position":"1700,800","size":"100,100"}
 <<nobr>>
+  <<if $riddle is 1>>
+    <script>
+      $('#story').attr('style', 'background-image:url(images/1.1.jpg)');
+    </script>
+    <<elseif $riddle is 2>>
+    <script>
+      $('#story').attr('style', 'background-image:url(images/1.2.jpg)');
+    </script>
+    <<elseif $riddle is 3>>
+    <script>
+      $('#story').attr('style', 'background-image:url(images/1.3.jpg)');
+    </script>
+    <<elseif $riddle is 4>>
+    <script>
+      $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+    </script>
+  <</if>>
 
-<<if $riddle is 1>>
-<script>
-  $('#story').attr('style', 'background-image:url(images/1.1.jpg)');
-</script>
-<<elseif $riddle is 2>>
-<script>
-  $('#story').attr('style', 'background-image:url(images/1.2.jpg)');
-</script>
-<<elseif $riddle is 3>>
-<script>
-  $('#story').attr('style', 'background-image:url(images/1.3.jpg)');
-</script>
-<<elseif $riddle is 4>>
-<script>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
-</script>
-<</if>>
+  <<if $riddle is 1>>
+    <span id="heading">
+      <h2>Hier wird eine Frage stehen, welche die Spieler beantworten müssen.</h2>
+    </span>
 
-<<if $riddle is 1>>
- <span id="heading"><h2>Hier wird eine Frage stehen, welche die Spieler beantworten müssen.</h2></span>
+    <div class="wrapper"></div>
 
-<div class="wrapper">
-</div>
-
-<div class="btn-group">
-
- <<button "Falsch">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>>
-      <<timed 1s>>
-        <<goto "1.2">><<set $riddle to $riddle + 
-1>>
+    <div class="btn-group">
+      <<button "Falsch">>
+        <<replace "#heading">><h2>Falsch!</h2><</replace>>
+        <<timed 1s>>
+          <<goto "1.2">>
+          <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
 
- <<button "Falsch">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>>
-      <<timed 1s>>
-        <<goto "1.2">><<set $riddle to $riddle + 
-1>>
+      <<button "Falsch">>
+        <<replace "#heading">><h2>Falsch!</h2><</replace>>
+        <<timed 1s>>
+          <<goto "1.2">>
+          <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
 
- <<button "Richtig">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>>
-      <<timed 1s>>
-        <<goto "1.2">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
+      <<button "Richtig">>
+        <<replace "#heading">><h2>Richtig! +10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "1.2">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
+    </div>
+  <</if>>
 
-</div>
+  <<if $riddle is 2>>
+    <span id="heading">
+      <h2>Hier wird eine Frage stehen, welche die Spieler beantworten müssen.</h2>
+    </span>
 
+    <div class="wrapper"></div>
 
-<</if>>
-
-<<if $riddle is 2>>
-
- <span id="heading"><h2>Hier wird eine Frage stehen, welche die Spieler beantworten müssen.</h2></span>
-
-<div class="wrapper">
-</div>
-
-<div class="btn-group">
-    
- <<button "Falsch">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>>
-      <<timed 1s>>
-        <<goto "1.2">><<set $riddle to $riddle + 
-1>>
+    <div class="btn-group">
+      <<button "Falsch">>
+        <<replace "#heading">><h2>Falsch!</h2><</replace>>
+        <<timed 1s>>
+          <<goto "1.2">><<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
 
- <<button "Richtig">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>>
-      <<timed 1s>>
-        <<goto "1.2">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
+      <<button "Richtig">>
+        <<replace "#heading">><h2>Richtig! +10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "1.2">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
 
- <<button "Falsch">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>>
-      <<timed 1s>>
-        <<goto "1.2">><<set $riddle to $riddle + 
-1>>
+      <<button "Falsch">>
+        <<replace "#heading">><h2>Falsch!</h2><</replace>>
+        <<timed 1s>>
+          <<goto "1.2">>
+          <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
+    </div>
+  <</if>>
 
+  <<if $riddle is 3>>
+    <span id="heading">
+      <h2>Hier wird eine Frage stehen, welche die Spieler beantworten müssen.</h2>
+    </span>
 
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 3>>
-
- <span id="heading"><h2>Hier wird eine Frage stehen, welche die Spieler beantworten müssen.</h2></span>
-
-<div class="wrapper">
-</div>
-    
-<div class="btn-group">
-
- <<button "Richtig">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>>
-      <<timed 1s>>
-        <<goto "1.2">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
+    <div class="wrapper"></div>
+        
+    <div class="btn-group">
+      <<button "Richtig">>
+        <<replace "#heading">><h2>Richtig! +10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "1.2">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
-    
- <<button "Falsch">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>>
-      <<timed 1s>>
-        <<goto "1.2">><<set $riddle to $riddle + 
-1>>
+      <</button>>
+          
+      <<button "Falsch">>
+        <<replace "#heading">><h2>Falsch!</h2><</replace>>
+        <<timed 1s>>
+          <<goto "1.2">>
+          <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
 
- <<button "Falsch">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>>
-      <<timed 1s>>
-        <<goto "1.2">><<set $riddle to $riddle + 
-1>>
+      <<button "Falsch">>
+        <<replace "#heading">><h2>Falsch!</h2><</replace>>
+        <<timed 1s>>
+          <<goto "1.2">>
+          <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
+    </div>
+  <</if>>
 
-</div>
+  <<if $riddle is 4>>
+    <div class="wrapper">
+      <h1>Symbol
+      <br>gefunden</h1>
+      <p class="p2">A</p>
+    </div>
 
-<</if>>
-
-<<if $riddle is 4>>
-
-<div class="wrapper">
-  <h1>Symbol
-  <br>gefunden</h1>
-  <p class="p2">A</p>
-</div>
-
-<div class="btn-group">
-<<button "Weiter">>
-      <<goto "1.3">><<set $riddle to 
-1>><<set $letter4 to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-<</if>>
+    <div class="btn-group">
+      <<button "Weiter">>
+        <<goto "1.3">>
+        <<set $riddle to 1>>
+        <<set $letter4 to 1>>
+        <<audio "click" play>>  
+      <</button>>
+    </div>
+  <</if>>
 
 <</nobr>>
 
 
 :: 1.3 {"position":"1700,1000","size":"100,100"}
+<<script>>
+  window.video.showButtonsOnVideoEnd();
+<</script>>
 <<nobr>>
+  <video autoplay id="myVideo" playsinline>
+    <source src="videos/1.3.mp4" type="video/mp4">
+  </video>
 
-<video autoplay id="myVideo" playsinline>
-  <source src="videos/1.3.mp4" type="video/mp4">
-</video>
+  <div class="wrapper"></div>
 
-<div class="wrapper">
-</div>
-
-<div class="btn-group">
-<<timed 28s>>
-  <<button "Nochmal">>
-          <<goto "1.1">>	
-  <<audio "click" play>>	
-  <</button>>
-	<<button "Weiter">>
-    	<<goto "1.4">>	
-<<audio "click" play>>	
-<</button>>
-<</timed>>
-</div>
+  <div class="btn-group">
+    <<button "Nochmal">>
+      <<goto "1.1">>	
+      <<audio "click" play>>	
+    <</button>>
+    <<button "Weiter">>
+      <<goto "1.4">>	
+      <<audio "click" play>>	
+    <</button>>
+  </div>
 <</nobr>>
 
 
 :: 1.4 {"position":"1700,1200","size":"100,100"}
 <<nobr>>
-
-<div
- class="wrapper">
+  <div class="wrapper">
     <model-viewer src="models/witch/witch.glb" ar ar-modes="webxr 
-scene-viewer quick-look" auto-rotate poster="models/witch/poster.webp" 
-shadow-intensity="2" autoplay animation-name="CountAction_Finger 
-Tapping" environment-image="models/hanging/music_hall_01_1k.hdr" 
-shadow-softness="0" camera-target="0m 0m 0m">
-        <div class="progress-bar hide" slot="progress-bar">
-            <div class="update-bar"></div>
-        </div>
-        <button slot="ar-button" id="ar-button">
-            In der Umgebung platzieren
-        </button>
-        <div id="ar-prompt">
-            <img 
-src="https://modelviewer.dev/shared-assets/icons/hand.png">
-        </div>
+      scene-viewer quick-look" auto-rotate poster="models/witch/poster.webp" 
+      shadow-intensity="2" autoplay animation-name="CountAction_Finger 
+      Tapping" environment-image="models/hanging/music_hall_01_1k.hdr" 
+      shadow-softness="0" camera-target="0m 0m 0m">
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">
+          In der Umgebung platzieren
+      </button>
+      <div id="ar-prompt">
+        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+      </div>
     </model-viewer>
-</div>
+  </div>
 
-<div class="btn-group">
-<<button "Weiter">>
-      <<goto "1.5">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
+  <div class="btn-group">
+    <<button "Weiter">>
+      <<goto "1.5">>
+      <<set $riddle to 1>>
+      <<audio "click" play>>  
+    <</button>>
+  </div>
 <</nobr>>
 
 
 :: 1.5 {"position":"1700,1400","size":"100,100"}
+<<script>>
+  window.video.showButtonsOnVideoEnd();
+<</script>>
 <<nobr>>
+  <<audio ":playing:" stop>>
 
-<<audio ":playing:" stop>>
+  <video autoplay id="myVideo" playsinline>
+    <source src="videos/1.5.mp4" type="video/mp4">
+  </video>
 
-<video autoplay id="myVideo" playsinline>
-  <source src="videos/1.5.mp4" type="video/mp4">
-</video>
+  <div class="wrapper"></div>
 
-<div class="wrapper">
-</div>
-
-<div class="btn-group">
-<<timed 22s>>
-  <<button "Nochmal">>
-          <<goto "1.5">>	
-  <<audio "click" play>>	
-  <</button>>
-	<<button "Weiter">>
-    	<<goto "ende.1">>	
-<<audio "click" play>>	
-<</button>>
-<</timed>>
-</div>
+  <div class="btn-group">
+    <<button "Nochmal">>
+      <<goto "1.5">>	
+      <<audio "click" play>>	
+    <</button>>
+    <<button "Weiter">>
+      <<goto "ende.1">>	
+      <<audio "click" play>>	
+    <</button>>
+  </div>
 <</nobr>>
 
 
@@ -2859,24 +2832,23 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 
 :: anruf {"position":"700,800","size":"100,100"}
 <<nobr>>
+  <script>
+    $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
+  </script>
 
-<script>
-  $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
-</script>
+  <<audio "ring" loop play>>
 
-<<audio "ring" loop play>>
+  <div class="wrapper">
+    <h1>Anruf</h1>
+    <img src="images/holger.png" class="image1" />
+  </div>
 
-<div class="wrapper">
-<h1>Anruf</h1>
-<img src="images/holger.png" class="image1" />
-
-</div>
-
-<div class="btn-group">
-  <<button "Annehmen">>
-          <<goto "holger">><<audio "click" play>>	
-  <</button>>
-</div>
+  <div class="btn-group">
+    <<button "Annehmen">>
+      <<goto "holger">>
+      <<audio "click" play>>	
+    <</button>>
+  </div>
 <</nobr>>
 
 
@@ -2930,16 +2902,13 @@ Die Schnitzeljagd findet im öffentlichen Raum statt. Bitte nimm Rücksicht auf 
 
 :: ende.1 {"position":"1100,600","size":"100,100"}
 <<nobr>>
+  <<set $ende to 1>>
 
-<<set $ende to 1>>
+  <div class="wrapper">
+    <h1>Intro Ende</h1>
+  </div>
 
-<div class="wrapper">
-<h1>Intro Ende</h1>
-</div>
-
-<div class="btn-group">
-
-</div>
+  <div class="btn-group"></div>
 <</nobr>>
 
 
@@ -3102,31 +3071,32 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 
 :: holger {"position":"700,1000","size":"100,100"}
+<<script>>
+  window.video.showButtonsOnVideoEnd();
+<</script>>
 <<nobr>>
+  <<audio ":playing:" stop>>
 
-<video autoplay id="myVideo" playsinline>
-  <source src="videos/holger.mp4" type="video/mp4">
-</video>
+  <video autoplay id="myVideo" playsinline>
+    <source src="videos/holger.mp4" type="video/mp4">
+  </video>
 
-<div class="wrapper">
-</div>
+  <div class="wrapper"></div>
 
-<div class="btn-group">
-<<timed 26s>>
-  <<button "Zurück">>
-          <<goto "anruf">>	
-  <<audio "click" play>>	
-  <</button>>
-  <<button "Nochmal">>
-          <<goto "holger">>	
-  <<audio "click" play>>	
-  <</button>>
-	<<button "Ja">>
-    	<<goto "rallye">>	
-<<audio "click" play>>	
-<</button>>
-<</timed>>
-</div>
+  <div class="btn-group">
+    <<button "Zurück">>
+      <<goto "anruf">>	
+      <<audio "click" play>>	
+    <</button>>
+    <<button "Nochmal">>
+      <<goto "holger">>	
+      <<audio "click" play>>	
+    <</button>>
+    <<button "Ja">>
+      <<goto "rallye">>	
+      <<audio "click" play>>	
+    <</button>>
+  </div>
 <</nobr>>
 
 
@@ -3146,23 +3116,22 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 <<script>>
   $(document).one(":passagedisplay", function() {
     setup.mapboxLoaded.then(function () {
-      mapboxgl.accessToken = State.variables.accessToken
+      mapboxgl.accessToken = State.variables.accessToken;
 
-      var map = new mapboxgl.Map({
+      const map = new mapboxgl.Map({
         container: 'map',
           style: State.variables.style,
       });
 
-      var geolocate = new mapboxgl.GeolocateControl(window.geolocation.getGeolocateControl());
+      const geolocate = new mapboxgl.GeolocateControl(window.geolocation.getGeolocateControl());
 
       map.addControl(geolocate);
 
-      var remainingFences = State.variables.fences.filter(f => f.alreadyEntered === false)
+      const remainingFences = State.variables.fences.filter(f => f.alreadyEntered === false);
 
       geolocate.on('geolocate', ({ coords }) => {
-        const lat = coords.latitude
-        const lon = coords.longitude
-        // console.log(`Koordinaten : ${lat}; ${lon}`);
+        const lat = coords.latitude;
+        const lon = coords.longitude;
 
         for (const fence of remainingFences) {
           if (window.geolocation.inside(fence.latitude,fence.longitude,fence.radius,lat, lon)) {
@@ -3173,64 +3142,64 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
               State.variables.fences.find(f => f.id === fence.id).alreadyEntered = true;          
               switch (fence.id) {
                 case 'johannistorturm':
-                  $.wiki('<<goto "1.1">>')
+                  $.wiki('<<goto "1.1">>');
                   break;
                 case 'marsfeld':
-                  $.wiki('<<goto "2.1">>')
+                  $.wiki('<<goto "2.1">>');
                   break;
                 case 'grauer_hof':
-                  $.wiki('<<goto "3.1">>')
+                  $.wiki('<<goto "3.1">>');
                   break;
                 case 'markt':
-                  $.wiki('<<goto "4.1">>')
+                  $.wiki('<<goto "4.1">>');
                   break;
                 case 'holzmarkt':
-                  $.wiki('<<goto "5.1">>')
+                  $.wiki('<<goto "5.1">>');
                   break;
                 case 'halken':
-                  $.wiki('<<goto "6.1">>')
+                  $.wiki('<<goto "6.1">>');
                   break;
                 case 'rabenturm':
-                  $.wiki('<<goto "7.1">>')
+                  $.wiki('<<goto "7.1">>');
                   break;
                 case 'ozelot':
-                  $.wiki('<<goto "8.1">>')
+                  $.wiki('<<goto "8.1">>');
                   break;
                 case 'pferd':
-                  $.wiki('<<goto "9.1">>')
+                  $.wiki('<<goto "9.1">>');
                   break;
                 case 'schildkröte':
-                  $.wiki('<<goto "10.1">>')
+                  $.wiki('<<goto "10.1">>');
                   break;
                 case 'schlange':
-                  $.wiki('<<goto "11.1">>')
+                  $.wiki('<<goto "11.1">>');
                   break;
                 case 'schwein':
-                  $.wiki('<<goto "12.1">>')
+                  $.wiki('<<goto "12.1">>');
                   break;
                 case 'truthahn':
-                  $.wiki('<<goto "13.1">>')
+                  $.wiki('<<goto "13.1">>');
                   break;
                 case 'zebra':
-                  $.wiki('<<goto "14.1">>')
+                  $.wiki('<<goto "14.1">>');
                   break;
                 case 'affe':
-                  $.wiki('<<goto "15.1">>')
+                  $.wiki('<<goto "15.1">>');
                   break;
                 case 'eule':
-                  $.wiki('<<goto "16.1">>')
+                  $.wiki('<<goto "16.1">>');
                   break;
                 case 'gazelle':
-                  $.wiki('<<goto "17.1">>')
+                  $.wiki('<<goto "17.1">>');
                   break;
                 case 'katze':
-                  $.wiki('<<goto "18.1">>')
+                  $.wiki('<<goto "18.1">>');
                   break;
                 case 'krokodil':
-                  $.wiki('<<goto "19.1">>')
+                  $.wiki('<<goto "19.1">>');
                   break;
                 case 'lama':
-                  $.wiki('<<goto "20.1">>')
+                  $.wiki('<<goto "20.1">>');
                   break;
                 default:
                   console.log(`${fence.id} not found`);
@@ -3247,7 +3216,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
       map.on('load', () => {
         renderMap();
         $(".mapboxgl-ctrl-geolocate").click();
-      })
+      });
 
       function renderMap() {
         map.resize();
@@ -3265,7 +3234,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
             }
           });
         }
-      }
+      };
     })
   });
 <</script>>
@@ -3323,33 +3292,32 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 
 :: multiplayer {"position":"700,1400","size":"100,100"}
+<<script>>
+  window.video.showButtonsOnVideoEnd();
+<</script>>
 <<nobr>>
+  <<audio ":playing:" stop>>
 
-<<audio ":playing:" stop>>
+  <video autoplay id="myVideo" playsinline>
+    <source src="videos/mehrspieler.mp4" type="video/mp4">
+  </video>
 
-<video autoplay id="myVideo" playsinline>
-  <source src="videos/mehrspieler.mp4" type="video/mp4">
-</video>
+  <div class="wrapper"></div>
 
-<div class="wrapper">
-</div>
-
-<div class="btn-group">
-<<timed 16s>>
-	<<button "Nochmal">>
-    	<<goto "multiplayer">>	
-<<audio "click" play>>	
-<</button>>
-	<<button "<3">>
-    	<<goto "start">>	
-<<audio "click" play>>	
-<</button>>
-	<<button ">3">>
-    	<<goto "teams">>	
-<<audio "click" play>>	
-<</button>>
-<</timed>>
-</div>
+  <div class="btn-group">
+    <<button "Nochmal">>
+      <<goto "multiplayer">>	
+      <<audio "click" play>>	
+    <</button>>
+    <<button "<3">>
+      <<goto "start">>	
+      <<audio "click" play>>	
+    <</button>>
+    <<button ">3">>
+      <<goto "teams">>	
+      <<audio "click" play>>	
+    <</button>>
+  </div>
 <</nobr>>
 
 
@@ -3371,33 +3339,33 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 
 :: rallye {"position":"700,1200","size":"100,100"}
+<<script>>
+  window.video.showButtonsOnVideoEnd();
+<</script>>
 <<nobr>>
+  <<audio ":playing:" stop>>
 
-<<audio ":playing:" stop>>
+  <video autoplay id="myVideo" playsinline>
+    <source src="videos/rallye.mp4" type="video/mp4">
+  </video>
 
-<video autoplay id="myVideo" playsinline>
-  <source src="videos/rallye.mp4" type="video/mp4">
-</video>
+  <div class="wrapper">
+  </div>
 
-<div class="wrapper">
-</div>
-
-<div class="btn-group">
-<<timed 28s>>
-	<<button "Zurück">>
-    	<<goto "holger">>	
-<<audio "click" play>>	
-<</button>>
-	<<button "Nochmal">>
-    	<<goto "rallye">>	
-<<audio "click" play>>	
-<</button>>
-	<<button "Ja">>
-    	<<goto "multiplayer">>	
-<<audio "click" play>>	
-<</button>>
-<</timed>>
-</div>
+  <div class="btn-group">
+    <<button "Zurück">>
+      <<goto "holger">>	
+      <<audio "click" play>>	
+    <</button>>
+    <<button "Nochmal">>
+      <<goto "rallye">>	
+    <<audio "click" play>>	
+    <</button>>
+    <<button "Ja">>
+      <<goto "multiplayer">>	
+      <<audio "click" play>>	
+    <</button>>
+  </div>
 <</nobr>>
 
 :: intro {"position":"500,400","size":"100,100"}
@@ -3720,33 +3688,32 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 
 
 :: start {"position":"700,1800","size":"100,100"}
+<<script>>
+  window.video.showButtonsOnVideoEnd();
+<</script>>
 <<nobr>>
+  <<audio ":playing:" stop>>
 
-<<audio ":playing:" stop>>
+  <video autoplay id="myVideo" playsinline>
+    <source src="videos/start.mp4" type="video/mp4">
+  </video>
 
-<video autoplay id="myVideo" playsinline>
-  <source src="videos/start.mp4" type="video/mp4">
-</video>
+  <div class="wrapper"></div>
 
-<div class="wrapper">
-</div>
-
-<div class="btn-group">
-<<timed 12s>>
-	<<button "Zurück">>
-    	<<goto "multiplayer">>	
-<<audio "click" play>>	
-<</button>>
-	<<button "Nochmal">>
-    	<<goto "start">>	
-<<audio "click" play>>	
-<</button>>
-	<<button "Los">>
-    	<<goto "map.init">>	
-<<audio "click" play>>	
-<</button>>
-<</timed>>
-</div>
+  <div class="btn-group">
+    <<button "Zurück">>
+      <<goto "multiplayer">>	
+      <<audio "click" play>>	
+    <</button>>
+    <<button "Nochmal">>
+      <<goto "start">>	
+      <<audio "click" play>>	
+    <</button>>
+    <<button "Los">>
+      <<goto "map.init">>	
+      <<audio "click" play>>	
+    <</button>>
+  </div>
 <</nobr>>
 
 
@@ -3851,36 +3818,32 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 
 
 :: teams {"position":"700,1600","size":"100,100"}
+<<script>>
+  window.video.showButtonsOnVideoEnd();
+<</script>>
 <<nobr>>
+  <<audio ":playing:" stop>>
 
-<<audio ":playing:" stop>>
+  <video autoplay id="myVideo" playsinline>
+    <source src="videos/teams.mp4" type="video/mp4">
+  </video>
 
-<video autoplay id="myVideo" playsinline>
-  <source src="videos/teams.mp4" type="video/mp4">
-</video>
+  <div class="wrapper"></div>
 
-<div class="wrapper">
-<h1>
-
-</h1>
-</div>
-
-<div class="btn-group">
-<<timed 12s>>
-	<<button "Zurück">>
-    	<<goto "multiplayer">>	
-<<audio "click" play>>	
-<</button>>
-	<<button "Nochmal">>
-    	<<goto "teams">>	
-<<audio "click" play>>	
-<</button>>
-	<<button "Weiter">>
-    	<<goto "start">>	
-<<audio "click" play>>	
-<</button>>
-<</timed>>
-</div>
+  <div class="btn-group">
+    <<button "Zurück">>
+      <<goto "multiplayer">>	
+      <<audio "click" play>>	
+    <</button>>
+    <<button "Nochmal">>
+      <<goto "teams">>	
+      <<audio "click" play>>	
+    <</button>>
+    <<button "Weiter">>
+      <<goto "start">>	
+      <<audio "click" play>>	
+    <</button>>
+  </div>
 <</nobr>>
 
 
@@ -3909,6 +3872,7 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 :: StoryScript [script]
 /* Autosave */
 Config.saves.autosave = ["autosave"];
+Config.passages.nobr = true;
 
 /* Mapbox und Javascript wird geladen */
 importStyles("https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css");
@@ -4158,6 +4122,19 @@ setup.storyinit = function () {
     }
 
   };
+
+  window.video = {
+    showButtonsOnVideoEnd: function() {
+      $(document).on(":passagedisplay", function() {
+        const video = document.querySelector('video');
+        const btnGroup = document.querySelector('.btn-group');
+        btnGroup.style.display = 'none';
+        video.onended = (event) => {
+          btnGroup.style.display = 'inline'
+        };
+      });
+    }
+  }
 
 }());
 
