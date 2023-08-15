@@ -3384,45 +3384,41 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
     window.deferredPrompt = event;
   });
 <</script>>
-<<nobr>>
-  <div class="wrapper">
-    <h1>Spuk &
-    <br>Schreck</h1>
-    <h2>Die Geisterjagd durch den 
-    <br>
-    Leipziger Friedenspark. 
-    </h2>
-  </div>
+<div class="wrapper">
+  <h1>Spuk &
+  <br>Schreck</h1>
+  <h2>Die Geisterjagd durch den 
+  <br>
+  Leipziger Friedenspark. 
+  </h2>
+</div>
 
-  <div class="btn-group">
-    <button class="next">[[Weiter|setup.1]]</button>
-  </div>
-<</nobr>>
+<div class="btn-group">
+  <button class="next">[[Weiter|setup.1]]</button>
+</div>
 
 :: setup.1 {"position":"500,600","size":"100,100"}
 <<script>>
   $('#story').attr('style', 'background-image:url(images/splash.jpg)');
 <</script>>
-<<nobr>>
-  <div class="wrapper">
-    <h1>Setup 1 von 4</h1>
-    <h2>
-      <<if State.variables.is_safari>>
-        Du benutzt Safari. Wunderbar. 
-      <<elseif State.variables.is_chrome>>
-        Du benutzt Chrome. Wunderbar. 
-      <<else>>
-        Bitte benutze entweder den Chrome Browser (Android) oder Safari (iOS) um diesen Link zu öffnen. 
-      <</if>>
-    </h2>
-  </div>
-
-  <div class="btn-group">
-    <<if State.variables.is_safari or State.variables.is_chrome>>
-      <button class="next">[[Weiter|setup.2]]</button>
+<div class="wrapper">
+  <h1>Setup 1 von 4</h1>
+  <h2>
+    <<if State.variables.is_safari>>
+      Du benutzt Safari. Wunderbar. 
+    <<elseif State.variables.is_chrome>>
+      Du benutzt Chrome. Wunderbar. 
+    <<else>>
+      Bitte benutze entweder den Chrome Browser (Android) oder Safari (iOS) um diesen Link zu öffnen. 
     <</if>>
-  </div>
-<</nobr>>
+  </h2>
+</div>
+
+<div class="btn-group">
+  <<if State.variables.is_safari or State.variables.is_chrome>>
+    <button class="next">[[Weiter|setup.2]]</button>
+  <</if>>
+</div>
 
 :: setup.2 {"position":"500,800","size":"100,100"}
 <<script>>
@@ -3496,21 +3492,19 @@ $(document).one(":passagedisplay", function() {
   };
 });
 <</script>>
-<<nobr>>
-  <div id="map"></div>
+<div id="map"></div>
 
-  <div class="wrapper">
-    <h1>Setup 2 von 4</h1>
-    <h2>Wir benötigen deinen Standort, um sicherzustellen, dass du an der richtigen Stelle stehst, damit du die Rätsel lösen kannst.</h2>
-  </div>
+<div class="wrapper">
+  <h1>Setup 2 von 4</h1>
+  <h2>Wir benötigen deinen Standort, um sicherzustellen, dass du an der richtigen Stelle stehst, damit du die Rätsel lösen kannst.</h2>
+</div>
 
-  <div class="btn-group">
-    <button class="geolocation">Standort freigeben</button>
-    <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices">Einstellungen öffnen</a></button>
-    <button class="help">Hilfe bei der Freigabe</button>
-    <button class="next">[[Weiter|setup.3]]</button>
-  </div>
-<</nobr>>
+<div class="btn-group">
+  <button class="geolocation">Standort freigeben</button>
+  <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices">Einstellungen öffnen</a></button>
+  <button class="help">Hilfe bei der Freigabe</button>
+  <button class="next">[[Weiter|setup.3]]</button>
+</div>
 
 :: setup.3 {"position":"500,1000","size":"100,100"}
 <<script>>
@@ -3559,32 +3553,30 @@ $(document).one(":passagedisplay", function() {
     }
   });
 <</script>>
-<<nobr>>
-  <div class="wrapper">
-    <h1>Setup 3 von 4</h1>
-    <h2>Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.
-    </h2>
-    <model-viewer id="model-viewer" src="models/witch/witch.glb" ar ar-modes="webxr 
-      scene-viewer quick-look" auto-rotate poster="models/witch/poster.webp" 
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a witch with graveyard" camera-controls touch-action="pan-y">
-      <div class="progress-bar hide" slot="progress-bar">
-        <div class="update-bar"></div>
-      </div>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-      <div id="ar-prompt">
-        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
-      </div>
-    </model-viewer>
-  </div>
+<div class="wrapper">
+  <h1>Setup 3 von 4</h1>
+  <h2>Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.
+  </h2>
+  <model-viewer id="model-viewer" src="models/witch/witch.glb" ar ar-modes="webxr 
+    scene-viewer quick-look" auto-rotate poster="models/witch/poster.webp" 
+    autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
+    alt="A 3D model of a witch with graveyard" camera-controls touch-action="pan-y">
+    <div class="progress-bar hide" slot="progress-bar">
+      <div class="update-bar"></div>
+    </div>
+    <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+    <div id="ar-prompt">
+      <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+    </div>
+  </model-viewer>
+</div>
 
-  <div class="btn-group">
-    <button class="camera">Kamera freigeben</button>
-    <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_Camera">Einstellungen öffnen</a></button>
-    <button class="help">Hilfe bei der Freigabe</button>
-    <button class="next">[[Weiter|setup.4]]</button>
-  </div>
-<</nobr>>
+<div class="btn-group">
+  <button class="camera">Kamera freigeben</button>
+  <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_Camera">Einstellungen öffnen</a></button>
+  <button class="help">Hilfe bei der Freigabe</button>
+  <button class="next">[[Weiter|setup.4]]</button>
+</div>
 
 :: setup.4 {"position":"500,1200","size":"100,100"}
 <<script>>
@@ -3622,18 +3614,16 @@ $(document).one(":passagedisplay", function() {
   });
  });
 <</script>>
-<<nobr>>
-  <div class="wrapper">
-    <h1>Setup 4 von 4</h1>
-    <h2>Installiere die App, um eine bessere Nutzererfahrung zu haben.</h2>
-  </div>
+<div class="wrapper">
+  <h1>Setup 4 von 4</h1>
+  <h2>Installiere die App, um eine bessere Nutzererfahrung zu haben.</h2>
+</div>
 
-  <div class="btn-group">
-    <button class="install">App installieren</button>
-    <button class="open"><a href='https://digitalwarenkombinat.github.io/ghosthunt/' target='_blank'>App öffnen</a></button>
-    <button class="next">[[Jetzt nicht|splash]]</button>
-  </div>
-<</nobr>>
+<div class="btn-group">
+  <button class="install">App installieren</button>
+  <button class="open"><a href='https://digitalwarenkombinat.github.io/ghosthunt/' target='_blank'>App öffnen</a></button>
+  <button class="next">[[Jetzt nicht|splash]]</button>
+</div>
 
 :: spiel {"position":"700,3200","size":"100,100"}
 <<nobr>>
