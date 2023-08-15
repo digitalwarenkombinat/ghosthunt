@@ -4118,9 +4118,11 @@ setup.storyinit = function () {
       $(document).on(":passagedisplay", function() {
         const video = document.querySelector('video');
         const btnGroup = document.querySelector('.btn-group');
-        btnGroup.style.display = 'none';
-        video.onended = (event) => {
-          btnGroup.style.display = 'inline'
+        if (btnGroup) btnGroup.style.display = 'none';
+        if (video) {
+          video.onended = (event) => {
+            if (btnGroup) btnGroup.style.display = 'inline';
+          };
         };
       });
     }
