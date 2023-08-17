@@ -21,7 +21,7 @@ Spuk & Schreck
 <<script>>
   window.video.showButtonsOnVideoEnd();
 <</script>>
-<<nobr>>
+
   <video autoplay id="myVideo" playsinline>
     <source src="videos/1.1.mp4" type="video/mp4">
   </video>
@@ -38,12 +38,10 @@ Spuk & Schreck
       <<audio "click" play>>	
     <</button>>
   </div>
-<</nobr>>
 
 
 :: 1.2 {"position":"1700,800","size":"100,100"}
-<<nobr>>
-  <<if $riddle is 1>>
+<<if $riddle is 1>>
     <script>
       $('#story').attr('style', 'background-image:url(images/1.1.jpg)');
     </script>
@@ -182,14 +180,12 @@ Spuk & Schreck
     </div>
   <</if>>
 
-<</nobr>>
-
 
 :: 1.3 {"position":"1700,1000","size":"100,100"}
 <<script>>
   window.video.showButtonsOnVideoEnd();
 <</script>>
-<<nobr>>
+
   <video autoplay id="myVideo" playsinline>
     <source src="videos/1.3.mp4" type="video/mp4">
   </video>
@@ -206,12 +202,10 @@ Spuk & Schreck
       <<audio "click" play>>	
     <</button>>
   </div>
-<</nobr>>
 
 
 :: 1.4 {"position":"1700,1200","size":"100,100"}
-<<nobr>>
-  <div class="wrapper">
+<div class="wrapper">
     <model-viewer src="models/witch/witch.glb" ar ar-modes="webxr 
       scene-viewer quick-look" auto-rotate poster="models/witch/poster.webp" 
       shadow-intensity="2" autoplay animation-name="CountAction_Finger 
@@ -236,14 +230,13 @@ Spuk & Schreck
       <<audio "click" play>>  
     <</button>>
   </div>
-<</nobr>>
 
 
 :: 1.5 {"position":"1700,1400","size":"100,100"}
 <<script>>
   window.video.showButtonsOnVideoEnd();
 <</script>>
-<<nobr>>
+
   <<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
@@ -262,12 +255,9 @@ Spuk & Schreck
       <<audio "click" play>>	
     <</button>>
   </div>
-<</nobr>>
 
 
 :: 10.1 {"position":"3498,601","size":"100,100"}
-<<nobr>>
-
 <<set $schildkroete to 1>>
 
 <<audio "success" play>>
@@ -298,12 +288,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 11.1 {"position":"3700,600","size":"100,100"}
-<<nobr>>
-
 <<set $ozelot to 1>>
 
 <<audio "success" play>>
@@ -334,12 +320,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 12.1 {"position":"3900,598","size":"100,100"}
-<<nobr>>
-
 <<set $schwein to 1>>
 
 <<audio "success" play>>
@@ -370,12 +352,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 13.1 {"position":"4100,600","size":"100,100"}
-<<nobr>>
-
 <<set $truthahn to 1>>
 
 <<audio "success" play>>
@@ -406,12 +384,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 14.1 {"position":"4300,600","size":"100,100"}
-<<nobr>>
-
 <<set $zebra to 1>>
 
 <<audio "success" play>>
@@ -442,12 +416,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 15.1 {"position":"4500,600","size":"100,100"}
-<<nobr>>
-
 <<set $affe to 1>>
 
 <div class="wrapper">
@@ -476,12 +446,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 16.1 {"position":"4700,600","size":"100,100"}
-<<nobr>>
-
 <<set $eule to 1>>
 
 <<audio "success" play>>
@@ -512,12 +478,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 17.1 {"position":"4900,600","size":"100,100"}
-<<nobr>>
-
 <<set $gazelle to 1>>
 
 <<audio "success" play>>
@@ -548,12 +510,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 18.1 {"position":"5100,600","size":"100,100"}
-<<nobr>>
-
 <<set $katze to 1>>
 
 <<audio "success" play>>
@@ -584,12 +542,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 19.1 {"position":"5300,600","size":"100,100"}
-<<nobr>>
-
 <<set $krokodil to 1>>
 
 <<audio "success" play>>
@@ -620,14 +574,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 2.1 {"position":"1900,600","size":"100,100"}
-<<nobr>>
-
-
-
 <div class="wrapper">
 <h1>Turm am Marsfeld</h1>
 <h2>Löse die Rätsel, um einen Geheimbuchstaben zu bekommen.</h2>
@@ -641,12 +589,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 2.2 {"position":"1900,800","size":"100,100"}
-<<nobr>>
-
 <video autoplay loop id="myVideo" playsinline>
   <source src="videos/2.2.mp4" type="video/mp4">
 </video>
@@ -664,14 +608,8 @@ poster="images/loading.png"
 
 </div>
 
-<</nobr>>
-
 
 :: 2.3 {"position":"1900,998","size":"100,100"}
-<<nobr>>
-
-
-
 <<if
  $riddle is 1>>
 <h1>Rätsel</h1>
@@ -839,12 +777,8 @@ play>>
 
 <</if>>
 
-<</nobr>>
-
 
 :: 20.1 {"position":"5500,600","size":"100,100"}
-<<nobr>>
-
 <<set $lama to 1>>
 
 <<audio "success" play>>
@@ -875,14 +809,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 3.1 {"position":"2100,600","size":"100,100"}
-<<nobr>>
-
-
-
 <div class="wrapper">
 <h1>Grauer Hof</h1>
 <h2>Löse die Rätsel, um einen Geheimbuchstaben zu bekommen.</h2>
@@ -896,12 +824,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 3.2 {"position":"2100,800","size":"100,100"}
-<<nobr>>
-
 <video autoplay loop id="myVideo" playsinline>
   <source src="videos/3.2.mp4" type="video/mp4">
 </video>
@@ -919,14 +843,8 @@ poster="images/loading.png"
 
 </div>
 
-<</nobr>>
-
 
 :: 3.3 {"position":"2100,1000","size":"100,100"}
-<<nobr>>
-
-
-
 <<if
  $riddle is 1>>
 <h1>Rätsel</h1>
@@ -1094,14 +1012,8 @@ play>>
 
 <</if>>
 
-<</nobr>>
-
 
 :: 4.1 {"position":"2301,600","size":"100,100"}
-<<nobr>>
-
-
-
 <div class="wrapper">
 <h1>Markt</h1>
 <h2>Löse die Rätsel, um einen Geheimbuchstaben zu bekommen.</h2>
@@ -1115,12 +1027,8 @@ play>>
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 4.2 {"position":"2300,800","size":"100,100"}
-<<nobr>>
-
 <video autoplay loop id="myVideo" playsinline>
   <source src="videos/4.2.mp4" type="video/mp4">
 </video>
@@ -1137,14 +1045,8 @@ play>>
 
 </div>
 
-<</nobr>>
-
 
 :: 4.3 {"position":"2300,1000","size":"100,100"}
-<<nobr>>
-
-
-
 <<if
  $riddle is 1>>
 <h1>Rätsel</h1>
@@ -1311,14 +1213,8 @@ play>>
 
 <</if>>
 
-<</nobr>>
-
 
 :: 5.1 {"position":"2500,600","size":"100,100"}
-<<nobr>>
-
-
-
 <div class="wrapper">
 <h1>Holzmarkt</h1>
 <h2>Löse die Rätsel, um einen Geheimbuchstaben zu bekommen.</h2>
@@ -1332,12 +1228,8 @@ play>>
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 5.2 {"position":"2500,800","size":"100,100"}
-<<nobr>>
-
 <video autoplay loop id="myVideo" playsinline>
   <source src="videos/5.2.mp4" type="video/mp4">
 </video>
@@ -1355,14 +1247,8 @@ play>>
 
 </div>
 
-<</nobr>>
-
 
 :: 5.3 {"position":"2500,1000","size":"100,100"}
-<<nobr>>
-
-
-
 <<if
  $riddle is 1>>
 <h1>Rätsel</h1>
@@ -1525,14 +1411,8 @@ play>>
 
 <</if>>
 
-<</nobr>>
-
 
 :: 6.1 {"position":"2700,600","size":"100,100"}
-<<nobr>>
-
-
-
 <div class="wrapper">
 <h1>Großer Halken</h1>
 <h2>Löse die Rätsel, um einen Geheimbuchstaben zu bekommen.</h2>
@@ -1546,12 +1426,8 @@ play>>
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 6.2 {"position":"2700,800","size":"100,100"}
-<<nobr>>
-
 <video autoplay loop id="myVideo" playsinline>
   <source src="videos/6.2.mp4" type="video/mp4">
 </video>
@@ -1569,14 +1445,8 @@ play>>
 
 </div>
 
-<</nobr>>
-
 
 :: 6.3 {"position":"2700,1001","size":"100,100"}
-<<nobr>>
-
-
-
 <<if
  $riddle is 1>>
 <h1>Rätsel</h1>
@@ -1741,14 +1611,8 @@ play>>
 
 <</if>>
 
-<</nobr>>
-
 
 :: 7.1 {"position":"2900,600","size":"100,100"}
-<<nobr>>
-
-
-
 <div class="wrapper">
 <h1>Rabenturm</h1>
 <h2>Löse die Rätsel, um einen Geheimbuchstaben zu bekommen.</h2>
@@ -1762,12 +1626,8 @@ play>>
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 7.2 {"position":"2900,801","size":"100,100"}
-<<nobr>>
-
 <video autoplay loop id="myVideo" playsinline>
   <source src="videos/7.2.mp4" type="video/mp4">
 </video>
@@ -1785,14 +1645,8 @@ play>>
 
 </div>
 
-<</nobr>>
-
 
 :: 7.3 {"position":"2900,1000","size":"100,100"}
-<<nobr>>
-
-
-
 <<if
  $riddle is 1>>
 <h1>Rätsel</h1>
@@ -1954,12 +1808,8 @@ play>>
 
 <</if>>
 
-<</nobr>>
-
 
 :: 8.1 {"position":"3100,600","size":"100,100"}
-<<nobr>>
-
 <<set $schlange to 1>>
 
 <script>
@@ -1994,12 +1844,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: 9.1 {"position":"3300,600","size":"100,100"}
-<<nobr>>
-
 <<set $pferd to 1>>
 
 <<audio "success" play>>
@@ -2030,12 +1876,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: AR {"position":"500,2800","size":"100,100"}
-<<nobr>>
-
 <div
  class="wrapper">
 <h1>Geister Kamera</h1>
@@ -2061,12 +1903,9 @@ unsere Hausgeist sehen.
 <<audio "click" play>>	
 <</button>>
 </div>
-<</nobr>>
 
 
 :: AR.ModelViewer {"position":"500,3000","size":"100,100"}
-<<nobr>>
-
 <div
  class="wrapper">
 <h1>Model Viewer</h1>
@@ -2098,14 +1937,9 @@ src="https://modelviewer.dev/shared-assets/icons/hand.png">
 <<audio "click" play>>	
 <</button>>
 </div>
-<</nobr>>
 
 
 :: Hilfe {"position":"200,800","size":"100,100"}
-<<nobr>>
-
-
-
 <div
  class="wrapper">
   <h1>Hilfe</h1>
@@ -2142,14 +1976,8 @@ Umgebung lösen. Findet die Ort auf dem Bild und studiert sie genau. Dann
 
 </div>
 
-<</nobr>>
-
 
 :: Impressum {"position":"200,1000","size":"100,100"}
-<<nobr>>
-
-
-
 <div
  class="wrapper">
   <h1>Impressum</h1>
@@ -2478,12 +2306,8 @@ diesem Zweck verarbeiten.
 
 </div>
 
-<</nobr>>
-
 
 :: Inventar {"position":"200,600","size":"100,100"}
-<<nobr>>
-
 <div class="wrapper">
   <h1>Inventar</h1>
   <<if $affe is 1>>
@@ -2689,12 +2513,9 @@ shadow-softness="0" camera-target="0m 0m 0m">
 
 </div>
 
-<</nobr>>
-
 
 :: StoryCaption {"position":"800,200","size":"100,100"}
-<<nobr>>
-  <h1>Menu</h1>
+<h1>Menu</h1>
   <h2>Punkte</h2>
   <h3>$koinz / 210</h3>
   <h2>Symbole</h2>
@@ -2735,7 +2556,6 @@ shadow-softness="0" camera-target="0m 0m 0m">
     _
     <</if>>
   </p>
-<</nobr>>
 
 
 :: StoryHeader {"position":"600,200","size":"100,100"}
@@ -2831,8 +2651,7 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 
 
 :: anruf {"position":"700,800","size":"100,100"}
-<<nobr>>
-  <script>
+<script>
     $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
   </script>
 
@@ -2849,12 +2668,9 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
       <<audio "click" play>>	
     <</button>>
   </div>
-<</nobr>>
 
 
 :: dauer {"position":"375,3600","size":"100,100"}
-<<nobr>>
-
 <div
  class="wrapper">
 
@@ -2875,12 +2691,9 @@ Danach könnt ihr noch alle Tiere einsammeln, die ihr noch nicht gefunden
 <<audio "click" play>>	
 <</button>>
 </div>
-<</nobr>>
 
 
 :: disclaimer {"position":"700,3000","size":"100,100"}
-<<nobr>>
-
 <<audio "bg" play loop>>
 <div class="wrapper">
 <h1>Vorwort</h1>
@@ -2897,24 +2710,19 @@ Die Schnitzeljagd findet im öffentlichen Raum statt. Bitte nimm Rücksicht auf 
 <<audio "click" play>>	
 <</button>>
 </div>
-<</nobr>>
 
 
 :: ende.1 {"position":"1100,600","size":"100,100"}
-<<nobr>>
-  <<set $ende to 1>>
+<<set $ende to 1>>
 
   <div class="wrapper">
     <h1>Intro Ende</h1>
   </div>
 
   <div class="btn-group"></div>
-<</nobr>>
 
 
 :: ende.2 {"position":"1100,800","size":"100,100"}
-<<nobr>>
-
 <<set $flamingo to 1>>
 
 <<audio "success" play>>
@@ -2941,12 +2749,8 @@ poster="images/loading.png"
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: ende.3 {"position":"1100,1000","size":"100,100"}
-<<nobr>>
-
 <video autoplay loop id="myVideo" playsinline>
   <source src="videos/ende.3.mp4" type="video/mp4">
 </video>
@@ -2961,12 +2765,9 @@ poster="images/loading.png"
 <<audio "click" play>>
 <</button>>
 </div>
-<</nobr>>
 
 
 :: ende.4 {"position":"1100,1200","size":"100,100"}
-<<nobr>>
-
 <video autoplay loop id="myVideo" playsinline>
   <source src="videos/ende.4.mp4" type="video/mp4">
 </video>
@@ -2981,12 +2782,9 @@ poster="images/loading.png"
 <<audio "click" play>>
 <</button>>
 </div>
-<</nobr>>
 
 
 :: friedenspark {"position":"500,3200","size":"100,100"}
-<<nobr>>
-
 <video
  autoplay loop id="myVideo" playsinline>
   <source src="videos/demo.mp4" type="video/mp4">
@@ -3020,12 +2818,8 @@ der Abenddämmerung zu gehen. Da sind die Spukis am aktivsten.
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: gps {"position":"500,3400","size":"100,100"}
-<<nobr>>
-
 <video
  autoplay loop id="myVideo" playsinline>
   <source src="videos/demo.mp4" type="video/mp4">
@@ -3067,14 +2861,12 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: holger {"position":"700,1000","size":"100,100"}
 <<script>>
   window.video.showButtonsOnVideoEnd();
 <</script>>
-<<nobr>>
+
   <<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
@@ -3097,7 +2889,36 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
       <<audio "click" play>>	
     <</button>>
   </div>
-<</nobr>>
+
+
+:: intro {"position":"500,400","size":"100,100"}
+<<script>>
+  if (State.variables.is_pwa) {
+    $.wiki('<<goto "splash">>')
+  };
+
+  $('#story').attr('style', 'background-image:url(images/splash.jpg)');
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    /* Prevent the mini-infobar from appearing on mobile. */
+    event.preventDefault();
+    console.log('👍', 'beforeinstallprompt', event);
+    /* Stash the event so it can be triggered later. */
+    window.deferredPrompt = event;
+  });
+<</script>>
+<div class="wrapper">
+  <h1>Spuk &
+  <br>Schreck</h1>
+  <h2>Die Geisterjagd durch den 
+  <br>
+  Leipziger Friedenspark. 
+  </h2>
+</div>
+
+<div class="btn-group">
+  <button class="next">[[Weiter|setup.1]]</button>
+</div>
 
 
 :: map.init {"position":"1700,300","size":"100,100"}
@@ -3240,7 +3061,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 <</script>>
 
 <div class="btn-group">
-  <<nobr>>
+  
     <<if $maptip is 0>> 
       <span id="heading"><h2>Diese Karte ist euer Hauptbildschirm.</h2>
         <<button "Weiter">>
@@ -3263,14 +3084,12 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
         <</button>>
       </span>
     <</if>>
-  <</nobr>>
+  
 </div>
 
 
 :: menu {"position":"500,3600","size":"100,100"}
-<<nobr>>
-
-  <div class="wrapper">
+<div class="wrapper">
     <h1>Seitenmenü</h1>
     <h2>
     Über den Pfeil oben links öffnet Ihr das Seitenmenü.
@@ -3288,14 +3107,13 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
       <<audio "click" play>>	
     <</button>>
   </div>
-<</nobr>>
 
 
 :: multiplayer {"position":"700,1400","size":"100,100"}
 <<script>>
   window.video.showButtonsOnVideoEnd();
 <</script>>
-<<nobr>>
+
   <<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
@@ -3318,12 +3136,9 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
       <<audio "click" play>>	
     <</button>>
   </div>
-<</nobr>>
 
 
 :: musik {"position":"700,2800","size":"100,100"}
-<<nobr>>
-
 <div class="wrapper">
 <h1>Musik</h1>
 <h2>Wir spielen Musik. Du kannst die Lautstärke über dein Telefon regulieren.</h2>
@@ -3335,14 +3150,13 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 <<audio "click" play>>	
 <</button>>
 </div>
-<</nobr>>
 
 
 :: rallye {"position":"700,1200","size":"100,100"}
 <<script>>
   window.video.showButtonsOnVideoEnd();
 <</script>>
-<<nobr>>
+
   <<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
@@ -3366,36 +3180,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
       <<audio "click" play>>	
     <</button>>
   </div>
-<</nobr>>
 
-:: intro {"position":"500,400","size":"100,100"}
-<<script>>
-  if (State.variables.is_pwa) {
-    $.wiki('<<goto "splash">>')
-  };
-
-  $('#story').attr('style', 'background-image:url(images/splash.jpg)');
-
-  window.addEventListener('beforeinstallprompt', (event) => {
-    /* Prevent the mini-infobar from appearing on mobile. */
-    event.preventDefault();
-    console.log('👍', 'beforeinstallprompt', event);
-    /* Stash the event so it can be triggered later. */
-    window.deferredPrompt = event;
-  });
-<</script>>
-<div class="wrapper">
-  <h1>Spuk &
-  <br>Schreck</h1>
-  <h2>Die Geisterjagd durch den 
-  <br>
-  Leipziger Friedenspark. 
-  </h2>
-</div>
-
-<div class="btn-group">
-  <button class="next">[[Weiter|setup.1]]</button>
-</div>
 
 :: setup.1 {"position":"500,600","size":"100,100"}
 <<script>>
@@ -3419,6 +3204,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
     <button class="next">[[Weiter|setup.2]]</button>
   <</if>>
 </div>
+
 
 :: setup.2 {"position":"500,800","size":"100,100"}
 <<script>>
@@ -3506,6 +3292,7 @@ $(document).one(":passagedisplay", function() {
   <button class="next">[[Weiter|setup.3]]</button>
 </div>
 
+
 :: setup.3 {"position":"500,1000","size":"100,100"}
 <<script>>
   $(document).one(":passagedisplay", function() {
@@ -3578,6 +3365,7 @@ $(document).one(":passagedisplay", function() {
   <button class="next">[[Weiter|setup.4]]</button>
 </div>
 
+
 :: setup.4 {"position":"500,1200","size":"100,100"}
 <<script>>
 $(document).one(":passagedisplay", function() {
@@ -3625,9 +3413,8 @@ $(document).one(":passagedisplay", function() {
   <button class="next">[[Jetzt nicht|splash]]</button>
 </div>
 
-:: spiel {"position":"700,3200","size":"100,100"}
-<<nobr>>
 
+:: spiel {"position":"700,3200","size":"100,100"}
 <div
  class="wrapper">
 
@@ -3649,12 +3436,8 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 <</button>>
 </div>
 
-<</nobr>>
-
 
 :: splash {"position":"700,600","size":"100,100"}
-<<nobr>>
-
 <script>
   $('#story').attr('style', 'background-image:url(images/splash.jpg)');
 </script>
@@ -3674,14 +3457,12 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 <div class="btn-group">
 </div>
 
-<</nobr>>
-
 
 :: start {"position":"700,1800","size":"100,100"}
 <<script>>
   window.video.showButtonsOnVideoEnd();
 <</script>>
-<<nobr>>
+
   <<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
@@ -3704,12 +3485,9 @@ Ende die meisten Punkte und Tiere gesammelt hat.
       <<audio "click" play>>	
     <</button>>
   </div>
-<</nobr>>
 
 
 :: start.1 {"position":"900,800","size":"100,100"}
-<<nobr>>
-
 <video autoplay loop id="myVideo" playsinline>
   <source src="videos/start.1.mp4" type="video/mp4">
 </video>
@@ -3724,12 +3502,9 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 <<audio "click" play>>
 <</button>>
 </div>
-<</nobr>>
 
 
 :: start.2 {"position":"900,1000","size":"100,100"}
-<<nobr>>
-
 <video autoplay loop id="myVideo" playsinline>
   <source src="videos/start.2.mp4" type="video/mp4">
 </video>
@@ -3744,12 +3519,9 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 <<audio "click" play>>
 <</button>>
 </div>
-<</nobr>>
 
 
 :: start.3 {"position":"900,1200","size":"100,100"}
-<<nobr>>
-
 <video autoplay loop id="myVideo" playsinline>
   <source src="videos/start.3.mp4" type="video/mp4">
 </video>
@@ -3764,12 +3536,9 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 <<audio "click" play>>
 <</button>>
 </div>
-<</nobr>>
 
 
 :: start.4 {"position":"900,1400","size":"100,100"}
-<<nobr>>
-
 <video autoplay loop id="myVideo" playsinline>
   <source src="videos/start.4.mp4" type="video/mp4">
 </video>
@@ -3784,12 +3553,9 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 <<audio "click" play>>
 <</button>>
 </div>
-<</nobr>>
 
 
 :: start.5 {"position":"900,1600","size":"100,100"}
-<<nobr>>
-
 <video autoplay loop id="myVideo" playsinline>
   <source src="videos/start.5.mp4" type="video/mp4">
 </video>
@@ -3804,14 +3570,13 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 <<audio "click" play>>
 <</button>>
 </div>
-<</nobr>>
 
 
 :: teams {"position":"700,1600","size":"100,100"}
 <<script>>
   window.video.showButtonsOnVideoEnd();
 <</script>>
-<<nobr>>
+
   <<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
@@ -3834,12 +3599,9 @@ Ende die meisten Punkte und Tiere gesammelt hat.
       <<audio "click" play>>	
     <</button>>
   </div>
-<</nobr>>
 
 
 :: title [autosave] {"position":"900,600","size":"100,100"}
-<<nobr>>
-
 <<audio "bg" volume 0.75 fadeout>>
 
 <div class="wrapper">
@@ -3855,8 +3617,6 @@ Ende die meisten Punkte und Tiere gesammelt hat.
   <<goto "start.1">><<audio "click" play>>
 <</button>>
 </div>
-
-<</nobr>>
 
 
 :: StoryScript [script]
