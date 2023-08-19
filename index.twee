@@ -2908,18 +2908,13 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   });
 <</script>>
 <div class="wrapper">
-  <h1>Spuk &
-  <br>Schreck</h1>
-  <h2>Die Geisterjagd durch den 
-  <br>
-  Leipziger Friedenspark. 
-  </h2>
+  <h1>Spuk & <br>Schreck</h1>
+  <h2>Die Geisterjagd durch den <br> Leipziger Friedenspark.</h2>
 </div>
 
 <div class="btn-group">
   <button class="next">[[Weiter|setup.1]]</button>
 </div>
-
 
 :: map.init {"position":"1700,300","size":"100,100"}
 <<if $letter1 is 1 and $letter2 is 1 and $letter3 is 1 and $letter4 is 1 and $letter5 is 1 and $letter6 is 1 and $letter7 is 1 and $ende is 0>>
@@ -3299,49 +3294,11 @@ $(document).one(":passagedisplay", function() {
     document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
       console.log(event.detail.status)
     });
-
-    const cameraBtn = document.querySelector('.camera');
-    const settingsBtn = document.querySelector('.settings');
-    const helpBtn = document.querySelector('.help');
-    const nextBtn = document.querySelector('.next');
-    cameraBtn.style.display = 'none';
-    settingsBtn.style.display = 'none';
-    helpBtn.style.display = 'none';
-    nextBtn.style.display = 'inline';
-
-    function askCameraPermission() {
-      navigator.permissions.query({name:'camera'}).then(function(result) {
-        if (result.state == 'granted') {
-          console.log('👍', 'Camera permission granted');
-        } else if (result.state == 'prompt') {
-          var now = Date.now();
-          navigator.mediaDevices.getUserMedia({audio: false, video: true})
-            .then(function(stream) {
-              console.log('👍', 'Camera prompt successful', Date.now() - now);
-            })
-            .catch(function(error) {
-              alert('Bitte gib deine Kamera in den Systemeinstellungen frei');
-              if (State.variables.is_safari) {
-                settingsBtn.style.display = 'inline';
-              }
-              helpBtn.style.display = 'inline';
-            });
-        } else if (result.state == 'denied') {
-          cameraBtn.style.display = 'none';
-          helpBtn.style.display = 'inline';
-        }
-      });
-    }
-
-    cameraBtn.onclick = function() {
-      askCameraPermission();
-    }
   });
 <</script>>
 <div class="wrapper">
   <h1>Setup 3 von 4</h1>
-  <h2>Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.
-  </h2>
+  <h2>Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.</h2>
   <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A 3D model of a witch with graveyard" camera-controls>
@@ -3350,8 +3307,6 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <button class="camera">Kamera freigeben</button>
-  <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_Camera">Einstellungen öffnen</a></button>
   <button class="help">Hilfe bei der Freigabe</button>
   <button class="next">[[Weiter|setup.4]]</button>
 </div>

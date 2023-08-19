@@ -1,8 +1,9 @@
 {
   "short_name": "Spuk & Schreck",
   "name": "Spuk & Schreck",
+  "description" : "Eine digitale Schnitzeljagd durch den Leipziger Friedenspark",
   "theme_color": "#000000",
-  "background_color": "#33006c",
+  "background_color": "#FFDE03",
   "display": "fullscreen",
   "start_url": "/ghosthunt/",
   "scope": "/ghosthunt/",
