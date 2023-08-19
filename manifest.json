@@ -3,7 +3,7 @@
   "name": "Spuk & Schreck",
   "theme_color": "#000000",
   "background_color": "#33006c",
-  "display": "standalone",
+  "display": "fullscreen",
   "start_url": "/ghosthunt/",
   "scope": "/ghosthunt/",
   "icons": [
