@@ -2565,7 +2565,7 @@ shadow-softness="0" camera-target="0m 0m 0m">
 :: StoryInit {"position":"400,200","size":"100,100"}
 -------------------------SETUP-------------------------------
 
-<<set $is_pwa to window.matchMedia('(display-mode: window-controls-overlay)').matches || window.matchMedia('(display-mode: standalone)').matches>>
+<<set $is_pwa to window.matchMedia('(display-mode: window-controls-overlay)').matches || window.matchMedia('(display-mode: fullscreen)').matches>>
 <<set
  $is_safari to navigator.userAgent.indexOf('Safari') > -1 && 
 navigator.userAgent.indexOf('Chrome') <= -1 && navigator.userAgent.indexOf("Edg") <= -1 &&
@@ -3345,7 +3345,7 @@ $(document).one(":passagedisplay", function() {
   <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A 3D model of a witch with graveyard" camera-controls>
-    /* <button slot="ar-button" id="ar-button">👻 Geisterkamera öffnen</button> */
+    <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
   </model-viewer>
 </div>
 
