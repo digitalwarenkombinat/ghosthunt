@@ -2924,8 +2924,6 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 :: map.init {"position":"1700,300","size":"100,100"}
 <<if $letter1 is 1 and $letter2 is 1 and $letter3 is 1 and $letter4 is 1 and $letter5 is 1 and $letter6 is 1 and $letter7 is 1 and $ende is 0>>
 	<<goto "ende.1">>
-<<elseif !$is_pwa>>
-  <<goto "intro">>
 <<else>>
 	<<goto "mapbox">>
 <</if>>
@@ -3344,17 +3342,10 @@ $(document).one(":passagedisplay", function() {
   <h1>Setup 3 von 4</h1>
   <h2>Wir benötigen Zugriff auf deine Kamera, um dir die Geister zeigen zu können.
   </h2>
-  <model-viewer id="model-viewer" src="models/witch/witch.glb" ar ar-modes="webxr 
-    scene-viewer quick-look" auto-rotate poster="models/witch/poster.webp" 
+  <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-    alt="A 3D model of a witch with graveyard" camera-controls touch-action="pan-y">
-    <div class="progress-bar hide" slot="progress-bar">
-      <div class="update-bar"></div>
-    </div>
-    <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-    <div id="ar-prompt">
-      <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
-    </div>
+    alt="A 3D model of a witch with graveyard" camera-controls>
+    /* <button slot="ar-button" id="ar-button">👻 Geisterkamera öffnen</button> */
   </model-viewer>
 </div>
 
@@ -3922,51 +3913,6 @@ setup.storyinit = function () {
   src: url(fonts/para.otf);
 }
 
-html * {
-    box-sizing: border-box;
-}
-
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: 'Roboto Slab', serif;	
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
-}
-
-/* dvh = Dynamic View High um die komplette Höhe der Navigation Bar zu nutzen */
-#map {
-  height: 100vh;
-  height: 100dvh;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-}
-
-/* Macht den Geolocate-Button unsichtbar */
-.mapboxgl-ctrl-group button.mapboxgl-ctrl-geolocate { 
-  display: none;
-}
-
-#myVideo {
-  position: fixed;
-  bottom: 0;
-  width: auto;
-  height: 100%;
-  margin-left: 50vw;
-  transform: translate(-50%);
-  z-index: 10;
-}
-
-.image1 {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
-}
-
 @-webkit-keyframes fade-out {
   0% {opacity: 1;}
   100% {opacity: 0;} 
@@ -3977,13 +3923,24 @@ body {
   100% {opacity: 0;} 
 } 
 
-tw-hook[name="fade-out"] {
-	-webkit-animation-name: fade-out;
-	-webkit-animation-duration: 10s;
-	-webkit-animation-fill-mode: both;
-	animation-name: fade-out;
-	animation-duration: 10s;
-	animation-fill-mode: both;
+/* ####################HTML ELEMENTS#################### */
+html {
+  height: 100%;
+}
+
+html * {
+    box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Roboto Slab', serif;	
+  font-size: 16px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 audio, canvas, progress, video {
@@ -3992,25 +3949,25 @@ audio, canvas, progress, video {
 }
 
 h1 {
-  font-family: "shlop", sans-serif;
-  font-weight: 400;
-  font-style: normal;
   color: var(--text-light-color);
+  font-family: "shlop", sans-serif;
   font-size: 9vh;
+  font-style: normal;
+  font-weight: 400;
   line-height: 10vh;
+  margin-bottom: 1rem;
   margin-left: 2vw;
   margin-right: 2vw;
   text-align: center;
-  margin-bottom: 1rem;
   word-break: keep-all;
 }
 
 h2 {
-  font-family: transat, sans-serif;
-  font-weight: 500;
-  font-style: normal;
   color: var(--text-light-color);
+  font-family: transat, sans-serif;
   font-size: 3vh;
+  font-style: normal;
+  font-weight: 500;
   line-height: 4vh;
   margin-left: 20px;
   margin-right: 30px;
@@ -4019,66 +3976,66 @@ h2 {
 }
 
 h3 {
-  font-family: transat, sans-serif;
-  font-weight: 500;
-  font-style: italic;
   color: var(--secondary-color);
+  font-family: transat, sans-serif;
   font-size: 4vh;
+  font-style: italic;
+  font-weight: 500;
   line-height: 4vh;
+  margin: 0;
   text-align: center;
   word-break: break-word;
-  margin: 0;
-}
-
-h5 {
-  font-family: transat, sans-serif;
-  font-weight: 500;
-  font-style: italic;
-  color: var(--text-light-color);
-  font-size: 3vh;
-  line-height: 4vh;
-  margin-left: 2vw;
-  margin-right: 2vw;
-  text-align: center;
-  margin-top: 0px;
-  margin-bottom: 0px;
 }
 
 h4 {
-  font-family: 'Caveat Brush', cursive;
+  -webkit-text-stroke: 1px black;
   color: var(--text-light-color);
+  font-family: 'Caveat Brush', cursive;
   font-size: 9vh;
+  font-weight: normal;
   line-height: 6vh;
+  margin-bottom: 1rem;
   margin-left: 2vw;
   margin-right: 2vw;
-  font-weight: normal;
   text-align: center;
-  margin-bottom: 1rem;
   word-break: break-word;
-  -webkit-text-stroke: 1px black;
+}
+
+h5 {
+  color: var(--text-light-color);
+  font-family: transat, sans-serif;
+  font-size: 3vh;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 4vh;
+  margin-bottom: 0px;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  margin-top: 0px;
+  text-align: center;
 }
 
 h6 {
-  font-family: 'Caveat Brush', cursive;
   color: #F2F2F2;
+  font-family: 'Caveat Brush', cursive;
   font-size: 15vh;
+  font-weight: normal;
   line-height: 12vh;
-  margin-top: 0;
   margin-bottom: 0;
+  margin-bottom: 1rem;
   margin-left: 10vw;
   margin-right: 10vw;
-  font-weight: normal;
+  margin-top: 0;
   text-align: center;
-  margin-bottom: 1rem;
   word-break: break-word;
 }
 
 p {
-  font-family: transat, sans-serif;
-  font-weight: 500;
-  font-style: italic;
   color: var(--text-light-color);
+  font-family: transat, sans-serif;
   font-size: 3vh;
+  font-style: italic;
+  font-weight: 500;
   line-height: 4vh;
   margin-left: 20px;
   margin-right: 30px;
@@ -4086,52 +4043,27 @@ p {
   word-break: break-word;
 }
 
-.p1 {
-  font-family: para;
-  color: var(--secondary-color);
-  font-size: 5vh;
-  line-height: 4vh;
-  font-weight: normal;
-  text-align: center;
-  display: inherit;
-}
-
-.p2 {
-  font-family: para;
-  color: var(--secondary-color);
-  font-size: 10vh;
-  line-height: 10vh;
-  font-weight: normal;
-  text-align: center;
-  margin-left: 5vw;
-  margin-right: 5vw;
-  display: inherit;
-}
-
 a {
-  font-family: transat, sans-serif;
   color: var(--secondary-color);
+  font-family: transat, sans-serif;
   font-size: 3vh;
   line-height: 4vh;
   text-align: center;
 }
 
 button {
-  font-family: itc-benguiat-condensed, sans-serif;
-  font-weight: 400;
-  font-style: normal;
   background: var(--background-light-color);
-  color: #262626;
-  font-size: 3vh;
-  line-height: 4vh;
-  border: 2px solid #000000; 
   border-radius: 4px;
-  padding: auto;
+  border: 2px solid #000000; 
+  color: #262626;
+  display: inline-block;
+  font-family: itc-benguiat-condensed, sans-serif;
+  font-size: 3vh;
+  font-weight: 400;
+  line-height: 4vh;
+  margin-top: 1vh;
   text-align: center;
   text-decoration: none;
-  cursor: pointer;
-  display: inline-block;
-  margin-top: 1vh;
 }
 
 button:hover {
@@ -4139,28 +4071,94 @@ button:hover {
   border-color: var(--text-hover-color);
 }
 
-.hide {
+/* ####################SUGARCUBE#################### */
+#ui-bar {
+  background-color: transparent;
+  border-right: 0;
+}
+
+#ui-bar-body {
+  background-color: var(--background-color);
+  background-image: url('images/menu.jpg');
+  background-position: center;
+  border-right: solid 1px;
+  height: 100%;
+  margin: 0;
+  width: 34vh;
+}
+
+#ui-bar-toggle {
+  border: none;
+  color: var(--text-light-color);
+  font-size: 4vh;
+  left:0;
+  position: fixed;
+  right: unset;
+  top: unset;
+}
+
+#ui-bar-toggle:before {
+  color: var(--secondary-color);
+  content: "\e804";
+}
+
+#ui-bar-toggle:hover {
+  background-color: transparent;
+  border: none;
+}
+
+#ui-bar-history {
   display: none;
 }
 
-.passage a:hover {
-  color: #404040;
+#ui-bar.stowed~#story {
+  margin-left: 0;
 }
 
-.bild_ort {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+#ui-bar.stowed #ui-bar-toggle:before {
+  color: var(--secondary-color);
+  content: "\e82e";
+}
+
+#ui-dialog-body ul {
+  display: flex;
+  justify-content: center;
+}
+
+#menu-item-share, #menu-item-saves, #menu-item-settings {
+  display: none;
+}
+
+#menu li a {
+  color: var(--text-light-color);
+}
+
+/* ####################STORY PASSAGE#################### */
+#story {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	margin: 0;
+	padding: 4vh 0;
+}
+
+#story-title {
+  display: none;
+}
+
+#passages {
+  height: 100%;
 }
 
 .passage {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
+  justify-content: space-between;
 }
 
+/* ####################WRAPPER BUTTONS#################### */
 .wrapper {
   flex-grow: 1;
   height: 100%;
@@ -4185,186 +4183,184 @@ button:hover {
   font-weight: 900;
 }
 
-h1#ui-dialog-title {
-  background-color: var(--background-light-color);
+/* ####################MAP#################### */
+
+/* dvh = Dynamic View High um die komplette Höhe der Navigation Bar zu nutzen */
+#map {
+  bottom: 0;
+  height: 100vh;
+  height: 100dvh;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
-#ui-dialog-body {
-  background-color: var(--background-light-color);
-}
-
-#ui-dialog-close {
-  background-color: var(--background-light-color);
-  border-color: #000;
-}
-
-#ui-dialog-close:hover {
-  background-color: var(--text-hover-color);
-  border-color: var(--text-hover-color);
-}
-
-#passages {
-  height: 100%;
-}
-
-#menu-item-share, #menu-item-saves, #menu-item-settings {
+/* Macht den Geolocate-Button unsichtbar */
+.mapboxgl-ctrl-group button.mapboxgl-ctrl-geolocate { 
   display: none;
 }
 
-#menu li a {
-  display: block;
-  padding: .25em .75em;
-  border: 1px solid transparent;
-  color: var(--text-light-color);
-  text-transform: uppercase;
-  font-size: 3vh;
+/* ####################MODEL VIEWER#################### */
+model-viewer {
+  width: 90%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0.75);
+  margin: 0 5%;
 }
 
-#ui-dialog-body {
-  background-color: var(--background-color);
+.Hotspot {
+  background: #fff;
+  border-radius: 32px;
+  border: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 24px;
+  padding: 8px;
+  position: relative;
+  transition: opacity 0.3s;
+  width: 24px;
 }
 
-h1#ui-dialog-title {
-  background-color: var(--background-color);
-}
-
-#ui-dialog-body {
-  background-color: var(--background-color);
-}
-
-#ui-dialog-body.list li a {
-  color: var(--text-light-color);
-}
-
-#ui-dialog-body.list li a:hover {
+.Hotspot:not([data-visible]) {
   background: transparent;
-  border:none;
+  border: 4px solid #fff;
+  box-shadow: none;
+  height: 32px;
+  pointer-events: none;
+  width: 32px;
 }
 
-#story-title {
-  display: none;
+.Hotspot:focus {
+  border: 4px solid rgb(0, 128, 200);
+  height: 32px;
+  outline: none;
+  width: 32px;
 }
 
-#ui-bar {
-  background-color: transparent;
-  border-right: 0;
-  text-align: center;
+.Hotspot > * {
+  opacity: 1;
+  transform: translateY(-50%);
 }
 
-#ui-bar-toggle:before {
-  content: "\e804";
-  color: var(--secondary-color);
-}
-
-#refresh {
-  content:"e5d5";
-}
-
-#back {
-  content:"e5c4";
-}
-
-#yes {
-  content:"e5ca";
-}
-
-#no {
-  content:"e5cd";
-}
-
-#ui-bar-body {
-  height: 100%;
-  background-color: var(--background-color);
-  background-image: url('images/menu.jpg');
-  background-position: center;
-  margin: 0;
-  width: 34vh;
-  border-right: solid 1px;
-}
-
-#ui-bar-history {
-  display: none;
-}
-  
-#ui-bar-tray {
-    position: absolute;
-}
-
-#ui-bar-toggle {
-  font-size: 4vh;
-  line-height: inherit;
-  color: var(--text-light-color);
-  position: fixed;
-  left:0;
-  right: unset;
-  top: unset;
-}
-
-#ui-bar-toggle:hover {
-  background-color: transparent;
-  border: none;
-}
-
-#ui-bar.stowed~#story {
-  margin-left: 0;
-}
-
-#ui-bar.stowed #ui-bar-toggle:before {
-  content: "\e82e";
-  color: var(--secondary-color);
-}
-
-#ui-bar.stowed #ui-bar-toggle {
-  font-size: 4vh;
-}
-
-button#history-forward {
-  color: var(--text-light-color);
-}
-
-#history-forward hover {
-  background-color: transparent;
-  border: none;
-}
-
-button#history-backward {
-  color: var(--text-light-color);
-}
-
-#ui-bar-history [id|=history]:hover {
-  background-color: transparent;
-}
-
-#ui-bar-history [id|=history], #ui-bar-toggle {
-  background-color: transparent;
-  border: none;
-}
-
-#ui-bar-history [id|=history]:disabled {
-  color: #E3E3E3;
-  background-color: transparent;
-  border-color: #000;
-  border: 2px solid #000;
+.HotspotAnnotation{
+  background: #fff;
   border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.8);
+  display: block;
+  font-family: Futura, Helvetica Neue, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  left: calc(100% + 1em);
+  max-width: 128px;
+  overflow-wrap: break-word;
+  padding: 0.5em 1em;
+  position: absolute;
+  top: 50%;
+  width: max-content;
 }
 
-#story-header {
-	background-color: yellow;
-	color: black;
-	height: 10vh;
+.Hotspot:not([data-visible]) > * {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(calc(-50% + 4px));
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+#ar-button {
+  background-image: url(./images/ar_icon.png);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 12px 50%;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  bottom: 16px;
+  padding: 0px 16px 0px 40px;
+  font-size: 14px;
+  color:#4285f4;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  border: 1px solid #DADCE0;
+}
+
+#ar-button:active {
+  background-color: #E8EAED;
+}
+
+#ar-button:focus {
+  outline: none;
+}
+
+#ar-button:focus-visible {
+  outline: 1px solid #4285f4;
+}
+
+/* ####################PASSAGE ELEMENTS#################### */
+
+#myVideo {
+  bottom: 0;
+  height: 100%;
+  margin-left: 50vw;
+  position: fixed;
+  transform: translate(-50%);
+  width: auto;
+  z-index: 10;
+}
+
+.image1 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+tw-hook[name="fade-out"] {
+	-webkit-animation-name: fade-out;
+	-webkit-animation-duration: 10s;
+	-webkit-animation-fill-mode: both;
+	animation-name: fade-out;
+	animation-duration: 10s;
+	animation-fill-mode: both;
+}
+
+.p1 {
+  color: var(--secondary-color);
+  display: inherit;
+  font-family: para;
+  font-size: 5vh;
+  font-weight: normal;
+  line-height: 4vh;
   text-align: center;
-  text-align: vertical;
-  word-wrap: break-word;
-  padding: 10px;
-  background: var(--background-light-color);
-  border-bottom: 2px solid #362F2A;
 }
 
-#story {
-	height: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	padding: 4vh 0;
-	margin: 0;
+.p2 {
+  color: var(--secondary-color);
+  display: inherit;
+  font-family: para;
+  font-size: 10vh;
+  font-weight: normal;
+  line-height: 10vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+.passage a:hover {
+  color: #404040;
+}
+
+.bild_ort {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
