@@ -2580,18 +2580,18 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 		<<set _txtCount = 0>>
 	<</if>>
 	<<if $args.raw === "">>
-		<<set _txtOutput = setup.text[passage()][++_txtCount][setup.lang[settings.lang]]>>
+		<<set _txtOutput = setup.text[passage()][++_txtCount][setup.i18n.langs[settings.lang]]>>
 		<<if def _txtOutput>>
 			_txtOutput
 		<<else>>
-			<<= setup.text[passage()][_txtCount]["en"]>>
+			<<= setup.text[passage()][_txtCount]["de"]>>
 		<</if>>
 	<<else>>
-		<<set _txtOutput = setup.text[passage()][$args.raw][setup.lang[settings.lang]]>>
+		<<set _txtOutput = setup.text[passage()][$args.raw][setup.i18n.langs[settings.lang]]>>
 		<<if def _txtOutput>>
 			_txtOutput
 		<<else>>
-			<<= setup.text[passage()][$args.raw]["en"]>>
+			<<= setup.text[passage()][$args.raw]["de"]>>
 		<</if>>
 	<</if>>
 <</widget>>
@@ -2658,19 +2658,12 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 
 
 :: StoryMenu {"position":"198,200","size":"100,100"}
-<<link "Inventar">>
-	<<addclass "#ui-bar" "stowed">>
-	<<goto "Inventar">>
-<</link>>
-<<link "Hilfe">>
-	<<addclass "#ui-bar" "stowed">>
-	<<goto "Hilfe">>
-<</link>>
-<<link "Impressum">>
-	<<addclass "#ui-bar" "stowed">>
-	<<goto "Impressum">>
-<</link>>
-
+<<set $inventory = setup.text['StoryMenu'][1][setup.i18n.langs[settings.lang]]>>
+<<set $help = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
+<<set $legal = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
+<<link [[$inventory|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
+<<link [[$help|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
+<<link [[$legal|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>>
 
 :: anruf {"position":"700,800","size":"100,100"}
 <script>
@@ -3588,15 +3581,91 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 
 
 :: StoryScript [script]
-/* Autosave */
+/************
+Configuration
+************/
 Config.saves.autosave = ["autosave"];
 Config.passages.nobr = true;
 
-/****************************************************************
-Set up internationalization (i18n) on SugarCube's `setup` object.
-****************************************************************/
-settings.lang = "German";
+/**************************
+Internationalization (i18n) 
+**************************/
+settings.lang = "Deutsch";
+setup.i18n = {
+		/* Map of language labels to codes for all supported languages */
+		langs : {
+			'Deutsch'  : 'de',
+			'English'  : 'en',
+		},
+
+		/* Utility methods */
+		codes : function () {
+			return Object.keys(this.langs).map(function (label) {
+				return this.langs[label];
+			}, this);
+		},
+
+		labels : function () {
+			return Object.keys(this.langs);
+		},
+
+		labelFromCode : function (code) {
+			let label = Object.keys(this.langs).find(function (label) {
+				return this.langs[label] === code;
+			}, this);
+
+			if (!label) {
+				throw new Error('unknown language code "' + code + '"');
+			}
+
+			return label;
+		}
+	};
+
+/* Language switching setting */
+function initLanguage() {
+  switch (setup.i18n.langs[settings.lang]) {
+    case 'en':
+      l10nStrings.identity="game",l10nStrings.aborting="Aborting",l10nStrings.cancel="Cancel",l10nStrings.close="Close",l10nStrings.ok="OK",l10nStrings.errorTitle="Error",l10nStrings.errorToggle="Toggle the error view",l10nStrings.errorNonexistentPassage='the passage "{passage}" does not exist',l10nStrings.errorSaveDiskLoadFailed="failed to load save file from disk",l10nStrings.errorSaveMissingData="save is missing required data. Either the loaded file is not a save or the save has become corrupted",l10nStrings.errorSaveIdMismatch="save is from the wrong {identity}",l10nStrings._warningIntroLacking="Your browser either lacks or has disabled",l10nStrings._warningOutroDegraded=", so this {identity} is running in a degraded mode. You may be able to continue, however, some parts may not work properly.",l10nStrings.warningNoWebStorage="{_warningIntroLacking} the Web Storage API{_warningOutroDegraded}",l10nStrings.warningDegraded="{_warningIntroLacking} some of the capabilities required by this {identity}{_warningOutroDegraded}",l10nStrings.debugBarToggle="Toggle the debug bar",l10nStrings.debugBarNoWatches="— no watches set —",l10nStrings.debugBarAddWatch="Add watch",l10nStrings.debugBarDeleteWatch="Delete watch",l10nStrings.debugBarWatchAll="Watch all",l10nStrings.debugBarWatchNone="Delete all",l10nStrings.debugBarLabelAdd="Add",l10nStrings.debugBarLabelWatch="Watch",l10nStrings.debugBarLabelTurn="Turn",l10nStrings.debugBarLabelViews="Views",l10nStrings.debugBarViewsToggle="Toggle the debug views",l10nStrings.debugBarWatchToggle="Toggle the watch panel",l10nStrings.uiBarToggle="Toggle the UI bar",l10nStrings.uiBarBackward="Go backward within the {identity} history",l10nStrings.uiBarForward="Go forward within the {identity} history",l10nStrings.uiBarJumpto="Jump to a specific point within the {identity} history",l10nStrings.jumptoTitle="Jump To",l10nStrings.jumptoTurn="Turn",l10nStrings.jumptoUnavailable="No jump points currently available…",l10nStrings.savesTitle="Saves",l10nStrings.savesDisallowed="Saving has been disallowed on this passage.",l10nStrings.savesIncapable="{_warningIntroLacking} the capabilities required to support saves, so saves have been disabled for this session.",l10nStrings.savesLabelAuto="Autosave",l10nStrings.savesLabelDelete="Delete",l10nStrings.savesLabelExport="Save to Disk…",l10nStrings.savesLabelImport="Load from Disk…",l10nStrings.savesLabelLoad="Load",l10nStrings.savesLabelClear="Delete All",l10nStrings.savesLabelSave="Save",l10nStrings.savesLabelSlot="Slot",l10nStrings.savesUnavailable="No save slots found…",l10nStrings.savesUnknownDate="unknown",l10nStrings.settingsTitle="Settings",l10nStrings.settingsOff="Off",l10nStrings.settingsOn="On",l10nStrings.settingsReset="Reset to Defaults",l10nStrings.restartTitle="Restart",l10nStrings.restartPrompt="Are you sure that you want to restart? Unsaved progress will be lost.",l10nStrings.shareTitle="Share",l10nStrings.alertTitle="Alert",l10nStrings.autoloadTitle="Autoload",l10nStrings.autoloadCancel="Go to start",l10nStrings.autoloadOk="Load autosave",l10nStrings.autoloadPrompt="An autosave exists. Load it now or go to the start?",l10nStrings.macroBackText="Back",l10nStrings.macroReturnText="Return";
+      break;
+    default:
+      l10nStrings.identity="spiel",l10nStrings.aborting="Vorzeitig abgebrochen",l10nStrings.cancel="Abbrechen",l10nStrings.close="Schließen",l10nStrings.ok="OK",l10nStrings.errorTitle="Fehler",l10nStrings.errorToggle="Fehleransicht umschalten",l10nStrings.errorNonexistentPassage='die Passage "{passage}" existiert nicht',l10nStrings.errorSaveMissingData="Im Speicherstand fehlen benötigte Daten. Entweder ist die geladene Datei kein Speicherstand oder er ist defekt",l10nStrings.errorSaveIdMismatch="Speicherstand ist vom falschen {identity}",l10nStrings._warningIntroLacking="Dein Browser kann folgendes nicht darstellen, oder es ist deaktiviert",l10nStrings._warningOutroDegraded="; darum läuft dieses {identity} in einem heruntergesetzten Modus. Du kannst zwar fortfahren, aber manche Teile funktionieren vielleicht nicht richtig.",l10nStrings.warningNoWebStorage="{_warningIntroLacking} Das Web Storage API{_warningOutroDegraded}",l10nStrings.warningDegraded="{_warningIntroLacking} Manche Features die für dieses {identity} benötigt werden{_warningOutroDegraded}",l10nStrings.debugBarToggle="Fehlersuche-Leiste umschalten",l10nStrings.debugBarNoWatches="— kein Beobachtungswert aktiv —",l10nStrings.debugBarAddWatch="Beobachtungswert hinzufügen",l10nStrings.debugBarDeleteWatch="Beobachtungswert löschen",l10nStrings.debugBarWatchAll="Alle beobachten",l10nStrings.debugBarWatchNone="Alle löschen",l10nStrings.debugBarLabelAdd="Hinzufügen",l10nStrings.debugBarLabelWatch="Beobachten",l10nStrings.debugBarLabelTurn="Zug",l10nStrings.debugBarLabelViews="Ansichten",l10nStrings.debugBarViewsToggle="Fehlersuche-Ansichten umschalten",l10nStrings.debugBarWatchToggle="Beobachtungs-Feld umschalten",l10nStrings.uiBarToggle="Menüleiste umschalten",l10nStrings.uiBarBackward="Einen Schritt im {identity}-Ablauf zurück",l10nStrings.uiBarForward="Einen Schritt im {identity}-Ablauf nach vor",l10nStrings.uiBarJumpto="Zu einem bestimmten Punkt im {identity}-Ablauf springen",l10nStrings.jumptoTitle="Springe zu",l10nStrings.jumptoTurn="Zug",l10nStrings.jumptoUnavailable="Keine Sprungmarken verfügbar…",l10nStrings.savesTitle="Speicherstände",l10nStrings.savesDisallowed="Speichern ist in dieser Passage nicht erlaubt.",l10nStrings.savesIncapable="{_warningIntroLacking} Zum Speichern benötigte Features, darum ist es in dieser Sitzung nicht möglich, den Spielstand zu speichern.",l10nStrings.savesLabelAuto="Auto-Speicherstand",l10nStrings.savesLabelDelete="Löschen",l10nStrings.savesLabelExport="Auf Datenträger speichern…",l10nStrings.savesLabelImport="Von Datenträger laden…",l10nStrings.savesLabelLoad="Laden",l10nStrings.savesLabelClear="Alle löschen",l10nStrings.savesLabelSave="Speichern",l10nStrings.savesLabelSlot="Slot",l10nStrings.savesUnavailable="Keine Speicherslots gefunden…",l10nStrings.savesUnknownDate="unbekannt",l10nStrings.settingsTitle="Einstellungen",l10nStrings.settingsOff="Aus",l10nStrings.settingsOn="Ein",l10nStrings.settingsReset="Auf Standardwerte zurücksetzen",l10nStrings.restartTitle="Neustart",l10nStrings.restartPrompt="Bist du sicher, dass du neu starten möchtest? Nicht gespeicherter Fortschritt ginge damit verloren.",l10nStrings.shareTitle="Teilen",l10nStrings.autoloadTitle="Automatisches Laden",l10nStrings.autoloadCancel="Gehe zum Start",l10nStrings.autoloadOk="Auto-Speicherstand laden",l10nStrings.autoloadPrompt="Ein Auto-Speicherstand existiert bereits. Laden oder zurück an den Start?",l10nStrings.macroBackText="Zurück",l10nStrings.macroReturnText="Zurückkehren";
+  }
+
+  $('html').attr('lang', setup.i18n.langs[settings.lang]);
+}
+
+function changeLanguage() {
+  /* Reload the application to ensure that proper	localizations are loaded */
+  window.location.reload();
+}
+
+Setting.addList('lang', {
+  label    : 'Language/Sprachen',
+  list     : setup.i18n.labels(),
+  default  : setup.i18n.labelFromCode('de'),
+  onInit   : initLanguage,
+  onChange : changeLanguage
+});
+
+/***********
+Translations 
+***********/
 setup.text = {};
+setup.text["StoryMenu"] = {
+	"1": {
+		de: 'Inventar',
+		en: 'Inventary'
+  },
+	"2": {
+		de: 'Hilfe',
+		en: 'Help'
+  },
+  "3": {
+		de: 'Impressum',
+		en: 'Legal Notice'
+  }
+};
 setup.text["intro"] = {
 	"1": {
 		de: 'Die Geisterjagd durch den',
@@ -3608,28 +3677,9 @@ setup.text["intro"] = {
   }
 };
 
-setup.setLang = function () {
-	switch(settings.lang) {
-		case "English":
-      !function(){l10nStrings.identity="game",l10nStrings.aborting="Aborting",l10nStrings.cancel="Cancel",l10nStrings.close="Close",l10nStrings.ok="OK",l10nStrings.errorTitle="Error",l10nStrings.errorToggle="Toggle the error view",l10nStrings.errorNonexistentPassage='the passage "{passage}" does not exist',l10nStrings.errorSaveDiskLoadFailed="failed to load save file from disk",l10nStrings.errorSaveMissingData="save is missing required data. Either the loaded file is not a save or the save has become corrupted",l10nStrings.errorSaveIdMismatch="save is from the wrong {identity}",l10nStrings._warningIntroLacking="Your browser either lacks or has disabled",l10nStrings._warningOutroDegraded=", so this {identity} is running in a degraded mode. You may be able to continue, however, some parts may not work properly.",l10nStrings.warningNoWebStorage="{_warningIntroLacking} the Web Storage API{_warningOutroDegraded}",l10nStrings.warningDegraded="{_warningIntroLacking} some of the capabilities required by this {identity}{_warningOutroDegraded}",l10nStrings.debugBarToggle="Toggle the debug bar",l10nStrings.debugBarNoWatches="— no watches set —",l10nStrings.debugBarAddWatch="Add watch",l10nStrings.debugBarDeleteWatch="Delete watch",l10nStrings.debugBarWatchAll="Watch all",l10nStrings.debugBarWatchNone="Delete all",l10nStrings.debugBarLabelAdd="Add",l10nStrings.debugBarLabelWatch="Watch",l10nStrings.debugBarLabelTurn="Turn",l10nStrings.debugBarLabelViews="Views",l10nStrings.debugBarViewsToggle="Toggle the debug views",l10nStrings.debugBarWatchToggle="Toggle the watch panel",l10nStrings.uiBarToggle="Toggle the UI bar",l10nStrings.uiBarBackward="Go backward within the {identity} history",l10nStrings.uiBarForward="Go forward within the {identity} history",l10nStrings.uiBarJumpto="Jump to a specific point within the {identity} history",l10nStrings.jumptoTitle="Jump To",l10nStrings.jumptoTurn="Turn",l10nStrings.jumptoUnavailable="No jump points currently available…",l10nStrings.savesTitle="Saves",l10nStrings.savesDisallowed="Saving has been disallowed on this passage.",l10nStrings.savesIncapable="{_warningIntroLacking} the capabilities required to support saves, so saves have been disabled for this session.",l10nStrings.savesLabelAuto="Autosave",l10nStrings.savesLabelDelete="Delete",l10nStrings.savesLabelExport="Save to Disk…",l10nStrings.savesLabelImport="Load from Disk…",l10nStrings.savesLabelLoad="Load",l10nStrings.savesLabelClear="Delete All",l10nStrings.savesLabelSave="Save",l10nStrings.savesLabelSlot="Slot",l10nStrings.savesUnavailable="No save slots found…",l10nStrings.savesUnknownDate="unknown",l10nStrings.settingsTitle="Settings",l10nStrings.settingsOff="Off",l10nStrings.settingsOn="On",l10nStrings.settingsReset="Reset to Defaults",l10nStrings.restartTitle="Restart",l10nStrings.restartPrompt="Are you sure that you want to restart? Unsaved progress will be lost.",l10nStrings.shareTitle="Share",l10nStrings.alertTitle="Alert",l10nStrings.autoloadTitle="Autoload",l10nStrings.autoloadCancel="Go to start",l10nStrings.autoloadOk="Load autosave",l10nStrings.autoloadPrompt="An autosave exists. Load it now or go to the start?",l10nStrings.macroBackText="Back",l10nStrings.macroReturnText="Return";}();
-      break;
-		default:
-      !function(){l10nStrings.identity="spiel",l10nStrings.aborting="Vorzeitig abgebrochen",l10nStrings.cancel="Abbrechen",l10nStrings.close="Schließen",l10nStrings.ok="OK",l10nStrings.errorTitle="Fehler",l10nStrings.errorToggle="Fehleransicht umschalten",l10nStrings.errorNonexistentPassage='die Passage "{passage}" existiert nicht',l10nStrings.errorSaveMissingData="Im Speicherstand fehlen benötigte Daten. Entweder ist die geladene Datei kein Speicherstand oder er ist defekt",l10nStrings.errorSaveIdMismatch="Speicherstand ist vom falschen {identity}",l10nStrings._warningIntroLacking="Dein Browser kann folgendes nicht darstellen, oder es ist deaktiviert",l10nStrings._warningOutroDegraded="; darum läuft dieses {identity} in einem heruntergesetzten Modus. Du kannst zwar fortfahren, aber manche Teile funktionieren vielleicht nicht richtig.",l10nStrings.warningNoWebStorage="{_warningIntroLacking} Das Web Storage API{_warningOutroDegraded}",l10nStrings.warningDegraded="{_warningIntroLacking} Manche Features die für dieses {identity} benötigt werden{_warningOutroDegraded}",l10nStrings.debugBarToggle="Fehlersuche-Leiste umschalten",l10nStrings.debugBarNoWatches="— kein Beobachtungswert aktiv —",l10nStrings.debugBarAddWatch="Beobachtungswert hinzufügen",l10nStrings.debugBarDeleteWatch="Beobachtungswert löschen",l10nStrings.debugBarWatchAll="Alle beobachten",l10nStrings.debugBarWatchNone="Alle löschen",l10nStrings.debugBarLabelAdd="Hinzufügen",l10nStrings.debugBarLabelWatch="Beobachten",l10nStrings.debugBarLabelTurn="Zug",l10nStrings.debugBarLabelViews="Ansichten",l10nStrings.debugBarViewsToggle="Fehlersuche-Ansichten umschalten",l10nStrings.debugBarWatchToggle="Beobachtungs-Feld umschalten",l10nStrings.uiBarToggle="Menüleiste umschalten",l10nStrings.uiBarBackward="Einen Schritt im {identity}-Ablauf zurück",l10nStrings.uiBarForward="Einen Schritt im {identity}-Ablauf nach vor",l10nStrings.uiBarJumpto="Zu einem bestimmten Punkt im {identity}-Ablauf springen",l10nStrings.jumptoTitle="Springe zu",l10nStrings.jumptoTurn="Zug",l10nStrings.jumptoUnavailable="Keine Sprungmarken verfügbar…",l10nStrings.savesTitle="Speicherstände",l10nStrings.savesDisallowed="Speichern ist in dieser Passage nicht erlaubt.",l10nStrings.savesIncapable="{_warningIntroLacking} Zum Speichern benötigte Features, darum ist es in dieser Sitzung nicht möglich, den Spielstand zu speichern.",l10nStrings.savesLabelAuto="Auto-Speicherstand",l10nStrings.savesLabelDelete="Löschen",l10nStrings.savesLabelExport="Auf Datenträger speichern…",l10nStrings.savesLabelImport="Von Datenträger laden…",l10nStrings.savesLabelLoad="Laden",l10nStrings.savesLabelClear="Alle löschen",l10nStrings.savesLabelSave="Speichern",l10nStrings.savesLabelSlot="Slot",l10nStrings.savesUnavailable="Keine Speicherslots gefunden…",l10nStrings.savesUnknownDate="unbekannt",l10nStrings.settingsTitle="Einstellungen",l10nStrings.settingsOff="Aus",l10nStrings.settingsOn="Ein",l10nStrings.settingsReset="Auf Standardwerte zurücksetzen",l10nStrings.restartTitle="Neustart",l10nStrings.restartPrompt="Bist du sicher, dass du neu starten möchtest? Nicht gespeicherter Fortschritt ginge damit verloren.",l10nStrings.shareTitle="Teilen",l10nStrings.autoloadTitle="Automatisches Laden",l10nStrings.autoloadCancel="Gehe zum Start",l10nStrings.autoloadOk="Auto-Speicherstand laden",l10nStrings.autoloadPrompt="Ein Auto-Speicherstand existiert bereits. Laden oder zurück an den Start?",l10nStrings.macroBackText="Zurück",l10nStrings.macroReturnText="Zurückkehren"}();
-	};
-	Engine.show();
-  /* UIBar.start(); */
-};
-
-Setting.addList("lang", {
-  label    : "Language/Sprachen:",
-	list     : ["German", "English"],
-	default  : "German",
-	onInit   : setup.setLang,
-	onChange : setup.setLang
-});
-setup.lang = { "German": "de", "English": "en" };
-
-/* Mapbox und Javascript wird geladen */
+/*************
+Mapbox imports
+*************/
 importStyles("https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css");
 setup.mapboxLoaded = importScripts("https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js")
 
@@ -3639,8 +3689,9 @@ class CircularGeofenceRegion {
   }
 }
 
-/* Fences werden initialisiert */
-
+/********************
+Fences initialization
+********************/
 setup.storyinit = function () {
   const fence1 = new CircularGeofenceRegion({
     id: 'johannistorturm',
@@ -3807,6 +3858,9 @@ setup.storyinit = function () {
   return fences;
 };
 
+/*****************
+Window Geolocation 
+*****************/
 (function () {
   
   window.geolocation = {
@@ -3878,6 +3932,9 @@ setup.storyinit = function () {
 
   };
 
+/***********
+Window Video  
+***********/
   window.video = {
     showButtonsOnVideoEnd: function() {
       $(document).on(":passagedisplay", function() {
