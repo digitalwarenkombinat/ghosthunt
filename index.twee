@@ -1940,42 +1940,56 @@ src="https://modelviewer.dev/shared-assets/icons/hand.png">
 
 
 :: Hilfe {"position":"200,800","size":"100,100"}
-<div
- class="wrapper">
+<div class="wrapper">
   <h1>Hilfe</h1>
-  <h2>Erkunde die Stationen auf der Karte, um geheime Tiere zu 
-finden und Buchstaben für den Flamingo-Namen zu sammeln.
-  <br>
-  <br>Deinen Spielfortschritt kannst du im Seitenmenü einsehen. 
-  <br>
-  <br>Wenn du den Namen des Flamingos vollständig erraten hast, 
-kannst du Dir im Laden "Kleine Helden" eine Belohnung abholen. Natürlich
- nur, wenn der Laden geöffnet ist. Die Position des Ladens ist auf der 
-Karte eingezeichnet. 
-  <br>
-  <br>Wir empfehlen das Spiel als Gruppe zu spielen mit einem 
-Handy. Natürlich könnte ihr aber auch jeder alleine mit einem Handy 
-losziehen. Es gibt keine vorgeschriebene Reihenfolge für die Stationen. 
-Am Ende könnt ihr vergleichen, wer mehr Punkte und Tiere gesammelt hat.
-  <br>
-  <br>Die Rätsel im Spiel können nur durch genaues Absuchen eurer 
-Umgebung lösen. Findet die Ort auf dem Bild und studiert sie genau. Dann
- findet ihr die Antwort. 
-  <br>
-  <br>
-  Viel Erfolg!
-</h2>
+  <h2>Erkunde die Stationen auf der Karte, um geheime Geister zu 
+    finden und Buchstaben für das Lösungswort zu sammeln.</h2>
+  <details>
+    <summary>
+      <h5>Wo finde ich meinen Spielfortschritt?</h5>
+    </summary>
+    <div>
+      <p>Deinen Spielfortschritt kannst du im
+      <<link "Seitenmenü">>
+	      <<script>>UIBar.unstow().show()<</script>>
+      <</link>>
+      einsehen.</p>
+    </div>
+  </details>
+  <details>
+    <summary>
+      <h5>Was passiert, wenn ich das Lösungswort vollständig erraten habe?</h5>
+    </summary>
+    <div>
+      <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus.</p>
+    </div>
+  </details>
+  <details>
+    <summary>
+      <h5>Benötigt jeder Mitspielende ein eigenes Handy?</h5>
+    </summary>
+    <div>
+      <p>Wir empfehlen das Spiel als Gruppe mit einem Handy zu spielen.
+      Natürlich könnte ihr aber auch jeder alleine mit einem Handy losziehen.
+      Es gibt keine vorgeschriebene Reihenfolge für die Stationen. 
+      Am Ende könnt ihr vergleichen, wer mehr Punkte und Geister gesammelt hat.</p>
+    </div>
+  </details>
+  <details>
+    <summary>
+      <h5>Wie kann ich die Rätsel lösen?</h5>
+    </summary>
+    <div>
+      <p>Die Rätsel im Spiel können nur durch genaues Absuchen eurer Umgebung gelöst werden.
+      Findet die Orte auf dem Bild und studiert sie genau.
+      Dann findet ihr die Antwort. </p>
+    </div>
+  </details>
 </div>
 
 <div class="btn-group">
-
-<<button "Zurück">>
-	    <<goto "map.init">>
-	<<audio "click" play>>
-<</button>>	
-
+  <<return "Zurück">>
 </div>
-
 
 :: Impressum {"position":"200,1000","size":"100,100"}
 <div
@@ -3967,8 +3981,11 @@ Window Video
   /* Hintergrundfarben */
   --background-color: #000000;
   --background-light-color: #FFFFFF;
+  --background-darken-color: #00000070;
+  --background-dark-color: #44444470;
 
   /* Textfarben */
+  --button-color: #26262670;
   --text-color: #323140;
   --text-hover-color: #F5553B;
   --text-light-color: #FFFFFF;
@@ -4126,7 +4143,7 @@ button {
   background: var(--background-light-color);
   border-radius: 4px;
   border: 2px solid #000000; 
-  color: #262626;
+  color: var(--button-color);
   display: inline-block;
   font-family: itc-benguiat-condensed, sans-serif;
   font-size: 3vh;
@@ -4140,6 +4157,51 @@ button {
 button:hover {
   background-color: var(--text-hover-color);
   border-color: var(--text-hover-color);
+}
+
+details {
+  width: 80%;
+  margin: 0 auto ;
+  background: var(--button-color);
+  margin-bottom: .5rem;
+  box-shadow: 0 .1rem 1rem -.5rem rgba(0,0,0,.4);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+summary {
+  padding: 1rem;
+  display: block;
+  background: var(--background-dark-color);
+  padding-left: 2.2rem;
+  position: relative;
+  cursor: pointer;
+}
+
+summary:before {
+  content: '';
+  border-width: .4rem;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--background-light-color);
+  position: absolute;
+  top: 1.5rem;
+  left: 1rem;
+  transform: rotate(0);
+  transform-origin: .2rem 50%;
+  transition: .25s transform ease;
+}
+
+details[open] > summary:before {
+  transform: rotate(90deg);
+}
+
+details summary::-webkit-details-marker {
+  display:none;
+}
+
+details > ul {
+  padding-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 /* ####################SUGARCUBE#################### */
@@ -4244,7 +4306,7 @@ button:hover {
 }
 
 .btn-group button {
-  background: #00000070;
+  background: var(--background-darken-color);
   border-radius: 4px;
   border: 2px solid var(--secondary-color);
   box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
@@ -4254,6 +4316,16 @@ button:hover {
   font-weight: 900;
 }
 
+.macro-return {
+  background: var(--background-darken-color);
+  border-radius: 4px;
+  border: 2px solid var(--secondary-color);
+  box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
+  display: inline-block;
+  font-weight: 900;
+  margin-top: 1vh;
+  padding: 0.4em;
+}
 /* ####################MAP#################### */
 
 /* dvh = Dynamic View High um die komplette Höhe der Navigation Bar zu nutzen */
