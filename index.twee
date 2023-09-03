@@ -228,7 +228,7 @@ Spuk & Schreck
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A witch" camera-controls>
     <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-  </model-viewer>
+    </model-viewer>
   </div>
 
   <div class="btn-group">
@@ -588,14 +588,14 @@ poster="images/loading.png"
   <h4>Hotspot 2</h4>
   <h1>Achtung!</h1>
   <h2>Paranormale Aktivität entdeckt.</h2>
-  </div>
+</div>
 
-  <div class="btn-group">
+<div class="btn-group">
     <<button "Betreten">>
       <<goto "2.1">>	
       <<audio "click" play>>	
-    <</button>>
-  </div>
+<</button>>
+</div>
 
 
 :: 2.1 {"position":"1900,800","size":"100,100"}
@@ -605,7 +605,7 @@ poster="images/loading.png"
 
   <video autoplay id="myVideo" playsinline>
     <source src="videos/2.1.mp4" type="video/mp4">
-  </video>
+</video>
 
   <div class="wrapper"></div>
 
@@ -637,11 +637,11 @@ poster="images/loading.png"
 </div>
 
 <div class="btn-group">
-  <<button "Weiter">>
-    <<goto "2.3">>
+	<<button "Weiter">>
+	    <<goto "2.3">>
     <<set $riddle to 1>>
-    <<audio "click" play>>  
-  <</button>>
+	<<audio "click" play>>
+<</button>>	
 </div>
 
 
@@ -665,7 +665,7 @@ poster="images/loading.png"
       <<goto "2.4">>	
       <<audio "click" play>>	
     <</button>>
-  </div>
+</div>
 
 
 :: 2.4 {"position":"1900,1400","size":"100,100"}
@@ -681,35 +681,35 @@ poster="images/loading.png"
 
     <div class="wrapper"></div>
 
-    <div class="btn-group">
+<div class="btn-group">
       <<button "Walkie-Talkie">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
+      <<timed 1s>>
           <<goto "2.4">>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-      <</button>>
+<</button>>
 
       <<button "Häxler">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
+      <<timed 1s>>
           <<goto "2.4">>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-      <</button>>
+<</button>>
 
       <<button "Grammophon">>
         <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
+      <<timed 1s>>
           <<goto "2.4">>
           <<set $koinz to $koinz +10>>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-      <</button>>
-    </div>
-  <</if>>
+<</button>>
+</div>
+<</if>>
 
-  <<if $riddle is 2>>
+<<if $riddle is 2>>
     <span id="heading">
     <h1>Frage 2</h1>
       <h2>Was für ein Gegenstand lag im Vogelbad?</h2>
@@ -717,66 +717,66 @@ poster="images/loading.png"
 
     <div class="wrapper"></div>
 
-    <div class="btn-group">
+<div class="btn-group">
       <<button "Haarspange">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
+      <<timed 1s>>
           <<goto "2.4">><<set $riddle to $riddle + 1>>
         <</timed>>
-      <</button>>
+<</button>>
 
       <<button "Schlüssel">>
         <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
+      <<timed 1s>>
           <<goto "2.4">>
           <<set $koinz to $koinz +10>>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-      <</button>>
+<</button>>
 
       <<button "Brosche">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
+      <<timed 1s>>
           <<goto "2.4">>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-      <</button>>
-    </div>
-  <</if>>
+<</button>>
+</div>
+<</if>>
 
-  <<if $riddle is 3>>
+<<if $riddle is 3>>
     <span id="heading">
     <h1>Frage 3</h1>
       <h2>Was lag neben dem Brunnen?</h2>
     </span>
 
     <div class="wrapper"></div>
-        
-    <div class="btn-group">
+    
+<div class="btn-group">
       <<button "Ketten">>
         <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
+      <<timed 1s>>
           <<goto "2.4">>
           <<set $koinz to $koinz +10>>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-      <</button>>
-          
+<</button>>
+    
       <<button "Flaschen">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
+      <<timed 1s>>
           <<goto "2.4">>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-      <</button>>
+<</button>>
 
       <<button "Gliedmaßen">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
+      <<timed 1s>>
           <<goto "2.4">>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-      <</button>>
+<</button>>
     </div>
   <</if>>
 
@@ -785,7 +785,7 @@ poster="images/loading.png"
       <h1>Okkulte Rune</h1>
       <h2>Ihr habt eine okkulte Rune entdeckt.</h2>
       <p class="p2">A</p>
-    </div>
+</div>
 
     <div class="btn-group">
       <<button "Weiter">>
@@ -795,7 +795,7 @@ poster="images/loading.png"
         <<audio "click" play>>  
       <</button>>
     </div>
-  <</if>>
+<</if>>
 
 
 :: 2.5 {"position":"1900,1600","size":"100,100"}
@@ -818,7 +818,7 @@ poster="images/loading.png"
       <<goto "2.6">>	
       <<audio "click" play>>	
     <</button>>
-  </div>
+</div>
 
 
 :: 2.6 {"position":"1900,1800","size":"100,100"}
@@ -832,16 +832,16 @@ poster="images/loading.png"
 
   <div class="wrapper"></div>
 
-  <div class="btn-group">
+<div class="btn-group">
     <<button "Nochmal">>
       <<goto "2.6">>	
       <<audio "click" play>>	
     <</button>>
-    <<button "Weiter">>
+<<button "Weiter">>
       <<goto "2.7">>	
-      <<audio "click" play>>	
-    <</button>>
-  </div>
+<<audio "click" play>>  
+<</button>>
+</div>
 
 
 :: 2.7 {"position":"1900,2000","size":"100,100"}
@@ -1996,20 +1996,20 @@ unsere Hausgeist sehen.
 
 :: AR.ModelViewer {"position":"500,3000","size":"100,100"}
 <div class="wrapper">
-  <h1>Model Viewer</h1>
-  <h2>Klickt auf "View in your space" und macht ein Foto.</h2>
+<h1>Model Viewer</h1>
+<h2>Klickt auf "View in your space" und macht ein Foto.</h2>
   <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A witch" camera-controls>
     <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-  </model-viewer>
+    </model-viewer>
 </div>
 
 <div class="btn-group">
 	<<button "Weiter">>
-    <<goto "friedenspark">>	
-    <<audio "click" play>>	
-  <</button>>
+    	<<goto "friedenspark">>	
+<<audio "click" play>>	
+<</button>>
 </div>
 
 
@@ -2062,7 +2062,7 @@ unsere Hausgeist sehen.
 </div>
 
 <div class="btn-group">
-  <<return "Zurück">>
+  <<return>>
 </div>
 
 :: Impressum {"position":"200,1000","size":"100,100"}
@@ -2419,7 +2419,7 @@ diesem Zweck verarbeiten.
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a zombie" camera-controls>
       <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-    </model-viewer>
+  </model-viewer>
   <</if>>
 
   <<if $pferd is 1>>
@@ -2428,97 +2428,97 @@ diesem Zweck verarbeiten.
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
       <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-    </model-viewer>
+  </model-viewer>
   <</if>>
 
   <<if $zebra is 1>>
     <model-viewer id="model-viewer" src="models/zebra/zebra.glb" ar auto-rotate poster="images/loading.png"
-      ios-src="models/zebra/zebra.usdz"
+                ios-src="models/zebra/zebra.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
       <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-    </model-viewer>
+  </model-viewer>
   <</if>>
 
   <<if $schildkröte is 1>>
     <model-viewer id="model-viewer" src="models/schildkroete/schildkroete.glb" ar auto-rotate poster="images/loading.png"
-      ios-src="models/schildkroete/schildkroete.usdz"
+                ios-src="models/schildkroete/schildkroete.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
       <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-    </model-viewer>
+  </model-viewer>
   <</if>>
 
   <<if $schlange is 1>>
     <model-viewer id="model-viewer" src="models/schlange/schlange.glb" ar auto-rotate poster="images/loading.png"
-      ios-src="models/schlange/schlange.usdz"
+                ios-src="models/schlange/schlange.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
       <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-    </model-viewer>
+  </model-viewer>
   <</if>>
 
   <<if $ozelot is 1>>
     <model-viewer id="model-viewer" src="models/ozelot/ozelot.glb" ar auto-rotate poster="images/loading.png"
-      ios-src="models/ozelot/ozelot.usdz"
+                ios-src="models/ozelot/ozelot.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
       <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-    </model-viewer>
+  </model-viewer>
   <</if>>
 
   <<if $truthahn is 1>>
     <model-viewer id="model-viewer" src="models/truthahn/truthahn.glb" ar auto-rotate poster="images/loading.png"
-      ios-src="models/truthahn/truthahn.usdz"
+                ios-src="models/truthahn/truthahn.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
       <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-    </model-viewer>
+  </model-viewer>
   <</if>>
 
   <<if $katze is 1>>
     <model-viewer id="model-viewer" src="models/katze/katze.glb" ar auto-rotate poster="images/loading.png"
-      ios-src="models/katze/katze.usdz"
+                ios-src="models/katze/katze.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
       <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-    </model-viewer>
+  </model-viewer>
   <</if>>
 
   <<if $schwein is 1>>
     <model-viewer id="model-viewer" src="models/schwein/schwein.glb" ar auto-rotate poster="images/loading.png"
-      ios-src="models/schwein/schwein.usdz"
+                ios-src="models/schwein/schwein.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
       <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-    </model-viewer>
+  </model-viewer>
   <</if>>
 
   <<if $krokodil is 1>>
     <model-viewer id="model-viewer" src="models/krokodil/krokodil.glb" ar auto-rotate poster="images/loading.png"
-      ios-src="models/krokodil/krokodil.usdz"
+                ios-src="models/krokodil/krokodil.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
       <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-    </model-viewer>
+  </model-viewer>
   <</if>>
 
   <<if $lama is 1>>
     <model-viewer id="model-viewer" src="models/lama/lama.glb" ar auto-rotate poster="images/loading.png"
-      ios-src="models/lama/lama.usdz"
+                ios-src="models/lama/lama.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
       <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-    </model-viewer>
+  </model-viewer>
   <</if>>
 
   <<if $gazelle is 1>>
     <model-viewer id="model-viewer" src="models/gazelle/gazelle.glb" ar auto-rotate poster="images/loading.png"
-      ios-src="models/gazelle/gazelle.usdz"
+                ios-src="models/gazelle/gazelle.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
       <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
-    </model-viewer>
+  </model-viewer>
   <</if>>
 
   </div>
@@ -2689,7 +2689,7 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 <</link>>
 
 :: anruf {"position":"700,800","size":"100,100"}
-  <script>
+<script>
     $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
   </script>
 
@@ -2905,7 +2905,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-<<audio ":playing:" stop>>
+  <<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
     <source src="videos/holger.mp4" type="video/mp4">
@@ -2914,18 +2914,9 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <<button "Zurück">>
-      <<goto "anruf">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Nochmal">>
-      <<goto "holger">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Ja">>
-      <<goto "rallye">>	
-      <<audio "click" play>>	
-    <</button>>
+    <button class="return">[[|anruf]]<<audio "click" play>></button>
+    <button class="retry">[[|holger]]<<audio "click" play>></button>
+    <button class="next">[[|rallye]]<<audio "click" play>></button>
   </div>
 
 
@@ -2951,7 +2942,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 </div>
 
 <div class="btn-group">
-  <button class="next">[[Weiter|vorstellung]]</button>
+  <button class="next">[[|vorstellung]]</button>
 </div>
 
 :: map.init {"position":"1700,300","size":"100,100"}
@@ -3100,11 +3091,11 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
             <h2>Hier seht ihr alle Geister-Hotspots, die ihr noch nicht besucht habt.</h2>
             <<button "Weiter">>
               <<replace "#heading">>
-                <h2>Lauft in einen der Kreise hinein. Sobald er grün wird, könnt ihr den Hotspot anklicken.</h2>	
+                <h2>Lauft in einen der Kreise hinein. Sobald er grün wird, könnt ihr den Hotspot anklicken.</h2>
                 <<button "Weiter">>
                   <<replace "#heading">>
                   <</replace>>
-                  <<audio "click" play>>		
+                  <<audio "click" play>>
                   <<goto "1.1">>
                 <</button>>		
               <</replace>>
@@ -3145,7 +3136,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-<<audio ":playing:" stop>>
+  <<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
     <source src="videos/mehrspieler.mp4" type="video/mp4">
@@ -3188,7 +3179,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-<<audio ":playing:" stop>>
+  <<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
     <source src="videos/rallye.mp4" type="video/mp4">
@@ -3233,7 +3224,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 <div class="btn-group">
   <<if State.variables.is_safari or State.variables.is_chrome>>
-    <button class="next">[[Weiter|setup.2]]</button>
+    <button class="next">[[|setup.2]]</button>
   <</if>>
 </div>
 
@@ -3321,8 +3312,8 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <button class="geolocation">Standort freigeben</button>
   <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices">Einstellungen öffnen</a></button>
-  <button class="help">Hilfe bei der Freigabe</button>
-  <button class="next">[[Weiter|setup.3]]</button>
+  <button class="help"></button>
+  <button class="next">[[|setup.3]]</button>
 </div>
 
 
@@ -3351,8 +3342,8 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <button class="help">Hilfe bei der Freigabe</button>
-  <button class="next">[[Weiter|setup.4]]</button>
+  <button class="help"></button>
+  <button class="next">[[|setup.4]]</button>
 </div>
 
 
@@ -3403,9 +3394,9 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <button class="install">App installieren</button>
+  <button class="install"></button>
   <button class="open"><a href='https://digitalwarenkombinat.github.io/ghosthunt/' target='_blank'>App öffnen</a></button>
-  <button class="next">[[Jetzt nicht|splash]]</button>
+  <button class="next">[[|splash]]</button>
 </div>
 
 
@@ -3447,10 +3438,7 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 </div>
 
 <div class="btn-group">
-  <<button "Start">>
-    <<goto "anruf">>
-    <<audio "click" play>>	
-  <</button>>
+  <button>[[Start|anruf]]</button>
 </div>
 
 
@@ -3459,7 +3447,7 @@ Ende die meisten Punkte und Tiere gesammelt hat.
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-<<audio ":playing:" stop>>
+  <<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
     <source src="videos/start.mp4" type="video/mp4">
@@ -3573,7 +3561,7 @@ Ende die meisten Punkte und Tiere gesammelt hat.
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-<<audio ":playing:" stop>>
+  <<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
     <source src="videos/teams.mp4" type="video/mp4">
@@ -3629,14 +3617,9 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 <div class="wrapper"></div>
 
 <div class="btn-group">
-  <<button "Nochmal">>
-    <<goto "vorstellung">>	
-    <<audio "click" play>>	
-  <</button>>
-  <<button "Weiter">>
-    <<goto "setup.1">>	
-    <<audio "click" play>>	
-  <</button>>
+  <button class="return">[[|intro]]<<audio "click" play>></button>
+  <button class="retry">[[|vorstellung]]<<audio "click" play>></button>
+  <button class="next">[[|setup.1]]<<audio "click" play>></button>
 </div>
 
 :: StoryScript [script]
@@ -3688,7 +3671,7 @@ function initLanguage() {
       l10nStrings.identity="game",l10nStrings.aborting="Aborting",l10nStrings.cancel="Cancel",l10nStrings.close="Close",l10nStrings.ok="OK",l10nStrings.errorTitle="Error",l10nStrings.errorToggle="Toggle the error view",l10nStrings.errorNonexistentPassage='the passage "{passage}" does not exist',l10nStrings.errorSaveDiskLoadFailed="failed to load save file from disk",l10nStrings.errorSaveMissingData="save is missing required data. Either the loaded file is not a save or the save has become corrupted",l10nStrings.errorSaveIdMismatch="save is from the wrong {identity}",l10nStrings._warningIntroLacking="Your browser either lacks or has disabled",l10nStrings._warningOutroDegraded=", so this {identity} is running in a degraded mode. You may be able to continue, however, some parts may not work properly.",l10nStrings.warningNoWebStorage="{_warningIntroLacking} the Web Storage API{_warningOutroDegraded}",l10nStrings.warningDegraded="{_warningIntroLacking} some of the capabilities required by this {identity}{_warningOutroDegraded}",l10nStrings.debugBarToggle="Toggle the debug bar",l10nStrings.debugBarNoWatches="— no watches set —",l10nStrings.debugBarAddWatch="Add watch",l10nStrings.debugBarDeleteWatch="Delete watch",l10nStrings.debugBarWatchAll="Watch all",l10nStrings.debugBarWatchNone="Delete all",l10nStrings.debugBarLabelAdd="Add",l10nStrings.debugBarLabelWatch="Watch",l10nStrings.debugBarLabelTurn="Turn",l10nStrings.debugBarLabelViews="Views",l10nStrings.debugBarViewsToggle="Toggle the debug views",l10nStrings.debugBarWatchToggle="Toggle the watch panel",l10nStrings.uiBarToggle="Toggle the UI bar",l10nStrings.uiBarBackward="Go backward within the {identity} history",l10nStrings.uiBarForward="Go forward within the {identity} history",l10nStrings.uiBarJumpto="Jump to a specific point within the {identity} history",l10nStrings.jumptoTitle="Jump To",l10nStrings.jumptoTurn="Turn",l10nStrings.jumptoUnavailable="No jump points currently available…",l10nStrings.savesTitle="Saves",l10nStrings.savesDisallowed="Saving has been disallowed on this passage.",l10nStrings.savesIncapable="{_warningIntroLacking} the capabilities required to support saves, so saves have been disabled for this session.",l10nStrings.savesLabelAuto="Autosave",l10nStrings.savesLabelDelete="Delete",l10nStrings.savesLabelExport="Save to Disk…",l10nStrings.savesLabelImport="Load from Disk…",l10nStrings.savesLabelLoad="Load",l10nStrings.savesLabelClear="Delete All",l10nStrings.savesLabelSave="Save",l10nStrings.savesLabelSlot="Slot",l10nStrings.savesUnavailable="No save slots found…",l10nStrings.savesUnknownDate="unknown",l10nStrings.settingsTitle="Settings",l10nStrings.settingsOff="Off",l10nStrings.settingsOn="On",l10nStrings.settingsReset="Reset to Defaults",l10nStrings.restartTitle="Restart",l10nStrings.restartPrompt="Are you sure that you want to restart? Unsaved progress will be lost.",l10nStrings.shareTitle="Share",l10nStrings.alertTitle="Alert",l10nStrings.autoloadTitle="Autoload",l10nStrings.autoloadCancel="Go to start",l10nStrings.autoloadOk="Load autosave",l10nStrings.autoloadPrompt="An autosave exists. Load it now or go to the start?",l10nStrings.macroBackText="Back",l10nStrings.macroReturnText="Return";
       break;
     default:
-      l10nStrings.identity="spiel",l10nStrings.aborting="Vorzeitig abgebrochen",l10nStrings.cancel="Abbrechen",l10nStrings.close="Schließen",l10nStrings.ok="OK",l10nStrings.errorTitle="Fehler",l10nStrings.errorToggle="Fehleransicht umschalten",l10nStrings.errorNonexistentPassage='die Passage "{passage}" existiert nicht',l10nStrings.errorSaveMissingData="Im Speicherstand fehlen benötigte Daten. Entweder ist die geladene Datei kein Speicherstand oder er ist defekt",l10nStrings.errorSaveIdMismatch="Speicherstand ist vom falschen {identity}",l10nStrings._warningIntroLacking="Dein Browser kann folgendes nicht darstellen, oder es ist deaktiviert",l10nStrings._warningOutroDegraded="; darum läuft dieses {identity} in einem heruntergesetzten Modus. Du kannst zwar fortfahren, aber manche Teile funktionieren vielleicht nicht richtig.",l10nStrings.warningNoWebStorage="{_warningIntroLacking} Das Web Storage API{_warningOutroDegraded}",l10nStrings.warningDegraded="{_warningIntroLacking} Manche Features die für dieses {identity} benötigt werden{_warningOutroDegraded}",l10nStrings.debugBarToggle="Fehlersuche-Leiste umschalten",l10nStrings.debugBarNoWatches="— kein Beobachtungswert aktiv —",l10nStrings.debugBarAddWatch="Beobachtungswert hinzufügen",l10nStrings.debugBarDeleteWatch="Beobachtungswert löschen",l10nStrings.debugBarWatchAll="Alle beobachten",l10nStrings.debugBarWatchNone="Alle löschen",l10nStrings.debugBarLabelAdd="Hinzufügen",l10nStrings.debugBarLabelWatch="Beobachten",l10nStrings.debugBarLabelTurn="Zug",l10nStrings.debugBarLabelViews="Ansichten",l10nStrings.debugBarViewsToggle="Fehlersuche-Ansichten umschalten",l10nStrings.debugBarWatchToggle="Beobachtungs-Feld umschalten",l10nStrings.uiBarToggle="Menüleiste umschalten",l10nStrings.uiBarBackward="Einen Schritt im {identity}-Ablauf zurück",l10nStrings.uiBarForward="Einen Schritt im {identity}-Ablauf nach vor",l10nStrings.uiBarJumpto="Zu einem bestimmten Punkt im {identity}-Ablauf springen",l10nStrings.jumptoTitle="Springe zu",l10nStrings.jumptoTurn="Zug",l10nStrings.jumptoUnavailable="Keine Sprungmarken verfügbar…",l10nStrings.savesTitle="Speicherstände",l10nStrings.savesDisallowed="Speichern ist in dieser Passage nicht erlaubt.",l10nStrings.savesIncapable="{_warningIntroLacking} Zum Speichern benötigte Features, darum ist es in dieser Sitzung nicht möglich, den Spielstand zu speichern.",l10nStrings.savesLabelAuto="Auto-Speicherstand",l10nStrings.savesLabelDelete="Löschen",l10nStrings.savesLabelExport="Auf Datenträger speichern…",l10nStrings.savesLabelImport="Von Datenträger laden…",l10nStrings.savesLabelLoad="Laden",l10nStrings.savesLabelClear="Alle löschen",l10nStrings.savesLabelSave="Speichern",l10nStrings.savesLabelSlot="Slot",l10nStrings.savesUnavailable="Keine Speicherslots gefunden…",l10nStrings.savesUnknownDate="unbekannt",l10nStrings.settingsTitle="Einstellungen",l10nStrings.settingsOff="Aus",l10nStrings.settingsOn="Ein",l10nStrings.settingsReset="Auf Standardwerte zurücksetzen",l10nStrings.restartTitle="Neustart",l10nStrings.restartPrompt="Bist du sicher, dass du neu starten möchtest? Nicht gespeicherter Fortschritt ginge damit verloren.",l10nStrings.shareTitle="Teilen",l10nStrings.autoloadTitle="Automatisches Laden",l10nStrings.autoloadCancel="Gehe zum Start",l10nStrings.autoloadOk="Auto-Speicherstand laden",l10nStrings.autoloadPrompt="Ein Auto-Speicherstand existiert bereits. Laden oder zurück an den Start?",l10nStrings.macroBackText="Zurück",l10nStrings.macroReturnText="Zurückkehren";
+      l10nStrings.identity="spiel",l10nStrings.aborting="Vorzeitig abgebrochen",l10nStrings.cancel="Abbrechen",l10nStrings.close="Schließen",l10nStrings.ok="OK",l10nStrings.errorTitle="Fehler",l10nStrings.errorToggle="Fehleransicht umschalten",l10nStrings.errorNonexistentPassage='die Passage "{passage}" existiert nicht',l10nStrings.errorSaveMissingData="Im Speicherstand fehlen benötigte Daten. Entweder ist die geladene Datei kein Speicherstand oder er ist defekt",l10nStrings.errorSaveIdMismatch="Speicherstand ist vom falschen {identity}",l10nStrings._warningIntroLacking="Dein Browser kann folgendes nicht darstellen, oder es ist deaktiviert",l10nStrings._warningOutroDegraded="; darum läuft dieses {identity} in einem heruntergesetzten Modus. Du kannst zwar fortfahren, aber manche Teile funktionieren vielleicht nicht richtig.",l10nStrings.warningNoWebStorage="{_warningIntroLacking} Das Web Storage API{_warningOutroDegraded}",l10nStrings.warningDegraded="{_warningIntroLacking} Manche Features die für dieses {identity} benötigt werden{_warningOutroDegraded}",l10nStrings.debugBarToggle="Fehlersuche-Leiste umschalten",l10nStrings.debugBarNoWatches="— kein Beobachtungswert aktiv —",l10nStrings.debugBarAddWatch="Beobachtungswert hinzufügen",l10nStrings.debugBarDeleteWatch="Beobachtungswert löschen",l10nStrings.debugBarWatchAll="Alle beobachten",l10nStrings.debugBarWatchNone="Alle löschen",l10nStrings.debugBarLabelAdd="Hinzufügen",l10nStrings.debugBarLabelWatch="Beobachten",l10nStrings.debugBarLabelTurn="Zug",l10nStrings.debugBarLabelViews="Ansichten",l10nStrings.debugBarViewsToggle="Fehlersuche-Ansichten umschalten",l10nStrings.debugBarWatchToggle="Beobachtungs-Feld umschalten",l10nStrings.uiBarToggle="Menüleiste umschalten",l10nStrings.uiBarBackward="Einen Schritt im {identity}-Ablauf zurück",l10nStrings.uiBarForward="Einen Schritt im {identity}-Ablauf nach vor",l10nStrings.uiBarJumpto="Zu einem bestimmten Punkt im {identity}-Ablauf springen",l10nStrings.jumptoTitle="Springe zu",l10nStrings.jumptoTurn="Zug",l10nStrings.jumptoUnavailable="Keine Sprungmarken verfügbar…",l10nStrings.savesTitle="Speicherstände",l10nStrings.savesDisallowed="Speichern ist in dieser Passage nicht erlaubt.",l10nStrings.savesIncapable="{_warningIntroLacking} Zum Speichern benötigte Features, darum ist es in dieser Sitzung nicht möglich, den Spielstand zu speichern.",l10nStrings.savesLabelAuto="Auto-Speicherstand",l10nStrings.savesLabelDelete="Löschen",l10nStrings.savesLabelExport="Auf Datenträger speichern…",l10nStrings.savesLabelImport="Von Datenträger laden…",l10nStrings.savesLabelLoad="Laden",l10nStrings.savesLabelClear="Alle löschen",l10nStrings.savesLabelSave="Speichern",l10nStrings.savesLabelSlot="Slot",l10nStrings.savesUnavailable="Keine Speicherslots gefunden…",l10nStrings.savesUnknownDate="unbekannt",l10nStrings.settingsTitle="Einstellungen",l10nStrings.settingsOff="Aus",l10nStrings.settingsOn="Ein",l10nStrings.settingsReset="Auf Standardwerte zurücksetzen",l10nStrings.restartTitle="Neustart",l10nStrings.restartPrompt="Bist du sicher, dass du neu starten möchtest? Nicht gespeicherter Fortschritt ginge damit verloren.",l10nStrings.shareTitle="Teilen",l10nStrings.autoloadTitle="Automatisches Laden",l10nStrings.autoloadCancel="Gehe zum Start",l10nStrings.autoloadOk="Auto-Speicherstand laden",l10nStrings.autoloadPrompt="Ein Auto-Speicherstand existiert bereits. Laden oder zurück an den Start?",l10nStrings.macroBackText="Zurück",l10nStrings.macroReturnText="";
   }
 
   $('html').attr('lang', setup.i18n.langs[settings.lang]);
@@ -4371,6 +4354,36 @@ details > ul {
   margin-top: 1vh;
   padding: 0.4em;
 }
+
+.macro-return:before, .return a:before {
+  content: "\e821\00a0";
+  font-family: tme-fa-icons;
+  padding-left: 4px;
+}
+
+.next a:before {
+  content: "\e822\00a0";
+  font-family: tme-fa-icons;
+  padding-left: 8px;
+}
+
+.retry a:before {
+  content: "\e824\00a0";
+  font-family: tme-fa-icons;
+  padding-left: 8px;
+}
+
+.help:before {
+	content: "\e808\00a0";
+  font-family: tme-fa-icons;
+  padding-left: 8px;
+}
+
+.install::before {
+  content: "\e829\00a0";
+  font-family: tme-fa-icons;
+  padding-left: 8px;
+}
 /* ####################MAP#################### */
 
 /* dvh = Dynamic View High um die komplette Höhe der Navigation Bar zu nutzen */
@@ -4418,7 +4431,7 @@ model-viewer {
   pointer-events: none;
   width: 32px;
 }
-  
+
 .Hotspot:focus {
   border: 4px solid rgb(0, 128, 200);
   height: 32px;
@@ -4517,14 +4530,10 @@ tw-hook[name="fade-out"] {
 }
 
 .p1 {
-  color: var(--text-light-color);
   display: inherit;
   font-family: para;
-  font-size: 5vh;
-  font-weight: normal;
-  line-height: 4vh;
+  font-size: 4vh;
   margin-top: 1vh;
-  text-align: center;
 }
 
 .p2 {
@@ -4532,11 +4541,9 @@ tw-hook[name="fade-out"] {
   display: inherit;
   font-family: para;
   font-size: 10vh;
-  font-weight: normal;
   line-height: 10vh;
   margin-left: 5vw;
   margin-right: 5vw;
-  text-align: center;
 }
 
 .hide {
