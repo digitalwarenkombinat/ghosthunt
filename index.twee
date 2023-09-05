@@ -7,7 +7,7 @@ Spuk & Schreck
   "ifid": "FB483649-96B3-4F0F-9531-A1D615413B45",
   "format": "SugarCube",
   "format-version": "2.36.1",
-  "start": "intro",
+  "start": "installation",
   "tag-colors": {
     "fightRoom": "red",
     "fightroom": "red",
@@ -18,10 +18,14 @@ Spuk & Schreck
 
 
 :: 1.0 {"position":"1700,600","size":"100,100"}
+<script>
+$('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+</script>
+
 <div class="wrapper">
-  <h4>Hotspot 2</h4>
+  <h4>Tatort 1</h4>
   <h1>Achtung!</h1>
-  <h2>Paranormales Feld</h2>
+  <h2>Paranormale Aktivität.</h2>
   </div>
 
   <div class="btn-group">
@@ -227,7 +231,7 @@ Spuk & Schreck
   <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A witch" camera-controls>
-    <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+    <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
     </model-viewer>
   </div>
 
@@ -584,18 +588,22 @@ poster="images/loading.png"
 
 
 :: 2.0 {"position":"1900,600","size":"100,100"}
-<div class="wrapper">
-  <h4>Hotspot 2</h4>
-  <h1>Achtung!</h1>
-  <h2>Paranormale Aktivität entdeckt.</h2>
-</div>
+<script>
+$('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+</script>
 
-<div class="btn-group">
+<div class="wrapper">
+  <h4>Tatort 2</h4>
+  <h1>Achtung!</h1>
+  <h2>Paranormale Aktivität.</h2>
+  </div>
+
+  <div class="btn-group">
     <<button "Betreten">>
       <<goto "2.1">>	
       <<audio "click" play>>	
-<</button>>
-</div>
+    <</button>>
+  </div>
 
 
 :: 2.1 {"position":"1900,800","size":"100,100"}
@@ -605,7 +613,7 @@ poster="images/loading.png"
 
   <video autoplay id="myVideo" playsinline>
     <source src="videos/2.1.mp4" type="video/mp4">
-</video>
+  </video>
 
   <div class="wrapper"></div>
 
@@ -627,22 +635,22 @@ poster="images/loading.png"
 </script>
 
 <div class="wrapper">
-  <h1>Ghost-Cam</h1>
-  <h2>Öffne die Kamera und mache Fotos von den Geistern.</h2>
+  <h1>Spektral Kamera</h1>
+  <h2>Öffne die Kamera und betrachte die Szene. Mache Fotos von allem was dir wichtig erscheint.</h2>
   <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A witch" camera-controls>
-    <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+    <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
-</div>
+  </div>
 
-<div class="btn-group">
-	<<button "Weiter">>
-	    <<goto "2.3">>
-    <<set $riddle to 1>>
-	<<audio "click" play>>
-<</button>>	
-</div>
+  <div class="btn-group">
+    <<button "Weiter">>
+      <<goto "2.3">>
+      <<set $riddle to 1>>
+      <<audio "click" play>>  
+    <</button>>
+  </div>
 
 
 :: 2.3 {"position":"1900,1200","size":"100,100"}
@@ -665,12 +673,12 @@ poster="images/loading.png"
       <<goto "2.4">>	
       <<audio "click" play>>	
     <</button>>
-</div>
+  </div>
 
 
 :: 2.4 {"position":"1900,1400","size":"100,100"}
 <script>
-      $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+      $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
     </script>
 
   <<if $riddle is 1>>
@@ -681,35 +689,35 @@ poster="images/loading.png"
 
     <div class="wrapper"></div>
 
-<div class="btn-group">
+    <div class="btn-group">
       <<button "Walkie-Talkie">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-      <<timed 1s>>
+        <<timed 1s>>
           <<goto "2.4">>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
 
       <<button "Häxler">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-      <<timed 1s>>
+        <<timed 1s>>
           <<goto "2.4">>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
 
       <<button "Grammophon">>
         <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-      <<timed 1s>>
+        <<timed 1s>>
           <<goto "2.4">>
           <<set $koinz to $koinz +10>>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
-</div>
-<</if>>
+      <</button>>
+    </div>
+  <</if>>
 
-<<if $riddle is 2>>
+  <<if $riddle is 2>>
     <span id="heading">
     <h1>Frage 2</h1>
       <h2>Was für ein Gegenstand lag im Vogelbad?</h2>
@@ -717,66 +725,66 @@ poster="images/loading.png"
 
     <div class="wrapper"></div>
 
-<div class="btn-group">
+    <div class="btn-group">
       <<button "Haarspange">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-      <<timed 1s>>
+        <<timed 1s>>
           <<goto "2.4">><<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
 
       <<button "Schlüssel">>
         <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-      <<timed 1s>>
+        <<timed 1s>>
           <<goto "2.4">>
           <<set $koinz to $koinz +10>>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
 
       <<button "Brosche">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-      <<timed 1s>>
+        <<timed 1s>>
           <<goto "2.4">>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
-</div>
-<</if>>
+      <</button>>
+    </div>
+  <</if>>
 
-<<if $riddle is 3>>
+  <<if $riddle is 3>>
     <span id="heading">
     <h1>Frage 3</h1>
       <h2>Was lag neben dem Brunnen?</h2>
     </span>
 
     <div class="wrapper"></div>
-    
-<div class="btn-group">
+        
+    <div class="btn-group">
       <<button "Ketten">>
         <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-      <<timed 1s>>
+        <<timed 1s>>
           <<goto "2.4">>
           <<set $koinz to $koinz +10>>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
-    
+      <</button>>
+          
       <<button "Flaschen">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-      <<timed 1s>>
+        <<timed 1s>>
           <<goto "2.4">>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
 
       <<button "Gliedmaßen">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-      <<timed 1s>>
+        <<timed 1s>>
           <<goto "2.4">>
           <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
     </div>
   <</if>>
 
@@ -785,7 +793,7 @@ poster="images/loading.png"
       <h1>Okkulte Rune</h1>
       <h2>Ihr habt eine okkulte Rune entdeckt.</h2>
       <p class="p2">A</p>
-</div>
+    </div>
 
     <div class="btn-group">
       <<button "Weiter">>
@@ -795,7 +803,7 @@ poster="images/loading.png"
         <<audio "click" play>>  
       <</button>>
     </div>
-<</if>>
+  <</if>>
 
 
 :: 2.5 {"position":"1900,1600","size":"100,100"}
@@ -818,7 +826,7 @@ poster="images/loading.png"
       <<goto "2.6">>	
       <<audio "click" play>>	
     <</button>>
-</div>
+  </div>
 
 
 :: 2.6 {"position":"1900,1800","size":"100,100"}
@@ -832,32 +840,9 @@ poster="images/loading.png"
 
   <div class="wrapper"></div>
 
-<div class="btn-group">
-    <<button "Nochmal">>
-      <<goto "2.6">>	
-      <<audio "click" play>>	
-    <</button>>
-<<button "Weiter">>
-      <<goto "2.7">>	
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: 2.7 {"position":"1900,2000","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-  <video autoplay id="myVideo" playsinline>
-    <source src="videos/2.6.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
   <div class="btn-group">
     <<button "Nochmal">>
-      <<goto "2.7">>	
+      <<goto "2.6">>	
       <<audio "click" play>>	
     <</button>>
     <<button "Weiter">>
@@ -865,6 +850,26 @@ poster="images/loading.png"
       <<audio "click" play>>	
     <</button>>
   </div>
+
+
+:: 2.7 {"position":"1900,2000","size":"100,100"}
+<div
+ class="wrapper">
+  <h1>Euer Feedback</h1>
+  <h2>Wir wollen ein Team-Event kreieren, bei dem sich die Menschen draußen an der frischen Luft bewegen, zusammen arbeiten, um Rätsel zu lösen und mit Hilfe moderner Technik in neue gruselige Welten eintauchen. 
+  <br>
+  <br>Unser Ziel ist Ostern 2024 die erste Rallye im Friedenspark, Leipzig zu veröffentlichen. Weitere Städte werden folgen. 
+  <br>
+  <br>Unsere Rallye wird ausschließlich auf den Smartphones unserer Kunden gespielt. Es gibt keinen Guide vor Ort. Daher ist es uns sehr wichtig, dass die Technik gut funktioniert. 
+  <br>
+  <br>
+  Um zu evaluieren, ob uns das gelingt benötigen wir euer Feedback. Unter diesem <a href="https://forms.gle/9DVsp9kHYV9bD6rq8">"Link"</a>  gelangt ihr zu unserem Fragebogen. Vielen Dank. 
+</h2>
+</div>
+
+<div class="btn-group">
+
+</div>
 
 
 :: 20.1 {"position":"5500,600","size":"100,100"}
@@ -2001,7 +2006,7 @@ unsere Hausgeist sehen.
   <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A witch" camera-controls>
-    <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+    <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
     </model-viewer>
 </div>
 
@@ -2010,6 +2015,25 @@ unsere Hausgeist sehen.
     	<<goto "friedenspark">>	
 <<audio "click" play>>	
 <</button>>
+</div>
+
+
+:: Dev {"position":"200,1200","size":"100,100"}
+<div class="wrapper">
+  <div class="btn-group">
+      <<button "1.0">>
+      <<goto "1.0">>	
+    <</button>>
+    <<button "2.0">>
+      <<goto "2.0">>	
+    <</button>>
+    <<button "Karte">>
+      <<goto "map.init">>	
+    <</button>>
+    <<button "Zurück" `previous()`>>
+      <<audio "click" play>>
+    <</button>>
+  </div>
 </div>
 
 
@@ -2397,37 +2421,38 @@ diesem Zweck verarbeiten.
 
 :: Inventar {"position":"200,600","size":"100,100"}
 <div class="wrapper">
-  <h1>Inventar</h1>
+  <h1>Geister</h1>
+  <h2>Hier werden alle Geister angezeigt, die ihr mit der Spektralkamera eingefangen habt.</h2>
   <<if $affe is 1>>
     <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a witch with graveyard" camera-controls>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
     </model-viewer>
   <</if>>
   <<if $flamingo is 1>>
       <model-viewer id="model-viewer" src="models/hanging/hanging.glb" ar auto-rotate poster="models/hanging/poster.webp" 
         autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
         alt="A 3D model of a hanging scene" camera-controls>
-        <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+        <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
       </model-viewer>
   <</if>>
 
   <<if $eule is 1>>
     <model-viewer id="model-viewer" src="models/setup.3/setup.3.glb" ar auto-rotate poster="images/loading.png"
-      ios-src="models/setup.3/setup.3.usdz"
+                ios-src="models/setup.3/setup.3.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a zombie" camera-controls>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
   <</if>>
 
   <<if $pferd is 1>>
     <model-viewer id="model-viewer" src="models/setup.3/setup.3.glb" ar auto-rotate poster="images/loading.png"
-      ios-src="models/setup.3/setup.3.usdz"
+                ios-src="models/setup.3/setup.3.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
   <</if>>
 
@@ -2436,7 +2461,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/zebra/zebra.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
   <</if>>
 
@@ -2445,7 +2470,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/schildkroete/schildkroete.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
   <</if>>
 
@@ -2454,7 +2479,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/schlange/schlange.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
   <</if>>
 
@@ -2463,7 +2488,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/ozelot/ozelot.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
   <</if>>
 
@@ -2472,7 +2497,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/truthahn/truthahn.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
   <</if>>
 
@@ -2481,7 +2506,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/katze/katze.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
   <</if>>
 
@@ -2490,7 +2515,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/schwein/schwein.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
   <</if>>
 
@@ -2499,7 +2524,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/krokodil/krokodil.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
   <</if>>
 
@@ -2508,7 +2533,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/lama/lama.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
   <</if>>
 
@@ -2517,19 +2542,17 @@ diesem Zweck verarbeiten.
                 ios-src="models/gazelle/gazelle.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
   <</if>>
 
   </div>
 
   <div class="btn-group">
-
-  <<button "Zurück">>
-        <<goto "map.init">>
-    <<audio "click" play>>
-  <</button>>	
-
+    <<button "Zurück" `previous()`>>
+      <<audio "click" play>>
+    <</button>>
+  </div>
 </div>
 
 
@@ -2647,9 +2670,9 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 
 <<set $ende to 0>>
 
-<<set $flamingo to 1>>
+<<set $flamingo to 0>>
 
-<<set $affe to 1>>
+<<set $affe to 0>>
 
 <<set $eule to 1>>
 
@@ -2681,15 +2704,17 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 <<set $help = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
 <<set $legal = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
 <<link [[$inventory|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
-<<link [[$help|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
-<<link [[$legal|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>>
-<<link "Hotspot 2">>
+/* <<link [[$help|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>> */
+/* <<link [[$legal|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
+<<link "Dev">>
 	<<addclass "#ui-bar" "stowed">>
-	<<goto "2.0">>
+	<<goto "Dev">>
 <</link>>
 
-:: anruf {"position":"700,800","size":"100,100"}
-<script>
+
+:: anruf {"position":"800,800","size":"100,100"}
+
+  <script>
     $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
   </script>
 
@@ -2706,6 +2731,9 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
       <<audio "click" play>>	
     <</button>>
   </div>
+
+:: ar.init {"position":"1500,1000","size":"100,100"}
+
 
 
 :: dauer {"position":"375,3600","size":"100,100"}
@@ -2746,78 +2774,6 @@ Die Schnitzeljagd findet im öffentlichen Raum statt. Bitte nimm Rücksicht auf 
 	<<button "Weiter">>
     	<<goto "spiel">>	
 <<audio "click" play>>	
-<</button>>
-</div>
-
-
-:: ende.1 {"position":"1100,600","size":"100,100"}
-<<set $ende to 1>>
-
-  <div class="wrapper">
-    <h1>Intro Ende</h1>
-  </div>
-
-  <div class="btn-group"></div>
-
-
-:: ende.2 {"position":"1100,800","size":"100,100"}
-<<set $flamingo to 1>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast den Flamingo gefunden!</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-              src="models/flamingo/flamingo.glb"
-              ios-src="models/flamingo/flamingo.usdz"
-			  alt="Flamingo"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Weiter">>
-      <<goto "ende.3">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: ende.3 {"position":"1100,1000","size":"100,100"}
-<video autoplay loop id="myVideo" playsinline>
-  <source src="videos/ende.3.mp4" type="video/mp4">
-</video>
-
-<div class="wrapper">
-
-</div>
-
-<div class="btn-group">
-  <<button "Weiter">>
-    <<goto "ende.4">>
-<<audio "click" play>>
-<</button>>
-</div>
-
-
-:: ende.4 {"position":"1100,1200","size":"100,100"}
-<video autoplay loop id="myVideo" playsinline>
-  <source src="videos/ende.4.mp4" type="video/mp4">
-</video>
-
-<div class="wrapper">
-
-</div>
-
-<div class="btn-group">
-  <<button "Weiter">>
-    <<goto "map.init">>
-<<audio "click" play>>
 <</button>>
 </div>
 
@@ -2900,12 +2856,12 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 </div>
 
 
-:: holger {"position":"700,1000","size":"100,100"}
+:: holger {"position":"800,1000","size":"100,100"}
 <<script>>
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-  <<audio ":playing:" stop>>
+<<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
     <source src="videos/holger.mp4" type="video/mp4">
@@ -2920,13 +2876,21 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   </div>
 
 
-:: intro {"position":"500,400","size":"100,100"}
+:: hotspot.1.init {"position":"1500,800","size":"100,100"}
+
+
+
+:: hotspot.3.init {"position":"1500,1200","size":"100,100"}
+
+
+
+:: installation {"position":"600,600","size":"100,100"}
 <<script>>
   if (State.variables.is_pwa) {
-    $.wiki('<<goto "splash">>')
+    $.wiki('<<goto "intro">>')
   };
 
-  $('#story').attr('style', 'background-image:url(images/splash.jpg)');
+  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 
   window.addEventListener('beforeinstallprompt', (event) => {
     /* Prevent the mini-infobar from appearing on mobile. */
@@ -2936,16 +2900,65 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
     window.deferredPrompt = event;
   });
 <</script>>
+
 <div class="wrapper">
-  <h1>Spuk & <br>Schreck</h1>
-  <h2><<txt>><br><<txt>></h2>
+<h2><<txt>></h2>
+  <h1>Spuk &
+  <br>Schreck</h1>
+  <h2><<txt>></h2>
+  <p class="p3">spui</p>
 </div>
 
 <div class="btn-group">
   <button class="next">[[|vorstellung]]</button>
 </div>
 
-:: map.init {"position":"1700,300","size":"100,100"}
+
+:: intro {"position":"800,600","size":"100,100"}
+<script>
+  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+</script>
+
+<div class="wrapper">
+<br>
+<br>
+<br>
+  <h1>Einführung</h1>
+  <h2>Ablauf, Dauer & Teams.</h2>
+  <p class="p3">intro</p>
+</div>
+
+  <div class="btn-group">
+    <<button "Start">>
+      <<goto "anruf">>
+      <<audio "click" play>>	
+    <</button>>
+  </div>
+
+
+:: kapitel.1 {"position":"1000,600","size":"100,100"}
+<script>
+  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+</script>
+
+<div class="wrapper">
+<br>
+<br>
+<br>
+  <h1>Kapitel 1</h1>
+  <h2>Paranormale Aktivitäten</h2>
+  <p class="p3">apitel</p>
+</div>
+
+  <div class="btn-group">
+    <<button "Weiter">>
+      <<goto "map.init">>
+      <<audio "click" play>>	
+    <</button>>
+  </div>
+
+
+:: map.init {"position":"1400,600","size":"100,100"}
 <<if $letter1 is 1 and $letter2 is 1 and $letter3 is 1 and $letter4 is 1 and $letter5 is 1 and $letter6 is 1 and $letter7 is 1 and $ende is 0>>
 	<<goto "ende.1">>
 <<else>>
@@ -2953,7 +2966,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 <</if>>
 
 
-:: mapbox [autosave] {"position":"1699,401","size":"100,100"}
+:: mapbox [autosave] {"position":"1500,600","size":"100,100"}
 <div id="map"></div>
 
 <<script>>
@@ -3082,24 +3095,21 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   });
 <</script>>
 
+<div class="wrapper" style="z-index: unset"></div>
+
 <div class="btn-group">
   
     <<if $maptip is 0>> 
       <span id="heading"><h2>Diese Karte ist euer Hauptbildschirm.</h2>
         <<button "Weiter">>
           <<replace "#heading">>
-            <h2>Hier seht ihr alle Geister-Hotspots, die ihr noch nicht besucht habt.</h2>
+            <h2>Hier seht ihr alle Tatorte in eurer Umgebung.</h2>
             <<button "Weiter">>
               <<replace "#heading">>
-                <h2>Lauft in einen der Kreise hinein. Sobald er grün wird, könnt ihr den Hotspot anklicken.</h2>
-                <<button "Weiter">>
-                  <<replace "#heading">>
-                  <</replace>>
-                  <<audio "click" play>>
-                  <<goto "1.1">>
-                <</button>>		
+                <h2>Lauft in einen der roten Kreise hinein! Sobald er grün wird, könnt ihr den Tatort anklicken.</h2>
               <</replace>>
-              <<audio "click" play>>		
+              <<audio "click" play>>
+              <<goto "1.0">>	
             <</button>>
           <</replace>>
           <<audio "click" play>><<set $maptip to 1>>
@@ -3131,12 +3141,12 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   </div>
 
 
-:: multiplayer {"position":"700,1400","size":"100,100"}
+:: multiplayer {"position":"800,1400","size":"100,100"}
 <<script>>
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-  <<audio ":playing:" stop>>
+<<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
     <source src="videos/mehrspieler.mp4" type="video/mp4">
@@ -3145,15 +3155,19 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <<button "Nochmal">>
-      <<goto "multiplayer">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "<3">>
+    <<button "1">>
       <<goto "start">>	
       <<audio "click" play>>	
     <</button>>
-    <<button ">3">>
+    <<button "2">>
+      <<goto "start">>	
+      <<audio "click" play>>	
+    <</button>>
+    <<button "3">>
+      <<goto "start">>	
+      <<audio "click" play>>	
+    <</button>>
+        <<button "3+">>
       <<goto "teams">>	
       <<audio "click" play>>	
     <</button>>
@@ -3174,12 +3188,16 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 </div>
 
 
-:: rallye {"position":"700,1200","size":"100,100"}
+:: quiz.init {"position":"1500,1400","size":"100,100"}
+
+
+
+:: rallye {"position":"800,1200","size":"100,100"}
 <<script>>
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-  <<audio ":playing:" stop>>
+<<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
     <source src="videos/rallye.mp4" type="video/mp4">
@@ -3189,24 +3207,19 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   </div>
 
   <div class="btn-group">
-    <<button "Zurück">>
-      <<goto "holger">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Nochmal">>
-      <<goto "rallye">>	
-    <<audio "click" play>>	
-    <</button>>
-    <<button "Ja">>
-      <<goto "multiplayer">>	
-      <<audio "click" play>>	
-    <</button>>
+    <button class="return">[[|holger]]<<audio "click" play>></button>
+    <button class="retry">[[|rallye]]<<audio "click" play>></button>
+    <button class="next">[[|multiplayer]]<<audio "click" play>></button>
   </div>
 
 
-:: setup.1 {"position":"500,800","size":"100,100"}
+:: reward.init {"position":"1500,1600","size":"100,100"}
+
+
+
+:: setup.1 {"position":"600,1000","size":"100,100"}
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/splash.jpg)');
+  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 <</script>>
 <div class="wrapper">
   <h4>Setup 1/4</h4>
@@ -3229,7 +3242,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 </div>
 
 
-:: setup.2 {"position":"500,1000","size":"100,100"}
+:: setup.2 {"position":"600,1200","size":"100,100"}
 <<script>>
 $(document).one(":passagedisplay", function() {
 
@@ -3317,7 +3330,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 
-:: setup.3 {"position":"500,1200","size":"100,100"}
+:: setup.3 {"position":"600,1400","size":"100,100"}
 <<script>>
   $(document).one(":passagedisplay", function() {
     $('#story').attr('style', 'background-image:url(images/cam.jpg)');
@@ -3332,12 +3345,12 @@ $(document).one(":passagedisplay", function() {
 <h1>Kamera</h1>
   <h2>Wir benötigen Zugriff auf deine Kamera, um dir die Geister in der realen Welt zu zeigen. 
   <br>
-  <br>Klicke auf "Geister-Kamera" öffnen und schau dir den Zombie an.
+  <br>Klicke auf "Spektralkamera aktivieren" und schau dir den Zombie an.
   </h2>
   <model-viewer id="model-viewer" src="models/setup.3/setup.3.glb" ar auto-rotate poster="models/setup.3/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A 3D model of a zombie" camera-controls>
-    <button slot="ar-button" id="ar-button">Geisterkamera öffnen</button>
+    <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
   </model-viewer>
 </div>
 
@@ -3347,10 +3360,10 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 
-:: setup.4 {"position":"500,1400","size":"100,100"}
+:: setup.4 {"position":"600,1600","size":"100,100"}
 <<script>>
 $(document).one(":passagedisplay", function() {
-  $('#story').attr('style', 'background-image:url(images/splash.jpg)');
+  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   const installBtn = document.querySelector('.install');
   const openBtn = document.querySelector('.open');
   const nextBtn = document.querySelector('.next');
@@ -3384,9 +3397,11 @@ $(document).one(":passagedisplay", function() {
  });
 <</script>>
 <div class="wrapper">
-  <h4>Setup 4/4</h4>
-  <h1>App Icon</h1>
-  <h2>Klicke auf "Teilen" + "Zum Homescreen hinzufügen".
+  <h4>Herzlich Willkommen bei:</h4>
+  <h1>Spuk & Schreck</h1>
+  <h2>Bitte installiere zuerst die App. 
+  <br>
+  <br>Klicke auf "Teilen" + "Zum Homescreen hinzufügen".
   <br>
   <br>Verlasse den Browser und öffne die neu hinzugefügte App.
   </h2>
@@ -3396,7 +3411,7 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <button class="install"></button>
   <button class="open"><a href='https://digitalwarenkombinat.github.io/ghosthunt/' target='_blank'>App öffnen</a></button>
-  <button class="next">[[|splash]]</button>
+  <button class="next">[[|intro]]</button>
 </div>
 
 
@@ -3423,31 +3438,8 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 </div>
 
 
-:: splash {"position":"700,600","size":"100,100"}
-<script>
-  $('#story').attr('style', 'background-image:url(images/splash.jpg)');
-</script>
-
-<div class="wrapper">
-  <h1>Spuk &
-  <br>Schreck</h1>
-  <h2>Die Geisterjagd durch den 
-  <br>
-  Leipziger Friedenspark. 
-  </h2>
-</div>
-
-<div class="btn-group">
-  <button>[[Start|anruf]]</button>
-</div>
-
-
-:: start {"position":"700,1800","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-  <<audio ":playing:" stop>>
+:: start {"position":"800,1800","size":"100,100"}
+<<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
     <source src="videos/start.mp4" type="video/mp4">
@@ -3456,112 +3448,18 @@ Ende die meisten Punkte und Tiere gesammelt hat.
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <<button "Zurück">>
-      <<goto "multiplayer">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Nochmal">>
-      <<goto "start">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Los">>
-      <<goto "map.init">>	
-      <<audio "click" play>>	
-    <</button>>
+    <button class="return">[[|multiplayer]]<<audio "click" play>></button>
+    <button class="retry">[[|start]]<<audio "click" play>></button>
+    <button class="next">[[|kapitel.1]]<<audio "click" play>></button>
   </div>
 
 
-:: start.1 {"position":"900,800","size":"100,100"}
-<video autoplay loop id="myVideo" playsinline>
-  <source src="videos/start.1.mp4" type="video/mp4">
-</video>
-
-<div class="wrapper">
-<h5>Hallo Leute!</h5>
-</div>
-
-<div class="btn-group">
-  <<button "Weiter">>
-    <<goto "start.2">>
-<<audio "click" play>>
-<</button>>
-</div>
+:: story.init {"position":"1500,1800","size":"100,100"}
 
 
-:: start.2 {"position":"900,1000","size":"100,100"}
-<video autoplay loop id="myVideo" playsinline>
-  <source src="videos/start.2.mp4" type="video/mp4">
-</video>
 
-<div class="wrapper">
-<h5>Was ist passiert?</h5>
-</div>
-
-<div class="btn-group">
-  <<button "Weiter">>
-    <<goto "start.3">>
-<<audio "click" play>>
-<</button>>
-</div>
-
-
-:: start.3 {"position":"900,1200","size":"100,100"}
-<video autoplay loop id="myVideo" playsinline>
-  <source src="videos/start.3.mp4" type="video/mp4">
-</video>
-
-<div class="wrapper">
-<h5>Mein Plan</h5>
-</div>
-
-<div class="btn-group">
-  <<button "Weiter">>
-    <<goto "start.4">>
-<<audio "click" play>>
-<</button>>
-</div>
-
-
-:: start.4 {"position":"900,1400","size":"100,100"}
-<video autoplay loop id="myVideo" playsinline>
-  <source src="videos/start.4.mp4" type="video/mp4">
-</video>
-
-<div class="wrapper">
-<h5>Belohnung</h5>
-</div>
-
-<div class="btn-group">
-  <<button "Weiter">>
-    <<goto "start.5">>
-<<audio "click" play>>
-<</button>>
-</div>
-
-
-:: start.5 {"position":"900,1600","size":"100,100"}
-<video autoplay loop id="myVideo" playsinline>
-  <source src="videos/start.5.mp4" type="video/mp4">
-</video>
-
-<div class="wrapper">
-<h5>Los geht's</h5>
-</div>
-
-<div class="btn-group">
-  <<button "Weiter">>
-    <<goto "map.init">>
-<<audio "click" play>>
-<</button>>
-</div>
-
-
-:: teams {"position":"700,1600","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-  <<audio ":playing:" stop>>
+:: teams {"position":"800,1600","size":"100,100"}
+<<audio ":playing:" stop>>
 
   <video autoplay id="myVideo" playsinline>
     <source src="videos/teams.mp4" type="video/mp4">
@@ -3570,57 +3468,29 @@ Ende die meisten Punkte und Tiere gesammelt hat.
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <<button "Zurück">>
-      <<goto "multiplayer">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Nochmal">>
-      <<goto "teams">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Weiter">>
-      <<goto "start">>	
-      <<audio "click" play>>	
-    <</button>>
+    <button class="return">[[|multiplayer]]<<audio "click" play>></button>
+    <button class="retry">[[|teams]]<<audio "click" play>></button>
+    <button class="next">[[|start]]<<audio "click" play>></button>
   </div>
 
+:: vorstellung {"position":"600,800","size":"100,100"}
+<<audio ":playing:" stop>>
 
-:: title [autosave] {"position":"900,600","size":"100,100"}
-<<audio "bg" volume 0.75 fadeout>>
-
-<div class="wrapper">
-<br>
-<br>
-<br>
-<img src="images/title.jpg" class="title" />
-</div>
-
-<div class="btn-group">
-
-<<button "Start">>
-  <<goto "start.1">><<audio "click" play>>
-<</button>>
-</div>
-
-
-:: vorstellung {"position":"500,600","size":"100,100"}
 <<script>>
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-<<audio ":playing:" stop>>
+  <video autoplay id="myVideo" playsinline>
+    <source src="videos/vorstellung.mp4" type="video/mp4">
+  </video>
 
-<video autoplay id="myVideo" playsinline>
-  <source src="videos/vorstellung.mp4" type="video/mp4">
-</video>
+  <div class="wrapper"></div>
 
-<div class="wrapper"></div>
-
-<div class="btn-group">
-  <button class="return">[[|intro]]<<audio "click" play>></button>
+  <div class="btn-group">
+  <button class="return">[[|installation]]<<audio "click" play>></button>
   <button class="retry">[[|vorstellung]]<<audio "click" play>></button>
   <button class="next">[[|setup.1]]<<audio "click" play>></button>
-</div>
+  </div>
 
 :: StoryScript [script]
 /************
@@ -3696,8 +3566,8 @@ Translations
 setup.text = {};
 setup.text["StoryMenu"] = {
 	"1": {
-		de: 'Inventar',
-		en: 'Inventary'
+		de: 'Geister',
+		en: 'Ghosts'
   },
 	"2": {
 		de: 'Hilfe',
@@ -3708,14 +3578,15 @@ setup.text["StoryMenu"] = {
 		en: 'Legal Notice'
   }
 };
-setup.text["intro"] = {
+setup.text["installation"] = {
+  
 	"1": {
-		de: 'Die Geisterjagd durch den',
-		en: 'The ghost hunt through the'
+		de: 'Herzlich Willkommen zu:',
+		en: 'Welcome to:'
   },
-	"2": {
-		de: 'Leipziger Friedenspark.',
-		en: 'Leipzig Friedenspark.'
+  "2": {
+		de: 'Diese Rallye ist eine Test-Version und nicht das finale Produkt. Sie ist nur für Testzwecke gedacht.',
+		en: 'This rally is a test version and not the final product. It is intended for testing purposes only.'
   }
 };
 
@@ -4117,7 +3988,7 @@ h4 {
 
 h5 {
   color: var(--text-light-color);
-  font-family: "myriad-pro", sans-serif;
+ font-family: "myriad-pro", sans-serif;
   font-size: 2vh;
   line-height: 2vh;
   margin-bottom: 0vh;
@@ -4400,7 +4271,7 @@ details > ul {
 .mapboxgl-ctrl-group button.mapboxgl-ctrl-geolocate { 
   display: none;
 }
-
+  
 /* ####################MODEL VIEWER#################### */
 model-viewer {
   width: 90%;
@@ -4457,7 +4328,7 @@ model-viewer {
   max-width: 128px;
   overflow-wrap: break-word;
   padding: 0.5em 1em;
-  position: absolute;
+    position: absolute;
   top: 50%;
   width: max-content;
 }
@@ -4544,6 +4415,16 @@ tw-hook[name="fade-out"] {
   line-height: 10vh;
   margin-left: 5vw;
   margin-right: 5vw;
+}
+
+.p3 {
+    font-family: para;
+  	color: var(--text-light-color);
+    font-size: 4vh;
+    line-height: 0vh;
+    display: inherit;
+    text-shadow: 3px 3px 1px black;
+    letter-spacing: 3vw;
 }
 
 .hide {
