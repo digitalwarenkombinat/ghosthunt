@@ -23,7 +23,6 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 </script>
 
 <div class="wrapper">
-  <h4>Tatort 1</h4>
   <h1>Achtung!</h1>
   <h2>Paranormale Aktivität.</h2>
   </div>
@@ -593,7 +592,6 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 </script>
 
 <div class="wrapper">
-  <h4>Tatort 2</h4>
   <h1>Achtung!</h1>
   <h2>Paranormale Aktivität.</h2>
   </div>
@@ -2021,7 +2019,7 @@ unsere Hausgeist sehen.
 :: Dev {"position":"200,1200","size":"100,100"}
 <div class="wrapper">
   <div class="btn-group">
-      <<button "1.0">>
+    <<button "1.0">>
       <<goto "1.0">>	
     <</button>>
     <<button "2.0">>
@@ -2546,13 +2544,12 @@ diesem Zweck verarbeiten.
   </model-viewer>
   <</if>>
 
-  </div>
+</div>
 
-  <div class="btn-group">
-    <<button "Zurück" `previous()`>>
-      <<audio "click" play>>
-    <</button>>
-  </div>
+<div class="btn-group">
+  <<button "Zurück" `previous()`>>
+    <<audio "click" play>>
+  <</button>>
 </div>
 
 
@@ -2717,8 +2714,6 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
   <script>
     $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
   </script>
-
-  <<audio "ring" loop play>>
 
   <div class="wrapper">
     <h1>Anruf</h1>
@@ -2998,7 +2993,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
               State.variables.fences.find(f => f.id === fence.id).alreadyEntered = true;          
               switch (fence.id) {
                 case 'johannistorturm':
-                  $.wiki('<<goto "1.1">>');
+                  $.wiki('<<goto "1.0">>');
                   break;
                 case 'marsfeld':
                   $.wiki('<<goto "2.1">>');
@@ -3109,7 +3104,6 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
                 <h2>Lauft in einen der roten Kreise hinein! Sobald er grün wird, könnt ihr den Tatort anklicken.</h2>
               <</replace>>
               <<audio "click" play>>
-              <<goto "1.0">>	
             <</button>>
           <</replace>>
           <<audio "click" play>><<set $maptip to 1>>
@@ -4153,6 +4147,10 @@ details > ul {
   display: none;
 }
 
+#menu ul {
+border: none;
+}
+
 #menu li a {
   border-radius: 4px;
   border: 2px solid var(--secondary-color);
@@ -4211,7 +4209,7 @@ details > ul {
   box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
   color: var(--secondary-color);
   font-family: "myriad-pro", sans-serif;
-  font-size: 3vh;
+  font-size: 4vh;
   font-weight: 400;
 }
 
