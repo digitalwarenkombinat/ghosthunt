@@ -3350,7 +3350,7 @@ $(document).one(":passagedisplay", function() {
 <<script>>
   $(document).one(":passagedisplay", function() {
     $('#story').attr('style', 'background-image:url(images/cam.jpg)');
-
+    const helpBtn = document.querySelector('.help');
     helpBtn.style.display = 'none';
 
     document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
