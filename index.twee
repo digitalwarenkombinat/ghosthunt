@@ -3218,14 +3218,10 @@ $(document).one(":passagedisplay", function() {
   $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   const installBtn = document.querySelector('.install');
   const iosHelp = document.querySelector('.iosHelp');
-  const androidHelp = document.querySelector('.androidHelp');
 
   if (State.variables.is_safari) {
-    androidHelp.style.display = 'none';
-    iosHelp.style.display = 'inline';
     installBtn.style.display = 'none';
   } else if (State.variables.is_chrome) {
-    androidHelp.style.display = 'inline';
     iosHelp.style.display = 'none';
   };
 
@@ -3254,13 +3250,9 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 <div class="wrapper">
   <h1>Installation</h1>
-  <h2>
-    <a class="iosHelp" target="_blank" href="https://support.google.com/chrome/answer/9658361?hl=de&co=GENIE.Platform%3DiOS&oco=1">"Installiere die App."</a>
-    <a class="androidHelp" target="_blank" href="https://support.google.com/chrome/answer/9658361?hl=de&co=GENIE.Platform%3DAndroid&oco=1">"Installiere die App."</a>
-    <br/>
-    <br/>
-    Verlasse den Browser und öffne die neu hinzugefügte App.
-  </h2>
+  <h2>Bitte installiere zuerst die App.</h2>
+  <h2 class="iosHelp">Tippe rechts oben in der Adressleiste auf „Teilen“ <img src="images/ios_share.svg" /> und auf "Zum Home-Bildschirm".</h2>
+  <h2>Verlasse den Browser und öffne die neu hinzugefügte App.</h2>
   <img src="images/icon.png" class="image1" />
 </div>
 
@@ -3358,6 +3350,8 @@ $(document).one(":passagedisplay", function() {
 <<script>>
   $(document).one(":passagedisplay", function() {
     $('#story').attr('style', 'background-image:url(images/cam.jpg)');
+
+    helpBtn.style.display = 'none';
 
     document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
       console.log(event.detail.status)
