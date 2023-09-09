@@ -44,7 +44,7 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-  <video autoplay id="myVideo" playsinline>
+  <video autoplay muted id="myVideo" playsinline>
     <source src="videos/1.1.mp4" type="video/mp4">
   </video>
 
@@ -207,7 +207,7 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-  <video autoplay id="myVideo" playsinline>
+  <video autoplay muted id="myVideo" playsinline>
     <source src="videos/1.3.mp4" type="video/mp4">
   </video>
 
@@ -250,7 +250,7 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 
   <<audio ":playing:" stop>>
 
-  <video autoplay id="myVideo" playsinline>
+  <video autoplay muted id="myVideo" playsinline>
     <source src="videos/1.5.mp4" type="video/mp4">
   </video>
 
@@ -262,7 +262,7 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
       <<audio "click" play>>	
     <</button>>
     <<button "Weiter">>
-      <<goto "ende.1">>	
+      <<goto "2.7">>	
       <<audio "click" play>>	
     <</button>>
   </div>
@@ -609,7 +609,7 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-  <video autoplay id="myVideo" playsinline>
+  <video autoplay muted id="myVideo" playsinline>
     <source src="videos/2.1.mp4" type="video/mp4">
   </video>
 
@@ -656,7 +656,7 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-  <video autoplay id="myVideo" playsinline>
+  <video autoplay muted id="myVideo" playsinline>
     <source src="videos/2.3.mp4" type="video/mp4">
   </video>
 
@@ -809,7 +809,7 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-  <video autoplay id="myVideo" playsinline>
+  <video autoplay muted id="myVideo" playsinline>
     <source src="videos/2.5.mp4" type="video/mp4">
   </video>
 
@@ -832,7 +832,7 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-  <video autoplay id="myVideo" playsinline>
+  <video autoplay muted id="myVideo" playsinline>
     <source src="videos/2.6.mp4" type="video/mp4">
   </video>
 
@@ -861,7 +861,7 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   <br>Unsere Rallye wird ausschließlich auf den Smartphones unserer Kunden gespielt. Es gibt keinen Guide vor Ort. Daher ist es uns sehr wichtig, dass die Technik gut funktioniert. 
   <br>
   <br>
-  Um zu evaluieren, ob uns das gelingt benötigen wir euer Feedback. Unter diesem <a href="https://forms.gle/9DVsp9kHYV9bD6rq8">"Link"</a>  gelangt ihr zu unserem Fragebogen. Vielen Dank. 
+  Um zu evaluieren, ob uns das gelingt benötigen wir euer Feedback. Unter diesem <a href="https://forms.gle/jcGPPbrbbnwDLNC28">"Link"</a>  gelangt ihr zu unserem Fragebogen. Vielen Dank. 
 </h2>
 </div>
 
@@ -918,7 +918,7 @@ poster="images/loading.png"
 
 
 :: 3.2 {"position":"2100,800","size":"100,100"}
-<video autoplay loop id="myVideo" playsinline>
+<video autoplay muted loop id="myVideo" playsinline>
   <source src="videos/3.2.mp4" type="video/mp4">
 </video>
 
@@ -1121,7 +1121,7 @@ play>>
 
 
 :: 4.2 {"position":"2300,800","size":"100,100"}
-<video autoplay loop id="myVideo" playsinline>
+<video autoplay muted loop id="myVideo" playsinline>
   <source src="videos/4.2.mp4" type="video/mp4">
 </video>
 
@@ -1322,7 +1322,7 @@ play>>
 
 
 :: 5.2 {"position":"2500,800","size":"100,100"}
-<video autoplay loop id="myVideo" playsinline>
+<video autoplay muted loop id="myVideo" playsinline>
   <source src="videos/5.2.mp4" type="video/mp4">
 </video>
 
@@ -1520,7 +1520,7 @@ play>>
 
 
 :: 6.2 {"position":"2700,800","size":"100,100"}
-<video autoplay loop id="myVideo" playsinline>
+<video autoplay muted loop id="myVideo" playsinline>
   <source src="videos/6.2.mp4" type="video/mp4">
 </video>
 
@@ -1720,7 +1720,7 @@ play>>
 
 
 :: 7.2 {"position":"2900,801","size":"100,100"}
-<video autoplay loop id="myVideo" playsinline>
+<video autoplay muted loop id="myVideo" playsinline>
   <source src="videos/7.2.mp4" type="video/mp4">
 </video>
 
@@ -2774,8 +2774,7 @@ Die Schnitzeljagd findet im öffentlichen Raum statt. Bitte nimm Rücksicht auf 
 
 
 :: friedenspark {"position":"500,3200","size":"100,100"}
-<video
- autoplay loop id="myVideo" playsinline>
+<video autoplay muted loop id="myVideo" playsinline>
   <source src="videos/demo.mp4" type="video/mp4">
 </video>
 
@@ -2809,8 +2808,7 @@ der Abenddämmerung zu gehen. Da sind die Spukis am aktivsten.
 
 
 :: gps {"position":"500,3400","size":"100,100"}
-<video
- autoplay loop id="myVideo" playsinline>
+<video autoplay muted loop id="myVideo" playsinline>
   <source src="videos/demo.mp4" type="video/mp4">
 </video>
 
@@ -2858,7 +2856,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 <<audio ":playing:" stop>>
 
-  <video autoplay id="myVideo" playsinline>
+  <video autoplay muted id="myVideo" playsinline>
     <source src="videos/holger.mp4" type="video/mp4">
   </video>
 
@@ -2877,7 +2875,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 :: hotspot.3.init {"position":"1500,1200","size":"100,100"}
 
-
+:: end.init {"position":"1500,1200","size":"100,100"}
 
 :: installation {"position":"600,600","size":"100,100"}
 <<script>>
@@ -2955,7 +2953,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 :: map.init {"position":"1400,600","size":"100,100"}
 <<if $letter1 is 1 and $letter2 is 1 and $letter3 is 1 and $letter4 is 1 and $letter5 is 1 and $letter6 is 1 and $letter7 is 1 and $ende is 0>>
-	<<goto "ende.1">>
+	<<goto "end.init">>
 <<else>>
 	<<goto "mapbox">>
 <</if>>
@@ -3127,12 +3125,6 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
     Ihr könnt das Spiel hier auch speichern oder neu starten. 
     </h2>
   </div>
-  <div class="btn-group">
-    <<button "Weiter">>
-      <<goto "title">>
-      <<audio "click" play>>	
-    <</button>>
-  </div>
 
 
 :: multiplayer {"position":"800,1400","size":"100,100"}
@@ -3142,7 +3134,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 <<audio ":playing:" stop>>
 
-  <video autoplay id="myVideo" playsinline>
+  <video autoplay muted id="myVideo" playsinline>
     <source src="videos/mehrspieler.mp4" type="video/mp4">
   </video>
 
@@ -3193,7 +3185,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 <<audio ":playing:" stop>>
 
-  <video autoplay id="myVideo" playsinline>
+  <video autoplay muted id="myVideo" playsinline>
     <source src="videos/rallye.mp4" type="video/mp4">
   </video>
 
@@ -3435,7 +3427,7 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 :: start {"position":"800,1800","size":"100,100"}
 <<audio ":playing:" stop>>
 
-  <video autoplay id="myVideo" playsinline>
+  <video autoplay muted id="myVideo" playsinline>
     <source src="videos/start.mp4" type="video/mp4">
   </video>
 
@@ -3455,7 +3447,7 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 :: teams {"position":"800,1600","size":"100,100"}
 <<audio ":playing:" stop>>
 
-  <video autoplay id="myVideo" playsinline>
+  <video autoplay muted id="myVideo" playsinline>
     <source src="videos/teams.mp4" type="video/mp4">
   </video>
 
@@ -3474,7 +3466,7 @@ Ende die meisten Punkte und Tiere gesammelt hat.
   window.video.showButtonsOnVideoEnd();
 <</script>>
 
-  <video autoplay id="myVideo" playsinline>
+  <video autoplay muted id="myVideo" playsinline>
     <source src="videos/vorstellung.mp4" type="video/mp4">
   </video>
 
@@ -4211,6 +4203,7 @@ border: none;
   font-family: "myriad-pro", sans-serif;
   font-size: 4vh;
   font-weight: 400;
+  margin: 1vh;
 }
 
 .macro-return {
