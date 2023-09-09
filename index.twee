@@ -3218,9 +3218,11 @@ $(document).one(":passagedisplay", function() {
   $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   const installBtn = document.querySelector('.install');
   const iosHelp = document.querySelector('.iosHelp');
+  const androidHelp = document.querySelector('.androidHelp');
 
   if (State.variables.is_safari) {
     installBtn.style.display = 'none';
+    androidHelp.style.display = 'none';
   } else if (State.variables.is_chrome) {
     iosHelp.style.display = 'none';
   };
@@ -3251,7 +3253,8 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper">
   <h1>Installation</h1>
   <h2>Bitte installiere zuerst die App.</h2>
-  <h2 class="iosHelp">Tippe rechts oben in der Adressleiste auf „Teilen“ <img src="images/ios_share.svg" /> und auf "Zum Home-Bildschirm".</h2>
+  <h2 class="iosHelp">Tippe dafür rechts oben in der Adressleiste auf „Teilen“ <img src="images/ios_share.svg" /> und danach auf "Zum Home-Bildschirm".</h2>
+  <h2 class="androidHelp">Tippe dafür auf „Installieren“ <img src="images/android_install.svg" /> und folge danach der Anleitung auf dem Bildschirm.</h2>
   <h2>Verlasse den Browser und öffne die neu hinzugefügte App.</h2>
   <img src="images/icon.png" class="image1" />
 </div>
@@ -3460,6 +3463,7 @@ Configuration
 ************/
 Config.saves.autosave = ["autosave"];
 Config.passages.nobr = true;
+Config.ui.stowBarInitially = true;
 
 /**************************
 Internationalization (i18n) 
@@ -4347,9 +4351,8 @@ model-viewer {
 
 .image1 {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
+  margin: 0 auto;
+  width: 50%;
 }
 
 tw-hook[name="fade-out"] {
