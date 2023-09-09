@@ -3223,6 +3223,7 @@ $(document).one(":passagedisplay", function() {
   if (State.variables.is_safari) {
     androidHelp.style.display = 'none';
     iosHelp.style.display = 'inline';
+    installBtn.style.display = 'none';
   } else if (State.variables.is_chrome) {
     androidHelp.style.display = 'inline';
     iosHelp.style.display = 'none';
@@ -3253,14 +3254,13 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 <div class="wrapper">
   <h1>Installation</h1>
-  <h2>Installiere die Spuk & Schreck App.</h2>
-  <h2 class="iosHelp">
-    <a target="_blank" href="https://support.google.com/chrome/answer/9658361?hl=de&co=GENIE.Platform%3DiOS&oco=1">"Hilfe bei der Installation"</a>
+  <h2>
+    <a class="iosHelp" target="_blank" href="https://support.google.com/chrome/answer/9658361?hl=de&co=GENIE.Platform%3DiOS&oco=1">"Installiere die App."</a>
+    <a class="androidHelp" target="_blank" href="https://support.google.com/chrome/answer/9658361?hl=de&co=GENIE.Platform%3DAndroid&oco=1">"Installiere die App."</a>
+    <br/>
+    <br/>
+    Verlasse den Browser und öffne die neu hinzugefügte App.
   </h2>
-  <h2 class="androidHelp">
-    <a target="_blank" href="https://support.google.com/chrome/answer/9658361?hl=de&co=GENIE.Platform%3DAndroid&oco=1">"Hilfe bei der Installation"</a>
-  </h2>
-  <h2>Verlasse den Browser und öffne die neu hinzugefügte App.</h2>
   <img src="images/icon.png" class="image1" />
 </div>
 
@@ -3351,7 +3351,7 @@ $(document).one(":passagedisplay", function() {
   <button class="geolocation">Standort freigeben</button>
   <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices">Einstellungen öffnen</a></button>
   <button class="help"></button>
-  <button class="next">[[|setup.3]]</button>
+  <button class="next">[[|setup.4]]</button>
 </div>
 
 :: setup.4 {"position":"600,1600","size":"100,100"}
@@ -3995,10 +3995,8 @@ a {
 }
 
 button {
-  background: var(--background-light-color);
   border-radius: 4px;
   border: 2px solid #000000; 
-  color: var(--button-color);
   display: inline-block;
   font-family: itc-benguiat-condensed, sans-serif;
   font-size: 3vh;
@@ -4162,7 +4160,6 @@ border: none;
 .wrapper {
   flex-grow: 1;
   height: 100%;
-  padding-top: 4vh;
   overflow: auto;
   z-index: 20;
 }
@@ -4399,10 +4396,6 @@ tw-hook[name="fade-out"] {
 
 .hide {
   display: none;
-}
-
-.passage a:hover {
-  color: #404040;
 }
 
 .bild_ort {
