@@ -7,7 +7,7 @@ Spuk & Schreck
   "ifid": "FB483649-96B3-4F0F-9531-A1D615413B45",
   "format": "SugarCube",
   "format-version": "2.36.1",
-  "start": "installation",
+  "start": "setup.0",
   "tag-colors": {
     "fightRoom": "red",
     "fightroom": "red",
@@ -2877,7 +2877,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 :: end.init {"position":"1500,1200","size":"100,100"}
 
-:: installation {"position":"600,600","size":"100,100"}
+:: setup.0 {"position":"600,600","size":"100,100"}
 <<script>>
   if (State.variables.is_pwa) {
     $.wiki('<<goto "intro">>')
@@ -2886,24 +2886,20 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 
   window.addEventListener('beforeinstallprompt', (event) => {
-    /* Prevent the mini-infobar from appearing on mobile. */
     event.preventDefault();
     console.log('👍', 'beforeinstallprompt', event);
-    /* Stash the event so it can be triggered later. */
     window.deferredPrompt = event;
   });
 <</script>>
 
 <div class="wrapper">
-<h2><<txt>></h2>
-  <h1>Spuk &
-  <br>Schreck</h1>
+  <h1>Spuk & <br>Schreck</h1>
   <h2><<txt>></h2>
   <p class="p3">spui</p>
 </div>
 
 <div class="btn-group">
-  <button class="next">[[|vorstellung]]</button>
+  <button class="next">[[|setup.1]]</button>
 </div>
 
 
@@ -2923,7 +2919,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
   <div class="btn-group">
     <<button "Start">>
-      <<goto "anruf">>
+      <<goto "vorstellung">>
       <<audio "click" play>>	
     <</button>>
   </div>
@@ -3206,29 +3202,73 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 :: setup.1 {"position":"600,1000","size":"100,100"}
 <<script>>
   $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+
+  if (State.variables.is_safari || State.variables.is_chrome) {
+    $.wiki('<<goto "setup.2">>')
+  };
 <</script>>
 <div class="wrapper">
-  <h4>Setup 1/4</h4>
   <h1>Browser Check</h1>
-  <h2>
-    <<if State.variables.is_safari>>
-      Du benutzt Safari. Wunderbar! 
-    <<elseif State.variables.is_chrome>>
-      Du benutzt Chrome. Wunderbar! 
-    <<else>>
-      Bitte benutze entweder den Chrome Browser (Android) oder Safari (iOS) um diesen Link zu öffnen. 
-    <</if>>
+  <h2>Bitte benutze entweder den Chrome Browser (Android) oder Safari (iOS) um diesen Link zu öffnen.</h2>
+</div>
+
+:: setup.2 {"position":"600,1200","size":"100,100"}
+<<script>>
+$(document).one(":passagedisplay", function() {
+  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+  const installBtn = document.querySelector('.install');
+  const iosHelp = document.querySelector('.iosHelp');
+  const androidHelp = document.querySelector('.androidHelp');
+
+  if (State.variables.is_safari) {
+    androidHelp.style.display = 'none';
+    iosHelp.style.display = 'inline';
+  } else if (State.variables.is_chrome) {
+    androidHelp.style.display = 'inline';
+    iosHelp.style.display = 'none';
+  };
+
+  installBtn.addEventListener('click', async () => {
+    console.log('👍', 'installBtn-clicked');
+    const promptEvent = window.deferredPrompt;
+    if (!promptEvent) {
+      /* The deferred prompt isn't available. */
+      return;
+    }
+    /* Show the install prompt. */
+    promptEvent.prompt();
+    /* Log the result */
+    const result = await promptEvent.userChoice;
+    console.log('👍', 'userChoice', result);
+    /* Reset the deferred prompt variable, since */
+    /* prompt() can only be called once. */
+    window.deferredPrompt = null;
+  });
+
+  window.addEventListener('appinstalled', (event) => {
+    window.deferredPrompt = null;
+    installBtn.style.display = 'none';
+  });
+ });
+<</script>>
+<div class="wrapper">
+  <h1>Installation</h1>
+  <h2>Installiere die Spuk & Schreck App.</h2>
+  <h2 class="iosHelp">
+    <a target="_blank" href="https://support.google.com/chrome/answer/9658361?hl=de&co=GENIE.Platform%3DiOS&oco=1">"Hilfe bei der Installation"</a>
   </h2>
+  <h2 class="androidHelp">
+    <a target="_blank" href="https://support.google.com/chrome/answer/9658361?hl=de&co=GENIE.Platform%3DAndroid&oco=1">"Hilfe bei der Installation"</a>
+  </h2>
+  <h2>Verlasse den Browser und öffne die neu hinzugefügte App.</h2>
+  <img src="images/icon.png" class="image1" />
 </div>
 
 <div class="btn-group">
-  <<if State.variables.is_safari or State.variables.is_chrome>>
-    <button class="next">[[|setup.2]]</button>
-  <</if>>
+  <button class="install"></button>
 </div>
 
-
-:: setup.2 {"position":"600,1200","size":"100,100"}
+:: setup.3 {"position":"600,1400","size":"100,100"}
 <<script>>
 $(document).one(":passagedisplay", function() {
 
@@ -3303,7 +3343,6 @@ $(document).one(":passagedisplay", function() {
 <div id="map"></div>
 
 <div class="wrapper">
-  <h4>Setup 2/4</h4>
   <h1>GPS</h1>
   <h2>Wir benötigen deinen Standort, um dich zu den Geister-Hotspots zu leiten.</h2>
 </div>
@@ -3315,8 +3354,7 @@ $(document).one(":passagedisplay", function() {
   <button class="next">[[|setup.3]]</button>
 </div>
 
-
-:: setup.3 {"position":"600,1400","size":"100,100"}
+:: setup.4 {"position":"600,1600","size":"100,100"}
 <<script>>
   $(document).one(":passagedisplay", function() {
     $('#story').attr('style', 'background-image:url(images/cam.jpg)');
@@ -3326,9 +3364,9 @@ $(document).one(":passagedisplay", function() {
     });
   });
 <</script>>
+
 <div class="wrapper">
-<h4>Setup 3/4</h4>
-<h1>Kamera</h1>
+  <h1>Kamera</h1>
   <h2>Wir benötigen Zugriff auf deine Kamera, um dir die Geister in der realen Welt zu zeigen. 
   <br>
   <br>Klicke auf "Spektralkamera aktivieren" und schau dir den Zombie an.
@@ -3342,64 +3380,8 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="help"></button>
-  <button class="next">[[|setup.4]]</button>
+  <button class="next">[[|anruf]]</button>
 </div>
-
-
-:: setup.4 {"position":"600,1600","size":"100,100"}
-<<script>>
-$(document).one(":passagedisplay", function() {
-  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
-  const installBtn = document.querySelector('.install');
-  const openBtn = document.querySelector('.open');
-  const nextBtn = document.querySelector('.next');
-  openBtn.style.display = 'none';
-
-  installBtn.addEventListener('click', async () => {
-    console.log('👍', 'installBtn-clicked');
-    const promptEvent = window.deferredPrompt;
-    if (!promptEvent) {
-      /* The deferred prompt isn't available. */
-      return;
-    }
-    /* Show the install prompt. */
-    promptEvent.prompt();
-    /* Log the result */
-    const result = await promptEvent.userChoice;
-    console.log('👍', 'userChoice', result);
-    /* Reset the deferred prompt variable, since */
-    /* prompt() can only be called once. */
-    window.deferredPrompt = null;
-  });
-
-  window.addEventListener('appinstalled', (event) => {
-    console.log('👍', 'appinstalled', event);
-    /* Clear the deferredPrompt so it can be garbage collected */
-    window.deferredPrompt = null;
-    installBtn.style.display = 'none';
-    openBtn.style.display = 'inline';
-    nextBtn.style.display = 'none';
-  });
- });
-<</script>>
-<div class="wrapper">
-  <h4>Herzlich Willkommen bei:</h4>
-  <h1>Spuk & Schreck</h1>
-  <h2>Bitte installiere zuerst die App. 
-  <br>
-  <br>Klicke auf "Teilen" + "Zum Homescreen hinzufügen".
-  <br>
-  <br>Verlasse den Browser und öffne die neu hinzugefügte App.
-  </h2>
-  <img src="images/icon.png" class="image1" />
-</div>
-
-<div class="btn-group">
-  <button class="install"></button>
-  <button class="open"><a href='https://digitalwarenkombinat.github.io/ghosthunt/' target='_blank'>App öffnen</a></button>
-  <button class="next">[[|intro]]</button>
-</div>
-
 
 :: spiel {"position":"700,3200","size":"100,100"}
 <div
@@ -3473,9 +3455,9 @@ Ende die meisten Punkte und Tiere gesammelt hat.
   <div class="wrapper"></div>
 
   <div class="btn-group">
-  <button class="return">[[|installation]]<<audio "click" play>></button>
+  <button class="return">[[|intro]]<<audio "click" play>></button>
   <button class="retry">[[|vorstellung]]<<audio "click" play>></button>
-  <button class="next">[[|setup.1]]<<audio "click" play>></button>
+  <button class="next">[[|setup.3]]<<audio "click" play>></button>
   </div>
 
 :: StoryScript [script]
@@ -3564,13 +3546,9 @@ setup.text["StoryMenu"] = {
 		en: 'Legal Notice'
   }
 };
-setup.text["installation"] = {
+setup.text["setup.0"] = {
   
-	"1": {
-		de: 'Herzlich Willkommen zu:',
-		en: 'Welcome to:'
-  },
-  "2": {
+  "1": {
 		de: 'Diese Rallye ist eine Test-Version und nicht das finale Produkt. Sie ist nur für Testzwecke gedacht.',
 		en: 'This rally is a test version and not the final product. It is intended for testing purposes only.'
   }
@@ -4184,6 +4162,7 @@ border: none;
 .wrapper {
   flex-grow: 1;
   height: 100%;
+  padding-top: 4vh;
   overflow: auto;
   z-index: 20;
 }
