@@ -24,18 +24,11 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 
 <div class="wrapper">
   <h1>Achtung!</h1>
-  <h2>Paranormale Aktivität.</h2>
+  <h2>Paranormale Aktivität entdeckt.</h2>
   </div>
 
   <div class="btn-group">
-    <<button "Zurück">>
-      <<goto "map.init">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Betreten">>
-      <<goto "1.1">>	
-      <<audio "click" play>>	
-    <</button>>
+    <button class="next">[[|1.1]]<<audio "click" play>></button>
   </div>
 
 
@@ -51,14 +44,8 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <<button "Nochmal">>
-      <<goto "1.1">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Ok">>
-      <<goto "1.2">>	
-      <<audio "click" play>>	
-    <</button>>
+    <button class="retry">[[|1.1]]<<audio "click" play>></button>
+    <button class="next">[[|1.2]]<<audio "click" play>></button>
   </div>
 
 
@@ -214,19 +201,15 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <<button "Nochmal">>
-      <<goto "1.1">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Weiter">>
-      <<goto "1.4">>	
-      <<audio "click" play>>	
-    <</button>>
+   <button class="retry">[[|1.3]]<<audio "click" play>></button>
+    <button class="next">[[|1.4]]<<audio "click" play>></button>
   </div>
 
 
 :: 1.4 {"position":"1700,1400","size":"100,100"}
 <div class="wrapper">
+  <h1>Spektral Kamera</h1>
+  <h2>Öffne die Kamera und betrachte die Szene. Mache Fotos von allem was dir wichtig erscheint.</h2>
   <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A witch" camera-controls>
@@ -257,14 +240,8 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <<button "Nochmal">>
-      <<goto "1.5">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Weiter">>
-      <<goto "2.7">>	
-      <<audio "click" play>>	
-    <</button>>
+   <button class="retry">[[|1.5]]<<audio "click" play>></button>
+    <button class="next">[[|2.7]]<<audio "click" play>></button>
   </div>
 
 
@@ -593,14 +570,11 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 
 <div class="wrapper">
   <h1>Achtung!</h1>
-  <h2>Paranormale Aktivität.</h2>
+  <h2>Paranormale Aktivität entdeckt.</h2>
   </div>
 
   <div class="btn-group">
-    <<button "Betreten">>
-      <<goto "2.1">>	
-      <<audio "click" play>>	
-    <</button>>
+    <button class="next">[[|2.1]]<<audio "click" play>></button>
   </div>
 
 
@@ -616,14 +590,8 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <<button "Nochmal">>
-      <<goto "2.1">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Ok">>
-      <<goto "2.2">>	
-      <<audio "click" play>>	
-    <</button>>
+    <button class="retry">[[|2.1]]<<audio "click" play>></button>
+    <button class="next">[[|2.2]]<<audio "click" play>></button>
   </div>
 
 
@@ -643,11 +611,8 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   </div>
 
   <div class="btn-group">
-    <<button "Weiter">>
-      <<goto "2.3">>
-      <<set $riddle to 1>>
-      <<audio "click" play>>  
-    <</button>>
+    <button class="return">[[|2.1]]<<audio "click" play>></button>
+    <button class="next">[[|2.3]]<<audio "click" play>></button>
   </div>
 
 
@@ -663,14 +628,8 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <<button "Nochmal">>
-      <<goto "2.3">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Weiter">>
-      <<goto "2.4">>	
-      <<audio "click" play>>	
-    <</button>>
+   <button class="retry">[[|2.3]]<<audio "click" play>></button>
+    <button class="next">[[|2.4]]<<audio "click" play>></button>
   </div>
 
 
@@ -789,7 +748,7 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   <<if $riddle is 4>>
     <div class="wrapper">
       <h1>Okkulte Rune</h1>
-      <h2>Ihr habt eine okkulte Rune entdeckt.</h2>
+      <h2>Du hast eine okkulte Rune entdeckt.</h2>
       <p class="p2">A</p>
     </div>
 
@@ -816,14 +775,8 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <<button "Nochmal">>
-      <<goto "2.5">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Weiter">>
-      <<goto "2.6">>	
-      <<audio "click" play>>	
-    <</button>>
+    <button class="retry">[[|2.5]]<<audio "click" play>></button>
+    <button class="next">[[|2.6]]<<audio "click" play>></button>
   </div>
 
 
@@ -839,21 +792,16 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <<button "Nochmal">>
-      <<goto "2.6">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "Weiter">>
-      <<goto "2.7">>	
-      <<audio "click" play>>	
-    <</button>>
+    <button class="return">[[|2.5]]<<audio "click" play>></button>
+    <button class="retry">[[|2.6]]<<audio "click" play>></button>
+    <button class="next">[[|2.7]]<<audio "click" play>></button>
   </div>
 
 
 :: 2.7 {"position":"1900,2000","size":"100,100"}
 <div
  class="wrapper">
-  <h1>Euer Feedback</h1>
+  <h1>Unser Ziel</h1>
   <h2>Wir wollen ein Team-Event kreieren, bei dem sich die Menschen draußen an der frischen Luft bewegen, zusammen arbeiten, um Rätsel zu lösen und mit Hilfe moderner Technik in neue gruselige Welten eintauchen. 
   <br>
   <br>Unser Ziel ist Ostern 2024 die erste Rallye im Friedenspark, Leipzig zu veröffentlichen. Weitere Städte werden folgen. 
@@ -861,7 +809,7 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   <br>Unsere Rallye wird ausschließlich auf den Smartphones unserer Kunden gespielt. Es gibt keinen Guide vor Ort. Daher ist es uns sehr wichtig, dass die Technik gut funktioniert. 
   <br>
   <br>
-  Um zu evaluieren, ob uns das gelingt benötigen wir euer Feedback. Unter diesem <a href="https://forms.gle/jcGPPbrbbnwDLNC28">"Link"</a>  gelangt ihr zu unserem Fragebogen. Vielen Dank. 
+  Um zu evaluieren, ob uns das gelingt benötigen wir dein Feedback. Über diesen <a href="https://forms.gle/jcGPPbrbbnwDLNC28">"Link"</a>  erreichst du unseren Fragebogen. Vielen Dank. 
 </h2>
 </div>
 
@@ -2087,6 +2035,7 @@ unsere Hausgeist sehen.
   <<return>>
 </div>
 
+
 :: Impressum {"position":"200,1000","size":"100,100"}
 <div
  class="wrapper">
@@ -2557,7 +2506,7 @@ diesem Zweck verarbeiten.
 <h1>Menu</h1>
   <h5>Punkte:</h5>
   <h3>$koinz/210</h3>
-  <h5>Gefundene Symbole:</h5>
+  <h5>Gefundene Runen:</h5>
   <p class="p1">
     <<if $letter1 is 1>>
       R
@@ -2661,6 +2610,9 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 
 <<set $maptip to 0>>
 
+<<set $setup to 0>>
+<<set $intro to 0>>
+
 <<set $koinz to 0>>
 
 <<set $riddle to 1>>
@@ -2709,24 +2661,6 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 <</link>>
 
 
-:: anruf {"position":"800,800","size":"100,100"}
-
-  <script>
-    $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
-  </script>
-
-  <div class="wrapper">
-    <h1>Anruf</h1>
-    <img src="images/holger.png" class="image1" />
-  </div>
-
-  <div class="btn-group">
-    <<button "Annehmen">>
-      <<goto "holger">>
-      <<audio "click" play>>	
-    <</button>>
-  </div>
-
 :: ar.init {"position":"1500,1000","size":"100,100"}
 
 
@@ -2771,6 +2705,10 @@ Die Schnitzeljagd findet im öffentlichen Raum statt. Bitte nimm Rücksicht auf 
 <<audio "click" play>>	
 <</button>>
 </div>
+
+
+:: end.init {"position":"1500,1200","size":"100,100"}
+
 
 
 :: friedenspark {"position":"500,3200","size":"100,100"}
@@ -2849,64 +2787,20 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 </div>
 
 
-:: holger {"position":"800,1000","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-<<audio ":playing:" stop>>
-
-  <video autoplay muted id="myVideo" playsinline>
-    <source src="videos/holger.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="return">[[|anruf]]<<audio "click" play>></button>
-    <button class="retry">[[|holger]]<<audio "click" play>></button>
-    <button class="next">[[|rallye]]<<audio "click" play>></button>
-  </div>
-
-
 :: hotspot.1.init {"position":"1500,800","size":"100,100"}
 
 
 
 :: hotspot.3.init {"position":"1500,1200","size":"100,100"}
 
-:: end.init {"position":"1500,1200","size":"100,100"}
-
-:: setup.0 {"position":"600,600","size":"100,100"}
-<<script>>
-  if (State.variables.is_pwa) {
-    $.wiki('<<goto "intro">>')
-  };
-
-  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
-
-  window.addEventListener('beforeinstallprompt', (event) => {
-    event.preventDefault();
-    console.log('👍', 'beforeinstallprompt', event);
-    window.deferredPrompt = event;
-  });
-<</script>>
-
-<div class="wrapper">
-  <h1>Spuk & <br>Schreck</h1>
-  <h2><<txt>></h2>
-  <p class="p3">spui</p>
-</div>
-
-<div class="btn-group">
-  <button class="next">[[|setup.1]]</button>
-</div>
 
 
 :: intro {"position":"800,600","size":"100,100"}
 <script>
   $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 </script>
+
+<<set $setup to 1>>
 
 <div class="wrapper">
 <br>
@@ -2919,13 +2813,125 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
   <div class="btn-group">
     <<button "Start">>
-      <<goto "vorstellung">>
+      <<goto "intro.1">>
       <<audio "click" play>>	
     <</button>>
   </div>
 
 
-:: kapitel.1 {"position":"1000,600","size":"100,100"}
+:: intro.1 {"position":"800,800","size":"100,100"}
+<script>
+    $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
+  </script>
+
+  <div class="wrapper">
+    <h1>Anruf</h1>
+    <img src="images/holger.png" class="image1" />
+  </div>
+
+  <div class="btn-group">
+    <<button "Annehmen">>
+      <<goto "intro.2">>
+      <<audio "click" play>>	
+    <</button>>
+  </div>
+
+
+:: intro.2 {"position":"800,1000","size":"100,100"}
+<<script>>
+  window.video.showButtonsOnVideoEnd();
+<</script>>
+
+<<audio ":playing:" stop>>
+
+  <video autoplay muted id="myVideo" playsinline>
+    <source src="videos/intro.2.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper"></div>
+
+  <div class="btn-group">
+    <button class="retry">[[|intro.2]]<<audio "click" play>></button>
+    <button class="next">[[|intro.3]]<<audio "click" play>></button>
+  </div>
+
+
+:: intro.3 {"position":"800,1200","size":"100,100"}
+<<script>>
+  window.video.showButtonsOnVideoEnd();
+<</script>>
+
+<<audio ":playing:" stop>>
+
+  <video autoplay muted id="myVideo" playsinline>
+    <source src="videos/intro.3.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper">
+  </div>
+
+  <div class="btn-group">
+    <button class="return">[[|intro.2]]<<audio "click" play>></button>
+    <button class="retry">[[|intro.3]]<<audio "click" play>></button>
+    <button class="next">[[|intro.4]]<<audio "click" play>></button>
+  </div>
+
+
+:: intro.4 {"position":"800,1400","size":"100,100"}
+<<script>>
+  window.video.showButtonsOnVideoEnd();
+<</script>>
+
+<<audio ":playing:" stop>>
+
+  <video autoplay muted id="myVideo" playsinline>
+    <source src="videos/intro.4.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper"></div>
+
+  <div class="btn-group">
+    <button class="return">[[|intro.3]]<<audio "click" play>></button>
+    <button class="retry">[[|intro.4]]<<audio "click" play>></button>
+    <button class="next">[[|intro.6]]<<audio "click" play>></button>
+  </div>
+
+
+:: intro.5 {"position":"800,1600","size":"100,100"}
+<<audio ":playing:" stop>>
+
+  <video autoplay muted id="myVideo" playsinline>
+    <source src="videos/teams.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper"></div>
+
+  <div class="btn-group">
+    <button class="return">[[|intro.4]]<<audio "click" play>></button>
+    <button class="retry">[[|intro.5]]<<audio "click" play>></button>
+    <button class="next">[[|intro.6]]<<audio "click" play>></button>
+  </div>
+
+
+:: intro.6 {"position":"800,1800","size":"100,100"}
+<<audio ":playing:" stop>>
+
+<<set $intro to 1>>
+
+  <video autoplay muted id="myVideo" playsinline>
+    <source src="videos/intro.6.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper"></div>
+
+  <div class="btn-group">
+    <button class="return">[[|intro.4]]<<audio "click" play>></button>
+    <button class="retry">[[|intro.6]]<<audio "click" play>></button>
+    <button class="next">[[|kapitel.init]]<<audio "click" play>></button>
+  </div>
+
+
+:: kapitel.1 {"position":"1100,600","size":"100,100"}
 <script>
   $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 </script>
@@ -2947,7 +2953,17 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   </div>
 
 
-:: map.init {"position":"1400,600","size":"100,100"}
+:: kapitel.init {"position":"1100,500","size":"100,100"}
+<<if $setup is 1>>
+	<<goto "intro">>
+<<if $setup is 1 and $intro is 1>>
+	<<goto "kapitel.1">>
+<<else>>
+	<<goto "vorstellung">>
+<</if>>
+
+
+:: map.init {"position":"1300,500","size":"100,100"}
 <<if $letter1 is 1 and $letter2 is 1 and $letter3 is 1 and $letter4 is 1 and $letter5 is 1 and $letter6 is 1 and $letter7 is 1 and $ende is 0>>
 	<<goto "end.init">>
 <<else>>
@@ -2955,7 +2971,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 <</if>>
 
 
-:: mapbox [autosave] {"position":"1500,600","size":"100,100"}
+:: mapbox [autosave] {"position":"1300,600","size":"100,100"}
 <div id="map"></div>
 
 <<script>>
@@ -2980,28 +2996,28 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
         for (const fence of remainingFences) {
           if (window.geolocation.inside(fence.latitude,fence.longitude,fence.radius,lat, lon)) {
-            map.setPaintProperty(fence.id, 'fill-color', 'green');
+            map.setPaintProperty(fence.id, 'fill-color', '#FFDE03');
 
             /* Hier die entsprechenden Passagen einfügen */
             map.on('click', fence.id, (e) => {
               State.variables.fences.find(f => f.id === fence.id).alreadyEntered = true;          
               switch (fence.id) {
-                case 'johannistorturm':
+                case 'friedenspark':
                   $.wiki('<<goto "1.0">>');
                   break;
-                case 'marsfeld':
-                  $.wiki('<<goto "2.1">>');
+                case 'wiedebachplatz':
+                  $.wiki('<<goto "2.0">>');
                   break;
-                case 'grauer_hof':
-                  $.wiki('<<goto "3.1">>');
+                case 'rabet':
+                  $.wiki('<<goto "2.0">>');
                   break;
-                case 'markt':
-                  $.wiki('<<goto "4.1">>');
+                case 'clara-zetkin-park':
+                  $.wiki('<<goto "2.0">>');
                   break;
-                case 'holzmarkt':
-                  $.wiki('<<goto "5.1">>');
+                case 'marburg':
+                  $.wiki('<<goto "2.0">>');
                   break;
-                case 'halken':
+                case 'herzbergplatz':
                   $.wiki('<<goto "6.1">>');
                   break;
                 case 'rabenturm':
@@ -3052,7 +3068,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
             });
 
           } else {
-            map.setPaintProperty(fence.id, 'fill-color', 'red');
+            map.setPaintProperty(fence.id, 'fill-color', 'black');
           }
         }
       });
@@ -3074,8 +3090,8 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
             'source': fence.id,
             'layout': {},
             'paint': {
-              'fill-color': 'red',
-              'fill-opacity': 0.6
+              'fill-color': 'black',
+              'fill-opacity': 0.7
             }
           });
         }
@@ -3089,13 +3105,13 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 <div class="btn-group">
   
     <<if $maptip is 0>> 
-      <span id="heading"><h2>Diese Karte ist euer Hauptbildschirm.</h2>
+      <span id="heading"><h2>Diese Karte ist dein Hauptbildschirm.</h2>
         <<button "Weiter">>
           <<replace "#heading">>
-            <h2>Hier seht ihr alle Tatorte in eurer Umgebung.</h2>
+            <h2>Hier siehst du alle Hotspots in deiner Umgebung.</h2>
             <<button "Weiter">>
               <<replace "#heading">>
-                <h2>Lauft in einen der roten Kreise hinein! Sobald er grün wird, könnt ihr den Tatort anklicken.</h2>
+                <h2>Laufe in einen der gelben Hotspots hinein! Sobald er grün wird, kannst du ihn anklicken.</h2>
               <</replace>>
               <<audio "click" play>>
             <</button>>
@@ -3123,39 +3139,6 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   </div>
 
 
-:: multiplayer {"position":"800,1400","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-<<audio ":playing:" stop>>
-
-  <video autoplay muted id="myVideo" playsinline>
-    <source src="videos/mehrspieler.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <<button "1">>
-      <<goto "start">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "2">>
-      <<goto "start">>	
-      <<audio "click" play>>	
-    <</button>>
-    <<button "3">>
-      <<goto "start">>	
-      <<audio "click" play>>	
-    <</button>>
-        <<button "3+">>
-      <<goto "teams">>	
-      <<audio "click" play>>	
-    <</button>>
-  </div>
-
-
 :: musik {"position":"700,2800","size":"100,100"}
 <div class="wrapper">
 <h1>Musik</h1>
@@ -3174,32 +3157,37 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 
 
-:: rallye {"position":"800,1200","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-<<audio ":playing:" stop>>
-
-  <video autoplay muted id="myVideo" playsinline>
-    <source src="videos/rallye.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper">
-  </div>
-
-  <div class="btn-group">
-    <button class="return">[[|holger]]<<audio "click" play>></button>
-    <button class="retry">[[|rallye]]<<audio "click" play>></button>
-    <button class="next">[[|multiplayer]]<<audio "click" play>></button>
-  </div>
-
-
 :: reward.init {"position":"1500,1600","size":"100,100"}
 
 
 
-:: setup.1 {"position":"600,1000","size":"100,100"}
+:: setup.0 {"position":"500,600","size":"100,100"}
+<<script>>
+  if (State.variables.is_pwa) {
+    $.wiki('<<goto "kapitel.init">>')
+  };
+
+  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    console.log('👍', 'beforeinstallprompt', event);
+    window.deferredPrompt = event;
+  });
+<</script>>
+
+<div class="wrapper">
+  <h1>Spuk & <br>Schreck</h1>
+  <h2><<txt>></h2>
+  <p class="p3">spui</p>
+</div>
+
+<div class="btn-group">
+  <button class="next">[[|setup.1]]</button>
+</div>
+
+
+:: setup.1 {"position":"500,800","size":"100,100"}
 <<script>>
   $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 
@@ -3212,7 +3200,8 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   <h2>Bitte benutze entweder den Chrome Browser (Android) oder Safari (iOS) um diesen Link zu öffnen.</h2>
 </div>
 
-:: setup.2 {"position":"600,1200","size":"100,100"}
+
+:: setup.2 {"position":"500,1500","size":"100,100"}
 <<script>>
 $(document).one(":passagedisplay", function() {
   $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
@@ -3253,7 +3242,7 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper">
   <h1>Installation</h1>
   <h2>Bitte installiere zuerst die App.</h2>
-  <h2 class="iosHelp">Tippe dafür rechts oben in der Adressleiste auf „Teilen“ <img src="images/ios_share.svg" /> und danach auf "Zum Home-Bildschirm".</h2>
+  <h2 class="iosHelp">Tippe dafür in der Adressleiste auf „Teilen“ <img src="images/ios_share.svg" /> und danach auf "Zum Home-Bildschirm".</h2>
   <h2 class="androidHelp">Tippe dafür auf „Installieren“ <img src="images/android_install.svg" /> und folge danach der Anleitung auf dem Bildschirm.</h2>
   <h2>Verlasse den Browser und öffne die neu hinzugefügte App.</h2>
   <img src="images/icon.png" class="image1" />
@@ -3263,7 +3252,8 @@ $(document).one(":passagedisplay", function() {
   <button class="install"></button>
 </div>
 
-:: setup.3 {"position":"600,1400","size":"100,100"}
+
+:: setup.3 {"position":"500,1700","size":"100,100"}
 <<script>>
 $(document).one(":passagedisplay", function() {
 
@@ -3349,7 +3339,8 @@ $(document).one(":passagedisplay", function() {
   <button class="next">[[|setup.4]]</button>
 </div>
 
-:: setup.4 {"position":"600,1600","size":"100,100"}
+
+:: setup.4 {"position":"500,1900","size":"100,100"}
 <<script>>
   $(document).one(":passagedisplay", function() {
     $('#story').attr('style', 'background-image:url(images/cam.jpg)');
@@ -3377,8 +3368,9 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="help"></button>
-  <button class="next">[[|anruf]]</button>
+  <button class="next">[[|intro]]</button>
 </div>
+
 
 :: spiel {"position":"700,3200","size":"100,100"}
 <div
@@ -3403,42 +3395,11 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 </div>
 
 
-:: start {"position":"800,1800","size":"100,100"}
-<<audio ":playing:" stop>>
-
-  <video autoplay muted id="myVideo" playsinline>
-    <source src="videos/start.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="return">[[|multiplayer]]<<audio "click" play>></button>
-    <button class="retry">[[|start]]<<audio "click" play>></button>
-    <button class="next">[[|kapitel.1]]<<audio "click" play>></button>
-  </div>
-
-
 :: story.init {"position":"1500,1800","size":"100,100"}
 
 
 
-:: teams {"position":"800,1600","size":"100,100"}
-<<audio ":playing:" stop>>
-
-  <video autoplay muted id="myVideo" playsinline>
-    <source src="videos/teams.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="return">[[|multiplayer]]<<audio "click" play>></button>
-    <button class="retry">[[|teams]]<<audio "click" play>></button>
-    <button class="next">[[|start]]<<audio "click" play>></button>
-  </div>
-
-:: vorstellung {"position":"600,800","size":"100,100"}
+:: vorstellung {"position":"500,1300","size":"100,100"}
 <<audio ":playing:" stop>>
 
 <<script>>
@@ -3452,10 +3413,10 @@ Ende die meisten Punkte und Tiere gesammelt hat.
   <div class="wrapper"></div>
 
   <div class="btn-group">
-  <button class="return">[[|intro]]<<audio "click" play>></button>
   <button class="retry">[[|vorstellung]]<<audio "click" play>></button>
   <button class="next">[[|setup.3]]<<audio "click" play>></button>
   </div>
+
 
 :: StoryScript [script]
 /************
@@ -3547,7 +3508,7 @@ setup.text["StoryMenu"] = {
 setup.text["setup.0"] = {
   
   "1": {
-		de: 'Diese Rallye ist eine Test-Version und nicht das finale Produkt. Sie ist nur für Testzwecke gedacht.',
+		de: 'Diese Rallye befindet sich in der Entwicklung und ist nicht das finale Produkt. Diese Version ist nur für Testzwecke bestimmt.',
 		en: 'This rally is a test version and not the final product. It is intended for testing purposes only.'
   }
 };
@@ -3569,49 +3530,49 @@ Fences initialization
 ********************/
 setup.storyinit = function () {
   const fence1 = new CircularGeofenceRegion({
-    id: 'johannistorturm',
-    latitude: 51.325011,
-    longitude: 12.395977,
+    id: 'friedenspark',
+    latitude: 51.3257,
+    longitude: 12.397461,
     radius: 30, // meters
     alreadyEntered: false
   });
 
   const fence2 = new CircularGeofenceRegion({
-    id: 'marsfeld',
-    latitude: 51.755591,
-    longitude: 11.458664,
+    id: 'wiedebachplatz',
+    latitude: 51.309573, 
+    longitude: 12.377370,
     radius: 30, // meters
     alreadyEntered: false
   });
 
   const fence3 = new CircularGeofenceRegion({
-    id: 'grauer_hof',
-    latitude: 51.756137,
-    longitude: 11.453562,
+    id: 'rabet',
+    latitude: 51.343321, 
+    longitude: 12.404982,
     radius: 30, // meters
     alreadyEntered: false
   });
 
   const fence4 = new CircularGeofenceRegion({
-    id: 'markt',
-    latitude: 51.755471,
-    longitude: 11.455375,
+    id: 'clara-zetkin-park',
+    latitude: 51.331494, 
+    longitude: 12.357056,
     radius: 30, // meters
     alreadyEntered: false
   });
 
   const fence5 = new CircularGeofenceRegion({
-    id: 'holzmarkt',
-    latitude: 51.755030,
-    longitude: 11.457358,
+    id: 'marburg',
+    latitude: 50.817296, 
+    longitude: 8.662450,
     radius: 30, // meters
     alreadyEntered: false
   });
 
   const fence6 = new CircularGeofenceRegion({
-    id: 'halken',
-    latitude: 51.753586,
-    longitude: 11.455084,
+    id: 'herzbergplatz',
+    latitude: 52.477949, 
+    longitude: 13.449104,
     radius: 30, // meters
     alreadyEntered: false
   });
