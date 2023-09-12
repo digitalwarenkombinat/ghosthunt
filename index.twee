@@ -19,12 +19,13 @@ Spuk & Schreck
 
 :: 1.0 {"position":"1700,600","size":"100,100"}
 <script>
-$('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+$('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 </script>
 
 <div class="wrapper">
   <h1>Achtung!</h1>
   <h2>Paranormale Aktivität entdeckt.</h2>
+  <p class="p3">para</p>
   </div>
 
   <div class="btn-group">
@@ -56,15 +57,7 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
     </script>
     <<elseif $riddle is 2>>
     <script>
-      $('#story').attr('style', 'background-image:url(images/1.2.jpg)');
-    </script>
-    <<elseif $riddle is 3>>
-    <script>
-      $('#story').attr('style', 'background-image:url(images/1.3.jpg)');
-    </script>
-    <<elseif $riddle is 4>>
-    <script>
-      $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+      $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
     </script>
   <</if>>
 
@@ -104,77 +97,8 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
   <</if>>
 
   <<if $riddle is 2>>
-    <span id="heading">
-      <h2>Hier wird eine Frage stehen, welche die Spieler beantworten müssen.</h2>
-    </span>
-
-    <div class="wrapper"></div>
-
-    <div class="btn-group">
-      <<button "Falsch">>
-        <<replace "#heading">><h2>Falsch!</h2><</replace>>
-        <<timed 1s>>
-          <<goto "1.2">><<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Richtig">>
-        <<replace "#heading">><h2>Richtig! +10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "1.2">>
-          <<set $koinz to $koinz +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Falsch">>
-        <<replace "#heading">><h2>Falsch!</h2><</replace>>
-        <<timed 1s>>
-          <<goto "1.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 3>>
-    <span id="heading">
-      <h2>Hier wird eine Frage stehen, welche die Spieler beantworten müssen.</h2>
-    </span>
-
-    <div class="wrapper"></div>
-        
-    <div class="btn-group">
-      <<button "Richtig">>
-        <<replace "#heading">><h2>Richtig! +10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "1.2">>
-          <<set $koinz to $koinz +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-          
-      <<button "Falsch">>
-        <<replace "#heading">><h2>Falsch!</h2><</replace>>
-        <<timed 1s>>
-          <<goto "1.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Falsch">>
-        <<replace "#heading">><h2>Falsch!</h2><</replace>>
-        <<timed 1s>>
-          <<goto "1.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 4>>
     <div class="wrapper">
-      <h1>Okkultes<br>Symbol</h1>
+      <h1>Okkulte<br>Rune</h1>
       <p class="p2">A</p>
     </div>
 
@@ -208,21 +132,17 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 
 :: 1.4 {"position":"1700,1400","size":"100,100"}
 <div class="wrapper">
-  <h1>Spektral Kamera</h1>
-  <h2>Öffne die Kamera und betrachte die Szene. Mache Fotos von allem was dir wichtig erscheint.</h2>
+  <h1>AR-Kamera</h1>
   <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A witch" camera-controls>
-    <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
     </model-viewer>
+  <h2>Öffne die Kamera und betrachte die Szene. Mache Fotos von allem was dir wichtig erscheint.</h2>
   </div>
 
   <div class="btn-group">
-    <<button "Weiter">>
-      <<goto "1.5">>
-      <<set $riddle to 1>>
-      <<audio "click" play>>  
-    <</button>>
+<button class="next">[[|1.5]]<<audio "click" play>></button>
   </div>
 
 
@@ -565,12 +485,13 @@ poster="images/loading.png"
 
 :: 2.0 {"position":"1900,600","size":"100,100"}
 <script>
-$('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+$('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 </script>
 
 <div class="wrapper">
   <h1>Achtung!</h1>
   <h2>Paranormale Aktivität entdeckt.</h2>
+  <p class="p3">para</p>
   </div>
 
   <div class="btn-group">
@@ -601,13 +522,13 @@ $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 </script>
 
 <div class="wrapper">
-  <h1>Spektral Kamera</h1>
-  <h2>Öffne die Kamera und betrachte die Szene. Mache Fotos von allem was dir wichtig erscheint.</h2>
+  <h1>AR-Kamera</h1>
   <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A witch" camera-controls>
-    <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
+  <h2>Öffne die Kamera und betrachte die Szene. Mache Fotos von allem was dir wichtig erscheint.</h2>
   </div>
 
   <div class="btn-group">
@@ -1952,7 +1873,7 @@ unsere Hausgeist sehen.
   <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A witch" camera-controls>
-    <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
     </model-viewer>
 </div>
 
@@ -2369,19 +2290,19 @@ diesem Zweck verarbeiten.
 :: Inventar {"position":"200,600","size":"100,100"}
 <div class="wrapper">
   <h1>Geister</h1>
-  <h2>Hier werden alle Geister angezeigt, die ihr mit der Spektralkamera eingefangen habt.</h2>
+  <h2>Hier werden alle Geister angezeigt, die du mit der AR-Kamera eingefangen hast.</h2>
   <<if $affe is 1>>
     <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a witch with graveyard" camera-controls>
-      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
     </model-viewer>
   <</if>>
   <<if $flamingo is 1>>
       <model-viewer id="model-viewer" src="models/hanging/hanging.glb" ar auto-rotate poster="models/hanging/poster.webp" 
         autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
         alt="A 3D model of a hanging scene" camera-controls>
-        <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+        <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
       </model-viewer>
   <</if>>
 
@@ -2390,7 +2311,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/setup.3/setup.3.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a zombie" camera-controls>
-      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
@@ -2399,7 +2320,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/setup.3/setup.3.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
@@ -2408,7 +2329,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/zebra/zebra.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
@@ -2417,7 +2338,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/schildkroete/schildkroete.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
@@ -2426,7 +2347,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/schlange/schlange.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
@@ -2435,7 +2356,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/ozelot/ozelot.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
@@ -2444,7 +2365,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/truthahn/truthahn.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
@@ -2453,7 +2374,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/katze/katze.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
@@ -2462,7 +2383,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/schwein/schwein.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
@@ -2471,7 +2392,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/krokodil/krokodil.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
@@ -2480,7 +2401,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/lama/lama.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
@@ -2489,7 +2410,7 @@ diesem Zweck verarbeiten.
                 ios-src="models/gazelle/gazelle.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
@@ -2655,10 +2576,7 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 <<link [[$inventory|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
 /* <<link [[$help|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 /* <<link [[$legal|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
-<<link "Dev">>
-	<<addclass "#ui-bar" "stowed">>
-	<<goto "Dev">>
-<</link>>
+/*<<link "Dev">><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>> */
 
 
 :: ar.init {"position":"1500,1000","size":"100,100"}
@@ -2812,10 +2730,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 </div>
 
   <div class="btn-group">
-    <<button "Start">>
-      <<goto "intro.1">>
-      <<audio "click" play>>	
-    <</button>>
+<button class="next">[[|intro.1]]<<audio "click" play>></button>
   </div>
 
 
@@ -2830,10 +2745,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   </div>
 
   <div class="btn-group">
-    <<button "Annehmen">>
-      <<goto "intro.2">>
-      <<audio "click" play>>	
-    <</button>>
+<button class="next">[[|intro.2]]<<audio "click" play>></button>
   </div>
 
 
@@ -2946,10 +2858,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 </div>
 
   <div class="btn-group">
-    <<button "Weiter">>
-      <<goto "map.init">>
-      <<audio "click" play>>	
-    <</button>>
+<button class="next">[[|map.init]]<<audio "click" play>></button>
   </div>
 
 
@@ -3111,7 +3020,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
             <h2>Hier siehst du alle Hotspots in deiner Umgebung.</h2>
             <<button "Weiter">>
               <<replace "#heading">>
-                <h2>Laufe in einen der gelben Hotspots hinein! Sobald er grün wird, kannst du ihn anklicken.</h2>
+                <h2>Laufe in einen der Hotspots hinein! Sobald er gelb wird, kannst du ihn anklicken.</h2>
               <</replace>>
               <<audio "click" play>>
             <</button>>
@@ -3354,16 +3263,16 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 
 <div class="wrapper">
-  <h1>Kamera</h1>
-  <h2>Wir benötigen Zugriff auf deine Kamera, um dir die Geister in der realen Welt zu zeigen. 
-  <br>
-  <br>Klicke auf "Spektralkamera aktivieren" und schau dir den Zombie an.
-  </h2>
+  <h1>AR-Kamera</h1>
   <model-viewer id="model-viewer" src="models/setup.3/setup.3.glb" ar auto-rotate poster="models/setup.3/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A 3D model of a zombie" camera-controls>
-    <button slot="ar-button" id="ar-button">Spektralkamera aktivieren</button>
+    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
+    <h2>Wir benötigen Zugriff auf deine Kamera, um dir die Geister zu zeigen. 
+  <br>
+  <br>Klicke auf "AR-Kamera öffnen" und schau dir den Zombie an.
+  </h2>
 </div>
 
 <div class="btn-group">
