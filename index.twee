@@ -2938,8 +2938,8 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
                 case 'hamburg':
                   $.wiki('<<goto "2.0">>');
                   break;
-                case 'schildkröte':
-                  $.wiki('<<goto "10.1">>');
+                case 'freiburg':
+                  $.wiki('<<goto "2.0">>');
                   break;
                 case 'schlange':
                   $.wiki('<<goto "11.1">>');
@@ -3511,9 +3511,9 @@ setup.storyinit = function () {
   });
 
   const fence10 = new CircularGeofenceRegion({
-    id: 'schildkröte',
-    latitude: 51.755718,
-    longitude: 11.454497,
+    id: 'freiburg',
+    latitude: 48.034971, 
+    longitude: 7.875424,
     radius: 30, // meters
     alreadyEntered: false
   });
