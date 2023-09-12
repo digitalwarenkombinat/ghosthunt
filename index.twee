@@ -2935,8 +2935,8 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
                 case 'leutzsch':
                   $.wiki('<<goto "2.0">>');
                   break;
-                case 'pferd':
-                  $.wiki('<<goto "9.1">>');
+                case 'hamburg':
+                  $.wiki('<<goto "2.0">>');
                   break;
                 case 'schildkröte':
                   $.wiki('<<goto "10.1">>');
@@ -3503,9 +3503,9 @@ setup.storyinit = function () {
   });
 
   const fence9 = new CircularGeofenceRegion({
-    id: 'pferd',
-    latitude: 51.757570,
-    longitude: 11.453082,
+    id: 'hamburg',
+    latitude: 53.580682, 
+    longitude: 9.909469,
     radius: 30, // meters
     alreadyEntered: false
   });
