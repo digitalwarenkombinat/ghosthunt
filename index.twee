@@ -2927,13 +2927,13 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
                   $.wiki('<<goto "2.0">>');
                   break;
                 case 'herzbergplatz':
-                  $.wiki('<<goto "6.1">>');
+                  $.wiki('<<goto "2.0">>');
                   break;
-                case 'rabenturm':
-                  $.wiki('<<goto "7.1">>');
+                case 'burg':
+                  $.wiki('<<goto "2.0">>');
                   break;
-                case 'ozelot':
-                  $.wiki('<<goto "8.1">>');
+                case 'leutzsch':
+                  $.wiki('<<goto "2.0">>');
                   break;
                 case 'pferd':
                   $.wiki('<<goto "9.1">>');
@@ -3487,17 +3487,17 @@ setup.storyinit = function () {
   });
 
   const fence7 = new CircularGeofenceRegion({
-    id: 'rabenturm',
-    latitude: 51.757476,
-    longitude: 11.453929,
+    id: 'burg',
+    latitude: 51.492992, 
+    longitude: 11.953488,
     radius: 30, // meters
     alreadyEntered: false
   });
 
   const fence8 = new CircularGeofenceRegion({
-    id: 'ozelot',
-    latitude: 51.757325,
-    longitude: 11.456485,
+    id: 'leutzsch',
+    latitude: 51.344967, 
+    longitude: 12.318555,
     radius: 30, // meters
     alreadyEntered: false
   });
