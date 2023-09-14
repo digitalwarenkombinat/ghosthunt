@@ -1,51 +1,50 @@
 :: StoryTitle
 Spuk & Schreck
 
-
 :: StoryData
 {
   "ifid": "FB483649-96B3-4F0F-9531-A1D615413B45",
   "format": "SugarCube",
   "format-version": "2.36.1",
   "start": "setup.0",
-  "tag-colors": {
-    "fightRoom": "red",
-    "fightroom": "red",
-    "saeulengang": "yellow"
-  },
+  "tag-colors": {},
   "zoom": 0.6
 }
 
-
-:: 1.0 {"position":"1700,600","size":"100,100"}
-<script>
-$('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
-</script>
+:: story.init {"position":"1700,600","size":"100,100"}
+<<script>>
+  $('#story').attr('style', `background-image:url(images/story.init.${State.variables.hotspot}.jpg)`);
+<</script>>
 
 <div class="wrapper">
-  <h1>Achtung!</h1>
-  <h2>Paranormale Aktivität entdeckt.</h2>
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
   <p class="p3">para</p>
   </div>
 
   <div class="btn-group">
-    <button class="next">[[|1.1]]<<audio "click" play>></button>
+    <button class="next">[[|story.1]]<<audio "click" play>></button>
   </div>
 
 
-:: 1.1 {"position":"1700,800","size":"100,100"}
+:: story.1 {"position":"1700,800","size":"100,100"}
 <<script>>
-  window.video.showButtonsOnVideoEnd();
+  $(document).one(":passagedisplay", function() {
+    window.video.showButtonsOnVideoEnd();
+    document.getElementById('myVideo').src = `videos/story.1.${State.variables.hotspot}.mp4`;
+    document.getElementById('myVideo').load();
+    document.getElementById('myVideo').play();
+  })
 <</script>>
 
   <video autoplay muted id="myVideo" playsinline>
-    <source src="videos/1.1.mp4" type="video/mp4">
+    <source type="video/mp4">
   </video>
 
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <button class="retry">[[|1.1]]<<audio "click" play>></button>
+    <button class="retry">[[|story.1]]<<audio "click" play>></button>
     <button class="next">[[|1.2]]<<audio "click" play>></button>
   </div>
 
@@ -89,7 +88,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
         <<replace "#heading">><h2>Richtig! +10 Punkte</h2><</replace>>
         <<timed 1s>>
           <<goto "1.2">>
-          <<set $koinz to $koinz +10>>
+          <<set $points to $points +10>>
           <<set $riddle to $riddle + 1>>
         <</timed>>
       <</button>>
@@ -164,358 +163,6 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
     <button class="next">[[|2.7]]<<audio "click" play>></button>
   </div>
 
-
-:: 10.1 {"position":"3498,601","size":"100,100"}
-<<set $schildkroete to 1>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast ein Geheimtier entdeckt!
-<br>Klicke auf den Würfel, um ein Foto damit zu machen.
-<br>
-<br>
-Gefundene Tiere werden im Menü unter "Meine Tiere" gespeichert.</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-              src="models/schildkroete/schildkroete.glb"
-              ios-src="models/schildkroete/schildkroete.usdz"
-			  alt="Schildkröte"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Zurück">>
-      <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: 11.1 {"position":"3700,600","size":"100,100"}
-<<set $ozelot to 1>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast ein Geheimtier entdeckt!
-<br>Klicke auf den Würfel, um ein Foto damit zu machen.
-<br>
-<br>
-Gefundene Tiere werden im Menü unter "Meine Tiere" gespeichert.</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-              src="models/ozelot/ozelot.glb"
-              ios-src="models/ozelot/ozelot.usdz"
-			  alt="Ozelot"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Zurück">>
-      <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: 12.1 {"position":"3900,598","size":"100,100"}
-<<set $schwein to 1>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast ein Geheimtier entdeckt!
-<br>Klicke auf den Würfel, um ein Foto damit zu machen.
-<br>
-<br>
-Gefundene Tiere werden im Menü unter "Meine Tiere" gespeichert.</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-              src="models/schwein/schwein.glb"
-              ios-src="models/schwein/schwein.usdz"
-			  alt="Schwein"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Zurück">>
-      <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: 13.1 {"position":"4100,600","size":"100,100"}
-<<set $truthahn to 1>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast ein Geheimtier entdeckt!
-<br>Klicke auf den Würfel, um ein Foto damit zu machen.
-<br>
-<br>
-Gefundene Tiere werden im Menü unter "Meine Tiere" gespeichert.</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-              src="models/truthahn/truthahn.glb"
-              ios-src="models/truthahn/truthahn.usdz"
-			  alt="Truthahn"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Zurück">>
-      <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: 14.1 {"position":"4300,600","size":"100,100"}
-<<set $zebra to 1>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast ein Geheimtier entdeckt!
-<br>Klicke auf den Würfel, um ein Foto damit zu machen.
-<br>
-<br>
-Gefundene Tiere werden im Menü unter "Meine Tiere" gespeichert.</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-              src="models/zebra/zebra.glb"
-              ios-src="models/zebra/zebra.usdz"
-			  alt="Zebra"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Zurück">>
-      <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: 15.1 {"position":"4500,600","size":"100,100"}
-<<set $affe to 1>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast ein Geheimtier entdeckt!
-<br>Klicke auf den Würfel, um ein Foto damit zu machen.
-<br>
-<br>
-Gefundene Tiere werden im Menü unter "Meine Tiere" gespeichert.</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-			  src="models/affe/affe.glb"
-              ios-src="models/affe/affe.usdz"
-              alt="Affe"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Zurück">>
-      <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: 16.1 {"position":"4700,600","size":"100,100"}
-<<set $eule to 1>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast ein Geheimtier entdeckt!
-<br>Klicke auf den Würfel, um ein Foto damit zu machen.
-<br>
-<br>
-Gefundene Tiere werden im Menü unter "Meine Tiere" gespeichert.</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-              src="models/eule/eule.glb"
-              ios-src="models/eule/eule.usdz"
-			  alt="Eule"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Zurück">>
-      <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: 17.1 {"position":"4900,600","size":"100,100"}
-<<set $gazelle to 1>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast ein Geheimtier entdeckt!
-<br>Klicke auf den Würfel, um ein Foto damit zu machen.
-<br>
-<br>
-Gefundene Tiere werden im Menü unter "Meine Tiere" gespeichert.</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-              src="models/gazelle/gazelle.glb"
-              ios-src="models/gazelle/gazelle.usdz"
-			  alt="Gazelle"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Zurück">>
-      <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: 18.1 {"position":"5100,600","size":"100,100"}
-<<set $katze to 1>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast ein Geheimtier entdeckt!
-<br>Klicke auf den Würfel, um ein Foto damit zu machen.
-<br>
-<br>
-Gefundene Tiere werden im Menü unter "Meine Tiere" gespeichert.</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-              src="models/katze/katze.glb"
-              ios-src="models/katze/katze.usdz"
-			  alt="Katze"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Zurück">>
-      <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: 19.1 {"position":"5300,600","size":"100,100"}
-<<set $krokodil to 1>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast ein Geheimtier entdeckt!
-<br>Klicke auf den Würfel, um ein Foto damit zu machen.
-<br>
-<br>
-Gefundene Tiere werden im Menü unter "Meine Tiere" gespeichert.</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-              src="models/krokodil/krokodil.glb"
-              ios-src="models/krokodil/krokodil.usdz"
-			  alt="Krokodil"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Zurück">>
-      <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: 2.0 {"position":"1900,600","size":"100,100"}
-<script>
-$('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
-</script>
-
-<div class="wrapper">
-  <h1>Achtung!</h1>
-  <h2>Paranormale Aktivität entdeckt.</h2>
-  <p class="p3">para</p>
-  </div>
-
-  <div class="btn-group">
-    <button class="next">[[|2.1]]<<audio "click" play>></button>
-  </div>
-
-
-:: 2.1 {"position":"1900,800","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-  <video autoplay muted id="myVideo" playsinline>
-    <source src="videos/2.1.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="retry">[[|2.1]]<<audio "click" play>></button>
-    <button class="next">[[|2.2]]<<audio "click" play>></button>
-  </div>
-
-
 :: 2.2 {"position":"1900,1000","size":"100,100"}
 <script>
   $('#story').attr('style', 'background-image:url(images/cam.jpg)');
@@ -588,7 +235,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
         <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
         <<timed 1s>>
           <<goto "2.4">>
-          <<set $koinz to $koinz +10>>
+          <<set $points to $points +10>>
           <<set $riddle to $riddle + 1>>
         <</timed>>
       <</button>>
@@ -615,7 +262,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
         <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
         <<timed 1s>>
           <<goto "2.4">>
-          <<set $koinz to $koinz +10>>
+          <<set $points to $points +10>>
           <<set $riddle to $riddle + 1>>
         <</timed>>
       <</button>>
@@ -643,7 +290,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
         <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
         <<timed 1s>>
           <<goto "2.4">>
-          <<set $koinz to $koinz +10>>
+          <<set $points to $points +10>>
           <<set $riddle to $riddle + 1>>
         <</timed>>
       <</button>>
@@ -739,1167 +386,22 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 </div>
 
 
-:: 20.1 {"position":"5500,600","size":"100,100"}
-<<set $lama to 1>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast ein Geheimtier entdeckt!
-<br>Klicke auf den Würfel, um ein Foto damit zu machen.
-<br>
-<br>
-Gefundene Tiere werden im Menü unter "Meine Tiere" gespeichert.</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-              src="models/lama/lama.glb"
-              ios-src="models/lama/lama.usdz"
-			  alt="lama"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Zurück">>
-      <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: 3.1 {"position":"2100,600","size":"100,100"}
-<div class="wrapper">
-<h1>Grauer Hof</h1>
-<h2>Löse die Rätsel, um einen Geheimbuchstaben zu bekommen.</h2>
-<img src="images/3.1.jpg" class="image1" />
-</div>
-
-<div class="btn-group">
-
-<<button "Weiter">>
-  <<goto "3.2">><<audio "click" play>>
-<</button>>
-</div>
-
-
-:: 3.2 {"position":"2100,800","size":"100,100"}
-<video autoplay muted loop id="myVideo" playsinline>
-  <source src="videos/3.2.mp4" type="video/mp4">
-</video>
-
-<div class="wrapper">
-
-</div>
-
-<div class="btn-group">
-
-	<<button "Weiter">>
-	    <<goto "3.3">>
-	<<audio "click" play>>
-<</button>>	
-
-</div>
-
-
-:: 3.3 {"position":"2100,1000","size":"100,100"}
-<<if
- $riddle is 1>>
-<h1>Rätsel</h1>
- <span id="heading"><h2>Bürsten, Besen ... 
-</h2></span>
-
-<div class="wrapper">
-<img src="images/3.3.jpg" 
-class="image1" />
-</div>
-
-<div class="btn-group">
-
- <<button "Seife">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Nägel">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Pinsel">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
-
-
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 2>>
-
-<h1>Rätsel</h1>
- <span id="heading"><h2>Hoher ...?</h2></span>
-
-<div class="wrapper">
-<img src="images/3.4.jpg" 
-class="image1" />
-</div>
-
-<div class="btn-group">
-    
- <<button "Träger">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Turm">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Posten">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
-
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 3>>
-
-<h1>Rätsel</h1>
- <span id="heading"><h2>Stadt ...?</h2></span>
-
-<div class="wrapper">
-<img src="images/3.5.jpg" 
-class="image1" />
-</div>
-    
-<div class="btn-group">
-
- <<button "Archiv">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-    
- <<button "Verwaltung">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Reinigung">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 4>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast einen Geheimbuchstaben entdeckt.</h2>
-<h4>O</h4>
-</div>
-
-<div class="btn-group">
-<<button "Weiter">>
-      <<goto "map.init">><<set $riddle to 
-1>><<set $letter2 to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-<</if>>
-
-
-:: 4.1 {"position":"2301,600","size":"100,100"}
-<div class="wrapper">
-<h1>Markt</h1>
-<h2>Löse die Rätsel, um einen Geheimbuchstaben zu bekommen.</h2>
-<img src="images/4.1.jpg" class="image1" />
-</div>
-
-<div class="btn-group">
-
-<<button "Weiter">>
-  <<goto "4.2">><<audio "click" play>>
-<</button>>
-</div>
-
-
-:: 4.2 {"position":"2300,800","size":"100,100"}
-<video autoplay muted loop id="myVideo" playsinline>
-  <source src="videos/4.2.mp4" type="video/mp4">
-</video>
-
-<div class="wrapper">
-</div>
-
-<div class="btn-group">
-
-	<<button "Weiter">>
-	    <<goto "4.3">>
-	<<audio "click" play>>
-<</button>>	
-
-</div>
-
-
-:: 4.3 {"position":"2300,1000","size":"100,100"}
-<<if
- $riddle is 1>>
-<h1>Rätsel</h1>
- <span id="heading"><h2>Ich bin ein 
-...?</h2></span>
-
-<div class="wrapper">
-<img src="images/4.3.jpg" 
-class="image1" />
-</div>
-
-<div class="btn-group">
-
- <<button "Hund">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "4.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Drache">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "4.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
- <<button "Lurch">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "4.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 2>>
-
-<h1>Rätsel</h1>
- <span id="heading"><h2>Wer ist nicht zu 
-sehen?</h2></span>
-
-<div class="wrapper">
-<img src="images/4.4.jpg" 
-class="image1" />
-</div>
-
-<div class="btn-group">
-    
- <<button "Fisch">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "4.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Robbe">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "4.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Affe">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "4.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
-
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 3>>
-
-<h1>Rätsel</h1>
- <span id="heading"><h2>Mein Nachbar heißt 
-Herr...</h2></span>
-
-<div class="wrapper">
-<img src="images/4.5.jpg" 
-class="image1" />
-</div>
-    
-<div class="btn-group">
-
- <<button "Adler">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "4.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-    
- <<button "Krömer">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "4.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Mauser">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "4.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 4>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast einen Geheimbuchstaben entdeckt.</h2>
-<h4>R</h4>
-</div>
-
-<div class="btn-group">
-<<button "Weiter">>
-      <<goto "map.init">><<set $riddle to 
-1>><<set $letter1 to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-<</if>>
-
-
-:: 5.1 {"position":"2500,600","size":"100,100"}
-<div class="wrapper">
-<h1>Holzmarkt</h1>
-<h2>Löse die Rätsel, um einen Geheimbuchstaben zu bekommen.</h2>
-<img src="images/5.1.jpg" class="image1" />
-</div>
-
-<div class="btn-group">
-
-<<button "Weiter">>
-  <<goto "5.2">><<audio "click" play>>
-<</button>>
-</div>
-
-
-:: 5.2 {"position":"2500,800","size":"100,100"}
-<video autoplay muted loop id="myVideo" playsinline>
-  <source src="videos/5.2.mp4" type="video/mp4">
-</video>
-
-<div class="wrapper">
-
-</div>
-
-<div class="btn-group">
-
-	<<button "Weiter">>
-	    <<goto "5.3">>
-	<<audio "click" play>>
-<</button>>	
-
-</div>
-
-
-:: 5.3 {"position":"2500,1000","size":"100,100"}
-<<if
- $riddle is 1>>
-<h1>Rätsel</h1>
- <span id="heading"><h2>Ganz klar ein 
-...?</h2></span>
-
-<div class="wrapper">
-<img src="images/5.3.jpg" 
-class="image1" />
-</div>
-
-<div class="btn-group">
-
- <<button "Rabuschki">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "5.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Womitzki">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "5.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Remitschka">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "5.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 2>>
-
-<h1>Rätsel</h1>
- <span id="heading"><h2>Spaß zu ...?</h2></span>
-
-<div class="wrapper">
-<img src="images/5.4.jpg" 
-class="image1" />
-</div>
-
-<div class="btn-group">
-    
- <<button "Hause">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "5.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Viert">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "5.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
- <<button "Laut">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "5.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 3>>
-
-<h1>Rätsel</h1>
- <span id="heading"><h2>... dich!</h2></span>
-
-<div class="wrapper">
-<img src="images/5.5.jpg" 
-class="image1" />
-</div>
-    
-<div class="btn-group">
-    
- <<button "Freu">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "5.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Setz">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "5.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
- <<button "Halt">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "5.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 4>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast einen Geheimbuchstaben entdeckt.</h2>
-<h4>L</h4>
-</div>
-
-<div class="btn-group">
-<<button "Weiter">>
-      <<goto "map.init">><<set $riddle to 
-1>><<set $letter5 to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-<</if>>
-
-
-:: 6.1 {"position":"2700,600","size":"100,100"}
-<div class="wrapper">
-<h1>Großer Halken</h1>
-<h2>Löse die Rätsel, um einen Geheimbuchstaben zu bekommen.</h2>
-<img src="images/6.1.jpg" class="image1" />
-</div>
-
-<div class="btn-group">
-
-<<button "Weiter">>
-  <<goto "6.2">><<audio "click" play>>
-<</button>>
-</div>
-
-
-:: 6.2 {"position":"2700,800","size":"100,100"}
-<video autoplay muted loop id="myVideo" playsinline>
-  <source src="videos/6.2.mp4" type="video/mp4">
-</video>
-
-<div class="wrapper">
-
-</div>
-
-<div class="btn-group">
-
-	<<button "Weiter">>
-	    <<goto "6.3">>
-	<<audio "click" play>>
-<</button>>	
-
-</div>
-
-
-:: 6.3 {"position":"2700,1001","size":"100,100"}
-<<if
- $riddle is 1>>
-<h1>Rätsel</h1>
- <span id="heading"><h2>Ergibt zusammen 
-...?</h2></span>
-
-<div class="wrapper">
-<img src="images/6.3.jpg" 
-class="image1" />
-</div>
-
-<div class="btn-group">
-
- <<button "1367">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "6.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "1731">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "6.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "1805">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "6.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 2>>
-
-<h1>Rätsel</h1>
- <span id="heading"><h2>Ich habe einen 
-...?</h2></span>
-
-<div class="wrapper">
-<img src="images/6.4.jpg" 
-class="image1" />
-</div>
-
-<div class="btn-group">
-    
- <<button "Regenschirm">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "6.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Bruder">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "6.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
- <<button "Raben">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "6.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 3>>
-
-<h1>Rätsel</h1>
- <span id="heading"><h2>Deckel für den oder das 
-...?</h2></span>
-
-<div class="wrapper">
-<img src="images/6.5.jpg" 
-class="image1" />
-</div>
-    
-<div class="btn-group">
-    
- <<button "Topf">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "6.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Kelch">>
-   <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "6.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
- <<button "Fass">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "6.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 4>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast einen Geheimbuchstaben entdeckt.</h2>
-<h4>E</h4>
-</div>
-
-<div class="btn-group">
-<<button "Weiter">>
-      <<goto "map.init">><<set $riddle to 
-1>><<set $letter7 to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-<</if>>
-
-
-:: 7.1 {"position":"2900,600","size":"100,100"}
-<div class="wrapper">
-<h1>Rabenturm</h1>
-<h2>Löse die Rätsel, um einen Geheimbuchstaben zu bekommen.</h2>
-<img src="images/7.1.jpg" class="image1" />
-</div>
-
-<div class="btn-group">
-
-<<button "Weiter">>
-  <<goto "7.2">><<audio "click" play>>
-<</button>>
-</div>
-
-
-:: 7.2 {"position":"2900,801","size":"100,100"}
-<video autoplay muted loop id="myVideo" playsinline>
-  <source src="videos/7.2.mp4" type="video/mp4">
-</video>
-
-<div class="wrapper">
-
-</div>
-
-<div class="btn-group">
-
-	<<button "Weiter">>
-	    <<goto "7.3">>
-	<<audio "click" play>>
-<</button>>	
-
-</div>
-
-
-:: 7.3 {"position":"2900,1000","size":"100,100"}
-<<if
- $riddle is 1>>
-<h1>Rätsel</h1>
- <span id="heading"><h2>Du alte ...?</h2></span>
-
-<div class="wrapper">
-<img src="images/7.3.jpg" 
-class="image1" />
-</div>
-
-<div class="btn-group">
-
- <<button "Klingel">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "7.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Glocke">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "7.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Klinke">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "7.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 2>>
-
-<h1>Rätsel</h1>
- <span id="heading"><h2>Genau 9 ...?</h2></span>
-
-<div class="wrapper">
-<img src="images/7.4.jpg" 
-class="image1" />
-</div>
-
-<div class="btn-group">
-    
- <<button "Zinnen">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "7.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Stangen">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "7.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
- <<button "Stufen">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "7.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 3>>
-
-<h1>Rätsel</h1>
- <span id="heading"><h2>Kein ...?</h2></span>
-
-<div class="wrapper">
-<img src="images/7.5.jpg" 
-class="image1" />
-</div>
-    
-<div class="btn-group">
-    
- <<button "Erfinder">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "7.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Maurer">>
-   <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>><<audio "success" 
-play>>
-      <<timed 1s>>
-        <<goto "7.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
- <<button "Konstukteur">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "7.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 4>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast einen Geheimbuchstaben entdeckt.</h2>
-<h4>I</h4>
-</div>
-
-<div class="btn-group">
-<<button "Weiter">>
-      <<goto "map.init">><<set $riddle to 
-1>><<set $letter6 to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-<</if>>
-
-
-:: 8.1 {"position":"3100,600","size":"100,100"}
-<<set $schlange to 1>>
-
-<script>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg');
-</script>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast ein Geheimtier entdeckt!
-<br>Klicke auf den Würfel, um ein Foto damit zu machen.
-<br>
-<br>
-Gefundene Tiere werden im Menü unter "Meine Tiere" gespeichert.</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-              src="models/schlange/schlange.glb"
-              ios-src="models/schlange/schlange.usdz"
-			  alt="Schlange"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Zurück">>
-      <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: 9.1 {"position":"3300,600","size":"100,100"}
-<<set $pferd to 1>>
-
-<<audio "success" play>>
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast ein Geheimtier entdeckt!
-<br>Klicke auf den Würfel, um ein Foto damit zu machen.
-<br>
-<br>
-Gefundene Tiere werden im Menü unter "Meine Tiere" gespeichert.</h2>
-
-<model-viewer ar
-              ar-modes="scene-viewer webxr quick-look"
-poster="images/loading.png"
-              src="models/pferd/pferd.glb"
-              ios-src="models/pferd/pferd.usdz"
-			  alt="Pferd"
-			  auto-rotate>
-</model-viewer>
-
-</div>
-
-<div class="btn-group">
-<<button "Zurück">>
-      <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
-<</button>>
-</div>
-
-
-:: AR {"position":"500,2800","size":"100,100"}
-<div
- class="wrapper">
-<h1>Geister Kamera</h1>
-<h2>
-Super. Dann kommen wir mal zu eurem Hauptwerkzeug - der Kamera. Damit 
-könnt ihr Geister aufspüren, die ihr mit dem bloßen Auge nicht sehen 
-könnt.
-<br>
-<br>
-Außerdem könnt ihr damit wichtige Beweisfotos machen. Die brauchen wir 
-für unsere Dokumentation. Sonst könnten die Kunden ja sagen, wir hätten 
-gar nichts gemacht. 
-<br>
-<br>
-Probiert die Kamera mal aus. Wenn alles funktioniert, solltet ihr damit 
-unsere Hausgeist sehen. 
-</h2>
-</div>
-
-<div class="btn-group">
-	<<button "Weiter">>
-    	<<goto "AR.ModelViewer">>	
-<<audio "click" play>>	
-<</button>>
-</div>
-
-
-:: AR.ModelViewer {"position":"500,3000","size":"100,100"}
-<div class="wrapper">
-<h1>Model Viewer</h1>
-<h2>Klickt auf "View in your space" und macht ein Foto.</h2>
-  <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
-    autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-    alt="A witch" camera-controls>
-    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-    </model-viewer>
-</div>
-
-<div class="btn-group">
-	<<button "Weiter">>
-    	<<goto "friedenspark">>	
-<<audio "click" play>>	
-<</button>>
-</div>
-
-
 :: Dev {"position":"200,1200","size":"100,100"}
 <div class="wrapper">
   <div class="btn-group">
     <<button "1.0">>
-      <<goto "1.0">>	
+      <<set $hotspot to 1>>
+      <<goto "story.init">>	
     <</button>>
     <<button "2.0">>
-      <<goto "2.0">>	
+      <<set $hotspot to 2>>
+      <<goto "story.init">>	
     <</button>>
-    <<button "Karte">>
+    <<set $mapText = setup.text['Dev'][1][setup.i18n.langs[settings.lang]]>>
+    <<button $mapText>>
       <<goto "map.init">>	
     <</button>>
-    <<button "Zurück" `previous()`>>
-      <<audio "click" play>>
-    <</button>>
+    <button class="return">[[|setup.0]]<<audio "click" play>></button>
   </div>
 </div>
 
@@ -1958,329 +460,14 @@ unsere Hausgeist sehen.
 
 
 :: Impressum {"position":"200,1000","size":"100,100"}
-<div
- class="wrapper">
-  <h1>Impressum</h1>
-  <h2>Flamingo Flucht ist eine digitale Schnitzeljagd von <a 
-href="https://www.geomazing.com/shop">"Geomazing"</a>, die in 
-Kooperation mit der <a href="https://celloon.com/">"celloon 
-GmbH"</a> und dem <a 
-href="https://digitalwarenkombinat.de//">"Digitalwarenkombinat GbR"</a> für die <a 
-href="https://wir-sind-aschersleben.de/">"Kaufmannsgilde in 
-Aschersleben"</a> erstellt wurde.</h2>
-<br>
-  <h1>Gregor Assfalg</h1>
-  <h2>Konzeption, Story, Gestaltung und Web-Development</h2>
-  <h1>Mirko Kisser</h1>
-  <h2>Projekt-Management</h2>
-  <h1>Gerd Müller</h1>
-  <h2>Web-Development-Support</h2>
-  <h1>Eric Matyas</h1>
-  <h2>Sound Design</h2>
-  <br>
-  <h1>Daten<br>schutz</h1>
-<h2>Verantwortlicher für die Datenverarbeitung ist:
-<br>
-<br>
-Gregor Assfalg
-<br>Arno-Nitzsche-Str.11
-<br>04277 Leipzig
-<br>Deutschland
-<br>
-<br>
-getlost@geomazing.com
-<br>
-<br>
-1. Zugriffsdaten und Hosting
-<br>
-<br>
-Sie können unsere Webseiten besuchen, ohne Angaben zu Ihrer Person zu 
-machen. Bei jedem Aufruf einer Webseite speichert der Webserver 
-lediglich automatisch ein sogenanntes Server-Logfile, das z.B. den Namen
- der angeforderten Datei, Ihre IP-Adresse, Datum und Uhrzeit des Abrufs,
- übertragene Datenmenge und den anfragenden Provider (Zugriffsdaten) 
-enthält und den Abruf dokumentiert.
-<br>
-<br>
-Diese Zugriffsdaten werden ausschließlich zum Zwecke der Sicherstellung 
-eines störungsfreien Betriebs der Seite sowie der Verbesserung unseres 
-Angebots ausgewertet. Dies dient gemäß Art. 6 Abs. 1 S. 1 lit. f DSGVO 
-der Wahrung unserer im Rahmen einer Interessensabwägung überwiegenden 
-berechtigten Interessen an einer korrekten Darstellung unseres Angebots.
- Alle Zugriffsdaten werden spätestens sieben Tage nach Ende Ihres 
-Seitenbesuchs gelöscht.
-<br>
-<br>
-Hostingdienstleistungen durch einen Drittanbieter
-Im Rahmen einer Verarbeitung in unserem Auftrag erbringt ein 
-Drittanbieter für uns die Dienste zum Hosting und zur Darstellung der 
-Webseite. Alle Daten, die im Rahmen der Nutzung dieser Webseite oder in 
-dafür vorgesehenen Formularen im Onlineshop wie folgend beschrieben 
-erhoben werden, werden auf seinen Servern verarbeitet. Eine Verarbeitung
- auf anderen Servern findet nur in dem hier erläuterten Rahmen statt.
-<br>
-<br>
-Dieser Dienstleister sitzt innerhalb eines Landes der Europäischen Union
- oder des Europäischen Wirtschaftsraums.
-<br>
-<br>
-2. Datenerhebung und -verwendung zur Vertragsabwicklung, Kontaktaufnahme
-<br>
-<br>
-Wir erheben personenbezogene Daten, wenn Sie uns diese im Rahmen Ihrer 
-Bestellung oder bei einer Kontaktaufnahme mit uns (z.B. per 
-Kontaktformular oder E-Mail) mitteilen. Pflichtfelder werden als solche 
-gekennzeichnet, da wir in diesen Fällen die Daten zwingend zur 
-Vertragsabwicklung, bzw. zur Bearbeitung Ihrer Kontaktaufnahme benötigen
- und Sie ohne deren Angabe die Bestellung nicht abschließen, bzw. die 
-Kontaktaufnahme nicht versenden können. Welche Daten erhoben werden, ist
- aus den jeweiligen Eingabeformularen ersichtlich.
-<br>
-<br>
-Wir verwenden die von ihnen mitgeteilten Daten gemäß Art. 6 Abs. 1 S. 1 
-lit. b DSGVO zur Vertragsabwicklung und Bearbeitung Ihrer Anfragen. Nach
- vollständiger Abwicklung des Vertrages werden Ihre Daten für die 
-Weitere Verarbeitung eingeschränkt und nach Ablauf etwaiger steuer- und 
-handelsrechtlichen Aufbewahrungsfristen gelöscht, sofern Sie nicht 
-ausdrücklich in eine Weitere Nutzung Ihrer Daten eingewilligt haben oder
- wir uns eine darüber hinausgehende Datenverwendung vorbehalten, die 
-gesetzlich erlaubt ist und über die wir Sie in dieser Erklärung 
-informieren.
-<br>
-<br>
-3. DatenWeitergabe
-<br>
-<br>
-Zur Vertragserfüllung gemäß Art. 6 Abs. 1 S. 1 lit. b DSGVO geben wir 
-Ihre Daten an das mit der Lieferung beauftragte Versandunternehmen 
-Weiter, soweit dies zur Lieferung bestellter Waren erforderlich ist. Je 
-nach dem, welchen Zahlungsdienstleister Sie im Bestellprozess auswählen,
- geben wir zur Abwicklung von Zahlungen die hierfür erhobenen 
-Zahlungsdaten an das mit der Zahlung beauftragte Kreditinstitut und ggf.
- von uns beauftragte Zahlungsdienstleister Weiter bzw. an den 
-ausgewählten Zahlungsdienst. Zum Teil erheben die ausgewählten 
-Zahlungsdienstleister diese Daten auch selbst, soweit Sie dort ein Konto
- anlegen. In diesem Fall müssen Sie sich im Bestellprozess mit Ihren 
-Zugangsdaten bei dem Zahlungsdienstleister anmelden. Es gilt insoweit 
-die Datenschutzerklärung des jeweiligen Zahlungsdienstleisters.
-<br>
-<br>
-Wir setzen einen Zahlungsdienstleister ein, der seinen Sitz in einem 
-Staat außerhalb der Europäischen Union hat. Die Übermittlung 
-personenbezogener Daten an dieses Unternehmen erfolgt lediglich im 
-Rahmen der Notwendigkeit zur Vertragserfüllung.
-<br>
-<br>
-4. Cookies
-<br>
-<br>
-Um den Besuch unserer Webseite attraktiv zu gestalten und die Nutzung 
-bestimmter Funktionen zu ermöglichen, um passende Produkte anzuzeigen 
-oder zur Marktforschung verwenden wir auf verschiedenen Seiten 
-sogenannte Cookies, soweit Sie hierzu Ihre Einwilligung nach Art. 6 Abs.
- 1 S. 1 lit. a DSGVO erteilt haben.
-<br>
-<br>
-Cookies sind kleine Textdateien, die automatisch auf Ihrem Endgerät 
-gespeichert werden. Einige der von uns verwendeten Cookies werden nach 
-Ende der Browser-Sitzung, also nach Schließen Ihres Browsers, wieder 
-gelöscht (sog. Sitzungs-Cookies). Andere Cookies verbleiben auf Ihrem 
-Endgerät und ermöglichen uns, Ihren Browser beim nächsten Besuch 
-wiederzuerkennen (persistente Cookies). Die Dauer der Speicherung können
- Sie der Übersicht in den Cookie-Einstellungen Ihres Webbrowsers 
-entnehmen. Sie können Ihren Browser so einstellen, dass Sie über das 
-Setzen von Cookies informiert werden und einzeln über deren Annahme 
-entscheiden oder die Annahme von Cookies für bestimmte Fälle oder 
-generell ausschließen. Bei der Nichtannahme von Cookies kann die 
-Funktionalität unserer Webseite eingeschränkt sein. Jeder Browser 
-unterscheidet sich in der Art, wie er die Cookie-Einstellungen 
-verwaltet. Diese ist in dem Hilfemenü jedes Browsers beschrieben, 
-welches Ihnen erläutert, wie Sie Ihre Cookie-Einstellungen ändern 
-können. Diese finden Sie für die jeweiligen Browser unter den folgenden 
-Links:
-<br>
-<br>
-Microsoft Edge™ 
-[https://support.microsoft.com/de-de/help/4027947/microsoft-edge-delete-cookies]
- / Safari™ 
-[https://support.apple.com/de-de/guide/safari/sfri11471/12.0/mac/10.14 ]
- / Chrome™ 
-[https://support.google.com/chrome/answer/95647?hl=de&hlrm=en] / 
-Firefox™ 
-[https://support.mozilla.org/de/products/firefox/protect-your-privacy/cookies]
- / Opera™ [https://help.opera.com/de/latest/web-preferences/#cookies]
-<br>
-<br>
-Darüber hinaus können Sie Ihre Einwilligung jederzeit durch eine 
-Nachricht an die in der Datenschutzerklärung beschriebene 
-Kontaktmöglichkeit widerrufen.
-<br>
-<br>
-5. Online-Marketing
-<br>
-<br>
-Google Fonts
-Auf dieser Webseite ist der Script Code „Google Fonts“ eingebunden. 
-Google Fonts ist ein Angebot der Google Ireland Limited, einer nach 
-irischem Recht eingetragenen und betriebenen Gesellschaft mit Sitz in 
-Gordon House, Barrow Street, Dublin 4, Irland. (www.google.de 
-[http://www.google.de]). Dies dient der Wahrung unserer im Rahmen einer 
-Interessensabwägung überwiegenden berechtigten Interessen an einer 
-einheitlichen Darstellung der Inhalte auf unserer Webseite gemäß Art. 6 
-Abs. 1 lit. f) DSGVO. In diesem Rahmen wird eine Verbindung zwischen dem
- von Ihnen verwendeten Browser und den Servern von Google hergestellt. 
-Hierdurch erlangt Google Kenntnis darüber, dass über Ihre IP-Adresse 
-unsere Webseite aufgerufen wurde.
-Soweit Informationen auf Server von Google in den USA übertragen und 
-dort gespeichert werden, ist die amerikanische Gesellschaft Google LLC 
-unter dem EU-US-Privacy Shield zertifiziert. Ein aktuelles Zertifikat 
-kann hier [https://www.privacyshield.gov/list] eingesehen werden. 
-Aufgrund dieses Abkommens zwischen den USA und der Europäischen 
-Kommission hat letztere für unter dem Privacy Shield zertifizierte 
-Unternehmen ein angemessenes Datenschutzniveau festgestellt. 
-Weitergehende Informationen über die Datenverarbeitung durch Google 
-finden Sie in den Datenschutzhinweisen 
-[https://policies.google.com/privacy] von Google.
-<br>
-<br>
-6. Social Media
-<br>
-<br>
-Unsere Onlinepräsenz auf Facebook
-<br>
-<br>
-Unsere Präsenz auf sozialen Netzwerken und Plattformen dient einer 
-besseren, aktiven Kommunikation mit unseren Kunden und Interessenten. 
-Wir informieren dort über unsere Produkte und laufende Sonderaktionen.
-Bei dem Besuch unserer Onlinepräsenzen in sozialen Medien können Ihre 
-Daten für Marktforschungs- und Werbezwecke automatisch erhoben und 
-gespeichert werden. Aus diesen Daten werden unter Verwendung von 
-Pseudonymen sog. Nutzungsprofile erstellt. Diese können verwendet 
-werden, um z.B. Werbeanzeigen innerhalb und außerhalb der Plattformen zu
- schalten, die mutmaßlich Ihren Interessen entsprechen. Zu diesem Zweck 
-werden im Regelfall Cookies auf Ihrem Endgerät eingesetzt. In diesen 
-Cookies werden das Besucherverhalten und die Interessen der Nutzer 
-gespeichert. Dies dient gem. Art. 6 Abs. 1 lit. f. DSGVO der Wahrung 
-unserer im Rahmen einer Interessensabwägung überwiegenden berechtigten 
-Interessen an einer optimierten Darstellung unseres Angebots und 
-effektiver Kommunikation mit den Kunden und Interessenten. Falls Sie von
- den jeweiligen Social-Media Plattformbetreibern um eine Einwilligung 
-(Einverständnis) in die Datenverarbeitung gebeten werden, z.B. mit Hilfe
- einer Checkbox, ist die Rechtsgrundlage der Datenverarbeitung Art. 6 
-Abs. 1 lit. a DSGVO.
-Soweit die vorgenannten Social-Media Plattformen ihren Hauptsitz in den 
-USA haben, gilt Folgendes: Für die USA liegt ein 
-Angemessenheitsbeschluss der Europäischen Kommission vor. Dieser geht 
-Zurück auf den EU-US Privacy Shield. Ein aktuelles Zertifikat für das 
-jeweilige Unternehmen kann hier [https://www.privacyshield.gov/list] 
-eingesehen werden.
-Die detaillierten Informationen zur Verarbeitung und Nutzung der Daten 
-durch die Anbieter auf deren Seiten sowie eine Kontaktmöglichkeit und 
-Ihre diesbezüglichen Rechte und Einstellungsmöglichkeiten zum Schutz 
-Ihrer Privatsphäre, insbesondere Widerspruchsmöglichkeiten (Opt-Out), 
-entnehmen Sie bitte den unten verlinkten Datenschutzhinweisen der 
-Anbieter. Sollten Sie diesbezüglich dennoch Hilfe benötigen, können Sie 
-sich an uns wenden.
-<br>
-<br>
-Facebook: https://www.facebook.com/about/privacy/ 
-[https://www.facebook.com/about/privacy]
-Die Datenverarbeitung erfolgt auf Grundlage einer Vereinbarung zwischen 
-gemeinsam Verantwortlichen gemäß Art. 26 DSGVO, die Sie hier 
-[https://www.facebook.com/legal/terms/page_controller_addendum] einsehen
- können.
-Weitere Informationen zur Datenverarbeitung im Rahmen des Besuchs einer 
-Facebook Fanpage (Informationen zu Insights-Daten) finden Sie hier 
-[https://www.facebook.com/legal/terms/information_about_page_insights_data].
-<br>
-<br>
-Widerspruchsmöglichkeit
- (Opt-Out):
-<br>
-<br>
-Facebook: https://www.facebook.com/settings?tab=ads 
-[https://www.facebook.com/settings?tab=ads]
-<br>
-<br>
-7. Kontaktmöglichkeiten und Ihre Rechte
-<br>
-<br>
-Als Betroffener haben Sie folgende Rechte:
-<br>
-<br>
-* gemäß Art. 15 DSGVO das Recht, in dem dort bezeichneten Umfang 
-Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu 
-verlangen;
-* gemäß Art. 16 DSGVO das Recht, unverzüglich die Berichtigung 
-unrichtiger oder Vervollständigung Ihrer bei uns gespeicherten 
-personenbezogenen Daten zu verlangen;
-* gemäß Art. 17 DSGVO das Recht, die Löschung Ihrer bei uns 
-gespeicherten personenbezogenen Daten zu verlangen, soweit nicht die 
-Weitere Verarbeitung * zur Ausübung des Rechts auf freie 
-Meinungsäußerung und Information;
-* zur Erfüllung einer rechtlichen Verpflichtung;
-* aus Gründen des öffentlichen Interesses oder
-* zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen 
-erforderlich ist;
-<br>
-<br>
-* gemäß Art. 18 DSGVO das Recht, die Einschränkung der Verarbeitung 
-Ihrer personenbezogenen Daten zu verlangen, soweit * die Richtigkeit der
- Daten von Ihnen bestritten wird;
-* die Verarbeitung unrechtmäßig ist, Sie aber deren Löschung ablehnen;
-* wir die Daten nicht mehr benötigen, Sie diese jedoch zur 
-Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen 
-benötigen oder
-* Sie gemäß Art. 21 DSGVO Widerspruch gegen die Verarbeitung eingelegt 
-haben;
-<br>
-<br>
-* gemäß Art. 20 DSGVO das Recht, Ihre personenbezogenen Daten, die Sie 
-uns bereitgestellt haben, in einem strukturierten, gängigen und 
-maschinenlesebaren Format zu erhalten oder die Übermittlung an einen 
-anderen Verantwortlichen zu verlangen;
-* gemäß Art. 77 DSGVO das Recht, sich bei einer Aufsichtsbehörde zu 
-beschweren. In der Regel können Sie sich hierfür an die Aufsichtsbehörde
- Ihres üblichen Aufenthaltsortes oder Arbeitsplatzes oder unseres 
-Unternehmenssitzes wenden.
-<br>
-<br>
-Bei Fragen zur Erhebung, Verarbeitung oder Nutzung Ihrer 
-personenbezogenen Daten, bei Auskünften, Berichtigung, Einschränkung 
-oder Löschung von Daten sowie Widerruf erteilter Einwilligungen oder 
-Widerspruch gegen eine bestimmte Datenverwendung wenden Sie sich bitte 
-direkt an uns über die Kontaktdaten in unserem Impressum.
-<br>
-<br>
-Widerspruchsrecht
-Soweit wir zur Wahrung unserer im Rahmen einer Interessensabwägung 
-überwiegenden berechtigten Interessen personenbezogene Daten wie oben 
-erläutert verarbeiten, können Sie dieser Verarbeitung mit Wirkung für 
-die Zukunft widersprechen. Erfolgt die Verarbeitung zu Zwecken des 
-Direktmarketings, können Sie dieses Recht jederzeit wie oben beschrieben
- ausüben. Soweit die Verarbeitung zu anderen Zwecken erfolgt, steht 
-Ihnen ein Widerspruchsrecht nur bei Vorliegen von Gründen, die sich aus 
-Ihrer besonderen Situation ergeben, zu.
-<br>
-<br>
-Nach Ausübung Ihres Widerspruchsrechts werden wir Ihre personenbezogenen
- Daten nicht Weiter zu diesen Zwecken verarbeiten, es sei denn, wir 
-können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, 
-die Ihre Interessen, Rechte und Freiheiten überwiegen, oder wenn die 
-Verarbeitung der Geltendmachung, Ausübung oder Verteidigung von 
-Rechtsansprüchen dient
-<br>
-<br>
-Dies gilt nicht, wenn die Verarbeitung zu Zwecken des Direktmarketings 
-erfolgt. Dann werden wir Ihre personenbezogenen Daten nicht Weiter zu 
-diesem Zweck verarbeiten.
-</h2>
+<div class="wrapper">
+  <h1><<txt>></h1>
 </div>
 
 <div class="btn-group">
 
 <<button "Zurück">>
-	    <<goto "map.init">>
+  <<goto "setup.0">>
 	<<audio "click" play>>
 <</button>>	
 
@@ -2424,10 +611,13 @@ diesem Zweck verarbeiten.
 
 
 :: StoryCaption {"position":"800,200","size":"100,100"}
-<h1>Menu</h1>
-  <h5>Punkte:</h5>
-  <h3>$koinz/210</h3>
-  <h5>Gefundene Runen:</h5>
+  <<set $menuText = setup.text['StoryCaption'][1][setup.i18n.langs[settings.lang]]>>
+  <<set $pointsText = setup.text['StoryCaption'][2][setup.i18n.langs[settings.lang]]>>
+  <<set $runesText = setup.text['StoryCaption'][3][setup.i18n.langs[settings.lang]]>>
+  <h1>$menuText</h1>
+  <h5>$pointsText</h5>
+  <h3>$points/210</h3>
+  <h5>$runesText</h5>
   <p class="p1">
     <<if $letter1 is 1>>
       R
@@ -2465,7 +655,6 @@ diesem Zweck verarbeiten.
     _
     <</if>>
   </p>
-
 
 :: StoryHeader {"position":"600,200","size":"100,100"}
 
@@ -2513,13 +702,8 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 
 <<cacheaudio "ring" "audio/ring.mp3">>
 
--------------------------MAPBOX-------------------------------
-
-<<set $fences to setup.storyinit()>>
-<<set $accessToken to 'pk.eyJ1IjoiZ3JlZ2dlciIsImEiOiJjaXl1N3picTcwMDZkMzJyczB4Y3MxMGVxIn0.voeDl_IRyEmggYlnYhDXoQ'>>
-<<set $style to 'mapbox://styles/gregger/cjpkxg68s0fb22sqnjhzm8vvb'>>
-
 -------------------------STARTVARIABLEN-------------------------------
+<<set $hotspot to 0>>
 
 <<set $letter1 to 0>>
 <<set $letter2 to 0>>
@@ -2534,7 +718,7 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 <<set $setup to 0>>
 <<set $intro to 0>>
 
-<<set $koinz to 0>>
+<<set $points to 0>>
 
 <<set $riddle to 1>>
 
@@ -2576,133 +760,15 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 <<link [[$inventory|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
 /* <<link [[$help|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 /* <<link [[$legal|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
-/*<<link "Dev">><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>> */
+ <<link "Dev">><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
 
 
 :: ar.init {"position":"1500,1000","size":"100,100"}
 
 
 
-:: dauer {"position":"375,3600","size":"100,100"}
-<div
- class="wrapper">
-
-<h1>Länge</h1>
-<h2>Die Rallye besteht aus zwei Teilen. Die kurze Quiz-Runde 
-dauert ungefähr eine Stunde. Lauft hierfür alle Quiz-Stationen ab, um 
-das Haupträtsel zu lösen. 
-<br>
-<br>
-Danach könnt ihr noch alle Tiere einsammeln, die ihr noch nicht gefunden
- habt. Das dauert ungefähr nochmal eine Stunde. 
-</h2>
-</div>
-
-<div class="btn-group">
-	<<button "Weiter">>
-    	<<goto "menu">>	
-<<audio "click" play>>	
-<</button>>
-</div>
-
-
-:: disclaimer {"position":"700,3000","size":"100,100"}
-<<audio "bg" play loop>>
-<div class="wrapper">
-<h1>Vorwort</h1>
-<h2>Dies ist eine interaktive Schnitzeljagd für den alleinigen Zweck der Unterhaltung. 
-<br>
-<br>
-Die Schnitzeljagd findet im öffentlichen Raum statt. Bitte nimm Rücksicht auf deine Mitmenschen und achte auf den Verkehr.
-</h2>
-</div>
-
-<div class="btn-group">
-	<<button "Weiter">>
-    	<<goto "spiel">>	
-<<audio "click" play>>	
-<</button>>
-</div>
-
-
 :: end.init {"position":"1500,1200","size":"100,100"}
 
-
-
-:: friedenspark {"position":"500,3200","size":"100,100"}
-<video autoplay muted loop id="myVideo" playsinline>
-  <source src="videos/demo.mp4" type="video/mp4">
-</video>
-
-<div class="wrapper">
-	<h1>Friedenspark</h1>
-    <h2>Großartig. Dann können wir starten.
-	<br>
-	<br>Ich schicke euch gleich die Koordinaten vom Friedenspark. Da 
-müsst ihr hin.
-	<br>
-	<br>Ich schätze wir brauchen dort so ein bis zwei Stunden. Also 
-stellt sicher, dass eure Handys voll geladen sind und nehmt was zu essen
- und trinken mit. 
-	<br>
-	<br>Ihr könnt starten wann immer ihr bereit seid. Heute, morgen, 
-übermorgen. Das dürft ihr selbst entscheiden. Ich empfehle euch aber in 
-der Abenddämmerung zu gehen. Da sind die Spukis am aktivsten.
-	</h2>
-</div>
-
-<div class="btn-group">
-	<<button "Zurück">>
-    	<<goto "AR">>	
-<<audio "click" play>>	
-<</button>>
-	<<button "Ok">>
-    	<<goto "gps">>	
-<<audio "click" play>>	
-<</button>>
-</div>
-
-
-:: gps {"position":"500,3400","size":"100,100"}
-<video autoplay muted loop id="myVideo" playsinline>
-  <source src="videos/demo.mp4" type="video/mp4">
-</video>
-
-<<set
- $is_safari to navigator.userAgent.indexOf('Safari') > -1 && 
-navigator.userAgent.indexOf('Chrome') <= -1>>
-<<set $is_chrome to navigator.userAgent.indexOf('Chrome') > 
--1>>
-
-<div class="wrapper">
-	<h1>GPS</h1>
-    <h2>Um euch die Koordinaten zu schicken, braucht ihr zwingend 
-GPS. Ohne geht's nicht! Stellt sicher, dass ihr das aktiviert habt und 
-euer Browser die Erlaubnis hat es zu nutzen. 
-    <br>
-    <br>
-    <<if $is_safari>>
-    Ihr findet das bei "Einstellungen" und dann "Ortungsdienste". 
-Erlaubt Safari "Beim Verwenden der App" euren Standort zu benutzen.
-
-    <<elseif $is_chrome>>
-    Ihr findet das bei "Einstellungen" und dann "Standort". Erlaubt 
-Chrome "Beim Verwenden der App" euren Standort zu benutzen.
-    
-    <<else>>
-    Bitte benutze entweder Chrome oder Safari Browser.
-    <</if>>
-	<br>
-	<br>
-    </h2>
-</div>
-
-<div class="btn-group">
-	<<button "Weiter">>
-    	<<goto "map.init">>	
-<<audio "click" play>>	
-<</button>>
-</div>
 
 
 :: hotspot.1.init {"position":"1500,800","size":"100,100"}
@@ -2865,7 +931,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 :: kapitel.init {"position":"1100,500","size":"100,100"}
 <<if $setup is 1>>
 	<<goto "intro">>
-<<if $setup is 1 and $intro is 1>>
+<<elseif $setup is 1 and $intro is 1>>
 	<<goto "kapitel.1">>
 <<else>>
 	<<goto "vorstellung">>
@@ -2886,98 +952,34 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 <<script>>
   $(document).one(":passagedisplay", function() {
     setup.mapboxLoaded.then(function () {
-      mapboxgl.accessToken = State.variables.accessToken;
+      mapboxgl.accessToken = getAccessToken();
 
       const map = new mapboxgl.Map({
         container: 'map',
-          style: State.variables.style,
+        style: getStyle(),
       });
 
       const geolocate = new mapboxgl.GeolocateControl(window.geolocation.getGeolocateControl());
 
       map.addControl(geolocate);
-
-      const remainingFences = State.variables.fences.filter(f => f.alreadyEntered === false);
+      const locations= getLocations();
+      const remainingLocations = locations.filter(f => !f.alreadyEntered);
 
       geolocate.on('geolocate', ({ coords }) => {
         const lat = coords.latitude;
         const lon = coords.longitude;
 
-        for (const fence of remainingFences) {
-          if (window.geolocation.inside(fence.latitude,fence.longitude,fence.radius,lat, lon)) {
-            map.setPaintProperty(fence.id, 'fill-color', '#FFDE03');
+        for (const location of remainingLocations) {
+          if (window.geolocation.inside(location.latitude, location.longitude, location.radius, lat, lon)) {
+            map.setPaintProperty( location.id, 'fill-color', '#FFDE03');
 
-            /* Hier die entsprechenden Passagen einfügen */
-            map.on('click', fence.id, (e) => {
-              State.variables.fences.find(f => f.id === fence.id).alreadyEntered = true;          
-              switch (fence.id) {
-                case 'friedenspark':
-                  $.wiki('<<goto "1.0">>');
-                  break;
-                case 'wiedebachplatz':
-                  $.wiki('<<goto "2.0">>');
-                  break;
-                case 'rabet':
-                  $.wiki('<<goto "2.0">>');
-                  break;
-                case 'clara-zetkin-park':
-                  $.wiki('<<goto "2.0">>');
-                  break;
-                case 'marburg':
-                  $.wiki('<<goto "2.0">>');
-                  break;
-                case 'herzbergplatz':
-                  $.wiki('<<goto "2.0">>');
-                  break;
-                case 'burg':
-                  $.wiki('<<goto "2.0">>');
-                  break;
-                case 'leutzsch':
-                  $.wiki('<<goto "2.0">>');
-                  break;
-                case 'hamburg':
-                  $.wiki('<<goto "2.0">>');
-                  break;
-                case 'freiburg':
-                  $.wiki('<<goto "2.0">>');
-                  break;
-                case 'schlange':
-                  $.wiki('<<goto "11.1">>');
-                  break;
-                case 'schwein':
-                  $.wiki('<<goto "12.1">>');
-                  break;
-                case 'truthahn':
-                  $.wiki('<<goto "13.1">>');
-                  break;
-                case 'zebra':
-                  $.wiki('<<goto "14.1">>');
-                  break;
-                case 'affe':
-                  $.wiki('<<goto "15.1">>');
-                  break;
-                case 'eule':
-                  $.wiki('<<goto "16.1">>');
-                  break;
-                case 'gazelle':
-                  $.wiki('<<goto "17.1">>');
-                  break;
-                case 'katze':
-                  $.wiki('<<goto "18.1">>');
-                  break;
-                case 'krokodil':
-                  $.wiki('<<goto "19.1">>');
-                  break;
-                case 'lama':
-                  $.wiki('<<goto "20.1">>');
-                  break;
-                default:
-                  console.log(`${fence.id} not found`);
-              }
+            map.on('click', location.id, (e) => {
+              locations.find(f => f.id === location.id).alreadyEntered = true;
+              $.wiki('<<goto "1.0">>');
             });
 
           } else {
-            map.setPaintProperty(fence.id, 'fill-color', 'black');
+            map.setPaintProperty( location.id, 'fill-color', 'black');
           }
         }
       });
@@ -2990,13 +992,13 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
       function renderMap() {
         map.resize();
-        for (const fence of remainingFences) {
-          map.addSource(fence.id, window.geolocation.createGeoJSONCircle([fence.longitude, fence.latitude], fence.radius / 1000));
+        for (const location of remainingLocations) {
+          map.addSource( location.id, window.geolocation.createGeoJSONCircle([ location.longitude, location.latitude], location.radius / 1000));
 
           map.addLayer({
-            'id': fence.id,
+            'id': location.id,
             'type': 'fill',
-            'source': fence.id,
+            'source': location.id,
             'layout': {},
             'paint': {
               'fill-color': 'black',
@@ -3014,13 +1016,13 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 <div class="btn-group">
   
     <<if $maptip is 0>> 
-      <span id="heading"><h2>Diese Karte ist dein Hauptbildschirm.</h2>
+      <span id="heading"><h2><<txt>></h2>
         <<button "Weiter">>
           <<replace "#heading">>
-            <h2>Hier siehst du alle Hotspots in deiner Umgebung.</h2>
+            <h2><<txt>></h2>
             <<button "Weiter">>
               <<replace "#heading">>
-                <h2>Laufe in einen der Hotspots hinein! Sobald er gelb wird, kannst du ihn anklicken.</h2>
+                <h2><<txt>></h2>
               <</replace>>
               <<audio "click" play>>
             <</button>>
@@ -3030,35 +1032,6 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
       </span>
     <</if>>
   
-</div>
-
-
-:: menu {"position":"500,3600","size":"100,100"}
-<div class="wrapper">
-    <h1>Seitenmenü</h1>
-    <h2>
-    Über den Pfeil oben links öffnet Ihr das Seitenmenü.
-    <br>
-    <br>
-    Dort findet Ihr euren Punktestand und alle bereits gesammelten Buchstaben für das Lösungswort.
-    <br>
-    <br>
-    Ihr könnt das Spiel hier auch speichern oder neu starten. 
-    </h2>
-  </div>
-
-
-:: musik {"position":"700,2800","size":"100,100"}
-<div class="wrapper">
-<h1>Musik</h1>
-<h2>Wir spielen Musik. Du kannst die Lautstärke über dein Telefon regulieren.</h2>
-</div>
-
-<div class="btn-group">
-	<<button "Ok">>
-    	<<goto "disclaimer">>	
-<<audio "click" play>>	
-<</button>>
 </div>
 
 
@@ -3167,11 +1140,11 @@ $(document).one(":passagedisplay", function() {
 $(document).one(":passagedisplay", function() {
 
   setup.mapboxLoaded.then(function () {
-    mapboxgl.accessToken = State.variables.accessToken;
+    mapboxgl.accessToken = getAccessToken();
 
     const map = new mapboxgl.Map({
       container: 'map',
-      style: State.variables.style
+      style: getStyle()
     });
 
     const geolocate = new mapboxgl.GeolocateControl(window.geolocation.getGeolocateControl());
@@ -3280,34 +1253,6 @@ $(document).one(":passagedisplay", function() {
   <button class="next">[[|intro]]</button>
 </div>
 
-
-:: spiel {"position":"700,3200","size":"100,100"}
-<div
- class="wrapper">
-
-<h1>Spiel</h1>
-<h2>Ihr könnt den Link zur Rallye auf beliebig vielen Smartphones 
-öffnen. So könnt ihr das Spiel entweder gemeinsam spielen, euch in 
-kleine Gruppen aufteilen oder jeder allein losziehen. 
-<br>
-<br>
-Ihr könnt auch einen kleinen Wettkampf machen und vergleichen wer am 
-Ende die meisten Punkte und Tiere gesammelt hat. 
-</h2>
-</div>
-
-<div class="btn-group">
-	<<button "Weiter">>
-    	<<goto "dauer">>	
-<<audio "click" play>>	
-<</button>>
-</div>
-
-
-:: story.init {"position":"1500,1800","size":"100,100"}
-
-
-
 :: vorstellung {"position":"500,1300","size":"100,100"}
 <<audio ":playing:" stop>>
 
@@ -3396,212 +1341,13 @@ Setting.addList('lang', {
   onChange : changeLanguage
 });
 
-/***********
-Translations 
-***********/
-setup.text = {};
-setup.text["StoryMenu"] = {
-	"1": {
-		de: 'Geister',
-		en: 'Ghosts'
-  },
-	"2": {
-		de: 'Hilfe',
-		en: 'Help'
-  },
-  "3": {
-		de: 'Impressum',
-		en: 'Legal Notice'
-  }
-};
-setup.text["setup.0"] = {
-  
-  "1": {
-		de: 'Diese Rallye befindet sich in der Entwicklung und ist nicht das finale Produkt. Diese Version ist nur für Testzwecke bestimmt.',
-		en: 'This rally is a test version and not the final product. It is intended for testing purposes only.'
-  }
-};
+setup.text = getTranslations();
 
 /*************
 Mapbox imports
 *************/
-importStyles("https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css");
-setup.mapboxLoaded = importScripts("https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js")
-
-class CircularGeofenceRegion {
-  constructor(opts) {
-    Object.assign(this, opts)
-  }
-}
-
-/********************
-Fences initialization
-********************/
-setup.storyinit = function () {
-  const fence1 = new CircularGeofenceRegion({
-    id: 'friedenspark',
-    latitude: 51.3257,
-    longitude: 12.397461,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence2 = new CircularGeofenceRegion({
-    id: 'wiedebachplatz',
-    latitude: 51.309573, 
-    longitude: 12.377370,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence3 = new CircularGeofenceRegion({
-    id: 'rabet',
-    latitude: 51.343321, 
-    longitude: 12.404982,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence4 = new CircularGeofenceRegion({
-    id: 'clara-zetkin-park',
-    latitude: 51.331494, 
-    longitude: 12.357056,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence5 = new CircularGeofenceRegion({
-    id: 'marburg',
-    latitude: 50.817296, 
-    longitude: 8.662450,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence6 = new CircularGeofenceRegion({
-    id: 'herzbergplatz',
-    latitude: 52.477949, 
-    longitude: 13.449104,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence7 = new CircularGeofenceRegion({
-    id: 'burg',
-    latitude: 51.492992, 
-    longitude: 11.953488,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence8 = new CircularGeofenceRegion({
-    id: 'leutzsch',
-    latitude: 51.344967, 
-    longitude: 12.318555,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence9 = new CircularGeofenceRegion({
-    id: 'hamburg',
-    latitude: 53.580682, 
-    longitude: 9.909469,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence10 = new CircularGeofenceRegion({
-    id: 'freiburg',
-    latitude: 48.034971, 
-    longitude: 7.875424,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence11 = new CircularGeofenceRegion({
-    id: 'schlange',
-    latitude: 51.754062,
-    longitude: 11.455933,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence12 = new CircularGeofenceRegion({
-    id: 'schwein',
-    latitude: 51.753561,
-    longitude: 11.454144,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence13 = new CircularGeofenceRegion({
-    id: 'truthahn',
-    latitude: 51.752776,
-    longitude: 11.453532,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence14 = new CircularGeofenceRegion({
-    id: 'zebra',
-    latitude: 51.751645,
-    longitude: 11.453348,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence15 = new CircularGeofenceRegion({
-    id: 'affe',
-    latitude: 51.750972,
-    longitude: 11.454920,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence16 = new CircularGeofenceRegion({
-    id: 'eule',
-    latitude: 51.751370,
-    longitude: 11.457007,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence17 = new CircularGeofenceRegion({
-    id: 'gazelle',
-    latitude: 51.752479,
-    longitude: 11.458342,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence18 = new CircularGeofenceRegion({
-    id: 'katze',
-    latitude: 51.753686,
-    longitude: 11.458826,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence19 = new CircularGeofenceRegion({
-    id: 'krokodil',
-    latitude: 51.754571,
-    longitude: 11.458813,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-  const fence20 = new CircularGeofenceRegion({
-    id: 'lama',
-    latitude: 51.756125,
-    longitude: 11.459156,
-    radius: 30, // meters
-    alreadyEntered: false
-  });
-
-/* Die oben definierten Fences müssen diesem Array zugewiesen werden */	
-  const fences = [fence1, fence2, fence3, fence4, fence5, fence6, fence7, fence8, fence9, fence10, fence11, fence12, fence13, fence14, fence15, fence16, fence17, fence18, fence19, fence20]
-  return fences;
-};
+importStyles("https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css");
+setup.mapboxLoaded = importScripts("https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js");
 
 /*****************
 Window Geolocation 
@@ -3625,7 +1371,7 @@ Window Geolocation
       }
     },
     
-		/* Test ob ein Fence innerhalb der aktuellen Geokoordinaten ist */
+		/* Test ob eine Location innerhalb der aktuellen Geokoordinaten ist */
     inside: function(lat1, lon1, radius, lat2, lon2) {
 		  const R = 6371; // Earth's radius in km
       const dLat = (lat2-lat1) * Math.PI / 180;
@@ -3638,7 +1384,7 @@ Window Geolocation
       return distance < radius;
 	  },
 		
-    /* Erstellt einen sichtbaren Kreis um einen Fence */
+    /* Erstellt einen sichtbaren Kreis um eine Location */
     createGeoJSONCircle: function(center, radius) {
       const points = 64;
       const coords = {
@@ -3860,6 +1606,11 @@ p {
 
 a {
   color: var(--secondary-color);
+}
+
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: none;
 }
 
 button {
