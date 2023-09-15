@@ -105,7 +105,7 @@ Spuk & Schreck
       <<button "Weiter">>
         <<goto "1.3">>
         <<set $riddle to 1>>
-        <<set $letter4 to 1>>
+        <<set $letter[$hotspot] to 1>>
         <<audio "click" play>>  
       <</button>>
     </div>
@@ -324,7 +324,7 @@ Spuk & Schreck
       <<button "Weiter">>
         <<goto "2.5">>
         <<set $riddle to 1>>
-        <<set $letter4 to 1>>
+        <<set $letter[$hotspot] to 1>>
         <<audio "click" play>>  
       <</button>>
     </div>
@@ -619,41 +619,14 @@ Spuk & Schreck
   <h3>$points/210</h3>
   <h5>$runesText</h5>
   <p class="p1">
-    <<if $letter1 is 1>>
-      R
-    <<else>>
-    _
-    <</if>>
-    <<if $letter2 is 1>>
-      O
-    <<else>>
-    _
-    <</if>>
-    <<if $letter3 is 1>>
-      S
-    <<else>>
-    _
-    <</if>>
-    <<if $letter4 is 1>>
-      A
-    <<else>>
-    _
-    <</if>>
-    <<if $letter5 is 1>>
-      L
-    <<else>>
-    _
-    <</if>>
-    <<if $letter6 is 1>>
-      I
-    <<else>>
-    _
-    <</if>>
-    <<if $letter7 is 1>>
-      E
-    <<else>>
-    _
-    <</if>>
+    <<set _letters to ["R", "O", "S", "A", "L", "I", "E"]>>
+    <<for _i, _name range _letters>>
+      <<if $letter[_i] is 1>>
+        _name
+      <<else>>
+        _
+      <</if>>
+    <</for>>
   </p>
 
 :: StoryHeader {"position":"600,200","size":"100,100"}
@@ -705,13 +678,7 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 -------------------------STARTVARIABLEN-------------------------------
 <<set $hotspot to 0>>
 
-<<set $letter1 to 0>>
-<<set $letter2 to 0>>
-<<set $letter3 to 0>>
-<<set $letter4 to 0>>
-<<set $letter5 to 0>>
-<<set $letter6 to 0>>
-<<set $letter7 to 0>>
+<<set $letter to [0, 0, 0, 0, 0, 0, 0]>>
 
 <<set $maptip to 0>>
 
@@ -939,7 +906,7 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 
 
 :: map.init {"position":"1300,500","size":"100,100"}
-<<if $letter1 is 1 and $letter2 is 1 and $letter3 is 1 and $letter4 is 1 and $letter5 is 1 and $letter6 is 1 and $letter7 is 1 and $ende is 0>>
+<<if !$letter.includes(0) and $ende is 0>>
 	<<goto "end.init">>
 <<else>>
 	<<goto "mapbox">>
