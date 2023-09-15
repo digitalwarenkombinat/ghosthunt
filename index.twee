@@ -11,6 +11,98 @@ Spuk & Schreck
   "zoom": 0.6
 }
 
+:: StoryCaption {"position":"800,200","size":"100,100"}
+  <<set $menuText = setup.text['StoryCaption'][1][setup.i18n.langs[settings.lang]]>>
+  <<set $pointsText = setup.text['StoryCaption'][2][setup.i18n.langs[settings.lang]]>>
+  <<set $runesText = setup.text['StoryCaption'][3][setup.i18n.langs[settings.lang]]>>
+  <h1>$menuText</h1>
+  <h5>$pointsText</h5>
+  <h3>$points/210</h3>
+  <h5>$runesText</h5>
+  <p class="p1">
+    <<set _letters to ["R", "O", "S", "A", "L", "I", "E"]>>
+    <<for _i, _name range _letters>>
+      <<if $letter[_i] is 1>>
+        _name
+      <<else>>
+        _
+      <</if>>
+    <</for>>
+  </p>
+
+:: StoryInit {"position":"400,200","size":"100,100"}
+-------------------------SETUP-------------------------------
+
+<<set $is_pwa to window.matchMedia('(display-mode: window-controls-overlay)').matches || window.matchMedia('(display-mode: fullscreen)').matches>>
+<<set $is_safari to navigator.userAgent.indexOf('Safari') > -1 && 
+  navigator.userAgent.indexOf('Chrome') <= -1 && navigator.userAgent.indexOf("Edg") <= -1 &&
+  navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
+<<set $is_chrome to navigator.userAgent.indexOf('Chrome') > 
+  -1 && navigator.userAgent.indexOf("Edg") <= -1 &&
+  navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
+
+-------------------------LANGUAGE-------------------------------
+<<widget "txt">>
+	<<if ndef _txtCount>>
+		<<set _txtCount = 0>>
+	<</if>>
+	<<if $args.raw === "">>
+		<<set _txtOutput = setup.text[passage()][++_txtCount][setup.i18n.langs[settings.lang]]>>
+		<<if def _txtOutput>>
+			_txtOutput
+		<<else>>
+			<<= setup.text[passage()][_txtCount]["de"]>>
+		<</if>>
+	<<else>>
+		<<set _txtOutput = setup.text[passage()][$args.raw][setup.i18n.langs[settings.lang]]>>
+		<<if def _txtOutput>>
+			_txtOutput
+		<<else>>
+			<<= setup.text[passage()][$args.raw]["de"]>>
+		<</if>>
+	<</if>>
+<</widget>>
+
+--------------------------AUDIO---------------------------------------
+
+<<cacheaudio "bg" "audio/bg.mp3">>
+<<cacheaudio "click" "audio/click.mp3">>
+<<cacheaudio "ring" "audio/ring.mp3">>
+
+-------------------------STARTVARIABLEN-------------------------------
+<<set $hotspot to 0>>
+
+<<set $letter to [0, 0, 0, 0, 0, 0, 0]>>
+
+<<set $inventory to [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]>>
+
+<<set $showMaptip to true>>
+
+<<set $setupCompleted to false>>
+
+<<set $introCompleted to false>>
+
+<<set $points to 0>>
+
+<<set $riddle to 1>>
+
+<<set $ende to 0>>
+
+<<set $isStoryteller to false>>
+<<set $isScanner to false>>
+<<set $isNavigator to false>>
+
+
+:: StoryMenu {"position":"198,200","size":"100,100"}
+<<set $inventoryText = setup.text['StoryMenu'][1][setup.i18n.langs[settings.lang]]>>
+<<set $helpText = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
+<<set $legalText = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
+<<link [[$inventoryText|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
+<<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
+<<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>>
+<<link "Dev">><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
+
+
 :: story.init {"position":"1700,600","size":"100,100"}
 <<script>>
   $('#story').attr('style', `background-image:url(images/story.init.${State.variables.hotspot}.jpg)`);
@@ -50,11 +142,11 @@ Spuk & Schreck
 
 
 :: 1.2 {"position":"1700,1000","size":"100,100"}
-<<if $riddle is 1>>
+  <<if $riddle is 1>>
     <script>
       $('#story').attr('style', 'background-image:url(images/1.1.jpg)');
     </script>
-    <<elseif $riddle is 2>>
+  <<elseif $riddle is 2>>
     <script>
       $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
     </script>
@@ -388,6 +480,8 @@ Spuk & Schreck
 
 :: Dev {"position":"200,1200","size":"100,100"}
 <div class="wrapper">
+  <br/>
+  <br/>
   <div class="btn-group">
     <<button "1.0">>
       <<set $hotspot to 1>>
@@ -401,55 +495,51 @@ Spuk & Schreck
     <<button $mapText>>
       <<goto "map.init">>	
     <</button>>
-    <button class="return">[[|setup.0]]<<audio "click" play>></button>
   </div>
+</div>
+<div class="btn-group">
+  <<return>>
 </div>
 
 
 :: Hilfe {"position":"200,800","size":"100,100"}
 <div class="wrapper">
-  <h1>Hilfe</h1>
-  <h2>Erkunde die Stationen auf der Karte, um geheime Geister zu 
-    finden und Buchstaben für das Lösungswort zu sammeln.</h2>
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
   <details>
     <summary>
-      <h5>Wo finde ich meinen Spielfortschritt?</h5>
+      <h5><<txt>></h5>
     </summary>
     <div>
-      <p>Deinen Spielfortschritt kannst du im
-      <<link "Seitenmenü">>
+      <p><<txt>>
+      <<link "Menu">>
 	      <<script>>UIBar.unstow().show()<</script>>
       <</link>>
-      einsehen.</p>
+      </p>
     </div>
   </details>
   <details>
     <summary>
-      <h5>Was passiert, wenn ich das Lösungswort vollständig erraten habe?</h5>
+      <h5><<txt>></h5>
     </summary>
     <div>
-      <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus.</p>
+      <p><<txt>></p>
     </div>
   </details>
   <details>
     <summary>
-      <h5>Benötigt jeder Mitspielende ein eigenes Handy?</h5>
+      <h5><<txt>></h5>
     </summary>
     <div>
-      <p>Wir empfehlen das Spiel als Gruppe mit einem Handy zu spielen.
-      Natürlich könnte ihr aber auch jeder alleine mit einem Handy losziehen.
-      Es gibt keine vorgeschriebene Reihenfolge für die Stationen. 
-      Am Ende könnt ihr vergleichen, wer mehr Punkte und Geister gesammelt hat.</p>
+      <p><<txt>></p>
     </div>
   </details>
   <details>
     <summary>
-      <h5>Wie kann ich die Rätsel lösen?</h5>
+      <h5><<txt>></h5>
     </summary>
     <div>
-      <p>Die Rätsel im Spiel können nur durch genaues Absuchen eurer Umgebung gelöst werden.
-      Findet die Orte auf dem Bild und studiert sie genau.
-      Dann findet ihr die Antwort. </p>
+      <p><<txt>></p>
     </div>
   </details>
 </div>
@@ -465,285 +555,46 @@ Spuk & Schreck
 </div>
 
 <div class="btn-group">
-
-<<button "Zurück">>
-  <<goto "setup.0">>
-	<<audio "click" play>>
-<</button>>	
-
+  <<return>>
 </div>
 
 
 :: Inventar {"position":"200,600","size":"100,100"}
 <div class="wrapper">
-  <h1>Geister</h1>
-  <h2>Hier werden alle Geister angezeigt, die du mit der AR-Kamera eingefangen hast.</h2>
-  <<if $affe is 1>>
-    <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a witch with graveyard" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+  <<for _i, _name range $inventory>>
+    <<if _name is 1>>
+      <model-viewer
+        alt="A 3D model of a zombie"
+        ar
+        auto-rotate
+        autoplay
+        camera-controls
+        environment-image="models/hanging/music_hall_01_1k.hdr"
+        id="model-viewer"
+        ios-src="models/setup.3/setup.3.usdz"
+        poster="images/loading.png"
+        src="models/setup.3/setup.3.glb"
+      >
+        <button slot="ar-button" id="ar-button"><<txt>></button>
     </model-viewer>
-  <</if>>
-  <<if $flamingo is 1>>
-      <model-viewer id="model-viewer" src="models/hanging/hanging.glb" ar auto-rotate poster="models/hanging/poster.webp" 
-        autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-        alt="A 3D model of a hanging scene" camera-controls>
-        <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-      </model-viewer>
-  <</if>>
-
-  <<if $eule is 1>>
-    <model-viewer id="model-viewer" src="models/setup.3/setup.3.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/setup.3/setup.3.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a zombie" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $pferd is 1>>
-    <model-viewer id="model-viewer" src="models/setup.3/setup.3.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/setup.3/setup.3.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $zebra is 1>>
-    <model-viewer id="model-viewer" src="models/zebra/zebra.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/zebra/zebra.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $schildkröte is 1>>
-    <model-viewer id="model-viewer" src="models/schildkroete/schildkroete.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/schildkroete/schildkroete.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $schlange is 1>>
-    <model-viewer id="model-viewer" src="models/schlange/schlange.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/schlange/schlange.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $ozelot is 1>>
-    <model-viewer id="model-viewer" src="models/ozelot/ozelot.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/ozelot/ozelot.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $truthahn is 1>>
-    <model-viewer id="model-viewer" src="models/truthahn/truthahn.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/truthahn/truthahn.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $katze is 1>>
-    <model-viewer id="model-viewer" src="models/katze/katze.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/katze/katze.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $schwein is 1>>
-    <model-viewer id="model-viewer" src="models/schwein/schwein.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/schwein/schwein.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $krokodil is 1>>
-    <model-viewer id="model-viewer" src="models/krokodil/krokodil.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/krokodil/krokodil.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $lama is 1>>
-    <model-viewer id="model-viewer" src="models/lama/lama.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/lama/lama.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $gazelle is 1>>
-    <model-viewer id="model-viewer" src="models/gazelle/gazelle.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/gazelle/gazelle.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
+    <</if>>
+  <</for>>
 
 </div>
 
 <div class="btn-group">
-  <<button "Zurück" `previous()`>>
-    <<audio "click" play>>
-  <</button>>
+  <<return>>
 </div>
 
 
-:: StoryCaption {"position":"800,200","size":"100,100"}
-  <<set $menuText = setup.text['StoryCaption'][1][setup.i18n.langs[settings.lang]]>>
-  <<set $pointsText = setup.text['StoryCaption'][2][setup.i18n.langs[settings.lang]]>>
-  <<set $runesText = setup.text['StoryCaption'][3][setup.i18n.langs[settings.lang]]>>
-  <h1>$menuText</h1>
-  <h5>$pointsText</h5>
-  <h3>$points/210</h3>
-  <h5>$runesText</h5>
-  <p class="p1">
-    <<set _letters to ["R", "O", "S", "A", "L", "I", "E"]>>
-    <<for _i, _name range _letters>>
-      <<if $letter[_i] is 1>>
-        _name
-      <<else>>
-        _
-      <</if>>
-    <</for>>
-  </p>
-
-:: StoryHeader {"position":"600,200","size":"100,100"}
-
-
-
-:: StoryInit {"position":"400,200","size":"100,100"}
--------------------------SETUP-------------------------------
-
-<<set $is_pwa to window.matchMedia('(display-mode: window-controls-overlay)').matches || window.matchMedia('(display-mode: fullscreen)').matches>>
-<<set
- $is_safari to navigator.userAgent.indexOf('Safari') > -1 && 
-navigator.userAgent.indexOf('Chrome') <= -1 && navigator.userAgent.indexOf("Edg") <= -1 &&
-navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
-<<set $is_chrome to navigator.userAgent.indexOf('Chrome') > 
--1 && navigator.userAgent.indexOf("Edg") <= -1 &&
-navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
-
--------------------------LANGUAGE-------------------------------
-<<widget "txt">>
-	<<if ndef _txtCount>>
-		<<set _txtCount = 0>>
-	<</if>>
-	<<if $args.raw === "">>
-		<<set _txtOutput = setup.text[passage()][++_txtCount][setup.i18n.langs[settings.lang]]>>
-		<<if def _txtOutput>>
-			_txtOutput
-		<<else>>
-			<<= setup.text[passage()][_txtCount]["de"]>>
-		<</if>>
-	<<else>>
-		<<set _txtOutput = setup.text[passage()][$args.raw][setup.i18n.langs[settings.lang]]>>
-		<<if def _txtOutput>>
-			_txtOutput
-		<<else>>
-			<<= setup.text[passage()][$args.raw]["de"]>>
-		<</if>>
-	<</if>>
-<</widget>>
-
---------------------------AUDIO---------------------------------------
-
-<<cacheaudio "bg" "audio/bg.mp3">>
-
-<<cacheaudio "click" "audio/click.mp3">>
-
-<<cacheaudio "ring" "audio/ring.mp3">>
-
--------------------------STARTVARIABLEN-------------------------------
-<<set $hotspot to 0>>
-
-<<set $letter to [0, 0, 0, 0, 0, 0, 0]>>
-
-<<set $maptip to 0>>
-
-<<set $setup to 0>>
-<<set $intro to 0>>
-
-<<set $points to 0>>
-
-<<set $riddle to 1>>
-
-<<set $ende to 0>>
-
-<<set $flamingo to 0>>
-
-<<set $affe to 0>>
-
-<<set $eule to 1>>
-
-<<set $krokodil to 0>>
-
-<<set $zebra to 0>>
-
-<<set $pferd to 0>>
-
-<<set $gazelle to 0>>
-
-<<set $schlange to 0>>
-
-<<set $schildkroete to 0>>
-
-<<set $katze to 0>>
-
-<<set $ozelot to 0>>
-
-<<set $schwein to 0>>
-
-<<set $lama to 0>>
-
-<<set $truthahn to 0>>
-
-
-:: StoryMenu {"position":"198,200","size":"100,100"}
-<<set $inventory = setup.text['StoryMenu'][1][setup.i18n.langs[settings.lang]]>>
-<<set $help = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
-<<set $legal = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
-<<link [[$inventory|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
-/* <<link [[$help|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>> */
-/* <<link [[$legal|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
- <<link "Dev">><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
 
 
 :: ar.init {"position":"1500,1000","size":"100,100"}
 
 
-
 :: end.init {"position":"1500,1200","size":"100,100"}
-
-
-
-:: hotspot.1.init {"position":"1500,800","size":"100,100"}
-
-
-
-:: hotspot.3.init {"position":"1500,1200","size":"100,100"}
-
 
 
 :: intro {"position":"800,600","size":"100,100"}
@@ -751,12 +602,12 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
   $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 </script>
 
-<<set $setup to 1>>
+<<set $setupCompleted to true>>
 
 <div class="wrapper">
-<br>
-<br>
-<br>
+  <br>
+  <br>
+  <br>
   <h1>Einführung</h1>
   <h2>Ablauf, Dauer & Teams.</h2>
   <p class="p3">intro</p>
@@ -861,7 +712,7 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 :: intro.6 {"position":"800,1800","size":"100,100"}
 <<audio ":playing:" stop>>
 
-<<set $intro to 1>>
+<<set $introCompleted to true>>
 
   <video autoplay muted id="myVideo" playsinline>
     <source src="videos/intro.6.mp4" type="video/mp4">
@@ -896,14 +747,13 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 
 
 :: kapitel.init {"position":"1100,500","size":"100,100"}
-<<if $setup is 1>>
-	<<goto "intro">>
-<<elseif $setup is 1 and $intro is 1>>
+<<if $setupCompleted and $introCompleted>>
 	<<goto "kapitel.1">>
+<<elseif $setupCompleted>>
+	<<goto "intro">>
 <<else>>
 	<<goto "vorstellung">>
 <</if>>
-
 
 :: map.init {"position":"1300,500","size":"100,100"}
 <<if !$letter.includes(0) and $ende is 0>>
@@ -982,7 +832,7 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 
 <div class="btn-group">
   
-    <<if $maptip is 0>> 
+    <<if $showMaptip>> 
       <span id="heading"><h2><<txt>></h2>
         <<button "Weiter">>
           <<replace "#heading">>
@@ -994,7 +844,8 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
               <<audio "click" play>>
             <</button>>
           <</replace>>
-          <<audio "click" play>><<set $maptip to 1>>
+          <<audio "click" play>>
+          <<set $showMaptip to false>>
         <</button>>
       </span>
     <</if>>
@@ -1286,7 +1137,7 @@ setup.i18n = {
 function initLanguage() {
   switch (setup.i18n.langs[settings.lang]) {
     case 'en':
-      l10nStrings.identity="game",l10nStrings.aborting="Aborting",l10nStrings.cancel="Cancel",l10nStrings.close="Close",l10nStrings.ok="OK",l10nStrings.errorTitle="Error",l10nStrings.errorToggle="Toggle the error view",l10nStrings.errorNonexistentPassage='the passage "{passage}" does not exist',l10nStrings.errorSaveDiskLoadFailed="failed to load save file from disk",l10nStrings.errorSaveMissingData="save is missing required data. Either the loaded file is not a save or the save has become corrupted",l10nStrings.errorSaveIdMismatch="save is from the wrong {identity}",l10nStrings._warningIntroLacking="Your browser either lacks or has disabled",l10nStrings._warningOutroDegraded=", so this {identity} is running in a degraded mode. You may be able to continue, however, some parts may not work properly.",l10nStrings.warningNoWebStorage="{_warningIntroLacking} the Web Storage API{_warningOutroDegraded}",l10nStrings.warningDegraded="{_warningIntroLacking} some of the capabilities required by this {identity}{_warningOutroDegraded}",l10nStrings.debugBarToggle="Toggle the debug bar",l10nStrings.debugBarNoWatches="— no watches set —",l10nStrings.debugBarAddWatch="Add watch",l10nStrings.debugBarDeleteWatch="Delete watch",l10nStrings.debugBarWatchAll="Watch all",l10nStrings.debugBarWatchNone="Delete all",l10nStrings.debugBarLabelAdd="Add",l10nStrings.debugBarLabelWatch="Watch",l10nStrings.debugBarLabelTurn="Turn",l10nStrings.debugBarLabelViews="Views",l10nStrings.debugBarViewsToggle="Toggle the debug views",l10nStrings.debugBarWatchToggle="Toggle the watch panel",l10nStrings.uiBarToggle="Toggle the UI bar",l10nStrings.uiBarBackward="Go backward within the {identity} history",l10nStrings.uiBarForward="Go forward within the {identity} history",l10nStrings.uiBarJumpto="Jump to a specific point within the {identity} history",l10nStrings.jumptoTitle="Jump To",l10nStrings.jumptoTurn="Turn",l10nStrings.jumptoUnavailable="No jump points currently available…",l10nStrings.savesTitle="Saves",l10nStrings.savesDisallowed="Saving has been disallowed on this passage.",l10nStrings.savesIncapable="{_warningIntroLacking} the capabilities required to support saves, so saves have been disabled for this session.",l10nStrings.savesLabelAuto="Autosave",l10nStrings.savesLabelDelete="Delete",l10nStrings.savesLabelExport="Save to Disk…",l10nStrings.savesLabelImport="Load from Disk…",l10nStrings.savesLabelLoad="Load",l10nStrings.savesLabelClear="Delete All",l10nStrings.savesLabelSave="Save",l10nStrings.savesLabelSlot="Slot",l10nStrings.savesUnavailable="No save slots found…",l10nStrings.savesUnknownDate="unknown",l10nStrings.settingsTitle="Settings",l10nStrings.settingsOff="Off",l10nStrings.settingsOn="On",l10nStrings.settingsReset="Reset to Defaults",l10nStrings.restartTitle="Restart",l10nStrings.restartPrompt="Are you sure that you want to restart? Unsaved progress will be lost.",l10nStrings.shareTitle="Share",l10nStrings.alertTitle="Alert",l10nStrings.autoloadTitle="Autoload",l10nStrings.autoloadCancel="Go to start",l10nStrings.autoloadOk="Load autosave",l10nStrings.autoloadPrompt="An autosave exists. Load it now or go to the start?",l10nStrings.macroBackText="Back",l10nStrings.macroReturnText="Return";
+      l10nStrings.identity="game",l10nStrings.aborting="Aborting",l10nStrings.cancel="Cancel",l10nStrings.close="Close",l10nStrings.ok="OK",l10nStrings.errorTitle="Error",l10nStrings.errorToggle="Toggle the error view",l10nStrings.errorNonexistentPassage='the passage "{passage}" does not exist',l10nStrings.errorSaveDiskLoadFailed="failed to load save file from disk",l10nStrings.errorSaveMissingData="save is missing required data. Either the loaded file is not a save or the save has become corrupted",l10nStrings.errorSaveIdMismatch="save is from the wrong {identity}",l10nStrings._warningIntroLacking="Your browser either lacks or has disabled",l10nStrings._warningOutroDegraded=", so this {identity} is running in a degraded mode. You may be able to continue, however, some parts may not work properly.",l10nStrings.warningNoWebStorage="{_warningIntroLacking} the Web Storage API{_warningOutroDegraded}",l10nStrings.warningDegraded="{_warningIntroLacking} some of the capabilities required by this {identity}{_warningOutroDegraded}",l10nStrings.debugBarToggle="Toggle the debug bar",l10nStrings.debugBarNoWatches="— no watches set —",l10nStrings.debugBarAddWatch="Add watch",l10nStrings.debugBarDeleteWatch="Delete watch",l10nStrings.debugBarWatchAll="Watch all",l10nStrings.debugBarWatchNone="Delete all",l10nStrings.debugBarLabelAdd="Add",l10nStrings.debugBarLabelWatch="Watch",l10nStrings.debugBarLabelTurn="Turn",l10nStrings.debugBarLabelViews="Views",l10nStrings.debugBarViewsToggle="Toggle the debug views",l10nStrings.debugBarWatchToggle="Toggle the watch panel",l10nStrings.uiBarToggle="Toggle the UI bar",l10nStrings.uiBarBackward="Go backward within the {identity} history",l10nStrings.uiBarForward="Go forward within the {identity} history",l10nStrings.uiBarJumpto="Jump to a specific point within the {identity} history",l10nStrings.jumptoTitle="Jump To",l10nStrings.jumptoTurn="Turn",l10nStrings.jumptoUnavailable="No jump points currently available…",l10nStrings.savesTitle="Saves",l10nStrings.savesDisallowed="Saving has been disallowed on this passage.",l10nStrings.savesIncapable="{_warningIntroLacking} the capabilities required to support saves, so saves have been disabled for this session.",l10nStrings.savesLabelAuto="Autosave",l10nStrings.savesLabelDelete="Delete",l10nStrings.savesLabelExport="Save to Disk…",l10nStrings.savesLabelImport="Load from Disk…",l10nStrings.savesLabelLoad="Load",l10nStrings.savesLabelClear="Delete All",l10nStrings.savesLabelSave="Save",l10nStrings.savesLabelSlot="Slot",l10nStrings.savesUnavailable="No save slots found…",l10nStrings.savesUnknownDate="unknown",l10nStrings.settingsTitle="Settings",l10nStrings.settingsOff="Off",l10nStrings.settingsOn="On",l10nStrings.settingsReset="Reset to Defaults",l10nStrings.restartTitle="Restart",l10nStrings.restartPrompt="Are you sure that you want to restart? Unsaved progress will be lost.",l10nStrings.shareTitle="Share",l10nStrings.alertTitle="Alert",l10nStrings.autoloadTitle="Autoload",l10nStrings.autoloadCancel="Go to start",l10nStrings.autoloadOk="Load autosave",l10nStrings.autoloadPrompt="An autosave exists. Load it now or go to the start?",l10nStrings.macroBackText="Back",l10nStrings.macroReturnText="";
       break;
     default:
       l10nStrings.identity="spiel",l10nStrings.aborting="Vorzeitig abgebrochen",l10nStrings.cancel="Abbrechen",l10nStrings.close="Schließen",l10nStrings.ok="OK",l10nStrings.errorTitle="Fehler",l10nStrings.errorToggle="Fehleransicht umschalten",l10nStrings.errorNonexistentPassage='die Passage "{passage}" existiert nicht',l10nStrings.errorSaveMissingData="Im Speicherstand fehlen benötigte Daten. Entweder ist die geladene Datei kein Speicherstand oder er ist defekt",l10nStrings.errorSaveIdMismatch="Speicherstand ist vom falschen {identity}",l10nStrings._warningIntroLacking="Dein Browser kann folgendes nicht darstellen, oder es ist deaktiviert",l10nStrings._warningOutroDegraded="; darum läuft dieses {identity} in einem heruntergesetzten Modus. Du kannst zwar fortfahren, aber manche Teile funktionieren vielleicht nicht richtig.",l10nStrings.warningNoWebStorage="{_warningIntroLacking} Das Web Storage API{_warningOutroDegraded}",l10nStrings.warningDegraded="{_warningIntroLacking} Manche Features die für dieses {identity} benötigt werden{_warningOutroDegraded}",l10nStrings.debugBarToggle="Fehlersuche-Leiste umschalten",l10nStrings.debugBarNoWatches="— kein Beobachtungswert aktiv —",l10nStrings.debugBarAddWatch="Beobachtungswert hinzufügen",l10nStrings.debugBarDeleteWatch="Beobachtungswert löschen",l10nStrings.debugBarWatchAll="Alle beobachten",l10nStrings.debugBarWatchNone="Alle löschen",l10nStrings.debugBarLabelAdd="Hinzufügen",l10nStrings.debugBarLabelWatch="Beobachten",l10nStrings.debugBarLabelTurn="Zug",l10nStrings.debugBarLabelViews="Ansichten",l10nStrings.debugBarViewsToggle="Fehlersuche-Ansichten umschalten",l10nStrings.debugBarWatchToggle="Beobachtungs-Feld umschalten",l10nStrings.uiBarToggle="Menüleiste umschalten",l10nStrings.uiBarBackward="Einen Schritt im {identity}-Ablauf zurück",l10nStrings.uiBarForward="Einen Schritt im {identity}-Ablauf nach vor",l10nStrings.uiBarJumpto="Zu einem bestimmten Punkt im {identity}-Ablauf springen",l10nStrings.jumptoTitle="Springe zu",l10nStrings.jumptoTurn="Zug",l10nStrings.jumptoUnavailable="Keine Sprungmarken verfügbar…",l10nStrings.savesTitle="Speicherstände",l10nStrings.savesDisallowed="Speichern ist in dieser Passage nicht erlaubt.",l10nStrings.savesIncapable="{_warningIntroLacking} Zum Speichern benötigte Features, darum ist es in dieser Sitzung nicht möglich, den Spielstand zu speichern.",l10nStrings.savesLabelAuto="Auto-Speicherstand",l10nStrings.savesLabelDelete="Löschen",l10nStrings.savesLabelExport="Auf Datenträger speichern…",l10nStrings.savesLabelImport="Von Datenträger laden…",l10nStrings.savesLabelLoad="Laden",l10nStrings.savesLabelClear="Alle löschen",l10nStrings.savesLabelSave="Speichern",l10nStrings.savesLabelSlot="Slot",l10nStrings.savesUnavailable="Keine Speicherslots gefunden…",l10nStrings.savesUnknownDate="unbekannt",l10nStrings.settingsTitle="Einstellungen",l10nStrings.settingsOff="Aus",l10nStrings.settingsOn="Ein",l10nStrings.settingsReset="Auf Standardwerte zurücksetzen",l10nStrings.restartTitle="Neustart",l10nStrings.restartPrompt="Bist du sicher, dass du neu starten möchtest? Nicht gespeicherter Fortschritt ginge damit verloren.",l10nStrings.shareTitle="Teilen",l10nStrings.autoloadTitle="Automatisches Laden",l10nStrings.autoloadCancel="Gehe zum Start",l10nStrings.autoloadOk="Auto-Speicherstand laden",l10nStrings.autoloadPrompt="Ein Auto-Speicherstand existiert bereits. Laden oder zurück an den Start?",l10nStrings.macroBackText="Zurück",l10nStrings.macroReturnText="";
@@ -1533,7 +1384,7 @@ h4 {
 
 h5 {
   color: var(--text-light-color);
- font-family: "myriad-pro", sans-serif;
+  font-family: "myriad-pro", sans-serif;
   font-size: 2vh;
   line-height: 2vh;
   margin-bottom: 0vh;
@@ -1615,6 +1466,10 @@ summary {
   padding-left: 2.2rem;
   position: relative;
   cursor: pointer;
+}
+
+summary h5 {
+  margin-top: 0vh;
 }
 
 summary:before {
@@ -1773,9 +1628,11 @@ border: none;
   border-radius: 4px;
   border: 2px solid var(--secondary-color);
   box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
-  display: inline-block;
-  font-weight: 900;
-  margin-top: 1vh;
+  color: var(--secondary-color);
+  font-family: "myriad-pro", sans-serif;
+  font-size: 4vh;
+  font-weight: 400;
+  margin: 1vh;
   padding: 0.4em;
 }
 
