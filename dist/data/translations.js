@@ -50,7 +50,7 @@ getTranslations = function () {
       en: 'Paranormal activity detected.'
     }
   }
-  text["mapbox"] = {
+  text["map"] = {
     "1": {
       de: 'Diese Karte ist dein Hauptbildschirm.',
       en: 'This map is your main screen.'
@@ -63,6 +63,18 @@ getTranslations = function () {
       de: 'Laufe in einen der Hotspots hinein! Sobald er gelb wird, kannst du ihn anklicken.',
       en: 'Run into one of the hotspots! As soon as it turns yellow, you can click on it.'
     }
+  }
+  text["story.1"] = {
+    "1": {
+      de: 'Du hast ein paranormales Feld betreten. Zeit die Geister aufzuspüren. Dein Scanner sucht gerade nach Geister-Echos. Echos sind verblasste Erinnerungen oder Emotionen. Sie binden die Geister an einen spezifischen Ort. Schau dir die Fotos an und versuche die Rätsel zu lösen. Die Antworten befinden sich ganz in der Nähe.',
+      en: 'You have entered a paranormal field. Time to track down the ghosts. Your scanner is currently searching for ghost echoes. Echoes are faded memories or emotions. They tie the ghosts to a specific location. Look at the photos and try to solve the puzzles. The answers are close by.'
+    },
+  }
+  text["vorstellung"] = {
+    "1": {
+      de: 'Hallo Geisterjäger. Und willkommen zur Testversion von Spuk & Schreck. Wir sind Anne, Gerd und Gregor. Die Entwickler dieser interaktiven Geister-Rallye. Diese Rallye ist für Familien, Freunde und Leute gemacht, die. sich gern gruseln und gemeinsam Zeit an der frischen Luft verbringen. Wir überprüfen jetzt, ob dein Handy die nötigen Voraussetzungen erfüllt. Und dann geht es auch schon los.',
+      en: 'Hello ghost hunters. And welcome to the test version of Spuk & Schreck. We are Anne, Gerd and Gregor. The developers of this interactive ghost rally. This rally is made for families, friends and people who. like to be spooked and spend time together in the fresh air. We\'re going to check if your phone meets the necessary requirements. And then we\'ll get started.'
+    },
   }
   text["Impressum"] = {
     "1": {
