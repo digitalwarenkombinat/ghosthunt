@@ -29,7 +29,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   </div>
 
   <div class="btn-group">
-    <button class="next">[[|1.1]]<<audio "click" play>></button>
+    <button class="next">[[|1.1]]</button>
   </div>
 
 
@@ -45,8 +45,8 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <button class="retry">[[|1.1]]<<audio "click" play>></button>
-    <button class="next">[[|1.2]]<<audio "click" play>></button>
+    <button class="retry">[[|1.1]]</button>
+    <button class="next">[[|1.2]]</button>
   </div>
 
 
@@ -107,7 +107,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
         <<goto "1.3">>
         <<set $riddle to 1>>
         <<set $letter4 to 1>>
-        <<audio "click" play>>  
+          
       <</button>>
     </div>
   <</if>>
@@ -125,8 +125,8 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-   <button class="retry">[[|1.3]]<<audio "click" play>></button>
-    <button class="next">[[|1.4]]<<audio "click" play>></button>
+   <button class="retry">[[|1.3]]</button>
+    <button class="next">[[|1.4]]</button>
   </div>
 
 
@@ -142,7 +142,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   </div>
 
   <div class="btn-group">
-<button class="next">[[|1.5]]<<audio "click" play>></button>
+<button class="next">[[|1.5]]</button>
   </div>
 
 
@@ -160,15 +160,15 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-   <button class="retry">[[|1.5]]<<audio "click" play>></button>
-    <button class="next">[[|2.7]]<<audio "click" play>></button>
+   <button class="retry">[[|1.5]]</button>
+    <button class="next">[[|2.7]]</button>
   </div>
 
 
 :: 10.1 {"position":"3498,601","size":"100,100"}
 <<set $schildkroete to 1>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -192,7 +192,7 @@ poster="images/loading.png"
 <div class="btn-group">
 <<button "Zurück">>
       <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -200,7 +200,7 @@ poster="images/loading.png"
 :: 11.1 {"position":"3700,600","size":"100,100"}
 <<set $ozelot to 1>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -224,7 +224,7 @@ poster="images/loading.png"
 <div class="btn-group">
 <<button "Zurück">>
       <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -232,7 +232,7 @@ poster="images/loading.png"
 :: 12.1 {"position":"3900,598","size":"100,100"}
 <<set $schwein to 1>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -256,7 +256,7 @@ poster="images/loading.png"
 <div class="btn-group">
 <<button "Zurück">>
       <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -264,7 +264,7 @@ poster="images/loading.png"
 :: 13.1 {"position":"4100,600","size":"100,100"}
 <<set $truthahn to 1>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -288,7 +288,7 @@ poster="images/loading.png"
 <div class="btn-group">
 <<button "Zurück">>
       <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -296,7 +296,7 @@ poster="images/loading.png"
 :: 14.1 {"position":"4300,600","size":"100,100"}
 <<set $zebra to 1>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -320,7 +320,7 @@ poster="images/loading.png"
 <div class="btn-group">
 <<button "Zurück">>
       <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -350,7 +350,7 @@ poster="images/loading.png"
 <div class="btn-group">
 <<button "Zurück">>
       <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -358,7 +358,7 @@ poster="images/loading.png"
 :: 16.1 {"position":"4700,600","size":"100,100"}
 <<set $eule to 1>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -382,7 +382,7 @@ poster="images/loading.png"
 <div class="btn-group">
 <<button "Zurück">>
       <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -390,7 +390,7 @@ poster="images/loading.png"
 :: 17.1 {"position":"4900,600","size":"100,100"}
 <<set $gazelle to 1>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -414,7 +414,7 @@ poster="images/loading.png"
 <div class="btn-group">
 <<button "Zurück">>
       <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -422,7 +422,7 @@ poster="images/loading.png"
 :: 18.1 {"position":"5100,600","size":"100,100"}
 <<set $katze to 1>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -446,7 +446,7 @@ poster="images/loading.png"
 <div class="btn-group">
 <<button "Zurück">>
       <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -454,7 +454,7 @@ poster="images/loading.png"
 :: 19.1 {"position":"5300,600","size":"100,100"}
 <<set $krokodil to 1>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -478,7 +478,7 @@ poster="images/loading.png"
 <div class="btn-group">
 <<button "Zurück">>
       <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -495,7 +495,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   </div>
 
   <div class="btn-group">
-    <button class="next">[[|2.1]]<<audio "click" play>></button>
+    <button class="next">[[|2.1]]</button>
   </div>
 
 
@@ -511,8 +511,8 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <button class="retry">[[|2.1]]<<audio "click" play>></button>
-    <button class="next">[[|2.2]]<<audio "click" play>></button>
+    <button class="retry">[[|2.1]]</button>
+    <button class="next">[[|2.2]]</button>
   </div>
 
 
@@ -532,8 +532,8 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   </div>
 
   <div class="btn-group">
-    <button class="return">[[|2.1]]<<audio "click" play>></button>
-    <button class="next">[[|2.3]]<<audio "click" play>></button>
+    <button class="return">[[|2.1]]</button>
+    <button class="next">[[|2.3]]</button>
   </div>
 
 
@@ -549,8 +549,8 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-   <button class="retry">[[|2.3]]<<audio "click" play>></button>
-    <button class="next">[[|2.4]]<<audio "click" play>></button>
+   <button class="retry">[[|2.3]]</button>
+    <button class="next">[[|2.4]]</button>
   </div>
 
 
@@ -678,7 +678,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
         <<goto "2.5">>
         <<set $riddle to 1>>
         <<set $letter4 to 1>>
-        <<audio "click" play>>  
+          
       <</button>>
     </div>
   <</if>>
@@ -696,8 +696,8 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <button class="retry">[[|2.5]]<<audio "click" play>></button>
-    <button class="next">[[|2.6]]<<audio "click" play>></button>
+    <button class="retry">[[|2.5]]</button>
+    <button class="next">[[|2.6]]</button>
   </div>
 
 
@@ -713,9 +713,9 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <button class="return">[[|2.5]]<<audio "click" play>></button>
-    <button class="retry">[[|2.6]]<<audio "click" play>></button>
-    <button class="next">[[|2.7]]<<audio "click" play>></button>
+    <button class="return">[[|2.5]]</button>
+    <button class="retry">[[|2.6]]</button>
+    <button class="next">[[|2.7]]</button>
   </div>
 
 
@@ -742,7 +742,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 :: 20.1 {"position":"5500,600","size":"100,100"}
 <<set $lama to 1>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -766,7 +766,7 @@ poster="images/loading.png"
 <div class="btn-group">
 <<button "Zurück">>
       <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -781,7 +781,7 @@ poster="images/loading.png"
 <div class="btn-group">
 
 <<button "Weiter">>
-  <<goto "3.2">><<audio "click" play>>
+  <<goto "3.2">>
 <</button>>
 </div>
 
@@ -799,7 +799,7 @@ poster="images/loading.png"
 
 	<<button "Weiter">>
 	    <<goto "3.3">>
-	<<audio "click" play>>
+	
 <</button>>	
 
 </div>
@@ -955,7 +955,7 @@ play>>
 
 <<if $riddle is 4>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -967,7 +967,7 @@ play>>
 <<button "Weiter">>
       <<goto "map.init">><<set $riddle to 
 1>><<set $letter2 to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -984,7 +984,7 @@ play>>
 <div class="btn-group">
 
 <<button "Weiter">>
-  <<goto "4.2">><<audio "click" play>>
+  <<goto "4.2">>
 <</button>>
 </div>
 
@@ -1001,7 +1001,7 @@ play>>
 
 	<<button "Weiter">>
 	    <<goto "4.3">>
-	<<audio "click" play>>
+	
 <</button>>	
 
 </div>
@@ -1156,7 +1156,7 @@ play>>
 
 <<if $riddle is 4>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -1168,7 +1168,7 @@ play>>
 <<button "Weiter">>
       <<goto "map.init">><<set $riddle to 
 1>><<set $letter1 to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -1185,7 +1185,7 @@ play>>
 <div class="btn-group">
 
 <<button "Weiter">>
-  <<goto "5.2">><<audio "click" play>>
+  <<goto "5.2">>
 <</button>>
 </div>
 
@@ -1203,7 +1203,7 @@ play>>
 
 	<<button "Weiter">>
 	    <<goto "5.3">>
-	<<audio "click" play>>
+	
 <</button>>	
 
 </div>
@@ -1354,7 +1354,7 @@ play>>
 
 <<if $riddle is 4>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -1366,7 +1366,7 @@ play>>
 <<button "Weiter">>
       <<goto "map.init">><<set $riddle to 
 1>><<set $letter5 to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -1383,7 +1383,7 @@ play>>
 <div class="btn-group">
 
 <<button "Weiter">>
-  <<goto "6.2">><<audio "click" play>>
+  <<goto "6.2">>
 <</button>>
 </div>
 
@@ -1401,7 +1401,7 @@ play>>
 
 	<<button "Weiter">>
 	    <<goto "6.3">>
-	<<audio "click" play>>
+	
 <</button>>	
 
 </div>
@@ -1554,7 +1554,7 @@ play>>
 
 <<if $riddle is 4>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -1566,7 +1566,7 @@ play>>
 <<button "Weiter">>
       <<goto "map.init">><<set $riddle to 
 1>><<set $letter7 to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -1583,7 +1583,7 @@ play>>
 <div class="btn-group">
 
 <<button "Weiter">>
-  <<goto "7.2">><<audio "click" play>>
+  <<goto "7.2">>
 <</button>>
 </div>
 
@@ -1601,7 +1601,7 @@ play>>
 
 	<<button "Weiter">>
 	    <<goto "7.3">>
-	<<audio "click" play>>
+	
 <</button>>	
 
 </div>
@@ -1751,7 +1751,7 @@ play>>
 
 <<if $riddle is 4>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -1763,7 +1763,7 @@ play>>
 <<button "Weiter">>
       <<goto "map.init">><<set $riddle to 
 1>><<set $letter6 to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -1777,7 +1777,7 @@ play>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg');
 </script>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -1801,7 +1801,7 @@ poster="images/loading.png"
 <div class="btn-group">
 <<button "Zurück">>
       <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -1809,7 +1809,7 @@ poster="images/loading.png"
 :: 9.1 {"position":"3300,600","size":"100,100"}
 <<set $pferd to 1>>
 
-<<audio "success" play>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -1833,7 +1833,7 @@ poster="images/loading.png"
 <div class="btn-group">
 <<button "Zurück">>
       <<goto "map.init">><<set $riddle to 1>>
-<<audio "click" play>>  
+  
 <</button>>
 </div>
 
@@ -1861,7 +1861,7 @@ unsere Hausgeist sehen.
 <div class="btn-group">
 	<<button "Weiter">>
     	<<goto "AR.ModelViewer">>	
-<<audio "click" play>>	
+	
 <</button>>
 </div>
 
@@ -1880,7 +1880,7 @@ unsere Hausgeist sehen.
 <div class="btn-group">
 	<<button "Weiter">>
     	<<goto "friedenspark">>	
-<<audio "click" play>>	
+	
 <</button>>
 </div>
 
@@ -1898,7 +1898,7 @@ unsere Hausgeist sehen.
       <<goto "map.init">>	
     <</button>>
     <<button "Zurück" `previous()`>>
-      <<audio "click" play>>
+      
     <</button>>
   </div>
 </div>
@@ -2281,7 +2281,7 @@ diesem Zweck verarbeiten.
 
 <<button "Zurück">>
 	    <<goto "map.init">>
-	<<audio "click" play>>
+	
 <</button>>	
 
 </div>
@@ -2418,7 +2418,7 @@ diesem Zweck verarbeiten.
 
 <div class="btn-group">
   <<button "Zurück" `previous()`>>
-    <<audio "click" play>>
+    
   <</button>>
 </div>
 
@@ -2601,7 +2601,7 @@ Danach könnt ihr noch alle Tiere einsammeln, die ihr noch nicht gefunden
 <div class="btn-group">
 	<<button "Weiter">>
     	<<goto "menu">>	
-<<audio "click" play>>	
+	
 <</button>>
 </div>
 
@@ -2620,7 +2620,7 @@ Die Schnitzeljagd findet im öffentlichen Raum statt. Bitte nimm Rücksicht auf 
 <div class="btn-group">
 	<<button "Weiter">>
     	<<goto "spiel">>	
-<<audio "click" play>>	
+	
 <</button>>
 </div>
 
@@ -2654,11 +2654,11 @@ der Abenddämmerung zu gehen. Da sind die Spukis am aktivsten.
 <div class="btn-group">
 	<<button "Zurück">>
     	<<goto "AR">>	
-<<audio "click" play>>	
+	
 <</button>>
 	<<button "Ok">>
     	<<goto "gps">>	
-<<audio "click" play>>	
+	
 <</button>>
 </div>
 
@@ -2700,7 +2700,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 <div class="btn-group">
 	<<button "Weiter">>
     	<<goto "map.init">>	
-<<audio "click" play>>	
+	
 <</button>>
 </div>
 
@@ -2730,7 +2730,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 </div>
 
   <div class="btn-group">
-<button class="next">[[|intro.1]]<<audio "click" play>></button>
+<button class="next">[[|intro.1]]</button>
   </div>
 
 
@@ -2745,7 +2745,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   </div>
 
   <div class="btn-group">
-<button class="next">[[|intro.2]]<<audio "click" play>></button>
+<button class="next">[[|intro.2]]</button>
   </div>
 
 
@@ -2763,8 +2763,8 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <button class="retry">[[|intro.2]]<<audio "click" play>></button>
-    <button class="next">[[|intro.3]]<<audio "click" play>></button>
+    <button class="retry">[[|intro.2]]</button>
+    <button class="next">[[|intro.3]]</button>
   </div>
 
 
@@ -2783,9 +2783,9 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   </div>
 
   <div class="btn-group">
-    <button class="return">[[|intro.2]]<<audio "click" play>></button>
-    <button class="retry">[[|intro.3]]<<audio "click" play>></button>
-    <button class="next">[[|intro.4]]<<audio "click" play>></button>
+    <button class="return">[[|intro.2]]</button>
+    <button class="retry">[[|intro.3]]</button>
+    <button class="next">[[|intro.4]]</button>
   </div>
 
 
@@ -2803,9 +2803,9 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <button class="return">[[|intro.3]]<<audio "click" play>></button>
-    <button class="retry">[[|intro.4]]<<audio "click" play>></button>
-    <button class="next">[[|intro.6]]<<audio "click" play>></button>
+    <button class="return">[[|intro.3]]</button>
+    <button class="retry">[[|intro.4]]</button>
+    <button class="next">[[|intro.6]]</button>
   </div>
 
 
@@ -2819,9 +2819,9 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <button class="return">[[|intro.4]]<<audio "click" play>></button>
-    <button class="retry">[[|intro.5]]<<audio "click" play>></button>
-    <button class="next">[[|intro.6]]<<audio "click" play>></button>
+    <button class="return">[[|intro.4]]</button>
+    <button class="retry">[[|intro.5]]</button>
+    <button class="next">[[|intro.6]]</button>
   </div>
 
 
@@ -2837,9 +2837,9 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <button class="return">[[|intro.4]]<<audio "click" play>></button>
-    <button class="retry">[[|intro.6]]<<audio "click" play>></button>
-    <button class="next">[[|kapitel.init]]<<audio "click" play>></button>
+    <button class="return">[[|intro.4]]</button>
+    <button class="retry">[[|intro.6]]</button>
+    <button class="next">[[|kapitel.init]]</button>
   </div>
 
 
@@ -2858,14 +2858,14 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 </div>
 
   <div class="btn-group">
-<button class="next">[[|map.init]]<<audio "click" play>></button>
+<button class="next">[[|map.init]]</button>
   </div>
 
 
 :: kapitel.init {"position":"1100,500","size":"100,100"}
 <<if $setup is 1>>
 	<<goto "intro">>
-<<if $setup is 1 and $intro is 1>>
+<<elseif $setup is 1 and $intro is 1>>
 	<<goto "kapitel.1">>
 <<else>>
 	<<goto "vorstellung">>
@@ -3022,10 +3022,10 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
               <<replace "#heading">>
                 <h2>Laufe in einen der Hotspots hinein! Sobald er gelb wird, kannst du ihn anklicken.</h2>
               <</replace>>
-              <<audio "click" play>>
+              
             <</button>>
           <</replace>>
-          <<audio "click" play>><<set $maptip to 1>>
+          <<set $maptip to 1>>
         <</button>>
       </span>
     <</if>>
@@ -3057,7 +3057,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 <div class="btn-group">
 	<<button "Ok">>
     	<<goto "disclaimer">>	
-<<audio "click" play>>	
+	
 <</button>>
 </div>
 
@@ -3299,7 +3299,7 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 <div class="btn-group">
 	<<button "Weiter">>
     	<<goto "dauer">>	
-<<audio "click" play>>	
+	
 <</button>>
 </div>
 
@@ -3322,8 +3322,8 @@ Ende die meisten Punkte und Tiere gesammelt hat.
   <div class="wrapper"></div>
 
   <div class="btn-group">
-  <button class="retry">[[|vorstellung]]<<audio "click" play>></button>
-  <button class="next">[[|setup.3]]<<audio "click" play>></button>
+  <button class="retry">[[|vorstellung]]</button>
+  <button class="next">[[|setup.3]]</button>
   </div>
 
 
