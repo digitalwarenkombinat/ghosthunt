@@ -2507,11 +2507,11 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 
 --------------------------AUDIO---------------------------------------
 
-<<cacheaudio "bg" "audio/bg.mp3">>
+/* <<cacheaudio "bg" "audio/bg.mp3">>
 
 <<cacheaudio "click" "audio/click.mp3">>
 
-<<cacheaudio "ring" "audio/ring.mp3">>
+<<cacheaudio "ring" "audio/ring.mp3">> */
 
 -------------------------MAPBOX-------------------------------
 
@@ -2576,7 +2576,7 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 <<link [[$inventory|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
 /* <<link [[$help|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 /* <<link [[$legal|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
-/*<<link "Dev">><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>> */
+<<link "Dev">><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
 
 
 :: ar.init {"position":"1500,1000","size":"100,100"}
