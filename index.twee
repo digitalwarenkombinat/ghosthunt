@@ -2722,6 +2722,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
   <div class="btn-group">
 <button class="next">[[|intro.1]]<<audio "click" play>></button>
+<br>
   [[Überspringen|1.kapitel]]
   </div>
 
