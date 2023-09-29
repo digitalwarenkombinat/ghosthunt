@@ -2826,13 +2826,13 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <button class="return">[[|intro.4]]<<audio "click" play>></button>
+    <button class="return">[[|intro.5]]<<audio "click" play>></button>
     <button class="retry">[[|intro.6]]<<audio "click" play>></button>
-    <button class="next">[[|kapitel.1]]<<audio "click" play>></button>
+    <button class="next">[[|1.kapitel]]<<audio "click" play>></button>
   </div>
 
 
-:: kapitel.1 {"position":"1100,600","size":"100,100"}
+:: 1.kapitel {"position":"1100,600","size":"100,100"}
 <script>
   $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 </script>
