@@ -2722,6 +2722,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
   <div class="btn-group">
 <button class="next">[[|intro.1]]<<audio "click" play>></button>
+  [[Überspringen|1.kapitel]]
   </div>
 
 
@@ -3257,7 +3258,6 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <button class="help"></button>
   <button class="next">[[|intro]]</button>
-  [[Überspringen|1.kapitel]]
 </div>
 
 
