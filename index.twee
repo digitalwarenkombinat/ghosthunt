@@ -2905,11 +2905,11 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
                 case 'freiburg':
                   $.wiki('<<goto "2.0">>');
                   break;
-                case 'schlange':
-                  $.wiki('<<goto "11.1">>');
+                case 'altenberge':
+                  $.wiki('<<goto "2.0">>');
                   break;
-                case 'schwein':
-                  $.wiki('<<goto "12.1">>');
+                case 'thehague':
+                  $.wiki('<<goto "2.0">>');
                   break;
                 case 'truthahn':
                   $.wiki('<<goto "13.1">>');
@@ -3483,17 +3483,17 @@ setup.storyinit = function () {
   });
 
   const fence11 = new CircularGeofenceRegion({
-    id: 'schlange',
-    latitude: 51.754062,
-    longitude: 11.455933,
+    id: 'altenberge',
+    latitude: 52.0447742,
+    longitude: 7.4635953,
     radius: 30, // meters
     alreadyEntered: false
   });
 
   const fence12 = new CircularGeofenceRegion({
-    id: 'schwein',
-    latitude: 51.753561,
-    longitude: 11.454144,
+    id: 'thehague',
+    latitude: 52.0792798,
+    longitude: 4.3113043,
     radius: 30, // meters
     alreadyEntered: false
   });
