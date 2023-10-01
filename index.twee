@@ -2695,20 +2695,18 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 </script>
 
 <div class="wrapper">
-<br>
-<br>
-<br>
+  <br>
+  <br>
+  <br>
   <h1>Einführung</h1>
   <h2>Ablauf, Dauer & Teams.</h2>
   <p class="p3">intro</p>
 </div>
 
-  <div class="btn-group">
-<button class="next">[[|intro.1]]</button>
-<br>
-  [[Überspringen|1.kapitel]]
-  </div>
-
+<div class="btn-group">
+  <button class="next">[[|intro.1]]</button>
+  <button >[[Überspringen|1.kapitel]]</button>
+</div>
 
 :: intro.1 {"position":"800,800","size":"100,100"}
 <script>
@@ -2993,6 +2991,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
         <</button>>
       </span>
     <</if>>
+    <button class="retry">[[Karte neu laden|mapbox]]</button>
   
 </div>
 
@@ -3210,6 +3209,7 @@ $(document).one(":passagedisplay", function() {
   <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices">Einstellungen öffnen</a></button>
   <button class="help"></button>
   <button class="next">[[|setup.4]]</button>
+  <button class="retry">[[Karte neu laden|setup.3]]</button>
 </div>
 
 
