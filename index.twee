@@ -3436,8 +3436,8 @@ setup.storyinit = function () {
 
   const fence5 = new CircularGeofenceRegion({
     id: 'marburg',
-    latitude: 50.817296, 
-    longitude: 8.662450,
+    latitude: 50.817818, 
+    longitude: 8.659044,
     radius: 30, // meters
     alreadyEntered: false
   });
