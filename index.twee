@@ -2705,7 +2705,8 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 <div class="btn-group">
   <button class="next">[[|intro.1]]</button>
-  <button >[[Überspringen|1.kapitel]]</button>
+  <br>
+  [[Überspringen|1.kapitel]]
 </div>
 
 :: intro.1 {"position":"800,800","size":"100,100"}
@@ -2974,25 +2975,8 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 <div class="wrapper" style="z-index: unset"></div>
 
 <div class="btn-group">
-  
-    <<if $maptip is 0>> 
-      <span id="heading"><h2>Diese Karte ist dein Hauptbildschirm.</h2>
-        <<button "Weiter">>
-          <<replace "#heading">>
-            <h2>Hier siehst du alle Hotspots in deiner Umgebung.</h2>
-            <<button "Weiter">>
-              <<replace "#heading">>
-                <h2>Laufe in einen der Hotspots hinein! Sobald er gelb wird, kannst du ihn anklicken.</h2>
-              <</replace>>
-              
-            <</button>>
-          <</replace>>
-          <<set $maptip to 1>>
-        <</button>>
-      </span>
-    <</if>>
-    <button class="retry">[[Karte neu laden|mapbox]]</button>
-  
+<h2>Laufe zu einem Geist!<br> Sobald er gelb wird, kannst du ihn anklicken.</h2> 
+<button class="retry"> [[|mapbox]]</button>  
 </div>
 
 
@@ -3209,7 +3193,7 @@ $(document).one(":passagedisplay", function() {
   <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices">Einstellungen öffnen</a></button>
   <button class="help"></button>
   <button class="next">[[|setup.4]]</button>
-  <button class="retry">[[Karte neu laden|setup.3]]</button>
+
 </div>
 
 
@@ -3274,10 +3258,6 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 
 :: vorstellung {"position":"500,1300","size":"100,100"}
 
-
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
 
   <video autoplay muted id="myVideo" playsinline>
     <source src="videos/vorstellung.mp4" type="video/mp4">
