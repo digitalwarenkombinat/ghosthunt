@@ -2292,8 +2292,8 @@ diesem Zweck verarbeiten.
   <</if>>
 
   <<if $eule is 1>>
-    <model-viewer id="model-viewer" src="models/setup.3/setup.3.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/setup.3/setup.3.usdz"
+    <model-viewer id="model-viewer" src="models/ghost/ghost.glb" ar auto-rotate poster="images/loading.png"
+                ios-src="models/ghost/ghost.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a zombie" camera-controls>
       <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
@@ -2301,8 +2301,8 @@ diesem Zweck verarbeiten.
   <</if>>
 
   <<if $pferd is 1>>
-    <model-viewer id="model-viewer" src="models/setup.3/setup.3.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/setup.3/setup.3.usdz"
+    <model-viewer id="model-viewer" src="models/ghost/ghost.glb" ar auto-rotate poster="images/loading.png"
+                ios-src="models/ghost/ghost.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
       alt="A 3D model of a" camera-controls>
       <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
@@ -3212,7 +3212,7 @@ $(document).one(":passagedisplay", function() {
 
 <div class="wrapper">
   <h1>AR-Kamera</h1>
-  <model-viewer id="model-viewer" src="models/setup.3/setup.3.glb" ar auto-rotate poster="models/setup.3/poster.webp" 
+  <model-viewer id="model-viewer" src="models/ghost/ghost.glb" ar auto-rotate poster="models/ghost/poster.webp" 
     autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
     alt="A 3D model of a zombie" camera-controls>
     <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
