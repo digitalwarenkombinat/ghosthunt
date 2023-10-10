@@ -3215,8 +3215,7 @@ $(document).one(":passagedisplay", function() {
 
     <model-viewer id="model-viewer" src="models/ghost/ghost.glb" ar auto-rotate poster="images/loading.png"
                 ios-src="models/ghost/ghost.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a zombie" camera-controls>
+      autoplay alt="A 3D model of a zombie" camera-controls>
       <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
 
