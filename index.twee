@@ -3219,7 +3219,7 @@ $(document).one(":passagedisplay", function() {
   </model-viewer>
     <h2>Wir benötigen Zugriff auf deine Kamera, um dir die Geister zu zeigen. 
   <br>
-  <br>Klicke auf "AR-Kamera öffnen" und schau dir den Zombie an.
+  <br>Klicke auf "AR-Kamera öffnen" und schau dir den Ghost an.
   </h2>
 </div>
 
