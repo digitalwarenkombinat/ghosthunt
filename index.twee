@@ -3212,12 +3212,14 @@ $(document).one(":passagedisplay", function() {
 
 <div class="wrapper">
   <h1>AR-Kamera</h1>
+
     <model-viewer id="model-viewer" src="models/ghost/ghost.glb" ar auto-rotate poster="images/loading.png"
                 ios-src="models/ghost/ghost.usdz"
       autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
+      alt="A 3D model of a zombie" camera-controls>
       <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
+
     <h2>Wir benötigen Zugriff auf deine Kamera, um dir die Geister zu zeigen. 
   <br>
   <br>Klicke auf "AR-Kamera öffnen" und schau dir den Ghost an.
