@@ -1946,6 +1946,7 @@ unsere Hausgeist sehen.
   <br>
   <br>
   [[Der alte Mann|2.0]],
+  <br>
   [[Karte|map.init]]
   </h2>
   </div>
@@ -2654,8 +2655,6 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 <div class="btn-group">
   <button class="next">[[|intro.1]]</button>
-  <br>
-  [[Überspringen|1.kapitel]]
 </div>
 
 :: intro.1 {"position":"800,800","size":"100,100"}
@@ -2674,11 +2673,6 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 
 :: intro.2 {"position":"800,1000","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-
 
   <video autoplay muted id="myVideo" playsinline>
     <source src="videos/intro.2.mp4" type="video/mp4">
@@ -2693,11 +2687,6 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 
 :: intro.3 {"position":"800,1200","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-
 
   <video autoplay muted id="myVideo" playsinline>
     <source src="videos/intro.3.mp4" type="video/mp4">
@@ -2714,11 +2703,6 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 
 :: intro.4 {"position":"800,1400","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-
 
   <video autoplay muted id="myVideo" playsinline>
     <source src="videos/intro.4.mp4" type="video/mp4">
@@ -2735,7 +2719,6 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 :: intro.5 {"position":"800,1600","size":"100,100"}
 
-
   <video autoplay muted id="myVideo" playsinline>
     <source src="videos/teams.mp4" type="video/mp4">
   </video>
@@ -2750,7 +2733,6 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 
 :: intro.6 {"position":"800,1800","size":"100,100"}
-
 
   <video autoplay muted id="myVideo" playsinline>
     <source src="videos/intro.6.mp4" type="video/mp4">
