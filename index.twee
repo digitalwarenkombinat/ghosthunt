@@ -500,9 +500,6 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 
 
 :: 2.1 {"position":"1900,800","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
 
   <video autoplay muted id="myVideo" playsinline>
     <source src="videos/2.1.mp4" type="video/mp4">
@@ -546,9 +543,6 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 
 
 :: 2.3 {"position":"1900,1200","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
 
   <video autoplay muted id="myVideo" playsinline>
     <source src="videos/2.3.mp4" type="video/mp4">
@@ -765,9 +759,6 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 
 
 :: 2.5 {"position":"1900,1600","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
 
   <video autoplay muted id="myVideo" playsinline>
     <source src="videos/2.5.mp4" type="video/mp4">
@@ -782,9 +773,6 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 
 
 :: 2.6 {"position":"1900,1800","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
 
   <video autoplay muted id="myVideo" playsinline>
     <source src="videos/2.6.mp4" type="video/mp4">
