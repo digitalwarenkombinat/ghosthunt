@@ -802,9 +802,11 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 </h2>
 </div>
 
-<div class="btn-group">
+  <div class="btn-group">
+    <<button "Zurück" `previous()`>>
+    <</button>>
+  </div>
 
-</div>
 
 
 :: 20.1 {"position":"5500,600","size":"100,100"}
