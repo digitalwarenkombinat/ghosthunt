@@ -2503,6 +2503,8 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 /* <<link [[$help|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 /* <<link [[$legal|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 <<link "Abkürzungen">><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
+<<link "Fragebogen">><<addclass "#ui-bar" "stowed">><<goto "2.7">><</link>>
+
 
 
 :: ar.init {"position":"1500,1000","size":"100,100"}
