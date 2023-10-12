@@ -326,7 +326,7 @@ poster="images/loading.png"
 
 
 :: 15.1 {"position":"4500,600","size":"100,100"}
-<<set $affe to 1>>
+
 
 <div class="wrapper">
 <h1>Hurra!</h1>
@@ -522,11 +522,19 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 </script>
 
 <div class="wrapper">
+<<set $kapitel1 to 1>>
   <h1>AR-Kamera</h1>
-  <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
-    autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-    alt="A witch" camera-controls>
-    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+  <model-viewer 
+      id="model-viewer" 
+      ar auto-rotate 
+      src="models/kapitel.1/kapitel.1.glb" 
+      ios-src="models/kapitel.1/kapitel.1.usdz"
+      poster="images/loading.png"
+      autoplay 
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <h2>Öffne die Kamera und betrachte die Szene. Mache Fotos von allem was dir wichtig erscheint.</h2>
   </div>
@@ -562,13 +570,13 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <<if $riddle is 1>>
     <span id="heading">
     <h1>Frage 1</h1>
-      <h2>Was für ein Gerät stand in der Szene?</h2>
+      <h2>Wer ist gestorben?</h2>
     </span>
 
     <div class="wrapper"></div>
 
     <div class="btn-group">
-      <<button "Walkie-Talkie">>
+      <<button "Junge Frau">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
         <<timed 1s>>
           <<goto "2.4">>
@@ -576,7 +584,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
         <</timed>>
       <</button>>
 
-      <<button "Häxler">>
+      <<button "Kleines Kind">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
         <<timed 1s>>
           <<goto "2.4">>
@@ -584,7 +592,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
         <</timed>>
       <</button>>
 
-      <<button "Grammophon">>
+      <<button "Alter Mann">>
         <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
         <<timed 1s>>
           <<goto "2.4">>
@@ -598,20 +606,20 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <<if $riddle is 2>>
     <span id="heading">
     <h1>Frage 2</h1>
-      <h2>Was für ein Gegenstand lag im Vogelbad?</h2>
+      <h2>Was hatte der Mann in der Hand?</h2>
     </span>
 
     <div class="wrapper"></div>
 
     <div class="btn-group">
-      <<button "Haarspange">>
+      <<button "Geld">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
         <<timed 1s>>
           <<goto "2.4">><<set $riddle to $riddle + 1>>
         <</timed>>
       <</button>>
 
-      <<button "Schlüssel">>
+      <<button "Pillen">>
         <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
         <<timed 1s>>
           <<goto "2.4">>
@@ -620,7 +628,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
         <</timed>>
       <</button>>
 
-      <<button "Brosche">>
+      <<button "Handy">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
         <<timed 1s>>
           <<goto "2.4">>
@@ -633,13 +641,13 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <<if $riddle is 3>>
     <span id="heading">
     <h1>Frage 3</h1>
-      <h2>Was lag neben dem Brunnen?</h2>
+      <h2>Wer war dabei als er starb?</h2>
     </span>
 
     <div class="wrapper"></div>
         
     <div class="btn-group">
-      <<button "Ketten">>
+      <<button "Sein Hund">>
         <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
         <<timed 1s>>
           <<goto "2.4">>
@@ -648,7 +656,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
         <</timed>>
       <</button>>
           
-      <<button "Flaschen">>
+      <<button "Seine Frau">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
         <<timed 1s>>
           <<goto "2.4">>
@@ -656,7 +664,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
         <</timed>>
       <</button>>
 
-      <<button "Gliedmaßen">>
+      <<button "Sein Enkel">>
         <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
         <<timed 1s>>
           <<goto "2.4">>
@@ -666,10 +674,82 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
     </div>
   <</if>>
 
-  <<if $riddle is 4>>
+    <<if $riddle is 4>>
+    <span id="heading">
+    <h1>Frage 4</h1>
+      <h2>Wie hieß der Hund?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+
+    <div class="btn-group">
+      <<button "Bob">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">><<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Ben">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Pip">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+    <<if $riddle is 5>>
+    <span id="heading">
+    <h1>Frage 5</h1>
+      <h2>Was fehlte dem Toten?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+        
+    <div class="btn-group">
+      <<button "Hose">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+          
+      <<button "Hand">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Brille">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+  <<if $riddle is 6>>
     <div class="wrapper">
-      <h1>Okkulte Rune</h1>
-      <h2>Du hast eine okkulte Rune entdeckt.</h2>
+      <h1>Fall gelöst!</h1>
+      <h2>Du hast eine okkulte Rune erlent. 
+      <br>Diese Runen helfen dir die Sprache der Geister zu verstehen. </h2>
       <p class="p2">A</p>
     </div>
 
@@ -1871,22 +1951,20 @@ unsere Hausgeist sehen.
 
 
 :: Dev {"position":"200,1200","size":"100,100"}
-<div class="wrapper">
+  <div class="wrapper">
+  <h1>Abkürzungen</h1>
+  <h2>
+  Mit diesen Links kannst du direkt zu den Tatorten springen. Diese Abkürzungen sind nur zum Testen und werden später entfernt. 
+  <br>
+  <br>
+  [[Der alte Mann|2.0]],
+  [[Karte|map.init]]
+  </h2>
+  </div>
   <div class="btn-group">
-    <<button "1.0">>
-      <<goto "1.0">>	
-    <</button>>
-    <<button "2.0">>
-      <<goto "2.0">>	
-    <</button>>
-    <<button "Karte">>
-      <<goto "map.init">>	
-    <</button>>
     <<button "Zurück" `previous()`>>
-      
     <</button>>
   </div>
-</div>
 
 
 :: Hilfe {"position":"200,800","size":"100,100"}
@@ -2276,127 +2354,36 @@ diesem Zweck verarbeiten.
 <div class="wrapper">
   <h1>Geister</h1>
   <h2>Hier werden alle Geister angezeigt, die du mit der AR-Kamera eingefangen hast.</h2>
-  <<if $affe is 1>>
-    <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a witch with graveyard" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-    </model-viewer>
-  <</if>>
-  <<if $flamingo is 1>>
-      <model-viewer id="model-viewer" src="models/hanging/hanging.glb" ar auto-rotate poster="models/hanging/poster.webp" 
-        autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-        alt="A 3D model of a hanging scene" camera-controls>
-        <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-      </model-viewer>
-  <</if>>
-
-  <<if $eule is 1>>
-    <model-viewer id="model-viewer" src="models/ghost/ghost.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/ghost/ghost.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a zombie" camera-controls>
+  <<if $intro is 1>>
+  <model-viewer 
+      id="model-viewer" 
+      ar auto-rotate 
+      src="models/clown/clown.glb" 
+      ios-src="models/clown/clown.usdz"
+      poster="images/loading.png"
+      autoplay 
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls>
       <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
-  <<if $pferd is 1>>
-    <model-viewer id="model-viewer" src="models/ghost/ghost.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/ghost/ghost.usdz"
-      autoplay alt="A 3D model of a" camera-controls>
+    <<if $kapitel1 is 1>>
+  <model-viewer 
+      id="model-viewer" 
+      ar auto-rotate 
+      src="models/kapitel.1/kapitel.1.glb" 
+      ios-src="models/kapitel.1/kapitel.1.usdz"
+      poster="images/loading.png"
+      autoplay 
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls>
       <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
   <</if>>
 
-  <<if $zebra is 1>>
-    <model-viewer id="model-viewer" src="models/zebra/zebra.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/zebra/zebra.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $schildkröte is 1>>
-    <model-viewer id="model-viewer" src="models/schildkroete/schildkroete.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/schildkroete/schildkroete.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $schlange is 1>>
-    <model-viewer id="model-viewer" src="models/schlange/schlange.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/schlange/schlange.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $ozelot is 1>>
-    <model-viewer id="model-viewer" src="models/ozelot/ozelot.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/ozelot/ozelot.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $truthahn is 1>>
-    <model-viewer id="model-viewer" src="models/truthahn/truthahn.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/truthahn/truthahn.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $katze is 1>>
-    <model-viewer id="model-viewer" src="models/katze/katze.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/katze/katze.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $schwein is 1>>
-    <model-viewer id="model-viewer" src="models/schwein/schwein.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/schwein/schwein.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $krokodil is 1>>
-    <model-viewer id="model-viewer" src="models/krokodil/krokodil.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/krokodil/krokodil.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $lama is 1>>
-    <model-viewer id="model-viewer" src="models/lama/lama.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/lama/lama.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
-
-  <<if $gazelle is 1>>
-    <model-viewer id="model-viewer" src="models/gazelle/gazelle.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/gazelle/gazelle.usdz"
-      autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-      alt="A 3D model of a" camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
 
 </div>
 
@@ -2515,33 +2502,8 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 
 <<set $ende to 0>>
 
-<<set $flamingo to 0>>
-
-<<set $affe to 0>>
-
-<<set $eule to 1>>
-
-<<set $krokodil to 0>>
-
-<<set $zebra to 0>>
-
-<<set $pferd to 0>>
-
-<<set $gazelle to 0>>
-
-<<set $schlange to 0>>
-
-<<set $schildkroete to 0>>
-
-<<set $katze to 0>>
-
-<<set $ozelot to 0>>
-
-<<set $schwein to 0>>
-
-<<set $lama to 0>>
-
-<<set $truthahn to 0>>
+<<set $intro to 0>>
+<<set $kapitel1 to 0>>
 
 
 :: StoryMenu {"position":"198,200","size":"100,100"}
@@ -2551,7 +2513,7 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 <<link [[$inventory|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
 /* <<link [[$help|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 /* <<link [[$legal|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
-/*<<link "Dev">><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>> */
+<<link "Abkürzungen">><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
 
 
 :: ar.init {"position":"1500,1000","size":"100,100"}
@@ -3210,11 +3172,19 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 
 <div class="wrapper">
+<<set $intro to 1>>
   <h1>AR-Kamera</h1>
 
-    <model-viewer id="model-viewer" src="models/ghost/ghost.glb" ar auto-rotate poster="images/loading.png"
-                ios-src="models/ghost/ghost.usdz"
-      autoplay alt="A 3D model of a zombie" camera-controls>
+  <model-viewer 
+      id="model-viewer" 
+      ar auto-rotate 
+      src="models/clown/clown.glb" 
+      ios-src="models/clown/clown.usdz"
+      poster="images/loading.png"
+      autoplay 
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls>
       <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
 
