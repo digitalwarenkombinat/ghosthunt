@@ -519,7 +519,6 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 </script>
 
 <div class="wrapper">
-<<set $kapitel1 to 1>>
   <h1>AR-Kamera</h1>
   <model-viewer 
       id="model-viewer" 
@@ -742,8 +741,10 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <<if $riddle is 6>>
     <div class="wrapper">
       <h1>Fall gelöst!</h1>
-      <h2>Du hast eine okkulte Rune erlent. 
-      <br>Diese Runen helfen dir die Sprache der Geister zu verstehen.</h2>
+      <h2>Die Angst was mit seinem Hund Ben passiert hat Herbert im Tod keine Ruhe gelassen. Ben kommt daher nicht ins Tierheim sondern zu Herberts Familie. 
+      <br>
+      <br>Herbert hat endlich Frieden gefunden. 
+      <br>Als Dank hat er dir eine okkulte Rune übersetzt.</h2>
       <p class="p2">A</p>
     </div>
 
@@ -863,7 +864,6 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 </script>
 
 <div class="wrapper">
-<<set $kapitel1 to 1>>
   <h1>AR-Kamera</h1>
   <model-viewer 
       id="model-viewer" 
@@ -2434,12 +2434,12 @@ diesem Zweck verarbeiten.
   </model-viewer>
   <</if>>
 
-    <<if $kapitel1 is 1>>
+    <<if $herbert is 1>>
   <model-viewer 
       id="model-viewer" 
       ar auto-rotate 
-      src="models/kapitel.1/kapitel.1.glb" 
-      ios-src="models/kapitel.1/kapitel.1.usdz"
+      src="models/herbert/herbert.glb" 
+      ios-src="models/herbert/herbert.usdz"
       poster="images/loading.png"
       autoplay 
       shadow-intensity="2"
@@ -2584,7 +2584,6 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 <<set $ende to 0>>
 
 <<set $intro to 0>>
-<<set $kapitel1 to 0>>
 
 
 :: StoryMenu {"position":"198,200","size":"100,100"}
