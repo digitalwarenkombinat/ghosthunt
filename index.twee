@@ -743,7 +743,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
     <div class="wrapper">
       <h1>Fall gelöst!</h1>
       <h2>Du hast eine okkulte Rune erlent. 
-      <br>Diese Runen helfen dir die Sprache der Geister zu verstehen. </h2>
+      <br>Diese Runen helfen dir die Sprache der Geister zu verstehen.</h2>
       <p class="p2">A</p>
     </div>
 
@@ -841,205 +841,277 @@ poster="images/loading.png"
 </div>
 
 
-:: 3.1 {"position":"2100,600","size":"100,100"}
-<div class="wrapper">
-<h1>Grauer Hof</h1>
-<h2>Löse die Rätsel, um einen Geheimbuchstaben zu bekommen.</h2>
-<img src="images/3.1.jpg" class="image1" />
-</div>
-
-<div class="btn-group">
-
-<<button "Weiter">>
-  <<goto "3.2">>
-<</button>>
-</div>
-
-
-:: 3.2 {"position":"2100,800","size":"100,100"}
-<video autoplay muted loop id="myVideo" playsinline>
-  <source src="videos/3.2.mp4" type="video/mp4">
-</video>
+:: 3.0 {"position":"2100,600","size":"100,100"}
+<script>
+$('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
+</script>
 
 <div class="wrapper">
+  <h1>Achtung!</h1>
+  <h2>Paranormale Aktivität entdeckt.</h2>
+  <p class="p3">para</p>
+  </div>
 
-</div>
-
-<div class="btn-group">
-
-	<<button "Weiter">>
-	    <<goto "3.3">>
-	
-<</button>>	
-
-</div>
+  <div class="btn-group">
+    <button class="next">[[|3.1]]</button>
+  </div>
 
 
-:: 3.3 {"position":"2100,1000","size":"100,100"}
-<<if
- $riddle is 1>>
-<h1>Rätsel</h1>
- <span id="heading"><h2>Bürsten, Besen ... 
-</h2></span>
+:: 3.1 {"position":"2100,800","size":"100,100"}
+<script>
+  $('#story').attr('style', 'background-image:url(images/cam.jpg)');
+</script>
 
 <div class="wrapper">
-<img src="images/3.3.jpg" 
-class="image1" />
-</div>
+<<set $kapitel1 to 1>>
+  <h1>AR-Kamera</h1>
+  <model-viewer 
+      id="model-viewer" 
+      ar auto-rotate 
+      src="models/kapitel.2/kapitel.2.glb" 
+      ios-src="models/kapitel.2/kapitel.2.usdz"
+      poster="images/loading.png"
+      autoplay 
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+  </model-viewer>
+  <h2>Öffne die Kamera, untersuche den Tatort und mache Fotos von allem was dir wichtig erscheint.</h2>
+  </div>
 
-<div class="btn-group">
+  <div class="btn-group">
+    <button class="return">[[|3.1]]</button>
+    <button class="next">[[|3.2]]</button>
+  </div>
 
- <<button "Seife">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $riddle to $riddle + 
-1>>
+
+:: 3.2 {"position":"2100,1000","size":"100,100"}
+<script>
+      $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
+    </script>
+
+  <<if $riddle is 1>>
+    <span id="heading">
+    <h1>Frage 1</h1>
+      <h2>Was ist passiert?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+
+    <div class="btn-group">
+      <<button "Überfall">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
 
- <<button "Nägel">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $riddle to $riddle + 
-1>>
+      <<button "Unfall">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
 
- <<button "Pinsel">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
+      <<button "Grabraub">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
         <</timed>>
-<</button>>
+      <</button>>
+    </div>
+  <</if>>
 
+  <<if $riddle is 2>>
+    <span id="heading">
+    <h1>Frage 2</h1>
+      <h2>Wessen Grab wurde ausgeraubt?</h2>
+    </span>
 
+    <div class="wrapper"></div>
 
+    <div class="btn-group">
+      <<button "Herbert Paus">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">><<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
 
-</div>
+      <<button "Rosa Herman">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
 
+      <<button "Sibille Knapp">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
 
-<</if>>
+  <<if $riddle is 3>>
+    <span id="heading">
+    <h1>Frage 3</h1>
+      <h2>Wie viele Räuber waren es?</h2>
+    </span>
 
-<<if $riddle is 2>>
+    <div class="wrapper"></div>
+        
+    <div class="btn-group">
+      <<button "1">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+          
+      <<button "2">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+          <<set $koinz to $koinz +10>>
+        <</timed>>
+      <</button>>
 
-<h1>Rätsel</h1>
- <span id="heading"><h2>Hoher ...?</h2></span>
+      <<button "3">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
 
+    <<if $riddle is 4>>
+    <span id="heading">
+    <h1>Frage 4</h1>
+      <h2>Was haben die Räuber gestohlen?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+
+    <div class="btn-group">
+      <<button "Ein Brosche">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">><<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Zwei Ringe">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Eine Halskette">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+    <<if $riddle is 5>>
+    <span id="heading">
+    <h1>Frage 5</h1>
+      <h2>Gibt es Hinweise auf die Identität der Räuber?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+        
+    <div class="btn-group">
+      <<button "Ausweis">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+          
+      <<button "Nummernschild">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Namen">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+  <<if $riddle is 6>>
+    <div class="wrapper">
+      <h1>Fall gelöst!</h1>
+      <h2>Du hast Rosa Herman geholfen den Raub an ihrem Grab öffenlich zu machen. Alles weitere muss nun die Polizei erledigen. Rosa kann nun ruhen.
+    <br>
+    <br>
+      Als Dank hat Rosa dir eine okkulte Rune übersetzt. </h2>
+      <p class="p2">A</p>
+    </div>
+
+    <div class="btn-group">
+      <<button "Weiter">>
+        <<goto "3.3">>
+        <<set $riddle to 1>>
+        <<set $letter5 to 1>>
+          
+      <</button>>
+    </div>
+  <</if>>
+
+:: 3.3 {"position":"2301,600","size":"100,100"}
 <div class="wrapper">
-<img src="images/3.4.jpg" 
-class="image1" />
-</div>
+<h1>Rosa Herman</h1>
+<h2>Rosa ist ab sofort in deinem Inventar befreiter Geister verfügbar.</h2>
+<<set $rosa to 1>>
+  <model-viewer 
+      id="model-viewer" 
+      ar auto-rotate 
+      src="models/rosa/rosa.glb" 
+      ios-src="models/rosa/rosa.usdz"
+      poster="images/loading.png"
+      autoplay 
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+  </model-viewer>
 
-<div class="btn-group">
-    
- <<button "Träger">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
+  </div>
 
- <<button "Turm">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Posten">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-
-
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 3>>
-
-<h1>Rätsel</h1>
- <span id="heading"><h2>Stadt ...?</h2></span>
-
-<div class="wrapper">
-<img src="images/3.5.jpg" 
-class="image1" />
-</div>
-    
-<div class="btn-group">
-
- <<button "Archiv">>
-    <<replace "#heading">><h2>Richtig! +10 
-Punkte</h2><</replace>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $koinz to $koinz 
-+10>><<set $riddle to $riddle + 1>>
-        <</timed>>
-<</button>>
-    
- <<button "Verwaltung">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
- <<button "Reinigung">>
-    <<replace 
-"#heading">><h2>Falsch!</h2><</replace>><<audio
- "falsch" play>>
-      <<timed 1s>>
-        <<goto "3.3">><<set $riddle to $riddle + 
-1>>
-        <</timed>>
-<</button>>
-
-</div>
-
-
-<</if>>
-
-<<if $riddle is 4>>
-
-
-
-<div class="wrapper">
-<h1>Hurra!</h1>
-<h2>Du hast einen Geheimbuchstaben entdeckt.</h2>
-<h4>O</h4>
-</div>
-
-<div class="btn-group">
-<<button "Weiter">>
-      <<goto "map.init">><<set $riddle to 
-1>><<set $letter2 to 1>>
-  
-<</button>>
-</div>
-
-<</if>>
-
+  <div class="btn-group">
+    <button class="next">[[|map.init]]</button>
+  </div>
 
 :: 4.1 {"position":"2301,600","size":"100,100"}
 <div class="wrapper">
@@ -1947,7 +2019,9 @@ unsere Hausgeist sehen.
   Mit diesen Links kannst du direkt zu den Tatorten springen. Diese Abkürzungen sind nur zum Testen und werden später entfernt. 
   <br>
   <br>
-  [[Der alte Mann|2.0]],
+  [[Der Fall Herbert|2.0]],
+    <br>
+  [[Der Fall Rosa|3.0]],
   <br>
   [[Karte|map.init]]
   </h2>
@@ -2366,6 +2440,21 @@ diesem Zweck verarbeiten.
       ar auto-rotate 
       src="models/kapitel.1/kapitel.1.glb" 
       ios-src="models/kapitel.1/kapitel.1.usdz"
+      poster="images/loading.png"
+      autoplay 
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+  </model-viewer>
+  <</if>>
+
+      <<if $rosa is 1>>
+  <model-viewer 
+      id="model-viewer" 
+      ar auto-rotate 
+      src="models/rosa/rosa.glb" 
+      ios-src="models/rosa/rosa.usdz"
       poster="images/loading.png"
       autoplay 
       shadow-intensity="2"
