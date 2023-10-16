@@ -769,7 +769,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 
   <div class="btn-group">
     <button class="retry">[[|2.5]]</button>
-    <button class="next">[[|2.6]]</button>
+    <button class="next">[[|2.8]]</button>
   </div>
 
 
@@ -806,6 +806,30 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <div class="btn-group">
     <<button "Zurück" `previous()`>>
     <</button>>
+  </div>
+
+:: 2.8 {"position":"2301,600","size":"100,100"}
+<div class="wrapper">
+<h1>Herbert</h1>
+<h2>Herbert ist ab sofort in deinem Inventar befreiter Geister verfügbar.</h2>
+<<set $herbert to 1>>
+  <model-viewer 
+      id="model-viewer" 
+      ar auto-rotate 
+      src="models/herbert/herbert.glb" 
+      ios-src="models/herbert/herbert.usdz"
+      poster="images/loading.png"
+      autoplay 
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+  </model-viewer>
+
+  </div>
+
+  <div class="btn-group">
+    <button class="next">[[|2.6]]</button>
   </div>
 
 
@@ -1075,7 +1099,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
       <h2>Du hast Rosa Herman geholfen den Raub an ihrem Grab öffenlich zu machen. Alles weitere muss nun die Polizei erledigen. Rosa kann nun ruhen.
     <br>
     <br>
-      Als Dank hat Rosa dir eine okkulte Rune übersetzt. </h2>
+      Als Dank hat Rosa dir eine okkulte Rune übersetzt.</h2>
       <p class="p2">A</p>
     </div>
 
@@ -2418,23 +2442,10 @@ diesem Zweck verarbeiten.
 :: Inventar {"position":"200,600","size":"100,100"}
 <div class="wrapper">
   <h1>Geister</h1>
-  <h2>Hier werden alle Geister angezeigt, die du mit der AR-Kamera eingefangen hast.</h2>
-  <<if $intro is 1>>
-  <model-viewer 
-      id="model-viewer" 
-      ar auto-rotate 
-      src="models/clown/clown.glb" 
-      ios-src="models/clown/clown.usdz"
-      poster="images/loading.png"
-      autoplay 
-      shadow-intensity="2"
-      shadow-softness="0"
-      camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <</if>>
+  <h2>Hier werden alle Geister angezeigt, die du befreit hast.</h2>
 
     <<if $herbert is 1>>
+      <h1>Herbert</h1>
   <model-viewer 
       id="model-viewer" 
       ar auto-rotate 
