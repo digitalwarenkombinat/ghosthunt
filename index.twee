@@ -769,22 +769,33 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 
   <div class="btn-group">
     <button class="retry">[[|2.5]]</button>
-    <button class="next">[[|2.8]]</button>
+    <button class="next">[[|2.6]]</button>
   </div>
 
 
 :: 2.6 {"position":"1900,1800","size":"100,100"}
 
-  <video autoplay muted id="myVideo" playsinline>
-    <source src="videos/2.6.mp4" type="video/mp4">
-  </video>
+<div class="wrapper">
+<h1>Herbert</h1>
+<h2>Herbert ist ab sofort in deinem Inventar befreiter Geister verfügbar.</h2>
+<<set $herbert to 1>>
+  <model-viewer 
+      id="model-viewer" 
+      ar auto-rotate 
+      src="models/herbert/herbert.glb" 
+      ios-src="models/herbert/herbert.usdz"
+      poster="images/loading.png"
+      autoplay 
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+  </model-viewer>
 
-  <div class="wrapper"></div>
+  </div>
 
   <div class="btn-group">
-    <button class="return">[[|2.5]]</button>
-    <button class="retry">[[|2.6]]</button>
-    <button class="next">[[|2.7]]</button>
+    <button class="next">[[|map.init]]</button>
   </div>
 
 
@@ -829,7 +840,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   </div>
 
   <div class="btn-group">
-    <button class="next">[[|2.6]]</button>
+    <button class="next">[[|map.init]]</button>
   </div>
 
 
