@@ -1107,7 +1107,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <<if $riddle is 6>>
     <div class="wrapper">
       <h1>Fall gelöst!</h1>
-      <h2>Du hast Rosa Herman geholfen den Raub an ihrem Grab öffenlich zu machen. Alles weitere muss nun die Polizei erledigen. Rosa kann nun ruhen.
+      <h2>Du hast Rosa geholfen den Raub an ihrem Grab öffenlich zu machen. Alles weitere muss nun die Polizei erledigen. Rosa kann nun ruhen.
     <br>
     <br>
       Als Dank hat Rosa dir eine okkulte Rune übersetzt.</h2>
@@ -1126,7 +1126,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 
 :: 3.3 {"position":"2301,600","size":"100,100"}
 <div class="wrapper">
-<h1>Rosa Herman</h1>
+<h1>Rosa</h1>
 <h2>Rosa ist ab sofort in deinem Inventar befreiter Geister verfügbar.</h2>
 <<set $rosa to 1>>
   <model-viewer 
