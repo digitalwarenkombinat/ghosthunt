@@ -2450,6 +2450,7 @@ diesem Zweck verarbeiten.
   <</if>>
 
       <<if $rosa is 1>>
+        <h1>Rosa</h1>
   <model-viewer 
       id="model-viewer" 
       ar auto-rotate 
