@@ -2487,7 +2487,6 @@ diesem Zweck verarbeiten.
   </model-viewer>
   <</if>>
 
-
 </div>
 
 <div class="btn-group">
@@ -2501,7 +2500,7 @@ diesem Zweck verarbeiten.
 <h1>Menu</h1>
   <h5>Punkte:</h5>
   <h3>$koinz/210</h3>
-  <h5>Gefundene Runen:</h5>
+  <h5>Okkulte Runen:</h5>
   <p class="p1">
     <<if $letter1 is 1>>
       R
@@ -2616,7 +2615,7 @@ navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
 /* <<link [[$help|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 /* <<link [[$legal|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 <<link "Abkürzungen">><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
-<<link "Fragebogen">><<addclass "#ui-bar" "stowed">><<goto "2.7">><</link>>
+<<link "Feedback">><<addclass "#ui-bar" "stowed">><<goto "2.7">><</link>>
 
 
 
