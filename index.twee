@@ -3229,8 +3229,8 @@ $(document).one(":passagedisplay", function() {
 <div id="map"></div>
 
 <div class="wrapper">
-  <h1>GPS</h1>
-  <h2>Wir benötigen deinen Standort, um dich zu den Geister-Hotspots zu leiten.</h2>
+  <h1>Standort</h1>
+  <h2>Wir benötigen deinen Standort, um dich zu den Hotspots zu leiten.</h2>
 </div>
 
 <div class="btn-group">
@@ -3257,7 +3257,7 @@ $(document).one(":passagedisplay", function() {
 
 <div class="wrapper">
 <<set $intro to 1>>
-  <h1>AR-Kamera</h1>
+  <h1>Geister</h1>
 
   <model-viewer 
       id="model-viewer" 
