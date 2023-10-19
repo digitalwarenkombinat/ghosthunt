@@ -57,7 +57,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
     </script>
     <<elseif $riddle is 2>>
     <script>
-      $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+      $('#story').attr('style', 'background-image:url(images/bg.jpg)');
     </script>
   <</if>>
 
@@ -2755,7 +2755,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 :: intro {"position":"800,600","size":"100,100"}
 <script>
-  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 </script>
 
 <div class="wrapper">
@@ -2863,7 +2863,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 :: 1.kapitel {"position":"1100,600","size":"100,100"}
 <script>
-  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 </script>
 
 <div class="wrapper">
@@ -3068,7 +3068,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
     $.wiki('<<goto "vorstellung">>')
   };
 
-  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 
   window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
@@ -3090,7 +3090,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 
 :: setup.1 {"position":"500,800","size":"100,100"}
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 
   if (State.variables.is_safari || State.variables.is_chrome) {
     $.wiki('<<goto "setup.2">>')
@@ -3105,7 +3105,7 @@ Chrome "Beim Verwenden der App" euren Standort zu benutzen.
 :: setup.2 {"position":"500,1500","size":"100,100"}
 <<script>>
 $(document).one(":passagedisplay", function() {
-  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
   const installBtn = document.querySelector('.install');
   const iosHelp = document.querySelector('.iosHelp');
   const androidHelp = document.querySelector('.androidHelp');
@@ -3262,8 +3262,8 @@ $(document).one(":passagedisplay", function() {
   <model-viewer 
       id="model-viewer" 
       ar auto-rotate 
-      src="models/clown/clown.glb" 
-      ios-src="models/clown/clown.usdz"
+      src="models/setup.3/setup.3.glb" 
+      ios-src="models/setup.3/setup.3.usdz"
       poster="images/loading.png"
       autoplay 
       shadow-intensity="2"
@@ -3313,7 +3313,7 @@ Ende die meisten Punkte und Tiere gesammelt hat.
 
 
   <video autoplay muted id="myVideo" playsinline>
-    <source src="videos/vorstellung.mp4" type="video/mp4">
+    <source src="videos/intro.1.mp4" type="video/mp4">
   </video>
 
   <div class="wrapper"></div>
