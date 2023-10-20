@@ -1,5 +1,5 @@
 // Files to cache
-const cacheName = 'ghosthunt-v0.1';
+const cacheName = "ghosthunt-v0.1";
 const urlsToCacheiOS = [
   'index.html',
   'images/bg.jpg',
