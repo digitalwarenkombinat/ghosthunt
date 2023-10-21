@@ -3260,16 +3260,21 @@ $(document).one(":passagedisplay", function() {
   <h1>Geister</h1>
 
   <model-viewer 
-      id="model-viewer" 
-      ar auto-rotate 
-      src="models/setup.3/setup.3.glb" 
-      ios-src="models/setup.3/setup.3.usdz"
-      poster="images/loading.png"
-      autoplay 
-      shadow-intensity="2"
-      shadow-softness="0"
-      camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+    id="model-viewer" 
+    ar auto-rotate 
+    src="models/setup.3/setup.3.glb" 
+    ios-src="models/setup.3/setup.3.usdz"
+    poster="images/loading.png"
+    autoplay 
+    shadow-intensity="2"
+    shadow-softness="0"
+    camera-controls>
+    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+    <effect-composer>
+      <glitch-effect></glitch-effect>
+      /* <bloom-effect></bloom-effect> */
+      /* <pixelate-effect></pixelate-effect> */
+    </effect-composer>
   </model-viewer>
 
     <h2>Wir benötigen Zugriff auf deine Kamera, um dir die Geister zu zeigen. 
