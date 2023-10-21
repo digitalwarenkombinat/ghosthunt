@@ -59,7 +59,23 @@ const urlsToCacheAndroid = [
   const addResourcesToCache = async () => {
     const cache = await caches.open(cacheName);
     const is_safari = navigator.userAgent.indexOf('Safari') > -1 && navigator.userAgent.indexOf('Chrome') <= -1;
-    await cache.addAll(is_safari ? urlsToCacheiOS : urlsToCacheAndroid);
+    console.log('ServiceWorker: Caching files:', urlsToCacheAndroid.length);
+    // await cache.addAll(is_safari ? urlsToCacheiOS : urlsToCacheAndroid);
+    let addedToCache
+    try {
+      addedToCache = await cache.addAll(is_safari ? urlsToCacheiOS : urlsToCacheAndroid);
+    } catch (err) {
+      console.error('sw: cache.addAll');
+      for (let url of is_safari ? urlsToCacheiOS : urlsToCacheAndroid) {
+        try {
+          addedToCache = await cache.add(url);
+        } catch (err) {
+          console.warn('sw: cache.add',url);
+        }
+      }
+    }
+
+    return addedToCache;
   };
   
   const putInCache = async (request, response) => {
