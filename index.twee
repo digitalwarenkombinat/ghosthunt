@@ -11,7 +11,7 @@ Spuk & Schreck
   "zoom": 0.6
 }
 
-:: StoryCaption {"position":"800,200","size":"100,100"}
+:: StoryCaption {"position":"500,100","size":"100,100"}
   <<set $menuText = setup.text['StoryCaption'][1][setup.i18n.langs[settings.lang]]>>
   <<set $pointsText = setup.text['StoryCaption'][2][setup.i18n.langs[settings.lang]]>>
   <<set $runesText = setup.text['StoryCaption'][3][setup.i18n.langs[settings.lang]]>>
@@ -30,7 +30,7 @@ Spuk & Schreck
     <</for>>
   </p>
 
-:: StoryInit {"position":"400,200","size":"100,100"}
+:: StoryInit {"position":"100,100","size":"100,100"}
 -------------------------SETUP-------------------------------
 
 <<set $is_pwa to window.matchMedia('(display-mode: window-controls-overlay)').matches || window.matchMedia('(display-mode: fullscreen)').matches>>
@@ -125,7 +125,7 @@ Spuk & Schreck
 <<set $isScanner to false>>
 <<set $isNavigator to false>>
 
-:: StoryMenu {"position":"198,200","size":"100,100"}
+:: StoryMenu {"position":"300,100","size":"100,100"}
 <<set $inventoryText = setup.text['StoryMenu'][1][setup.i18n.langs[settings.lang]]>>
 <<set $helpText = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
 <<set $legalText = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
@@ -137,7 +137,7 @@ Spuk & Schreck
 <<link [[$legalText|"Dev"]]>><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
 <<link [[$legalText|"chapterclosing.init"]]>><<addclass "#ui-bar" "stowed">><</link>>
 
-:: setup.init {"position":"500,600","size":"100,100"}
+:: setup.init {"position":"100,300","size":"100,100"}
 <<script>>
   if (State.variables.is_pwa) {
     $.wiki('<<goto "setup.3">>')
@@ -162,7 +162,7 @@ Spuk & Schreck
   <button class="next">[[|setup.1]]</button>
 </div>
 
-:: setup.1 {"position":"500,800","size":"100,100"}
+:: setup.1 {"position":"100,500","size":"100,100"}
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 
@@ -175,7 +175,7 @@ Spuk & Schreck
   <h2><<txt>></h2>
 </div>
 
-:: setup.2 {"position":"500,1500","size":"100,100"}
+:: setup.2 {"position":"100,700","size":"100,100"}
 <<script>>
 $(document).one(":passagedisplay", function() {
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -226,7 +226,7 @@ $(document).one(":passagedisplay", function() {
   <button class="install"></button>
 </div>
 
-:: setup.3 {"position":"500,1300","size":"100,100"}
+:: setup.3 {"position":"100,900","size":"100,100"}
   
 
   <<video noHotspot>>
@@ -236,7 +236,7 @@ $(document).one(":passagedisplay", function() {
     <button class="next">[[|setup.4]]</button>
   </div>
 
-:: setup.4 {"position":"500,1700","size":"100,100"}
+:: setup.4 {"position":"100,1100","size":"100,100"}
 <div id="map"></div>
 
 <div class="wrapper">
@@ -327,7 +327,7 @@ $(document).one(":passagedisplay", function() {
 });
 <</script>>
 
-:: setup.5 {"position":"500,1900","size":"100,100"}
+:: setup.5 {"position":"100,1300","size":"100,100"}
 <<script>>
   $(document).one(":passagedisplay", function() {
     $('#story').attr('style', 'background-image:url(images/cam.jpg)');
@@ -367,7 +367,7 @@ $(document).one(":passagedisplay", function() {
   <button class="next">[[|intro.init]]</button>
 </div>
 
-:: intro.init {"position":"1100,500","size":"100,100"}
+:: intro.init {"position":"300,300","size":"100,100"}
 <<if $setupCompleted and $introCompleted>>
 	<<goto "main.init">>
 <<elseif $setupCompleted>>
@@ -376,7 +376,7 @@ $(document).one(":passagedisplay", function() {
 	<<goto "setup.3">>
 <</if>>
 
-:: intro.1 {"position":"800,600","size":"100,100"}
+:: intro.1 {"position":"300,500","size":"100,100"}
 <script>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 </script>
@@ -395,7 +395,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 
-:: intro.2 {"position":"800,800","size":"100,100"}
+:: intro.2 {"position":"300,700","size":"100,100"}
 <script>
   $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
 </script>
@@ -410,7 +410,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 
-:: intro.3 {"position":"800,1000","size":"100,100"}
+:: intro.3 {"position":"300,900","size":"100,100"}
 
 
   <video autoplay muted id="video" playsinline>
@@ -425,7 +425,7 @@ $(document).one(":passagedisplay", function() {
   </div>
 
 
-:: intro.4 {"position":"800,1200","size":"100,100"}
+:: intro.4 {"position":"300,1100","size":"100,100"}
 
 
   <video autoplay muted id="video" playsinline>
@@ -441,7 +441,7 @@ $(document).one(":passagedisplay", function() {
     <button class="next">[[|intro.5]]</button>
   </div>
 
-:: intro.5 {"position":"800,1400","size":"100,100"}
+:: intro.5 {"position":"300,1300","size":"100,100"}
 
 
   <video autoplay muted id="video" playsinline>
@@ -456,7 +456,7 @@ $(document).one(":passagedisplay", function() {
     <button class="next">[[|intro.6]]</button>
   </div>
 
-:: intro.6 {"position":"800,1600","size":"100,100"}
+:: intro.6 {"position":"300,1500","size":"100,100"}
 
 
   <video autoplay muted id="video" playsinline>
@@ -471,8 +471,7 @@ $(document).one(":passagedisplay", function() {
     <button class="next">[[|intro.7]]</button>
   </div>
 
-:: intro.7 {"position":"800,1800","size":"100,100"}
-
+:: intro.7 {"position":"300,1700","size":"100,100"}
 
 <<set $introCompleted to true>>
 
@@ -488,7 +487,7 @@ $(document).one(":passagedisplay", function() {
     <button class="next">[[|main.init]]</button>
   </div>
 
-:: main.init {"position":"1100,600","size":"100,100"}
+:: main.init {"position":"500,300","size":"100,100"}
 <script>
   $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
 </script>
@@ -506,15 +505,15 @@ $(document).one(":passagedisplay", function() {
   <button class="next">[[|map.init]]</button>
 </div>
 
-:: map.init {"position":"1300,500","size":"100,100"}
+:: map.init {"position":"700,300","size":"100,100"}
 <<if !$letter.includes(0) and $ende is 0>>
-	<<goto "gamegameend.init">>
+	<<goto "gameend.init">>
 <<else>>
 	<<goto "map">>
 <</if>>
 
 
-:: map [autosave] {"position":"1300,600","size":"100,100"}
+:: map [autosave] {"position":"700,500","size":"100,100"}
 <div id="map"></div>
 
 <<script>>
@@ -593,7 +592,7 @@ $(document).one(":passagedisplay", function() {
   <button class="retry"> [[|map]]</button>
 </div>
 
-:: story.init {"position":"1700,600","size":"100,100"}
+:: story.init {"position":"900,300","size":"100,100"}
 <<script>>
   $('#story').attr('style', `background-image:url(images/story.init.${State.variables.hotspot}.jpg)`);
 <</script>>
@@ -608,8 +607,7 @@ $(document).one(":passagedisplay", function() {
   <button class="next">[[|story]]</button>
 </div>
 
-
-:: story {"position":"1700,800","size":"100,100"}
+:: story {"position":"900,500","size":"100,100"}
   <<video>>
 
   <div class="btn-group">
@@ -617,16 +615,16 @@ $(document).one(":passagedisplay", function() {
     <button class="next">[[|2.2]]</button>
   </div>
 
-:: ar.init {"position":"1500,1000","size":"100,100"}
+:: ar.init {"position":"1100,300","size":"100,100"}
 
-:: ar.1 {"position":"1500,1000","size":"100,100"}
+:: ar.1 {"position":"1100,500","size":"100,100"}
 
-:: chapterclosing.init {"position":"1500,1000","size":"100,100"}
+:: chapterclosing.init {"position":"1300,300","size":"100,100"}
 <<script>>
   $.wiki('<<goto "chapterclosing">>')
 <</script>>
 
-:: chapterclosing {"position":"1900,2000","size":"100,100"}
+:: chapterclosing {"position":"1300,500","size":"100,100"}
 <div
  class="wrapper">
   <h1>Unser Ziel</h1>
@@ -646,7 +644,7 @@ $(document).one(":passagedisplay", function() {
     <</button>>
   </div>
 
-:: 1.2 {"position":"1700,1000","size":"100,100"}
+:: 1.2 {"position":"1500,300","size":"100,100"}
   <<if $riddle is 1>>
     <script>
       $('#story').attr('style', 'background-image:url(images/1.1.jpg)');
@@ -709,7 +707,7 @@ $(document).one(":passagedisplay", function() {
   <</if>>
 
 
-:: 1.3 {"position":"1700,1200","size":"100,100"}
+:: 1.3 {"position":"1500,500","size":"100,100"}
 
   <video autoplay muted id="video" playsinline>
     <source src="videos/1.3.mp4" type="video/mp4">
@@ -723,7 +721,7 @@ $(document).one(":passagedisplay", function() {
   </div>
 
 
-:: 1.4 {"position":"1700,1400","size":"100,100"}
+:: 1.4 {"position":"1500,700","size":"100,100"}
 <div class="wrapper">
   <h1>AR-Kamera</h1>
   <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
@@ -739,9 +737,7 @@ $(document).one(":passagedisplay", function() {
   </div>
 
 
-:: 1.5 {"position":"1700,1600","size":"100,100"}
-
-  
+:: 1.5 {"position":"1500,700","size":"100,100"}
 
   <video autoplay muted id="video" playsinline>
     <source src="videos/1.5.mp4" type="video/mp4">
@@ -754,7 +750,7 @@ $(document).one(":passagedisplay", function() {
     <button class="next">[[|chapterclosing.init]]</button>
   </div>
 
-:: 2.2 {"position":"1900,1000","size":"100,100"}
+:: 2.2 {"position":"1700,300","size":"100,100"}
 <script>
   $('#story').attr('style', 'background-image:url(images/cam.jpg)');
 </script>
@@ -782,7 +778,7 @@ $(document).one(":passagedisplay", function() {
   </div>
 
 
-:: 2.3 {"position":"1900,1200","size":"100,100"}
+:: 2.3 {"position":"1700,500","size":"100,100"}
 
   <video autoplay muted id="video" playsinline>
     <source src="videos/2.3.mp4" type="video/mp4">
@@ -796,7 +792,7 @@ $(document).one(":passagedisplay", function() {
   </div>
 
 
-:: 2.4 {"position":"1900,1400","size":"100,100"}
+:: 2.4 {"position":"1700,700","size":"100,100"}
   <script>
       $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
     </script>
@@ -999,7 +995,7 @@ $(document).one(":passagedisplay", function() {
     </div>
   <</if>>
 
-:: 2.5 {"position":"1900,1600","size":"100,100"}
+:: 2.5 {"position":"1700,900","size":"100,100"}
 
   <video autoplay muted id="video" playsinline>
     <source src="videos/2.5.mp4" type="video/mp4">
@@ -1013,7 +1009,7 @@ $(document).one(":passagedisplay", function() {
   </div>
 
 
-:: 2.6 {"position":"1900,1800","size":"100,100"}
+:: 2.6 {"position":"1700,1100","size":"100,100"}
 
 <div class="wrapper">
 <h1>Herbert</h1>
@@ -1040,7 +1036,7 @@ $(document).one(":passagedisplay", function() {
     <button class="next">[[|chapterclosing.init]]</button>
   </div>
 
-:: 3.0 {"position":"2100,600","size":"100,100"}
+:: 3.0 {"position":"1900,300","size":"100,100"}
 <script>
 $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 </script>
@@ -1056,7 +1052,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   </div>
 
 
-:: 3.1 {"position":"2100,800","size":"100,100"}
+:: 3.1 {"position":"1900,500","size":"100,100"}
 <script>
   $('#story').attr('style', 'background-image:url(images/cam.jpg)');
 </script>
@@ -1084,7 +1080,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   </div>
 
 
-:: 3.2 {"position":"2100,1000","size":"100,100"}
+:: 3.2 {"position":"1900,700","size":"100,100"}
 <script>
       $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
     </script>
@@ -1287,7 +1283,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
     </div>
   <</if>>
 
-:: 3.3 {"position":"2301,600","size":"100,100"}
+:: 3.3 {"position":"1900,900","size":"100,100"}
 <div class="wrapper">
 <h1>Rosa</h1>
 <h2>Rosa ist ab sofort in deinem Inventar befreiter Geister verfügbar.</h2>
@@ -1311,7 +1307,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
     <button class="next">[[|map.init]]</button>
   </div>
 
-:: Dev {"position":"200,1200","size":"100,100"}
+:: Dev {"position":"1300,100","size":"100,100"}
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2>
@@ -1340,7 +1336,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 </div>
 
 
-:: Hilfe {"position":"200,800","size":"100,100"}
+:: Hilfe {"position":"900,100","size":"100,100"}
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
@@ -1387,7 +1383,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 </div>
 
 
-:: Impressum {"position":"200,1000","size":"100,100"}
+:: Impressum {"position":"1100,100","size":"100,100"}
 <div class="wrapper">
   <h1><<txt>></h1>
 </div>
@@ -1397,7 +1393,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 </div>
 
 
-:: Inventar {"position":"200,600","size":"100,100"}
+:: Inventar {"position":"700,100","size":"100,100"}
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
@@ -1426,7 +1422,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <<return>>
 </div>
 
-:: gameend.init {"position":"1500,1200","size":"100,100"}
+:: gameend.init {"position":"2100,300","size":"100,100"}
 
 :: StoryScript [script]
 /************
