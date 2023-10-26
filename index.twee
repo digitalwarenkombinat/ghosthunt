@@ -6,7 +6,7 @@ Spuk & Schreck
   "ifid": "FB483649-96B3-4F0F-9531-A1D615413B45",
   "format": "SugarCube",
   "format-version": "2.36.1",
-  "start": "setup.0",
+  "start": "setup.init",
   "tag-colors": {},
   "zoom": 0.6
 }
@@ -69,7 +69,6 @@ Spuk & Schreck
   <<set $passage = passage()>>
   <<set $storyText = setup.text[passage()][1][setup.i18n.langs[settings.lang]]>>
   <<script>>
-    window.video.showButtonsOnVideoEnd();
     const videoText = window.video.splitTextByTrimmer(State.variables.storyText);
 
     $(document).one(":passagedisplay", function() {
@@ -78,7 +77,7 @@ Spuk & Schreck
         video.src = `videos/${State.variables.passage}${State.variables.hasHotspot ? '.' + State.variables.hotspot : ''}.mp4`;
         video.load();
         video.ondurationchange = function() {
-          const timePerVideoText = video.duration / videoText.length * 1000;
+          const timePerVideoText = video.duration / videoText.length * 3000;
           if (typeof timePerVideoText === "number") {
             window.video.displayStringsSequentially(videoText, timePerVideoText);
           };
@@ -99,9 +98,9 @@ Spuk & Schreck
 
 --------------------------AUDIO---------------------------------------
 
-<<cacheaudio "bg" "audio/bg.mp3">>
+/* <<cacheaudio "bg" "audio/bg.mp3">>
 <<cacheaudio "click" "audio/click.mp3">>
-<<cacheaudio "ring" "audio/ring.mp3">>
+<<cacheaudio "ring" "audio/ring.mp3">> */
 
 -------------------------STARTVARIABLEN-------------------------------
 <<set $hotspot to 0>>
@@ -126,772 +125,25 @@ Spuk & Schreck
 <<set $isScanner to false>>
 <<set $isNavigator to false>>
 
-
 :: StoryMenu {"position":"198,200","size":"100,100"}
 <<set $inventoryText = setup.text['StoryMenu'][1][setup.i18n.langs[settings.lang]]>>
 <<set $helpText = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
 <<set $legalText = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
+<<set $shortcutText = setup.text['StoryMenu'][4][setup.i18n.langs[settings.lang]]>>
+<<set $feedbackText = setup.text['StoryMenu'][5][setup.i18n.langs[settings.lang]]>>
 <<link [[$inventoryText|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
 <<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
 <<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>>
-<<link "Dev">><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
+<<link [[$legalText|"Dev"]]>><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
+<<link [[$legalText|"chapterclosing.init"]]>><<addclass "#ui-bar" "stowed">><</link>>
 
-
-:: story.init {"position":"1700,600","size":"100,100"}
-<<script>>
-  $('#story').attr('style', `background-image:url(images/story.init.${State.variables.hotspot}.jpg)`);
-<</script>>
-
-<div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>></h2>
-  <p class="p3">para</p>
-  </div>
-
-  <div class="btn-group">
-    <button class="next">[[|story.1]]<<audio "click" play>></button>
-  </div>
-
-
-:: story.1 {"position":"1700,800","size":"100,100"}
-  <<video>>
-
-  <div class="btn-group">
-    <button class="retry">[[|passage()]]<<audio "click" play>></button>
-    <button class="next">[[|1.2]]<<audio "click" play>></button>
-  </div>
-
-
-:: 1.2 {"position":"1700,1000","size":"100,100"}
-  <<if $riddle is 1>>
-    <script>
-      $('#story').attr('style', 'background-image:url(images/1.1.jpg)');
-    </script>
-  <<elseif $riddle is 2>>
-    <script>
-      $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
-    </script>
-  <</if>>
-
-  <<if $riddle is 1>>
-    <span id="heading">
-      <h2>Finde dieses Bild. Was befindet sich darüber?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-
-    <div class="btn-group">
-      <<button "Lilie">>
-        <<replace "#heading">><h2>Falsch!</h2><</replace>>
-        <<timed 1s>>
-          <<goto "1.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Sanduhr">>
-        <<replace "#heading">><h2>Falsch!</h2><</replace>>
-        <<timed 1s>>
-          <<goto "1.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Muschel">>
-        <<replace "#heading">><h2>Richtig! +10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "1.2">>
-          <<set $points to $points +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 2>>
-    <div class="wrapper">
-      <h1>Okkulte<br>Rune</h1>
-      <p class="p2">A</p>
-    </div>
-
-    <div class="btn-group">
-      <<button "Weiter">>
-        <<goto "1.3">>
-        <<set $riddle to 1>>
-        <<set $letter[$hotspot] to 1>>
-        <<audio "click" play>>  
-      <</button>>
-    </div>
-  <</if>>
-
-
-:: 1.3 {"position":"1700,1200","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/1.3.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-   <button class="retry">[[|passage()]]<<audio "click" play>></button>
-    <button class="next">[[|1.4]]<<audio "click" play>></button>
-  </div>
-
-
-:: 1.4 {"position":"1700,1400","size":"100,100"}
-<div class="wrapper">
-  <h1>AR-Kamera</h1>
-  <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
-    autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-    alt="A witch" camera-controls>
-    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-    </model-viewer>
-  <h2>Öffne die Kamera und betrachte die Szene. Mache Fotos von allem was dir wichtig erscheint.</h2>
-  </div>
-
-  <div class="btn-group">
-<button class="next">[[|1.5]]<<audio "click" play>></button>
-  </div>
-
-
-:: 1.5 {"position":"1700,1600","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-  <<audio ":playing:" stop>>
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/1.5.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-   <button class="retry">[[|passage()]]<<audio "click" play>></button>
-    <button class="next">[[|2.7]]<<audio "click" play>></button>
-  </div>
-
-:: 2.2 {"position":"1900,1000","size":"100,100"}
-<script>
-  $('#story').attr('style', 'background-image:url(images/cam.jpg)');
-</script>
-
-<div class="wrapper">
-  <h1>AR-Kamera</h1>
-  <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
-    autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-    alt="A witch" camera-controls>
-    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <h2>Öffne die Kamera und betrachte die Szene. Mache Fotos von allem was dir wichtig erscheint.</h2>
-  </div>
-
-  <div class="btn-group">
-    <button class="return">[[|2.1]]<<audio "click" play>></button>
-    <button class="next">[[|2.3]]<<audio "click" play>></button>
-  </div>
-
-
-:: 2.3 {"position":"1900,1200","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/2.3.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-   <button class="retry">[[|passage()]]<<audio "click" play>></button>
-   <button class="next">[[|2.4]]<<audio "click" play>></button>
-  </div>
-
-
-:: 2.4 {"position":"1900,1400","size":"100,100"}
-<script>
-      $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
-    </script>
-
-  <<if $riddle is 1>>
-    <span id="heading">
-    <h1>Frage 1</h1>
-      <h2>Was für ein Gerät stand in der Szene?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-
-    <div class="btn-group">
-      <<button "Walkie-Talkie">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Häxler">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Grammophon">>
-        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $points to $points +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 2>>
-    <span id="heading">
-    <h1>Frage 2</h1>
-      <h2>Was für ein Gegenstand lag im Vogelbad?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-
-    <div class="btn-group">
-      <<button "Haarspange">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">><<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Schlüssel">>
-        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $points to $points +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Brosche">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 3>>
-    <span id="heading">
-    <h1>Frage 3</h1>
-      <h2>Was lag neben dem Brunnen?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-        
-    <div class="btn-group">
-      <<button "Ketten">>
-        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $points to $points +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-          
-      <<button "Flaschen">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Gliedmaßen">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 4>>
-    <div class="wrapper">
-      <h1>Okkulte Rune</h1>
-      <h2>Du hast eine okkulte Rune entdeckt.</h2>
-      <p class="p2">A</p>
-    </div>
-
-    <div class="btn-group">
-      <<button "Weiter">>
-        <<goto "2.5">>
-        <<set $riddle to 1>>
-        <<set $letter[$hotspot] to 1>>
-        <<audio "click" play>>  
-      <</button>>
-    </div>
-  <</if>>
-
-
-:: 2.5 {"position":"1900,1600","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/2.5.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="retry">[[|passage()]]<<audio "click" play>></button>
-    <button class="next">[[|2.6]]<<audio "click" play>></button>
-  </div>
-
-
-:: 2.6 {"position":"1900,1800","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/2.6.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="return">[[|2.5]]<<audio "click" play>></button>
-    <button class="retry">[[|passage()]]<<audio "click" play>></button>
-    <button class="next">[[|2.7]]<<audio "click" play>></button>
-  </div>
-
-
-:: 2.7 {"position":"1900,2000","size":"100,100"}
-<div
- class="wrapper">
-  <h1>Unser Ziel</h1>
-  <h2>Wir wollen ein Team-Event kreieren, bei dem sich die Menschen draußen an der frischen Luft bewegen, zusammen arbeiten, um Rätsel zu lösen und mit Hilfe moderner Technik in neue gruselige Welten eintauchen. 
-  <br>
-  <br>Unser Ziel ist Ostern 2024 die erste Rallye im Friedenspark, Leipzig zu veröffentlichen. Weitere Städte werden folgen. 
-  <br>
-  <br>Unsere Rallye wird ausschließlich auf den Smartphones unserer Kunden gespielt. Es gibt keinen Guide vor Ort. Daher ist es uns sehr wichtig, dass die Technik gut funktioniert. 
-  <br>
-  <br>
-  Um zu evaluieren, ob uns das gelingt benötigen wir dein Feedback. Über diesen <a href="https://forms.gle/jcGPPbrbbnwDLNC28">"Link"</a>  erreichst du unseren Fragebogen. Vielen Dank. 
-</h2>
-</div>
-
-<div class="btn-group">
-
-</div>
-
-
-:: Dev {"position":"200,1200","size":"100,100"}
-<div class="wrapper">
-  <br/>
-  <br/>
-  <div class="btn-group">
-    <<button "1.0">>
-      <<set $hotspot to 1>>
-      <<goto "story.init">>	
-    <</button>>
-    <<button "2.0">>
-      <<set $hotspot to 2>>
-      <<goto "story.init">>	
-    <</button>>
-    <<set $mapText = setup.text['Dev'][1][setup.i18n.langs[settings.lang]]>>
-    <<button $mapText>>
-      <<goto "map.init">>	
-    <</button>>
-  </div>
-</div>
-<div class="btn-group">
-  <<return>>
-</div>
-
-
-:: Hilfe {"position":"200,800","size":"100,100"}
-<div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>></h2>
-  <details>
-    <summary>
-      <h5><<txt>></h5>
-    </summary>
-    <div>
-      <p><<txt>>
-      <<link "Menu">>
-	      <<script>>UIBar.unstow().show()<</script>>
-      <</link>>
-      </p>
-    </div>
-  </details>
-  <details>
-    <summary>
-      <h5><<txt>></h5>
-    </summary>
-    <div>
-      <p><<txt>></p>
-    </div>
-  </details>
-  <details>
-    <summary>
-      <h5><<txt>></h5>
-    </summary>
-    <div>
-      <p><<txt>></p>
-    </div>
-  </details>
-  <details>
-    <summary>
-      <h5><<txt>></h5>
-    </summary>
-    <div>
-      <p><<txt>></p>
-    </div>
-  </details>
-</div>
-
-<div class="btn-group">
-  <<return>>
-</div>
-
-
-:: Impressum {"position":"200,1000","size":"100,100"}
-<div class="wrapper">
-  <h1><<txt>></h1>
-</div>
-
-<div class="btn-group">
-  <<return>>
-</div>
-
-
-:: Inventar {"position":"200,600","size":"100,100"}
-<div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>></h2>
-  <<for _i, _name range $inventory>>
-    <<if _name is 1>>
-      <model-viewer
-        alt="A 3D model of a zombie"
-        ar
-        auto-rotate
-        autoplay
-        camera-controls
-        environment-image="models/hanging/music_hall_01_1k.hdr"
-        id="model-viewer"
-        ios-src="models/setup.3/setup.3.usdz"
-        poster="images/loading.png"
-        src="models/setup.3/setup.3.glb"
-      >
-        <button slot="ar-button" id="ar-button"><<txt 3>></button>
-      </model-viewer>
-    <</if>>
-  <</for>>
-
-</div>
-
-<div class="btn-group">
-  <<return>>
-</div>
-
-
-
-
-:: ar.init {"position":"1500,1000","size":"100,100"}
-
-
-:: end.init {"position":"1500,1200","size":"100,100"}
-
-
-:: intro {"position":"800,600","size":"100,100"}
-<script>
-  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
-</script>
-
-<<set $setupCompleted to true>>
-
-<div class="wrapper">
-  <br>
-  <br>
-  <br>
-  <h1>Einführung</h1>
-  <h2>Ablauf, Dauer & Teams.</h2>
-  <p class="p3">intro</p>
-</div>
-
-  <div class="btn-group">
-<button class="next">[[|intro.1]]<<audio "click" play>></button>
-  </div>
-
-
-:: intro.1 {"position":"800,800","size":"100,100"}
-<script>
-    $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
-  </script>
-
-  <div class="wrapper">
-    <h1>Anruf</h1>
-    <img src="images/holger.png" class="image1" />
-  </div>
-
-  <div class="btn-group">
-<button class="next">[[|intro.2]]<<audio "click" play>></button>
-  </div>
-
-
-:: intro.2 {"position":"800,1000","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-<<audio ":playing:" stop>>
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/intro.2.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="retry">[[|passage()]]<<audio "click" play>></button>
-    <button class="next">[[|intro.3]]<<audio "click" play>></button>
-  </div>
-
-
-:: intro.3 {"position":"800,1200","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-<<audio ":playing:" stop>>
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/intro.3.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper">
-  </div>
-
-  <div class="btn-group">
-    <button class="return">[[|intro.2]]<<audio "click" play>></button>
-    <button class="retry">[[|passage()]]<<audio "click" play>></button>
-    <button class="next">[[|intro.4]]<<audio "click" play>></button>
-  </div>
-
-
-:: intro.4 {"position":"800,1400","size":"100,100"}
-<<script>>
-  window.video.showButtonsOnVideoEnd();
-<</script>>
-
-<<audio ":playing:" stop>>
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/intro.4.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="return">[[|intro.3]]<<audio "click" play>></button>
-    <button class="retry">[[|passage()]]<<audio "click" play>></button>
-    <button class="next">[[|intro.6]]<<audio "click" play>></button>
-  </div>
-
-
-:: intro.5 {"position":"800,1600","size":"100,100"}
-<<audio ":playing:" stop>>
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/teams.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="return">[[|intro.4]]<<audio "click" play>></button>
-    <button class="retry">[[|passage()]]<<audio "click" play>></button>
-    <button class="next">[[|intro.6]]<<audio "click" play>></button>
-  </div>
-
-
-:: intro.6 {"position":"800,1800","size":"100,100"}
-<<audio ":playing:" stop>>
-
-<<set $introCompleted to true>>
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/intro.6.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="return">[[|intro.4]]<<audio "click" play>></button>
-    <button class="retry">[[|passage()]]<<audio "click" play>></button>
-    <button class="next">[[|kapitel.init]]<<audio "click" play>></button>
-  </div>
-
-
-:: kapitel.1 {"position":"1100,600","size":"100,100"}
-<script>
-  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
-</script>
-
-<div class="wrapper">
-<br>
-<br>
-<br>
-  <h1>Kapitel 1</h1>
-  <h2>Paranormale Aktivitäten</h2>
-  <p class="p3">apitel</p>
-</div>
-
-  <div class="btn-group">
-<button class="next">[[|map.init]]<<audio "click" play>></button>
-  </div>
-
-
-:: kapitel.init {"position":"1100,500","size":"100,100"}
-<<if $setupCompleted and $introCompleted>>
-	<<goto "kapitel.1">>
-<<elseif $setupCompleted>>
-	<<goto "intro">>
-<<else>>
-	<<goto "vorstellung">>
-<</if>>
-
-:: map.init {"position":"1300,500","size":"100,100"}
-<<if !$letter.includes(0) and $ende is 0>>
-	<<goto "end.init">>
-<<else>>
-	<<goto "map">>
-<</if>>
-
-
-:: map [autosave] {"position":"1300,600","size":"100,100"}
-<div id="map"></div>
-
-<<script>>
-  $(document).one(":passagedisplay", function() {
-    requestScriptLoad({
-      id     : 'lib-mapbox-js',
-      src    : 'https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js',
-      onload : function (evt) {
-        mapboxgl.accessToken = getAccessToken();
-
-        const map = new mapboxgl.Map({
-          container: 'map',
-          style: getStyle(),
-        });
-
-        const geolocate = new mapboxgl.GeolocateControl(window.geolocation.getGeolocateControl());
-
-        map.addControl(geolocate);
-        const locations= getLocations();
-        const remainingLocations = locations.filter(f => !f.alreadyEntered);
-
-        geolocate.on('geolocate', ({ coords }) => {
-          const lat = coords.latitude;
-          const lon = coords.longitude;
-
-          for (const location of remainingLocations) {
-            if (window.geolocation.inside(location.latitude, location.longitude, location.radius, lat, lon)) {
-              map.setPaintProperty( location.id, 'fill-color', '#FFDE03');
-
-              map.on('click', location.id, (e) => {
-                locations.find(f => f.id === location.id).alreadyEntered = true;
-                $.wiki('<<goto "1.0">>');
-              });
-
-            } else {
-              map.setPaintProperty( location.id, 'fill-color', 'black');
-            }
-          }
-        });
-
-        map.on('load', () => {
-          renderMap();
-          $(".mapboxgl-ctrl-geolocate").click();
-        });
-
-        function renderMap() {
-          map.resize();
-          for (const location of remainingLocations) {
-            map.addSource( location.id, window.geolocation.createGeoJSONCircle([ location.longitude, location.latitude], location.radius / 1000));
-
-            map.addLayer({
-              'id': location.id,
-              'type': 'fill',
-              'source': location.id,
-              'layout': {},
-              'paint': {
-                'fill-color': 'black',
-                'fill-opacity': 0.7
-              }
-            });
-          }
-        };
-      }
-    });
-  });
-<</script>>
-
-<div class="wrapper" style="z-index: unset"></div>
-
-<div class="btn-group">
-  
-    <<if $showMaptip>> 
-      <span id="heading"><h2><<txt>></h2>
-        <<button "Weiter">>
-          <<replace "#heading">>
-            <h2><<txt>></h2>
-            <<button "Weiter">>
-              <<replace "#heading">>
-                <h2><<txt>></h2>
-              <</replace>>
-              <<audio "click" play>>
-            <</button>>
-          <</replace>>
-          <<audio "click" play>>
-          <<set $showMaptip to false>>
-        <</button>>
-      </span>
-    <</if>>
-  
-</div>
-
-
-:: quiz.init {"position":"1500,1400","size":"100,100"}
-
-
-
-:: reward.init {"position":"1500,1600","size":"100,100"}
-
-
-
-:: setup.0 {"position":"500,600","size":"100,100"}
+:: setup.init {"position":"500,600","size":"100,100"}
 <<script>>
   if (State.variables.is_pwa) {
-    $.wiki('<<goto "kapitel.init">>')
+    $.wiki('<<goto "setup.3">>')
   };
 
-  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 
   window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
@@ -910,25 +162,23 @@ Spuk & Schreck
   <button class="next">[[|setup.1]]</button>
 </div>
 
-
 :: setup.1 {"position":"500,800","size":"100,100"}
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 
   if (State.variables.is_safari || State.variables.is_chrome) {
     $.wiki('<<goto "setup.2">>')
   };
 <</script>>
 <div class="wrapper">
-  <h1>Browser Check</h1>
-  <h2>Bitte benutze entweder den Chrome Browser (Android) oder Safari (iOS) um diesen Link zu öffnen.</h2>
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
 </div>
-
 
 :: setup.2 {"position":"500,1500","size":"100,100"}
 <<script>>
 $(document).one(":passagedisplay", function() {
-  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
   const installBtn = document.querySelector('.install');
   const iosHelp = document.querySelector('.iosHelp');
   const androidHelp = document.querySelector('.androidHelp');
@@ -964,11 +214,11 @@ $(document).one(":passagedisplay", function() {
  });
 <</script>>
 <div class="wrapper">
-  <h1>Installation</h1>
-  <h2>Bitte installiere zuerst die App.</h2>
-  <h2 class="iosHelp">Tippe dafür in der Adressleiste auf „Teilen“ <img src="images/ios_share.svg" /> und danach auf "Zum Home-Bildschirm".</h2>
-  <h2 class="androidHelp">Tippe dafür auf „Installieren“ <img src="images/android_install.svg" /> und folge danach der Anleitung auf dem Bildschirm.</h2>
-  <h2>Verlasse den Browser und öffne die neu hinzugefügte App.</h2>
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+  <h2 class="iosHelp"><<txt>><img src="images/ios_share.svg" /><<txt>></h2>
+  <h2 class="androidHelp"><<txt>><img src="images/android_install.svg" /><<txt>></h2>
+  <h2><<txt>></h2>
   <img src="images/icon.png" class="image1" />
 </div>
 
@@ -976,20 +226,29 @@ $(document).one(":passagedisplay", function() {
   <button class="install"></button>
 </div>
 
+:: setup.3 {"position":"500,1300","size":"100,100"}
+  
 
-:: setup.3 {"position":"500,1700","size":"100,100"}
+  <<video noHotspot>>
+
+  <div class="btn-group">
+    <button class="retry">[[|passage()]]</button>
+    <button class="next">[[|setup.4]]</button>
+  </div>
+
+:: setup.4 {"position":"500,1700","size":"100,100"}
 <div id="map"></div>
 
 <div class="wrapper">
-  <h1>GPS</h1>
-  <h2>Wir benötigen deinen Standort, um dich zu den Geister-Hotspots zu leiten.</h2>
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
-  <button class="geolocation">Standort freigeben</button>
-  <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices">Einstellungen öffnen</a></button>
+  <button class="geolocation"><<txt>></button>
+  <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices"><<txt>></a></button>
   <button class="help"></button>
-  <button class="next">[[|setup.4]]</button>
+  <button class="next">[[|setup.5]]</button>
 </div>
 
 <<script>>
@@ -1068,7 +327,7 @@ $(document).one(":passagedisplay", function() {
 });
 <</script>>
 
-:: setup.4 {"position":"500,1900","size":"100,100"}
+:: setup.5 {"position":"500,1900","size":"100,100"}
 <<script>>
   $(document).one(":passagedisplay", function() {
     $('#story').attr('style', 'background-image:url(images/cam.jpg)');
@@ -1077,34 +336,1097 @@ $(document).one(":passagedisplay", function() {
   });
 <</script>>
 
+<<set $setupCompleted to true>>
+
 <div class="wrapper">
-  <h1>AR-Kamera</h1>
-  <model-viewer id="model-viewer" src="models/setup.3/setup.3.glb" ar auto-rotate poster="models/setup.3/poster.webp" 
-    autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-    alt="A 3D model of a zombie" camera-controls>
-    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+  <h1><<txt>></h1>
+
+  <model-viewer 
+    id="model-viewer" 
+    ar auto-rotate 
+    src="models/setup.3/setup.3.glb" 
+    ios-src="models/setup.3/setup.3.usdz"
+    poster="images/loading.png"
+    autoplay 
+    shadow-intensity="2"
+    shadow-softness="0"
+    camera-controls>
+    <button slot="ar-button" id="ar-button"><<txt>></button>
+    <effect-composer>
+      <glitch-effect></glitch-effect>
+      /* <bloom-effect></bloom-effect> */
+      /* <pixelate-effect></pixelate-effect> */
+    </effect-composer>
   </model-viewer>
-    <h2>Wir benötigen Zugriff auf deine Kamera, um dir die Geister zu zeigen. 
-  <br>
-  <br>Klicke auf "AR-Kamera öffnen" und schau dir den Zombie an.
-  </h2>
+
+  <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
   <button class="help"></button>
-  <button class="next">[[|intro]]</button>
+  <button class="next">[[|intro.init]]</button>
 </div>
 
-:: vorstellung {"position":"500,1300","size":"100,100"}
-<<audio ":playing:" stop>>
+:: intro.init {"position":"1100,500","size":"100,100"}
+<<if $setupCompleted and $introCompleted>>
+	<<goto "main.init">>
+<<elseif $setupCompleted>>
+	<<goto "intro.1">>
+<<else>>
+	<<goto "setup.3">>
+<</if>>
 
-  <<video noHotspot>>
+:: intro.1 {"position":"800,600","size":"100,100"}
+<script>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+</script>
+
+<div class="wrapper">
+  <br>
+  <br>
+  <br>
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+  <p class="p3">intro</p>
+</div>
+
+<div class="btn-group">
+  <button class="next">[[|intro.2]]</button>
+</div>
+
+
+:: intro.2 {"position":"800,800","size":"100,100"}
+<script>
+  $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
+</script>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <img src="images/holger.png" class="image1" />
+</div>
+
+<div class="btn-group">
+  <button class="next">[[|intro.3]]</button>
+</div>
+
+
+:: intro.3 {"position":"800,1000","size":"100,100"}
+
+
+  <video autoplay muted id="video" playsinline>
+    <source src="videos/intro.3.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper"></div>
 
   <div class="btn-group">
-  <button class="retry">[[|passage()]]<<audio "click" play>></button>
-  <button class="next">[[|setup.3]]<<audio "click" play>></button>
+    <button class="retry">[[|passage()]]</button>
+    <button class="next">[[|intro.4]]</button>
   </div>
 
+
+:: intro.4 {"position":"800,1200","size":"100,100"}
+
+
+  <video autoplay muted id="video" playsinline>
+    <source src="videos/intro.4.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper">
+  </div>
+
+  <div class="btn-group">
+    <button class="return">[[|intro.3]]</button>
+    <button class="retry">[[|passage()]]</button>
+    <button class="next">[[|intro.5]]</button>
+  </div>
+
+:: intro.5 {"position":"800,1400","size":"100,100"}
+
+
+  <video autoplay muted id="video" playsinline>
+    <source src="videos/intro.5.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper"></div>
+
+  <div class="btn-group">
+    <button class="return">[[|intro.4]]</button>
+    <button class="retry">[[|passage()]]</button>
+    <button class="next">[[|intro.6]]</button>
+  </div>
+
+:: intro.6 {"position":"800,1600","size":"100,100"}
+
+
+  <video autoplay muted id="video" playsinline>
+    <source src="videos/intro.6.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper"></div>
+
+  <div class="btn-group">
+    <button class="return">[[|intro.5]]</button>
+    <button class="retry">[[|passage()]]</button>
+    <button class="next">[[|intro.7]]</button>
+  </div>
+
+:: intro.7 {"position":"800,1800","size":"100,100"}
+
+
+<<set $introCompleted to true>>
+
+  <video autoplay muted id="video" playsinline>
+    <source src="videos/intro.7.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper"></div>
+
+  <div class="btn-group">
+    <button class="return">[[|intro.5]]</button>
+    <button class="retry">[[|passage()]]</button>
+    <button class="next">[[|main.init]]</button>
+  </div>
+
+:: main.init {"position":"1100,600","size":"100,100"}
+<script>
+  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+</script>
+
+<div class="wrapper">
+  <br>
+  <br>
+  <br>
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+  <p class="p3">apitel</p>
+</div>
+
+<div class="btn-group">
+  <button class="next">[[|map.init]]</button>
+</div>
+
+:: map.init {"position":"1300,500","size":"100,100"}
+<<if !$letter.includes(0) and $ende is 0>>
+	<<goto "gamegameend.init">>
+<<else>>
+	<<goto "map">>
+<</if>>
+
+
+:: map [autosave] {"position":"1300,600","size":"100,100"}
+<div id="map"></div>
+
+<<script>>
+  $(document).one(":passagedisplay", function() {
+    requestScriptLoad({
+      id     : 'lib-mapbox-js',
+      src    : 'https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js',
+      onload : function (evt) {
+        mapboxgl.accessToken = getAccessToken();
+
+        const map = new mapboxgl.Map({
+          container: 'map',
+          style: getStyle(),
+        });
+
+        const geolocate = new mapboxgl.GeolocateControl(window.geolocation.getGeolocateControl());
+
+        map.addControl(geolocate);
+        const locations= getLocations();
+        const remainingLocations = locations.filter(f => !f.alreadyEntered);
+
+        geolocate.on('geolocate', ({ coords }) => {
+          const lat = coords.latitude;
+          const lon = coords.longitude;
+
+          for (const location of remainingLocations) {
+            if (window.geolocation.inside(location.latitude, location.longitude, location.radius, lat, lon)) {
+              map.setPaintProperty( location.id, 'fill-color', '#FFDE03');
+
+              map.on('click', location.id, (e) => {
+                locations.find(f => f.id === location.id).alreadyEntered = true;
+                $.wiki('<<goto "story.init">>');
+              });
+
+            } else {
+              map.setPaintProperty( location.id, 'fill-color', 'black');
+            }
+          }
+        });
+
+        map.on('load', () => {
+          renderMap();
+          $(".mapboxgl-ctrl-geolocate").click();
+        });
+
+        function renderMap() {
+          map.resize();
+          for (const location of remainingLocations) {
+            map.addSource( location.id, window.geolocation.createGeoJSONCircle([ location.longitude, location.latitude], location.radius / 1000));
+
+            map.addLayer({
+              'id': location.id,
+              'type': 'fill',
+              'source': location.id,
+              'layout': {},
+              'paint': {
+                'fill-color': 'black',
+                'fill-opacity': 0.7
+              }
+            });
+          }
+        };
+      }
+    });
+  });
+<</script>>
+
+<div class="wrapper" style="z-index: unset"></div>
+
+<div class="btn-group">
+  <h2>
+    <<txt>>
+    <br>
+    <<txt>>
+  </h2> 
+  <button class="retry"> [[|map]]</button>
+</div>
+
+:: story.init {"position":"1700,600","size":"100,100"}
+<<script>>
+  $('#story').attr('style', `background-image:url(images/story.init.${State.variables.hotspot}.jpg)`);
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+  <p class="p3">para</p>
+</div>
+
+<div class="btn-group">
+  <button class="next">[[|story]]</button>
+</div>
+
+
+:: story {"position":"1700,800","size":"100,100"}
+  <<video>>
+
+  <div class="btn-group">
+    <button class="retry">[[|passage()]]</button>
+    <button class="next">[[|2.2]]</button>
+  </div>
+
+:: ar.init {"position":"1500,1000","size":"100,100"}
+
+:: ar.1 {"position":"1500,1000","size":"100,100"}
+
+:: chapterclosing.init {"position":"1500,1000","size":"100,100"}
+<<script>>
+  $.wiki('<<goto "chapterclosing">>')
+<</script>>
+
+:: chapterclosing {"position":"1900,2000","size":"100,100"}
+<div
+ class="wrapper">
+  <h1>Unser Ziel</h1>
+  <h2>Wir wollen ein Team-Event kreieren, bei dem sich die Menschen draußen an der frischen Luft bewegen, zusammen arbeiten, um Rätsel zu lösen und mit Hilfe moderner Technik in neue gruselige Welten eintauchen. 
+  <br>
+  <br>Unser Ziel ist Ostern 2024 die erste Rallye im Friedenspark, Leipzig zu veröffentlichen. Weitere Städte werden folgen. 
+  <br>
+  <br>Unsere Rallye wird ausschließlich auf den Smartphones unserer Kunden gespielt. Es gibt keinen Guide vor Ort. Daher ist es uns sehr wichtig, dass die Technik gut funktioniert. 
+  <br>
+  <br>
+  Um zu evaluieren, ob uns das gelingt benötigen wir dein Feedback. Über diesen <a href="https://forms.gle/jcGPPbrbbnwDLNC28">"Link"</a>  erreichst du unseren Fragebogen. Vielen Dank. 
+</h2>
+</div>
+
+ <div class="btn-group">
+    <<button "Zurück" `previous()`>>
+    <</button>>
+  </div>
+
+:: 1.2 {"position":"1700,1000","size":"100,100"}
+  <<if $riddle is 1>>
+    <script>
+      $('#story').attr('style', 'background-image:url(images/1.1.jpg)');
+    </script>
+  <<elseif $riddle is 2>>
+    <script>
+      $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+    </script>
+  <</if>>
+
+  <<if $riddle is 1>>
+    <span id="heading">
+      <h2>Finde dieses Bild. Was befindet sich darüber?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+
+    <div class="btn-group">
+      <<button "Lilie">>
+        <<replace "#heading">><h2>Falsch!</h2><</replace>>
+        <<timed 1s>>
+          <<goto "1.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Sanduhr">>
+        <<replace "#heading">><h2>Falsch!</h2><</replace>>
+        <<timed 1s>>
+          <<goto "1.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Muschel">>
+        <<replace "#heading">><h2>Richtig! +10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "1.2">>
+          <<set $points to $points +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+  <<if $riddle is 2>>
+    <div class="wrapper">
+      <h1>Okkulte<br>Rune</h1>
+      <p class="p2">A</p>
+    </div>
+
+    <div class="btn-group">
+      <<button "Weiter">>
+        <<goto "1.3">>
+        <<set $riddle to 1>>
+        <<set $letter[$hotspot] to 1>>
+          
+      <</button>>
+    </div>
+  <</if>>
+
+
+:: 1.3 {"position":"1700,1200","size":"100,100"}
+
+  <video autoplay muted id="video" playsinline>
+    <source src="videos/1.3.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper"></div>
+
+  <div class="btn-group">
+   <button class="retry">[[|passage()]]</button>
+    <button class="next">[[|1.4]]</button>
+  </div>
+
+
+:: 1.4 {"position":"1700,1400","size":"100,100"}
+<div class="wrapper">
+  <h1>AR-Kamera</h1>
+  <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
+    autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
+    alt="A witch" camera-controls>
+    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+    </model-viewer>
+  <h2>Öffne die Kamera und betrachte die Szene. Mache Fotos von allem was dir wichtig erscheint.</h2>
+  </div>
+
+  <div class="btn-group">
+<button class="next">[[|1.5]]</button>
+  </div>
+
+
+:: 1.5 {"position":"1700,1600","size":"100,100"}
+
+  
+
+  <video autoplay muted id="video" playsinline>
+    <source src="videos/1.5.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper"></div>
+
+  <div class="btn-group">
+   <button class="retry">[[|passage()]]</button>
+    <button class="next">[[|chapterclosing.init]]</button>
+  </div>
+
+:: 2.2 {"position":"1900,1000","size":"100,100"}
+<script>
+  $('#story').attr('style', 'background-image:url(images/cam.jpg)');
+</script>
+
+<div class="wrapper">
+  <h1>AR-Kamera</h1>
+  <model-viewer 
+    id="model-viewer" 
+    ar auto-rotate 
+    src="models/kapitel.1/kapitel.1.glb" 
+    ios-src="models/kapitel.1/kapitel.1.usdz"
+    poster="images/loading.png"
+    autoplay 
+    shadow-intensity="2"
+    shadow-softness="0"
+    camera-controls>
+    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+  </model-viewer>
+  <h2>Öffne die Kamera und betrachte die Szene. Mache Fotos von allem was dir wichtig erscheint.</h2>
+  </div>
+
+  <div class="btn-group">
+    <button class="return">[[|story]]</button>
+    <button class="next">[[|2.3]]</button>
+  </div>
+
+
+:: 2.3 {"position":"1900,1200","size":"100,100"}
+
+  <video autoplay muted id="video" playsinline>
+    <source src="videos/2.3.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper"></div>
+
+  <div class="btn-group">
+   <button class="retry">[[|passage()]]</button>
+   <button class="next">[[|2.4]]</button>
+  </div>
+
+
+:: 2.4 {"position":"1900,1400","size":"100,100"}
+  <script>
+      $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
+    </script>
+
+  <<if $riddle is 1>>
+    <span id="heading">
+    <h1>Frage 1</h1>
+      <h2>Wer ist gestorben?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+
+    <div class="btn-group">
+      <<button "Junge Frau">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Kleines Kind">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Alter Mann">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+  <<if $riddle is 2>>
+    <span id="heading">
+    <h1>Frage 2</h1>
+      <h2>Was hatte der Mann in der Hand?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+
+    <div class="btn-group">
+      <<button "Geld">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">><<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Pillen">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Handy">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+  <<if $riddle is 3>>
+    <span id="heading">
+    <h1>Frage 3</h1>
+      <h2>Wer war dabei als er starb?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+        
+    <div class="btn-group">
+      <<button "Sein Hund">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+          
+      <<button "Seine Frau">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Sein Enkel">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+    <<if $riddle is 4>>
+    <span id="heading">
+    <h1>Frage 4</h1>
+      <h2>Wie hieß der Hund?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+
+    <div class="btn-group">
+      <<button "Bob">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">><<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Ben">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Pip">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+    <<if $riddle is 5>>
+    <span id="heading">
+    <h1>Frage 5</h1>
+      <h2>Was fehlte dem Toten?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+        
+    <div class="btn-group">
+      <<button "Hose">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+          
+      <<button "Hand">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Brille">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "2.4">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+  <<if $riddle is 6>>
+    <div class="wrapper">
+      <h1>Fall gelöst!</h1>
+      <h2>Die Angst was mit seinem Hund Ben passiert hat Herbert im Tod keine Ruhe gelassen. Ben kommt daher nicht ins Tierheim sondern zu Herberts Familie. 
+      <br>
+      <br>Herbert hat endlich Frieden gefunden. 
+      <br>Als Dank hat er dir eine okkulte Rune übersetzt.</h2>
+      <p class="p2">A</p>
+    </div>
+
+    <div class="btn-group">
+      <<button "Weiter">>
+        <<goto "2.5">>
+        <<set $riddle to 1>>
+        <<set $letter4 to 1>>
+          
+      <</button>>
+    </div>
+  <</if>>
+
+:: 2.5 {"position":"1900,1600","size":"100,100"}
+
+  <video autoplay muted id="video" playsinline>
+    <source src="videos/2.5.mp4" type="video/mp4">
+  </video>
+
+  <div class="wrapper"></div>
+
+  <div class="btn-group">
+    <button class="retry">[[|passage()]]</button>
+    <button class="next">[[|2.6]]</button>
+  </div>
+
+
+:: 2.6 {"position":"1900,1800","size":"100,100"}
+
+<div class="wrapper">
+<h1>Herbert</h1>
+<h2>Herbert ist ab sofort in deinem Inventar befreiter Geister verfügbar.</h2>
+<<set $herbert to 1>>
+  <model-viewer 
+      id="model-viewer" 
+      ar auto-rotate 
+      src="models/herbert/herbert.glb" 
+      ios-src="models/herbert/herbert.usdz"
+      poster="images/loading.png"
+      autoplay 
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+  </model-viewer>
+
+  </div>
+
+  <div class="btn-group">
+    <button class="return">[[|2.5]]</button>
+    <button class="retry">[[|passage()]]</button>
+    <button class="next">[[|chapterclosing.init]]</button>
+  </div>
+
+:: 3.0 {"position":"2100,600","size":"100,100"}
+<script>
+$('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
+</script>
+
+<div class="wrapper">
+  <h1>Achtung!</h1>
+  <h2>Paranormale Aktivität entdeckt.</h2>
+  <p class="p3">para</p>
+  </div>
+
+  <div class="btn-group">
+    <button class="next">[[|3.1]]</button>
+  </div>
+
+
+:: 3.1 {"position":"2100,800","size":"100,100"}
+<script>
+  $('#story').attr('style', 'background-image:url(images/cam.jpg)');
+</script>
+
+<div class="wrapper">
+  <h1>AR-Kamera</h1>
+  <model-viewer 
+      id="model-viewer" 
+      ar auto-rotate 
+      src="models/kapitel.2/kapitel.2.glb" 
+      ios-src="models/kapitel.2/kapitel.2.usdz"
+      poster="images/loading.png"
+      autoplay 
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+  </model-viewer>
+  <h2>Öffne die Kamera, untersuche den Tatort und mache Fotos von allem was dir wichtig erscheint.</h2>
+  </div>
+
+  <div class="btn-group">
+    <button class="return">[[|3.1]]</button>
+    <button class="next">[[|3.2]]</button>
+  </div>
+
+
+:: 3.2 {"position":"2100,1000","size":"100,100"}
+<script>
+      $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
+    </script>
+
+  <<if $riddle is 1>>
+    <span id="heading">
+    <h1>Frage 1</h1>
+      <h2>Was ist passiert?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+
+    <div class="btn-group">
+      <<button "Überfall">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Unfall">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Grabraub">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+  <<if $riddle is 2>>
+    <span id="heading">
+    <h1>Frage 2</h1>
+      <h2>Wessen Grab wurde ausgeraubt?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+
+    <div class="btn-group">
+      <<button "Herbert Paus">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">><<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Rosa Herman">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Sibille Knapp">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+  <<if $riddle is 3>>
+    <span id="heading">
+    <h1>Frage 3</h1>
+      <h2>Wie viele Räuber waren es?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+        
+    <div class="btn-group">
+      <<button "1">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+          
+      <<button "2">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+          <<set $koinz to $koinz +10>>
+        <</timed>>
+      <</button>>
+
+      <<button "3">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+    <<if $riddle is 4>>
+    <span id="heading">
+    <h1>Frage 4</h1>
+      <h2>Was haben die Räuber gestohlen?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+
+    <div class="btn-group">
+      <<button "Ein Brosche">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">><<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Zwei Ringe">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Eine Halskette">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+    <<if $riddle is 5>>
+    <span id="heading">
+    <h1>Frage 5</h1>
+      <h2>Gibt es Hinweise auf die Identität der Räuber?</h2>
+    </span>
+
+    <div class="wrapper"></div>
+        
+    <div class="btn-group">
+      <<button "Ausweis">>
+        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $koinz to $koinz +10>>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+          
+      <<button "Nummernschild">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+
+      <<button "Namen">>
+        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
+        <<timed 1s>>
+          <<goto "3.2">>
+          <<set $riddle to $riddle + 1>>
+        <</timed>>
+      <</button>>
+    </div>
+  <</if>>
+
+  <<if $riddle is 6>>
+    <div class="wrapper">
+      <h1>Fall gelöst!</h1>
+      <h2>Du hast Rosa geholfen den Raub an ihrem Grab öffenlich zu machen. Alles weitere muss nun die Polizei erledigen. Rosa kann nun ruhen.
+    <br>
+    <br>
+      Als Dank hat Rosa dir eine okkulte Rune übersetzt.</h2>
+      <p class="p2">A</p>
+    </div>
+
+    <div class="btn-group">
+      <<button "Weiter">>
+        <<goto "3.3">>
+        <<set $riddle to 1>>
+        <<set $letter5 to 1>>
+          
+      <</button>>
+    </div>
+  <</if>>
+
+:: 3.3 {"position":"2301,600","size":"100,100"}
+<div class="wrapper">
+<h1>Rosa</h1>
+<h2>Rosa ist ab sofort in deinem Inventar befreiter Geister verfügbar.</h2>
+<<set $rosa to 1>>
+  <model-viewer 
+      id="model-viewer" 
+      ar auto-rotate 
+      src="models/rosa/rosa.glb" 
+      ios-src="models/rosa/rosa.usdz"
+      poster="images/loading.png"
+      autoplay 
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls>
+      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
+  </model-viewer>
+
+  </div>
+
+  <div class="btn-group">
+    <button class="next">[[|map.init]]</button>
+  </div>
+
+:: Dev {"position":"200,1200","size":"100,100"}
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2>
+  <<txt>>
+  <br/>
+  <br/>
+  <div class="btn-group">
+    <<set $chapter2Text = setup.text['Dev'][3][setup.i18n.langs[settings.lang]]>>
+    <<button $chapter2Text>>
+      <<set $hotspot to 2>>
+      <<goto "story.init">>	
+    <</button>>
+    <<set $chapter3Text = setup.text['Dev'][4][setup.i18n.langs[settings.lang]]>>
+    <<button $chapter2Text>>
+      <<set $hotspot to 3>>
+      <<goto "story.init">>	
+    <</button>>
+    <<set $mapText = setup.text['Dev'][5][setup.i18n.langs[settings.lang]]>>
+    <<button $mapText>>
+      <<goto "map.init">>	
+    <</button>>
+  </div>
+</div>
+<div class="btn-group">
+  <<return>>
+</div>
+
+
+:: Hilfe {"position":"200,800","size":"100,100"}
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+  <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>>
+      <<link "Menu">>
+	      <<script>>UIBar.unstow().show()<</script>>
+      <</link>>
+      </p>
+    </div>
+  </details>
+  <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>></p>
+    </div>
+  </details>
+  <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>></p>
+    </div>
+  </details>
+  <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>></p>
+    </div>
+  </details>
+</div>
+
+<div class="btn-group">
+  <<return>>
+</div>
+
+
+:: Impressum {"position":"200,1000","size":"100,100"}
+<div class="wrapper">
+  <h1><<txt>></h1>
+</div>
+
+<div class="btn-group">
+  <<return>>
+</div>
+
+
+:: Inventar {"position":"200,600","size":"100,100"}
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+  <<for _i, _name range $inventory>>
+    <h1>_name</h1>
+    <<if _name is 1>>
+      <model-viewer
+        id="model-viewer" 
+        ar auto-rotate 
+        src="models/herbert/herbert.glb" 
+        ios-src="models/herbert/herbert.usdz"
+        poster="images/loading.png"
+        autoplay 
+        shadow-intensity="2"
+        shadow-softness="0"
+        camera-controls
+      >
+        <button slot="ar-button" id="ar-button"><<txt 3>></button>
+      </model-viewer>
+    <</if>>
+  <</for>>
+
+</div>
+
+<div class="btn-group">
+  <<return>>
+</div>
+
+:: gameend.init {"position":"1500,1200","size":"100,100"}
 
 :: StoryScript [script]
 /************
@@ -1862,7 +2184,7 @@ model-viewer {
 }
 
 #videoText {
-  margin-top: 50%;
+  margin-top: 10%;
   font-size: 6vh;
   font-style: normal;
   font-weight: bold;
