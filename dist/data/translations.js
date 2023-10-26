@@ -12,14 +12,6 @@ getTranslations = function () {
     "3": {
       de: 'Okkulte Runen:',
       en: 'Occult Runes:'
-    },
-    "4": {
-      de: 'Abkürzungen',
-      en: 'Shortcuts'
-    },
-    "5": {
-      de: 'Feedback',
-      en: 'Feedback'
     }
   };
   text["StoryMenu"] = {
@@ -34,6 +26,14 @@ getTranslations = function () {
     "3": {
       de: 'Impressum',
       en: 'Legal Notice'
+    },
+    "4": {
+      de: 'Abkürzungen',
+      en: 'Shortcuts'
+    },
+    "5": {
+      de: 'Feedback',
+      en: 'Feedback'
     }
   };
   text["Dev"] = {

@@ -132,10 +132,10 @@ Spuk & Schreck
 <<set $shortcutText = setup.text['StoryMenu'][4][setup.i18n.langs[settings.lang]]>>
 <<set $feedbackText = setup.text['StoryMenu'][5][setup.i18n.langs[settings.lang]]>>
 <<link [[$inventoryText|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
+<<link [[$shortcutText|"Dev"]]>><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
+<<link [[$feedbackText|"chapterclosing.init"]]>><<addclass "#ui-bar" "stowed">><</link>>
 <<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
 <<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>>
-<<link [[$legalText|"Dev"]]>><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
-<<link [[$legalText|"chapterclosing.init"]]>><<addclass "#ui-bar" "stowed">><</link>>
 
 :: setup.init {"position":"100,300","size":"100,100"}
 <<script>>
@@ -1010,11 +1010,11 @@ $(document).one(":passagedisplay", function() {
 
 
 :: 2.6 {"position":"1700,1100","size":"100,100"}
+<<set $inventory[2] to 'herbert'>>
 
 <div class="wrapper">
-<h1>Herbert</h1>
-<h2>Herbert ist ab sofort in deinem Inventar befreiter Geister verfügbar.</h2>
-<<set $herbert to 1>>
+  <h1>Herbert</h1>
+  <h2>Herbert ist ab sofort in deinem Inventar befreiter Geister verfügbar.</h2>
   <model-viewer 
       id="model-viewer" 
       ar auto-rotate 
@@ -1027,14 +1027,13 @@ $(document).one(":passagedisplay", function() {
       camera-controls>
       <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
+</div>
 
-  </div>
-
-  <div class="btn-group">
-    <button class="return">[[|2.5]]</button>
-    <button class="retry">[[|passage()]]</button>
-    <button class="next">[[|chapterclosing.init]]</button>
-  </div>
+<div class="btn-group">
+  <button class="return">[[|2.5]]</button>
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|chapterclosing.init]]</button>
+</div>
 
 :: 3.0 {"position":"1900,300","size":"100,100"}
 <script>
@@ -1284,10 +1283,12 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <</if>>
 
 :: 3.3 {"position":"1900,900","size":"100,100"}
+<<set $inventory[3] to 'rosa'>>
+
 <div class="wrapper">
-<h1>Rosa</h1>
-<h2>Rosa ist ab sofort in deinem Inventar befreiter Geister verfügbar.</h2>
-<<set $rosa to 1>>
+  <h1>Rosa</h1>
+  <h2>Rosa ist ab sofort in deinem Inventar befreiter Geister verfügbar.</h2>
+
   <model-viewer 
       id="model-viewer" 
       ar auto-rotate 
@@ -1301,17 +1302,16 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
       <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
   </model-viewer>
 
-  </div>
+</div>
 
-  <div class="btn-group">
-    <button class="next">[[|map.init]]</button>
-  </div>
+<div class="btn-group">
+  <button class="next">[[|map.init]]</button>
+</div>
 
 :: Dev {"position":"1300,100","size":"100,100"}
 <div class="wrapper">
   <h1><<txt>></h1>
-  <h2>
-  <<txt>>
+  <h2><<txt>></h2>
   <br/>
   <br/>
   <div class="btn-group">
@@ -1321,7 +1321,7 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
       <<goto "story.init">>	
     <</button>>
     <<set $chapter3Text = setup.text['Dev'][4][setup.i18n.langs[settings.lang]]>>
-    <<button $chapter2Text>>
+    <<button $chapter3Text>>
       <<set $hotspot to 3>>
       <<goto "story.init">>	
     <</button>>
@@ -1398,8 +1398,8 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <h1><<txt>></h1>
   <h2><<txt>></h2>
   <<for _i, _name range $inventory>>
-    <h1>_name</h1>
-    <<if _name is 1>>
+    <<if _name isnot 0>>
+      <h1>_name</h1>
       <model-viewer
         id="model-viewer" 
         ar auto-rotate 
