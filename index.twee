@@ -762,8 +762,6 @@ $(document).one(":passagedisplay", function() {
 
     <div class="btn-group">
       <<for _answer, _data range _answers>>
-        <h2>_data.correct</h2>
-        <h2>_data.points</h2>
         <<capture _data>>
           <<button _answer>>
             <<set _resultText = _data.correct ? "Richtig!" : "Falsch!">>
