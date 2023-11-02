@@ -1397,24 +1397,46 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
-  <<for _i, _name range $inventory>>
-    <<if _name isnot 0>>
-      <h1>_name</h1>
-      <model-viewer
-        id="model-viewer" 
-        ar auto-rotate 
-        src="models/herbert/herbert.glb" 
-        ios-src="models/herbert/herbert.usdz"
-        poster="images/loading.png"
-        autoplay 
-        shadow-intensity="2"
-        shadow-softness="0"
-        camera-controls
-      >
-        <button slot="ar-button" id="ar-button"><<txt 3>></button>
-      </model-viewer>
-    <</if>>
-  <</for>>
+  <<script>>
+    $(document).one(":passagedisplay", function() {
+
+      function createModelViewer(element) {
+        const modelViewer = document.createElement('model-viewer');
+        modelViewer.src = `models/${element}/${element}.glb`;
+        modelViewer.iosSrc = `models/${element}/${element}.usdz`;
+        modelViewer.setAttribute('ar', true);
+        modelViewer.setAttribute('auto-rotate', true);
+        modelViewer.setAttribute('poster', 'images/loading.png');
+        modelViewer.setAttribute('autoplay', true);
+        modelViewer.setAttribute('shadow-intensity', '2');
+        modelViewer.setAttribute('shadow-softness', '0');
+        modelViewer.setAttribute('camera-controls', true);
+
+        const arButton = document.createElement('button');
+        arButton.slot = 'ar-button';
+        arButton.id = 'ar-button';
+        arButton.textContent = setup.text['Inventar'][3][setup.i18n.langs[settings.lang]];
+
+        modelViewer.appendChild(arButton);
+
+        return modelViewer;
+      };
+
+      const container = document.getElementById('model-viewer-container');
+      for (const element of State.variables.inventory) {
+        if (element != 0) {
+          const modelViewerElement = createModelViewer(element);
+          container.appendChild(modelViewerElement);
+
+          const title = document.createElement("h1");
+          const titleText = document.createTextNode(element);
+          title.appendChild(titleText);
+          container.insertBefore(title, modelViewerElement);
+        }
+      }
+    })
+  <</script>>
+  <div id="model-viewer-container"></div>
 
 </div>
 
@@ -2070,7 +2092,7 @@ border: none;
 /* ####################MODEL VIEWER#################### */
 model-viewer {
   width: 90%;
-  height: 50%;
+  height: 50vh;
   background-color: rgba(0, 0, 0, 0.75);
   margin: 0 5%;
 }
