@@ -67,7 +67,7 @@ Spuk & Schreck
 <<widget "video">>
   <<set $hasHotspot = $args.raw === "">>
   <<set $passage = passage()>>
-  <<set $storyText = setup.text[passage()][1][setup.i18n.langs[settings.lang]]>>
+  <<set $storyText = setup.text[passage()][State.variables.hasHotspot ? State.variables.hotspot : 1][setup.i18n.langs[settings.lang]]>>
   <<script>>
     const videoText = window.video.splitTextByTrimmer(State.variables.storyText);
 
@@ -135,8 +135,8 @@ Spuk & Schreck
 <<link [[$inventoryText|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
 <<link [[$shortcutText|"Dev"]]>><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
 <<link [[$feedbackText|"chapterclosing.init"]]>><<addclass "#ui-bar" "stowed">><</link>>
-<<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
-<<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>>
+/* <<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
+<<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 
 :: setup.init {"position":"100,300","size":"100,100"}
 <<script>>
@@ -263,12 +263,12 @@ $(document).one(":passagedisplay", function() {
 
 :: setup.3 {"position":"100,900","size":"100,100"}
 
-  <<video noHotspot>>
+<<video noHotspot>>
 
-  <div class="btn-group">
-    <button class="retry">[[|passage()]]</button>
-    <button class="next">[[|setup.4]]</button>
-  </div>
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|setup.4]]</button>
+</div>
 
 :: setup.4 {"position":"100,1100","size":"100,100"}
 <div id="map"></div>
@@ -627,6 +627,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: story.init {"position":"900,300","size":"100,100"}
+
 <<script>>
   $('#story').attr('style', `background-image:url(images/story.init.${State.variables.hotspot}.jpg)`);
 <</script>>
@@ -642,16 +643,300 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: story {"position":"900,500","size":"100,100"}
-  <<video>>
 
-  <div class="btn-group">
-    <button class="retry">[[|passage()]]</button>
-    <button class="next">[[|2.2]]</button>
-  </div>
+<<video>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|ar.init]]</button>
+</div>
 
 :: ar.init {"position":"1100,300","size":"100,100"}
 
+<<script>>
+  $.wiki('<<goto "ar.1">>')
+<</script>>
+
 :: ar.1 {"position":"1100,500","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/cam.jpg)');
+
+  $(document).one(":passagedisplay", function() {
+    const modelViewer = document.getElementById('model-viewer');
+    if (modelViewer){
+      modelViewer.src = `models/kapitel.${State.variables.hotspot}/kapitel.${State.variables.hotspot}.glb`;
+      modelViewer.iosSrc = `models/kapitel.${State.variables.hotspot}/kapitel.${State.variables.hotspot}.usdz`;
+    }
+  })
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <model-viewer 
+    id="model-viewer" 
+    ar auto-rotate 
+    poster="images/loading.png"
+    autoplay 
+    shadow-intensity="2"
+    shadow-softness="0"
+    camera-controls>
+    <button slot="ar-button" id="ar-button"><<txt>></button>
+  </model-viewer>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="return">[[|story]]</button>
+  <button class="next">[[|ar.2]]</button>
+</div>
+
+:: ar.2 {"position":"1100,700","size":"100,100"}
+<<video>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|ar.3]]</button>
+</div>
+
+:: ar.3 {"position":"1100,900","size":"100,100"}
+<script>
+  $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
+</script>
+
+<<if $hotspot is 1>>
+  <<if $riddle < 6>>
+    <<set _riddles = [
+      {
+        question: "Wer ist gestorben?",
+        answers: {
+          "Junge Frau": { correct: false, points: 0 },
+          "Kleines Kind": { correct: false, points: 0 },
+          "Alter Mann": { correct: true, points: 10 }
+        }
+      },
+      {
+        question: "Was hatte der Mann in der Hand?",
+        answers: {
+          "Geld": { correct: false, points: 0 },
+          "Pillen": { correct: true, points: 10 },
+          "Handy": { correct: false, points: 0 }
+        }
+      },
+      {
+        question: "Wer war dabei als er starb?",
+        answers: {
+          "Sein Hund": { correct: true, points: 10 },
+          "Seine Frau": { correct: false, points: 0 },
+          "Sein Enkel": { correct: false, points: 0 }
+        }
+      },
+      {
+        question: "Wie hieß der Hund?",
+        answers: {
+          "Bob": { correct: false, points: 0 },
+          "Ben": { correct: true, points: 10 },
+          "Pip": { correct: false, points: 0 }
+        }
+      },
+      {
+        question: "Was fehlte dem Toten?",
+        answers: {
+          "Hose": { correct: true, points: 10 },
+          "Hand": { correct: false, points: 0 },
+          "Brille": { correct: false, points: 0 }
+        }
+      }
+    ]>>
+
+    <<set _riddle = _riddles[$riddle - 1]>>
+    <<set _question = _riddle.question>>
+    <<set _answers = _riddle.answers>>
+
+    <span id="heading">
+      <h1><<txt>> $riddle</h1>
+      <h2>_question</h2>
+    </span>
+
+    <div class="wrapper"></div>
+
+    <div class="btn-group">
+      <<for _answer, _data range _answers>>
+        <h2>_data.correct</h2>
+        <h2>_data.points</h2>
+        <<capture _data>>
+          <<button _answer>>
+            <<set _resultText = _data.correct ? "Richtig!" : "Falsch!">>
+            <<set _points = _data.points > 0 ? "+" + _data.points + " Punkte" : "Keine Punkte">>
+            <<replace "#heading">>
+              <h1>_resultText</h1>
+              <h2>_points</h2>
+            <</replace>>
+            <<timed 1s>>
+              <<set $points to $points + _data.points>>
+              <<set $riddle to $riddle + 1>>
+              <<goto "ar.3">>
+            <</timed>>
+          <</button>>
+        <</capture>>
+      <</for>>
+    </div>
+  <</if>>
+
+  <<if $riddle is 6>>
+    <div class="wrapper">
+      <h1>Fall gelöst!</h1>
+      <h2>Die Angst was mit seinem Hund Ben passiert hat Herbert im Tod keine Ruhe gelassen. Ben kommt daher nicht ins Tierheim sondern zu Herberts Familie. Als Dank hat er dir eine okkulte Rune übersetzt.</h2>
+      <p class="p2">A</p>
+    </div>
+
+    <div class="btn-group">
+      <<button "Weiter">>
+        <<goto "ar.4">>
+        <<set $riddle to 1>>
+        <<set $letter4 to 1>>
+      <</button>>
+    </div>
+  <</if>>
+
+<<elseif $hotspot is 2>>
+  <<if $riddle < 6>>
+    <<set _riddles = [
+      {
+        question: "Was ist passiert?",
+        answers: {
+          "Überfall": { correct: false, points: 0 },
+          "Unfall": { correct: false, points: 0 },
+          "Grabraub": { correct: true, points: 10 }
+        }
+      },
+      {
+        question: "Wessen Grab wurde ausgeraubt?",
+        answers: {
+          "Herbert Paus": { correct: false, points: 0 },
+          "Rosa Herman": { correct: true, points: 10 },
+          "Sibille Knapp": { correct: false, points: 0 }
+        }
+      },
+      {
+        question: "Wie viele Räuber waren es?",
+        answers: {
+          "1": { correct: false, points: 0 },
+          "2": { correct: true, points: 10 },
+          "3": { correct: false, points: 0 }
+        }
+      },
+      {
+        question: "Was haben die Räuber gestohlen?",
+        answers: {
+          "Ein Brosche": { correct: false, points: 0 },
+          "Zwei Ringe": { correct: true, points: 10 },
+          "Eine Halskette": { correct: false, points: 0 }
+        }
+      },
+      {
+        question: "Gibt es Hinweise auf die Identität der Räuber?",
+        answers: {
+          "Ausweis": { correct: true, points: 10 },
+          "Nummernschild": { correct: false, points: 0 },
+          "Namen": { correct: false, points: 0 }
+        }
+      }
+    ]>>
+
+    <<set _riddle = _riddles[$riddle - 1]>>
+    <<set _question = _riddle.question>>
+    <<set _answers = _riddle.answers>>
+
+    <span id="heading">
+      <h1><<txt>> $riddle</h1>
+      <h2>_question</h2>
+    </span>
+
+    <div class="wrapper"></div>
+
+    <div class="btn-group">
+      <<for _answer, _data range _answers>>
+        <<capture _data>>
+          <<button _answer>>
+            <<set _resultText = _data.correct ? "Richtig!" : "Falsch!">>
+            <<set _points = _data.points > 0 ? "+" + _data.points + " Punkte" : "Keine Punkte">>
+            <<replace "#heading">>
+              <h1>_resultText</h1>
+              <h2>_points</h2>
+            <</replace>>
+            <<timed 1s>>
+              <<set $points to $points + _data.points>>
+              <<set $riddle to $riddle + 1>>
+              <<goto "ar.3">>
+            <</timed>>
+          <</button>>
+        <</capture>>
+      <</for>>
+    </div>
+  <</if>>
+
+  <<if $riddle is 6>>
+    <div class="wrapper">
+      <h1>Fall gelöst!</h1>
+      <h2>Du hast Rosa geholfen den Raub an ihrem Grab öffentlich zu machen. Alles weitere muss nun die Polizei erledigen. Rosa kann nun ruhen. Als Dank hat Rosa dir eine okkulte Rune übersetzt.</h2>
+      <p class="p2">A</p>
+    </div>
+
+    <div class="btn-group">
+      <<button "Weiter">>
+        <<goto "ar.4">>
+        <<set $riddle to 1>>
+        <<set $letter5 to 1>>
+      <</button>>
+    </div>
+  <</if>>
+<</if>>
+
+
+:: ar.4 {"position":"1100,1100","size":"100,100"}
+<<video>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|ar.5]]</button>
+</div>
+
+:: ar.5 {"position":"1100,1300","size":"100,100"}
+<<script>>
+  $(document).one(":passagedisplay", function() {
+    const modelViewer = document.getElementById('model-viewer');
+    if (modelViewer){
+        const modelCount = State.variables.hotspot;
+        modelViewer.src = `models/${State.variables.inventoryNames[modelCount]}/${State.variables.inventoryNames[modelCount]}.glb`;
+        modelViewer.iosSrc = `models/${State.variables.inventoryNames[modelCount]}/${State.variables.inventoryNames[modelCount]}.usdz`;
+    }
+  })
+<</script>>
+<<set $inventoryNames to ['', 'herbert', 'rosa']>>
+<<set $inventory[$hotspot] to $inventoryNames[$hotspot]>>
+
+<div class="wrapper">
+  <h1>$inventoryNames[$hotspot]</h1>
+  <h2><<txt>></h2>
+  <model-viewer 
+    id="model-viewer" 
+    ar
+    auto-rotate 
+    poster="images/loading.png"
+    autoplay 
+    shadow-intensity="2"
+    shadow-softness="0"
+    camera-controls>
+    <button slot="ar-button" id="ar-button"><<txt>></button>
+  </model-viewer>
+</div>
+
+<div class="btn-group">
+  <button class="return">[[|ar.4]]</button>
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|chapterclosing.init]]</button>
+</div>
 
 :: chapterclosing.init {"position":"1300,300","size":"100,100"}
 <<script>>
@@ -678,670 +963,6 @@ $(document).one(":passagedisplay", function() {
     <</button>>
   </div>
 
-:: 1.2 {"position":"1500,300","size":"100,100"}
-  <<if $riddle is 1>>
-    <script>
-      $('#story').attr('style', 'background-image:url(images/1.1.jpg)');
-    </script>
-  <<elseif $riddle is 2>>
-    <script>
-      $('#story').attr('style', 'background-image:url(images/bg.jpg)');
-    </script>
-  <</if>>
-
-  <<if $riddle is 1>>
-    <span id="heading">
-      <h2>Finde dieses Bild. Was befindet sich darüber?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-
-    <div class="btn-group">
-      <<button "Lilie">>
-        <<replace "#heading">><h2>Falsch!</h2><</replace>>
-        <<timed 1s>>
-          <<goto "1.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Sanduhr">>
-        <<replace "#heading">><h2>Falsch!</h2><</replace>>
-        <<timed 1s>>
-          <<goto "1.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Muschel">>
-        <<replace "#heading">><h2>Richtig! +10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "1.2">>
-          <<set $points to $points +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 2>>
-    <div class="wrapper">
-      <h1>Okkulte<br>Rune</h1>
-      <p class="p2">A</p>
-    </div>
-
-    <div class="btn-group">
-      <<button "Weiter">>
-        <<goto "1.3">>
-        <<set $riddle to 1>>
-        <<set $letter[$hotspot] to 1>>
-          
-      <</button>>
-    </div>
-  <</if>>
-
-
-:: 1.3 {"position":"1500,500","size":"100,100"}
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/1.3.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-   <button class="retry">[[|passage()]]</button>
-    <button class="next">[[|1.4]]</button>
-  </div>
-
-
-:: 1.4 {"position":"1500,700","size":"100,100"}
-<div class="wrapper">
-  <h1>AR-Kamera</h1>
-  <model-viewer id="model-viewer" src="models/witch/witch.glb" ar auto-rotate poster="models/witch/poster.webp" 
-    autoplay environment-image="models/hanging/music_hall_01_1k.hdr"
-    alt="A witch" camera-controls>
-    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-    </model-viewer>
-  <h2>Öffne die Kamera und betrachte die Szene. Mache Fotos von allem was dir wichtig erscheint.</h2>
-  </div>
-
-  <div class="btn-group">
-<button class="next">[[|1.5]]</button>
-  </div>
-
-
-:: 1.5 {"position":"1500,700","size":"100,100"}
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/1.5.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-   <button class="retry">[[|passage()]]</button>
-    <button class="next">[[|chapterclosing.init]]</button>
-  </div>
-
-:: 2.2 {"position":"1700,300","size":"100,100"}
-<script>
-  $('#story').attr('style', 'background-image:url(images/cam.jpg)');
-</script>
-
-<div class="wrapper">
-  <h1>AR-Kamera</h1>
-  <model-viewer 
-    id="model-viewer" 
-    ar auto-rotate 
-    src="models/kapitel.1/kapitel.1.glb" 
-    ios-src="models/kapitel.1/kapitel.1.usdz"
-    poster="images/loading.png"
-    autoplay 
-    shadow-intensity="2"
-    shadow-softness="0"
-    camera-controls>
-    <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <h2>Öffne die Kamera und betrachte die Szene. Mache Fotos von allem was dir wichtig erscheint.</h2>
-  </div>
-
-  <div class="btn-group">
-    <button class="return">[[|story]]</button>
-    <button class="next">[[|2.3]]</button>
-  </div>
-
-
-:: 2.3 {"position":"1700,500","size":"100,100"}
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/2.3.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-   <button class="retry">[[|passage()]]</button>
-   <button class="next">[[|2.4]]</button>
-  </div>
-
-
-:: 2.4 {"position":"1700,700","size":"100,100"}
-  <script>
-      $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
-    </script>
-
-  <<if $riddle is 1>>
-    <span id="heading">
-    <h1>Frage 1</h1>
-      <h2>Wer ist gestorben?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-
-    <div class="btn-group">
-      <<button "Junge Frau">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Kleines Kind">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Alter Mann">>
-        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $koinz to $koinz +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 2>>
-    <span id="heading">
-    <h1>Frage 2</h1>
-      <h2>Was hatte der Mann in der Hand?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-
-    <div class="btn-group">
-      <<button "Geld">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">><<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Pillen">>
-        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $koinz to $koinz +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Handy">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 3>>
-    <span id="heading">
-    <h1>Frage 3</h1>
-      <h2>Wer war dabei als er starb?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-        
-    <div class="btn-group">
-      <<button "Sein Hund">>
-        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $koinz to $koinz +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-          
-      <<button "Seine Frau">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Sein Enkel">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-    <<if $riddle is 4>>
-    <span id="heading">
-    <h1>Frage 4</h1>
-      <h2>Wie hieß der Hund?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-
-    <div class="btn-group">
-      <<button "Bob">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">><<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Ben">>
-        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $koinz to $koinz +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Pip">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-    <<if $riddle is 5>>
-    <span id="heading">
-    <h1>Frage 5</h1>
-      <h2>Was fehlte dem Toten?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-        
-    <div class="btn-group">
-      <<button "Hose">>
-        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $koinz to $koinz +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-          
-      <<button "Hand">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Brille">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "2.4">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 6>>
-    <div class="wrapper">
-      <h1>Fall gelöst!</h1>
-      <h2>Die Angst was mit seinem Hund Ben passiert hat Herbert im Tod keine Ruhe gelassen. Ben kommt daher nicht ins Tierheim sondern zu Herberts Familie. 
-      <br>
-      <br>Herbert hat endlich Frieden gefunden. 
-      <br>Als Dank hat er dir eine okkulte Rune übersetzt.</h2>
-      <p class="p2">A</p>
-    </div>
-
-    <div class="btn-group">
-      <<button "Weiter">>
-        <<goto "2.5">>
-        <<set $riddle to 1>>
-        <<set $letter4 to 1>>
-          
-      <</button>>
-    </div>
-  <</if>>
-
-:: 2.5 {"position":"1700,900","size":"100,100"}
-
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/2.5.mp4" type="video/mp4">
-  </video>
-
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="retry">[[|passage()]]</button>
-    <button class="next">[[|2.6]]</button>
-  </div>
-
-
-:: 2.6 {"position":"1700,1100","size":"100,100"}
-<<set $inventory[2] to 'herbert'>>
-
-<div class="wrapper">
-  <h1>Herbert</h1>
-  <h2>Herbert ist ab sofort in deinem Inventar befreiter Geister verfügbar.</h2>
-  <model-viewer 
-      id="model-viewer" 
-      ar auto-rotate 
-      src="models/herbert/herbert.glb" 
-      ios-src="models/herbert/herbert.usdz"
-      poster="images/loading.png"
-      autoplay 
-      shadow-intensity="2"
-      shadow-softness="0"
-      camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-</div>
-
-<div class="btn-group">
-  <button class="return">[[|2.5]]</button>
-  <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|chapterclosing.init]]</button>
-</div>
-
-:: 3.0 {"position":"1900,300","size":"100,100"}
-<script>
-$('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
-</script>
-
-<div class="wrapper">
-  <h1>Achtung!</h1>
-  <h2>Paranormale Aktivität entdeckt.</h2>
-  <p class="p3">para</p>
-  </div>
-
-  <div class="btn-group">
-    <button class="next">[[|3.1]]</button>
-  </div>
-
-
-:: 3.1 {"position":"1900,500","size":"100,100"}
-<script>
-  $('#story').attr('style', 'background-image:url(images/cam.jpg)');
-</script>
-
-<div class="wrapper">
-  <h1>AR-Kamera</h1>
-  <model-viewer 
-      id="model-viewer" 
-      ar auto-rotate 
-      src="models/kapitel.2/kapitel.2.glb" 
-      ios-src="models/kapitel.2/kapitel.2.usdz"
-      poster="images/loading.png"
-      autoplay 
-      shadow-intensity="2"
-      shadow-softness="0"
-      camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-  <h2>Öffne die Kamera, untersuche den Tatort und mache Fotos von allem was dir wichtig erscheint.</h2>
-  </div>
-
-  <div class="btn-group">
-    <button class="return">[[|3.1]]</button>
-    <button class="next">[[|3.2]]</button>
-  </div>
-
-
-:: 3.2 {"position":"1900,700","size":"100,100"}
-<script>
-      $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
-    </script>
-
-  <<if $riddle is 1>>
-    <span id="heading">
-    <h1>Frage 1</h1>
-      <h2>Was ist passiert?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-
-    <div class="btn-group">
-      <<button "Überfall">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Unfall">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Grabraub">>
-        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">>
-          <<set $koinz to $koinz +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 2>>
-    <span id="heading">
-    <h1>Frage 2</h1>
-      <h2>Wessen Grab wurde ausgeraubt?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-
-    <div class="btn-group">
-      <<button "Herbert Paus">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">><<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Rosa Herman">>
-        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">>
-          <<set $koinz to $koinz +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Sibille Knapp">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 3>>
-    <span id="heading">
-    <h1>Frage 3</h1>
-      <h2>Wie viele Räuber waren es?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-        
-    <div class="btn-group">
-      <<button "1">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-          
-      <<button "2">>
-        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">>
-          <<set $riddle to $riddle + 1>>
-          <<set $koinz to $koinz +10>>
-        <</timed>>
-      <</button>>
-
-      <<button "3">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-    <<if $riddle is 4>>
-    <span id="heading">
-    <h1>Frage 4</h1>
-      <h2>Was haben die Räuber gestohlen?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-
-    <div class="btn-group">
-      <<button "Ein Brosche">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">><<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Zwei Ringe">>
-        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">>
-          <<set $koinz to $koinz +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Eine Halskette">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-    <<if $riddle is 5>>
-    <span id="heading">
-    <h1>Frage 5</h1>
-      <h2>Gibt es Hinweise auf die Identität der Räuber?</h2>
-    </span>
-
-    <div class="wrapper"></div>
-        
-    <div class="btn-group">
-      <<button "Ausweis">>
-        <<replace "#heading">><h1>Richtig!</h1><h2>+10 Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">>
-          <<set $koinz to $koinz +10>>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-          
-      <<button "Nummernschild">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-
-      <<button "Namen">>
-        <<replace "#heading">><h1>Falsch!</h1><h2>Keine Punkte</h2><</replace>>
-        <<timed 1s>>
-          <<goto "3.2">>
-          <<set $riddle to $riddle + 1>>
-        <</timed>>
-      <</button>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 6>>
-    <div class="wrapper">
-      <h1>Fall gelöst!</h1>
-      <h2>Du hast Rosa geholfen den Raub an ihrem Grab öffenlich zu machen. Alles weitere muss nun die Polizei erledigen. Rosa kann nun ruhen.
-    <br>
-    <br>
-      Als Dank hat Rosa dir eine okkulte Rune übersetzt.</h2>
-      <p class="p2">A</p>
-    </div>
-
-    <div class="btn-group">
-      <<button "Weiter">>
-        <<goto "3.3">>
-        <<set $riddle to 1>>
-        <<set $letter5 to 1>>
-          
-      <</button>>
-    </div>
-  <</if>>
-
-:: 3.3 {"position":"1900,900","size":"100,100"}
-<<set $inventory[3] to 'rosa'>>
-
-<div class="wrapper">
-  <h1>Rosa</h1>
-  <h2>Rosa ist ab sofort in deinem Inventar befreiter Geister verfügbar.</h2>
-
-  <model-viewer 
-      id="model-viewer" 
-      ar auto-rotate 
-      src="models/rosa/rosa.glb" 
-      ios-src="models/rosa/rosa.usdz"
-      poster="images/loading.png"
-      autoplay 
-      shadow-intensity="2"
-      shadow-softness="0"
-      camera-controls>
-      <button slot="ar-button" id="ar-button">AR-Kamera öffnen</button>
-  </model-viewer>
-
-</div>
-
-<div class="btn-group">
-  <button class="next">[[|map.init]]</button>
-</div>
-
 :: Dev {"position":"1300,100","size":"100,100"}
 <div class="wrapper">
   <h1><<txt>></h1>
@@ -1349,14 +970,14 @@ $('#story').attr('style', 'background-image:url(images/paranormal.jpg)');
   <br/>
   <br/>
   <div class="btn-group">
-    <<set $chapter2Text = setup.text['Dev'][3][setup.i18n.langs[settings.lang]]>>
-    <<button $chapter2Text>>
-      <<set $hotspot to 2>>
+    <<set $chapter1Text = setup.text['Dev'][3][setup.i18n.langs[settings.lang]]>>
+    <<button $chapter1Text>>
+      <<set $hotspot to 1>>
       <<goto "story.init">>	
     <</button>>
-    <<set $chapter3Text = setup.text['Dev'][4][setup.i18n.langs[settings.lang]]>>
-    <<button $chapter3Text>>
-      <<set $hotspot to 3>>
+    <<set $chapter2Text = setup.text['Dev'][4][setup.i18n.langs[settings.lang]]>>
+    <<button $chapter2Text>>
+      <<set $hotspot to 2>>
       <<goto "story.init">>	
     <</button>>
     <<set $mapText = setup.text['Dev'][5][setup.i18n.langs[settings.lang]]>>

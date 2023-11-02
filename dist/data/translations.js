@@ -194,6 +194,72 @@ getTranslations = function () {
       de: 'Du hast ein paranormales Feld betreten. Zeit die Geister aufzuspüren. Dein Scanner sucht gerade nach Geister-Echos. Echos sind verblasste Erinnerungen oder Emotionen. Sie binden die Geister an einen spezifischen Ort. Schau dir die Fotos an und versuche die Rätsel zu lösen. Die Antworten befinden sich ganz in der Nähe.',
       en: 'You have entered a paranormal field. Time to track down the ghosts. Your scanner is currently searching for ghost echoes. Echoes are faded memories or emotions. They tie the ghosts to a specific location. Look at the photos and try to solve the puzzles. The answers are close by.'
     },
+    "2": {
+      de: 'Du hast ein paranormales Feld betreten. Zeit die Geister aufzuspüren. Dein Scanner sucht gerade nach Geister-Echos. Echos sind verblasste Erinnerungen oder Emotionen. Sie binden die Geister an einen spezifischen Ort. Schau dir die Fotos an und versuche die Rätsel zu lösen. Die Antworten befinden sich ganz in der Nähe.',
+      en: 'You have entered a paranormal field. Time to track down the ghosts. Your scanner is currently searching for ghost echoes. Echoes are faded memories or emotions. They tie the ghosts to a specific location. Look at the photos and try to solve the puzzles. The answers are close by.'
+    }
+  }
+  text["ar.1"] = {
+    "1": {
+      de: 'AR-Kamera',
+      en: 'AR camera'
+    },
+    "2": {
+      de: 'AR-Kamera öffnen',
+      en: 'Open AR camera'
+    },
+    "3": {
+      de: 'Öffne die Kamera, untersuche den Tatort und mache Fotos von allem was dir wichtig erscheint.',
+      en: 'Open the camera, examine the crime scene and take photos of everything that seems important to you.'
+    }
+  }
+  text["ar.2"] = {
+    "1": {
+      de: 'Und wie war dein erster Blick ins Jenseits. Ich hoffe du hast gut aufgepasst. Geister hinterlassen nicht selten Hinweise. die uns helfen ihre Traumata zu verstehen und den Spuk zu beenden. Ich stelle dir jetzt ein paar Fragen. Für richtige Antworten gibt es Punkte. Bereit.',
+      en: 'And how was your first glimpse into the afterlife. I hope you paid attention. Ghosts often leave clues that help us understand their traumas and end the haunting. I`m going to ask you some questions. Points for correct answers. Ready.'
+    },
+    "2": {
+      de: 'Und wie war dein erster Blick ins Jenseits. Ich hoffe du hast gut aufgepasst. Geister hinterlassen nicht selten Hinweise. die uns helfen ihre Traumata zu verstehen und den Spuk zu beenden. Ich stelle dir jetzt ein paar Fragen. Für richtige Antworten gibt es Punkte. Bereit.',
+      en: 'And how was your first glimpse into the afterlife. I hope you paid attention. Ghosts often leave clues that help us understand their traumas and end the haunting. I`m going to ask you some questions. Points for correct answers. Ready.'
+    }
+  }
+  text["ar.3"] = {
+    "1": {
+      de: 'Frage',
+      en: 'Question'
+    },
+    "2": {
+      de: 'Richtig!',
+      en: 'Correct!'
+    },
+    "3": {
+      de: 'Falsch!',
+      en: 'Wrong!'
+    },
+    "4": {
+      de: 'Öffne die Kamera, untersuche den Tatort und mache Fotos von allem was dir wichtig erscheint.',
+      en: 'Open AR camera'
+    }
+  }
+  text["ar.4"] = {
+    "1": {
+      de: 'Und wie war dein erster Blick ins Jenseits. Ich hoffe du hast gut aufgepasst. Geister hinterlassen nicht selten Hinweise. die uns helfen ihre Traumata zu verstehen und den Spuk zu beenden. Ich stelle dir jetzt ein paar Fragen. Für richtige Antworten gibt es Punkte. Bereit.',
+      en: 'And how was your first glimpse into the afterlife. I hope you paid attention. Ghosts often leave clues that help us understand their traumas and end the haunting. I`m going to ask you some questions. Points for correct answers. Ready.'
+    },
+    "2": {
+      de: 'Und wie war dein erster Blick ins Jenseits. Ich hoffe du hast gut aufgepasst. Geister hinterlassen nicht selten Hinweise. die uns helfen ihre Traumata zu verstehen und den Spuk zu beenden. Ich stelle dir jetzt ein paar Fragen. Für richtige Antworten gibt es Punkte. Bereit.',
+      en: 'And how was your first glimpse into the afterlife. I hope you paid attention. Ghosts often leave clues that help us understand their traumas and end the haunting. I`m going to ask you some questions. Points for correct answers. Ready.'
+    }
+  }
+  text["ar.5"] = {
+    "1": {
+      de: 'Ein neuer Geist ist ab sofort in deinem Inventar verfügbar.',
+      en: 'A new ghost is now available in your inventory.'
+    },
+    "2": {
+      de: 'AR-Kamera öffnen',
+      en: 'Open AR camera'
+    }
   }
   text["Impressum"] = {
     "1": {
