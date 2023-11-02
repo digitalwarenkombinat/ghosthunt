@@ -124,6 +124,7 @@ Spuk & Schreck
 <<set $isStoryteller to false>>
 <<set $isScanner to false>>
 <<set $isNavigator to false>>
+<<set $playerCount to 1>>
 
 :: StoryMenu {"position":"300,100","size":"100,100"}
 <<set $inventoryText = setup.text['StoryMenu'][1][setup.i18n.langs[settings.lang]]>>
@@ -139,6 +140,40 @@ Spuk & Schreck
 
 :: setup.init {"position":"100,300","size":"100,100"}
 <<script>>
+
+function redirectPlayer() {
+    const isStoryteller = State.getVar("$isStoryteller");
+    const isScanner = State.getVar("$isScanner");
+    const isNavigator = State.getVar("$isNavigator");
+    const playerCount = State.getVar("$playerCount");
+
+    if (playerCount === 2) {
+      if (isStoryteller) {
+        console.log('Redirecting to duo Storytellers passage');
+      } else if (isScanner) {
+        console.log('Redirecting to duo Scanners passage');
+        $.wiki('<<goto "main.init">>');
+      } else if (isNavigator) {
+        console.log('Redirecting to duo Navigators passage');
+        $.wiki('<<goto "main.init">>');
+      }
+    } else if (playerCount === 3) {
+       if (isStoryteller) {
+        console.log('Redirecting to trio Storytellers passage');
+      } else if (isScanner) {
+        console.log('Redirecting to trio Scanners passage');
+        $.wiki('<<goto "main.init">>');
+      } else if (isNavigator) {
+        console.log('Redirecting to trio Navigators passage');
+        $.wiki('<<goto "main.init">>');
+      }
+    }
+  }
+
+/*   window.player.setPlayerRole('Scanner');
+  window.player.setPlayerCount(3); */
+  redirectPlayer();
+
   if (State.variables.is_pwa) {
     $.wiki('<<goto "setup.3">>')
   };
@@ -227,7 +262,6 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: setup.3 {"position":"100,900","size":"100,100"}
-  
 
   <<video noHotspot>>
 
@@ -489,7 +523,7 @@ $(document).one(":passagedisplay", function() {
 
 :: main.init {"position":"500,300","size":"100,100"}
 <script>
-  $('#story').attr('style', 'background-image:url(images/kapitel.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 </script>
 
 <div class="wrapper">
@@ -1636,6 +1670,22 @@ Window Video
       }
 
       displayNextString();
+    }
+  }
+
+  window.player = {
+    setPlayerRole: function(role) {
+      State.setVar("$isStoryteller", role === 'Storyteller');
+      State.setVar("$isScanner", role === 'Scanner');
+      State.setVar("$isNavigator", role === 'Navigator');
+    },
+
+    setPlayerCount: function(count) {
+      if (count >= 1 && count <= 3) {
+        State.setVar("$playerCount", count);
+      } else {
+        console.log('Invalid player count');
+      }
     }
   }
 
