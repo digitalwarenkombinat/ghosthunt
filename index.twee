@@ -1368,7 +1368,7 @@ External script loading module
 }
 
 @font-face {
-  font-family: Averia_Serif_Libre;
+  font-family: Averia Serif Libre;
   src: url(fonts/Averia_Serif_Libre/AveriaSerifLibre-Bold.ttf);
 }
 
@@ -1878,16 +1878,16 @@ model-viewer {
 #videoText {
   color: var(--text-light-color);
   font-family: 'Averia Serif Libre', serif;
-  font-size: 3vh;
+  font-size: 4vh;
   font-style: normal;
   font-weight: 700;
-  line-height: 4vh;
+  line-height: 5vh;
   margin-left: 20px;
   margin-right: 30px;
   text-align: center;
   text-shadow: 3px 3px 1px black;
   word-break: break-word;
-  width: 90%;
+  margin-top: 10vh;
 }
 
 .image1 {
