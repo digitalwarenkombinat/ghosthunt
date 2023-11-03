@@ -1363,8 +1363,8 @@ External script loading module
 }
 
 @font-face {
-  font-family: Butcherman;
-  src: url(fonts/Butcherman/Butcherman-Regular.ttf);
+  font-family: Creepster;
+  src: url(fonts/Creepster/Creepster-Regular.ttf);
 }
 
 @font-face {
