@@ -1414,7 +1414,7 @@ audio, canvas, progress, video {
 
 h1 {
   color: var(--text-light-color);
-  font-family: "Butcherman", sans-serif;
+  font-family: "Creepster", sans-serif;
   font-size: 9vh;
   font-style: normal;
   font-weight: 400;
