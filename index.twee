@@ -74,7 +74,9 @@ Spuk & Schreck
     $(document).one(":passagedisplay", function() {
       let video = document.getElementById("video");
       if (video) {
-        video.src = `videos/${State.variables.passage}${State.variables.hasHotspot ? '.' + State.variables.hotspot : ''}.mp4`;
+        let srcPrefix = State.variables.hasHotspot ? State.variables.passage : State.variables.passage.split(".")[0];
+        let srcSuffix = State.variables.hasHotspot ? State.variables.hotspot : 'loop';
+        video.src = `videos/${srcPrefix}.${srcSuffix}.mp4`;
         video.load();
         video.ondurationchange = function() {
           const timePerVideoText = video.duration / videoText.length * 3000;
@@ -87,7 +89,7 @@ Spuk & Schreck
     })
   <</script>>
 
-<video autoplay muted id="video" playsinline>
+<video autoplay muted id="video" playsinline loop>
   <source type="video/mp4">
 </video>
 
@@ -139,6 +141,7 @@ Spuk & Schreck
 <<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 
 :: setup.init {"position":"100,300","size":"100,100"}
+
 <<script>>
 
 function redirectPlayer() {
@@ -188,7 +191,7 @@ function redirectPlayer() {
 <</script>>
 
 <div class="wrapper">
-  <h1>Version 0.1</h1>
+  <h1>Version 0.2</h1>
   <h2><<txt>></h2>
   <p class="p3">spui</p>
 </div>
@@ -198,6 +201,7 @@ function redirectPlayer() {
 </div>
 
 :: setup.1 {"position":"100,500","size":"100,100"}
+
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 
@@ -211,6 +215,7 @@ function redirectPlayer() {
 </div>
 
 :: setup.2 {"position":"100,700","size":"100,100"}
+
 <<script>>
 $(document).one(":passagedisplay", function() {
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -271,6 +276,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: setup.4 {"position":"100,1100","size":"100,100"}
+
 <div id="map"></div>
 
 <div class="wrapper">
@@ -362,6 +368,7 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 
 :: setup.5 {"position":"100,1300","size":"100,100"}
+
 <<script>>
   $(document).one(":passagedisplay", function() {
     $('#story').attr('style', 'background-image:url(images/cam.jpg)');
@@ -402,6 +409,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: intro.init {"position":"300,300","size":"100,100"}
+
 <<if $setupCompleted and $introCompleted>>
 	<<goto "main.init">>
 <<elseif $setupCompleted>>
@@ -411,6 +419,7 @@ $(document).one(":passagedisplay", function() {
 <</if>>
 
 :: intro.1 {"position":"300,500","size":"100,100"}
+
 <script>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 </script>
@@ -430,6 +439,7 @@ $(document).one(":passagedisplay", function() {
 
 
 :: intro.2 {"position":"300,700","size":"100,100"}
+
 <script>
   $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
 </script>
@@ -446,82 +456,68 @@ $(document).one(":passagedisplay", function() {
 
 :: intro.3 {"position":"300,900","size":"100,100"}
 
+<<video noHotspot>>
 
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/intro.3.mp4" type="video/mp4">
-  </video>
+<div class="wrapper"></div>
 
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="retry">[[|passage()]]</button>
-    <button class="next">[[|intro.4]]</button>
-  </div>
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|intro.4]]</button>
+</div>
 
 
 :: intro.4 {"position":"300,1100","size":"100,100"}
 
+<<video noHotspot>>
 
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/intro.4.mp4" type="video/mp4">
-  </video>
+<div class="wrapper"></div>
 
-  <div class="wrapper">
-  </div>
-
-  <div class="btn-group">
-    <button class="return">[[|intro.3]]</button>
-    <button class="retry">[[|passage()]]</button>
-    <button class="next">[[|intro.5]]</button>
-  </div>
+<div class="btn-group">
+  <button class="return">[[|intro.3]]</button>
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|intro.5]]</button>
+</div>
 
 :: intro.5 {"position":"300,1300","size":"100,100"}
 
+<<video noHotspot>>
 
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/intro.5.mp4" type="video/mp4">
-  </video>
+<div class="wrapper"></div>
 
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="return">[[|intro.4]]</button>
-    <button class="retry">[[|passage()]]</button>
-    <button class="next">[[|intro.6]]</button>
-  </div>
+<div class="btn-group">
+  <button class="return">[[|intro.4]]</button>
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|intro.6]]</button>
+</div>
 
 :: intro.6 {"position":"300,1500","size":"100,100"}
 
+<<video noHotspot>>
 
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/intro.6.mp4" type="video/mp4">
-  </video>
+<div class="wrapper"></div>
 
-  <div class="wrapper"></div>
-
-  <div class="btn-group">
-    <button class="return">[[|intro.5]]</button>
-    <button class="retry">[[|passage()]]</button>
-    <button class="next">[[|intro.7]]</button>
-  </div>
+<div class="btn-group">
+  <button class="return">[[|intro.5]]</button>
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|intro.7]]</button>
+</div>
 
 :: intro.7 {"position":"300,1700","size":"100,100"}
 
 <<set $introCompleted to true>>
 
-  <video autoplay muted id="video" playsinline>
-    <source src="videos/intro.7.mp4" type="video/mp4">
-  </video>
+<<video noHotspot>>
 
-  <div class="wrapper"></div>
+<div class="wrapper"></div>
 
-  <div class="btn-group">
-    <button class="return">[[|intro.5]]</button>
-    <button class="retry">[[|passage()]]</button>
-    <button class="next">[[|main.init]]</button>
-  </div>
+<div class="btn-group">
+  <button class="return">[[|intro.5]]</button>
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|main.init]]</button>
+</div>
 
 :: main.init {"position":"500,300","size":"100,100"}
+
 <script>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 </script>

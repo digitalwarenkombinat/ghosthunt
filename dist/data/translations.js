@@ -159,6 +159,36 @@ getTranslations = function () {
       en: 'Call'
     }
   }
+  text["intro.3"] = {
+    "1": {
+      de: 'Hallo. Hier ist Holger von Spuk und Schreck. Ihr habt euch doch mal bei mir beworben, oder. Die Sache ist die. Mein Kollege ist nicht erreichbar und ich bräuchte mal eure Hilfe.',
+      en: 'Call'
+    }
+  }
+  text["intro.4"] = {
+    "1": {
+      de: 'Anruf',
+      en: 'Call'
+    }
+  }
+  text["intro.5"] = {
+    "1": {
+      de: 'Anruf',
+      en: 'Call'
+    }
+  }
+  text["intro.6"] = {
+    "1": {
+      de: 'Anruf',
+      en: 'Call'
+    }
+  }
+  text["intro.7"] = {
+    "1": {
+      de: 'Anruf',
+      en: 'Call'
+    }
+  }
   text["main.init"] = {
     "1": {
       de: 'Kapitel 1',
