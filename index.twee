@@ -16,12 +16,13 @@ Spuk & Schreck
   <<set $menuText = setup.text['StoryCaption'][1][setup.i18n.langs[settings.lang]]>>
   <<set $pointsText = setup.text['StoryCaption'][2][setup.i18n.langs[settings.lang]]>>
   <<set $runesText = setup.text['StoryCaption'][3][setup.i18n.langs[settings.lang]]>>
+  <<set $pointsMaximum to 600>>
   <h1>$menuText</h1>
   <h5>$pointsText</h5>
-  <h3>$points/210</h3>
+  <h3>$points / $pointsMaximum</h3>
   <h5>$runesText</h5>
   <p class="p1">
-    <<set _letters to ["R", "O", "S", "A", "L", "I", "E"]>>
+    <<set _letters to ["G", "H", "O", "S", "T", "H", "U", "N", "T", "S"]>>
     <<for _i, _name range _letters>>
       <<if $letter[_i] is 1>>
         _name
@@ -109,7 +110,7 @@ Spuk & Schreck
 -------------------------STARTVARIABLEN-------------------------------
 <<set $hotspot to 0>>
 
-<<set $letter to [0, 0, 0, 0, 0, 0, 0]>>
+<<set $letter to [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]>>
 
 <<set $inventory to [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]>>
 
@@ -217,7 +218,9 @@ function redirectPlayer() {
 </div>
 
 <div class="btn-group">
-  <button class="next">[[|setup.2]]</button>
+  <button >[[1|setup.2]]</button>
+  <button >[[2|setup.2]]</button>
+  <button >[[3|setup.2]]</button>
 </div>
 
 :: setup.2 {"position":"100,700","size":"100,100"}
@@ -422,8 +425,8 @@ $(document).one(":passagedisplay", function() {
   <model-viewer 
     id="model-viewer" 
     ar auto-rotate 
-    src="models/setup.3/setup.3.glb" 
-    ios-src="models/setup.3/setup.3.usdz"
+    src="models/setup/setup.glb" 
+    ios-src="models/setup/setup.usdz"
     poster="images/loading.png"
     autoplay 
     shadow-intensity="2"
@@ -630,7 +633,6 @@ $(document).one(":passagedisplay", function() {
               'id': location.id,
               'type': 'fill',
               'source': location.id,
-              'layout': {},
               'paint': {
                 'fill-color': 'black',
                 'fill-opacity': 0.7
@@ -866,10 +868,8 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <<button "Weiter">>
-    <<goto "story.4">>
-    <<set $riddle to 1>>
-  <</button>>
+  <<set $riddle to 1>>
+  <button class="next">[[|story.4]]</button>
 </div>
 
 :: story.4 {"position":"1300,1300","size":"100,100"}
@@ -889,21 +889,41 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <<button "Weiter">>
-    <<goto "story.5">>
-    <<set $riddleCorrectCount to 0>>
-    <<set $letter4 to 1>>
-  <</button>>
+  <<set $riddleCorrectCount to 0>>
+  <<set $letter[$hotspot - 1] to 1>>
+  <button class="next">[[|story.5]]</button>
 </div>
 
 :: story.5 {"position":"1300,1500","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $(document).one(":passagedisplay", function() {
+    $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+
+    const secretMessage = [
+      'Schatten', 'verschwinde', 'Licht', 'komm', 'herbei', 'beende', 'damit', 'die', 'abscheuliche', 'Spukerei'
+    ];
+
+    const messageContainer = document.getElementById('messageContainer');
+    if (messageContainer) {
+      State.variables.letter.forEach((value, index) => {
+        const message = document.createElement('h2');
+        message.textContent = secretMessage[index] + ' ';
+
+        if (!value) {
+          message.classList.add('p3');
+        }
+
+        messageContainer.appendChild(message);
+      });
+    }
+  })
 <</script>>
 
 <div class="wrapper">
   <h1><<txt>></h1>
+  <br/>
+	<div id="messageContainer" class="message"></div>
 </div>
 
 <div class="btn-group">
@@ -1925,4 +1945,15 @@ tw-hook[name="fade-out"] {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+.message {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.message h2 {
+  color: var(--secondary-color)
 }

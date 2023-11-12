@@ -80,8 +80,8 @@ getTranslations = function () {
       en: 'Role selection '
     },
     "2": {
-      de: 'Sende diesen QR-Code an deine beiden Mitspielenden.',
-      en: 'Send this QR code to your two teammates.'
+      de: 'Sende diesen QR-Code an deine Mitspielenden.',
+      en: 'Send this QR code to your teammates.'
     }
   }
   text["setup.3"] = {
