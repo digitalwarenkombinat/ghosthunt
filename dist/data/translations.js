@@ -263,9 +263,14 @@ getTranslations = function () {
       en: 'Wrong!'
     },
     "4": {
-      de: 'Öffne die Kamera, untersuche den Tatort und mache Fotos von allem was dir wichtig erscheint.',
-      en: 'Open AR camera'
+      de: ' Punkte',
+      en: ' Points'
+    },
+    "5": {
+      de: 'Keine Punkte',
+      en: 'No points'
     }
+    
   }
   text["ar.1"] = {
     "1": {
@@ -357,6 +362,32 @@ getTranslations = function () {
     "2": {
       de: 'Outro Rosa',
       en: 'Outro Rosa'
+    }
+  }
+  text["end.1"] = {
+    "1": {
+      de: 'Unser Ziel',
+      en: 'Our Goal'
+    },
+    "2": {
+      de: 'Wir wollen ein Team-Event kreieren, bei dem sich die Menschen draußen an der frischen Luft bewegen, zusammen arbeiten, um Rätsel zu lösen und mit Hilfe moderner Technik in neue gruselige Welten eintauchen.',
+      en: 'We want to create a team event where people get outside in the fresh air, work together to solve puzzles and immerse themselves in new spooky worlds with the help of modern technology'
+    },
+    "3": {
+      de: 'Unser Ziel ist Ostern 2024 die erste Rallye im Friedenspark, Leipzig zu veröffentlichen. Weitere Städte werden folgen.',
+      en: 'Our goal is to publish the first rally in Friedenspark, Leipzig at Easter 2024. Other cities will follow.'
+    },
+    "4": {
+      de: 'Unsere Rallye wird ausschließlich auf den Smartphones unserer Kunden gespielt. Es gibt keinen Guide vor Ort. Daher ist es uns sehr wichtig, dass die Technik gut funktioniert.',
+      en: 'Our rally is played exclusively on the smartphones of our customers. There is no guide on site. It is therefore very important to us that the technology works well'
+    },
+    "5": {
+      de: 'Um zu evaluieren, ob uns das gelingt benötigen wir dein Feedback. Über diesen ',
+      en: 'We need your feedback to evaluate whether we are successful. About this '
+    },
+    "6": {
+      de: '  erreichst du unseren Fragebogen. Vielen Dank.',
+      en: ' you can access our questionnaire. Thank you very much.'
     }
   }
   text["Impressum"] = {

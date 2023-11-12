@@ -700,170 +700,47 @@ $(document).one(":passagedisplay", function() {
   $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
 </script>
 
-<<if $hotspot is 1>>
-  <<if $riddle < 6>>
-    <<set _riddles = [
-      {
-        question: "Wer ist gestorben?",
-        answers: {
-          "Junge Frau": { correct: false, points: 0 },
-          "Kleines Kind": { correct: false, points: 0 },
-          "Alter Mann": { correct: true, points: 10 }
-        }
-      },
-      {
-        question: "Was hatte der Mann in der Hand?",
-        answers: {
-          "Geld": { correct: false, points: 0 },
-          "Pillen": { correct: true, points: 10 },
-          "Handy": { correct: false, points: 0 }
-        }
-      },
-      {
-        question: "Wer war dabei als er starb?",
-        answers: {
-          "Sein Hund": { correct: true, points: 10 },
-          "Seine Frau": { correct: false, points: 0 },
-          "Sein Enkel": { correct: false, points: 0 }
-        }
-      },
-      {
-        question: "Wie hieß der Hund?",
-        answers: {
-          "Bob": { correct: false, points: 0 },
-          "Ben": { correct: true, points: 10 },
-          "Pip": { correct: false, points: 0 }
-        }
-      },
-      {
-        question: "Was fehlte dem Toten?",
-        answers: {
-          "Hose": { correct: true, points: 10 },
-          "Hand": { correct: false, points: 0 },
-          "Brille": { correct: false, points: 0 }
-        }
-      }
-    ]>>
+<<if $riddle <= 5>>
+  <<set _riddles = getRiddles();>>
 
-    <<set _riddle = _riddles[$riddle - 1]>>
-    <<set _question = _riddle.question>>
-    <<set _answers = _riddle.answers>>
+  <<set _riddle = _riddles[$hotspot - 1][$riddle - 1]>>
+  <<set _question = _riddle.question[setup.i18n.langs[settings.lang]]>>
+  <<set _answers = _riddle.answers>>
 
-    <span id="heading">
-      <h1><<txt>> $riddle</h1>
-      <h2>_question</h2>
-    </span>
+  <span id="heading">
+    <h1><<txt>> $riddle</h1>
+    <h2>_question</h2>
+  </span>
 
-    <div class="wrapper"></div>
+  <div class="wrapper"></div>
 
-    <div class="btn-group">
-      <<for _answer, _data range _answers>>
-        <<capture _data>>
-          <<button _answer>>
-            <<set _resultText = _data.correct ? "Richtig!" : "Falsch!">>
-            <<set _points = _data.points > 0 ? "+" + _data.points + " Punkte" : "Keine Punkte">>
-            <<replace "#heading">>
-              <h1>_resultText</h1>
-              <h2>_points</h2>
-            <</replace>>
-            <<timed 1s>>
-              <<set $points to $points + _data.points>>
-              <<set $riddle to $riddle + 1>>
-              <<set $riddleCorrectCount = _data.correct && $riddleCorrectCount + 1 >>
-              <<goto "map.5">>
-            <</timed>>
-          <</button>>
-        <</capture>>
-      <</for>>
-    </div>
-  <</if>>
+  <div class="btn-group">
+    <<set $resultTextCorrect = setup.text[passage()][2][setup.i18n.langs[settings.lang]]>>
+    <<set $resultTextIncorrect = setup.text[passage()][3][setup.i18n.langs[settings.lang]]>>
+    <<set $pointsTextCorrect = setup.text[passage()][4][setup.i18n.langs[settings.lang]]>>
+    <<set $pointsTextIncorrect = setup.text[passage()][5][setup.i18n.langs[settings.lang]]>>
+    <<for _data range _answers>>
+      <<capture _data>>
+        <<button _data[setup.i18n.langs[settings.lang]]>>
+          <<set _resultText = _data.correct ? $resultTextCorrect : $resultTextIncorrect>>
+          <<set _points = _data.points > 0 ? "+" + _data.points + $pointsTextCorrect : $pointsTextCorrect>>
+          <<replace "#heading">>
+            <h1>_resultText</h1>
+            <h2>_points</h2>
+          <</replace>>
+          <<timed 1s>>
+            <<set $points to $points + _data.points>>
+            <<set $riddle to $riddle + 1>>
+            <<set $riddleCorrectCount = _data.correct && $riddleCorrectCount + 1 >>
+            <<goto "map.5">>
+          <</timed>>
+        <</button>>
+      <</capture>>
+    <</for>>
+  </div>
 
-  <<if $riddle is 6>>
-    <<goto "story.3">>
-  <</if>>
-
-<<elseif $hotspot is 2>>
-  <<if $riddle < 6>>
-    <<set _riddles = [
-      {
-        question: "Was ist passiert?",
-        answers: {
-          "Überfall": { correct: false, points: 0 },
-          "Unfall": { correct: false, points: 0 },
-          "Grabraub": { correct: true, points: 10 }
-        }
-      },
-      {
-        question: "Wessen Grab wurde ausgeraubt?",
-        answers: {
-          "Herbert Paus": { correct: false, points: 0 },
-          "Rosa Herman": { correct: true, points: 10 },
-          "Sibille Knapp": { correct: false, points: 0 }
-        }
-      },
-      {
-        question: "Wie viele Räuber waren es?",
-        answers: {
-          "1": { correct: false, points: 0 },
-          "2": { correct: true, points: 10 },
-          "3": { correct: false, points: 0 }
-        }
-      },
-      {
-        question: "Was haben die Räuber gestohlen?",
-        answers: {
-          "Ein Brosche": { correct: false, points: 0 },
-          "Zwei Ringe": { correct: true, points: 10 },
-          "Eine Halskette": { correct: false, points: 0 }
-        }
-      },
-      {
-        question: "Gibt es Hinweise auf die Identität der Räuber?",
-        answers: {
-          "Ausweis": { correct: true, points: 10 },
-          "Nummernschild": { correct: false, points: 0 },
-          "Namen": { correct: false, points: 0 }
-        }
-      }
-    ]>>
-
-    <<set _riddle = _riddles[$riddle - 1]>>
-    <<set _question = _riddle.question>>
-    <<set _answers = _riddle.answers>>
-
-    <span id="heading">
-      <h1><<txt>> $riddle</h1>
-      <h2>_question</h2>
-    </span>
-
-    <div class="wrapper"></div>
-
-    <div class="btn-group">
-      <<for _answer, _data range _answers>>
-        <<capture _data>>
-          <<button _answer>>
-            <<set _resultText = _data.correct ? "Richtig!" : "Falsch!">>
-            <<set _points = _data.points > 0 ? "+" + _data.points + " Punkte" : "Keine Punkte">>
-            <<replace "#heading">>
-              <h1>_resultText</h1>
-              <h2>_points</h2>
-            <</replace>>
-            <<timed 1s>>
-              <<set $points to $points + _data.points>>
-              <<set $riddle to $riddle + 1>>
-              <<set $riddleCorrectCount = _data.correct && $riddleCorrectCount + 1 >>
-              <<goto "map.5">>
-            <</timed>>
-          <</button>>
-        <</capture>>
-      <</for>>
-    </div>
-  <</if>>
-
-  <<if $riddle is 6>>
-    <<goto "story.3">>
-  <</if>>
-
+<<else>>
+  <<goto "story.3">>
 <</if>>
 
 :: ar.init {"position":"1100,500","size":"100,100"}
@@ -1051,15 +928,15 @@ $(document).one(":passagedisplay", function() {
 :: end.1 {"position":"1500,700","size":"100,100"}
 
 <div class="wrapper">
-  <h1>Unser Ziel</h1>
-  <h2>Wir wollen ein Team-Event kreieren, bei dem sich die Menschen draußen an der frischen Luft bewegen, zusammen arbeiten, um Rätsel zu lösen und mit Hilfe moderner Technik in neue gruselige Welten eintauchen. 
+  <h1><<txt>></h1>
+  <h2><<txt>>
     <br>
-    <br>Unser Ziel ist Ostern 2024 die erste Rallye im Friedenspark, Leipzig zu veröffentlichen. Weitere Städte werden folgen. 
+    <br><<txt>>
     <br>
-    <br>Unsere Rallye wird ausschließlich auf den Smartphones unserer Kunden gespielt. Es gibt keinen Guide vor Ort. Daher ist es uns sehr wichtig, dass die Technik gut funktioniert. 
+    <br><<txt>>
     <br>
     <br>
-    Um zu evaluieren, ob uns das gelingt benötigen wir dein Feedback. Über diesen <a href="https://forms.gle/jcGPPbrbbnwDLNC28">"Link"</a>  erreichst du unseren Fragebogen. Vielen Dank. 
+    <<txt>><a href="https://forms.gle/jcGPPbrbbnwDLNC28">"Link"</a><<txt>>
   </h2>
 </div>
 
