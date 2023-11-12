@@ -12,6 +12,7 @@ Spuk & Schreck
 }
 
 :: StoryCaption {"position":"500,100","size":"100,100"}
+
   <<set $menuText = setup.text['StoryCaption'][1][setup.i18n.langs[settings.lang]]>>
   <<set $pointsText = setup.text['StoryCaption'][2][setup.i18n.langs[settings.lang]]>>
   <<set $runesText = setup.text['StoryCaption'][3][setup.i18n.langs[settings.lang]]>>
@@ -31,6 +32,7 @@ Spuk & Schreck
   </p>
 
 :: StoryInit {"position":"100,100","size":"100,100"}
+
 -------------------------SETUP-------------------------------
 
 <<set $is_pwa to window.matchMedia('(display-mode: window-controls-overlay)').matches || window.matchMedia('(display-mode: fullscreen)').matches>>
@@ -121,6 +123,8 @@ Spuk & Schreck
 
 <<set $riddle to 1>>
 
+<<set $riddleCorrectCount to 0>>
+
 <<set $ende to 0>>
 
 <<set $isStoryteller to false>>
@@ -129,6 +133,7 @@ Spuk & Schreck
 <<set $playerCount to 1>>
 
 :: StoryMenu {"position":"300,100","size":"100,100"}
+
 <<set $inventoryText = setup.text['StoryMenu'][1][setup.i18n.langs[settings.lang]]>>
 <<set $helpText = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
 <<set $legalText = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
@@ -136,7 +141,7 @@ Spuk & Schreck
 <<set $feedbackText = setup.text['StoryMenu'][5][setup.i18n.langs[settings.lang]]>>
 <<link [[$inventoryText|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
 <<link [[$shortcutText|"Dev"]]>><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
-<<link [[$feedbackText|"chapterclosing.init"]]>><<addclass "#ui-bar" "stowed">><</link>>
+<<link [[$feedbackText|"end.init"]]>><<addclass "#ui-bar" "stowed">><</link>>
 /* <<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
 <<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 
@@ -178,7 +183,7 @@ function redirectPlayer() {
   redirectPlayer();
 
   if (State.variables.is_pwa) {
-    $.wiki('<<goto "setup.3">>')
+    $.wiki('<<goto "setup.5">>')
   };
 
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -204,55 +209,87 @@ function redirectPlayer() {
 
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
-
-  if (State.variables.is_safari || State.variables.is_chrome) {
-    $.wiki('<<goto "setup.2">>')
-  };
 <</script>>
+
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
 </div>
 
+<div class="btn-group">
+  <button class="next">[[|setup.2]]</button>
+</div>
+
 :: setup.2 {"position":"100,700","size":"100,100"}
 
 <<script>>
-$(document).one(":passagedisplay", function() {
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
-  const installBtn = document.querySelector('.install');
-  const iosHelp = document.querySelector('.iosHelp');
-  const androidHelp = document.querySelector('.androidHelp');
-
-  if (State.variables.is_safari) {
-    installBtn.style.display = 'none';
-    androidHelp.style.display = 'none';
-  } else if (State.variables.is_chrome) {
-    iosHelp.style.display = 'none';
-  };
-
-  installBtn.addEventListener('click', async () => {
-    /* console.log('👍', 'installBtn-clicked'); */
-    const promptEvent = window.deferredPrompt;
-    if (!promptEvent) {
-      /* The deferred prompt isn't available. */
-      return;
-    }
-    /* Show the install prompt. */
-    promptEvent.prompt();
-    /* Log the result */
-    const result = await promptEvent.userChoice;
-    /* console.log('👍', 'userChoice', result); */
-    /* Reset the deferred prompt variable, since */
-    /* prompt() can only be called once. */
-    window.deferredPrompt = null;
-  });
-
-  window.addEventListener('appinstalled', (event) => {
-    window.deferredPrompt = null;
-    installBtn.style.display = 'none';
-  });
- });
 <</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="next">[[|setup.3]]</button>
+</div>
+
+:: setup.3 {"position":"100,900","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+
+  if (State.variables.is_safari || State.variables.is_chrome) {
+    $.wiki('<<goto "setup.4">>')
+  };
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+:: setup.4 {"position":"100,1100","size":"100,100"}
+
+<<script>>
+  $(document).one(":passagedisplay", function() {
+    $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+    const installBtn = document.querySelector('.install');
+    const iosHelp = document.querySelector('.iosHelp');
+    const androidHelp = document.querySelector('.androidHelp');
+
+    if (State.variables.is_safari) {
+      installBtn.style.display = 'none';
+      androidHelp.style.display = 'none';
+    } else if (State.variables.is_chrome) {
+      iosHelp.style.display = 'none';
+    };
+
+    installBtn.addEventListener('click', async () => {
+      /* console.log('👍', 'installBtn-clicked'); */
+      const promptEvent = window.deferredPrompt;
+      if (!promptEvent) {
+        /* The deferred prompt isn't available. */
+        return;
+      }
+      /* Show the install prompt. */
+      promptEvent.prompt();
+      /* Log the result */
+      const result = await promptEvent.userChoice;
+      /* console.log('👍', 'userChoice', result); */
+      /* Reset the deferred prompt variable, since */
+      /* prompt() can only be called once. */
+      window.deferredPrompt = null;
+    });
+
+    window.addEventListener('appinstalled', (event) => {
+      window.deferredPrompt = null;
+      installBtn.style.display = 'none';
+    });
+  });
+<</script>>
+
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
@@ -266,16 +303,16 @@ $(document).one(":passagedisplay", function() {
   <button class="install"></button>
 </div>
 
-:: setup.3 {"position":"100,900","size":"100,100"}
+:: setup.5 {"position":"100,1300","size":"100,100"}
 
 <<video noHotspot>>
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|setup.4]]</button>
+  <button class="next">[[|setup.6]]</button>
 </div>
 
-:: setup.4 {"position":"100,1100","size":"100,100"}
+:: setup.6 {"position":"100,1300","size":"100,100"}
 
 <div id="map"></div>
 
@@ -288,7 +325,7 @@ $(document).one(":passagedisplay", function() {
   <button class="geolocation"><<txt>></button>
   <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices"><<txt>></a></button>
   <button class="help"></button>
-  <button class="next">[[|setup.5]]</button>
+  <button class="next">[[|setup.7]]</button>
 </div>
 
 <<script>>
@@ -367,7 +404,7 @@ $(document).one(":passagedisplay", function() {
 });
 <</script>>
 
-:: setup.5 {"position":"100,1300","size":"100,100"}
+:: setup.7 {"position":"100,1300","size":"100,100"}
 
 <<script>>
   $(document).one(":passagedisplay", function() {
@@ -395,8 +432,6 @@ $(document).one(":passagedisplay", function() {
     <button slot="ar-button" id="ar-button"><<txt>></button>
     <effect-composer>
       <glitch-effect></glitch-effect>
-      /* <bloom-effect></bloom-effect> */
-      /* <pixelate-effect></pixelate-effect> */
     </effect-composer>
   </model-viewer>
 
@@ -415,7 +450,7 @@ $(document).one(":passagedisplay", function() {
 <<elseif $setupCompleted>>
 	<<goto "intro.1">>
 <<else>>
-	<<goto "setup.3">>
+	<<goto "setup.5">>
 <</if>>
 
 :: intro.1 {"position":"300,500","size":"100,100"}
@@ -437,7 +472,6 @@ $(document).one(":passagedisplay", function() {
   <button class="next">[[|intro.2]]</button>
 </div>
 
-
 :: intro.2 {"position":"300,700","size":"100,100"}
 
 <script>
@@ -453,7 +487,6 @@ $(document).one(":passagedisplay", function() {
   <button class="next">[[|intro.3]]</button>
 </div>
 
-
 :: intro.3 {"position":"300,900","size":"100,100"}
 
 <<video noHotspot>>
@@ -464,7 +497,6 @@ $(document).one(":passagedisplay", function() {
   <button class="retry">[[|passage()]]</button>
   <button class="next">[[|intro.4]]</button>
 </div>
-
 
 :: intro.4 {"position":"300,1100","size":"100,100"}
 
@@ -537,13 +569,13 @@ $(document).one(":passagedisplay", function() {
 
 :: map.init {"position":"700,300","size":"100,100"}
 <<if !$letter.includes(0) and $ende is 0>>
-	<<goto "gameend.init">>
+	<<goto "end.init">>
 <<else>>
-	<<goto "map">>
+	<<goto "map.1">>
 <</if>>
 
 
-:: map [autosave] {"position":"700,500","size":"100,100"}
+:: map.1 [autosave] {"position":"700,500","size":"100,100"}
 <div id="map"></div>
 
 <<script>>
@@ -575,7 +607,7 @@ $(document).one(":passagedisplay", function() {
 
               map.on('click', location.id, (e) => {
                 locations.find(f => f.id === location.id).alreadyEntered = true;
-                $.wiki('<<goto "story.init">>');
+                $.wiki('<<goto "map.2">>');
               });
 
             } else {
@@ -619,13 +651,13 @@ $(document).one(":passagedisplay", function() {
     <br>
     <<txt>>
   </h2> 
-  <button class="retry"> [[|map]]</button>
+  <button class="retry"> [[|map.1]]</button>
 </div>
 
-:: story.init {"position":"900,300","size":"100,100"}
+:: map.2 {"position":"900,300","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', `background-image:url(images/story.init.${State.variables.hotspot}.jpg)`);
+  $('#story').attr('style', `background-image:url(images/hotspot.jpg)`);
 <</script>>
 
 <div class="wrapper">
@@ -635,67 +667,35 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <button class="next">[[|story]]</button>
+  <button class="next">[[|map.3]]</button>
 </div>
 
-:: story {"position":"900,500","size":"100,100"}
-
+:: map.3 {"position":"1100,700","size":"100,100"}
+/* TODO: Rename map.3 to hotspot.intro */
 <<video>>
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|ar.init]]</button>
+  <button class="next">[[|ar.2]]</button>
 </div>
 
-:: ar.init {"position":"1100,300","size":"100,100"}
+:: map.4 {"position":"1100,700","size":"100,100"}
 
 <<script>>
-  $.wiki('<<goto "ar.1">>')
-<</script>>
-
-:: ar.1 {"position":"1100,500","size":"100,100"}
-
-<<script>>
-  $('#story').attr('style', 'background-image:url(images/cam.jpg)');
-
-  $(document).one(":passagedisplay", function() {
-    const modelViewer = document.getElementById('model-viewer');
-    if (modelViewer){
-      modelViewer.src = `models/kapitel.${State.variables.hotspot}/kapitel.${State.variables.hotspot}.glb`;
-      modelViewer.iosSrc = `models/kapitel.${State.variables.hotspot}/kapitel.${State.variables.hotspot}.usdz`;
-    }
-  })
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 <</script>>
 
 <div class="wrapper">
   <h1><<txt>></h1>
-  <model-viewer 
-    id="model-viewer" 
-    ar auto-rotate 
-    poster="images/loading.png"
-    autoplay 
-    shadow-intensity="2"
-    shadow-softness="0"
-    camera-controls>
-    <button slot="ar-button" id="ar-button"><<txt>></button>
-  </model-viewer>
   <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
-  <button class="return">[[|story]]</button>
-  <button class="next">[[|ar.2]]</button>
+  <button class="next">[[|map.5]]</button>
 </div>
 
-:: ar.2 {"position":"1100,700","size":"100,100"}
-<<video>>
+:: map.5 {"position":"1100,700","size":"100,100"}
 
-<div class="btn-group">
-  <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|ar.3]]</button>
-</div>
-
-:: ar.3 {"position":"1100,900","size":"100,100"}
 <script>
   $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
 </script>
@@ -769,7 +769,8 @@ $(document).one(":passagedisplay", function() {
             <<timed 1s>>
               <<set $points to $points + _data.points>>
               <<set $riddle to $riddle + 1>>
-              <<goto "ar.3">>
+              <<set $riddleCorrectCount = _data.correct && $riddleCorrectCount + 1 >>
+              <<goto "map.5">>
             <</timed>>
           <</button>>
         <</capture>>
@@ -778,19 +779,7 @@ $(document).one(":passagedisplay", function() {
   <</if>>
 
   <<if $riddle is 6>>
-    <div class="wrapper">
-      <h1>Fall gelöst!</h1>
-      <h2>Die Angst was mit seinem Hund Ben passiert hat Herbert im Tod keine Ruhe gelassen. Ben kommt daher nicht ins Tierheim sondern zu Herberts Familie. Als Dank hat er dir eine okkulte Rune übersetzt.</h2>
-      <p class="p2">A</p>
-    </div>
-
-    <div class="btn-group">
-      <<button "Weiter">>
-        <<goto "ar.4">>
-        <<set $riddle to 1>>
-        <<set $letter4 to 1>>
-      <</button>>
-    </div>
+    <<goto "story.3">>
   <</if>>
 
 <<elseif $hotspot is 2>>
@@ -862,7 +851,8 @@ $(document).one(":passagedisplay", function() {
             <<timed 1s>>
               <<set $points to $points + _data.points>>
               <<set $riddle to $riddle + 1>>
-              <<goto "ar.3">>
+              <<set $riddleCorrectCount = _data.correct && $riddleCorrectCount + 1 >>
+              <<goto "map.5">>
             <</timed>>
           <</button>>
         <</capture>>
@@ -871,32 +861,152 @@ $(document).one(":passagedisplay", function() {
   <</if>>
 
   <<if $riddle is 6>>
-    <div class="wrapper">
-      <h1>Fall gelöst!</h1>
-      <h2>Du hast Rosa geholfen den Raub an ihrem Grab öffentlich zu machen. Alles weitere muss nun die Polizei erledigen. Rosa kann nun ruhen. Als Dank hat Rosa dir eine okkulte Rune übersetzt.</h2>
-      <p class="p2">A</p>
-    </div>
-
-    <div class="btn-group">
-      <<button "Weiter">>
-        <<goto "ar.4">>
-        <<set $riddle to 1>>
-        <<set $letter5 to 1>>
-      <</button>>
-    </div>
+    <<goto "story.3">>
   <</if>>
+
 <</if>>
 
+:: story.1 {"position":"900,500","size":"100,100"}
 
-:: ar.4 {"position":"1100,1100","size":"100,100"}
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="next">[[|map.5]]</button>
+</div>
+
+:: story.2 {"position":"900,500","size":"100,100"}
+/* TODO: Story.2 und map.5 werden zu einer Passage zusammengelegt */
+
+:: story.3 {"position":"900,500","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt 11>></h1>
+  <<set $headingText = setup.text[passage()][$hotspot][setup.i18n.langs[settings.lang]]>>
+  <h2>$headingText</h2>
+</div>
+
+<div class="btn-group">
+  <<button "Weiter">>
+    <<goto "story.4">>
+    <<set $riddle to 1>>
+  <</button>>
+</div>
+
+:: story.4 {"position":"900,500","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt 11>></h1>
+  <<if $riddleCorrectCount is 5>>
+    <h2><<txt>></h2>
+    <p class="p2">A</p>
+  <<else>>
+    <h2><<txt 12>></h2>
+  <</if>>
+</div>
+
+<div class="btn-group">
+  <<button "Weiter">>
+    <<goto "story.5">>
+    <<set $riddleCorrectCount to 0>>
+    <<set $letter4 to 1>>
+  <</button>>
+</div>
+
+:: story.5 {"position":"900,500","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+</div>
+
+<div class="btn-group">
+  <button class="next">[[|story.6]]</button>
+</div>
+
+:: story.6 {"position":"900,500","size":"100,100"}
+/* TODO: Rename story.6 to hotspot.outro */
 <<video>>
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|ar.5]]</button>
+  <button class="next">[[|end.init]]</button>
 </div>
 
-:: ar.5 {"position":"1100,1300","size":"100,100"}
+:: ar.init {"position":"1100,300","size":"100,100"}
+
+<<script>>
+  $.wiki('<<goto "ar.1">>')
+<</script>>
+
+:: ar.1 {"position":"1100,500","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="next">[[|ar.2]]</button>
+</div>
+
+:: ar.2 {"position":"1100,500","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/cam.jpg)');
+
+  $(document).one(":passagedisplay", function() {
+    const modelViewer = document.getElementById('model-viewer');
+    if (modelViewer){
+      modelViewer.src = `models/kapitel.${State.variables.hotspot}/kapitel.${State.variables.hotspot}.glb`;
+      modelViewer.iosSrc = `models/kapitel.${State.variables.hotspot}/kapitel.${State.variables.hotspot}.usdz`;
+    }
+  })
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <model-viewer 
+    id="model-viewer" 
+    ar auto-rotate 
+    poster="images/loading.png"
+    autoplay 
+    shadow-intensity="2"
+    shadow-softness="0"
+    camera-controls>
+    <button slot="ar-button" id="ar-button"><<txt>></button>
+  </model-viewer>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="return">[[|map.3]]</button>
+  <button class="next">[[|map.5]]</button>
+</div>
+
+:: ar.3 {"position":"1100,900","size":"100,100"}
+
 <<script>>
   $(document).one(":passagedisplay", function() {
     const modelViewer = document.getElementById('model-viewer');
@@ -927,37 +1037,38 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <button class="return">[[|ar.4]]</button>
+  <button class="return">[[|ar.2]]</button>
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|chapterclosing.init]]</button>
+  <button class="next">[[|end.init]]</button>
 </div>
 
-:: chapterclosing.init {"position":"1300,300","size":"100,100"}
+:: end.init {"position":"1300,300","size":"100,100"}
+
 <<script>>
-  $.wiki('<<goto "chapterclosing">>')
+  $.wiki('<<goto "end.1">>')
 <</script>>
 
-:: chapterclosing {"position":"1300,500","size":"100,100"}
-<div
- class="wrapper">
+:: end.1 {"position":"1300,500","size":"100,100"}
+
+<div class="wrapper">
   <h1>Unser Ziel</h1>
   <h2>Wir wollen ein Team-Event kreieren, bei dem sich die Menschen draußen an der frischen Luft bewegen, zusammen arbeiten, um Rätsel zu lösen und mit Hilfe moderner Technik in neue gruselige Welten eintauchen. 
-  <br>
-  <br>Unser Ziel ist Ostern 2024 die erste Rallye im Friedenspark, Leipzig zu veröffentlichen. Weitere Städte werden folgen. 
-  <br>
-  <br>Unsere Rallye wird ausschließlich auf den Smartphones unserer Kunden gespielt. Es gibt keinen Guide vor Ort. Daher ist es uns sehr wichtig, dass die Technik gut funktioniert. 
-  <br>
-  <br>
-  Um zu evaluieren, ob uns das gelingt benötigen wir dein Feedback. Über diesen <a href="https://forms.gle/jcGPPbrbbnwDLNC28">"Link"</a>  erreichst du unseren Fragebogen. Vielen Dank. 
-</h2>
+    <br>
+    <br>Unser Ziel ist Ostern 2024 die erste Rallye im Friedenspark, Leipzig zu veröffentlichen. Weitere Städte werden folgen. 
+    <br>
+    <br>Unsere Rallye wird ausschließlich auf den Smartphones unserer Kunden gespielt. Es gibt keinen Guide vor Ort. Daher ist es uns sehr wichtig, dass die Technik gut funktioniert. 
+    <br>
+    <br>
+    Um zu evaluieren, ob uns das gelingt benötigen wir dein Feedback. Über diesen <a href="https://forms.gle/jcGPPbrbbnwDLNC28">"Link"</a>  erreichst du unseren Fragebogen. Vielen Dank. 
+  </h2>
 </div>
 
- <div class="btn-group">
-    <<button "Zurück" `previous()`>>
-    <</button>>
-  </div>
+<div class="btn-group">
+  <<button "Zurück" `previous()`>><</button>>
+</div>
 
 :: Dev {"position":"1300,100","size":"100,100"}
+
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
@@ -967,12 +1078,12 @@ $(document).one(":passagedisplay", function() {
     <<set $chapter1Text = setup.text['Dev'][3][setup.i18n.langs[settings.lang]]>>
     <<button $chapter1Text>>
       <<set $hotspot to 1>>
-      <<goto "story.init">>	
+      <<goto "map.2">>	
     <</button>>
     <<set $chapter2Text = setup.text['Dev'][4][setup.i18n.langs[settings.lang]]>>
     <<button $chapter2Text>>
       <<set $hotspot to 2>>
-      <<goto "story.init">>	
+      <<goto "map.2">>	
     <</button>>
     <<set $mapText = setup.text['Dev'][5][setup.i18n.langs[settings.lang]]>>
     <<button $mapText>>
@@ -984,8 +1095,8 @@ $(document).one(":passagedisplay", function() {
   <<return>>
 </div>
 
-
 :: Hilfe {"position":"900,100","size":"100,100"}
+
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
@@ -1033,6 +1144,7 @@ $(document).one(":passagedisplay", function() {
 
 
 :: Impressum {"position":"1100,100","size":"100,100"}
+
 <div class="wrapper">
   <h1><<txt>></h1>
 </div>
@@ -1043,6 +1155,7 @@ $(document).one(":passagedisplay", function() {
 
 
 :: Inventar {"position":"700,100","size":"100,100"}
+
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
@@ -1093,9 +1206,8 @@ $(document).one(":passagedisplay", function() {
   <<return>>
 </div>
 
-:: gameend.init {"position":"2100,300","size":"100,100"}
-
 :: StoryScript [script]
+
 /************
 Configuration
 ************/
@@ -1334,7 +1446,6 @@ External script loading module
 }());
 
 :: StoryStylesheet [stylesheet]
-@import url("https://use.typekit.net/mph1xdw.css");
 
 :root {
   /* Primäre Farben */

@@ -66,6 +66,26 @@ getTranslations = function () {
   }
   text["setup.1"] = {
     "1": {
+      de: 'Anzahl Spieler',
+      en: 'Number of players'
+    },
+    "2": {
+      de: 'Bitte wähle die Spieleranzahl aus.',
+      en: 'Please select the number of players.'
+    }
+  }
+  text["setup.2"] = {
+    "1": {
+      de: 'Rollenwahl',
+      en: 'Role selection '
+    },
+    "2": {
+      de: 'Sende diesen QR-Code an deine beiden Mitspielenden.',
+      en: 'Send this QR code to your two teammates.'
+    }
+  }
+  text["setup.3"] = {
+    "1": {
       de: 'Browser Check',
       en: 'Browser Check'
     },
@@ -74,7 +94,7 @@ getTranslations = function () {
       en: 'Please use either Chrome browser (Android) or Safari (iOS) to open this link.'
     }
   }
-  text["setup.2"] = {
+  text["setup.4"] = {
     "1": {
       de: 'Installation',
       en: 'Installation'
@@ -105,13 +125,13 @@ getTranslations = function () {
     }
     
   }
-  text["setup.3"] = {
+  text["setup.5"] = {
     "1": {
       de: 'Hallo Geisterjäger. Und willkommen zur Testversion von Spuk & Schreck. Wir sind Anne, Gerd und Gregor. Die Entwickler dieser interaktiven Geister-Rallye. Diese Rallye ist für Familien, Freunde und Leute gemacht, die. sich gern gruseln und gemeinsam Zeit an der frischen Luft verbringen. Wir überprüfen jetzt, ob dein Handy die nötigen Voraussetzungen erfüllt. Und dann geht es auch schon los.',
       en: 'Hello ghost hunters. And welcome to the test version of Spuk & Schreck. We are Anne, Gerd and Gregor. The developers of this interactive ghost rally. This rally is made for families, friends and people who. like to be spooked and spend time together in the fresh air. We\'re going to check if your phone meets the necessary requirements. And then we\'ll get started.'
     },
   }
-  text["setup.4"] = {
+  text["setup.6"] = {
     "1": {
       de: 'Standort',
       en: 'Location'
@@ -129,7 +149,7 @@ getTranslations = function () {
       en: 'Open settings'
     }
   }
-  text["setup.5"] = {
+  text["setup.7"] = {
     "1": {
       de: 'Geister',
       en: 'Ghosts'
@@ -162,31 +182,31 @@ getTranslations = function () {
   text["intro.3"] = {
     "1": {
       de: 'Hallo. Hier ist Holger von Spuk und Schreck. Ihr habt euch doch mal bei mir beworben, oder. Die Sache ist die. Mein Kollege ist nicht erreichbar und ich bräuchte mal eure Hilfe.',
-      en: 'Call'
+      en: 'Hello, this is Holger from Spuk und Schreck. You applied to me once, didn`t you? The thing is. My colleague is unavailable and I need your help.'
     }
   }
   text["intro.4"] = {
     "1": {
-      de: 'Anruf',
-      en: 'Call'
+      de: 'Ablauf',
+      en: 'Procedure'
     }
   }
   text["intro.5"] = {
     "1": {
-      de: 'Anruf',
-      en: 'Call'
+      de: 'Dauer',
+      en: 'Duration'
     }
   }
   text["intro.6"] = {
     "1": {
-      de: 'Anruf',
-      en: 'Call'
+      de: 'Teams',
+      en: 'Teams'
     }
   }
   text["intro.7"] = {
     "1": {
-      de: 'Anruf',
-      en: 'Call'
+      de: 'Koordinaten',
+      en: 'Coordinates'
     }
   }
   text["main.init"] = {
@@ -199,7 +219,7 @@ getTranslations = function () {
       en: 'Paranormal activities.'
     }
   }
-  text["map"] = {
+  text["map.1"] = {
     "1": {
       de: 'Laufe zu einem Geist!',
       en: 'Run to a ghost!'
@@ -209,7 +229,7 @@ getTranslations = function () {
       en: 'As soon as it turns yellow, you can click on it.'
     }
   }
-  text["story.init"] = {
+  text["map.2"] = {
     "1": {
       de: 'Achtung!',
       en: 'Attention!'
@@ -219,7 +239,7 @@ getTranslations = function () {
       en: 'Paranormal activity detected.'
     }
   }
-  text["story"] = {
+  text["map.3"] = {
     "1": {
       de: 'Du hast ein paranormales Feld betreten. Zeit die Geister aufzuspüren. Dein Scanner sucht gerade nach Geister-Echos. Echos sind verblasste Erinnerungen oder Emotionen. Sie binden die Geister an einen spezifischen Ort. Schau dir die Fotos an und versuche die Rätsel zu lösen. Die Antworten befinden sich ganz in der Nähe.',
       en: 'You have entered a paranormal field. Time to track down the ghosts. Your scanner is currently searching for ghost echoes. Echoes are faded memories or emotions. They tie the ghosts to a specific location. Look at the photos and try to solve the puzzles. The answers are close by.'
@@ -229,31 +249,7 @@ getTranslations = function () {
       en: 'You have entered a paranormal field. Time to track down the ghosts. Your scanner is currently searching for ghost echoes. Echoes are faded memories or emotions. They tie the ghosts to a specific location. Look at the photos and try to solve the puzzles. The answers are close by.'
     }
   }
-  text["ar.1"] = {
-    "1": {
-      de: 'AR-Kamera',
-      en: 'AR camera'
-    },
-    "2": {
-      de: 'AR-Kamera öffnen',
-      en: 'Open AR camera'
-    },
-    "3": {
-      de: 'Öffne die Kamera, untersuche den Tatort und mache Fotos von allem was dir wichtig erscheint.',
-      en: 'Open the camera, examine the crime scene and take photos of everything that seems important to you.'
-    }
-  }
-  text["ar.2"] = {
-    "1": {
-      de: 'Und wie war dein erster Blick ins Jenseits. Ich hoffe du hast gut aufgepasst. Geister hinterlassen nicht selten Hinweise. die uns helfen ihre Traumata zu verstehen und den Spuk zu beenden. Ich stelle dir jetzt ein paar Fragen. Für richtige Antworten gibt es Punkte. Bereit.',
-      en: 'And how was your first glimpse into the afterlife. I hope you paid attention. Ghosts often leave clues that help us understand their traumas and end the haunting. I`m going to ask you some questions. Points for correct answers. Ready.'
-    },
-    "2": {
-      de: 'Und wie war dein erster Blick ins Jenseits. Ich hoffe du hast gut aufgepasst. Geister hinterlassen nicht selten Hinweise. die uns helfen ihre Traumata zu verstehen und den Spuk zu beenden. Ich stelle dir jetzt ein paar Fragen. Für richtige Antworten gibt es Punkte. Bereit.',
-      en: 'And how was your first glimpse into the afterlife. I hope you paid attention. Ghosts often leave clues that help us understand their traumas and end the haunting. I`m going to ask you some questions. Points for correct answers. Ready.'
-    }
-  }
-  text["ar.3"] = {
+  text["map.5"] = {
     "1": {
       de: 'Frage',
       en: 'Question'
@@ -271,17 +267,31 @@ getTranslations = function () {
       en: 'Open AR camera'
     }
   }
-  text["ar.4"] = {
+  text["ar.1"] = {
     "1": {
-      de: 'Und wie war dein erster Blick ins Jenseits. Ich hoffe du hast gut aufgepasst. Geister hinterlassen nicht selten Hinweise. die uns helfen ihre Traumata zu verstehen und den Spuk zu beenden. Ich stelle dir jetzt ein paar Fragen. Für richtige Antworten gibt es Punkte. Bereit.',
-      en: 'And how was your first glimpse into the afterlife. I hope you paid attention. Ghosts often leave clues that help us understand their traumas and end the haunting. I`m going to ask you some questions. Points for correct answers. Ready.'
+      de: 'Frequenzeingabe',
+      en: 'Frequency input'
     },
     "2": {
-      de: 'Und wie war dein erster Blick ins Jenseits. Ich hoffe du hast gut aufgepasst. Geister hinterlassen nicht selten Hinweise. die uns helfen ihre Traumata zu verstehen und den Spuk zu beenden. Ich stelle dir jetzt ein paar Fragen. Für richtige Antworten gibt es Punkte. Bereit.',
-      en: 'And how was your first glimpse into the afterlife. I hope you paid attention. Ghosts often leave clues that help us understand their traumas and end the haunting. I`m going to ask you some questions. Points for correct answers. Ready.'
+      de: 'Trage hier deine erhaltene Frequenz ein.',
+      en: 'Enter your received frequency here.'
     }
   }
-  text["ar.5"] = {
+  text["ar.2"] = {
+    "1": {
+      de: 'AR-Kamera',
+      en: 'AR camera'
+    },
+    "2": {
+      de: 'AR-Kamera öffnen',
+      en: 'Open AR camera'
+    },
+    "3": {
+      de: 'Öffne die Kamera, untersuche den Tatort und mache Fotos von allem was dir wichtig erscheint.',
+      en: 'Open the camera, examine the crime scene and take photos of everything that seems important to you.'
+    }
+  }
+  text["ar.3"] = {
     "1": {
       de: 'Ein neuer Geist ist ab sofort in deinem Inventar verfügbar.',
       en: 'A new ghost is now available in your inventory.'
@@ -289,6 +299,64 @@ getTranslations = function () {
     "2": {
       de: 'AR-Kamera öffnen',
       en: 'Open AR camera'
+    }
+  }
+  text["story.1"] = {
+    "1": {
+      de: 'Frequenzeingabe',
+      en: 'Frequency input'
+    },
+    "2": {
+      de: 'Trage hier deine erhaltene Frequenz ein.',
+      en: 'Enter your received frequency here.'
+    }
+  }
+  text["story.3"] = {
+    "1": {
+      de: 'Die Angst was mit seinem Hund Ben passiert hat Herbert im Tod keine Ruhe gelassen. Ben kommt daher nicht ins Tierheim sondern zu Herberts Familie.',
+      en: 'The fear of what would happen to his dog Ben has left Herbert no peace in death. Ben was therefore not sent to the animal shelter but to Herbert`s family.'
+    },
+    "2": {
+      de: 'Du hast Rosa geholfen den Raub an ihrem Grab öffentlich zu machen. Alles weitere muss nun die Polizei erledigen. Rosa kann nun ruhen.',
+      en: 'You helped Rosa to make the robbery at her grave public. Everything else must now be done by the police. Rosa can now rest in peace.'
+    },
+    "11": {
+      de: 'Fall gelöst!',
+      en: 'Case solved!'
+    }
+  }
+  text["story.4"] = {
+    "1": {
+      de: 'Alle Fragen wurden richtig beantwortet. Als Dank hat Herbert dir eine okkulte Rune übersetzt.',
+      en: 'All questions were answered correctly. As a thank you, Herbert has translated an occult rune for you.'
+    },
+    "2": {
+      de: 'Alle Fragen wurden richtig beantwortet. Als Dank hat Rosa dir eine okkulte Rune übersetzt.',
+      en: 'All questions were answered correctly. As a thank you, Rosa has translated an occult rune for you.'
+    },
+    "11": {
+      de: 'Rune',
+      en: 'Rune'
+    },
+    "12": {
+      de: 'Leider wurden nicht alle Fragen richtig beantwortet. Daher gibt es diesmal keine Rune.',
+      en: 'Unfortunately, not all questions were answered correctly. Therefore there is no rune this time.'
+    }
+  }
+  text["story.5"] = {
+    "1": {
+      de: 'Geheime Botschaft',
+      en: 'Secret message'
+    }
+  }
+  text["story.6"] = {
+    "1": {
+      de: 'Outro Herbert',
+      en: 'Outro Herbert'
+    },
+    "2": {
+      de: 'Outro Rosa',
+      en: 'Outro Rosa'
     }
   }
   text["Impressum"] = {
