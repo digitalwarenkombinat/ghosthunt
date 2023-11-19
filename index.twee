@@ -958,10 +958,10 @@ $(document).one(":passagedisplay", function() {
 :: outro.init {"position":"1500,500","size":"100,100"}
 
 <<script>>
-  $.wiki('<<goto "end.message">>')
+  $.wiki('<<goto "outro.message">>')
 <</script>>
 
-:: end.message {"position":"1500,700","size":"100,100"}
+:: outro.message {"position":"1500,700","size":"100,100"}
 
 <div class="wrapper">
   <h1><<txt>></h1>
