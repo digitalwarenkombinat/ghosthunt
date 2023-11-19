@@ -15,15 +15,9 @@ const urlsToCacheiOS = [
   '/models/kapitel.1/kapitel.1.usdz',
   '/models/kapitel.2/kapitel.2.usdz',
   '/models/rosa/rosa.usdz',
-  '/models/setup.3/setup.3.usdz',
-  '/videos/1.1.mp4',
-  '/videos/1.3.mp4',
-  '/videos/1.5.mp4',
-  '/videos/intro.1.mp4',
-  '/videos/intro.2.mp4',
-  '/videos/intro.3.mp4',
-  '/videos/intro.4.mp4',
-  '/videos/intro.6.mp4',
+  '/models/setup/setup.usdz',
+  '/videos/intro.loop.mp4',
+  '/videos/setup.loop.mp4',
 ];
 
 const urlsToCacheAndroid = [
@@ -42,15 +36,9 @@ const urlsToCacheAndroid = [
   '/models/kapitel.1/kapitel.1.glb',
   '/models/kapitel.2/kapitel.2.glb',
   '/models/rosa/rosa.glb',
-  '/models/setup.3/setup.3.glb',
-  '/videos/1.1.mp4',
-  '/videos/1.3.mp4',
-  '/videos/1.5.mp4',
-  '/videos/intro.1.mp4',
-  '/videos/intro.2.mp4',
-  '/videos/intro.3.mp4',
-  '/videos/intro.4.mp4',
-  '/videos/intro.6.mp4',
+  '/models/setup/setup.glb',
+  '/videos/intro.loop.mp4',
+  '/videos/setup.loop.mp4',
   ];
 
   const self = this;

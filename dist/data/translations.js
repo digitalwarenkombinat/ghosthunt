@@ -64,7 +64,7 @@ getTranslations = function () {
       en: 'This rally is a test version and not the final product. It is intended for testing purposes only.'
     }
   }
-  text["setup.1"] = {
+  text["setup.player"] = {
     "1": {
       de: 'Anzahl Spieler',
       en: 'Number of players'
@@ -74,17 +74,21 @@ getTranslations = function () {
       en: 'Please select the number of players.'
     }
   }
-  text["setup.2"] = {
+  text["setup.role"] = {
     "1": {
       de: 'Rollenwahl',
       en: 'Role selection '
     },
     "2": {
-      de: 'Sende diesen QR-Code an deine Mitspielenden.',
-      en: 'Send this QR code to your teammates.'
+      de: 'Lasse diesen QR-Code von deinem Mitspielenden scannen. Dieser ist Navigator/Scanner.',
+      en: 'Have this QR code scanned by your teammate. This is the navigator/scanner.'
+    },
+    "3": {
+      de: 'Lasse diese beiden QR-Codes von deinen Mitspielenden scannen. Dieser sind Navigator und Scanner.',
+      en: 'Have these two QR codes scanned by your fellow players. These are the navigator and scanner.'
     }
   }
-  text["setup.3"] = {
+  text["setup.browsercheck"] = {
     "1": {
       de: 'Browser Check',
       en: 'Browser Check'
@@ -94,7 +98,7 @@ getTranslations = function () {
       en: 'Please use either Chrome browser (Android) or Safari (iOS) to open this link.'
     }
   }
-  text["setup.4"] = {
+  text["setup.installation"] = {
     "1": {
       de: 'Installation',
       en: 'Installation'
@@ -125,13 +129,13 @@ getTranslations = function () {
     }
     
   }
-  text["setup.5"] = {
+  text["intro.welcome"] = {
     "1": {
       de: 'Hallo Geisterjäger. Und willkommen zur Testversion von Spuk & Schreck. Wir sind Anne, Gerd und Gregor. Die Entwickler dieser interaktiven Geister-Rallye. Diese Rallye ist für Familien, Freunde und Leute gemacht, die. sich gern gruseln und gemeinsam Zeit an der frischen Luft verbringen. Wir überprüfen jetzt, ob dein Handy die nötigen Voraussetzungen erfüllt. Und dann geht es auch schon los.',
       en: 'Hello ghost hunters. And welcome to the test version of Spuk & Schreck. We are Anne, Gerd and Gregor. The developers of this interactive ghost rally. This rally is made for families, friends and people who. like to be spooked and spend time together in the fresh air. We\'re going to check if your phone meets the necessary requirements. And then we\'ll get started.'
     },
   }
-  text["setup.6"] = {
+  text["setup.location"] = {
     "1": {
       de: 'Standort',
       en: 'Location'
@@ -149,7 +153,7 @@ getTranslations = function () {
       en: 'Open settings'
     }
   }
-  text["setup.7"] = {
+  text["setup.camera"] = {
     "1": {
       de: 'Geister',
       en: 'Ghosts'
