@@ -131,7 +131,8 @@ Spuk & Schreck
 <<set $isStoryteller to false>>
 <<set $isScanner to false>>
 <<set $isNavigator to false>>
-<<set $playerCount to 1>>
+<<set $isNavigatorScanner to false>>
+<<set $playerCount to 0>>
 
 :: StoryMenu {"position":"300,100","size":"100,100"}
 
@@ -150,41 +151,25 @@ Spuk & Schreck
 
 <<script>>
 
-function redirectPlayer() {
+  function redirectPlayer() {
     const isStoryteller = State.getVar("$isStoryteller");
     const isScanner = State.getVar("$isScanner");
     const isNavigator = State.getVar("$isNavigator");
-    const playerCount = State.getVar("$playerCount");
+    const isNavigatorScanner = State.getVar("$isNavigatorScanner");
 
-    if (playerCount === 2) {
-      if (isStoryteller) {
-        console.log('Redirecting to duo Storytellers passage');
-      } else if (isScanner) {
-        console.log('Redirecting to duo Scanners passage');
-        $.wiki('<<goto "main.init">>');
-      } else if (isNavigator) {
-        console.log('Redirecting to duo Navigators passage');
-        $.wiki('<<goto "main.init">>');
-      }
-    } else if (playerCount === 3) {
-       if (isStoryteller) {
-        console.log('Redirecting to trio Storytellers passage');
-      } else if (isScanner) {
-        console.log('Redirecting to trio Scanners passage');
-        $.wiki('<<goto "main.init">>');
-      } else if (isNavigator) {
-        console.log('Redirecting to trio Navigators passage');
-        $.wiki('<<goto "main.init">>');
-      }
+    if (isNavigatorScanner) {
+      $.wiki('<<goto "setup.camera">>');
+    } else if (isScanner) {
+      $.wiki('<<goto "setup.camera">>');
+    } else if (isNavigator) {
+      $.wiki('<<goto "setup.location">>');
+    } else {
+      $.wiki('<<goto "setup.player">>')
     }
   }
 
-/*   window.player.setPlayerRole('Scanner');
-  window.player.setPlayerCount(3); */
-  redirectPlayer();
-
   if (State.variables.is_pwa) {
-    $.wiki('<<goto "setup.5">>')
+    redirectPlayer();
   };
 
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -203,48 +188,16 @@ function redirectPlayer() {
 </div>
 
 <div class="btn-group">
-  <button class="next">[[|setup.1]]</button>
+  <button class="next">[[|setup.browsercheck]]</button>
 </div>
 
-:: setup.1 {"position":"100,500","size":"100,100"}
-
-<<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
-<</script>>
-
-<div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>></h2>
-</div>
-
-<div class="btn-group">
-  <button >[[1|setup.2]]</button>
-  <button >[[2|setup.2]]</button>
-  <button >[[3|setup.2]]</button>
-</div>
-
-:: setup.2 {"position":"100,700","size":"100,100"}
-
-<<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
-<</script>>
-
-<div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>></h2>
-</div>
-
-<div class="btn-group">
-  <button class="next">[[|setup.3]]</button>
-</div>
-
-:: setup.3 {"position":"100,900","size":"100,100"}
+:: setup.browsercheck {"position":"100,500","size":"100,100"}
 
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 
   if (State.variables.is_safari || State.variables.is_chrome) {
-    $.wiki('<<goto "setup.4">>')
+    $.wiki('<<goto "setup.installation">>')
   };
 <</script>>
 
@@ -253,7 +206,7 @@ function redirectPlayer() {
   <h2><<txt>></h2>
 </div>
 
-:: setup.4 {"position":"100,1100","size":"100,100"}
+:: setup.installation {"position":"100,700","size":"100,100"}
 
 <<script>>
   $(document).one(":passagedisplay", function() {
@@ -306,16 +259,62 @@ function redirectPlayer() {
   <button class="install"></button>
 </div>
 
-:: setup.5 {"position":"500,300","size":"100,100"}
+:: setup.player {"position":"100,900","size":"100,100"}
 
-<<video noHotspot>>
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  /*   window.player.setPlayerRole('Scanner');
+  window.player.setPlayerCount(3); */
 
-<div class="btn-group">
-  <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|setup.6]]</button>
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
 </div>
 
-:: setup.6 {"position":"300,500","size":"100,100"}
+<div class="btn-group">
+  <<button 1>>
+    <<set $playerCount = 1>>
+    <<goto "setup.location">>
+  <</button>>
+  <<button 2>>
+    <<set $playerCount = 2>>
+    <<goto "setup.role">>
+  <</button>>
+  <<button 3>>
+    <<set $playerCount = 3>>
+    <<goto "setup.role">>
+  <</button>>
+</div>
+
+:: setup.role {"position":"100,1100","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <<if $playerCount === 2>>
+    <h2><<txt 2>></h2>
+    /* QR-Code <<set $isNavigatorScanner = true>> */
+  <<elseif $playerCount === 3>>
+    <h2><<txt 3>></h2>
+    /* QR-Code <<set $isScanner = true>> */
+    /* QR-Code <<set $isNavigator = true>> */
+  <</if>>
+</div> 
+
+<div class="btn-group">
+  <<if $playerCount === 1>>
+    <button class="next">[[|setup.location]]</button>
+  <<else>>
+    <button class="next">[[|intro.init]]</button>
+  <</if>>
+</div>
+
+:: setup.location {"position":"300,500","size":"100,100"}
 
 <div id="map"></div>
 
@@ -328,7 +327,13 @@ function redirectPlayer() {
   <button class="geolocation"><<txt>></button>
   <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices"><<txt>></a></button>
   <button class="help"></button>
-  <button class="next">[[|setup.7]]</button>
+
+  <<if $isNavigator>>
+    <button class="next">[[|main.init]]</button>
+  <<else>>
+    <button class="next">[[|setup.camera]]</button>
+  <</if>>
+
 </div>
 
 <<script>>
@@ -407,7 +412,7 @@ $(document).one(":passagedisplay", function() {
 });
 <</script>>
 
-:: setup.7 {"position":"500,500","size":"100,100"}
+:: setup.camera {"position":"500,500","size":"100,100"}
 
 <<script>>
   $(document).one(":passagedisplay", function() {
@@ -443,18 +448,29 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="help"></button>
-  <button class="next">[[|intro.init]]</button>
+  <<if $isNavigatorScanner>>
+    <button class="next">[[|main.init]]</button>
+  <<else>>
+    <button class="next">[[|intro.init]]</button>
+  <</if>>
 </div>
 
 :: intro.init {"position":"700,500","size":"100,100"}
 
 <<if $setupCompleted and $introCompleted>>
 	<<goto "main.init">>
-<<elseif $setupCompleted>>
-	<<goto "intro.1">>
 <<else>>
-	<<goto "setup.5">>
+	<<goto "intro.welcome">>
 <</if>>
+
+:: intro.welcome {"position":"500,300","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|setup.location]]</button>
+</div>
 
 :: intro.1 {"position":"700,700","size":"100,100"}
 
@@ -653,7 +669,7 @@ $(document).one(":passagedisplay", function() {
     <br>
     <<txt>>
   </h2> 
-  <button class="retry"> [[|map.1]]</button>
+  <button class="retry">[[|map.1]]</button>
 </div>
 
 :: map.2 {"position":"900,900","size":"100,100"}
@@ -1302,6 +1318,7 @@ Window Video
       State.setVar("$isStoryteller", role === 'Storyteller');
       State.setVar("$isScanner", role === 'Scanner');
       State.setVar("$isNavigator", role === 'Navigator');
+      State.setVar("$isNavigatorScanner", role === 'NavigatorScanner');
     },
 
     setPlayerCount: function(count) {
