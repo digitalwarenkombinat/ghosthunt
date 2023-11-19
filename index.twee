@@ -143,7 +143,7 @@ Spuk & Schreck
 <<set $feedbackText = setup.text['StoryMenu'][5][setup.i18n.langs[settings.lang]]>>
 <<link [[$inventoryText|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
 <<link [[$shortcutText|"Dev"]]>><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
-<<link [[$feedbackText|"end.init"]]>><<addclass "#ui-bar" "stowed">><</link>>
+<<link [[$feedbackText|"outro.init"]]>><<addclass "#ui-bar" "stowed">><</link>>
 /* <<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
 <<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 
@@ -588,7 +588,7 @@ $(document).one(":passagedisplay", function() {
 
 :: map.init {"position":"900,500","size":"100,100"}
 <<if !$letter.includes(0) and $ende is 0>>
-	<<goto "end.init">>
+	<<goto "outro.init">>
 <<else>>
 	<<goto "map.1">>
 <</if>>
@@ -850,7 +850,7 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <button class="return">[[|ar.2]]</button>
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|end.init]]</button>
+  <button class="next">[[|outro.init]]</button>
 </div>
 
 :: story.1 {"position":"1300,700","size":"100,100"}
@@ -952,16 +952,16 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|end.init]]</button>
+  <button class="next">[[|outro.init]]</button>
 </div>
 
-:: end.init {"position":"1500,500","size":"100,100"}
+:: outro.init {"position":"1500,500","size":"100,100"}
 
 <<script>>
-  $.wiki('<<goto "end.1">>')
+  $.wiki('<<goto "end.message">>')
 <</script>>
 
-:: end.1 {"position":"1500,700","size":"100,100"}
+:: end.message {"position":"1500,700","size":"100,100"}
 
 <div class="wrapper">
   <h1><<txt>></h1>

@@ -368,7 +368,7 @@ getTranslations = function () {
       en: 'Outro Rosa'
     }
   }
-  text["end.1"] = {
+  text["end.message"] = {
     "1": {
       de: 'Unser Ziel',
       en: 'Our Goal'
