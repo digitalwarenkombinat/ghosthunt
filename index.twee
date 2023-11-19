@@ -583,18 +583,24 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <button class="next">[[|map.init]]</button>
+  <<if $isNavigator>>
+    <button class="next">[[|main.navigator.init]]</button>
+  <<elseif $isNavigatorScanner>>
+    <button class="next">[[|main.navigator]]</button>
+  <<elseif $isScanner>>
+    <button class="next">[[|main.scanner.init]]</button>
+  <<elseif $playerCount !== 1>>
+    <button class="next">[[|main.storyteller]]</button>
+  <<else>>
+    <button class="next">[[|main.navigator]]</button>
+  <</if>>
 </div>
 
-:: map.init {"position":"900,500","size":"100,100"}
-<<if !$letter.includes(0) and $ende is 0>>
-	<<goto "outro.init">>
-<<else>>
-	<<goto "map.1">>
-<</if>>
+:: main.navigator.init {"position":"900,500","size":"100,100"}
 
+	<<goto "main.navigator">>
 
-:: map.1 [autosave] {"position":"900,700","size":"100,100"}
+:: main.navigator [autosave] {"position":"900,700","size":"100,100"}
 <div id="map"></div>
 
 <<script>>
@@ -626,7 +632,7 @@ $(document).one(":passagedisplay", function() {
 
               map.on('click', location.id, (e) => {
                 locations.find(f => f.id === location.id).alreadyEntered = true;
-                $.wiki('<<goto "map.2">>');
+                $.wiki('<<goto "hotspot.splash">>');
               });
 
             } else {
@@ -669,10 +675,46 @@ $(document).one(":passagedisplay", function() {
     <br>
     <<txt>>
   </h2> 
-  <button class="retry">[[|map.1]]</button>
+  <button class="retry">[[|main.navigator]]</button>
 </div>
 
-:: map.2 {"position":"900,900","size":"100,100"}
+:: main.scanner.init {"position":"1100,500","size":"100,100"}
+
+<<script>>
+  $.wiki('<<goto "main.scanner">>')
+<</script>>
+
+:: main.scanner {"position":"1100,700","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="next">[[|hotspot.ar]]</button>
+</div>
+
+:: main.storyteller {"position":"1300,700","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="next">[[|hotspot.questions]]</button>
+</div>
+
+:: hotspot.splash {"position":"900,900","size":"100,100"}
 
 <<script>>
   $('#story').attr('style', `background-image:url(images/hotspot.jpg)`);
@@ -685,19 +727,27 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <button class="next">[[|map.3]]</button>
+  <button class="next">[[|hotspot.intro]]</button>
 </div>
 
-:: map.3 {"position":"900,1100","size":"100,100"}
-/* TODO: Rename map.3 to hotspot.intro */
+:: hotspot.intro {"position":"900,1100","size":"100,100"}
+
 <<video>>
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|ar.2]]</button>
+
+  <<if $isNavigator>>
+    <button class="next">[[|hotspot.frequence]]</button>
+  <<elseif $isNavigatorScanner>>
+    <button class="next">[[|hotspot.frequence]]</button>
+  <<else>>
+    <button class="next">[[|hotspot.ar]]</button>
+  <</if>>
+
 </div>
 
-:: map.4 {"position":"900,1300","size":"100,100"}
+:: hotspot.frequence {"position":"900,1300","size":"100,100"}
 
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -709,10 +759,14 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <button class="next">[[|map.5]]</button>
+  <<if $isNavigator>>
+    <button class="next">[[|hotspot.questions]]</button>    
+  <<elseif $isNavigatorScanner>>
+    <button class="next">[[|hotspot.ar]]</button>
+  <</if>>
 </div>
 
-:: map.5 {"position":"900,1500","size":"100,100"}
+:: hotspot.questions {"position":"900,1500","size":"100,100"}
 
 <script>
   $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
@@ -726,63 +780,54 @@ $(document).one(":passagedisplay", function() {
   <<set _answers = _riddle.answers>>
 
   <span id="heading">
-    <h1><<txt>> $riddle</h1>
-    <h2>_question</h2>
+    <<if $isStoryteller and $playerCount === 3>>
+      <h1><<txt 6>> $riddle</h1>
+    <<elseif >>
+      <h1><<txt>> $riddle</h1>
+      <h2>_question</h2>
+    <</if>>
   </span>
 
   <div class="wrapper"></div>
 
   <div class="btn-group">
-    <<set $resultTextCorrect = setup.text[passage()][2][setup.i18n.langs[settings.lang]]>>
-    <<set $resultTextIncorrect = setup.text[passage()][3][setup.i18n.langs[settings.lang]]>>
-    <<set $pointsTextCorrect = setup.text[passage()][4][setup.i18n.langs[settings.lang]]>>
-    <<set $pointsTextIncorrect = setup.text[passage()][5][setup.i18n.langs[settings.lang]]>>
-    <<for _data range _answers>>
-      <<capture _data>>
-        <<button _data[setup.i18n.langs[settings.lang]]>>
-          <<set _resultText = _data.correct ? $resultTextCorrect : $resultTextIncorrect>>
-          <<set _points = _data.points > 0 ? "+" + _data.points + $pointsTextCorrect : $pointsTextCorrect>>
-          <<replace "#heading">>
-            <h1>_resultText</h1>
-            <h2>_points</h2>
-          <</replace>>
-          <<timed 1s>>
-            <<set $points to $points + _data.points>>
-            <<set $riddle to $riddle + 1>>
-            <<set $riddleCorrectCount = _data.correct && $riddleCorrectCount + 1 >>
-            <<goto "map.5">>
-          <</timed>>
-        <</button>>
-      <</capture>>
-    <</for>>
+    <<if $isNavigator>>
+      <button class="next">[[|hotspot.questions]]</button>
+    <<elseif >>
+      <<set $resultTextCorrect = setup.text[passage()][2][setup.i18n.langs[settings.lang]]>>
+      <<set $resultTextIncorrect = setup.text[passage()][3][setup.i18n.langs[settings.lang]]>>
+      <<set $pointsTextCorrect = setup.text[passage()][4][setup.i18n.langs[settings.lang]]>>
+      <<set $pointsTextIncorrect = setup.text[passage()][5][setup.i18n.langs[settings.lang]]>>
+      <<for _data range _answers>>
+        <<capture _data>>
+          <<button _data[setup.i18n.langs[settings.lang]]>>
+            <<set _resultText = _data.correct ? $resultTextCorrect : $resultTextIncorrect>>
+            <<set _points = _data.points > 0 ? "+" + _data.points + $pointsTextCorrect : $pointsTextCorrect>>
+            <<replace "#heading">>
+              <h1>_resultText</h1>
+              <h2>_points</h2>
+            <</replace>>
+            <<timed 1s>>
+              <<set $points to $points + _data.points>>
+              <<set $riddle to $riddle + 1>>
+              <<set $riddleCorrectCount = _data.correct && $riddleCorrectCount + 1 >>
+              <<goto "hotspot.questions">>
+            <</timed>>
+          <</button>>
+        <</capture>>
+      <</for>>
+    <</if>>
   </div>
 
 <<else>>
-  <<goto "story.3">>
+  <<if $isNavigator>>
+    <<goto "main.navigator">>
+  <<else>>
+    <<goto "hotspot.solution">>
+  <</if>>
 <</if>>
 
-:: ar.init {"position":"1100,500","size":"100,100"}
-
-<<script>>
-  $.wiki('<<goto "ar.1">>')
-<</script>>
-
-:: ar.1 {"position":"1100,700","size":"100,100"}
-
-<<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
-<</script>>
-
-<div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>></h2>
-</div>
-
-<div class="btn-group">
-  <button class="next">[[|ar.2]]</button>
-</div>
-
-:: ar.2 {"position":"1100,900","size":"100,100"}
+:: hotspot.ar {"position":"1100,900","size":"100,100"}
 
 <<script>>
   $('#story').attr('style', 'background-image:url(images/cam.jpg)');
@@ -812,11 +857,16 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <button class="return">[[|map.3]]</button>
-  <button class="next">[[|map.5]]</button>
+  <<if $isScanner>>
+    <button class="next">[[|hotspot.ghost]]</button>
+  <<elseif $isNavigatorScanner>>
+    <button class="next">[[|hotspot.ghost]]</button>
+  <<else>>
+    <button class="next">[[|hotspot.questions]]</button>
+  <</if>>
 </div>
 
-:: ar.3 {"position":"1100,1100","size":"100,100"}
+:: hotspot.ghost {"position":"1100,1100","size":"100,100"}
 
 <<script>>
   $(document).one(":passagedisplay", function() {
@@ -848,30 +898,17 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <button class="return">[[|ar.2]]</button>
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|outro.init]]</button>
+  <<if $isScanner>>
+    <button class="next">[[|main.scanner]]</button>
+  <<elseif $isNavigatorScanner>>
+    <button class="next">[[|main.navigator]]</button>
+  <<else>>
+    <button class="next">[[|hotspot.rune]]</button>
+  <</if>>
 </div>
 
-:: story.1 {"position":"1300,700","size":"100,100"}
-
-<<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
-<</script>>
-
-<div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>></h2>
-</div>
-
-<div class="btn-group">
-  <button class="next">[[|map.5]]</button>
-</div>
-
-:: story.2 {"position":"1300,900","size":"100,100"}
-/* TODO: Story.2 und map.5 werden zu einer Passage zusammengelegt */
-
-:: story.3 {"position":"1300,1100","size":"100,100"}
+:: hotspot.solution {"position":"1300,1100","size":"100,100"}
 
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -884,11 +921,15 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <<set $riddle to 1>>
-  <button class="next">[[|story.4]]</button>
+  <<set $riddle to 1>>  
+  <<if $playerCount === 1>>
+    <button class="next">[[|hotspot.ghost]]</button>
+  <<else>>
+    <button class="next">[[|hotspot.rune]]</button>
+  <</if>>
 </div>
 
-:: story.4 {"position":"1300,1300","size":"100,100"}
+:: hotspot.rune {"position":"1300,1300","size":"100,100"}
 
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -907,10 +948,10 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <<set $riddleCorrectCount to 0>>
   <<set $letter[$hotspot - 1] to 1>>
-  <button class="next">[[|story.5]]</button>
+  <button class="next">[[|hotspot.secret]]</button>
 </div>
 
-:: story.5 {"position":"1300,1500","size":"100,100"}
+:: hotspot.secret {"position":"1300,1500","size":"100,100"}
 
 <<script>>
   $(document).one(":passagedisplay", function() {
@@ -943,16 +984,23 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <button class="next">[[|story.6]]</button>
+  <button class="next">[[|hotspot.outro]]</button>
 </div>
 
-:: story.6 {"position":"1300,1700","size":"100,100"}
-/* TODO: Rename story.6 to hotspot.outro */
+:: hotspot.outro {"position":"1300,1700","size":"100,100"}
+
 <<video>>
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|outro.init]]</button>
+
+  <<if !$letter.includes(0) and $ende is 0>>
+    <button class="next">[[|outro.init]]</button>
+  <<elseif $playerCount === 1>>
+    <button class="next">[[|main.navigator]]</button>
+  <<else>>
+    <button class="next">[[|main.storyteller]]</button>
+  <</if>>
 </div>
 
 :: outro.init {"position":"1500,500","size":"100,100"}
@@ -991,16 +1039,16 @@ $(document).one(":passagedisplay", function() {
     <<set $chapter1Text = setup.text['Dev'][3][setup.i18n.langs[settings.lang]]>>
     <<button $chapter1Text>>
       <<set $hotspot to 1>>
-      <<goto "map.2">>	
+      <<goto "hotspot.splash">>	
     <</button>>
     <<set $chapter2Text = setup.text['Dev'][4][setup.i18n.langs[settings.lang]]>>
     <<button $chapter2Text>>
       <<set $hotspot to 2>>
-      <<goto "map.2">>	
+      <<goto "hotspot.splash">>	
     <</button>>
     <<set $mapText = setup.text['Dev'][5][setup.i18n.langs[settings.lang]]>>
     <<button $mapText>>
-      <<goto "map.init">>	
+      <<goto "main.navigator.init">>	
     <</button>>
   </div>
 </div>
