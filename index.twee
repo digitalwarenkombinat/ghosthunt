@@ -169,14 +169,16 @@ Spuk & Schreck
   }
 
   let addr = new URL(document.location.href);
-  try {
-    console.log(addr.searchParams.get("role"));
-    window.player.setPlayerRole(addr.searchParams.get("role"));
-  } catch (err) {
-    console.log(err)
+  if (addr.searchParams.get("role") !== null) {
+    try {
+      console.log(addr.searchParams.get("role"));
+      window.player.setPlayerRole(addr.searchParams.get("role"));
+    } catch (err) {
+      console.log(err)
+    }
   }
 
-  if (State.variables.is_pwa) {
+  if (State.variables.is_pwa && (State.variables.isStoryteller || State.variables.isNavigator || State.variables.isScanner || State.variables.isNavigatorScanner)) {
     redirectPlayer();
   };
 
@@ -196,7 +198,26 @@ Spuk & Schreck
 </div>
 
 <div class="btn-group">
-  <button class="next">[[|setup.browsercheck]]</button>
+  <<if $is_pwa>>
+  <<button Storyteller>>
+    <<set $isStoryteller = true>>
+    <<goto "setup.init">>
+  <</button>>
+  <<button Navigator>>
+    <<set $isNavigator = true>>
+    <<goto "setup.init">>
+  <</button>>
+  <<button Scanner>>
+    <<set $isScanner = true>>
+    <<goto "setup.init">>
+  <</button>>
+  <<button Navigator/Scanner>>
+    <<set $isNavigatorScanner = true>>
+    <<goto "setup.init">>
+  <</button>>
+  <<else>>
+    <button class="next">[[|setup.browsercheck]]</button>
+  <</if>>
 </div>
 
 :: setup.browsercheck {"position":"100,500","size":"100,100"}
