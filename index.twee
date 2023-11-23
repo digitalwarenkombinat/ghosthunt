@@ -158,7 +158,7 @@ Spuk & Schreck
     const isNavigatorScanner = State.getVar("$isNavigatorScanner");
 
     if (isNavigatorScanner) {
-      $.wiki('<<goto "setup.camera">>');
+      $.wiki('<<goto "setup.location">>');
     } else if (isScanner) {
       $.wiki('<<goto "setup.camera">>');
     } else if (isNavigator) {
@@ -166,6 +166,14 @@ Spuk & Schreck
     } else {
       $.wiki('<<goto "setup.player">>')
     }
+  }
+
+  let addr = new URL(document.location.href);
+  try {
+    console.log(addr.searchParams.get("role"));
+    window.player.setPlayerRole(addr.searchParams.get("role"));
+  } catch (err) {
+    console.log(err)
   }
 
   if (State.variables.is_pwa) {
@@ -252,7 +260,7 @@ Spuk & Schreck
   <h2 class="iosHelp"><<txt>><img src="images/ios_share.svg" /><<txt>></h2>
   <h2 class="androidHelp"><<txt>><img src="images/android_install.svg" /><<txt>></h2>
   <h2><<txt>></h2>
-  <img src="images/icon.png" class="image1" />
+  <img src="images/icon.png" class="image-size-50" />
 </div>
 
 <div class="btn-group">
@@ -263,9 +271,6 @@ Spuk & Schreck
 
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
-  /*   window.player.setPlayerRole('Scanner');
-  window.player.setPlayerCount(3); */
-
 <</script>>
 
 <div class="wrapper">
@@ -298,13 +303,21 @@ Spuk & Schreck
   <h1><<txt>></h1>
   <<if $playerCount === 2>>
     <h2><<txt 2>></h2>
-    /* QR-Code <<set $isNavigatorScanner = true>> */
-  <<elseif $playerCount === 3>>
     <h2><<txt 3>></h2>
-    /* QR-Code <<set $isScanner = true>> */
-    /* QR-Code <<set $isNavigator = true>> */
+    /* QR-Code https://gerdesque.github.io/ghosthunt?role=NavigatorScanner */
+    <img src="images/qr_navigatorScanner.png" class="image-size-50" />
+  <<elseif $playerCount === 3>>
+    <h2><<txt 4>></h2>
+    <br/>
+    <h2><<txt 5>></h2>
+    /* QR-Code https://gerdesque.github.io/ghosthunt?role=Navigator */
+    <img src="images/qr_navigator.png" class="image-size-33" />
+    <br/>
+    <h2><<txt 6>></h2>
+    /* QR-Code https://gerdesque.github.io/ghosthunt?role=Scanner */
+    <img src="images/qr_scanner.png" class="image-size-33" />
   <</if>>
-</div> 
+</div>
 
 <div class="btn-group">
   <<if $playerCount === 1>>
@@ -438,9 +451,6 @@ $(document).one(":passagedisplay", function() {
     shadow-softness="0"
     camera-controls>
     <button slot="ar-button" id="ar-button"><<txt>></button>
-    <effect-composer>
-      <glitch-effect></glitch-effect>
-    </effect-composer>
   </model-viewer>
 
   <h2><<txt>></h2>
@@ -449,6 +459,8 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <button class="help"></button>
   <<if $isNavigatorScanner>>
+    <button class="next">[[|main.init]]</button>
+  <<elseif $isScanner>>
     <button class="next">[[|main.init]]</button>
   <<else>>
     <button class="next">[[|intro.init]]</button>
@@ -469,7 +481,7 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|setup.location]]</button>
+  <button class="next">[[|intro.1]]</button>
 </div>
 
 :: intro.1 {"position":"700,700","size":"100,100"}
@@ -499,7 +511,7 @@ $(document).one(":passagedisplay", function() {
 
 <div class="wrapper">
   <h1><<txt>></h1>
-  <img src="images/holger.png" class="image1" />
+  <img src="images/holger.png" class="image-size-50" />
 </div>
 
 <div class="btn-group">
@@ -693,6 +705,8 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
+  /* Frequenzeingabe setzt Hotspot-Variable und aktiviert next Button, temporär hotspot=1 */
+  <<set $hotspot to 1>>
 </div>
 
 <div class="btn-group">
@@ -708,6 +722,8 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
+  /* Frequenzeingabe setzt Hotspot-Variable und aktiviert next Button, hotspot=1 */
+  <<set $hotspot to 1>>
 </div>
 
 <div class="btn-group">
@@ -756,6 +772,8 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
+  /* Frequenzeingabe beinhaltet Information über Hotspot-Variable
+  <<get $hotspot>>  */
 </div>
 
 <div class="btn-group">
@@ -782,7 +800,7 @@ $(document).one(":passagedisplay", function() {
   <span id="heading">
     <<if $isStoryteller and $playerCount === 3>>
       <h1><<txt 6>> $riddle</h1>
-    <<elseif >>
+    <<else>>
       <h1><<txt>> $riddle</h1>
       <h2>_question</h2>
     <</if>>
@@ -792,8 +810,9 @@ $(document).one(":passagedisplay", function() {
 
   <div class="btn-group">
     <<if $isNavigator>>
+      <<set $riddle to $riddle + 1>>
       <button class="next">[[|hotspot.questions]]</button>
-    <<elseif >>
+    <<else>>
       <<set $resultTextCorrect = setup.text[passage()][2][setup.i18n.langs[settings.lang]]>>
       <<set $resultTextIncorrect = setup.text[passage()][3][setup.i18n.langs[settings.lang]]>>
       <<set $pointsTextCorrect = setup.text[passage()][4][setup.i18n.langs[settings.lang]]>>
@@ -940,6 +959,7 @@ $(document).one(":passagedisplay", function() {
   <<if $riddleCorrectCount is 5>>
     <h2><<txt>></h2>
     <p class="p2">A</p>
+    <<set $letter[$hotspot - 1] to 1>>
   <<else>>
     <h2><<txt 12>></h2>
   <</if>>
@@ -947,7 +967,6 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <<set $riddleCorrectCount to 0>>
-  <<set $letter[$hotspot - 1] to 1>>
   <button class="next">[[|hotspot.secret]]</button>
 </div>
 
@@ -1959,10 +1978,16 @@ model-viewer {
   margin-top: 10vh;
 }
 
-.image1 {
+.image-size-50 {
   display: block;
   margin: 0 auto;
   width: 50%;
+}
+
+.image-size-33 {
+  display: block;
+  margin: 0 auto;
+  width: 33%;
 }
 
 tw-hook[name="fade-out"] {

@@ -120,12 +120,24 @@ getTranslations = function () {
       en: 'Role selection '
     },
     "2": {
-      de: 'Lasse diesen QR-Code von deinem Mitspielenden scannen. Dieser ist Navigator/Scanner.',
-      en: 'Have this QR code scanned by your teammate. This is the navigator/scanner.'
+      de: 'Lasse diesen QR-Code von deinem Mitspielenden scannen.',
+      en: 'Have this QR code scanned by your teammate.'
     },
     "3": {
-      de: 'Lasse diese beiden QR-Codes von deinen Mitspielenden scannen. Dieser sind Navigator und Scanner.',
-      en: 'Have these two QR codes scanned by your fellow players. These are the navigator and scanner.'
+      de: 'QR-Code für Navigator/Scanner',
+      en: 'QR code for Navigator/Scanner'
+    },
+    "4": {
+      de: 'Lasse diese beiden QR-Codes von deinen Mitspielenden scannen.',
+      en: 'Have these two QR codes scanned by your fellow players.'
+    },
+    "5": {
+      de: 'QR-Code für Navigator',
+      en: 'QR code for Navigator'
+    },
+    "6": {
+      de: 'QR-Code für Scanner',
+      en: 'QR code for Scanner'
     }
   }
   text["setup.location"] = {
@@ -272,6 +284,16 @@ getTranslations = function () {
       en: 'You have entered a paranormal field. Time to track down the ghosts. Your scanner is currently searching for ghost echoes. Echoes are faded memories or emotions. They tie the ghosts to a specific location. Look at the photos and try to solve the puzzles. The answers are close by.'
     }
   }
+  text["hotspot.frequence"] = {
+    "1": {
+      de: 'Frequenz erhalten',
+      en: 'Frequency received'
+    },
+    "2": {
+      de: 'Gib die erhaltene Frequenz an deine Mitspielenden weiter.',
+      en: 'Pass on the frequency you have received to your fellow players.'
+    }
+  }
   text["hotspot.questions"] = {
     "1": {
       de: 'Frage',
@@ -294,8 +316,8 @@ getTranslations = function () {
       en: 'No points'
     },
     "6": {
-      de: 'Antwort',
-      en: 'Answer'
+      de: 'Antworten',
+      en: 'Answers'
     },
   }
   text["hotspot.ar"] = {
