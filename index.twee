@@ -645,6 +645,7 @@ $(document).one(":passagedisplay", function() {
 
               map.on('click', location.id, (e) => {
                 locations.find(f => f.id === location.id).alreadyEntered = true;
+                $.wiki('<<set $hotspot to $hotspot + 1>>');
                 $.wiki('<<goto "hotspot.splash">>');
               });
 
@@ -706,12 +707,28 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
-  /* Frequenzeingabe setzt Hotspot-Variable und aktiviert next Button, temporär hotspot=1 */
-  <<set $hotspot to 1>>
+  <br>
+  <br>
+  <<textbox "_answer" "">>
 </div>
 
 <div class="btn-group">
-  <button class="next">[[|hotspot.ar]]</button>
+  <<button "Check">>
+    <<if _answer is "">>
+      <<script>>UI.alert(<<txt>);<</script>>
+    <<else>>
+      <<set _answer to _answer.trim().toLowerCase()>>
+      <<if _answer is "263">>
+        <<set $hotspot to 1>>
+        <<goto "hotspot.ar">>
+      <<elseif _answer is "815">>
+        <<set $hotspot to 2>>
+        <<goto "hotspot.ar">>
+      <<else>>
+        <<goto "main.scanner">>
+      <</if>>
+    <</if>>
+  <</button>>
 </div>
 
 :: main.storyteller {"position":"1300,700","size":"100,100"}
@@ -723,12 +740,28 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
-  /* Frequenzeingabe setzt Hotspot-Variable und aktiviert next Button, hotspot=1 */
-  <<set $hotspot to 1>>
+  <br>
+  <br>
+  <<textbox "_answer" "">>
 </div>
 
 <div class="btn-group">
-  <button class="next">[[|hotspot.questions]]</button>
+  <<button "Check">>
+    <<if _answer is "">>
+      <<script>>UI.alert(<<txt>);<</script>>
+    <<else>>
+      <<set _answer to _answer.trim().toLowerCase()>>
+      <<if _answer is "263">>
+        <<set $hotspot to 1>>
+        <<goto "hotspot.questions">>
+      <<elseif _answer is "815">>
+        <<set $hotspot to 2>>
+        <<goto "hotspot.questions">>
+      <<else>>
+        <<goto "main.storyteller">>
+      <</if>>
+    <</if>>
+  <</button>>
 </div>
 
 :: hotspot.splash {"position":"900,900","size":"100,100"}
@@ -771,10 +804,14 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 
 <div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>></h2>
-  /* Frequenzeingabe beinhaltet Information über Hotspot-Variable
-  <<get $hotspot>>  */
+  <h1><<txt 1>></h1>
+  <h2><<txt 1>></h2>
+  <<if $hotspot is 1>>
+    <h2>263</h2>
+  <<elseif $hotspot is 2>>
+    <h2>815</h2>
+  <</if>>
+</div>
 </div>
 
 <div class="btn-group">
@@ -2044,4 +2081,13 @@ tw-hook[name="fade-out"] {
 .message h2 {
   color: var(--secondary-color);
   margin-right: 10px;
+}
+
+#textbox--answer {
+    border: 2px solid var(--secondary-color);
+    background-color: var(--text-light-color);
+    color: black;
+    font-size: 5vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
 }

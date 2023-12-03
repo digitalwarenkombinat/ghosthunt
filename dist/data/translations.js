@@ -171,15 +171,15 @@ getTranslations = function () {
     },
     "2": {
       de: 'Hallo Geisterjäger. Hat alles geklappt?',
-      en: 'Hello ghost hunters. And welcome to the test version of Spuk & Schreck.§We are Anne, Gerd and Gregor, the developers of this interactive ghost rally.§This rally is made for families, friends and people who like to be spooked and spend time together in the fresh air.§We’re going to check if your phone meets the necessary requirements. And then we’ll get started.'
+      en: 'Hello ghost hunter. Did everything work out?'
     },
     "3": {
       de: 'Konnte der Scanner den Geist sehen? Kann der Navigator die Karte sehen?',
-      en: 'Hello ghost hunters. And welcome to the test version of Spuk & Schreck.§We are Anne, Gerd and Gregor, the developers of this interactive ghost rally.§This rally is made for families, friends and people who like to be spooked and spend time together in the fresh air.§We’re going to check if your phone meets the necessary requirements. And then we’ll get started.'
+      en: 'Could the scanner see the ghost? Can the navigator see the map?'
     },
     "4": {
       de: 'Dann seid ihr bereit und du kannst das Spiel jetzt starten.',
-      en: 'Hello ghost hunters. And welcome to the test version of Spuk & Schreck.§We are Anne, Gerd and Gregor, the developers of this interactive ghost rally.§This rally is made for families, friends and people who like to be spooked and spend time together in the fresh air.§We’re going to check if your phone meets the necessary requirements. And then we’ll get started.'
+      en: 'Then you are ready and you can start the game now.'
     },
 
   }
@@ -241,8 +241,12 @@ getTranslations = function () {
       en: 'Enter Frequency'
     },
     "2": {
-      de: 'Trage hier deine erhaltene Frequenz ein.',
+      de: 'Wenn ihr einen Tatort erreicht habt, gibt der Navigator dir eine Frequenz, die du hier eingegeben musst.',
       en: 'Enter your received frequency here.'
+    },
+    "3": {
+      de: 'Du hast keine Frequenz angegeben!',
+      en: 'You did not supply a frequency!'
     }
   }
   text["main.storyteller"] = {
@@ -253,6 +257,10 @@ getTranslations = function () {
     "2": {
       de: 'Wenn ihr einen Tatort erreicht habt, gibt der Navigator dir eine Frequenz, die du hier eingegeben musst.',
       en: 'Enter your received frequency here.'
+    },
+    "3": {
+      de: 'Du hast keine Frequenz angegeben!',
+      en: 'You did not supply a frequency!'
     }
   }
   text["hotspot.splash"] = {
