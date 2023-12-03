@@ -60,24 +60,24 @@ getRiddles = function () {
     [
       {
         question: {
-          de: "Was ist passiert?",
-          en: "What happened?"
+          de: "Wer war gestorben?",
+          en: "Who had died?"
         },
         answers: [
-          { de: "Überfall", en: "Robbery", correct: false, points: 0 },
-          { de: "Unfall", en: "Accident", correct: false, points: 0 },
-          { de: "Grabraub", en: "Grave robbery", correct: true, points: 10 }
+          { de: "Rose Horwitz", en: "Rose Horwitz", correct: false, points: 0 },
+          { de: "Rosa Herman", en: "Rosa Herman", correct: true, points: 10 },
+          { de: "Jose Hetman", en: "Jose Hetman", correct: false, points: 0 }
         ]
       },
       {
         question: {
-          de: "Wessen Grab wurde ausgeraubt?",
-          en: "Whose grave was robbed?"
+          de: "Was war passiert?",
+          en: "What had happened?"
         },
         answers: [
-          { de: "Herbert Paus", en: "Herbert Paus", correct: false, points: 0 },
-          { de: "Rosa Herman", en: "Rosa Herman", correct: true, points: 10 },
-          { de: "Sibille Knapp", en: "Sibille Knapp", correct: false, points: 0 }
+          { de: "Opferritual", en: "Ritual of sacrifice", correct: false, points: 0 },
+          { de: "Beerdigung", en: "Funeral", correct: false, points: 0 },
+          { de: "Grabraub", en: "Grave robbery", correct: true, points: 10 }
         ]
       },
       {
@@ -86,9 +86,9 @@ getRiddles = function () {
           en: "How many robbers were there?"
         },
         answers: [
-          { de: "1", en: "1", correct: false, points: 0 },
-          { de: "2", en: "2", correct: true, points: 10 },
-          { de: "3", en: "3", correct: false, points: 0 }
+          { de: "Einer", en: "One", correct: false, points: 0 },
+          { de: "Zwei", en: "Two", correct: true, points: 10 },
+          { de: "Drei", en: "Three", correct: false, points: 0 }
         ]
       },
       {
@@ -97,9 +97,9 @@ getRiddles = function () {
           en: "What did the robbers steal?"
         },
         answers: [
-          { de: "Ein Brosche", en: "A brooch", correct: false, points: 0 },
-          { de: "Zwei Ringe", en: "Two rings", correct: true, points: 10 },
-          { de: "Eine Halskette", en: "A necklace", correct: false, points: 0 }
+          { de: "Bier", en: "Beer", correct: false, points: 0 },
+          { de: "Ringe", en: "Rings", correct: true, points: 10 },
+          { de: "Schal", en: "Scarf", correct: false, points: 0 }
         ]
       },
       {
@@ -109,8 +109,65 @@ getRiddles = function () {
         },
         answers: [
           { de: "Ausweis", en: "ID card", correct: true, points: 10 },
-          { de: "Nummernschild", en: "License plate", correct: false, points: 0 },
-          { de: "Namen", en: "Names", correct: false, points: 0 }
+          { de: "Brechstange", en: "Crowbar", correct: false, points: 0 },
+          { de: "Axt", en: "Axe", correct: false, points: 0 }
+        ]
+      }
+    ],
+    [
+      {
+        question: {
+          de: "",
+          en: ""
+        },
+        answers: [
+          { de: "", en: "", correct: false, points: 0 },
+          { de: "", en: "", correct: false, points: 0 },
+          { de: "", en: "", correct: true, points: 10 }
+        ]
+      },
+      {
+        question: {
+          de: "",
+          en: ""
+        },
+        answers: [
+          { de: "", en: "", correct: false, points: 0 },
+          { de: "", en: "", correct: false, points: 0 },
+          { de: "", en: "", correct: true, points: 10 }
+        ]
+      },
+      {
+        question: {
+          de: "",
+          en: ""
+        },
+        answers: [
+          { de: "", en: "", correct: false, points: 0 },
+          { de: "", en: "", correct: true, points: 10 },
+          { de: "", en: "", correct: false, points: 0 }
+        ]
+      },
+      {
+        question: {
+          de: "",
+          en: ""
+        },
+        answers: [
+          { de: "", en: "", correct: false, points: 0 },
+          { de: "", en: "", correct: true, points: 10 },
+          { de: "", en: "", correct: false, points: 0 }
+        ]
+      },
+      {
+        question: {
+          de: "",
+          en: ""
+        },
+        answers: [
+          { de: "", en: "", correct: true, points: 10 },
+          { de: "", en: "", correct: false, points: 0 },
+          { de: "", en: "", correct: false, points: 0 }
         ]
       }
     ]
