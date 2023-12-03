@@ -131,6 +131,10 @@ getTranslations = function () {
       de: 'Scanner',
       en: 'Scanner'
     },
+    "6": {
+      de: 'Bist du sicher? Jede Rolle darf nur einmal gewählt werden.',
+      en: 'Are you sure? Each role may only be chosen once.'
+    },
   }
   text["setup.location"] = {
     "1": {
@@ -247,6 +251,14 @@ getTranslations = function () {
     "3": {
       de: 'Du hast keine Frequenz angegeben!',
       en: 'You did not supply a frequency!'
+    },
+    "4": {
+      de: 'Vergewissere dich, dass dein Team bereit ist. Der Tatort ist nur für eine begrenzte Zeit sichtbar!',
+      en: 'Make sure your team is ready. The crime scene is only visible for a limited time!'
+    },
+    "5": {
+      de: 'Die eingegebene Frequenz ist nicht korrekt!',
+      en: 'The entered frequency is not correct!'
     }
   }
   text["main.storyteller"] = {
@@ -261,6 +273,14 @@ getTranslations = function () {
     "3": {
       de: 'Du hast keine Frequenz angegeben!',
       en: 'You did not supply a frequency!'
+    },
+    "4": {
+      de: 'Vergewissere dich, dass dein Team bereit ist. Der Tatort ist nur für eine begrenzte Zeit sichtbar!',
+      en: 'Make sure your team is ready. The crime scene is only visible for a limited time!'
+    },
+    "5": {
+      de: 'Die eingegebene Frequenz ist nicht korrekt!',
+      en: 'The entered frequency is not correct!'
     }
   }
   text["hotspot.splash"] = {

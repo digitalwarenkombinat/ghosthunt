@@ -297,25 +297,31 @@ Spuk & Schreck
 </div>
 
 <div class="btn-group">
+  <<set $alertText = setup.text['setup.role'][6][setup.i18n.langs[settings.lang]]>>
   <<if $playerCount === 2>>
     <<button Storyteller>>
+      <<script>>UI.alert(State.variables.alertText);<</script>>
       <<set $isStoryteller = true>>
       <<goto "intro.init">>
     <</button>>
     <<button Navigator/Scanner>>
+      <<script>>UI.alert(State.variables.alertText);<</script>>
       <<set $isNavigatorScanner = true>>
       <<goto "setup.location">>
     <</button>>
   <<elseif $playerCount === 3>>
     <<button Storyteller>>
+      <<script>>UI.alert(State.variables.alertText);<</script>>
       <<set $isStoryteller = true>>
       <<goto "intro.init">>
     <</button>>
     <<button Navigator>>
+      <<script>>UI.alert(State.variables.alertText);<</script>>
       <<set $isNavigator = true>>
       <<goto "setup.location">>
     <</button>>
     <<button Scanner>>
+      <<script>>UI.alert(State.variables.alertText);<</script>>
       <<set $isScanner = true>>
       <<goto "setup.camera">>
     <</button>>
@@ -565,7 +571,6 @@ $(document).one(":passagedisplay", function() {
     let lettersFound = [];
     State.variables.letter.forEach((isTrue, index) => {
       if (isTrue) {
-          console.log(State.variables.runes[index]);
           lettersFound.push(State.variables.runes[index][0]);
           lettersFound.push(State.variables.runes[index][1]);
       }
@@ -719,16 +724,22 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <<button "Check">>
     <<if _answer is "">>
-      <<script>>UI.alert(<<txt>);<</script>>
+      <<set $alertNoText = setup.text['main.scanner'][3][setup.i18n.langs[settings.lang]]>>
+      <<script>>UI.alert(State.variables.alertNoText);<</script>>
     <<else>>
       <<set _answer to _answer.trim().toLowerCase()>>
+      <<set $hotspotAlertText = setup.text['main.scanner'][4][setup.i18n.langs[settings.lang]]>>
       <<if _answer is "263">>
+        <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
         <<set $hotspot to 1>>
         <<goto "hotspot.ar">>
       <<elseif _answer is "815">>
+        <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
         <<set $hotspot to 2>>
         <<goto "hotspot.ar">>
       <<else>>
+        <<set $alertWrongText = setup.text['main.scanner'][5][setup.i18n.langs[settings.lang]]>>
+        <<script>>UI.alert(State.variables.alertWrongText);<</script>>
         <<goto "main.scanner">>
       <</if>>
     <</if>>
@@ -752,16 +763,22 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <<button "Check">>
     <<if _answer is "">>
-      <<script>>UI.alert(<<txt>);<</script>>
+      <<set $alertNoText = setup.text['main.storyteller'][3][setup.i18n.langs[settings.lang]]>>
+      <<script>>UI.alert(State.variables.alertNoText);<</script>>
     <<else>>
       <<set _answer to _answer.trim().toLowerCase()>>
+      <<set $hotspotAlertText = setup.text['main.storyteller'][4][setup.i18n.langs[settings.lang]]>>
       <<if _answer is "263">>
+        <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
         <<set $hotspot to 1>>
         <<goto "hotspot.questions">>
       <<elseif _answer is "815">>
+      <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
         <<set $hotspot to 2>>
         <<goto "hotspot.questions">>
       <<else>>
+        <<set $alertWrongText = setup.text['main.storyteller'][5][setup.i18n.langs[settings.lang]]>>
+        <<script>>UI.alert(State.variables.alertWrongText);<</script>>
         <<goto "main.storyteller">>
       <</if>>
     <</if>>
