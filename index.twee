@@ -771,11 +771,11 @@ $(document).one(":passagedisplay", function() {
       <<if _answer is "263">>
         <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
         <<set $hotspot to 1>>
-        <<goto "hotspot.questions">>
+        <<goto "hotspot.intro">>
       <<elseif _answer is "815">>
       <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
         <<set $hotspot to 2>>
-        <<goto "hotspot.questions">>
+        <<goto "hotspot.intro">>
       <<else>>
         <<set $alertWrongText = setup.text['main.storyteller'][5][setup.i18n.langs[settings.lang]]>>
         <<script>>UI.alert(State.variables.alertWrongText);<</script>>
@@ -792,7 +792,7 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 
 <<if $hotspot is 1>>
-  <<video noHotspot>>
+  <<video>>
 <<else>>
   <div class="wrapper">
     <h1><<txt>></h1>
@@ -803,15 +803,7 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-
-  <<if $isNavigator>>
-    <button class="next">[[|hotspot.frequence]]</button>
-  <<elseif $isNavigatorScanner>>
-    <button class="next">[[|hotspot.frequence]]</button>
-  <<else>>
-    <button class="next">[[|hotspot.ar]]</button>
-  <</if>>
-
+  <button class="next">[[|hotspot.questions]]</button>
 </div>
 
 :: hotspot.frequence {"position":"900,1300","size":"100,100"}
