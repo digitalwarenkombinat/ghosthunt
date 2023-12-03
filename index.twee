@@ -604,9 +604,13 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper"></div>
 
 <div class="btn-group">
-  <button class="return">[[|intro.5]]</button>
+  <button class="return">[[|intro.6]]</button>
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|main.storyteller]]</button>
+  <<if $playerCount === 1>>
+    <button class="next">[[|main.navigator]]</button>
+  <<else>>
+    <button class="next">[[|main.storyteller]]</button>
+  <</if>>
 </div>
 
 :: main.navigator.init {"position":"900,500","size":"100,100"}
@@ -646,7 +650,7 @@ $(document).one(":passagedisplay", function() {
               map.on('click', location.id, (e) => {
                 locations.find(f => f.id === location.id).alreadyEntered = true;
                 $.wiki('<<set $hotspot to $hotspot + 1>>');
-                $.wiki('<<goto "hotspot.splash">>');
+                $.wiki('<<goto "hotspot.intro">>');
               });
 
             } else {
@@ -764,25 +768,21 @@ $(document).one(":passagedisplay", function() {
   <</button>>
 </div>
 
-:: hotspot.splash {"position":"900,900","size":"100,100"}
+:: hotspot.intro {"position":"900,900","size":"100,100"}
 
 <<script>>
   $('#story').attr('style', `background-image:url(images/hotspot.jpg)`);
 <</script>>
 
-<div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>></h2>
-  <p class="p3">para</p>
-</div>
-
-<div class="btn-group">
-  <button class="next">[[|hotspot.intro]]</button>
-</div>
-
-:: hotspot.intro {"position":"900,1100","size":"100,100"}
-
-<<video>>
+<<if $hotspot is 1>>
+  <<video noHotspot>>
+<<else>>
+  <div class="wrapper">
+    <h1><<txt>></h1>
+    <h2><<txt>></h2>
+    <p class="p3">para</p>
+  </div>
+<</if>>
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
@@ -1054,6 +1054,15 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|hotspot.outro.2]]</button>
+</div>
+
+:: hotspot.outro.2 {"position":"1300,1700","size":"100,100"}
+
+<<video>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
 
   <<if !$letter.includes(0) and $ende is 0>>
     <button class="next">[[|outro.init]]</button>
@@ -1100,12 +1109,12 @@ $(document).one(":passagedisplay", function() {
     <<set $chapter1Text = setup.text['Dev'][3][setup.i18n.langs[settings.lang]]>>
     <<button $chapter1Text>>
       <<set $hotspot to 1>>
-      <<goto "hotspot.splash">>	
+      <<goto "hotspot.intro">>	
     <</button>>
     <<set $chapter2Text = setup.text['Dev'][4][setup.i18n.langs[settings.lang]]>>
     <<button $chapter2Text>>
       <<set $hotspot to 2>>
-      <<goto "hotspot.splash">>	
+      <<goto "hotspot.intro">>	
     <</button>>
     <<set $mapText = setup.text['Dev'][5][setup.i18n.langs[settings.lang]]>>
     <<button $mapText>>
