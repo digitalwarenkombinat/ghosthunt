@@ -193,7 +193,7 @@ getTranslations = function () {
       en: 'Ghost Hunters'
     },
     "2": {
-      de: 'Das Spiel beginnt...',
+      de: 'Die Rallye beginnt...',
       en: 'The game start now...'
     }
   }
@@ -205,7 +205,7 @@ getTranslations = function () {
   }
   text["intro.3"] = {
     "1": {
-      de: 'Eingehender Anruf',
+      de: 'Anruf',
       en: 'Incoming Call'
     }
   }
