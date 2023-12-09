@@ -493,7 +493,7 @@ $(document).one(":passagedisplay", function() {
 :: intro.1 {"position":"700,700","size":"100,100"}
 
 <script>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/intro.1.jpg)');
 </script>
 
 <div class="wrapper">
@@ -502,6 +502,7 @@ $(document).one(":passagedisplay", function() {
   <br>
   <h1><<txt>></h1>
   <p class="p3">intro</p>
+  <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">

@@ -102,8 +102,8 @@ getTranslations = function () {
   }
   text["setup.player"] = {
     "1": {
-      de: 'Anzahl Spieler',
-      en: 'Number of players'
+      de: 'Setup',
+      en: 'Setup'
     },
     "2": {
       de: 'Bitte wähle die Spieleranzahl aus.',
@@ -112,8 +112,8 @@ getTranslations = function () {
   }
   text["setup.role"] = {
     "1": {
-      de: 'Wähle deine Rolle',
-      en: 'Select your role'
+      de: 'Setup',
+      en: 'Setup'
     },
     "2": {
       de: 'Storyteller',
@@ -138,8 +138,8 @@ getTranslations = function () {
   }
   text["setup.location"] = {
     "1": {
-      de: 'Standort',
-      en: 'Location'
+      de: 'Setup',
+      en: 'Setup'
     },
     "2": {
       de: 'Wir benötigen deinen Standort, um dich zu den Tatorten zu leiten.',
@@ -156,8 +156,8 @@ getTranslations = function () {
   }
   text["setup.camera"] = {
     "1": {
-      de: 'Ghost Cam',
-      en: 'Ghost Cam'
+      de: 'Setup',
+      en: 'Setup'
     },
     "2": {
       de: 'AR-Kamera öffnen',
@@ -189,8 +189,12 @@ getTranslations = function () {
   }
   text["intro.1"] = {
     "1": {
-      de: 'Splash Screen',
-      en: 'Splash Screen'
+      de: 'Ghost Hunters',
+      en: 'Ghost Hunters'
+    },
+    "2": {
+      de: 'Das Spiel beginnt...',
+      en: 'The game start now...'
     }
   }
   text["intro.2"] = {
