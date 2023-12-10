@@ -430,7 +430,7 @@ $(document).one(":passagedisplay", function() {
 
 <<script>>
   $(document).one(":passagedisplay", function() {
-    $('#story').attr('style', 'background-image:url(images/cam.jpg)');
+    $('#story').attr('style', 'background-image:url(images/bg.jpg)');
     const helpBtn = document.querySelector('.help');
     helpBtn.style.display = 'none';
   });
@@ -493,7 +493,7 @@ $(document).one(":passagedisplay", function() {
 :: intro.1 {"position":"700,700","size":"100,100"}
 
 <script>
-  $('#story').attr('style', 'background-image:url(images/intro.1.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 </script>
 
 
@@ -502,7 +502,7 @@ $(document).one(":passagedisplay", function() {
   <br>
   <br>
   <h1><<txt>></h1>
-  <p class="p3">intro</p>
+  <br>
   <h2><<txt>></h2>
 </div>
 
@@ -1484,12 +1484,12 @@ External script loading module
 
 :root {
   /* Primäre Farben */
-  --primary-color: #000000;
-  --primary-dark-color: #000000;
+  --primary-color: #9CF299;
+  --primary-dark-color: #9CF299;
 
   /* Sekundäre Farben */
-  --secondary-color: #FFDE03;
-  --secondary-dark-color: ##FFDE03;
+  --secondary-color: #9CF299;
+  --secondary-dark-color: #68A683;
 
   /* Hintergrundfarben */
   --background-color: #000000;
@@ -1555,7 +1555,7 @@ audio, canvas, progress, video {
 }
 
 h1 {
-  color: var(--text-light-color);
+
   font-family: "Creepster", sans-serif;
   font-size: 9vh;
   font-style: normal;
@@ -1565,8 +1565,11 @@ h1 {
   margin-left: 2vw;
   margin-right: 2vw;
   text-align: center;
-  text-shadow: 3px 3px 1px black;
+  letter-spacing: 8px;
   word-break: keep-all;
+  color: #ffffff00;
+  -webkit-text-stroke: 5px var(--primary-color);
+  //text-shadow: 0px 1px 50px var(--primary-color);
 }
 
 h2 {
@@ -1835,15 +1838,15 @@ border: none;
 }
 
 .btn-group button {
-  background: var(--background-darken-color);
-  border-radius: 4px;
-  border: 2px solid var(--secondary-color);
-  box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
-  color: var(--secondary-color);
-  font-family: 'Averia Serif Libre', serif;
-  font-size: 4vh;
-  font-weight: 400;
-  margin: 1vh;
+    color: var(--secondary-color);
+    font-family: 'Averia Serif Libre', serif;
+    font-size: 5vh;
+    line-height: 5vh;
+    font-weight: 400;
+    margin: 2vh;
+    border: none;
+    background: none;
+    text-shadow: 1px 1px 20px var(--secondary-color);
 }
 
 .macro-return {
@@ -1909,7 +1912,8 @@ border: none;
 model-viewer {
   width: 90%;
   height: 50vh;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: none;
+  //background-color: rgba(0, 0, 0, 0.75);
   margin: 0 5%;
 }
 
@@ -2042,6 +2046,12 @@ model-viewer {
   display: block;
   margin: 0 auto;
   width: 33%;
+}
+
+.image-size-80 {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
 }
 
 tw-hook[name="fade-out"] {

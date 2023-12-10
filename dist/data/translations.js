@@ -189,8 +189,8 @@ getTranslations = function () {
   }
   text["intro.1"] = {
     "1": {
-      de: 'Ghost Hunters',
-      en: 'Ghost Hunters'
+      de: 'Spuk & Schreck',
+      en: 'Spuk & Schreck'
     },
     "2": {
       de: 'Die Rallye beginnt...',
