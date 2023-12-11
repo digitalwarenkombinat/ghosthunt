@@ -836,7 +836,7 @@ $(document).one(":passagedisplay", function() {
 :: hotspot.questions {"position":"900,1500","size":"100,100"}
 
 <script>
-  $('#story').attr('style', 'background-image:url(images/holger.bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 </script>
 
 <<if $riddle <= 5>>
