@@ -61,6 +61,7 @@ Spuk & Schreck
   <<set $storyText = setup.text[passage()][State.variables.hasHotspot ? State.variables.hotspot : 1][setup.i18n.langs[settings.lang]]>>
   <<script>>
     const videoText = window.video.splitTextByTrimmer(State.variables.storyText);
+    const videoTextDuration = 3000;
 
     $(document).one(":passagedisplay", function() {
       let video = document.getElementById("video");
@@ -69,24 +70,19 @@ Spuk & Schreck
         let srcSuffix = State.variables.hasHotspot ? State.variables.hotspot : State.variables.passage.split(".")[1];
         video.src = `videos/${srcPrefix}.${srcSuffix}.mp4`;
         video.load();
-        video.ondurationchange = function() {
-          const timePerVideoText = video.duration / videoText.length * 8000;
-          if (typeof timePerVideoText === "number") {
-            window.video.displayStringsSequentially(videoText, timePerVideoText);
-          };
-        };
+        window.video.displayStringsSequentially(videoText, videoTextDuration);
         video.play();
       }
     })
   <</script>>
 
-<video autoplay muted id="video" playsinline loop>
-  <source type="video/mp4">
-</video>
+  <video autoplay muted id="video" playsinline loop>
+    <source type="video/mp4">
+  </video>
 
-<div class="wrapper">
-  <p id="videoText"/>
-</div>
+  <div class="wrapper">
+    <p id="videoText"/>
+  </div>
 <</widget>>
 
 --------------------------AUDIO---------------------------------------
@@ -178,7 +174,7 @@ Spuk & Schreck
 </div>
 
 <div class="btn-group">
-    <button class="next">[[|setup.browsercheck]]</button>
+  <button class="next">[[|setup.browsercheck]]</button>
 </div>
 
 :: setup.browsercheck {"position":"100,500","size":"100,100"}
@@ -496,7 +492,6 @@ $(document).one(":passagedisplay", function() {
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 </script>
 
-
 <div class="wrapper">
   <br>
   <br>
@@ -797,15 +792,25 @@ $(document).one(":passagedisplay", function() {
   <<video>>
 <<else>>
   <div class="wrapper">
-    <h1><<txt>></h1>
-    <h2><<txt>></h2>
+    <h1><<txt 11>></h1>
+    <h2><<txt 12>></h2>
     <p class="p3">para</p>
   </div>
 <</if>>
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|hotspot.questions]]</button>
+  <<if $isNavigator>>
+    <button class="next">[[|hotspot.frequence]]</button>    
+  <<elseif $isNavigatorScanner>>
+    <button class="next">[[|hotspot.frequence]]</button>
+  <<elseif $isScanner>>
+    <button class="next">[[|hotspot.ar]]</button>
+  <<elseif $playerCount === 1>>
+    <button class="next">[[|hotspot.ar]]</button>
+  <<else>>
+    <button class="next">[[|hotspot.questions]]</button>
+  <</if>>
 </div>
 
 :: hotspot.frequence {"position":"900,1300","size":"100,100"}
@@ -1176,7 +1181,6 @@ $(document).one(":passagedisplay", function() {
   <<return>>
 </div>
 
-
 :: Impressum {"position":"1100,100","size":"100,100"}
 
 <div class="wrapper">
@@ -1186,7 +1190,6 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <<return>>
 </div>
-
 
 :: Inventar {"position":"700,100","size":"100,100"}
 
@@ -1535,7 +1538,7 @@ html {
 }
 
 html * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -1555,7 +1558,6 @@ audio, canvas, progress, video {
 }
 
 h1 {
-
   font-family: "Creepster", sans-serif;
   font-size: 9vh;
   font-style: normal;
@@ -1783,12 +1785,12 @@ details > ul {
 }
 
 #menu ul {
-border: none;
+  border: none;
 }
 
 #menu li a {
   border-radius: 4px;
-  //border: 2px solid var(--secondary-color);
+  /* border: 2px solid var(--secondary-color); */
   color: var(--secondary-color);
   font-family: 'Averia Serif Libre', serif;
   font-size: 3vh;
@@ -1800,7 +1802,7 @@ border: none;
 }
 
 #menu li:not(:first-child) {
-    border: none;
+  border: none;
 }
 
 /* ####################STORY PASSAGE#################### */
@@ -1843,22 +1845,22 @@ border: none;
 }
 
 .btn-group button {
-    color: var(--secondary-color);
-    font-family: 'Averia Serif Libre', serif;
-    font-size: 5vh;
-    line-height: 5vh;
-    font-weight: 400;
-    margin: 2vh;
-    border: none;
-    background: none;
-    text-shadow: 1px 1px 20px var(--secondary-color);
-    //text-shadow:
-    0 0 0.5rem #fff,
-    0 0 1rem #fff,
-    0 0 1.5rem #fff,
-    0 0 2rem var(--secondary-color),
-    0 0 4rem var(--secondary-color),
-    0 0 5.5rem var(--secondary-color);
+  /* text-shadow:
+  0 0 0.5rem #fff,
+  0 0 1.5rem #fff,
+  0 0 1rem #fff,
+  0 0 2rem var(--secondary-color),
+  0 0 4rem var(--secondary-color),
+  0 0 5.5rem var(--secondary-color); */
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  font-family: 'Averia Serif Libre', serif;
+  font-size: 5vh;
+  font-weight: 400;
+  line-height: 5vh;
+  margin: 2vh;
+  text-shadow: 1px 1px 20px var(--secondary-color);
 }
 
 .macro-return {
@@ -1922,11 +1924,11 @@ border: none;
   
 /* ####################MODEL VIEWER#################### */
 model-viewer {
-  width: 90%;
-  height: 50vh;
+  /* background-color: rgba(0, 0, 0, 0.75); */
   background-color: none;
-  //background-color: rgba(0, 0, 0, 0.75);
+  height: 50vh;
   margin: 0 5%;
+  width: 90%;
 }
 
 .Hotspot {
@@ -1964,7 +1966,7 @@ model-viewer {
   transform: translateY(-50%);
 }
 
-.HotspotAnnotation{
+.HotspotAnnotation {
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
@@ -1977,7 +1979,7 @@ model-viewer {
   max-width: 128px;
   overflow-wrap: break-word;
   padding: 0.5em 1em;
-    position: absolute;
+  position: absolute;
   top: 50%;
   width: max-content;
 }
@@ -2042,22 +2044,22 @@ model-viewer {
   line-height: 5vh;
   margin-left: 20px;
   margin-right: 30px;
+  margin-top: 10vh;
   text-align: center;
   text-shadow: 3px 3px 1px black;
   word-break: break-word;
-  margin-top: 10vh;
-}
-
-.image-size-50 {
-  display: block;
-  margin: 0 auto;
-  width: 50%;
 }
 
 .image-size-33 {
   display: block;
   margin: 0 auto;
   width: 33%;
+}
+
+.image-size-50 {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
 }
 
 .image-size-80 {
@@ -2093,13 +2095,13 @@ tw-hook[name="fade-out"] {
 }
 
 .p3 {
-  font-family: para;
   color: var(--text-light-color);
-  font-size: 4vh;
-  line-height: 0vh;
   display: inherit;
-  text-shadow: 3px 3px 1px black;
+  font-family: para;
+  font-size: 4vh;
   letter-spacing: 3vw;
+  line-height: 0vh;
+  text-shadow: 3px 3px 1px black;
 }
 
 .hide {
@@ -2126,10 +2128,10 @@ tw-hook[name="fade-out"] {
 }
 
 #textbox--answer {
-    border: 2px solid var(--secondary-color);
-    background-color: var(--text-light-color);
-    color: black;
-    font-size: 5vw;
-    margin-left: 5vw;
-    margin-right: 5vw;
+  border: 2px solid var(--secondary-color);
+  background-color: var(--text-light-color);
+  color: black;
+  font-size: 5vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }

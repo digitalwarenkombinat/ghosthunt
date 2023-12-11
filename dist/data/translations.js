@@ -287,20 +287,18 @@ getTranslations = function () {
       en: 'The entered frequency is not correct!'
     }
   }
-  text["hotspot.splash"] = {
-    "1": {
-      de: 'Achtung!',
-      en: 'Attention!'
-    },
-    "2": {
-      de: 'Paranormale Aktivität entdeckt.',
-      en: 'Paranormal activity detected.'
-    }
-  }
   text["hotspot.intro"] = {
     "1": {
       de: 'Gut, dass ihr rangeht!§Ich hatte schon Schiss, dass ihr mich ghostet...haha.§Um die Runen zu übersetzen, brauchen wir die Hilfe der Toten.§Allerdings gibt’s von denen nichts umsonst.§Die meisten hassen die Lebenden, weil sie ihnen Gewalt angetan haben.§ Gewaltsame Tode sind ein häufiger Grund für paranormale Aktivitäten.§Insbesondere, wenn diese Tode ungeklärt sind.§Manche Geister haben aber auch ungeklärte Fragen mit in ihr Grab genommen.§Mit eurer Ghost Cam könnt ihr diese Tode sichtbar machen.§Klärt die Fälle auf und beendet den Spuk.§Mit etwas Glück helfen uns die Geister dann bei der Übersetzung.§Geht jetzt zu einem der paranormalen Felder auf eurer Karte.§Viel Erfolg!',
       en: 'Glad you answered!§I was afraid you’d ghosted me...haha.§To translate the runes, we need the help of the dead.§However, they don’t give you anything for free.§Most of them hate the living because they’ve done violence to them.§ Violent deaths are a common cause of paranormal activity.§Especially if these deaths are unexplained.§Some ghosts have also taken unresolved issues with them into their grave.§With your Ghost Cam you can make these deaths visible.§Clear up the cases and end the haunting.§With a bit of luck the ghosts will then help us with the translation.§Go to one of the paranormal fields on your map.§Good luck!'
+    },
+    "11": {
+      de: 'Achtung!',
+      en: 'Attention!'
+    },
+    "12": {
+      de: 'Paranormale Aktivität entdeckt.',
+      en: 'Paranormal activity detected.'
     }
   }
   text["hotspot.frequence"] = {
