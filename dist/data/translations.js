@@ -235,12 +235,12 @@ getTranslations = function () {
   }
   text["main.navigator"] = {
     "1": {
-      de: 'Betrete eines der angezeigten paranormalen Felder!',
+      de: 'Betrete einen Hotspot!',
       en: 'Enter one of the paranormal fields displayed!'
     },
     "2": {
-      de: 'Sobald das Geistersymbol gelb wird, kannst du ihn anklicken.',
-      en: 'As soon as the ghost symbol turns yellow, you can click on it.'
+      de: '',
+      en: ''
     }
   }
   text["main.scanner"] = {
