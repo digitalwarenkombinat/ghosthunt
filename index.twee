@@ -647,7 +647,7 @@ $(document).one(":passagedisplay", function() {
 
           for (const location of remainingLocations) {
             if (window.geolocation.inside(location.latitude, location.longitude, location.radius, lat, lon)) {
-              map.setPaintProperty( location.id, 'fill-color', '#FFDE03');
+              map.setPaintProperty( location.id, 'fill-color', '#9CF299');
 
               map.on('click', location.id, (e) => {
                 locations.find(f => f.id === location.id).alreadyEntered = true;
@@ -656,7 +656,7 @@ $(document).one(":passagedisplay", function() {
               });
 
             } else {
-              map.setPaintProperty( location.id, 'fill-color', 'black');
+              map.setPaintProperty( location.id, 'fill-color', '#A799F2');
             }
           }
         });
@@ -1570,8 +1570,8 @@ h1 {
   letter-spacing: 8px;
   word-break: keep-all;
   color: #ffffff00;
-  -webkit-text-stroke: 5px var(--primary-color);
-  text-shadow: 0 0 20px var(--primary-color);
+  -webkit-text-stroke: 5px var(--text-light-color);
+  text-shadow: 0 0 20px var(--text-light-color);
 }
 
 h2 {
@@ -1755,6 +1755,7 @@ details > ul {
 #ui-bar-toggle:before {
   color: var(--secondary-color);
   content: "\e804";
+  text-shadow: 1px 1px 20px var(--secondary-color);
 }
 
 #ui-bar-toggle:hover {

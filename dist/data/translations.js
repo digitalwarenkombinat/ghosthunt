@@ -223,8 +223,8 @@ getTranslations = function () {
   }
   text["intro.6"] = {
     "1": {
-      de: 'Okkulte Runen',
-      en: 'Occult runes'
+      de: 'Okkulte Nachricht',
+      en: 'Occult Message'
     },
   }
   text["intro.7"] = {
