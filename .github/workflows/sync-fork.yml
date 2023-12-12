@@ -1,0 +1,19 @@
+name: Sync Fork
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch: # on button click
+
+jobs:
+  sync:
+
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - run: gh repo sync gerdesque/ghosthunt -b develop
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
