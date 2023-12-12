@@ -66,9 +66,9 @@ Spuk & Schreck
     $(document).one(":passagedisplay", function() {
       let video = document.getElementById("video");
       if (video) {
-        let srcPrefix = State.variables.hasHotspot ? State.variables.passage : State.variables.passage.split(".")[0];
-        let srcSuffix = State.variables.hasHotspot ? State.variables.hotspot : State.variables.passage.split(".")[1];
-        video.src = `videos/${srcPrefix}.${srcSuffix}.mp4`;
+        let srcPassage = State.variables.hasHotspot ? State.variables.passage : State.variables.passage.split(".")[0];
+        let srcHotspot = State.variables.hasHotspot ? State.variables.hotspot : State.variables.passage.split(".")[1];
+        video.src = `videos/${srcHotspot}.${srcPassage}.mp4`;
         video.load();
         window.video.displayStringsSequentially(videoText, videoTextDuration);
         video.play();
