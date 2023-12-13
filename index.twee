@@ -586,6 +586,7 @@ $(document).one(":passagedisplay", function() {
 
 <div class="wrapper">
   <h1><<txt>></h1>
+  <h2><<txt>></h2>
   <br/>
 	<div id="messageContainer" class="message"></div>
 </div>

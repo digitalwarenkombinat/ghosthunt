@@ -228,9 +228,13 @@ getTranslations = function () {
   }
   text["intro.6"] = {
     "1": {
-      de: 'Okkulte Runen',
-      en: 'Occult Runes'
+      de: 'Ziel',
+      en: 'Goal'
     },
+    "1": {
+      de: 'Hilf Holger diese okkulten Runen zu übersetzen, um das Spiel zu gewinnen.',
+      en: 'Help Holger to decode this secret message, to win the game'
+    }
   }
   text["intro.7"] = {
     "1": {
