@@ -205,9 +205,14 @@ getTranslations = function () {
   }
   text["intro.3"] = {
     "1": {
-      de: 'Anruf',
-      en: 'Incoming Call'
-    }
+      de: 'Holger',
+      en: 'Holger'
+    },
+    "2": {
+      de: 'ruft an',
+      en: 'is calling'
+    },
+
   }
   text["intro.4"] = {
     "1": {

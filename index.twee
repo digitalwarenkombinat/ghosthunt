@@ -521,6 +521,7 @@ $(document).one(":passagedisplay", function() {
 
 <div class="wrapper">
   <h1><<txt>></h1>
+  <h2><<txt>></h2>
   <img src="images/holger.png" class="image-size-50" />
 </div>
 
