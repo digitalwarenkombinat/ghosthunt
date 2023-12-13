@@ -1571,7 +1571,7 @@ h1 {
   word-break: keep-all;
   color: #ffffff00;
   -webkit-text-stroke: 5px var(--text-light-color);
-  text-shadow: 0 0 20px var(--text-light-color);
+  //text-shadow: 0 0 20px var(--text-light-color);
 }
 
 h2 {
