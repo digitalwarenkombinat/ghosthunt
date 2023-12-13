@@ -231,7 +231,7 @@ getTranslations = function () {
       de: 'Ziel',
       en: 'Goal'
     },
-    "1": {
+    "2": {
       de: 'Hilf Holger diese okkulten Runen zu übersetzen, um das Spiel zu gewinnen.',
       en: 'Help Holger to decode this secret message, to win the game'
     }
