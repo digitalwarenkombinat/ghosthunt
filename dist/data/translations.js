@@ -244,7 +244,7 @@ getTranslations = function () {
   }
   text["main.navigator"] = {
     "1": {
-      de: 'Betrete einen lila Kreis!',
+      de: 'Betrete einen violetten Kreis!',
       en: 'Enter one of the violet Circles'
     },
     "2": {
