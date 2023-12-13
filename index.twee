@@ -2086,7 +2086,7 @@ tw-hook[name="fade-out"] {
 }
 
 .p2 {
-  color: var(--secondary-color);
+  color: var(--primary-color);
   display: inherit;
   font-family: para;
   font-size: 10vh;
