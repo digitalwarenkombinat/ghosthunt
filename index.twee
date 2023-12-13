@@ -656,7 +656,7 @@ $(document).one(":passagedisplay", function() {
               });
 
             } else {
-              map.setPaintProperty( location.id, 'fill-color', '#A799F2');
+              map.setPaintProperty( location.id, 'fill-color', '#F299CA');
             }
           }
         });
@@ -1487,7 +1487,7 @@ External script loading module
 
 :root {
   /* Primäre Farben */
-  --primary-color: #A799F2;
+  --primary-color: #F299CA;
   --primary-dark-color: #9CF299;
 
   /* Sekundäre Farben */
