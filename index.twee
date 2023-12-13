@@ -493,9 +493,7 @@ $(document).one(":passagedisplay", function() {
 </script>
 
 <div class="wrapper">
-  <br>
-  <br>
-  <br>
+<img src="images/intro.1.png" class="image-size-50" />
   <h1><<txt>></h1>
   <br>
   <h2><<txt>></h2>
