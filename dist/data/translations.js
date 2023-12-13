@@ -211,7 +211,7 @@ getTranslations = function () {
     "2": {
       de: 'ruft an',
       en: 'is calling'
-    },
+    }
 
   }
   text["intro.4"] = {
