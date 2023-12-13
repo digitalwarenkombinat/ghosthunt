@@ -232,7 +232,7 @@ getTranslations = function () {
       en: 'Goal'
     },
     "2": {
-      de: 'Hilf Holger diese okkulten Runen zu übersetzen, um das Spiel zu gewinnen.',
+      de: 'Hilf Holger diese okkulten Botschaft zu übersetzen, um das Spiel zu gewinnen.',
       en: 'Help Holger to decode this secret message, to win the game'
     }
   }
@@ -244,8 +244,8 @@ getTranslations = function () {
   }
   text["main.navigator"] = {
     "1": {
-      de: 'Betrete einen Hotspot!',
-      en: 'Enter one of the paranormal fields displayed!'
+      de: 'Betrete einen lila Kreis!',
+      en: 'Enter one of the violet Circles'
     },
     "2": {
       de: '',
