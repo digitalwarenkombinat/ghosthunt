@@ -98,6 +98,8 @@ Spuk & Schreck
 
 <<set $inventory to [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]>>
 
+<<set $enteredLocations to []>>
+
 <<set $runes to [
     ["a", "ä"], 
     ["s", "u"], 
@@ -242,6 +244,7 @@ Spuk & Schreck
 </div>
 
 <div class="btn-group">
+  <button class="return">[[|setup.init]]</button>
   <button class="install"></button>
 </div>
 
@@ -489,15 +492,17 @@ $(document).one(":passagedisplay", function() {
 </script>
 
 <div class="wrapper">
-<br>
-<br>
-<img src="images/intro.1.png" class="image-size-50" />
+  <br>
+  <br>
+  <img src="images/intro.1.png" class="image-size-50" />
   <h1><<txt>></h1>
   <br>
   <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
+  <button class="return">[[|intro.welcome]]</button>
+  <button class="retry">[[|passage()]]</button>
   <button class="next">[[|intro.2]]</button>
 </div>
 
@@ -508,6 +513,8 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper"></div>
 
 <div class="btn-group">
+  <button class="return">[[|intro.1]]</button>
+  <button class="retry">[[|passage()]]</button>
   <button class="next">[[|intro.3]]</button>
 </div>
 
@@ -524,6 +531,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
+  <button class="return">[[|intro.2]]</button>
   <button class="retry">[[|passage()]]</button>
   <button class="next">[[|intro.4]]</button>
 </div>
@@ -635,8 +643,8 @@ $(document).one(":passagedisplay", function() {
         const geolocate = new mapboxgl.GeolocateControl(window.geolocation.getGeolocateControl());
 
         map.addControl(geolocate);
-        const locations= getLocations();
-        const remainingLocations = locations.filter(f => !f.alreadyEntered);
+        const locations = getLocations();
+        const remainingLocations = locations.filter(loc => !State.variables.enteredLocations.includes(loc.id));
 
         geolocate.on('geolocate', ({ coords }) => {
           const lat = coords.latitude;
@@ -647,7 +655,7 @@ $(document).one(":passagedisplay", function() {
               map.setPaintProperty( location.id, 'fill-color', '#9CF299');
 
               map.on('click', location.id, (e) => {
-                locations.find(f => f.id === location.id).alreadyEntered = true;
+                State.variables.enteredLocations.push(location.id);
                 $.wiki('<<set $hotspot to $hotspot + 1>>');
                 $.wiki('<<goto "hotspot.intro">>');
               });
