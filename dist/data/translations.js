@@ -470,12 +470,12 @@ getTranslations = function () {
       en: 'Psst. Look at that!'
     },
     "3": {
-      de: 'Ich schau mir gerade die Küche an.§Hier wurde auf jeden Fall jemand abgemurkst. Überall Blut und Gedärme.§Die alte Gerda hat nicht übertreiben.§Darum bin ich ja überhaupt hier!§Ich hab mich von der alten Nachbarin meines Vaters bequatschen lassen.§"Herr Holger! Sie sind doch Geisterjäger.§Könnten Sie nicht mal einen Blick in mein Geburtshaus werfen.§Da spukt es seit Jahren!"§Und ich Trottel sag auch noch ja!§Ich bin einfach zu gutmütig.',
-      en: 'I’m just looking at the kitchen.§Someone was definitely killed here.§Blood and guts everywhere.§Old Gerda wasn’t exaggerating.§That’s why I’m here in the first place!§I let my father’s old neighbor talk me into it.§"Mr. Holger! You’re a ghost hunter.§Couldn’t you take a look at the house where I was born.§It’s been haunted for years!"§And I’m a fool to say yes!§I’m just too good-natured.'
+      de: 'Ich schau mir gerade die Küche an.§Hier wurde auf jeden Fall jemand abgemurxt.§Was für eine Sauerei!',
+      en: 'Check out this haunted kitchen.$Somebody died here for sure.$What a mess!'    
     },
     "4": {
-      de: 'Schaut euch das an!§Hab ne Badewanne voller Blut gefunden.§Samt Toaster und blutigen Fußabdrücken.§Die alte Gerda hat gesagt, dass das Haus seit 70 Jahren niemand mehr betreten hat.§Das Blut, das ich hier sehe, müsste längst vertrocknet sein.§Dasselbe gilt für die Gedärme in der Küche.§Irgendetwas will mir zeigen, was hier passiert ist.',
-      en: 'Look at this!§I found a bathtub full of blood.§Along with a toaster and bloody footprints.§Old Gerda said that no one has entered the house for 70 years.§The blood I see here should have dried up long ago.§The same goes for the intestines in the kitchen.§Something wants to show me what happened here.'
+      de: 'Ich hab die Familienfotos gefunden§Und eine blutige Botschaft.',
+      en: 'I found the family fotos.§And a bloody message too.'    
     },
     "5": {
       de: 'Holger Outro 1',
@@ -512,16 +512,15 @@ getTranslations = function () {
       en: 'Did you see that?§The footprints led outside.§But I can’t get out.§Something’s blocking the doors.§I’ll keep looking.§By the way, I forgot to mention the importance of teamwork earlier.§Ghost hunters never travel alone!§Says the man trapped alone in a mansion...haha.§But to avoid ending up in a predicament like me, you should heed this rule!'
     },
     "3": {
-      de: 'Jedenfalls das hier und die Kälter überall...§das sind alles Anzeichen einer dämonischen Präsenz.§Eigentlich bräuchten wie hier einen Exorzisten.§Die Runen sind nach wie vor mein einziger Anhaltspunkt.§Macht weiter!',
-      en: 'Anyway, this and the coldness everywhere...§these are all signs of a demonic presence.§Actually, we’d need an exorcist here.§The runes are still my only clue.§Keep going!!'
-    },
+      de: 'Die alte Gerda hat nicht übertrieben.§Die ist der Grund warum ich überhaupt hier bin.§Ich hab mich von meiner Nachbarin bequatschen lassen.$Herr Holger Sie sind doch Geisterjäger.§Könnten Sie nicht mal einen Blick in mein Geburtshaus werfen.§Da spukt es seit Jahren.$Und ich Trottel sag auch noch zu.',
+      en: 'Old Gerda did not lie when she said that this place is cursed.$ That’s the reason I’m in here by the way§ My old neighbour lady talked me into it. And I said yes. I’m such a fool'
+        },
     "4": {
+      de: 'Die Nachricht und diese Kälte hier...§Das sind alles Anzeichen für eine dämonische Präsenz.$Das macht mir nicht gerade Mut.',
+      en: 'The message and this cold...$These all hint at a demonic presence.$Not really looking forward to that, to be honest.'    },
+    "5": {
       de: 'Brrr. Es ist unnatürlich kalt hier.§Geister absorbieren thermische Energie.§Für die ist das wie Treibstoff.§Manche verwandeln das dann in kinetische Energie, um Türen zu knallen oder Gegenstände fliegen zu lassen.§Aber all das kostet Kraft.§Und was immer hier spukt, scheint viel Energie zu besitzen.§Ich schaue mir jetzt mal den 1. Stock an.',
       en: 'Brrr. It’s unnaturally cold here.§Ghosts absorb thermal energy.§For them, it’s like fuel.§Some then turn it into kinetic energy to slam doors or send objects flying.§But all that takes energy.§And whatever’s haunting here seems to have a lot of energy.§I’m going to take a look at the first floor.'
-    },
-    "5": {
-      de: 'Holger Outro 2',
-      en: 'Holger Outro 2'
     },
     "6": {
       de: 'Holger Outro 2',
