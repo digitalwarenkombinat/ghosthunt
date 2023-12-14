@@ -435,8 +435,6 @@ $(document).one(":passagedisplay", function() {
 <<set $setupCompleted to true>>
 
 <div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>></h2>
   <model-viewer 
     id="model-viewer" 
     ar auto-rotate 
@@ -449,6 +447,7 @@ $(document).one(":passagedisplay", function() {
     camera-controls>
     <button slot="ar-button" id="ar-button"><<txt>></button>
   </model-viewer>
+    <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
@@ -1857,9 +1856,9 @@ details > ul {
   border: none;
   color: var(--secondary-color);
   font-family: 'Averia Serif Libre', serif;
-  font-size: 5vh;
+  font-size: 4vh;
   font-weight: 400;
-  line-height: 5vh;
+  line-height: 4vh;
   margin: 2vh;
   text-shadow: 1px 1px 20px var(--secondary-color);
 }
@@ -1997,7 +1996,7 @@ model-viewer {
   background-repeat: no-repeat;
   background-size: 20px 20px;
   background-position: 12px 50%;
-  background-color: #fff;
+  background-color: var(--background-color);
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -2005,11 +2004,13 @@ model-viewer {
   bottom: 16px;
   padding: 0px 16px 0px 40px;
   font-size: 14px;
-  color:#4285f4;
+  color: var(--secondary-color);
   height: 36px;
   line-height: 36px;
   border-radius: 18px;
-  border: 1px solid #DADCE0;
+  border: 2px solid var(--secondary-color);
+  text-shadow: 1px 1px 20px var(--secondary-color);
+  font-family: 'Averia Serif Libre';
 }
 
 #ar-button:active {

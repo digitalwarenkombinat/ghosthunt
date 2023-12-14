@@ -156,14 +156,10 @@ getTranslations = function () {
   }
   text["setup.camera"] = {
     "1": {
-      de: 'Setup',
-      en: 'Setup'
+      de: 'AR-Kamera Test',
+      en: 'AR-Kamera Test '
     },
     "2": {
-      de: 'AR-Kamera öffnen',
-      en: 'Open AR Camera'
-    },
-    "3": {
       de: 'Wir benötigen Zugriff auf deine Kamera, um dir die Geister zu zeigen.',
       en: 'We need access to your camera to show you the ghosts.'
     }
@@ -348,6 +344,10 @@ getTranslations = function () {
   }
   text["hotspot.ar"] = {
     "1": {
+      de: 'Ghost Cam aktivieren',
+      en: 'Activate Ghost Cam'
+    },
+    "2": {
       de: 'Öffne die Ghost Cam, untersuche den Tatort und mache Fotos von allem, das dir wichtig erscheint.',
       en: 'Open the ghost cam, examine the crime scene and take photos of everything that seems important to you.'
     }
