@@ -348,14 +348,6 @@ getTranslations = function () {
   }
   text["hotspot.ar"] = {
     "1": {
-      de: 'Ghost Cam',
-      en: 'Ghost Cam'
-    },
-    "2": {
-      de: 'AR-Kamera öffnen',
-      en: 'Open AR camera'
-    },
-    "3": {
       de: 'Öffne die Ghost Cam, untersuche den Tatort und mache Fotos von allem, das dir wichtig erscheint.',
       en: 'Open the ghost cam, examine the crime scene and take photos of everything that seems important to you.'
     }
