@@ -951,8 +951,7 @@ $(document).one(":passagedisplay", function() {
 <<set $inventory[$hotspot] to $inventoryNames[$hotspot]>>
 
 <div class="wrapper">
-  <h1>$inventoryNames[$hotspot]</h1>
-  <h2><<txt>></h2>
+ /*<h1>$inventoryNames[$hotspot]</h1>*/
   <model-viewer 
     id="model-viewer" 
     ar
@@ -964,6 +963,7 @@ $(document).one(":passagedisplay", function() {
     camera-controls>
     <button slot="ar-button" id="ar-button"><<txt>></button>
   </model-viewer>
+   <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
@@ -1539,7 +1539,7 @@ html * {
 
 body {
   background-color: var(--background-color);
-  color: var(--text-color);
+  color: var(--text-light-color);
   font-family: 'Averia Serif Libre', serif;
   font-size: 16px;
   height: 100%;
@@ -1564,7 +1564,7 @@ h1 {
   margin-right: 2vw;
   text-align: center;
   letter-spacing: 8px;
-  word-break: keep-all;
+  word-break: break-word;
   color: #ffffff00;
   -webkit-text-stroke: 3px var(--text-light-color);
   //text-shadow: 0 0 20px var(--text-light-color);
@@ -1635,14 +1635,15 @@ h6 {
 
 p {
   color: var(--text-light-color);
-  font-family: transat, sans-serif;
+  font-family: 'Averia Serif Libre', serif;
   font-size: 3vh;
-  font-style: italic;
-  font-weight: 500;
+  font-style: normal;
+  font-weight: 700;
   line-height: 4vh;
   margin-left: 20px;
   margin-right: 30px;
   text-align: center;
+  text-shadow: 3px 3px 1px black;
   word-break: break-word;
 }
 
@@ -1657,9 +1658,11 @@ a:hover {
 
 button {
   border-radius: 4px;
+  background-color: var(--background-color);
   border: 2px solid #000000; 
   display: inline-block;
-  font-family: itc-benguiat-condensed, sans-serif;
+  color: var(--secondary-color);
+  font-family: 'Averia Serif Libre', serif;
   font-size: 3vh;
   font-weight: 400;
   line-height: 4vh;
@@ -1776,6 +1779,11 @@ details > ul {
   display: flex;
   justify-content: center;
 }
+
+#ui-dialog {
+border: 2px solid var(--secondary-color);
+}
+
 
 #menu-item-share, #menu-item-saves {
   display: none;

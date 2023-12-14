@@ -346,12 +346,12 @@ getTranslations = function () {
   }
   text["hotspot.ghost"] = {
     "1": {
-      de: 'Ein neuer Geist ist ab sofort in deinem Inventar verfügbar.',
-      en: 'A new ghost is now available in your inventory.'
+      de: 'Ghost Cam aktivieren',
+      en: 'Activate Ghost Cam'
     },
     "2": {
-      de: 'AR-Kamera öffnen',
-      en: 'Open AR camera'
+      de: 'Ein neuer Geist ist ab sofort in deinem Inventar verfügbar.',
+      en: 'A new ghost is now available in your inventory.'
     }
   }
   text["hotspot.solution"] = {
@@ -516,8 +516,8 @@ getTranslations = function () {
       en: 'Old Gerda did not lie when she said that this place is cursed.$ That’s the reason I’m in here by the way§ My old neighbour lady talked me into it. And I said yes. I’m such a fool'
         },
     "4": {
-      de: 'Die Nachricht und diese Kälte hier...§Das sind alles Anzeichen für eine dämonische Präsenz.$Das macht mir nicht gerade Mut.',
-      en: 'The message and this cold...$These all hint at a demonic presence.$Not really looking forward to that, to be honest.'    },
+      de: 'Die Nachricht und diese Kälte hier...§Das sind alles Anzeichen für eine dämonische Präsenz.§Das macht mir nicht gerade Mut.',
+      en: 'The message and this cold...§These all hint at a demonic presence.§Not really looking forward to that, to be honest.'    },
     "5": {
       de: 'Brrr. Es ist unnatürlich kalt hier.§Geister absorbieren thermische Energie.§Für die ist das wie Treibstoff.§Manche verwandeln das dann in kinetische Energie, um Türen zu knallen oder Gegenstände fliegen zu lassen.§Aber all das kostet Kraft.§Und was immer hier spukt, scheint viel Energie zu besitzen.§Ich schaue mir jetzt mal den 1. Stock an.',
       en: 'Brrr. It’s unnaturally cold here.§Ghosts absorb thermal energy.§For them, it’s like fuel.§Some then turn it into kinetic energy to slam doors or send objects flying.§But all that takes energy.§And whatever’s haunting here seems to have a lot of energy.§I’m going to take a look at the first floor.'
