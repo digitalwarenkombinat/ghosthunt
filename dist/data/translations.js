@@ -412,8 +412,8 @@ getTranslations = function () {
       en: 'Solution of the case.'
     },
     "11": {
-      de: 'Fall gelöst!',
-      en: 'Case solved!'
+      de: 'Spuk beendet!',
+      en: 'Haunting stopped!'
     }
   }
   text["hotspot.rune"] = {
@@ -468,8 +468,8 @@ getTranslations = function () {
   }
   text["hotspot.secret"] = {
     "1": {
-      de: 'Geheime Botschaft',
-      en: 'Secret message'
+      de: 'Ziel',
+      en: 'Goal'
     },
     "2": {
       de: 'Der Dämon der Dame ruht im Armreif.',
