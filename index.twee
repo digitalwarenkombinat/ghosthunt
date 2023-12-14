@@ -1735,7 +1735,7 @@ details > ul {
   background-color: var(--background-color);
   background-image: url('images/menu.jpg');
   background-position: center;
-  border-right: solid 1px;
+  border-right: solid 2px var(--secondary-color);
   height: 100%;
   margin: 0;
   width: 34vh;
