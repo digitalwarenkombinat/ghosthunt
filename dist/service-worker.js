@@ -1,23 +1,39 @@
-const cacheName = "ghosthunt-v0.2";
+const cacheName = "ghosthunt-v0.3";
 const urlsToCacheiOS = [
   '/',
   '/index.html',
   '/fonts/Creepster/Creepster-Regular.ttf',
   '/fonts/para.otf',
+  '/images/ar_icon.png',
   '/images/bg.jpg',
   '/images/cam.jpg',
-  '/images/holger.bg.jpg',
   '/images/holger.png',
+  '/images/hotspot.jpg',
   '/images/icon.png',
+  '/images/intro.1.png',
+  '/images/intro.3.jpg',
+  '/images/loading.png',
   '/images/menu.jpg',
-  '/images/paranormal.jpg',
   '/models/herbert/herbert.usdz',
   '/models/kapitel.1/kapitel.1.usdz',
   '/models/kapitel.2/kapitel.2.usdz',
+  '/models/kapitel.3/kapitel.3.usdz',
+  '/models/kapitel.4/kapitel.4.usdz',
   '/models/rosa/rosa.usdz',
   '/models/setup/setup.usdz',
-  '/videos/intro.loop.mp4',
-  '/videos/setup.loop.mp4',
+  '/videos/1.hotspot.intro.mp4',
+  '/videos/1.hotspot.outro.1.mp4',
+  '/videos/1.hotspot.outro.2.mp4',
+  '/videos/2.hotspot.outro.1.mp4',
+  '/videos/2.hotspot.outro.2.mp4',
+  '/videos/2.intro.mp4',
+  '/videos/3.hotspot.outro.1.mp4',
+  '/videos/3.hotspot.outro.2.mp4',
+  '/videos/4.hotspot.outro.1.mp4',
+  '/videos/4.hotspot.outro.2.mp4',
+  '/videos/4.intro.mp4',
+  '/videos/5.intro.mp4',
+  '/videos/7.intro.mp4'
 ];
 
 const urlsToCacheAndroid = [
@@ -25,20 +41,36 @@ const urlsToCacheAndroid = [
   '/index.html',
   '/fonts/Creepster/Creepster-Regular.ttf',
   '/fonts/para.otf',
+  '/images/ar_icon.png',
   '/images/bg.jpg',
   '/images/cam.jpg',
-  '/images/holger.bg.jpg',
   '/images/holger.png',
+  '/images/hotspot.jpg',
   '/images/icon.png',
+  '/images/intro.1.png',
+  '/images/intro.3.jpg',
+  '/images/loading.png',
   '/images/menu.jpg',
-  '/images/paranormal.jpg',
   '/models/herbert/herbert.glb',
   '/models/kapitel.1/kapitel.1.glb',
   '/models/kapitel.2/kapitel.2.glb',
+  '/models/kapitel.3/kapitel.3.glb',
+  '/models/kapitel.4/kapitel.4.glb',
   '/models/rosa/rosa.glb',
   '/models/setup/setup.glb',
-  '/videos/intro.loop.mp4',
-  '/videos/setup.loop.mp4',
+  '/videos/1.hotspot.intro.mp4',
+  '/videos/1.hotspot.outro.1.mp4',
+  '/videos/1.hotspot.outro.2.mp4',
+  '/videos/2.hotspot.outro.1.mp4',
+  '/videos/2.hotspot.outro.2.mp4',
+  '/videos/2.intro.mp4',
+  '/videos/3.hotspot.outro.1.mp4',
+  '/videos/3.hotspot.outro.2.mp4',
+  '/videos/4.hotspot.outro.1.mp4',
+  '/videos/4.hotspot.outro.2.mp4',
+  '/videos/4.intro.mp4',
+  '/videos/5.intro.mp4',
+  '/videos/7.intro.mp4'
   ];
 
   const self = this;
@@ -46,7 +78,7 @@ const urlsToCacheAndroid = [
   // Populating your cache
   const addResourcesToCache = async () => {
     const cache = await caches.open(cacheName);
-    const is_safari = navigator.userAgent.indexOf('Safari') > -1 && navigator.userAgent.indexOf('Chrome') <= -1;
+    const is_safari = navigator.userAgent.indexOf('Safari') > -1 && navigator.userAgent.indexOf('Chrome') <= -1 && navigator.userAgent.indexOf("Edg") <= -1 && navigator.userAgent.indexOf('SamsungBrowser') <= - 1;
     console.log('ServiceWorker: Caching files:', urlsToCacheAndroid.length);
     // await cache.addAll(is_safari ? urlsToCacheiOS : urlsToCacheAndroid);
     let addedToCache
