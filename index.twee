@@ -329,7 +329,6 @@ Spuk & Schreck
 <div id="map"></div>
 
 <div class="wrapper">
-  <h1><<txt>></h1>
   <h2><<txt>></h2>
 </div>
 
@@ -584,7 +583,6 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 
 <div class="wrapper">
-  <h1><<txt>></h1>
   <h2><<txt>></h2>
   <br/>
 	<div id="messageContainer" class="message"></div>

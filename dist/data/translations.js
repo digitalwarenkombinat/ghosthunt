@@ -138,18 +138,14 @@ getTranslations = function () {
   }
   text["setup.location"] = {
     "1": {
-      de: 'Setup',
-      en: 'Setup'
-    },
-    "2": {
       de: 'Wir benötigen deinen Standort, um dich zu den Tatorten zu leiten.',
       en: 'We need your location to guide you to the crime scenes.'
     },
-    "3": {
+    "2": {
       de: 'Standort freigeben',
       en: 'Share location'
     },
-    "4": {
+    "3": {
       de: 'Einstellungen öffnen',
       en: 'Open settings'
     }
@@ -224,12 +220,8 @@ getTranslations = function () {
   }
   text["intro.6"] = {
     "1": {
-      de: 'Ziel',
-      en: 'Goal'
-    },
-    "2": {
-      de: 'Hilf Holger diese okkulten Botschaft zu übersetzen, um das Spiel zu gewinnen.',
-      en: 'Help Holger to decode this secret message, to win the game'
+      de: 'Hilf Holger die okkulte Botschaft zu übersetzen, um das Spiel zu gewinnen.',
+      en: 'Help Holger to decode the secret message, to win the game'
     }
   }
   text["intro.7"] = {
@@ -478,8 +470,8 @@ getTranslations = function () {
       en: 'Psst. Look at that!'
     },
     "3": {
-      de: 'Hallo? Ihr kommt voran, wie ich sehe.§Ich schau mir gerade die Küche an.§Hier wurde auf jeden Fall jemand abgemurkst. Überall Blut und Gedärme.§Die alte Gerda hat nicht übertreiben.§Darum bin ich ja überhaupt hier!§Ich hab mich von der alten Nachbarin meines Vaters bequatschen lassen.§"Herr Holger! Sie sind doch Geisterjäger.§Könnten Sie nicht mal einen Blick in mein Geburtshaus werfen.§Da spukt es seit Jahren!"§Und ich Trottel sag auch noch ja!§Ich bin einfach zu gutmütig.',
-      en: 'Hello? You’re making progress, I see.§I’m just looking at the kitchen.§Someone was definitely killed here.§Blood and guts everywhere.§Old Gerda wasn’t exaggerating.§That’s why I’m here in the first place!§I let my father’s old neighbor talk me into it.§"Mr. Holger! You’re a ghost hunter.§Couldn’t you take a look at the house where I was born.§It’s been haunted for years!"§And I’m a fool to say yes!§I’m just too good-natured.'
+      de: 'Ich schau mir gerade die Küche an.§Hier wurde auf jeden Fall jemand abgemurkst. Überall Blut und Gedärme.§Die alte Gerda hat nicht übertreiben.§Darum bin ich ja überhaupt hier!§Ich hab mich von der alten Nachbarin meines Vaters bequatschen lassen.§"Herr Holger! Sie sind doch Geisterjäger.§Könnten Sie nicht mal einen Blick in mein Geburtshaus werfen.§Da spukt es seit Jahren!"§Und ich Trottel sag auch noch ja!§Ich bin einfach zu gutmütig.',
+      en: 'I’m just looking at the kitchen.§Someone was definitely killed here.§Blood and guts everywhere.§Old Gerda wasn’t exaggerating.§That’s why I’m here in the first place!§I let my father’s old neighbor talk me into it.§"Mr. Holger! You’re a ghost hunter.§Couldn’t you take a look at the house where I was born.§It’s been haunted for years!"§And I’m a fool to say yes!§I’m just too good-natured.'
     },
     "4": {
       de: 'Schaut euch das an!§Hab ne Badewanne voller Blut gefunden.§Samt Toaster und blutigen Fußabdrücken.§Die alte Gerda hat gesagt, dass das Haus seit 70 Jahren niemand mehr betreten hat.§Das Blut, das ich hier sehe, müsste längst vertrocknet sein.§Dasselbe gilt für die Gedärme in der Küche.§Irgendetwas will mir zeigen, was hier passiert ist.',
