@@ -24,8 +24,8 @@ getTranslations = function () {
       en: 'Legal Notice'
     },
     "4": {
-      de: 'Abkürzungen',
-      en: 'Shortcuts'
+      de: 'DEV',
+      en: 'DEV'
     },
     "5": {
       de: 'Feedback',
@@ -34,8 +34,8 @@ getTranslations = function () {
   };
   text["Dev"] = {
     "1": {
-      de: 'Abkürzungen',
-      en: 'Shortcuts'
+      de: 'DEV',
+      en: 'DEV'
     },
     "2": {
       de: 'Mit diesen Links kannst du direkt zu den Tatorten springen. Diese Abkürzungen sind nur zum Testen und werden später entfernt.',
