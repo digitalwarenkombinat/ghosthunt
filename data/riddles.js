@@ -61,7 +61,7 @@ getRiddles = function () {
       {
         question: {
           de: "Wer war gestorben?",
-          en: "Who had died?"
+          en: "Who died?"
         },
         answers: [
           { de: "Rose Horwitz", en: "Rose Horwitz", correct: false, points: 0 },

@@ -242,12 +242,12 @@ getTranslations = function () {
   }
   text["main.scanner"] = {
     "1": {
-      de: 'Eingabe Frequenz',
-      en: 'Enter Frequency'
+      de: 'Geister Scanner',
+      en: 'Ghost Scanner'
     },
     "2": {
-      de: 'Wenn ihr einen Tatort erreicht habt, gibt der Navigator dir eine Frequenz, die du hier eingegeben musst.',
-      en: 'Enter your received frequency here.'
+      de: 'Gib eine Frequenz ein',
+      en: 'Enter a frequency'
     },
     "3": {
       de: 'Du hast keine Frequenz angegeben!',
@@ -258,18 +258,18 @@ getTranslations = function () {
       en: 'Make sure your team is ready. The crime scene is only visible for a limited time!'
     },
     "5": {
-      de: 'Die eingegebene Frequenz ist nicht korrekt!',
-      en: 'The entered frequency is not correct!'
+      de: 'Entschuldigung. Keine Geister unter dieser Frequenz',
+      en: 'Sorry! No Ghost at this frequency'
     }
   }
   text["main.storyteller"] = {
     "1": {
-      de: 'Eingabe Frequenz',
-      en: 'Enter Frequency'
+      de: 'Ghost Scanner',
+      en: 'Ghost Scanner'
     },
     "2": {
-      de: 'Wenn ihr einen Tatort erreicht habt, gibt der Navigator dir eine Frequenz, die du hier eingegeben musst.',
-      en: 'Enter your received frequency here.'
+      de: 'Gib eine Frequenz ein',
+      en: 'Enter a frequency'
     },
     "3": {
       de: 'Du hast keine Frequenz angegeben!',
@@ -290,22 +290,22 @@ getTranslations = function () {
       en: 'Glad you answered!§I was afraid you’d ghosted me...haha.§To translate the runes, we need the help of the dead.§However, they don’t give you anything for free.§Most of them hate the living because they’ve done violence to them.§ Violent deaths are a common cause of paranormal activity.§Especially if these deaths are unexplained.§Some ghosts have also taken unresolved issues with them into their grave.§With your Ghost Cam you can make these deaths visible.§Clear up the cases and end the haunting.§With a bit of luck the ghosts will then help us with the translation.§Go to one of the paranormal fields on your map.§Good luck!'
     },
     "11": {
-      de: 'Achtung!',
-      en: 'Attention!'
+      de: 'Tatort',
+      en: 'Crime Szene'
     },
     "12": {
-      de: 'Paranormale Aktivität entdeckt.',
-      en: 'Paranormal activity detected.'
+      de: 'Dieser Ort ist Schauplatz eines ungeklärten Verbrechens. Die Geister fordern Gerechtigkeit. Kläre den Fall und beende den Spuk.',
+      en: 'This place has seen death! The souls of the victims demand justice! Solve the case and stop the haunting.'
     }
   }
   text["hotspot.frequence"] = {
     "1": {
-      de: 'Frequenz erhalten',
-      en: 'Frequency received'
+      de: 'Neue Frequenz erhalten',
+      en: 'New Frequency received'
     },
     "2": {
-      de: 'Gib die erhaltene Frequenz an deine Mitspielenden weiter.',
-      en: 'Pass on the frequency you have received to your fellow players.'
+      de: 'Gib die erhaltene Frequenz an deine Mitspielenden weiter, damit Sie die Toten sehen können.',
+      en: 'Pass on the frequency to your fellow players, so they can see the dead.'
     }
   }
   text["hotspot.questions"] = {
