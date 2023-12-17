@@ -718,12 +718,10 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
-  <br>
-  <br>
-  <<textbox "_answer" "">>
 </div>
 
 <div class="btn-group">
+  <<textbox "_answer" "">>
   <<button "Check">>
     <<if _answer is "">>
       <<set $alertNoText = setup.text['main.scanner'][3][setup.i18n.langs[settings.lang]]>>
@@ -757,12 +755,10 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
-  <br>
-  <br>
-  <<textbox "_answer" "">>
 </div>
 
 <div class="btn-group">
+  <<textbox "_answer" "">>
   <<button "Check">>
     <<if _answer is "">>
       <<set $alertNoText = setup.text['main.storyteller'][3][setup.i18n.langs[settings.lang]]>>
@@ -799,7 +795,6 @@ $(document).one(":passagedisplay", function() {
   <div class="wrapper">
     <h1><<txt 11>></h1>
     <h2><<txt 12>></h2>
-    <p class="p3">para</p>
   </div>
 <</if>>
 
@@ -825,14 +820,13 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 
 <div class="wrapper">
-  <h1><<txt 1>></h1>
-  <h2><<txt 1>></h2>
   <<if $hotspot is 1>>
-    <h2>263</h2>
+    <h1>263</h1>
   <<elseif $hotspot is 2>>
-    <h2>815</h2>
+    <h1>815</h1>
   <</if>>
-</div>
+  <h2><<txt 1>></h2>
+  <h2><<txt 2>></h2>
 </div>
 
 <div class="btn-group">
@@ -846,7 +840,7 @@ $(document).one(":passagedisplay", function() {
 :: hotspot.questions {"position":"900,1500","size":"100,100"}
 
 <script>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
 </script>
 
 <<if $riddle <= 5>>
@@ -856,16 +850,16 @@ $(document).one(":passagedisplay", function() {
   <<set _question = _riddle.question[setup.i18n.langs[settings.lang]]>>
   <<set _answers = _riddle.answers>>
 
-  <span id="heading">
-    <<if $isStoryteller and $playerCount === 3>>
-      <h1><<txt 6>> $riddle</h1>
-    <<else>>
-      <h1><<txt>> $riddle</h1>
-      <h2>_question</h2>
-    <</if>>
-  </span>
-
-  <div class="wrapper"></div>
+  <div class="wrapper">
+    <span id="heading">
+      <<if $isStoryteller and $playerCount === 3>>
+        <h1><<txt 6>> $riddle</h1>
+      <<else>>
+        <h1><<txt>> $riddle</h1>
+        <h2>_question</h2>
+      <</if>>
+    </span>
+  </div>
 
   <div class="btn-group">
     <<if $isNavigator>>
@@ -908,7 +902,7 @@ $(document).one(":passagedisplay", function() {
 :: hotspot.ar {"position":"1100,900","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
 
   $(document).one(":passagedisplay", function() {
     const modelViewer = document.getElementById('model-viewer');
@@ -988,7 +982,7 @@ $(document).one(":passagedisplay", function() {
 :: hotspot.solution {"position":"1300,1100","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
 <</script>>
 
 <div class="wrapper">
@@ -1009,7 +1003,7 @@ $(document).one(":passagedisplay", function() {
 :: hotspot.rune {"position":"1300,1300","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
 <</script>>
 
 <div class="wrapper">
@@ -1032,7 +1026,7 @@ $(document).one(":passagedisplay", function() {
 
 <<script>>
   $(document).one(":passagedisplay", function() {
-    $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+    $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
 
     const secretMessage = setup.text['hotspot.secret'][2][setup.i18n.langs[settings.lang]];
 
@@ -1733,6 +1727,10 @@ details > ul {
   margin-bottom: 0;
 }
 
+input[type=text] {
+  min-width: 1em
+}
+
 /* ####################SUGARCUBE#################### */
 #ui-bar {
   background-color: transparent;
@@ -1756,7 +1754,7 @@ details > ul {
   left:0;
   position: fixed;
   right: unset;
-  top: 3vh;
+  top: 6vh;
 }
 
 #ui-bar-toggle:before {
@@ -1799,6 +1797,11 @@ border: 2px solid var(--secondary-color);
 
 #menu ul {
   border: none;
+}
+
+#menu-core {
+    position: fixed;
+    bottom: 2em;
 }
 
 #menu li a {
