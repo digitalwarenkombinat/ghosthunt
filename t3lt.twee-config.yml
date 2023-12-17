@@ -2,3 +2,5 @@ sugarcube-2:
   macros:
     txt:
       name: txt
+    video:
+      name: video
