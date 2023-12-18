@@ -434,8 +434,6 @@ $(document).one(":passagedisplay", function() {
   });
 <</script>>
 
-<<audio "setup.camera" loop play >>
-
 <<set $setupCompleted to true>>
 
 <div class="wrapper">
