@@ -72,7 +72,7 @@ getTranslations = function () {
   }
   text["setup.installation"] = {
     "1": {
-      de: 'Installation',
+      de: 'App',
       en: 'Installation'
     },
     "2": {
@@ -116,24 +116,24 @@ getTranslations = function () {
       en: 'Setup'
     },
     "2": {
-      de: 'Storyteller',
-      en: 'Storyteller'
+      de: 'Game Master behalten den Überblick. Du sammelst Story-Fragmente und löst Rätsel unter Zeitdruck.',
+      en: 'Game Masters are cool under pressure. Your job is to solve time-sensitive riddles, collect points & story-fragments.'
     },
     "3": {
-      de: 'Navigator/Scanner',
-      en: 'Navigator/Scanner'
+      de: 'Detektive sind aufmerksame Menschen. Dein Job ist es dein Team zu den Tatorten zu führen und die Geister-Tatorte mit der Kamera zu untersuchen.',
+      en: 'Detectives are methodical. Your job is to guide your team to the crime-szenes and to study them with your AR-camera.'
     },
     "4": {
-      de: 'Navigator',
-      en: 'Navigator'
+      de: 'Guides kennen sich mit Karten aus. Dein Job ist es das Team zu den Tatorten zu führen.',
+      en: 'Guides are good with maps. Your job is to guide your team to the crime-szenes. '
     },
     "5": {
-      de: 'Scanner',
-      en: 'Scanner'
+      de: 'Scanner müssen ein gutes Auge haben. Mit Hilfe der AR-Kamera machst du Geister-Tatorte sichtbar und suchst nach Hinweisen.',
+      en: 'Scanners need to be perceptive. You job is to study the crime-szenes with your AR-camera.'
     },
     "6": {
       de: 'Bist du sicher? Jede Rolle darf nur einmal gewählt werden.',
-      en: 'Are you sure? Each role may only be chosen once.'
+      en: 'Are you sure? Each role can only be chosen once.'
     },
   }
   text["setup.location"] = {

@@ -440,8 +440,8 @@ $(document).one(":passagedisplay", function() {
   <model-viewer 
     id="model-viewer" 
     ar auto-rotate 
-    src="models/setup/setup.glb" 
-    ios-src="models/setup/setup.usdz"
+    src="models/setup/setup.camera.glb" 
+    ios-src="models/setup/setup.camera.usdz"
     poster="images/loading.png"
     autoplay 
     shadow-intensity="2"
@@ -2061,9 +2061,9 @@ model-viewer {
   font-style: normal;
   font-weight: 700;
   line-height: 5vh;
-  margin-left: 20px;
-  margin-right: 30px;
-  margin-top: 10vh;
+  //margin-left: 20px;
+  //margin-right: 30px;
+  //margin-top: 10vh;
   text-align: center;
   text-shadow: 3px 3px 1px black;
   word-break: break-word;
