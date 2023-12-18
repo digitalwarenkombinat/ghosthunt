@@ -87,9 +87,9 @@ Spuk & Schreck
 
 --------------------------AUDIO---------------------------------------
 
-/* <<cacheaudio "bg" "audio/bg.mp3">>
+<<cacheaudio "setup.camera" "audio/setup.camera.mp3">>
 <<cacheaudio "click" "audio/click.mp3">>
-<<cacheaudio "ring" "audio/ring.mp3">> */
+<<cacheaudio "ring" "audio/ring.mp3">>
 
 -------------------------STARTVARIABLEN-------------------------------
 <<set $hotspot to 0>>
@@ -433,6 +433,8 @@ $(document).one(":passagedisplay", function() {
     helpBtn.style.display = 'none';
   });
 <</script>>
+
+<<audio "setup.camera" loop play >>
 
 <<set $setupCompleted to true>>
 
