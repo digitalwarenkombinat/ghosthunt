@@ -38,16 +38,16 @@ getTranslations = function () {
       en: 'DEV'
     },
     "2": {
-      de: 'Mit diesen Links kannst du direkt zu den Tatorten springen. Diese Abkürzungen sind nur zum Testen und werden später entfernt.',
-      en: 'With these links you can jump directly to the crime scenes. These shortcuts are only for testing and will be removed later.'
+      de: 'Mit diesen Links kannst du direkt zu den Tatorten springen.',
+      en: 'With these links you can jump directly to the crime scenes.'
     },
     "3": {
-      de: '"Der Fall Herbert"',
-      en: '"The case Herbert"'
+      de: '"Tatort #1"',
+      en: '"Crime Szene #1"'
     },
     "4": {
-      de: '"Der Fall Rosa"',
-      en: '"The case Rosa"'
+      de: '"Tatort #2"',
+      en: '"Crime Szene #2"'
     },
     "5": {
       de: 'Karte',
