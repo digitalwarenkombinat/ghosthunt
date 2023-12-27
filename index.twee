@@ -564,7 +564,7 @@ $(document).one(":passagedisplay", function() {
 
 <<script>>
   $(document).one(":passagedisplay", function() {
-    $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+    $('#story').attr('style', 'background-image:url(images/intro.6.jpg)');
 
     const secretMessage = setup.text['hotspot.secret'][2][setup.i18n.langs[settings.lang]];
 
