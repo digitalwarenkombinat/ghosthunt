@@ -133,19 +133,25 @@ Spuk & Schreck
 <<set $isScanner to false>>
 <<set $isNavigator to false>>
 <<set $isNavigatorScanner to false>>
-<<set $playerCount to 0>>
+<<set $playerCount to 1>>
 
 :: StoryMenu {"position":"300,100","size":"100,100"}
 
-<<set $inventoryText = setup.text['StoryMenu'][1][setup.i18n.langs[settings.lang]]>>
-<<set $helpText = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
-<<set $legalText = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
+<<if $playerCount === 1 || $isScanner || $isNavigatorScanner>>
+  <<set $inventoryText = setup.text['StoryMenu'][1][setup.i18n.langs[settings.lang]]>>
+  <<link [[$inventoryText|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
+<</if>>
+
 <<set $shortcutText = setup.text['StoryMenu'][4][setup.i18n.langs[settings.lang]]>>
-<<set $feedbackText = setup.text['StoryMenu'][5][setup.i18n.langs[settings.lang]]>>
-<<link [[$inventoryText|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
 <<link [[$shortcutText|"Dev"]]>><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
+
+<<set $feedbackText = setup.text['StoryMenu'][5][setup.i18n.langs[settings.lang]]>>
 <<link [[$feedbackText|"outro.init"]]>><<addclass "#ui-bar" "stowed">><</link>>
-/* <<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
+
+/* <<set $helpText = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
+<<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
+
+<<set $legalText = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
 <<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 
 :: setup.init {"position":"100,300","size":"100,100"}
@@ -657,7 +663,7 @@ $(document).one(":passagedisplay", function() {
               map.on('click', location.id, (e) => {
                 State.variables.enteredLocations.push(location.id);
                 $.wiki('<<set $hotspot to $hotspot + 1>>');
-                $.wiki('<<goto "hotspot.intro">>');
+                $.wiki('<<goto "hotspot.splash">>');
               });
 
             } else {
@@ -730,11 +736,9 @@ $(document).one(":passagedisplay", function() {
       <<set _answer to _answer.trim().toLowerCase()>>
       <<set $hotspotAlertText = setup.text['main.scanner'][4][setup.i18n.langs[settings.lang]]>>
       <<if _answer is "263">>
-        <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
         <<set $hotspot to 1>>
         <<goto "hotspot.ar">>
       <<elseif _answer is "815">>
-        <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
         <<set $hotspot to 2>>
         <<goto "hotspot.ar">>
       <<else>>
@@ -769,11 +773,11 @@ $(document).one(":passagedisplay", function() {
       <<if _answer is "263">>
         <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
         <<set $hotspot to 1>>
-        <<goto "hotspot.intro">>
+        <<goto "hotspot.splash">>
       <<elseif _answer is "815">>
       <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
         <<set $hotspot to 2>>
-        <<goto "hotspot.intro">>
+        <<goto "hotspot.splash">>
       <<else>>
         <<set $alertWrongText = setup.text['main.storyteller'][5][setup.i18n.langs[settings.lang]]>>
         <<script>>UI.alert(State.variables.alertWrongText);<</script>>
@@ -783,20 +787,26 @@ $(document).one(":passagedisplay", function() {
   <</button>>
 </div>
 
-:: hotspot.intro {"position":"900,900","size":"100,100"}
+:: hotspot.splash {"position":"900,900","size":"100,100"}
 
 <<script>>
   $('#story').attr('style', `background-image:url(images/hotspot.jpg)`);
 <</script>>
 
-<<if $hotspot is 1>>
-  <<video>>
-<<else>>
-  <div class="wrapper">
-    <h1><<txt 11>></h1>
-    <h2><<txt 12>></h2>
-  </div>
-<</if>>
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|hotspot.intro]]</button>
+</div>
+
+:: hotspot.intro {"position":"1300,1700","size":"100,100"}
+
+<<print $hotspot>>
+<<video>>
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
@@ -907,8 +917,8 @@ $(document).one(":passagedisplay", function() {
   $(document).one(":passagedisplay", function() {
     const modelViewer = document.getElementById('model-viewer');
     if (modelViewer){
-      modelViewer.src = `models/kapitel.${State.variables.hotspot}/kapitel.${State.variables.hotspot}.glb`;
-      modelViewer.iosSrc = `models/kapitel.${State.variables.hotspot}/kapitel.${State.variables.hotspot}.usdz`;
+      modelViewer.src = `models/${State.variables.hotspot}.hotspot/${State.variables.hotspot}.hotspot.glb`;
+      modelViewer.iosSrc = `models/${State.variables.hotspot}.hotspot/${State.variables.hotspot}.hotspot.usdz`;
     }
   })
 <</script>>
@@ -1059,19 +1069,10 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <button class="next">[[|hotspot.outro.1]]</button>
+  <button class="next">[[|hotspot.outro]]</button>
 </div>
 
-:: hotspot.outro.1 {"position":"1300,1700","size":"100,100"}
-
-<<video>>
-
-<div class="btn-group">
-  <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|hotspot.outro.2]]</button>
-</div>
-
-:: hotspot.outro.2 {"position":"1300,1700","size":"100,100"}
+:: hotspot.outro {"position":"1300,1700","size":"100,100"}
 
 <<video>>
 
@@ -1115,22 +1116,21 @@ $(document).one(":passagedisplay", function() {
 :: Dev {"position":"1300,100","size":"100,100"}
 
 <div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>></h2>
+  <h1><<txt 11>></h1>
+  <h2><<txt 12>></h2>
   <br/>
   <br/>
   <div class="btn-group">
-    <<set $chapter1Text = setup.text['Dev'][3][setup.i18n.langs[settings.lang]]>>
-    <<button $chapter1Text>>
-      <<set $hotspot to 1>>
-      <<goto "hotspot.intro">>	
+  <<for _i to 1; _i lte 10; _i++>>
+    <<capture _i>>
+    <<set $chapterText = setup.text['Dev'][_i][setup.i18n.langs[settings.lang]]>>
+    <<button $chapterText>>
+      <<set $hotspot to _i>>
+      <<goto "hotspot.splash">>	
     <</button>>
-    <<set $chapter2Text = setup.text['Dev'][4][setup.i18n.langs[settings.lang]]>>
-    <<button $chapter2Text>>
-      <<set $hotspot to 2>>
-      <<goto "hotspot.intro">>	
-    <</button>>
-    <<set $mapText = setup.text['Dev'][5][setup.i18n.langs[settings.lang]]>>
+    <</capture>>
+  <</for>>
+    <<set $mapText = setup.text['Dev'][13][setup.i18n.langs[settings.lang]]>>
     <<button $mapText>>
       <<goto "main.navigator.init">>	
     <</button>>
