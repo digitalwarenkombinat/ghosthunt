@@ -34,22 +34,54 @@ getTranslations = function () {
   };
   text["Dev"] = {
     "1": {
+      de: '"#1 Foyer"',
+      en: '"#1 Foyer"'
+    },
+    "2": {
+      de: '"#2 Küche"',
+      en: '"#2 Küche"'
+    },
+    "3": {
+      de: '"#3 Esszimmer"',
+      en: '"#3 Esszimmer"'
+    },
+    "4": {
+      de: '"#4 Badezimmer"',
+      en: '"#4 Badezimmer"'
+    },
+    "5": {
+      de: '"#5 Büro"',
+      en: '"#5 Büro"'
+    },
+    "6": {
+      de: '"#6 Dachboden"',
+      en: '"#6 Dachboden"'
+    },
+    "7": {
+      de: '"#7 Klavierzimmer"',
+      en: '"#7 Klavierzimmer"'
+    },
+    "8": {
+      de: '"#8 Heizungskeller"',
+      en: '"#8 Heizungskeller"'
+    },
+    "9": {
+      de: '"#9 Verließ"',
+      en: '"#9 Verließ"'
+    },
+    "10": {
+      de: '"#10 Wintergarten"',
+      en: '"#10 Wintergarten"'
+    },
+    "11": {
       de: 'DEV',
       en: 'DEV'
     },
-    "2": {
-      de: 'Mit diesen Links kannst du direkt zu den Tatorten springen.',
-      en: 'With these links you can jump directly to the crime scenes.'
+    "12": {
+      de: 'Mit diesen Links kannst du direkt zu den Tatorten springen. Diese Abkürzungen sind nur zum Testen und werden später entfernt.',
+      en: 'With these links you can jump directly to the crime scenes. These shortcuts are only for testing and will be removed later.'
     },
-    "3": {
-      de: '"Tatort #1"',
-      en: '"Crime Szene #1"'
-    },
-    "4": {
-      de: '"Tatort #2"',
-      en: '"Crime Szene #2"'
-    },
-    "5": {
+    "13": {
       de: 'Karte',
       en: 'Map'
     }
@@ -72,7 +104,7 @@ getTranslations = function () {
   }
   text["setup.installation"] = {
     "1": {
-      de: 'App',
+      de: 'Installation',
       en: 'Installation'
     },
     "2": {
@@ -116,24 +148,24 @@ getTranslations = function () {
       en: 'Setup'
     },
     "2": {
-      de: 'Game Master behalten den Überblick. Du sammelst Story-Fragmente und löst Rätsel unter Zeitdruck.',
-      en: 'Game Masters are cool under pressure. Your job is to solve time-sensitive riddles, collect points & story-fragments.'
+      de: 'Storyteller',
+      en: 'Storyteller'
     },
     "3": {
-      de: 'Detektive sind aufmerksame Menschen. Dein Job ist es dein Team zu den Tatorten zu führen und die Geister-Tatorte mit der Kamera zu untersuchen.',
-      en: 'Detectives are methodical. Your job is to guide your team to the crime-szenes and to study them with your AR-camera.'
+      de: 'Navigator/Scanner',
+      en: 'Navigator/Scanner'
     },
     "4": {
-      de: 'Guides kennen sich mit Karten aus. Dein Job ist es das Team zu den Tatorten zu führen.',
-      en: 'Guides are good with maps. Your job is to guide your team to the crime-szenes. '
+      de: 'Navigator',
+      en: 'Navigator'
     },
     "5": {
-      de: 'Scanner müssen ein gutes Auge haben. Mit Hilfe der AR-Kamera machst du Geister-Tatorte sichtbar und suchst nach Hinweisen.',
-      en: 'Scanners need to be perceptive. You job is to study the crime-szenes with your AR-camera.'
+      de: 'Scanner',
+      en: 'Scanner'
     },
     "6": {
       de: 'Bist du sicher? Jede Rolle darf nur einmal gewählt werden.',
-      en: 'Are you sure? Each role can only be chosen once.'
+      en: 'Are you sure? Each role may only be chosen once.'
     },
   }
   text["setup.location"] = {
@@ -186,7 +218,7 @@ getTranslations = function () {
     },
     "2": {
       de: 'Die Rallye beginnt...',
-      en: 'The game start now...'
+      en: 'The game starts now...'
     }
   }
   text["intro.2"] = {
@@ -214,20 +246,26 @@ getTranslations = function () {
   }
   text["intro.5"] = {
     "1": {
-      de: 'Genial! Passt auf! Ich weiß, dass ihr keine Geisterjäger seid.§Zumindest noch nicht...§Aber ich sag euch, was ihr zu tun habt.§Hier sind überall okkulte Runen an den Wänden§ und ein paar davon kommen mir tatsächlich bekannt vor.§Sie sind Teil der Lingua Muerta - die Sprache der Toten.§Ich hatte vor Jahren mal einen Fall im Leipziger Friedenspark,§wo ich zwei dieser Runen entziffert habe.§Ich zeige euch das mal kurz.',
-      en: 'Ingenious! Watch out! I know you’re not ghost hunters,§at least not yet...§but I will tell you what you have to do.§There are occult runes all over the walls§ and a few of them actually look familiar to me.§They seem to be part of the Lingua Muerta - the language of the dead.§Years ago I had a case in a park called Friedenspark in Leipzig,§where I deciphered two of these runes.§I’ll show you briefly.'
+      de: 'Genial!§Hier sind überall okkulte Runen an den Wänden§ und ein paar davon kommen mir tatsächlich bekannt vor.§Ich hatte vor Jahren mal einen Fall im Leipziger Friedenspark,§wo ich zwei dieser Runen entziffert habe.§Ich glaube, es handelt sich um eine geheime Botschaft.§Ich zeige euch das mal kurz.',
+      en: 'Ingenious!§There are occult runes all over the walls§and a few of them actually look familiar to me.§Years ago I had a case in a park called Friedenspark in Leipzig,§where I deciphered two of these runes.§I think it’s a secret message.§I’ll show you briefly.'
     }
   }
   text["intro.6"] = {
     "1": {
-      de: 'Hilf Holger die okkulte Botschaft zu übersetzen, um das Spiel zu gewinnen.',
-      en: 'Help Holger to decode the secret message, to win the game'
+      de: 'Geheimbotschaft',
+      en: 'Secret message'
     }
   }
   text["intro.7"] = {
     "1": {
-      de: 'Ich wette meine Monobraue darauf, dass diese Runen der Schlüssel sind, um den Spuk zu beenden.§Helft mir die restlichen zu übersetzen.§Dann komme ich hier vielleicht lebend raus.§Unsere beste Chance ist der Friedenspark!§Das war früher mal ein Friedhof.§Dort wimmelt es nur so von paranormalen Aktivitäten.§Schaut auf eure Karte und findet die Orte, die uns weiterhelfen.§Ich melde mich später wieder bei euch!',
-      en: 'I’m betting my monobrow that these runes are the key to ending the haunting.§Help me to figure out the rest.§Then I might get out of here alive.§Our best chance is the Friedenspark!§That used to be a graveyard.§The place is teeming with paranormal activity.§Look at your map and find the places that will help us.§I will get back to you later!'
+      de: 'Ich wette meine Monobraue darauf, dass diese Botschaft der Schlüssel ist, um den Spuk zu beenden.§Um die Runen aus der Ferne zu übersetzen, braucht Ihr starke paranormale Energien.§Eure beste Chance ist der Friedenspark!§Das war früher mal ein Friedhof.$Dort wimmelt es nur so von paranormalen Aktivitäten.',
+      en: 'I’ll bet my monobrow that this message is the key to ending the haunting.§You’ll need strong paranormal energies to translate the runes from afar.§Your best bet is Friedenspark!§This used to be a graveyard.§The place is buzzing with paranormal activity.'
+    }
+  }
+  text["intro.8"] = {
+    "1": {
+      de: 'Geht in den Park.§Ich schicke euch eine Karte mit den Hotspot-Orten.§Sobald ihr dort seid, könnt ihr eure Ghost-Scanner nutzen, um die Runen zu entziffern.§Ich erkunde solange das Haus.§Holger out!',
+      en: 'Go to the park.§I’ll send you a map with the locations of the hotspots.§Once you’re there, you can use your ghost scanners to decipher the runes.§I’ll explore the house until then.§Holger out!'
     }
   }
   text["main.navigator"] = {
@@ -242,34 +280,12 @@ getTranslations = function () {
   }
   text["main.scanner"] = {
     "1": {
-      de: 'Geister Scanner',
-      en: 'Ghost Scanner'
+      de: 'Eingabe Frequenz',
+      en: 'Enter Frequency'
     },
     "2": {
-      de: 'Gib eine Frequenz ein',
-      en: 'Enter a frequency'
-    },
-    "3": {
-      de: 'Du hast keine Frequenz angegeben!',
-      en: 'You did not supply a frequency!'
-    },
-    "4": {
-      de: 'Vergewissere dich, dass dein Team bereit ist. Der Tatort ist nur für eine begrenzte Zeit sichtbar!',
-      en: 'Make sure your team is ready. The crime scene is only visible for a limited time!'
-    },
-    "5": {
-      de: 'Entschuldigung. Keine Geister unter dieser Frequenz',
-      en: 'Sorry! No Ghost at this frequency'
-    }
-  }
-  text["main.storyteller"] = {
-    "1": {
-      de: 'Ghost Scanner',
-      en: 'Ghost Scanner'
-    },
-    "2": {
-      de: 'Gib eine Frequenz ein',
-      en: 'Enter a frequency'
+      de: 'Wenn ihr einen Tatort erreicht habt, gibt der Navigator dir eine Frequenz, die du hier eingegeben musst.',
+      en: 'Enter your received frequency here.'
     },
     "3": {
       de: 'Du hast keine Frequenz angegeben!',
@@ -284,28 +300,46 @@ getTranslations = function () {
       en: 'The entered frequency is not correct!'
     }
   }
-  text["hotspot.intro"] = {
+  text["main.storyteller"] = {
     "1": {
-      de: 'Gut, dass ihr rangeht!§Ich hatte schon Schiss, dass ihr mich ghostet...haha.§Um die Runen zu übersetzen, brauchen wir die Hilfe der Toten.§Allerdings gibt’s von denen nichts umsonst.§Die meisten hassen die Lebenden, weil sie ihnen Gewalt angetan haben.§ Gewaltsame Tode sind ein häufiger Grund für paranormale Aktivitäten.§Insbesondere, wenn diese Tode ungeklärt sind.§Manche Geister haben aber auch ungeklärte Fragen mit in ihr Grab genommen.§Mit eurer Ghost Cam könnt ihr diese Tode sichtbar machen.§Klärt die Fälle auf und beendet den Spuk.§Mit etwas Glück helfen uns die Geister dann bei der Übersetzung.§Geht jetzt zu einem der paranormalen Felder auf eurer Karte.§Viel Erfolg!',
-      en: 'Glad you answered!§I was afraid you’d ghosted me...haha.§To translate the runes, we need the help of the dead.§However, they don’t give you anything for free.§Most of them hate the living because they’ve done violence to them.§ Violent deaths are a common cause of paranormal activity.§Especially if these deaths are unexplained.§Some ghosts have also taken unresolved issues with them into their grave.§With your Ghost Cam you can make these deaths visible.§Clear up the cases and end the haunting.§With a bit of luck the ghosts will then help us with the translation.§Go to one of the paranormal fields on your map.§Good luck!'
+      de: 'Eingabe Frequenz',
+      en: 'Enter Frequency'
     },
-    "11": {
-      de: 'Tatort',
-      en: 'Crime Szene'
+    "2": {
+      de: 'Wenn ihr einen Tatort erreicht habt, gibt der Navigator dir eine Frequenz, die du hier eingegeben musst.',
+      en: 'Enter your received frequency here.'
     },
-    "12": {
-      de: 'Dieser Ort ist Schauplatz eines ungeklärten Verbrechens. Die Geister fordern Gerechtigkeit. Kläre den Fall und beende den Spuk.',
-      en: 'This place has seen death! The souls of the victims demand justice! Solve the case and stop the haunting.'
+    "3": {
+      de: 'Du hast keine Frequenz angegeben!',
+      en: 'You did not supply a frequency!'
+    },
+    "4": {
+      de: 'Vergewissere dich, dass dein Team bereit ist. Der Tatort ist nur für eine begrenzte Zeit sichtbar!',
+      en: 'Make sure your team is ready. The crime scene is only visible for a limited time!'
+    },
+    "5": {
+      de: 'Die eingegebene Frequenz ist nicht korrekt!',
+      en: 'The entered frequency is not correct!'
+    }
+  }
+  text["hotspot.splash"] = {
+    "1": {
+      de: 'Achtung!',
+      en: 'Attention!'
+    },
+    "2": {
+      de: 'Paranormale Aktivität entdeckt.',
+      en: 'Paranormal activity detected.'
     }
   }
   text["hotspot.frequence"] = {
     "1": {
-      de: 'Neue Frequenz erhalten',
-      en: 'New Frequency received'
+      de: 'Frequenz erhalten',
+      en: 'Frequency received'
     },
     "2": {
-      de: 'Gib die erhaltene Frequenz an deine Mitspielenden weiter, damit Sie die Toten sehen können.',
-      en: 'Pass on the frequency to your fellow players, so they can see the dead.'
+      de: 'Gib die erhaltene Frequenz an deine Mitspielenden weiter.',
+      en: 'Pass on the frequency you have received to your fellow players.'
     }
   }
   text["hotspot.questions"] = {
@@ -460,87 +494,87 @@ getTranslations = function () {
       en: 'The Lady´s demon rests in the bracelet.'
     },
   }
-  text["hotspot.outro.1"] = {
+  text["hotspot.intro"] = {
     "1": {
-      de: 'Gut, dass ihr rangeht. Ich dachte schon, ihr ghostet mich...haha§Ihr habt euren ersten Fall gelöst.§War ja auch nicht so schwer für den Anfang.§Der Geist kann jetzt ruhen und wir sind um eine Übersetzung reicher.§So sieht die Arbeit eines Geisterjägers aus.§Glaubt aber nicht, dass es so einfach bleiben wird!§Je stärker der Spuk, desto monströser das Verbrechen oder geschehene Unheil.§Manche Heimsuchungen sind das Resultat von jahrhundertealten Grausamkeiten.§Normalerweise mache ich die Einarbeitung ja nicht über das Telefon, aber ihr scheint ja klarzukommen.',
-      en: 'Good that you answered. I thought you’re going to ghost me...haha§You’ve solved your first case.§It wasn’t that hard to begin with.§The ghost can rest now and we’re one translation richer.§This is what the work of a ghost hunter looks like.§But don’t think it’s going to stay that simple! §The stronger the haunting, the more monstrous the crime or disaster that has occurred.§Some hauntings are the result of centuries of cruelty.§Normally I don’t do the familiarization over the phone, but you seem to be getting along.'
+      de: 'Ich sehe, Ihr seid im Park angekommen.§Ich bin im Foyer der Villa.§Hier ist eine Rune auf dem Boden und blutige Fußspuren.§Jetzt brauche ich eure Hilfe.§Nutzt eure Ghost-Cam und sagt mir, was hier passiert ist.§Und haltet Ausschau nach der Übersetzung.',
+      en: 'Ich sehe, Ihr seid im Park angekommen.§Ich bin im Foyer der Villa.§Hier ist eine Rune auf dem Boden und blutige Fußspuren.§Jetzt brauche ich eure Hilfe.§Nutzt eure Ghost-Cam und sagt mir, was hier passiert ist.§Und haltet Ausschau nach der Übersetzung.'
     },
     "2": {
-      de: 'Psst. Schaut euch das an!',
-      en: 'Psst. Look at that!'
+      de: 'Ich hab die Küche gefunden,§einen Haufen fliegender Messer und eine weitere Rune.§Hier ist definitiv jemand abgemurkst worden.§Ich kenne das Prozedere.§Aktiviert eure Ghost-Cam und sagt mir, was ihr sehen könnt.',
+      en: 'Ich hab die Küche gefunden,§einen Haufen fliegender Messer und eine weitere Rune.§Hier ist definitiv jemand abgemurkst worden.§Ich kenne das Prozedere.§Aktiviert eure Ghost-Cam und sagt mir, was ihr sehen könnt.'
     },
     "3": {
-      de: 'Ich schau mir gerade die Küche an.§Hier wurde auf jeden Fall jemand abgemurxt.§Was für eine Sauerei!',
-      en: 'Check out this haunted kitchen.$Somebody died here for sure.$What a mess!'    
+      de: 'Ich bin im Esszimmer.§Hier ist noch eine Rune und viel getrocknetes Blut.§Bin gespannt, was ihr sehen könnt.§Ich ahne Schlimmes.',
+      en: 'Ich bin im Esszimmer.§Hier ist noch eine Rune und viel getrocknetes Blut.§Bin gespannt, was ihr sehen könnt.§Ich ahne Schlimmes.'    
     },
     "4": {
-      de: 'Ich hab die Familienfotos gefunden§Und eine blutige Botschaft.',
-      en: 'I found the family fotos.§And a bloody message too.'    
+      de: 'Hallo ihr. Ich hab noch ein Rune gefunden.§Im Badezimmer.§Neben einer blutigen Badewanne, die Funken sprüht.§Das dürfte interessant werden.',
+      en: 'Hallo ihr. Ich hab noch ein Rune gefunden.§Im Badezimmer.§Neben einer blutigen Badewanne, die Funken sprüht.§Das dürfte interessant werden.'    
     },
     "5": {
-      de: 'Holger Outro 1',
-      en: 'Holger Outro 1'
+      de: 'Ich bin im Arbeitszimmer.§Hier ist eine weitere Rune und ein Pentagramm.§So langsam kommen wir der Sache näher.§Ich bin gespannt, was ihr herausfindet.',
+      en: 'Ich bin im Arbeitszimmer.§Hier ist eine weitere Rune und ein Pentagram.§So langsam kommen wir der Sache näher.§Ich bin gespannt, was ihr herausfindet.'
     },
     "6": {
-      de: 'Holger Outro 1',
-      en: 'Holger Outro 1'
+      de: 'Hab noch eine Rune gefunden.§Sie war auf dem Dachboden versteckt.§Neben einem Koffer voller Kreuze und Ampullen.§Bin gespannt, was ihr sehen könnt.',
+      en: 'Hab noch eine Rune gefunden.§Sie war auf dem Dachboden versteckt.§Neben einem Koffer voller Kreuze und Ampullen.§Bin gespannt, was ihr sehen könnt.'
     },
     "7": {
-      de: 'Holger Outro 1',
-      en: 'Holger Outro 1'
+      de: 'Im Klavierzimmer ist noch eine Rune.§Mensch, dieses Haus ist wirklich stattlich.§Zu schade, dass es von einem Haufen Dämonen bewohnt ist.§Das wirkt sich negativ auf die Preisentwicklung aus.',
+      en: 'Im Klavierzimmer ist noch eine Rune.§Mensch, dieses Haus ist wirklich stattlich.§Zu schade, dass es von einem Haufen Dämonen bewohnt ist.§Das wirkt sich negativ auf die Preisentwicklung aus.'
     },
     "8": {
-      de: 'Holger Outro 1',
-      en: 'Holger Outro 1'
+      de: 'Schaut euch das mal an!§Ich bin im Wintergarten.§Hier ist noch ein Rune.§Und eine Menge Geister.',
+      en: 'Schaut euch das mal an!§Ich bin im Wintergarten.§Hier ist noch ein Rune.§Und eine Menge Geister.'
     },
     "9": {
-      de: 'Holger Outro 1',
-      en: 'Holger Outro 1'
+      de: 'Ich hab noch eine Rune im Heizungskeller gefunden.§Mir schwant nichts Gutes.',
+      en: 'Ich hab noch eine Rune im Heizungskeller gefunden.§Mir schwant nichts Gutes.'
     },
     "10": {
-      de: 'Holger Outro 1',
-      en: 'Holger Outro 1'
+      de: 'Ich hab eine geheime Tür im Keller gefunden, die mich in dieses Verlies geführt hat.§Ein schauriger Ort.§Ich will gar nicht wissen, was ihr hier findet.',
+      en: 'Ich hab eine geheime Tür im Keller gefunden, die mich in dieses Verlies geführt hat.§Ein schauriger Ort.§Ich will gar nicht wissen, was ihr hier findet.'
     }
   }
-  text["hotspot.outro.2"] = {
+  text["hotspot.outro"] = {
     "1": {
-      de: 'Ihr wisst jetzt wie die Ghost-Cam und die Karte funktionieren.§Denkt daran, dass ihr mit eurer Ghost-Cam auch Fotos schießen könnt.§Das ist wichtig für die Dokumentation.§Ihr könnt auch immer ein Ghost-Selfie auf Social Media posten. #ghostpatrol.§Oh mein Gott! Was mache ich eigentlich?§Ich werde sterben bei dem Versuch viral zu gehen.§Geht jetzt zum nächsten Fall!',
-      en: 'You now know how the ghost cam and the map work.§Remember that you can also take photos with your ghost cam.§This is important for documentation.§You can also always post a ghost selfie on social media. #ghostpatrol.§Oh my God! What am I doing?§I’m going to die trying to go viral.§Go to the next case now!'
+      de: 'Hmm...dieser Henker hat hier also sein Unwesen getrieben.§Ich frage mich, was er mit dem Leichnam der Frau gemacht hat.§Gute Arbeit erstmal.§Geht zum nächsten Hotspot.§Ich melde mich.§Holger out!',
+      en: 'Hmm...dieser Henker hat hier also sein Unwesen getrieben.§Ich frage mich, was er mit dem Leichnam der Frau gemacht hat.§Gute Arbeit erstmal.§Geht zum nächsten Hotspot.§Ich melde mich.§Holger out!'
     },
     "2": {
-      de: 'Habt ihr das gesehen?§Die Fußspuren führten nach draußen.§Aber ich kann nicht raus.§Irgendetwas blockiert die Türen.§Ich suche weiter.§Ich hab vorhin übrigens vergessen, die Wichtigkeit von Teamwork zu erwähnen.§Geisterjäger sind nie alleine unterwegs!§Sagt der Mann, der alleine in einer Villa gefangen ist...haha.§Aber damit ihr nicht in so einer misslichen Lage endet, wie ich, solltet ihr diese Regel beherzigen!',
-      en: 'Did you see that?§The footprints led outside.§But I can’t get out.§Something’s blocking the doors.§I’ll keep looking.§By the way, I forgot to mention the importance of teamwork earlier.§Ghost hunters never travel alone!§Says the man trapped alone in a mansion...haha.§But to avoid ending up in a predicament like me, you should heed this rule!'
+      de: 'Ein Haufen Guhle in der Küche.§Prost Mahlzeit!§Diese fiesen Kreaturen sind dabei, ein schauriges Festmahl zuzubereiten.§Fragt sich nur für wen?§Vielleicht für diesen Henker.§Oder vielleicht auch für jemand anderen.',
+      en: 'Ein Haufen Guhle in der Küche.§Prost Mahlzeit!§Diese fiesen Kreaturen sind dabei, ein schauriges Festmahl zuzubereiten.§Fragt sich nur für wen?§Vielleicht für diesen Henker.§Oder vielleicht auch für jemand anderen.'
     },
     "3": {
-      de: 'Die alte Gerda hat nicht übertrieben.§Die ist der Grund warum ich überhaupt hier bin.§Ich hab mich von meiner Nachbarin bequatschen lassen.$Herr Holger Sie sind doch Geisterjäger.§Könnten Sie nicht mal einen Blick in mein Geburtshaus werfen.§Da spukt es seit Jahren.$Und ich Trottel sag auch noch zu.',
-      en: 'Old Gerda did not lie when she said that this place is cursed.$ That’s the reason I’m in here by the way§ My old neighbour lady talked me into it. And I said yes. I’m such a fool'
+      de: 'Ein abscheuliches Festmahl.§Aber Zombies?§Das deutet auf eine Hexe oder einen Hexer hin...§vielleicht sogar auf Totenbeschwörungen.§Könnte das vielleicht sogar die Familie sein, die hier gelebt hat?§Gute Arbeit auf jeden Fall.§Auf zum nächsten Hotspot.',
+      en: 'Ein abscheuliches Festmahl.§Aber Zombies?§Das deutet auf eine Hexe oder einen Hexer hin...§vielleicht sogar auf Totenbeschwörungen.§Könnte das vielleicht sogar die Familie sein, die hier gelebt hat?§Gute Arbeit auf jeden Fall.§Auf zum nächsten Hotspot.'
         },
     "4": {
-      de: 'Die Nachricht und diese Kälte hier...§Das sind alles Anzeichen für eine dämonische Präsenz.§Das macht mir nicht gerade Mut.',
-      en: 'The message and this cold...§These all hint at a demonic presence.§Not really looking forward to that, to be honest.'    },
+      de: 'Ein Werwolf.§Auch das noch!§In diesem Haus ist wirklich alles vertreten.§Ich hatte gehofft, wir hätten es nur mit einem Monster zu tun.',
+      en: 'Ein Werwolf.§Auch das noch!§In diesem Haus ist wirklich alles vertreten.§Ich hatte gehofft, wir hätten es nur mit einem Monster zu tun.'    },
     "5": {
-      de: 'Brrr. Es ist unnatürlich kalt hier.§Geister absorbieren thermische Energie.§Für die ist das wie Treibstoff.§Manche verwandeln das dann in kinetische Energie, um Türen zu knallen oder Gegenstände fliegen zu lassen.§Aber all das kostet Kraft.§Und was immer hier spukt, scheint viel Energie zu besitzen.§Ich schaue mir jetzt mal den 1. Stock an.',
-      en: 'Brrr. It’s unnaturally cold here.§Ghosts absorb thermal energy.§For them, it’s like fuel.§Some then turn it into kinetic energy to slam doors or send objects flying.§But all that takes energy.§And whatever’s haunting here seems to have a lot of energy.§I’m going to take a look at the first floor.'
+      de: 'Ok. Scheint als hätte hier jemand ein okkultes Hobby gehabt.§Zumindest wissen wir jetzt, wer den Teufel ins Haus gelassen hat.§Gut möglich, dass das hier der Anfang von allem Übel war.§Ist das nicht die Frau, die vom Henker durch die Lobby geschleift wurde?',
+      en: 'Ok. Scheint als hätte hier jemand ein okkultes Hobby gehabt.§Zumindest wissen wir jetzt, wer den Teufel ins Haus gelassen hat.§Gut möglich, dass das hier der Anfang von allem Übel war.§Ist das nicht die Frau, die vom Henker durch die Lobby geschleift wurde?'
     },
     "6": {
-      de: 'Holger Outro 2',
-      en: 'Holger Outro 2'
+      de: 'Ein Vampir.§Und ein missglückter Versuch ihn zu töten.§Tragisch!§Vampire sind keine niederen Handlanger wie Ghule oder Zombies.§Ich nehme mal einen Holzpfahl mit.§Kann nicht schaden.',
+      en: 'Ein Vampir.§Und ein missglückter Versuch ihn zu töten.§Tragisch!§Vampire sind keine niederen Handlanger wie Ghule oder Zombies.§Ich nehme mal einen Holzpfahl mit.§Kann nicht schaden.'
     },
     "7": {
-      de: 'Holger Outro 2',
-      en: 'Holger Outro 2'
+      de: 'Tanzende Skelette?§Na wenigstens hatten die ihren Spaß.§Das bedeutet, dass wir es auch mit einem Necromancer oder Totenbeschwörer zu tun haben.',
+      en: 'Tanzende Skelette?§Na wenigstens hatten die ihren Spaß.§Das bedeutet, dass wir es auch mit einem Necromancer oder Totenbeschwörer zu tun haben.'
     },
     "8": {
-      de: 'Holger Outro 2',
-      en: 'Holger Outro 2'
+      de: 'Toll! Jetzt haben wir auch noch eine Hexe und ein Monster-Baby.§Das Grusel-Kabinett ist komplett!§Ich habe keine Ahnung, wie wir den Spuk hier beenden.§Es gibt einfach zu viele Akteure.',
+      en: 'Toll! Jetzt haben wir auch noch eine Hexe und ein Monster-Baby.§Das Grusel-Kabinett ist komplett!§Ich habe keine Ahnung, wie wir den Spuk hier beenden.§Es gibt einfach zu viele Akteure.'
     },
     "9": {
-      de: 'Holger Outro 2',
-      en: 'Holger Outro 2'
+      de: 'Zumindest wissen wir jetzt, wo die Überreste der anderen Bewohner gelandet sind.§Dieser Leder-Typ scheint außerdem seine Gliedmaßen verlängern zu können.§Super eklig!',
+      en: 'Zumindest wissen wir jetzt, wo die Überreste der anderen Bewohner gelandet sind.§Dieser Leder-Typ scheint außerdem seine Gliedmaßen verlängern zu können.§Super eklig!'
     },
     "10": {
-      de: 'Holger Outro 2',
-      en: 'Holger Outro 2'
+      de: 'Schon wieder der Henker!',
+      en: 'Schon wieder der Henker!'
     },
   }
   text["outro.1"] = {
