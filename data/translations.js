@@ -324,12 +324,12 @@ getTranslations = function () {
   }
   text["hotspot.splash"] = {
     "1": {
-      de: 'Achtung!',
-      en: 'Attention!'
+      de: 'Holger',
+      en: 'Holger'
     },
     "2": {
-      de: 'Paranormale Aktivität entdeckt.',
-      en: 'Paranormal activity detected.'
+      de: 'ruft an',
+      en: 'is calling'
     }
   }
   text["hotspot.frequence"] = {
