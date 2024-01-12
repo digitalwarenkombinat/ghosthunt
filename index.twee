@@ -790,12 +790,13 @@ $(document).one(":passagedisplay", function() {
 :: hotspot.splash {"position":"900,900","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', `background-image:url(images/hotspot.jpg)`);
+  $('#story').attr('style', `background-image:url(images/hotspot.splash.jpg)`);
 <</script>>
 
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
+  <img src="images/holger.png" class="image-size-50">
 </div>
 
 <div class="btn-group">
