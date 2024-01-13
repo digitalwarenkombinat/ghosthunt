@@ -123,6 +123,10 @@ Spuk & Schreck
 -------------------------STARTVARIABLEN-------------------------------
 <<set $hotspot to 0>>
 
+<<set $validFrequences = [101, 247, 404, 721, 333, 121, 911, 451, 143, 666]>>
+
+<<set $validGhostFrequences = [201, 723, 447, 304, 521, 656, 133, 421, 667]>>
+
 <<set $letter to [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]>>
 
 <<set $inventory to [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]>>
@@ -855,21 +859,40 @@ $(document).one(":passagedisplay", function() {
   <<numberbox "_answer" 0 autofocus>>
   <<button "Check">>
     <<if _answer is "">>
-      <<set $alertNoText = setup.text[passage()][3][setup.i18n.langs[settings.lang]]>>
-      <<script>>UI.alert(State.variables.alertNoText);<</script>>
+      <<script>>UI.alert(setup.text[passage()][3][setup.i18n.langs[settings.lang]]);<</script>>
+    <<elseif $validFrequences.includes(_answer)>>
+      <<set $hotspot = $validFrequences.indexOf(_answer) + 1>>
+      <<goto "hotspot.ar">>
     <<else>>
-      <<set $hotspotAlertText = setup.text[passage()][4][setup.i18n.langs[settings.lang]]>>
-      <<if _answer is 263>>
-        <<set $hotspot to 1>>
-        <<goto "hotspot.ar">>
-      <<elseif _answer is 815>>
-        <<set $hotspot to 2>>
-        <<goto "hotspot.ar">>
-      <<else>>
-        <<set $alertWrongText = setup.text[passage()][5][setup.i18n.langs[settings.lang]]>>
-        <<script>>UI.alert(State.variables.alertWrongText);<</script>>
-        <<goto "main.scanner">>
-      <</if>>
+      <<script>>UI.alert(setup.text[passage()][4][setup.i18n.langs[settings.lang]]);<</script>>
+      <<goto "main.scanner">>
+    <</if>>
+  <</button>>
+</div>
+
+:: main.scanner.ghost {"position":"1100,700","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <<numberbox "_answer" 0 autofocus>>
+
+  <<button "Check">>
+    <<if _answer is "">>
+      <<script>>UI.alert(setup.text[passage()][3][setup.i18n.langs[settings.lang]]);<</script>>
+    <<elseif $validGhostFrequences.includes(_answer)>>
+      <<set $hotspot = $validGhostFrequences.indexOf(_answer) + 1>>
+      <<goto "hotspot.ghost">>
+    <<else>>
+      <<script>>UI.alert(setup.text[passage()][4][setup.i18n.langs[settings.lang]]);<</script>>
+      <<goto "main.scanner.ghost">>
     <</if>>
   <</button>>
 </div>
@@ -889,23 +912,14 @@ $(document).one(":passagedisplay", function() {
   <<numberbox "_answer" 0 autofocus>>
   <<button "Check">>
     <<if _answer is "">>
-      <<set $alertNoText = setup.text[passage()][3][setup.i18n.langs[settings.lang]]>>
-      <<script>>UI.alert(State.variables.alertNoText);<</script>>
+      <<script>>UI.alert(setup.text[passage()][3][setup.i18n.langs[settings.lang]]);<</script>>
+    <<elseif $validFrequences.includes(_answer)>>
+      <<script>>UI.alert(setup.text[passage()][4][setup.i18n.langs[settings.lang]]);<</script>>
+      <<set $hotspot = $validFrequences.indexOf(_answer) + 1>>
+      <<goto "hotspot.splash">>
     <<else>>
-      <<set $hotspotAlertText = setup.text[passage()][4][setup.i18n.langs[settings.lang]]>>
-      <<if _answer is 263>>
-        <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
-        <<set $hotspot to 1>>
-        <<goto "hotspot.splash">>
-      <<elseif _answer is 815>>
-        <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
-        <<set $hotspot to 2>>
-        <<goto "hotspot.splash">>
-      <<else>>
-        <<set $alertWrongText = setup.text[passage()][5][setup.i18n.langs[settings.lang]]>>
-        <<script>>UI.alert(State.variables.alertWrongText);<</script>>
-        <<goto "main.storyteller">>
-      <</if>>
+      <<script>>UI.alert(setup.text[passage()][5][setup.i18n.langs[settings.lang]]);<</script>>
+      <<goto "main.storyteller">>
     <</if>>
   <</button>>
 </div>
@@ -953,11 +967,7 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 
 <div class="wrapper">
-  <<if $hotspot is 1>>
-    <h1>263</h1>
-  <<elseif $hotspot is 2>>
-    <h1>815</h1>
-  <</if>>
+  <h1><<print $validFrequences[$hotspot] + 1>></h1>
   <h2><<txt 1>></h2>
   <h2><<txt 2>></h2>
 </div>
@@ -969,6 +979,23 @@ $(document).one(":passagedisplay", function() {
   <<elseif $isNavigatorScanner>>
     <button class="next">[[|hotspot.ar]]</button>
   <</if>>
+</div>
+
+:: hotspot.frequence.ghost {"position":"900,1300","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<print $validGhostFrequences[$hotspot] + 1>></h1>
+  <h2><<txt 1>></h2>
+  <h2><<txt 2>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|hotspot.rune]]</button>
 </div>
 
 :: hotspot.questions {"position":"900,1500","size":"100,100"}
@@ -1083,7 +1110,7 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
   <<if $isScanner>>
-    <button class="next">[[|hotspot.ghost]]</button>
+    <button class="next">[[|main.scanner.ghost]]</button>
   <<elseif $isNavigatorScanner>>
     <button class="next">[[|hotspot.ghost]]</button>
   <<else>>
@@ -1153,8 +1180,8 @@ $(document).one(":passagedisplay", function() {
     <button class="next">[[|hotspot.ghost]]</button>
   <<else>>
     /* Skip hotspot.solution passage */
-    <<goto "hotspot.rune">>
-    <button class="next">[[|hotspot.rune]]</button>
+    <<goto "hotspot.frequence.ghost">>
+    <button class="next">[[|hotspot.frequence.ghost]]</button>
   <</if>>
 </div>
 
@@ -1274,7 +1301,7 @@ $(document).one(":passagedisplay", function() {
   <<for _i to 1; _i lte 10; _i++>>
     <<capture _i>>
     <<set $chapterText = setup.text['Dev'][_i][setup.i18n.langs[settings.lang]]>>
-    <<button $chapterText>>
+    <<button $chapterText+$validFrequences[_i-1]>>
       <<set $hotspot to _i>>
       <<if $isStoryteller>>
         <<goto "hotspot.splash">>

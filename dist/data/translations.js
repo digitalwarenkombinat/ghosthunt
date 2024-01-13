@@ -344,17 +344,31 @@ getTranslations = function () {
     },
     "2": {
       de: 'Wenn ihr einen Tatort erreicht habt, gibt der Navigator dir eine Frequenz, die du hier eingegeben musst.',
-      en: 'Enter your received frequency here.'
+      en: 'When you have reached a crime scene, the navigator will give you a frequency which you must enter here.'
     },
     "3": {
       de: 'Du hast keine Frequenz angegeben!',
       en: 'You did not supply a frequency!'
     },
     "4": {
-      de: 'Vergewissere dich, dass dein Team bereit ist. Der Tatort ist nur für eine begrenzte Zeit sichtbar!',
-      en: 'Make sure your team is ready. The crime scene is only visible for a limited time!'
+      de: 'Die eingegebene Frequenz ist nicht korrekt!',
+      en: 'The entered frequency is not correct!'
+    }
+  }
+  text["main.scanner.ghost"] = {
+    "1": {
+      de: 'Scanner',
+      en: 'Scanner'
     },
-    "5": {
+    "2": {
+      de: 'Wenn ihr einen Tatort abgeschlossen habt, gibt der Storyteller dir eine Frequenz, die du hier eingegeben musst.',
+      en: 'When you have completed a crime scene, the Storyteller will give you a frequency that you must enter here.'
+    },
+    "3": {
+      de: 'Du hast keine Frequenz angegeben!',
+      en: 'You did not supply a frequency!'
+    },
+    "4": {
       de: 'Die eingegebene Frequenz ist nicht korrekt!',
       en: 'The entered frequency is not correct!'
     }
@@ -399,6 +413,16 @@ getTranslations = function () {
     "2": {
       de: 'Teile diese Frequenz mit deinem Team, um den Tatort zu aktivieren.',
       en: 'Share this frequency with your team to activate the crime scene.'
+    }
+  }
+  text["hotspot.frequence.ghost"] = {
+    "1": {
+      de: 'Frequenz erhalten',
+      en: 'Frequency received'
+    },
+    "2": {
+      de: 'Teile diese Frequenz mit deinem Team, um den Geist zu sehen.',
+      en: 'Share this frequency with your team to see the ghost.'
     }
   }
   text["hotspot.questions"] = {
