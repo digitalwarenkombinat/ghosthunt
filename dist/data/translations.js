@@ -144,38 +144,38 @@ getTranslations = function () {
   }
   text["setup.storyteller"] = {
     "1": {
-      de: 'Game Master',
-      en: 'Game Master'
+      de: 'Storyteller',
+      en: 'Storyteller'
     },
     "2": {
-      de: 'Game Master behalten den Überblick. Du sammelst Story-Fragmente und löst Rätsel unter Zeitdruck.',
-      en: 'Game Masters are cool under pressure. Your job is to solve time-sensitive riddles, collect points & story-fragments.'
+      de: 'Storyteller behalten den Überblick. Sie sammeln Geschichtenfragmente und lösen Rätsel unter Zeitdruck',
+      en: 'Storytellers are cool under pressure. Their job is to solve time-sensitive puzzles, collect points and story fragments.'
     },
     "3": {
-      de: 'Bist du sicher? Jede Rolle darf nur einmal gewählt werden.',
-      en: 'Are you sure? Each role may only be chosen once.'
+      de: 'Bist du sicher? Jede Rolle kann nur einmal gewählt werden.',
+      en: 'Are you sure? Each role can only be selected once.'
     },
   }
   text["setup.navigator"] = {
     "1": {
-      de: 'Detektiv',
-      en: 'Detective'
+      de: 'Navigator/Scanner',
+      en: 'Navigator/Scanner'
     },
     "2": {
-      de: 'Detektive sind aufmerksame Menschen. Dein Job ist es dein Team zu den Tatorten zu führen und die Geister-Tatorte mit der Kamera zu untersuchen.',
-      en: 'Detectives are methodical. Your job is to guide your team to the crime-szenes and to study them with your AR-camera.'
+      de: 'Navigatoren/Scanner sind aufmerksam. Ihre Aufgabe ist es, ihr Team zu den Tatorten zu führen und diese mit der Kamera zu untersuchen',
+      en: 'Navigators/Scanners are methodical. Their job is to lead your team to the crime scenes and investigate them with your AR camera.'
     },
     "3": {
-      de: 'Guide',
-      en: 'Guide'
+      de: 'Navigator',
+      en: 'Navigator'
     },
     "4": {
-      de: 'Guides kennen sich mit Karten aus. Dein Job ist es das Team zu den Tatorten zu führen.',
-      en: 'Guides are good with maps. Your job is to guide your team to the crime-szenes.'
+      de: 'Navigatoren kennen sich mit Karten aus. Ihre Aufgabe ist es, das Team zu den Tatorten zu führen.',
+      en: 'Navigators are good with maps. Their job is to lead your team to the crime scenes.'
     },
     "5": {
-      de: 'Bist du sicher? Jede Rolle darf nur einmal gewählt werden.',
-      en: 'Are you sure? Each role may only be chosen once.'
+      de: 'Bist du sicher? Jede Rolle kann nur einmal gewählt werden.',
+      en: 'Are you sure? Each role can only be selected once.'
     },
   }
   text["setup.scanner"] = {
@@ -184,12 +184,12 @@ getTranslations = function () {
       en: 'Scanner'
     },
     "2": {
-      de: 'Scanner müssen ein gutes Auge haben. Mit Hilfe der AR-Kamera machst du Geister-Tatorte sichtbar und suchst nach Hinweisen.',
-      en: 'Scanners need to be perceptive. You job is to study the crime-szenes with your AR-camera.'
+      de: 'Scanner brauchen ein gutes Auge haben. Mit Hilfe der AR-Kamera können sie Geister-Tatorte sichtbar machen und nach Hinweisen suchen.',
+      en: 'Scanners need to be perceptive. Their job is to study the crime scenes with your AR camera.'
     },
     "3": {
-      de: 'Bist du sicher? Jede Rolle darf nur einmal gewählt werden.',
-      en: 'Are you sure? Each role may only be chosen once.'
+      de: 'Bist du sicher? Jede Rolle kann nur einmal gewählt werden.',
+      en: 'Are you sure? Each role can only be selected once.'
     },
   }
   text["setup.location"] = {
@@ -237,7 +237,6 @@ getTranslations = function () {
       de: 'Dann seid ihr bereit und du kannst das Spiel jetzt starten.',
       en: 'Then you are ready and you can start the game now.'
     },
-
   }
   text["intro.1"] = {
     "1": {
@@ -296,14 +295,32 @@ getTranslations = function () {
       en: 'Go to the park.§I’ll send you a map with the locations of the hotspots.§Once you’re there, you can use your ghost scanners to decipher the runes.§I’ll explore the house until then.§Holger out!'
     }
   }
-  text["main.navigator"] = {
+  text["main.navigator.init"] = {
     "1": {
-      de: 'Betrete einen pinken Kreis!',
-      en: 'Enter one of the pink Circles'
+      de: 'Check',
+      en: 'Check'
     },
     "2": {
-      de: '',
-      en: ''
+      de: 'Alles funktioniert. Deine Aufgabe ist es, das Team zu den Tatorten zu führen.',
+      en: 'Everything works. Your job is to lead the team to the crime scenes.'
+    },
+    "3": {
+      de: 'Warte, bis der Storyteller das Spiel startet.',
+      en: 'Wait until the storyteller starts the game.'
+    },
+  }
+  text["main.navigator"] = {
+    "1": {
+      de: 'Führe dein Team zu den Tatorten, sobald der Storyteller grünes Licht gibt.',
+      en: 'Lead your team to the crime scenes as soon as the Storyteller gives the green light'
+    },
+    "2": {
+      de: 'Du kannst einen beliebigen Tatort auswählen. Die Reihenfolge spielt keine Rolle.',
+      en: 'You can choose any crime scene. The order does not matter.'
+    },
+    "3": {
+      de: 'Betrete einen der pinken Kreise!',
+      en: 'Enter one of the pink Circles!'
     }
   }
   text["main.scanner"] = {
@@ -366,8 +383,8 @@ getTranslations = function () {
       en: 'Frequency received'
     },
     "2": {
-      de: 'Gib die erhaltene Frequenz an deine Mitspielenden weiter.',
-      en: 'Pass on the frequency you have received to your fellow players.'
+      de: 'Teile diese Frequenz mit deinem Team, um den Tatort zu aktivieren.',
+      en: 'Share this frequency with your team to activate the crime scene.'
     }
   }
   text["hotspot.questions"] = {
@@ -399,6 +416,10 @@ getTranslations = function () {
       de: 'Sekunden verbleibend',
       en: 'seconds left'
     },
+    "8": {
+      de: 'Wurden alle Fragen beantwortet?',
+      en: 'Have all questions been answered?'
+    }
   }
   text["hotspot.ar"] = {
     "1": {

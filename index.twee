@@ -367,7 +367,7 @@ Spuk & Schreck
     <</if>>
     <<script>>
       jQuery(Dialog
-        .setup(setup.text[passage()][1][setup.i18n.langs[settings.lang]]))
+        .setup(setup.text[passage()][3][setup.i18n.langs[settings.lang]]))
         .append("<p>".concat(setup.text[passage()][5][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
         .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
         .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
@@ -717,7 +717,16 @@ $(document).one(":passagedisplay", function() {
 
 :: main.navigator.init {"position":"900,500","size":"100,100"}
 
-	<<goto "main.navigator">>
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|main.navigator]]</button>
+</div>
 
 :: main.navigator [autosave] {"position":"900,700","size":"100,100"}
 <div id="map"></div>
@@ -752,7 +761,11 @@ $(document).one(":passagedisplay", function() {
               map.on('click', location.id, (e) => {
                 State.variables.enteredLocations.push(location.id);
                 $.wiki('<<set $hotspot to $hotspot + 1>>');
-                $.wiki('<<goto "hotspot.splash">>');
+                if (State.variables.isStoryteller) {
+                  $.wiki('<<goto "hotspot.splash">>');
+                } else { 
+                  $.wiki('<<goto "hotspot.frequence">>');
+                }
               });
 
             } else {
@@ -790,11 +803,27 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper" style="z-index: unset"></div>
 
 <div class="btn-group">
-  <h2>
-    <<txt>>
-    <br>
-    <<txt>>
-  </h2>
+  <<if $showMaptip>>
+    <span id="mapTip">
+      <h2><<txt>></h2>
+      <<button "OK">>
+        <<replace "#mapTip">>
+          <h2><<txt>></h2>
+          <<button "OK">>
+            <<replace "#mapTip">>
+              <h2><<txt>></h2>
+            <</replace>>
+          <</button>>
+        <</replace>>
+        <<set $showMaptip to false>>
+      <</button>>
+    </span>
+  <<else>>
+    <<button "?">>
+      <<set $showMaptip to true>>
+      <<goto "main.navigator">>
+    <</button>>
+  <</if>>
   <button class="retry">[[|passage()]]</button>
 </div>
 
@@ -819,10 +848,10 @@ $(document).one(":passagedisplay", function() {
   <<numberbox "_answer" 0 autofocus>>
   <<button "Check">>
     <<if _answer is "">>
-      <<set $alertNoText = setup.text['main.scanner'][3][setup.i18n.langs[settings.lang]]>>
+      <<set $alertNoText = setup.text[passage()][3][setup.i18n.langs[settings.lang]]>>
       <<script>>UI.alert(State.variables.alertNoText);<</script>>
     <<else>>
-      <<set $hotspotAlertText = setup.text['main.scanner'][4][setup.i18n.langs[settings.lang]]>>
+      <<set $hotspotAlertText = setup.text[passage()][4][setup.i18n.langs[settings.lang]]>>
       <<if _answer is 263>>
         <<set $hotspot to 1>>
         <<goto "hotspot.ar">>
@@ -830,7 +859,7 @@ $(document).one(":passagedisplay", function() {
         <<set $hotspot to 2>>
         <<goto "hotspot.ar">>
       <<else>>
-        <<set $alertWrongText = setup.text['main.scanner'][5][setup.i18n.langs[settings.lang]]>>
+        <<set $alertWrongText = setup.text[passage()][5][setup.i18n.langs[settings.lang]]>>
         <<script>>UI.alert(State.variables.alertWrongText);<</script>>
         <<goto "main.scanner">>
       <</if>>
@@ -853,10 +882,10 @@ $(document).one(":passagedisplay", function() {
   <<numberbox "_answer" 0 autofocus>>
   <<button "Check">>
     <<if _answer is "">>
-      <<set $alertNoText = setup.text['main.storyteller'][3][setup.i18n.langs[settings.lang]]>>
+      <<set $alertNoText = setup.text[passage()][3][setup.i18n.langs[settings.lang]]>>
       <<script>>UI.alert(State.variables.alertNoText);<</script>>
     <<else>>
-      <<set $hotspotAlertText = setup.text['main.storyteller'][4][setup.i18n.langs[settings.lang]]>>
+      <<set $hotspotAlertText = setup.text[passage()][4][setup.i18n.langs[settings.lang]]>>
       <<if _answer is 263>>
         <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
         <<set $hotspot to 1>>
@@ -866,7 +895,7 @@ $(document).one(":passagedisplay", function() {
         <<set $hotspot to 2>>
         <<goto "hotspot.splash">>
       <<else>>
-        <<set $alertWrongText = setup.text['main.storyteller'][5][setup.i18n.langs[settings.lang]]>>
+        <<set $alertWrongText = setup.text[passage()][5][setup.i18n.langs[settings.lang]]>>
         <<script>>UI.alert(State.variables.alertWrongText);<</script>>
         <<goto "main.storyteller">>
       <</if>>
@@ -977,6 +1006,9 @@ $(document).one(":passagedisplay", function() {
 
   <div class="btn-group">
     <<if $isNavigator>>
+      <<if $riddleCount === 5>>
+        <<script>>UI.alert(setup.text[passage()][8][setup.i18n.langs[settings.lang]]);<</script>>
+      <</if>>
       <<set $riddleCount to $riddleCount + 1>>
       <button class="next">[[|hotspot.questions]]</button>
     <<else>>
@@ -1149,7 +1181,7 @@ $(document).one(":passagedisplay", function() {
   $(document).one(":passagedisplay", function() {
     $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
 
-    const secretMessage = setup.text['hotspot.secret'][2][setup.i18n.langs[settings.lang]];
+    const secretMessage = setup.text[passage()][2][setup.i18n.langs[settings.lang]];
 
     const messageContainer = document.getElementById('messageContainer');
 
@@ -1238,13 +1270,17 @@ $(document).one(":passagedisplay", function() {
     <<set $chapterText = setup.text['Dev'][_i][setup.i18n.langs[settings.lang]]>>
     <<button $chapterText>>
       <<set $hotspot to _i>>
-      <<goto "hotspot.splash">>	
+      <<if $isStoryteller>>
+        <<goto "hotspot.splash">>
+      <<else>>
+        <<goto "hotspot.frequence">>
+      <</if>>
     <</button>>
     <</capture>>
   <</for>>
     <<set $mapText = setup.text['Dev'][13][setup.i18n.langs[settings.lang]]>>
     <<button $mapText>>
-      <<goto "main.navigator.init">>	
+      <<goto "main.navigator">>	
     <</button>>
   </div>
 </div>
