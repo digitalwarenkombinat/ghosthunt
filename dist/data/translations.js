@@ -226,10 +226,14 @@ getTranslations = function () {
       en: 'Hello ghost hunter. Did everything work out?'
     },
     "3": {
-      de: 'Konnte der Scanner den Geist sehen? Kann der Navigator die Karte sehen?',
+      de: 'Konnte der Detektiv den Geist und die Karte sehen?',
       en: 'Could the scanner see the ghost? Can the navigator see the map?'
     },
     "4": {
+      de: 'Konnte der Scanner den Geist sehen? Kann der Navigator die Karte sehen?',
+      en: 'Could the scanner see the ghost? Can the navigator see the map?'
+    },
+    "5": {
       de: 'Dann seid ihr bereit und du kannst das Spiel jetzt starten.',
       en: 'Then you are ready and you can start the game now.'
     },
@@ -282,7 +286,7 @@ getTranslations = function () {
   }
   text["intro.7"] = {
     "1": {
-      de: 'Ich wette meine Monobraue darauf, dass diese Botschaft der Schlüssel ist, um den Spuk zu beenden.§Um die Runen aus der Ferne zu übersetzen, braucht Ihr starke paranormale Energien.§Eure beste Chance ist der Friedenspark!§Das war früher mal ein Friedhof.$Dort wimmelt es nur so von paranormalen Aktivitäten.',
+      de: 'Ich wette meine Monobraue darauf, dass diese Botschaft der Schlüssel ist, um den Spuk zu beenden.§Um die Runen aus der Ferne zu übersetzen, braucht Ihr starke paranormale Energien.§Eure beste Chance ist der Friedenspark!§Das war früher mal ein Friedhof.§Dort wimmelt es nur so von paranormalen Aktivitäten.',
       en: 'I’ll bet my monobrow that this message is the key to ending the haunting.§You’ll need strong paranormal energies to translate the runes from afar.§Your best bet is Friedenspark!§This used to be a graveyard.§The place is buzzing with paranormal activity.'
     }
   }

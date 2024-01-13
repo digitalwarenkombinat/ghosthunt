@@ -57,23 +57,51 @@ Spuk & Schreck
 -------------------------VIDEO-------------------------------
 <<widget "video">>
   <<set $hasHotspot = $args.raw === "">>
-  <<set $passage = passage()>>
   <<set $storyText = setup.text[passage()][State.variables.hasHotspot ? State.variables.hotspot : 1][setup.i18n.langs[settings.lang]]>>
   <<script>>
-    const videoText = window.video.splitTextByTrimmer(State.variables.storyText);
+    const videoText = State.variables.storyText.split('§');
     const videoTextDuration = 3000;
 
+    let counter = 0;
+    let videoTextTimeout;
+    let timerOn = false;
+
+    function timedVideoText() {
+      if (counter < videoText.length) {
+        document.getElementById("videoText").innerText = videoText[counter];
+        counter++;
+        videoTextTimeout = setTimeout(timedVideoText, videoTextDuration);
+      }
+    }
+
+    function startVideoText() {
+      const videoTextElem = document.getElementById("videoText");
+      if (videoTextElem && !timerOn) {
+        timerOn = true;
+        timedVideoText();
+      }
+    }
+
+    function stopVideoText() {
+      clearTimeout(videoTextTimeout);
+      timerOn = false;
+    }
+
     $(document).one(":passagedisplay", function() {
-      let video = document.getElementById("video");
+      const video = document.getElementById("video");
       if (video) {
-        let srcPassage = State.variables.hasHotspot ? State.variables.passage : State.variables.passage.split(".")[0];
-        let srcHotspot = State.variables.hasHotspot ? State.variables.hotspot : State.variables.passage.split(".")[1];
-        video.src = `videos/${srcHotspot}.${srcPassage}.mp4`;
+        const videoSource = State.variables.hasHotspot
+          ? `videos/${State.variables.hotspot}.${State.variables.passage}.mp4`
+          : `videos/${State.variables.passage}.mp4`;
+        video.src = videoSource;
         video.load();
-        window.video.displayStringsSequentially(videoText, videoTextDuration);
+        startVideoText();
         video.play();
       }
-    })
+    });
+
+    $(document).one(":passageinit", stopVideoText);
+
   <</script>>
 
   <video autoplay muted id="video" playsinline loop>
@@ -101,11 +129,11 @@ Spuk & Schreck
 <<set $enteredLocations to []>>
 
 <<set $runes to [
-    ["a", "ä"], 
+    ["y", "ä"], 
     ["s", "u"], 
     ["m", "l"],
     ["c", "h"],
-    ["i", "y"],
+    ["i", "a"],
     ["b", "f"],
     ["d", "k"],
     ["e", "j"],
@@ -533,8 +561,12 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
-  <h2><<txt>></h2>
-  <h2><<txt>></h2>
+  <<if $playerCount === 2>>
+    <h2><<txt 3>></h2>
+  <<elseif $playerCount === 3>>
+  <h2><<txt 4>></h2>
+  <</if>>
+  <h2><<txt 5>></h2>
 </div>
 
 <div class="btn-group">
@@ -567,8 +599,6 @@ $(document).one(":passagedisplay", function() {
 
 <<video noHotspot>>
 
-<div class="wrapper"></div>
-
 <div class="btn-group">
   <button class="return">[[|intro.1]]</button>
   <button class="retry">[[|passage()]]</button>
@@ -597,8 +627,6 @@ $(document).one(":passagedisplay", function() {
 
 <<video noHotspot>>
 
-<div class="wrapper"></div>
-
 <div class="btn-group">
   <button class="return">[[|intro.3]]</button>
   <button class="retry">[[|passage()]]</button>
@@ -608,8 +636,6 @@ $(document).one(":passagedisplay", function() {
 :: intro.5 {"position":"700,1500","size":"100,100"}
 
 <<video noHotspot>>
-
-<div class="wrapper"></div>
 
 <div class="btn-group">
   <button class="return">[[|intro.4]]</button>
@@ -661,14 +687,22 @@ $(document).one(":passagedisplay", function() {
 
 :: intro.7 {"position":"700,1900","size":"100,100"}
 
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="return">[[|intro.6]]</button>
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|intro.8]]</button>
+</div>
+
+:: intro.8 {"position":"700,2100","size":"100,100"}
+
 <<set $introCompleted to true>>
 
 <<video noHotspot>>
 
-<div class="wrapper"></div>
-
 <div class="btn-group">
-  <button class="return">[[|intro.6]]</button>
+  <button class="return">[[|intro.7]]</button>
   <button class="retry">[[|passage()]]</button>
   <<if $playerCount === 1>>
     <button class="next">[[|main.navigator]]</button>
@@ -1394,7 +1428,7 @@ Window Geolocation
     
 		/* Test ob eine Location innerhalb der aktuellen Geokoordinaten ist */
     inside: function(lat1, lon1, radius, lat2, lon2) {
-		  const R = 6371; // Earth's radius in km
+		  const R = 6371;
       const dLat = (lat2-lat1) * Math.PI / 180;
       const dLon = (lon2-lon1) * Math.PI / 180;
       const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
@@ -1459,31 +1493,6 @@ Window Video
           };
         };
       });
-    },
-
-    splitTextByTrimmer: function(input) {
-      const substringsArray = input.split('§');
-      for (let i = 0; i < substringsArray.length - 1; i++) {
-        substringsArray[i] = substringsArray[i];
-      }
-      return substringsArray;
-    },
-
-    displayStringsSequentially: function(stringsArray, duration) {
-      let index = 0;
-
-      function displayNextString() {
-        if (index < stringsArray.length) {
-          const videoText = document.getElementById("videoText");
-          if (videoText) {
-            document.getElementById("videoText").innerText = stringsArray[index];
-            index++;
-            setTimeout(displayNextString, duration);
-          }
-        }
-      }
-
-      displayNextString();
     }
   }
 
@@ -1621,7 +1630,7 @@ h1 {
   word-break: break-word;
   color: #ffffff00;
   -webkit-text-stroke: 3px var(--text-light-color);
-  //text-shadow: 0 0 20px var(--text-light-color);
+  /* text-shadow: 0 0 20px var(--text-light-color); */
 }
 
 h2 {
@@ -1833,6 +1842,15 @@ input[type=text] {
   content: "\e82e";
 }
 
+#ui-dialog-title {
+  color: var(--text-light-color);
+  font-family: 'Averia Serif Libre', serif;
+  font-weight: 900;
+  line-height: 4vh;
+  word-break: break-word;
+  -webkit-text-stroke: inherit;
+}
+
 #ui-dialog-body ul {
   display: flex;
   justify-content: center;
@@ -1852,8 +1870,8 @@ border: 2px solid var(--secondary-color);
 }
 
 #menu-core {
-    //position: fixed;
-    //bottom: 2em;
+  /* position: fixed;
+  bottom: 2em; */
 }
 
 #menu li a {
@@ -2113,9 +2131,9 @@ model-viewer {
   font-style: normal;
   font-weight: 700;
   line-height: 5vh;
-  //margin-left: 20px;
-  //margin-right: 30px;
-  //margin-top: 10vh;
+  /* margin-left: 20px;
+  margin-right: 30px;
+  margin-top: 10vh; */
   text-align: center;
   text-shadow: 3px 3px 1px black;
   word-break: break-word;
@@ -2195,7 +2213,7 @@ tw-hook[name="fade-out"] {
 }
 
 .message h2 {
-  //color: var(--text-light-color);
+  /* color: var(--text-light-color); */
   margin-right: 10px;
 }
 
