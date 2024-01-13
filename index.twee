@@ -1097,9 +1097,8 @@ $(document).one(":passagedisplay", function() {
   $(document).one(":passagedisplay", function() {
     const modelViewer = document.getElementById('model-viewer');
     if (modelViewer){
-        const modelCount = State.variables.hotspot;
-        modelViewer.src = `models/${State.variables.inventoryNames[modelCount]}/${State.variables.inventoryNames[modelCount]}.glb`;
-        modelViewer.iosSrc = `models/${State.variables.inventoryNames[modelCount]}/${State.variables.inventoryNames[modelCount]}.usdz`;
+      modelViewer.src = `models/${State.variables.hotspot}.${passage().split(".")[0]}/${State.variables.hotspot}.${passage()}.glb`;
+      modelViewer.iosSrc = `models/${State.variables.hotspot}.${passage().split(".")[0]}/${State.variables.hotspot}.${passage()}.usdz`;
     }
   })
 <</script>>
