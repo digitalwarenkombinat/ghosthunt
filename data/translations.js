@@ -132,6 +132,16 @@ getTranslations = function () {
       en: 'Exit the browser and open the newly added app.'
     }
   }
+  text["setup.music"] = {
+    "1": {
+      de: 'Musik',
+      en: 'Music'
+    },
+    "2": {
+      de: 'Diese App spielt Musik ab. Du kannst die Lautstärke über dein Handy regeln oder im Seitenmenü ganz ausschalten.',
+      en: 'This app plays music. You can adjust the volume via your cell phone or switch it off completely in the side menu.'
+    }
+  }
   text["setup.player"] = {
     "1": {
       de: 'Setup',
@@ -142,30 +152,54 @@ getTranslations = function () {
       en: 'Please select the number of players.'
     }
   }
-  text["setup.role"] = {
+  text["setup.storyteller"] = {
     "1": {
-      de: 'Setup',
-      en: 'Setup'
-    },
-    "2": {
       de: 'Storyteller',
       en: 'Storyteller'
     },
+    "2": {
+      de: 'Storyteller behalten den Überblick. Sie sammeln Geschichtenfragmente und lösen Rätsel unter Zeitdruck',
+      en: 'Storytellers are cool under pressure. Their job is to solve time-sensitive puzzles, collect points and story fragments.'
+    },
     "3": {
+      de: 'Bist du sicher? Jede Rolle kann nur einmal gewählt werden.',
+      en: 'Are you sure? Each role can only be selected once.'
+    },
+  }
+  text["setup.navigator"] = {
+    "1": {
       de: 'Navigator/Scanner',
       en: 'Navigator/Scanner'
     },
-    "4": {
+    "2": {
+      de: 'Navigatoren/Scanner sind aufmerksam. Ihre Aufgabe ist es, ihr Team zu den Tatorten zu führen und diese mit der Kamera zu untersuchen',
+      en: 'Navigators/Scanners are methodical. Their job is to lead your team to the crime scenes and investigate them with your AR camera.'
+    },
+    "3": {
       de: 'Navigator',
       en: 'Navigator'
     },
+    "4": {
+      de: 'Navigatoren kennen sich mit Karten aus. Ihre Aufgabe ist es, das Team zu den Tatorten zu führen.',
+      en: 'Navigators are good with maps. Their job is to lead your team to the crime scenes.'
+    },
     "5": {
+      de: 'Bist du sicher? Jede Rolle kann nur einmal gewählt werden.',
+      en: 'Are you sure? Each role can only be selected once.'
+    },
+  }
+  text["setup.scanner"] = {
+    "1": {
       de: 'Scanner',
       en: 'Scanner'
     },
-    "6": {
-      de: 'Bist du sicher? Jede Rolle darf nur einmal gewählt werden.',
-      en: 'Are you sure? Each role may only be chosen once.'
+    "2": {
+      de: 'Scanner brauchen ein gutes Auge haben. Mit Hilfe der AR-Kamera können sie Geistertatorte sichtbar machen und nach Hinweisen suchen.',
+      en: 'Scanners need to be perceptive. Their job is to study the crime scenes with your AR camera.'
+    },
+    "3": {
+      de: 'Bist du sicher? Jede Rolle kann nur einmal gewählt werden.',
+      en: 'Are you sure? Each role can only be selected once.'
     },
   }
   text["setup.location"] = {
@@ -202,14 +236,17 @@ getTranslations = function () {
       en: 'Hello ghost hunter. Did everything work out?'
     },
     "3": {
-      de: 'Konnte der Scanner den Geist sehen? Kann der Navigator die Karte sehen?',
+      de: 'Konnte der Detektiv den Geist und die Karte sehen?',
       en: 'Could the scanner see the ghost? Can the navigator see the map?'
     },
     "4": {
+      de: 'Konnte der Scanner den Geist sehen? Kann der Navigator die Karte sehen?',
+      en: 'Could the scanner see the ghost? Can the navigator see the map?'
+    },
+    "5": {
       de: 'Dann seid ihr bereit und du kannst das Spiel jetzt starten.',
       en: 'Then you are ready and you can start the game now.'
     },
-
   }
   text["intro.1"] = {
     "1": {
@@ -258,7 +295,7 @@ getTranslations = function () {
   }
   text["intro.7"] = {
     "1": {
-      de: 'Ich wette meine Monobraue darauf, dass diese Botschaft der Schlüssel ist, um den Spuk zu beenden.§Um die Runen aus der Ferne zu übersetzen, braucht Ihr starke paranormale Energien.§Eure beste Chance ist der Friedenspark!§Das war früher mal ein Friedhof.$Dort wimmelt es nur so von paranormalen Aktivitäten.',
+      de: 'Ich wette meine Monobraue darauf, dass diese Botschaft der Schlüssel ist, um den Spuk zu beenden.§Um die Runen aus der Ferne zu übersetzen, braucht Ihr starke paranormale Energien.§Eure beste Chance ist der Friedenspark!§Das war früher mal ein Friedhof.§Dort wimmelt es nur so von paranormalen Aktivitäten.',
       en: 'I’ll bet my monobrow that this message is the key to ending the haunting.§You’ll need strong paranormal energies to translate the runes from afar.§Your best bet is Friedenspark!§This used to be a graveyard.§The place is buzzing with paranormal activity.'
     }
   }
@@ -268,42 +305,88 @@ getTranslations = function () {
       en: 'Go to the park.§I’ll send you a map with the locations of the hotspots.§Once you’re there, you can use your ghost scanners to decipher the runes.§I’ll explore the house until then.§Holger out!'
     }
   }
-  text["main.navigator"] = {
+  text["main.navigator.init"] = {
     "1": {
-      de: 'Betrete einen pinken Kreis!',
-      en: 'Enter one of the pink Circles'
+      de: 'Check',
+      en: 'Check'
     },
     "2": {
-      de: '',
-      en: ''
+      de: 'Alles funktioniert. Deine Aufgabe ist es, das Team zu den Tatorten zu führen.',
+      en: 'Everything works. Your job is to lead the team to the crime scenes.'
+    },
+    "3": {
+      de: 'Warte, bis der Storyteller das Spiel startet.',
+      en: 'Wait until the storyteller starts the game.'
+    },
+  }
+  text["main.navigator"] = {
+    "1": {
+      de: 'Führe dein Team zu den Tatorten, sobald der Storyteller grünes Licht gibt.',
+      en: 'Lead your team to the crime scenes as soon as the Storyteller gives the green light'
+    },
+    "2": {
+      de: 'Du kannst einen beliebigen Tatort auswählen. Die Reihenfolge spielt keine Rolle.',
+      en: 'You can choose any crime scene. The order does not matter.'
+    },
+    "3": {
+      de: 'Betrete einen der pinken Kreise!',
+      en: 'Enter one of the pink Circles!'
     }
+  }
+  text["main.scanner.init"] = {
+    "1": {
+      de: 'Check',
+      en: 'Check'
+    },
+    "2": {
+      de: 'Alles funktioniert. Deine Aufgabe ist es, mit Hilfe der AR-Kamera Geistertatorte sichtbar zu machen und nach Hinweisen zu suchen.',
+      en: 'Everything works. Your job is to use the AR camera to visualize ghost crime scenes and search for clues.'
+    },
+    "3": {
+      de: 'Warte, bis der Navigator euch zum Tatort führt.',
+      en: 'Wait until the navigator guides you to the crime scene.'
+    },
   }
   text["main.scanner"] = {
     "1": {
-      de: 'Eingabe Frequenz',
-      en: 'Enter Frequency'
+      de: 'Scanner',
+      en: 'Scanner'
     },
     "2": {
       de: 'Wenn ihr einen Tatort erreicht habt, gibt der Navigator dir eine Frequenz, die du hier eingegeben musst.',
-      en: 'Enter your received frequency here.'
+      en: 'When you have reached a crime scene, the navigator will give you a frequency which you must enter here.'
     },
     "3": {
       de: 'Du hast keine Frequenz angegeben!',
       en: 'You did not supply a frequency!'
     },
     "4": {
-      de: 'Vergewissere dich, dass dein Team bereit ist. Der Tatort ist nur für eine begrenzte Zeit sichtbar!',
-      en: 'Make sure your team is ready. The crime scene is only visible for a limited time!'
+      de: 'Die eingegebene Frequenz ist nicht korrekt!',
+      en: 'The entered frequency is not correct!'
+    }
+  }
+  text["main.scanner.ghost"] = {
+    "1": {
+      de: 'Scanner',
+      en: 'Scanner'
     },
-    "5": {
+    "2": {
+      de: 'Wenn ihr einen Tatort abgeschlossen habt, gibt der Storyteller dir eine Frequenz, die du hier eingegeben musst.',
+      en: 'When you have completed a crime scene, the Storyteller will give you a frequency that you must enter here.'
+    },
+    "3": {
+      de: 'Du hast keine Frequenz angegeben!',
+      en: 'You did not supply a frequency!'
+    },
+    "4": {
       de: 'Die eingegebene Frequenz ist nicht korrekt!',
       en: 'The entered frequency is not correct!'
     }
   }
   text["main.storyteller"] = {
     "1": {
-      de: 'Eingabe Frequenz',
-      en: 'Enter Frequency'
+      de: 'Storyteller',
+      en: 'Storyteller'
     },
     "2": {
       de: 'Wenn ihr einen Tatort erreicht habt, gibt der Navigator dir eine Frequenz, die du hier eingegeben musst.',
@@ -338,8 +421,18 @@ getTranslations = function () {
       en: 'Frequency received'
     },
     "2": {
-      de: 'Gib die erhaltene Frequenz an deine Mitspielenden weiter.',
-      en: 'Pass on the frequency you have received to your fellow players.'
+      de: 'Teile diese Frequenz mit deinem Team, um den Tatort zu aktivieren.',
+      en: 'Share this frequency with your team to activate the crime scene.'
+    }
+  }
+  text["hotspot.frequence.ghost"] = {
+    "1": {
+      de: 'Frequenz erhalten',
+      en: 'Frequency received'
+    },
+    "2": {
+      de: 'Teile diese Frequenz mit deinem Team, um den Geist zu sehen.',
+      en: 'Share this frequency with your team to see the ghost.'
     }
   }
   text["hotspot.questions"] = {
@@ -367,6 +460,14 @@ getTranslations = function () {
       de: 'Antworten',
       en: 'Answers'
     },
+    "7": {
+      de: 'Sekunden verbleibend',
+      en: 'seconds left'
+    },
+    "8": {
+      de: 'Wurden alle Fragen beantwortet?',
+      en: 'Have all questions been answered?'
+    }
   }
   text["hotspot.ar"] = {
     "1": {
