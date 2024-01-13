@@ -273,15 +273,15 @@ Spuk & Schreck
   <</button>>
   <<button 2>>
     <<set $playerCount = 2>>
-    <<goto "setup.role">>
+    <<goto "setup.storyteller">>
   <</button>>
   <<button 3>>
     <<set $playerCount = 3>>
-    <<goto "setup.role">>
+    <<goto "setup.storyteller">>
   <</button>>
 </div>
 
-:: setup.role {"position":"100,1100","size":"100,100"}
+:: setup.storyteller {"position":"100,1100","size":"100,100"}
 
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -289,48 +289,99 @@ Spuk & Schreck
 
 <div class="wrapper">
   <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="return">[[|setup.player]]</button>
+  <<button OK>>
+    <<set $isStoryteller = true>>
+    <<script>>
+    jQuery(Dialog
+        .setup(setup.text[passage()][1][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][3][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "intro.init" >>');})),Dialog.close()})
+      ),!0;
+    Dialog.open();
+    <</script>>
+  <</button>>
+  <button class="next">[[|setup.navigator]]</button>
+</div>
+
+:: setup.navigator {"position":"100,1100","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
   <<if $playerCount === 2>>
+    <h1><<txt 1>></h1>
     <h2><<txt 2>></h2>
-    <h2><<txt 3>></h2>
   <<elseif $playerCount === 3>>
-    <h2><<txt 2>></h2>
-    <br/>
+    <h1><<txt 3>></h1>
     <h2><<txt 4>></h2>
-    <br/>
-    <h2><<txt 5>></h2>
   <</if>>
 </div>
 
 <div class="btn-group">
-  <<set $alertText = setup.text['setup.role'][6][setup.i18n.langs[settings.lang]]>>
-  <<if $playerCount === 2>>
-    <<button Storyteller>>
-      <<script>>UI.alert(State.variables.alertText);<</script>>
-      <<set $isStoryteller = true>>
-      <<goto "intro.init">>
-    <</button>>
-    <<button Navigator/Scanner>>
-      <<script>>UI.alert(State.variables.alertText);<</script>>
+  <button class="return">[[|setup.storyteller]]</button>
+  <<button OK>>
+    <<if $playerCount === 2>>
       <<set $isNavigatorScanner = true>>
-      <<goto "setup.location">>
-    <</button>>
-  <<elseif $playerCount === 3>>
-    <<button Storyteller>>
-      <<script>>UI.alert(State.variables.alertText);<</script>>
-      <<set $isStoryteller = true>>
-      <<goto "intro.init">>
-    <</button>>
-    <<button Navigator>>
-      <<script>>UI.alert(State.variables.alertText);<</script>>
+    <<elseif $playerCount === 3>> 
       <<set $isNavigator = true>>
-      <<goto "setup.location">>
-    <</button>>
-    <<button Scanner>>
-      <<script>>UI.alert(State.variables.alertText);<</script>>
-      <<set $isScanner = true>>
-      <<goto "setup.camera">>
-    <</button>>
+    <</if>>
+    <<script>>
+      jQuery(Dialog
+        .setup(setup.text[passage()][1][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][5][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "setup.location" >>');})),Dialog.close()})
+      ),!0;
+      Dialog.open();
+    <</script>>
+  <</button>>
+  <<if $playerCount === 3>>
+    <button class="next">[[|setup.scanner]]</button>
+  <<else>>
+    <button class="next">[[|setup.storyteller]]</button>
   <</if>>
+</div>
+
+:: setup.scanner {"position":"100,1100","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="return">[[|setup.navigator]]</button>
+  <<button OK>>
+    <<set $isScanner = true>>
+    <<script>>
+      jQuery(Dialog
+        .setup(setup.text[passage()][1][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][3][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "setup.camera" >>');})),Dialog.close()})
+      ),!0;
+      Dialog.open();
+    <</script>>
+  <</button>>
+  <button class="next">[[|setup.storyteller]]</button>
 </div>
 
 :: setup.location {"position":"300,500","size":"100,100"}
@@ -727,7 +778,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <<textbox "_answer" "">>
+  <<numberbox "_answer" 123 autofocus>>
   <<button "Check">>
     <<if _answer is "">>
       <<set $alertNoText = setup.text['main.scanner'][3][setup.i18n.langs[settings.lang]]>>
@@ -762,7 +813,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <<textbox "_answer" "">>
+  <<numberbox "_answer" 123 autofocus>>
   <<button "Check">>
     <<if _answer is "">>
       <<set $alertNoText = setup.text['main.storyteller'][3][setup.i18n.langs[settings.lang]]>>
@@ -2148,7 +2199,7 @@ tw-hook[name="fade-out"] {
   margin-right: 10px;
 }
 
-#textbox--answer {
+#numberbox--answer {
   border: 2px solid var(--secondary-color);
   background-color: var(--text-light-color);
   color: black;
