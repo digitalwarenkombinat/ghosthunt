@@ -279,6 +279,7 @@ Spuk & Schreck
 
 <div class="btn-group">
   <button class="return">[[|setup.init]]</button>
+  <button class="retry">[[|passage()]]</button>
   <button class="install"></button>
 </div>
 
@@ -424,6 +425,7 @@ Spuk & Schreck
   <button class="geolocation"><<txt>></button>
   <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices"><<txt>></a></button>
   <button class="help"></button>
+  <button class="retry">[[|passage()]]</button>
 
   <<if $isNavigator>>
     <button class="next">[[|main.navigator.init]]</button>
@@ -539,6 +541,7 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="help"></button>
+  <button class="retry">[[|passage()]]</button>
   <<if $isNavigatorScanner>>
     <button class="next">[[|main.navigator]]</button>
   <<elseif $isScanner>>
@@ -790,8 +793,8 @@ $(document).one(":passagedisplay", function() {
     <<txt>>
     <br>
     <<txt>>
-  </h2> 
-  <button class="retry">[[|main.navigator]]</button>
+  </h2>
+  <button class="retry">[[|passage()]]</button>
 </div>
 
 :: main.scanner.init {"position":"1100,500","size":"100,100"}
@@ -926,6 +929,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
   <<if $isNavigator>>
     <button class="next">[[|hotspot.questions]]</button>    
   <<elseif $isNavigatorScanner>>
@@ -1024,6 +1028,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
   <<if $isScanner>>
     <button class="next">[[|hotspot.ghost]]</button>
   <<elseif $isNavigatorScanner>>
@@ -1088,6 +1093,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
   <<set $riddle to 1>>  
   <<if $playerCount === 1>>
     <button class="next">[[|hotspot.ghost]]</button>
@@ -1114,6 +1120,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
   <<set $riddleCorrectCount to 0>>
   <button class="next">[[|hotspot.secret]]</button>
 </div>
@@ -1155,6 +1162,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
   <button class="next">[[|hotspot.outro]]</button>
 </div>
 
@@ -1196,7 +1204,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <<button "Zurück" `previous()`>><</button>>
+  <button class="retry">[[|passage()]]</button>
 </div>
 
 :: Dev {"position":"1300,100","size":"100,100"}
