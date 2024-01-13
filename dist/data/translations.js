@@ -184,7 +184,7 @@ getTranslations = function () {
       en: 'Scanner'
     },
     "2": {
-      de: 'Scanner brauchen ein gutes Auge haben. Mit Hilfe der AR-Kamera können sie Geister-Tatorte sichtbar machen und nach Hinweisen suchen.',
+      de: 'Scanner brauchen ein gutes Auge haben. Mit Hilfe der AR-Kamera können sie Geistertatorte sichtbar machen und nach Hinweisen suchen.',
       en: 'Scanners need to be perceptive. Their job is to study the crime scenes with your AR camera.'
     },
     "3": {
@@ -323,10 +323,24 @@ getTranslations = function () {
       en: 'Enter one of the pink Circles!'
     }
   }
+  text["main.scanner.init"] = {
+    "1": {
+      de: 'Check',
+      en: 'Check'
+    },
+    "2": {
+      de: 'Alles funktioniert. Deine Aufgabe ist es, mit Hilfe der AR-Kamera Geistertatorte sichtbar zu machen und nach Hinweisen zu suchen.',
+      en: 'Everything works. Your job is to use the AR camera to visualize ghost crime scenes and search for clues.'
+    },
+    "3": {
+      de: 'Warte, bis der Navigator euch zum Tatort führt.',
+      en: 'Wait until the navigator guides you to the crime scene.'
+    },
+  }
   text["main.scanner"] = {
     "1": {
-      de: 'Eingabe Frequenz',
-      en: 'Enter Frequency'
+      de: 'Scanner',
+      en: 'Scanner'
     },
     "2": {
       de: 'Wenn ihr einen Tatort erreicht habt, gibt der Navigator dir eine Frequenz, die du hier eingegeben musst.',
@@ -347,8 +361,8 @@ getTranslations = function () {
   }
   text["main.storyteller"] = {
     "1": {
-      de: 'Eingabe Frequenz',
-      en: 'Enter Frequency'
+      de: 'Storyteller',
+      en: 'Storyteller'
     },
     "2": {
       de: 'Wenn ihr einen Tatort erreicht habt, gibt der Navigator dir eine Frequenz, die du hier eingegeben musst.',

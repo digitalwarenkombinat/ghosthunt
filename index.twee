@@ -829,9 +829,16 @@ $(document).one(":passagedisplay", function() {
 
 :: main.scanner.init {"position":"1100,500","size":"100,100"}
 
-<<script>>
-  $.wiki('<<goto "main.scanner">>')
-<</script>>
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|main.scanner]]</button>
+</div>
 
 :: main.scanner {"position":"1100,700","size":"100,100"}
 
@@ -1984,7 +1991,7 @@ border: 2px solid var(--secondary-color);
   height: 100%;
   overflow: auto;
   z-index: 20;
-  margin: 10%;
+  margin: 5vw;
 }
 
 .btn-group {  
@@ -2074,9 +2081,9 @@ border: 2px solid var(--secondary-color);
 /* ####################MODEL VIEWER#################### */
 model-viewer {
   /* background-color: rgba(0, 0, 0, 0.75); */
-  background-color: none;
+  background-color: transparent;
   height: 50vh;
-  margin: 0 5%;
+  margin: 0 2vw;
   width: 90%;
 }
 
