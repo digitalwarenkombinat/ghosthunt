@@ -56,6 +56,7 @@ Spuk & Schreck
 
 -------------------------VIDEO-------------------------------
 <<widget "video">>
+  <<set $passage = passage()>>
   <<set $hasHotspot = $args.raw === "">>
   <<set $storyText = setup.text[passage()][State.variables.hasHotspot ? State.variables.hotspot : 1][setup.i18n.langs[settings.lang]]>>
   <<script>>
@@ -151,7 +152,7 @@ Spuk & Schreck
 
 <<set $points to 0>>
 
-<<set $riddle to 1>>
+<<set $riddleCount to 1>>
 
 <<set $riddleCorrectCount to 0>>
 
@@ -815,18 +816,17 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <<numberbox "_answer" 123 autofocus>>
+  <<numberbox "_answer" 0 autofocus>>
   <<button "Check">>
     <<if _answer is "">>
       <<set $alertNoText = setup.text['main.scanner'][3][setup.i18n.langs[settings.lang]]>>
       <<script>>UI.alert(State.variables.alertNoText);<</script>>
     <<else>>
-      <<set _answer to _answer.trim().toLowerCase()>>
       <<set $hotspotAlertText = setup.text['main.scanner'][4][setup.i18n.langs[settings.lang]]>>
-      <<if _answer is "263">>
+      <<if _answer is 263>>
         <<set $hotspot to 1>>
         <<goto "hotspot.ar">>
-      <<elseif _answer is "815">>
+      <<elseif _answer is 815>>
         <<set $hotspot to 2>>
         <<goto "hotspot.ar">>
       <<else>>
@@ -850,20 +850,19 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <<numberbox "_answer" 123 autofocus>>
+  <<numberbox "_answer" 0 autofocus>>
   <<button "Check">>
     <<if _answer is "">>
       <<set $alertNoText = setup.text['main.storyteller'][3][setup.i18n.langs[settings.lang]]>>
       <<script>>UI.alert(State.variables.alertNoText);<</script>>
     <<else>>
-      <<set _answer to _answer.trim().toLowerCase()>>
       <<set $hotspotAlertText = setup.text['main.storyteller'][4][setup.i18n.langs[settings.lang]]>>
-      <<if _answer is "263">>
+      <<if _answer is 263>>
         <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
         <<set $hotspot to 1>>
         <<goto "hotspot.splash">>
-      <<elseif _answer is "815">>
-      <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
+      <<elseif _answer is 815>>
+        <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
         <<set $hotspot to 2>>
         <<goto "hotspot.splash">>
       <<else>>
@@ -894,7 +893,6 @@ $(document).one(":passagedisplay", function() {
 
 :: hotspot.intro {"position":"1300,1700","size":"100,100"}
 
-<<print $hotspot>>
 <<video>>
 
 <div class="btn-group">
@@ -943,19 +941,35 @@ $(document).one(":passagedisplay", function() {
   $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
 </script>
 
-<<if $riddle <= 5>>
+<<if $riddleCount <= 5>>
   <<set _riddles = getRiddles();>>
 
-  <<set _riddle = _riddles[$hotspot - 1][$riddle - 1]>>
+  <<set _riddle = _riddles[$hotspot - 1][$riddleCount - 1]>>
   <<set _question = _riddle.question[setup.i18n.langs[settings.lang]]>>
   <<set _answers = _riddle.answers>>
 
   <div class="wrapper">
     <span id="heading">
       <<if $isStoryteller and $playerCount === 3>>
-        <h1><<txt 6>> $riddle</h1>
+        <h1><<txt 6>> $riddleCount</h1>
+        <<set $seconds to 30>>
+        <<set $countdown = setup.text[passage()][7][setup.i18n.langs[settings.lang]]>>
+        <h2 id="countdown">$seconds $countdown</h2>
+        <<silently>>
+          <<repeat 1s>>
+            <<set $seconds to $seconds - 1>>
+            <<if $seconds gt 0>>
+              <<replace "#countdown">>$seconds $countdown<</replace>>
+            <<else>>
+              <<replace "#countdown">><</replace>>      
+              <<set $riddleCount to $riddleCount + 1>>
+              <<goto "hotspot.questions">>
+              <<stop>>
+            <</if>>
+          <</repeat>>
+        <</silently>>
       <<else>>
-        <h1><<txt>> $riddle</h1>
+        <h1><<txt 1>> $riddleCount</h1>
         <h2>_question</h2>
       <</if>>
     </span>
@@ -963,7 +977,7 @@ $(document).one(":passagedisplay", function() {
 
   <div class="btn-group">
     <<if $isNavigator>>
-      <<set $riddle to $riddle + 1>>
+      <<set $riddleCount to $riddleCount + 1>>
       <button class="next">[[|hotspot.questions]]</button>
     <<else>>
       <<set $resultTextCorrect = setup.text[passage()][2][setup.i18n.langs[settings.lang]]>>
@@ -974,14 +988,14 @@ $(document).one(":passagedisplay", function() {
         <<capture _data>>
           <<button _data[setup.i18n.langs[settings.lang]]>>
             <<set _resultText = _data.correct ? $resultTextCorrect : $resultTextIncorrect>>
-            <<set _points = _data.points > 0 ? "+" + _data.points + $pointsTextCorrect : $pointsTextCorrect>>
+            <<set _points = _data.points > 0 ? "+" + _data.points + $pointsTextCorrect : $pointsTextIncorrect>>
             <<replace "#heading">>
               <h1>_resultText</h1>
               <h2>_points</h2>
             <</replace>>
             <<timed 1s>>
               <<set $points to $points + _data.points>>
-              <<set $riddle to $riddle + 1>>
+              <<set $riddleCount to $riddleCount + 1>>
               <<set $riddleCorrectCount = _data.correct && $riddleCorrectCount + 1 >>
               <<goto "hotspot.questions">>
             <</timed>>
@@ -1094,10 +1108,14 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <<set $riddle to 1>>  
+  <<set $riddleCount to 1>>
   <<if $playerCount === 1>>
+    /* Skip hotspot.solution passage */
+    <<goto "hotspot.ghost">>
     <button class="next">[[|hotspot.ghost]]</button>
   <<else>>
+    /* Skip hotspot.solution passage */
+    <<goto "hotspot.rune">>
     <button class="next">[[|hotspot.rune]]</button>
   <</if>>
 </div>

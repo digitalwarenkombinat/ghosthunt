@@ -395,6 +395,10 @@ getTranslations = function () {
       de: 'Antworten',
       en: 'Answers'
     },
+    "7": {
+      de: 'Sekunden verbleibend',
+      en: 'seconds left'
+    },
   }
   text["hotspot.ar"] = {
     "1": {
