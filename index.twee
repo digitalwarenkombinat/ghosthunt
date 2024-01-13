@@ -117,6 +117,8 @@ Spuk & Schreck
 --------------------------AUDIO---------------------------------------
 
 <<cacheaudio "setup.camera" "audio/setup.camera.mp3">>
+<<cacheaudio "1.hotspot.ghost" "audio/1.hotspot.ghost.mp3">>
+<<cacheaudio "2.hotspot.ghost" "audio/2.hotspot.ghost.mp3">>
 <<cacheaudio "click" "audio/click.mp3">>
 <<cacheaudio "ring" "audio/ring.mp3">>
 
@@ -190,13 +192,8 @@ Spuk & Schreck
 :: setup.init {"position":"100,300","size":"100,100"}
 
 <<script>>
-
-  function redirectPlayer() {
-    $.wiki('<<goto "setup.player">>')
-  }
-
   if (State.variables.is_pwa) {
-    redirectPlayer();
+    $.wiki('<<goto "setup.music">>')
   };
 
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -286,6 +283,22 @@ Spuk & Schreck
   <button class="return">[[|setup.init]]</button>
   <button class="retry">[[|passage()]]</button>
   <button class="install"></button>
+</div>
+
+:: setup.music {"position":"100,900","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|setup.player]]</button>
 </div>
 
 :: setup.player {"position":"100,900","size":"100,100"}
@@ -526,6 +539,8 @@ $(document).one(":passagedisplay", function() {
   });
 <</script>>
 
+<<audio "setup.camera" volume 0 fadein>>
+
 <<set $setupCompleted to true>>
 
 <div class="wrapper">
@@ -557,6 +572,8 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: intro.init {"position":"700,500","size":"100,100"}
+
+<<audio ":playing" stop>>
 
 <<if $setupCompleted and $introCompleted>>
 	<<goto "main.storyteller">>
@@ -735,6 +752,8 @@ $(document).one(":passagedisplay", function() {
 :: main.navigator [autosave] {"position":"900,700","size":"100,100"}
 <div id="map"></div>
 
+<<audio ":playing:" stop>>
+
 <<script>>
   $(document).one(":passagedisplay", function() {
     requestScriptLoad({
@@ -832,6 +851,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: main.scanner.init {"position":"1100,500","size":"100,100"}
+<<audio ":playing" stop>>
 
 <div class="wrapper">
   <h1><<txt>></h1>
@@ -849,6 +869,8 @@ $(document).one(":passagedisplay", function() {
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 <</script>>
+
+<<audio ":playing:" stop>>
 
 <div class="wrapper">
   <h1><<txt>></h1>
@@ -1129,6 +1151,8 @@ $(document).one(":passagedisplay", function() {
     }
   })
 <</script>>
+<<audio $$hotspot+'.'+passage() volume 0 fadein>>
+
 <<set $inventoryNames to ['', 'herbert', 'rosa']>>
 <<set $inventory[$hotspot] to $inventoryNames[$hotspot]>>
 
@@ -1190,6 +1214,8 @@ $(document).one(":passagedisplay", function() {
 <<script>>
   $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
 <</script>>
+
+<<audio ":playing:" stop>>
 
 <div class="wrapper">
   <h1><<txt 11>></h1>

@@ -132,6 +132,16 @@ getTranslations = function () {
       en: 'Exit the browser and open the newly added app.'
     }
   }
+  text["setup.music"] = {
+    "1": {
+      de: 'Musik',
+      en: 'Music'
+    },
+    "2": {
+      de: 'Diese App spielt Musik ab. Du kannst die Lautstärke über dein Handy regeln oder im Seitenmenü ganz ausschalten.',
+      en: 'This app plays music. You can adjust the volume via your cell phone or switch it off completely in the side menu.'
+    }
+  }
   text["setup.player"] = {
     "1": {
       de: 'Setup',
