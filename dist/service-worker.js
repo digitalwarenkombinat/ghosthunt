@@ -1,4 +1,4 @@
-const cacheName = "ghosthunt-v0.3.2"; // Incremented version number
+const cacheName = "ghosthunt-v0.3.3";
 const urlsToCacheiOS = [
   '/',
   '/index.html',
@@ -186,8 +186,12 @@ const addResourcesToCache = async () => {
 };
 
 const putInCache = async (request, response) => {
-  const cache = await caches.open(cacheName);
-  await cache.put(request, response);
+  if (response.status === 200) {
+    const cache = await caches.open(cacheName);
+    await cache.put(request, response);
+  } else {
+    console.warn('Partial response (status code 206) - not caching:', request.url);
+  }
 };
 
 const cacheFirst = async (request) => {
