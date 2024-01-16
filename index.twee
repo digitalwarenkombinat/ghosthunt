@@ -342,7 +342,7 @@ Spuk & Schreck
 :: setup.storyteller {"position":"100,1100","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/setup.storyteller.jpg)');
 <</script>>
 
 <div class="wrapper">
