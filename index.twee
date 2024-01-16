@@ -790,9 +790,9 @@ $(document).one(":passagedisplay", function() {
               map.setPaintProperty( location.id, 'fill-color', '#9CF299');
 
               map.on('click', location.id, (e) => {
-                State.variables.enteredLocations.push(location.id);
+                                State.variables.enteredLocations.push(location.id);
                 $.wiki('<<set $hotspot to $hotspot + 1>>');
-                if (State.variables.isStoryteller) {
+                                if (State.variables.isStoryteller) {
                   $.wiki('<<goto "hotspot.splash">>');
                 } else { 
                   $.wiki('<<goto "hotspot.frequence">>');
@@ -836,18 +836,28 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <<if $showMaptip>>
     <span id="mapTip">
-      <h2><<txt>></h2>
-      <<button "OK">>
-        <<replace "#mapTip">>
-          <h2><<txt>></h2>
-          <<button "OK">>
-            <<replace "#mapTip">>
-              <h2><<txt>></h2>
-            <</replace>>
-          <</button>>
-        <</replace>>
-        <<set $showMaptip to false>>
-      <</button>>
+      <<if $playerCount === 1>>
+        <h2><<txt 2>></h2>
+        <<button "OK">>
+          <<replace "#mapTip">>
+            <h2><<txt 3>></h2>
+          <</replace>>
+          <<set $showMaptip to false>>
+        <</button>>
+      <<else>>
+        <h2><<txt>></h2>
+        <<button "OK">>
+          <<replace "#mapTip">>
+            <h2><<txt>></h2>
+            <<button "OK">>
+              <<replace "#mapTip">>
+                <h2><<txt>></h2>
+              <</replace>>
+            <</button>>
+          <</replace>>
+          <<set $showMaptip to false>>
+        <</button>>
+      <</if>>
     </span>
   <<else>>
     <<button "?">>
@@ -2134,7 +2144,7 @@ border: 2px solid var(--secondary-color);
 }
 
 /* Macht den Geolocate-Button unsichtbar */
-.mapboxgl-ctrl-group button.mapboxgl-ctrl-geolocate { 
+.mapboxgl-ctrl-group button.mapboxgl-ctrl-geolocate ,.mapboxgl-ctrl-bottom-right{ 
   display: none;
 }
   
