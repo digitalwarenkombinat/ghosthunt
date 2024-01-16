@@ -2,11 +2,6 @@ const cacheName = "ghosthunt-v0.3.3";
 const urlsToCacheiOS = [
   '/',
   '/index.html',
-  '/audio/1.hotspot.ghost.mp3',
-  '/audio/2.hotspot.ghost.mp3',
-  '/audio/click.mp3',
-  '/audio/ring.mp3',
-  '/audio/setup.camera.mp3',
   '/data/locations.js',
   '/data/mapbox.js',
   '/data/riddles.js',
@@ -84,11 +79,6 @@ const urlsToCacheiOS = [
 const urlsToCacheAndroid = [
   '/',
   '/index.html',
-  '/audio/1.hotspot.ghost.mp3',
-  '/audio/2.hotspot.ghost.mp3',
-  '/audio/click.mp3',
-  '/audio/ring.mp3',
-  '/audio/setup.camera.mp3',
   '/data/locations.js',
   '/data/mapbox.js',
   '/data/riddles.js',

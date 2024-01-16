@@ -122,6 +122,17 @@ Spuk & Schreck
 <<cacheaudio "click" "audio/click.mp3">>
 <<cacheaudio "ring" "audio/ring.mp3">>
 
+<<script>>
+  postdisplay["setupAudioOnClick"] = function () {
+    const trackId = "click";
+
+    $("#story").find("a.link-internal,button.link-internal")
+      .on("click", function () {
+        new Wikifier(null, '<<audio "' + trackId + '" play>>');
+      });
+  };
+<</script>>
+
 -------------------------STARTVARIABLEN-------------------------------
 <<set $hotspot to 0>>
 
@@ -629,6 +640,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: intro.2 {"position":"700,900","size":"100,100"}
+<<audio ":playing:" stop>>
 
 <<video noHotspot>>
 
@@ -639,6 +651,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: intro.3 {"position":"700,1100","size":"100,100"}
+<<audio "ring" play loop>>
 
 <script>
   $('#story').attr('style', 'background-image:url(images/intro.3.jpg)');
@@ -657,6 +670,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: intro.4 {"position":"700,1300","size":"100,100"}
+<<audio ":playing:" stop>>
 
 <<video noHotspot>>
 
@@ -965,6 +979,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: hotspot.splash {"position":"900,900","size":"100,100"}
+<<audio "ring" play loop>>
 
 <<script>>
   $('#story').attr('style', `background-image:url(images/hotspot.splash.jpg)`);
@@ -982,7 +997,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: hotspot.intro {"position":"1300,1700","size":"100,100"}
-
+<<audio ":playing" stop>>
 <<video>>
 
 <div class="btn-group">
