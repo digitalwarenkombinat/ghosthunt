@@ -347,10 +347,11 @@ Spuk & Schreck
 
 <div class="wrapper">
   <h1><<txt>></h1>
-  <h2><<txt>></h2>
+  
 </div>
 
 <div class="btn-group">
+<h2><<txt>></h2>
   <button class="return">[[|setup.player]]</button>
   <<button OK>>
     <<set $isStoryteller = true>>
@@ -378,14 +379,17 @@ Spuk & Schreck
 <div class="wrapper">
   <<if $playerCount === 2>>
     <h1><<txt 1>></h1>
-    <h2><<txt 2>></h2>
   <<elseif $playerCount === 3>>
     <h1><<txt 3>></h1>
-    <h2><<txt 4>></h2>
   <</if>>
 </div>
 
 <div class="btn-group">
+  <<if $playerCount === 2>>
+    <h2><<txt 2>></h2>
+  <<elseif $playerCount === 3>>
+    <h2><<txt 4>></h2>
+  <</if>>
   <button class="return">[[|setup.storyteller]]</button>
   <<button OK>>
     <<if $playerCount === 2>>
@@ -420,10 +424,10 @@ Spuk & Schreck
 
 <div class="wrapper">
   <h1><<txt>></h1>
-  <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
+  <h2><<txt>></h2>
   <button class="return">[[|setup.navigator]]</button>
   <<button OK>>
     <<set $isScanner = true>>
