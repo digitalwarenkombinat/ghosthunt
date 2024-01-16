@@ -3,46 +3,46 @@ getRiddles = function () {
     [
       {
         question: {
-          de: "Wer ist gestorben?",
-          en: "Who died?"
+          de: "Was hat der Henker in der Hand?",
+          en: "What does the butcher have in his left hand?"
         },
         answers: [
-          { de: "Junge Frau", en: "Young woman", correct: false, points: 0 },
-          { de: "Kleines Kind", en: "Little child", correct: false, points: 0 },
-          { de: "Alter Mann", en: "Old man", correct: true, points: 10 }
+          { de: "Hut", en: "Hat", correct: false, points: 0 },
+          { de: "Regenschirm", en: "Umbrella", correct: false, points: 0 },
+          { de: "Beil", en: "Hatchet", correct: true, points: 10 }
         ]
       },
       {
         question: {
-          de: "Was hatte der Mann in der Hand?",
-          en: "What did the man have in his hand?"
+          de: "Was trägt der Henker auf dem Kopf?",
+          en: "What does the butcher wear on his head?"
         },
         answers: [
-          { de: "Geld", en: "Money", correct: false, points: 0 },
-          { de: "Pillen", en: "Pills", correct: true, points: 10 },
-          { de: "Handy", en: "Phone", correct: false, points: 0 }
+          { de: "Hut", en: "Hat", correct: false, points: 0 },
+          { de: "Sack", en: "sack", correct: true, points: 10 },
+          { de: "Brille", en: "glases", correct: false, points: 0 }
         ]
       },
       {
         question: {
-          de: "Wer war dabei als er starb?",
-          en: "Who was there when he died?"
+          de: "Was trägt das Opfer?",
+          en: "What does the victim wear?"
         },
         answers: [
-          { de: "Sein Hund", en: "His dog", correct: true, points: 10 },
-          { de: "Seine Frau", en: "His wife", correct: false, points: 0 },
-          { de: "Sein Enkel", en: "His grandson", correct: false, points: 0 }
+          { de: "Brille", en: "glases", correct: true, points: 10 },
+          { de: "Mantel", en: "coat", correct: false, points: 0 },
+          { de: "Sack", en: "sack", correct: false, points: 0 }
         ]
       },
       {
         question: {
-          de: "Wie hieß der Hund?",
-          en: "What was the dog's name?"
+          de: "Wie viele Bücher gibt es?",
+          en: "How many books are there?"
         },
         answers: [
-          { de: "Bob", en: "Bob", correct: false, points: 0 },
-          { de: "Ben", en: "Ben", correct: true, points: 10 },
-          { de: "Pip", en: "Pip", correct: false, points: 0 }
+          { de: "1", en: "1", correct: false, points: 0 },
+          { de: "5", en: "5", correct: true, points: 10 },
+          { de: "3", en: "3", correct: false, points: 0 }
         ]
       },
       {
