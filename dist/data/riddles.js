@@ -44,17 +44,6 @@ getRiddles = function () {
           { de: "5", en: "5", correct: true, points: 10 },
           { de: "3", en: "3", correct: false, points: 0 }
         ]
-      },
-      {
-        question: {
-          de: "Was fehlte dem Toten?",
-          en: "What was missing from the dead man?"
-        },
-        answers: [
-          { de: "Hose", en: "Pants", correct: true, points: 10 },
-          { de: "Hand", en: "Hand", correct: false, points: 0 },
-          { de: "Brille", en: "Glasses", correct: false, points: 0 }
-        ]
       }
     ],
     [
