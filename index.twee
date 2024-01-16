@@ -273,7 +273,7 @@ Spuk & Schreck
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
-  <h2 class="iosHelp"><<txt>><img src="images/ios_share.svg" /><<txt>></h2>
+  <h2 class="iosHelp"><<txt>><img height="64" width="64" src="images/ios_share.svg" /><<txt>></h2>
   <h2 class="androidHelp"><<txt>><img src="images/android_install.svg" /><<txt>></h2>
   <h2><<txt>></h2>
   <img src="images/icon.png" class="image-size-50" />
@@ -536,6 +536,14 @@ $(document).one(":passagedisplay", function() {
     $('#story').attr('style', 'background-image:url(images/bg.jpg)');
     const helpBtn = document.querySelector('.help');
     helpBtn.style.display = 'none';
+    const nextBtn = document.querySelector('.next');
+    nextBtn.style.display = 'none';
+  
+    const arBtn = document.querySelector('#ar-button');
+    document.querySelector('.retry').after(arBtn);
+    arBtn.addEventListener('click', async () => {
+      nextBtn.style.display = 'inline';
+    });
   });
 <</script>>
 
