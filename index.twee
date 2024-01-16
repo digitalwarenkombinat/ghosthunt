@@ -1763,6 +1763,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  padding-top: env(safe-area-inset-top);
 }
 
 audio, canvas, progress, video {
@@ -2080,6 +2081,7 @@ border: 2px solid var(--secondary-color);
 }
 
 .btn-group {  
+  margin-bottom: env(safe-area-inset-bottom);
   margin: 0 auto 2vh;
   text-align: center;
   z-index: 20;
