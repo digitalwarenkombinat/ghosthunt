@@ -1,4 +1,4 @@
-const cacheName = "ghosthunt-v0.3.1";
+const cacheName = "ghosthunt-v0.3.2"; // Incremented version number
 const urlsToCacheiOS = [
   '/',
   '/index.html',
@@ -11,12 +11,9 @@ const urlsToCacheiOS = [
   '/data/mapbox.js',
   '/data/riddles.js',
   '/data/translations.js',
-  'fonts/Averia_Serif_Libre/AveriaSerifLibre-Bold.ttf',
+  '/fonts/Averia_Serif_Libre/AveriaSerifLibre-Bold.ttf',
   '/fonts/Creepster/Creepster-Regular.ttf',
   '/fonts/para.otf',
-  '/images/1.1.jpg',
-  '/images/1.2.jpg',
-  '/images/1.3.jpg',
   '/images/android_install.svg',
   '/images/ar_icon.png',
   '/images/bg.jpg',
@@ -34,7 +31,6 @@ const urlsToCacheiOS = [
   '/images/ios_share.svg',
   '/images/loading.png',
   '/images/menu.jpg',
-  '/models/10.hotspot/10.hotspot.usdz',
   '/models/1.hotspot/1.hotspot.ghost.usdz',
   '/models/1.hotspot/1.hotspot.usdz',
   '/models/2.hotspot/2.hotspot.ghost.usdz',
@@ -45,14 +41,18 @@ const urlsToCacheiOS = [
   '/models/4.hotspot/4.hotspot.usdz',
   '/models/5.hotspot/5.hotspot.ghost.usdz',
   '/models/5.hotspot/5.hotspot.usdz',
+  '/models/6.hotspot/6.hotspot.ghost.usdz',
   '/models/6.hotspot/6.hotspot.usdz',
+  '/models/7.hotspot/7.hotspot.ghost.usdz',
   '/models/7.hotspot/7.hotspot.usdz',
+  '/models/8.hotspot/8.hotspot.ghost.usdz',
   '/models/8.hotspot/8.hotspot.usdz',
+  '/models/9.hotspot/9.hotspot.ghost.usdz',
   '/models/9.hotspot/9.hotspot.usdz',
+  '/models/10.hotspot/10.hotspot.ghost.usdz',
+  '/models/10.hotspot/10.hotspot.usdz',
   '/models/outro/outro.usdz',
   '/models/setup/setup.camera.usdz',
-  '/videos/10.hotspot.intro.mp4',
-  '/videos/10.hotspot.outro.mp4',
   '/videos/1.hotspot.intro.mp4',
   '/videos/1.hotspot.outro.mp4',
   '/videos/2.hotspot.intro.mp4',
@@ -71,6 +71,8 @@ const urlsToCacheiOS = [
   '/videos/8.hotspot.outro.mp4',
   '/videos/9.hotspot.intro.mp4',
   '/videos/9.hotspot.outro.mp4',
+  '/videos/10.hotspot.intro.mp4',
+  '/videos/10.hotspot.outro.mp4',
   '/videos/intro.2.mp4',
   '/videos/intro.3.mp4',
   '/videos/intro.4.mp4',
@@ -91,12 +93,9 @@ const urlsToCacheAndroid = [
   '/data/mapbox.js',
   '/data/riddles.js',
   '/data/translations.js',
-  'fonts/Averia_Serif_Libre/AveriaSerifLibre-Bold.ttf',
+  '/fonts/Averia_Serif_Libre/AveriaSerifLibre-Bold.ttf',
   '/fonts/Creepster/Creepster-Regular.ttf',
   '/fonts/para.otf',
-  '/images/1.1.jpg',
-  '/images/1.2.jpg',
-  '/images/1.3.jpg',
   '/images/android_install.svg',
   '/images/ar_icon.png',
   '/images/bg.jpg',
@@ -114,7 +113,6 @@ const urlsToCacheAndroid = [
   '/images/ios_share.svg',
   '/images/loading.png',
   '/images/menu.jpg',
-  '/models/10.hotspot/10.hotspot.glb',
   '/models/1.hotspot/1.hotspot.ghost.glb',
   '/models/1.hotspot/1.hotspot.glb',
   '/models/2.hotspot/2.hotspot.ghost.glb',
@@ -125,14 +123,18 @@ const urlsToCacheAndroid = [
   '/models/4.hotspot/4.hotspot.glb',
   '/models/5.hotspot/5.hotspot.ghost.glb',
   '/models/5.hotspot/5.hotspot.glb',
+  '/models/6.hotspot/6.hotspot.ghost.glb',
   '/models/6.hotspot/6.hotspot.glb',
+  '/models/7.hotspot/7.hotspot.ghost.glb',
   '/models/7.hotspot/7.hotspot.glb',
+  '/models/8.hotspot/8.hotspot.ghost.glb',
   '/models/8.hotspot/8.hotspot.glb',
+  '/models/9.hotspot/9.hotspot.ghost.glb',
   '/models/9.hotspot/9.hotspot.glb',
+  '/models/10.hotspot/10.hotspot.ghost.glb',
+  '/models/10.hotspot/10.hotspot.glb',
   '/models/outro/outro.glb',
   '/models/setup/setup.camera.glb',
-  '/videos/10.hotspot.intro.mp4',
-  '/videos/10.hotspot.outro.mp4',
   '/videos/1.hotspot.intro.mp4',
   '/videos/1.hotspot.outro.mp4',
   '/videos/2.hotspot.intro.mp4',
@@ -151,6 +153,8 @@ const urlsToCacheAndroid = [
   '/videos/8.hotspot.outro.mp4',
   '/videos/9.hotspot.intro.mp4',
   '/videos/9.hotspot.outro.mp4',
+  '/videos/10.hotspot.intro.mp4',
+  '/videos/10.hotspot.outro.mp4',
   '/videos/intro.2.mp4',
   '/videos/intro.3.mp4',
   '/videos/intro.4.mp4',
@@ -159,67 +163,75 @@ const urlsToCacheAndroid = [
   '/videos/intro.8.mp4',
   ];
 
-  const self = this;
+const self = this;
 
-  // Populating your cache
-  const addResourcesToCache = async () => {
-    const cache = await caches.open(cacheName);
-    const is_safari = navigator.userAgent.indexOf('Safari') > -1 && navigator.userAgent.indexOf('Chrome') <= -1 && navigator.userAgent.indexOf("Edg") <= -1 && navigator.userAgent.indexOf('SamsungBrowser') <= - 1;
-    console.log('ServiceWorker: Caching files:', urlsToCacheAndroid.length);
-    // await cache.addAll(is_safari ? urlsToCacheiOS : urlsToCacheAndroid);
-    let addedToCache
-    try {
-      addedToCache = await cache.addAll(is_safari ? urlsToCacheiOS : urlsToCacheAndroid);
-    } catch (err) {
-      console.error('sw: cache.addAll');
-      for (let url of is_safari ? urlsToCacheiOS : urlsToCacheAndroid) {
-        try {
-          addedToCache = await cache.add(url);
-        } catch (err) {
-          console.warn('sw: cache.add',url);
-        }
+// Populating your cache
+const addResourcesToCache = async () => {
+  const cache = await caches.open(cacheName);
+  const is_safari = navigator.userAgent.indexOf('Safari') > -1 && navigator.userAgent.indexOf('Chrome') <= -1 && navigator.userAgent.indexOf("Edg") <= -1 && navigator.userAgent.indexOf('SamsungBrowser') <= - 1;
+  console.log('ServiceWorker: Caching files:', is_safari ? urlsToCacheiOS.length : urlsToCacheAndroid.length);
+
+  try {
+    await cache.addAll(is_safari ? urlsToCacheiOS : urlsToCacheAndroid);
+  } catch (err) {
+    console.error('sw: cache.addAll');
+    for (let url of is_safari ? urlsToCacheiOS : urlsToCacheAndroid) {
+      try {
+        await cache.add(url);
+      } catch (err) {
+        console.warn('sw: cache.add', url);
       }
     }
+  }
+};
 
-    return addedToCache;
-  };
-  
-  const putInCache = async (request, response) => {
-    const cache = await caches.open(cacheName);
-    await cache.put(request, response);
-  };
-  
-  const cacheFirst = async (request) => {
-    const responseFromCache = await caches.match(request);
-    if (responseFromCache) {
-      return responseFromCache;
-    }
-    const responseFromNetwork = await fetch(request);
-    putInCache(request, responseFromNetwork.clone());
-    return responseFromNetwork;
-  };
- 
-  // Enable navigation preload
-  const enableNavigationPreload = async () => {
-    if (self.registration.navigationPreload) {
-      await self.registration.navigationPreload.enable();
-    }
-  };
+const putInCache = async (request, response) => {
+  const cache = await caches.open(cacheName);
+  await cache.put(request, response);
+};
 
-  // Activate service worker
-  self.addEventListener("activate", (event) => {
-    event.waitUntil(enableNavigationPreload());
-  });
+const cacheFirst = async (request) => {
+  const responseFromCache = await caches.match(request);
+  if (responseFromCache) {
+    return responseFromCache;
+  }
 
-  // Install service worker
-  self.addEventListener("install", (event) => {
-    event.waitUntil(
-      addResourcesToCache(),
-    );
-  });
+  const responseFromNetwork = await fetch(request);
+  putInCache(request, responseFromNetwork.clone());
+  return responseFromNetwork;
+};
 
-  // Custom responses to requests
-  self.addEventListener("fetch", (event) => {
-    event.respondWith(cacheFirst(event.request));
-  });
-  
+// Enable navigation preload
+const enableNavigationPreload = async () => {
+  if (self.registration.navigationPreload) {
+    await self.registration.navigationPreload.enable();
+  }
+};
+
+// Activate service worker
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    Promise.all([
+      caches.keys().then((cacheNames) => {
+        return Promise.all(
+          cacheNames.map((existingCacheName) => {
+            if (existingCacheName !== cacheName) {
+              return caches.delete(existingCacheName);
+            }
+          })
+        );
+      }),
+      enableNavigationPreload(),
+    ])
+  );
+});
+
+// Install service worker
+self.addEventListener("install", (event) => {
+  event.waitUntil(addResourcesToCache());
+});
+
+// Custom responses to requests
+self.addEventListener("fetch", (event) => {
+  event.respondWith(cacheFirst(event.request));
+});
