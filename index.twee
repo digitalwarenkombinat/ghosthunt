@@ -372,7 +372,7 @@ Spuk & Schreck
 :: setup.navigator {"position":"100,1100","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/setup.navigator.jpg)');
 <</script>>
 
 <div class="wrapper">
@@ -415,7 +415,7 @@ Spuk & Schreck
 :: setup.scanner {"position":"100,1100","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/setup.scanner.jpg)');
 <</script>>
 
 <div class="wrapper">
