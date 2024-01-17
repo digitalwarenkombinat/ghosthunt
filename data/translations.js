@@ -254,7 +254,7 @@ getTranslations = function () {
       en: 'Ghost Walkers'
     },
     "2": {
-      de: 'Die Rallye beginnt...',
+      de: 'Das Spiel beginnt...',
       en: 'The game starts now...'
     }
   }
