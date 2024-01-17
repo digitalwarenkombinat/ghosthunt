@@ -555,7 +555,6 @@ $(document).one(":passagedisplay", function() {
     nextBtn.style.display = 'none';
   
     const arBtn = document.querySelector('#ar-button');
-    document.querySelector('.retry').after(arBtn);
     arBtn.addEventListener('click', async () => {
       nextBtn.style.display = 'inline';
     });
