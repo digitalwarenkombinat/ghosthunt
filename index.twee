@@ -625,15 +625,11 @@ $(document).one(":passagedisplay", function() {
 :: intro.1 {"position":"700,700","size":"100,100"}
 
 <script>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/intro.1.jpg)');
 </script>
 
 <div class="wrapper">
-  <br>
-  <br>
-  <img src="images/intro.1.png" class="image-size-50" />
   <h1><<txt>></h1>
-  <br>
   <h2><<txt>></h2>
 </div>
 
@@ -1959,8 +1955,9 @@ input[type=text] {
 
 #ui-bar-body {
   background-color: var(--background-color);
-  background-image: url('images/menu.jpg');
+  background-image: url('images/setup.storyteller.jpg');
   background-position: center;
+  background-size: cover;
   border-right: solid 2px var(--secondary-color);
   height: 100%;
   margin: 0;
