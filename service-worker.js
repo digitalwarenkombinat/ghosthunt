@@ -1,4 +1,4 @@
-const cacheName = "ghosthunt-v0.3.3";
+const cacheName = "ghosthunt-v0.3.4";
 const urlsToCacheiOS = [
   '/',
   '/index.html',
