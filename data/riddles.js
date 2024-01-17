@@ -36,6 +36,17 @@ getRiddles = function () {
       },
       {
         question: {
+          de: "Was hängt am Kleiderständer?",
+          en: "What hangs on the coathanger?"
+        },
+        answers: [
+          { de: "Mantel", en: "coat", correct: true, points: 10 },
+          { de: "Brille", en: "glases", correct: false, points: 0 },
+          { de: "Regenschirm", en: "umbrella", correct: false, points: 0 }
+        ]
+      },
+      {
+        question: {
           de: "Wie viele Bücher gibt es?",
           en: "How many books are there?"
         },
