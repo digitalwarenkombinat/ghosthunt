@@ -194,7 +194,7 @@ getTranslations = function () {
       en: 'Scanner'
     },
     "2": {
-      de: 'Scanner brauchen ein gutes Auge haben. Mit Hilfe der AR-Kamera können sie Geistertatorte sichtbar machen und nach Hinweisen suchen.',
+      de: 'Scanner brauchen ein gutes Auge. Mit Hilfe der AR-Kamera können sie Geistertatorte sichtbar machen und nach Hinweisen suchen.',
       en: 'Scanners need to be perceptive. Their job is to study the crime scenes with your AR camera.'
     },
     "3": {
