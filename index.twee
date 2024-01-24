@@ -117,11 +117,13 @@ Spuk & Schreck
 
 --------------------------AUDIO---------------------------------------
 
-<<cacheaudio "setup.camera" "audio/setup.camera.mp3">>
-<<cacheaudio "1.hotspot.ghost" "audio/1.hotspot.ghost.mp3">>
-<<cacheaudio "2.hotspot.ghost" "audio/2.hotspot.ghost.mp3">>
+<<cacheaudio "bg.1" "audio/bg.1.mp3">>
 <<cacheaudio "click" "audio/click.mp3">>
 <<cacheaudio "ring" "audio/ring.mp3">>
+
+<<createplaylist "bg">>
+	<<track "bg.1" volume 1>>
+<</createplaylist>>
 
 <<script>>
   postdisplay["setupAudioOnClick"] = function () {
@@ -314,6 +316,8 @@ Spuk & Schreck
 </div>
 
 :: setup.player {"position":"100,900","size":"100,100"}
+
+<<playlist "bg" volume 0 fadeto 0.75>>
 
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -562,8 +566,6 @@ $(document).one(":passagedisplay", function() {
   });
 <</script>>
 
-<<audio "setup.camera" volume 0 fadein>>
-
 <<set $setupCompleted to true>>
 
 <div class="wrapper">
@@ -596,7 +598,7 @@ $(document).one(":passagedisplay", function() {
 
 :: intro.init {"position":"700,500","size":"100,100"}
 
-<<audio ":playing" stop>>
+<<audio ":playing:not(:bg)" stop>>
 
 <<if $setupCompleted and $introCompleted>>
 	<<goto "main.storyteller">>
@@ -883,7 +885,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: main.scanner.init {"position":"1100,500","size":"100,100"}
-<<audio ":playing" stop>>
+<<audio ":playing:not(:bg)" stop>>
 
 <div class="wrapper">
   <h1><<txt>></h1>
@@ -997,7 +999,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: hotspot.intro {"position":"1300,1700","size":"100,100"}
-<<audio ":playing" stop>>
+<<audio ":playing:not(:bg)" stop>>
 <<video>>
 
 <div class="btn-group">
@@ -1184,7 +1186,6 @@ $(document).one(":passagedisplay", function() {
     }
   })
 <</script>>
-<<audio $$hotspot+'.'+passage() volume 0 fadein>>
 
 <<set $inventoryNames to ['', 'herbert', 'rosa']>>
 <<set $inventory[$hotspot] to $inventoryNames[$hotspot]>>
