@@ -74,6 +74,9 @@ const urlsToCacheiOS = [
   '/videos/intro.5.mp4',
   '/videos/intro.7.mp4',
   '/videos/intro.8.mp4',
+  '/audio/click.mp4',
+  '/audio/ring.mp4',
+  '/audio/bg.1.mp4',
 ];
 
 const urlsToCacheAndroid = [
@@ -151,6 +154,9 @@ const urlsToCacheAndroid = [
   '/videos/intro.5.mp4',
   '/videos/intro.7.mp4',
   '/videos/intro.8.mp4',
+  '/audio/click.mp4',
+  '/audio/ring.mp4',
+  '/audio/bg.1.mp4',
   ];
 
 const self = this;
