@@ -121,9 +121,9 @@ Spuk & Schreck
 <<cacheaudio "click" "audio/click.mp3">>
 <<cacheaudio "ring" "audio/ring.mp3">>
 
-<<createplaylist "bg">>
-	<<track "bg.1" volume 1>>
-<</createplaylist>>
+<<createaudiogroup ":bg">>
+	<<track "bg.1">>
+<</createaudiogroup>>
 
 <<script>>
   postdisplay["setupAudioOnClick"] = function () {
@@ -317,7 +317,7 @@ Spuk & Schreck
 
 :: setup.player {"position":"100,900","size":"100,100"}
 
-<<playlist "bg" volume 0 fadeto 0.75>>
+<<audio ":bg" volume 0 fadeto 0.75>>
 
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -642,7 +642,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: intro.2 {"position":"700,900","size":"100,100"}
-<<audio ":playing:" stop>>
+<<audio ":playing:not(:bg)" stop>>
 
 <<video noHotspot>>
 
@@ -672,7 +672,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: intro.4 {"position":"700,1300","size":"100,100"}
-<<audio ":playing:" stop>>
+<<audio ":playing:not(:bg)" stop>>
 
 <<video noHotspot>>
 
@@ -776,7 +776,7 @@ $(document).one(":passagedisplay", function() {
 :: main.navigator [autosave] {"position":"900,700","size":"100,100"}
 <div id="map"></div>
 
-<<audio ":playing:" stop>>
+<<audio ":playing:not(:bg)" stop>>
 
 <<script>>
   $(document).one(":passagedisplay", function() {
@@ -885,7 +885,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: main.scanner.init {"position":"1100,500","size":"100,100"}
-<<audio ":playing:not(:bg)" stop>>
+<<audio ":playing:not(bg)" stop>>
 
 <div class="wrapper">
   <h1><<txt>></h1>
@@ -904,7 +904,7 @@ $(document).one(":passagedisplay", function() {
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 <</script>>
 
-<<audio ":playing:" stop>>
+<<audio ":playing:not(:bg)" stop>>
 
 <div class="wrapper">
   <h1><<txt>></h1>
@@ -999,7 +999,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: hotspot.intro {"position":"1300,1700","size":"100,100"}
-<<audio ":playing:not(:bg)" stop>>
+<<audio ":playing:not(bg)" stop>>
 <<video>>
 
 <div class="btn-group">
@@ -1249,7 +1249,7 @@ $(document).one(":passagedisplay", function() {
   $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
 <</script>>
 
-<<audio ":playing:" stop>>
+<<audio ":playing:not(:bg)" stop>>
 
 <div class="wrapper">
   <h1><<txt 11>></h1>
