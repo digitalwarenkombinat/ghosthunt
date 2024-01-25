@@ -117,13 +117,20 @@ Spuk & Schreck
 
 --------------------------AUDIO---------------------------------------
 
-<<cacheaudio "bg.1" "audio/bg.1.mp3">>
 <<cacheaudio "click" "audio/click.mp3">>
 <<cacheaudio "ring" "audio/ring.mp3">>
+<<cacheaudio "bg.1" "audio/bg.1.mp3">>
+<<cacheaudio "bg.2" "audio/bg.2.mp3">>
 
 <<createaudiogroup ":bg">>
 	<<track "bg.1">>
+  <<track "bg.2">>
 <</createaudiogroup>>
+
+<<createplaylist "bg">>
+  <<track "bg.1">>
+  <<track "bg.2">>
+<</createplaylist>>
 
 <<script>>
   postdisplay["setupAudioOnClick"] = function () {
@@ -317,7 +324,7 @@ Spuk & Schreck
 
 :: setup.player {"position":"100,900","size":"100,100"}
 
-<<audio ":bg" volume 0 fadeto 0.75>>
+<<playlist "bg" volume 0 fadeto 0.3>>
 
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -581,10 +588,10 @@ $(document).one(":passagedisplay", function() {
     camera-controls>
     <button slot="ar-button" id="ar-button"><<txt>></button>
   </model-viewer>
-    <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
+    <h2><<txt>></h2>
   <button class="help"></button>
   <button class="retry">[[|passage()]]</button>
   <<if $isNavigatorScanner>>
