@@ -50,8 +50,8 @@ getTranslations = function () {
       en: '"#4 Badezimmer"'
     },
     "5": {
-      de: '"#5 Arbeitszimmer"',
-      en: '"#5 Arbeitszimmer"'
+      de: '"#5 Büro"',
+      en: '"#5 Büro"'
     },
     "6": {
       de: '"#6 Dachboden"',
@@ -62,16 +62,16 @@ getTranslations = function () {
       en: '"#7 Klavierzimmer"'
     },
     "8": {
-      de: '"#8 Wintergarten"',
-      en: '"#8 Wintergarten"'
+      de: '"#8 Heizungskeller"',
+      en: '"#8 Heizungskeller"'
     },
     "9": {
-      de: '"#9 Heizungskeller"',
-      en: '"#9 Heizungskeller"'
+      de: '"#9 Verließ"',
+      en: '"#9 Verließ"'
     },
     "10": {
-      de: '"#10 Verlies"',
-      en: '"#10 Verlies"'
+      de: '"#10 Wintergarten"',
+      en: '"#10 Wintergarten"'
     },
     "11": {
       de: 'DEV',
@@ -158,7 +158,7 @@ getTranslations = function () {
       en: 'Storyteller'
     },
     "2": {
-      de: 'Storyteller behalten den Überblick. Sie sammeln Geschichtenfragmente und lösen Rätsel unter Zeitdruck.',
+      de: 'Storyteller behalten den Überblick. Sie sammeln Geschichtenfragmente und lösen Rätsel unter Zeitdruck',
       en: 'Storytellers are cool under pressure. Their job is to solve time-sensitive puzzles, collect points and story fragments.'
     },
     "3": {
@@ -237,7 +237,7 @@ getTranslations = function () {
     },
     "3": {
       de: 'Konnte der Detektiv den Geist und die Karte sehen?',
-      en: 'Could the detective see the ghost and the map?'
+      en: 'Could the scanner see the ghost? Can the navigator see the map?'
     },
     "4": {
       de: 'Konnte der Scanner den Geist sehen? Kann der Navigator die Karte sehen?',
@@ -491,12 +491,12 @@ getTranslations = function () {
   }
   text["hotspot.solution"] = {
     "1": {
-      de: 'Auflösung des Falls.',
-      en: 'Solution of the case.'
+      de: 'Herbert starb während des Gassigehens an einem Herzinfarkt. Die Angst, was mit seinem Hund Ben passiert, hat ihm im Tod keine Ruhe gelassen. Nun könnt ihr dafür Sorge tragen, dass Ben nicht ins Tierheim kommt.',
+      en: 'Herbert died of a heart attack while out for a walk. The fear of what would happen to his dog Ben left him no peace in death. Now you can make sure that Ben does not go to the animal shelter.'
     },
     "2": {
-      de: 'Auflösung des Falls.',
-      en: 'Solution of the case.'
+      de: 'Du hast Rosa geholfen, den Raub an ihrem Grab öffentlich zu machen. Alles Weitere muss nun die Polizei erledigen. Rosa kann nun ruhen.',
+      en: 'You helped Rosa to make the robbery at her grave public. Everything else must now be done by the police. Rosa can now rest in peace.'
     },
     "3": {
       de: 'Auflösung des Falls',
@@ -537,51 +537,51 @@ getTranslations = function () {
   }
   text["hotspot.rune"] = {
     "1": {
-      de: 'Sehr gut! Alle Fragen wurden richtig beantwortet. Damit hast du eine okkulte Rune übersetzt.',
-      en: 'Very good! All questions have been answered correctly. You have translated an occult rune.'
+      de: 'Alle Fragen wurden richtig beantwortet. Als Dank hat Herbert euch eine okkulte Rune übersetzt.',
+      en: 'All questions were answered correctly. To thank you for that Herbert has translated an occult rune for you.'
     },
     "2": {
-      de: 'Sehr gut! Alle Fragen wurden richtig beantwortet. Damit hast du eine okkulte Rune übersetzt.',
-      en: 'Very good! All questions have been answered correctly. You have translated an occult rune.'
+      de: 'Alle Fragen wurden richtig beantwortet. Als Dank hat Rosa euch eine okkulte Rune übersetzt.',
+      en: 'All questions were answered correctly. To thank you for that Rosa has translated an occult rune for you.'
     },
     "3": {
-      de: 'Sehr gut! Alle Fragen wurden richtig beantwortet. Damit hast du eine okkulte Rune übersetzt.',
-      en: 'Very good! All questions have been answered correctly. You have translated an occult rune.'
+      de: 'Alle Fragen wurden richtig beantwortet. Als Dank hat der Geist euch eine okkulte Rune übersetzt.',
+      en: 'All questions were answered correctly. To thank you for that the ghost has translated an occult rune for you.'
     },
     "4": {
-      de: 'Sehr gut! Alle Fragen wurden richtig beantwortet. Damit hast du eine okkulte Rune übersetzt.',
-      en: 'Very good! All questions have been answered correctly. You have translated an occult rune.'
+      de: 'Alle Fragen wurden richtig beantwortet. Als Dank hat der Geist euch eine okkulte Rune übersetzt.',
+      en: 'All questions were answered correctly. To thank you for that the ghost has translated an occult rune for you.'
     },
     "5": {
-      de: 'Sehr gut! Alle Fragen wurden richtig beantwortet. Damit hast du eine okkulte Rune übersetzt.',
-      en: 'Very good! All questions have been answered correctly. You have translated an occult rune.'
+      de: 'Alle Fragen wurden richtig beantwortet. Als Dank hat der Geist euch eine okkulte Rune übersetzt.',
+      en: 'All questions were answered correctly. To thank you for that the ghost has translated an occult rune for you.'
     },
     "6": {
-      de: 'Sehr gut! Alle Fragen wurden richtig beantwortet. Damit hast du eine okkulte Rune übersetzt.',
-      en: 'Very good! All questions have been answered correctly. You have translated an occult rune.'
+      de: 'Alle Fragen wurden richtig beantwortet. Als Dank hat der Geist euch eine okkulte Rune übersetzt.',
+      en: 'All questions were answered correctly. To thank you for that the ghost has translated an occult rune for you.'
     },
     "7": {
-      de: 'Sehr gut! Alle Fragen wurden richtig beantwortet. Damit hast du eine okkulte Rune übersetzt.',
-      en: 'Very good! All questions have been answered correctly. You have translated an occult rune.'
+      de: 'Alle Fragen wurden richtig beantwortet. Als Dank hat der Geist euch eine okkulte Rune übersetzt.',
+      en: 'All questions were answered correctly. To thank you for that the ghost has translated an occult rune for you.'
     },
     "8": {
-      de: 'Sehr gut! Alle Fragen wurden richtig beantwortet. Damit hast du eine okkulte Rune übersetzt.',
-      en: 'Very good! All questions have been answered correctly. You have translated an occult rune.'
+      de: 'Alle Fragen wurden richtig beantwortet. Als Dank hat der Geist euch eine okkulte Rune übersetzt.',
+      en: 'All questions were answered correctly. To thank you for that the ghost has translated an occult rune for you.'
     },
     "9": {
-      de: 'Sehr gut! Alle Fragen wurden richtig beantwortet. Damit hast du eine okkulte Rune übersetzt.',
-      en: 'Very good! All questions have been answered correctly. You have translated an occult rune.'
+      de: 'Alle Fragen wurden richtig beantwortet. Als Dank hat der Geist euch eine okkulte Rune übersetzt.',
+      en: 'All questions were answered correctly. To thank you for that the ghost has translated an occult rune for you.'
     },
     "10": {
-      de: 'Sehr gut! Alle Fragen wurden richtig beantwortet. Damit hast du eine okkulte Rune übersetzt.',
-      en: 'Very good! All questions have been answered correctly. You have translated an occult rune.'
+      de: 'Alle Fragen wurden richtig beantwortet. Als Dank hat der Geist euch eine okkulte Rune übersetzt.',
+      en: 'All questions were answered correctly. To thank you for that the ghost has translated an occult rune for you.'
     },
     "11": {
       de: 'Rune',
       en: 'Rune'
     },
     "12": {
-      de: 'Leider wurden nicht alle Fragen richtig beantwortet. Daher kannst du keine weitere Rune entschlüsseln.',
+      de: 'Leider wurden nicht alle Fragen richtig beantwortet. Daher könnt ihr keine weitere Rune entschlüsseln.',
       en: 'Unfortunately, not all questions were answered correctly. Therefore you can’t decode another rune.'
     }
   }
@@ -680,20 +680,20 @@ getTranslations = function () {
   }
   text["outro.1"] = {
     "1": {
-      de: 'Ok.Ich habe das ganze Haus durchsucht und kann keine einzige Rune mehr finden.§Das was ihr bis jetzt übersetzt habt, muss uns reichen.',
-      en: 'Ok.Ich habe das ganze Haus durchsucht und kann keine einzige Rune mehr finden.§Das was ihr bis jetzt übersetzt habt, muss uns reichen.'
+      de: 'Outro',
+      en: 'Outro'
     }
   }
   text["outro.2"] = {
     "1": {
-      de: 'Ich weiß nicht genau, was hier passiert ist.§Aber klar ist, dass es hier eine Verbindung zum Jenseits gibt.§Die muss unbedingt geschlossen werden.§Schaut euch die Runenbotschaft an.§Gibt es irgendwelche Hinweise?',
-      en: 'Ich weiß nicht genau, was hier passiert ist.§Aber klar ist, dass es hier eine Verbindung zum Jenseits gibt.§Die muss unbedingt geschlossen werden.§Schaut euch die Runenbotschaft an.§Gibt es irgendwelche Hinweise?'
+      de: 'Outro',
+      en: 'Outro'
     }
   }
   text["outro.3"] = {
     "1": {
-      de: 'Wie heißt der dämonische Gegenstand?',
-      en: 'Wie heißt der dämonische Gegenstand?'
+      de: 'Outro',
+      en: 'Outro'
     }
   }
   text["outro.4"] = {
@@ -714,30 +714,6 @@ getTranslations = function () {
       en: 'Outro'
     }
   }
-  text["outro.7"] = {
-    "1": {
-      de: 'Teile dieses Foto unter dem Hashtag #ghostwalker',
-      en: 'Teile dieses Foto unter dem Hashtag #ghostwalker'
-    }
-  }
-  text["outro.8"] = {
-    "1": {
-      de: 'Vielen Dank, dass ihr Ghostwalker gespielt habt.§Wir hoffen sehr, dass es euch gefallen hat.§Wenn dem so ist, freuen wir uns sehr über eine gute Bewertung bei GetYourGuide.§Deine Fragen, Anmerkungen & Kritik kannst du uns gerne an feedback@geomazing.com schicken.',
-      en: 'Vielen Dank, dass ihr Ghostwalker gespielt habt.§Wir hoffen sehr, dass es euch gefallen hat.§Wenn dem so ist, freuen wir uns sehr über eine gute Bewertung bei GetYourGuide.§Deine Fragen, Anmerkungen & Kritik kannst du uns gerne an feedback@geomazing.com schicken.'
-    }
-  }
-  text["outro.9"] = {
-    "1": {
-      de: 'In unserem Shop auf geomazing.com findest du weitere Rallyes.§Mit deinem Accesstoken erhälst du 10% Rabatt auf deine nächste Tour.§Unsere Rallyes sind in vielen weiteren Städten verfügbar und eignen sich hervorragend als Geschenk für Freunde & Familie.',
-      en: 'In unserem Shop auf geomazing.com findest du weitere Rallyes.§Mit deinem Accesstoken erhälst du 10% Rabatt auf deine nächste Tour.§Unsere Rallyes sind in vielen weiteren Städten verfügbar und eignen sich hervorragend als Geschenk für Freunde & Familie.'
-    }
-  }
-  text["outro.10"] = {
-    "1": {
-      de: 'Trage dich in unseren Newsletter ein und erfahre frühzeitig, wenn wir eine neue Rallye veröffentlichen.',
-      en: 'Trage dich in unseren Newsletter ein und erfahre frühzeitig, wenn wir eine neue Rallye veröffentlichen.'
-    }
-  }
   text["outro.message"] = {
     "1": {
       de: 'Unser Ziel',
@@ -748,7 +724,7 @@ getTranslations = function () {
       en: 'We want to create a team event where people get outside in the fresh air, work together to solve puzzles and immerse themselves in new spooky worlds with the help of modern technology'
     },
     "3": {
-      de: 'Unser Ziel ist es, zu Ostern 2024 die erste Rallye im Friedenspark Leipzig zu veröffentlichen. Weitere Städte werden folgen.',
+      de: 'Unser Ziel ist Ostern 2024 die erste Rallye im Friedenspark, Leipzig zu veröffentlichen. Weitere Städte werden folgen.',
       en: 'Our goal is to publish the first rally in Friedenspark, Leipzig at Easter 2024. Other cities will follow.'
     },
     "4": {
@@ -756,8 +732,8 @@ getTranslations = function () {
       en: 'Our rally is played exclusively on the smartphones of our customers. There is no guide on site. It is therefore very important to us that the technology works well'
     },
     "5": {
-      de: 'Um zu evaluieren, ob uns das gelingt benötigen wir dein Feedback.',
-      en: 'We need your feedback to evaluate whether we are successful.'
+      de: 'Um zu evaluieren, ob uns das gelingt benötigen wir dein Feedback. Über diesen ',
+      en: 'We need your feedback to evaluate whether we are successful. About this '
     },
     "6": {
       de: 'Hier erreichst du unseren Fragebogen. Vielen Dank.',
@@ -811,7 +787,7 @@ getTranslations = function () {
     },
     "7": {
       de: 'Wie kann ich die Rätsel lösen?',
-      en: 'How can I solve the riddles?'
+      en: 'How can I solve the puzzles?'
     },
     "8": {
       de: 'Die Rätsel im Spiel können nur durch genaues Absuchen der entdeckten Szenen gelöst werden. Findet die Fragen auf die Antworten in den AR-Szenen.',
