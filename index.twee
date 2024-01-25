@@ -148,7 +148,7 @@ Spuk & Schreck
 
 <<set $validFrequences = [101, 247, 404, 721, 333, 121, 911, 451, 143, 666]>>
 
-<<set $validGhostFrequences = [201, 723, 447, 304, 521, 656, 133, 421, 667]>>
+<<set $validGhostFrequences = [201, 723, 447, 304, 521, 656, 133, 421, 890, 667]>>
 
 <<set $letter to [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]>>
 
@@ -720,7 +720,7 @@ $(document).one(":passagedisplay", function() {
     for (let i = 0; i < secretMessage.length; i++) {
       const message = document.createElement('h2');
       message.textContent = secretMessage[i];
-      const matchingLetter = lettersFound.find(pair => pair.includes(secretMessage[i]));
+      const matchingLetter = lettersFound.find(pair => pair.includes(secretMessage[i].toLowerCase()));
       if (!matchingLetter) {
           message.classList.add('p3');
       }
@@ -803,6 +803,7 @@ $(document).one(":passagedisplay", function() {
         map.addControl(geolocate);
         const locations = getLocations();
         const remainingLocations = locations.filter(loc => !State.variables.enteredLocations.includes(loc.id));
+        const clickEventAdded = {};
 
         geolocate.on('geolocate', ({ coords }) => {
           const lat = coords.latitude;
@@ -810,20 +811,25 @@ $(document).one(":passagedisplay", function() {
 
           for (const location of remainingLocations) {
             if (window.geolocation.inside(location.latitude, location.longitude, location.radius, lat, lon)) {
-              map.setPaintProperty( location.id, 'fill-color', '#9CF299');
+              map.setPaintProperty(location.id, 'fill-color', '#9CF299');
 
-              map.on('click', location.id, (e) => {
-                State.variables.enteredLocations.push(location.id);
-                $.wiki('<<set $hotspot++>>');
-                if (State.variables.isStoryteller) {
-                  $.wiki('<<goto "hotspot.splash">>');
-                } else { 
-                  $.wiki('<<goto "hotspot.frequence">>');
-                }
-              });
+              if (!clickEventAdded[location.id]) {
+                map.on('click', location.id, (e) => {
+                  State.variables.enteredLocations.push(location.id);
+                  $.wiki('<<set $hotspot++>>');
+                  if (State.variables.isStoryteller) {
+                    $.wiki('<<goto "hotspot.splash">>');
+                  } else {
+                    $.wiki('<<goto "hotspot.frequence">>');
+                  }
+                });
+
+                clickEventAdded[location.id] = true;
+              }
 
             } else {
-              map.setPaintProperty( location.id, 'fill-color', '#F299CA');
+              map.setPaintProperty(location.id, 'fill-color', '#F299CA');              
+              clickEventAdded[location.id] = false;
             }
           }
         });
@@ -919,7 +925,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <<numberbox "_answer" 0 autofocus>>
+  <<numberbox "_answer" 0>>
   <<button "Check">>
     <<if _answer is "">>
       <<script>>UI.alert(setup.text[passage()][3][setup.i18n.langs[settings.lang]]);<</script>>
@@ -945,7 +951,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <<numberbox "_answer" 0 autofocus>>
+  <<numberbox "_answer" 0>>
 
   <<button "Check">>
     <<if _answer is "">>
@@ -1296,7 +1302,7 @@ $(document).one(":passagedisplay", function() {
     for (let i = 0; i < secretMessage.length; i++) {
       const message = document.createElement('h2');
       message.textContent = secretMessage[i];
-      const matchingLetter = lettersFound.find(pair => pair.includes(secretMessage[i]));
+      const matchingLetter = lettersFound.find(pair => pair.includes(secretMessage[i].toLowerCase()));
       if (!matchingLetter) {
           message.classList.add('p3');
       }
