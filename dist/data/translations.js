@@ -222,12 +222,12 @@ getTranslations = function () {
   }
   text["setup.camera"] = {
     "1": {
-      de: 'AR-Kamera Test',
-      en: 'AR-Kamera Test '
-    },
-    "2": {
       de: 'Wir benötigen Zugriff auf deine Kamera, um dir die Geister zu zeigen.',
       en: 'We need access to your camera to show you the ghosts.'
+    },
+    "2": {
+      de: 'AR-Kamera Test',
+      en: 'AR-Kamera Test '
     }
   }
   text["intro.welcome"] = {

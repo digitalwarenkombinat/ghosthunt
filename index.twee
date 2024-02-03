@@ -609,6 +609,7 @@ $(document).one(":passagedisplay", function() {
 <<set $setupCompleted to true>>
 
 <div class="wrapper">
+  <h2><<txt>></h2>
   <model-viewer 
     id="model-viewer" 
     ar auto-rotate 
@@ -624,7 +625,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <h2><<txt>></h2>
+  
   <button class="help"></button>
   <button class="retry">[[|passage()]]</button>
   <<if $isNavigatorScanner>>
@@ -934,6 +935,9 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
+  <<if $hotspot >= 1>>
+    <button class="return">[[|hotspot.ghost]]</button>
+  <</if>>
   <<numberbox "_answer" 0>>
   <<button "Check">>
     <<if _answer is "">>
@@ -960,8 +964,8 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
+  <button class="return">[[|hotspot.ar]]</button>
   <<numberbox "_answer" 0>>
-
   <<button "Check">>
     <<if _answer is "">>
       <<script>>UI.alert(setup.text[passage()][3][setup.i18n.langs[settings.lang]]);<</script>>
@@ -1266,7 +1270,9 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <<if $isScanner>>
+  <<if $hotspot === 10 && $isScanner>>
+    <button class="next">[[|outro.init]]</button>
+  <<elseif $isScanner>>
     <button class="next">[[|main.scanner]]</button>
   <<elseif $isNavigatorScanner>>
     <button class="next">[[|main.navigator]]</button>
@@ -2680,8 +2686,8 @@ tw-hook[name="fade-out"] {
   border: 2px solid var(--secondary-color);
   background-color: var(--text-light-color);
   color: black;
-  font-size: 5vw;
+  font-size: 6vw;
   margin-left: 5vw;
   margin-right: 5vw;
-  max-width: 300px;
+  max-width: 100px;
 }
