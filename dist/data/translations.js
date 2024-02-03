@@ -6,8 +6,12 @@ getTranslations = function () {
       en: 'Menu'
     },
     "2": {
-      de: 'Punkte:',
-      en: 'Points:'
+      de: 'Fortschritt',
+      en: 'Progress'
+    },
+    "3": {
+      de: 'Punkte',
+      en: 'Points'
     }
   };
   text["StoryMenu"] = {

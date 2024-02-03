@@ -14,12 +14,16 @@ Spuk & Schreck
 :: StoryCaption {"position":"500,100","size":"100,100"}
 
   <<set $menuText = setup.text['StoryCaption'][1][setup.i18n.langs[settings.lang]]>>
-  <<set $pointsText = setup.text['StoryCaption'][2][setup.i18n.langs[settings.lang]]>>
+  <<set $progressText = setup.text['StoryCaption'][2][setup.i18n.langs[settings.lang]]>>
+  <<set $pointsText = setup.text['StoryCaption'][3][setup.i18n.langs[settings.lang]]>>
   <<set $pointsMaximum to 600>>
   <h1>$menuText</h1>
+  <h5>$progressText</h5>
   <progress @value="$hotspot" max="10"></progress>
-  <h5>$pointsText</h5>
-  <h3>$points / $pointsMaximum</h3>
+  <<if $isStoryteller>>
+    <h5>$pointsText</h5>
+    <h3>$points / $pointsMaximum</h3>
+  <</if>>
 
 :: StoryInit {"position":"100,100","size":"100,100"}
 
