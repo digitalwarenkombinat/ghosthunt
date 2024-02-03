@@ -465,6 +465,10 @@ getTranslations = function () {
       en: 'seconds left'
     },
     "8": {
+      de: 'Fertig',
+      en: 'Ready'
+    },
+    "9": {
       de: 'Wurden alle Fragen beantwortet?',
       en: 'Have all questions been answered?'
     }

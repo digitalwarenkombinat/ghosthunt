@@ -1045,6 +1045,7 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
   <<if $isNavigator>>
+    <<set $riddleCount to 1>>
     <button class="next">[[|hotspot.questions]]</button>    
   <<elseif $isNavigatorScanner>>
     <button class="next">[[|hotspot.ar]]</button>
@@ -1110,9 +1111,13 @@ $(document).one(":passagedisplay", function() {
 
   <div class="btn-group">
     <<if $isNavigator>>
-      <<if $riddleCount === 5>>
-        <<script>>UI.alert(setup.text[passage()][8][setup.i18n.langs[settings.lang]]);<</script>>
-      <</if>>
+      <<script>>
+        $(document).one(":passagedisplay", function() {
+          $('<button class="return" tabindex="0"><a data-passage="hotspot.questions" class="link-internal" role="link" tabindex="0"></a></button>')
+            .ariaClick((function(){return $.wiki('<<if $riddleCount === 2>><<goto "hotspot.frequence">><<else>><<set $riddleCount to $riddleCount - 2>><<goto "hotspot.questions">><</if>>');}))
+            .prependTo('.btn-group');
+        })
+      <</script>>
       <<set $riddleCount to $riddleCount + 1>>
       <button class="next">[[|hotspot.questions]]</button>
     <<else>>
@@ -1143,7 +1148,18 @@ $(document).one(":passagedisplay", function() {
 
 <<else>>
   <<if $isNavigator>>
-    <<goto "main.navigator">>
+    <<script>>
+    jQuery(Dialog
+        .setup(setup.text[passage()][8][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][9][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "main.navigator" >>');})),Dialog.close()})),!0;
+        $("#restart-cancel")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<set $riddleCount to $riddleCount - 1>><<goto "hotspot.questions" >>');})),Dialog.close()})),!0;
+    Dialog.open();
+    <</script>>
   <<else>>
     <<goto "hotspot.solution">>
   <</if>>
