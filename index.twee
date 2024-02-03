@@ -119,6 +119,36 @@ Spuk & Schreck
   </div>
 <</widget>>
 
+<<widget "secret">>
+  <div id="messageContainer" class="message"></div>
+  <<script>>
+    $(document).one(":passagedisplay", function() {
+      const secretMessage = setup.text['secret'][1][setup.i18n.langs[settings.lang]];
+
+      const messageContainer = document.getElementById('messageContainer');
+      console.log(secretMessage);
+      console.log(messageContainer);
+      let lettersFound = [];
+      State.variables.letter.forEach((isTrue, index) => {
+        if (isTrue) {
+            lettersFound.push(State.variables.runes[index][0]);
+            lettersFound.push(State.variables.runes[index][1]);
+        }
+      });
+
+      for (let i = 0; i < secretMessage.length; i++) {
+        const message = document.createElement('h2');
+        message.textContent = secretMessage[i];
+        const matchingLetter = lettersFound.find(pair => pair.includes(secretMessage[i].toLowerCase()));
+        if (!secretMessage[i].includes(',','.','`') && !matchingLetter) {
+            message.classList.add('p3');
+        }
+        messageContainer.appendChild(message);
+      };
+    })
+  <</script>>
+<</widget>>
+
 --------------------------AUDIO---------------------------------------
 
 <<cacheaudio "click" "audio/click.mp3">>
@@ -161,13 +191,13 @@ Spuk & Schreck
 <<set $enteredLocations to []>>
 
 <<set $runes to [
-    ["y", "ä"], 
-    ["s", "u"], 
+    ["k", "p"],
+    ["s", "u"],
     ["m", "l"],
     ["c", "h"],
     ["i", "a"],
     ["b", "f"],
-    ["d", "k"],
+    ["d", "y"],
     ["e", "j"],
     ["g", "r"],
     ["o", "q"],
@@ -186,8 +216,6 @@ Spuk & Schreck
 <<set $riddleCount to 1>>
 
 <<set $riddleCorrectCount to 0>>
-
-<<set $ende to 0>>
 
 <<set $isStoryteller to false>>
 <<set $isScanner to false>>
@@ -595,7 +623,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-    <h2><<txt>></h2>
+  <h2><<txt>></h2>
   <button class="help"></button>
   <button class="retry">[[|passage()]]</button>
   <<if $isNavigatorScanner>>
@@ -705,38 +733,14 @@ $(document).one(":passagedisplay", function() {
 
 :: intro.6 {"position":"700,1700","size":"100,100"}
 
-<<script>>
-  $(document).one(":passagedisplay", function() {
-    $('#story').attr('style', 'background-image:url(images/intro.6.jpg)');
-
-    const secretMessage = setup.text['hotspot.secret'][2][setup.i18n.langs[settings.lang]];
-
-    const messageContainer = document.getElementById('messageContainer');
-
-    let lettersFound = [];
-    State.variables.letter.forEach((isTrue, index) => {
-      if (isTrue) {
-          lettersFound.push(State.variables.runes[index][0]);
-          lettersFound.push(State.variables.runes[index][1]);
-      }
-    });
-
-    for (let i = 0; i < secretMessage.length; i++) {
-      const message = document.createElement('h2');
-      message.textContent = secretMessage[i];
-      const matchingLetter = lettersFound.find(pair => pair.includes(secretMessage[i].toLowerCase()));
-      if (!matchingLetter) {
-          message.classList.add('p3');
-      }
-      messageContainer.appendChild(message);
-    }
-  })
-<</script>>
+<script>
+  $('#story').attr('style', 'background-image:url(images/intro.6.jpg)');
+</script>
 
 <div class="wrapper">
-  <h2><<txt>></h2>
+  <h1><<txt>></h1>
   <br/>
-	<div id="messageContainer" class="message"></div>
+	<<secret>>
 </div>
 
 <div class="btn-group">
@@ -1159,7 +1163,7 @@ $(document).one(":passagedisplay", function() {
         .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
         .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
         .find("#restart-ok")
-        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "main.navigator" >>');})),Dialog.close()})),!0;
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<if $hotspot === 10>><<goto "outro.init">><<else>><<goto "main.navigator">><</if>>');})),Dialog.close()})),!0;
         $("#restart-cancel")
         .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<set $riddleCount to $riddleCount - 1>><<goto "hotspot.questions" >>');})),Dialog.close()})),!0;
     Dialog.open();
@@ -1184,6 +1188,7 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 
 <div class="wrapper">
+  <h2><<txt>></h2>
   <model-viewer 
     id="model-viewer" 
     ar auto-rotate 
@@ -1194,7 +1199,6 @@ $(document).one(":passagedisplay", function() {
     camera-controls>
     <button slot="ar-button" id="ar-button"><<txt>></button>
   </model-viewer>
-  <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
@@ -1220,11 +1224,8 @@ $(document).one(":passagedisplay", function() {
   })
 <</script>>
 
-<<set $inventoryNames to ['', 'herbert', 'rosa']>>
-<<set $inventory[$hotspot] to $inventoryNames[$hotspot]>>
-
 <div class="wrapper">
- /*<h1>$inventoryNames[$hotspot]</h1>*/
+  <h2><<txt>></h2>
   <model-viewer 
     id="model-viewer" 
     ar
@@ -1236,7 +1237,6 @@ $(document).one(":passagedisplay", function() {
     camera-controls>
     <button slot="ar-button" id="ar-button"><<txt>></button>
   </model-viewer>
-   <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
@@ -1303,38 +1303,14 @@ $(document).one(":passagedisplay", function() {
 
 :: hotspot.secret {"position":"1300,1500","size":"100,100"}
 
-<<script>>
-  $(document).one(":passagedisplay", function() {
-    $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
-
-    const secretMessage = setup.text[passage()][2][setup.i18n.langs[settings.lang]];
-
-    const messageContainer = document.getElementById('messageContainer');
-
-    let lettersFound = [];
-    State.variables.letter.forEach((isTrue, index) => {
-      if (isTrue) {
-          lettersFound.push(State.variables.runes[index][0]);
-          lettersFound.push(State.variables.runes[index][1]);
-      }
-    });
-
-    for (let i = 0; i < secretMessage.length; i++) {
-      const message = document.createElement('h2');
-      message.textContent = secretMessage[i];
-      const matchingLetter = lettersFound.find(pair => pair.includes(secretMessage[i].toLowerCase()));
-      if (!matchingLetter) {
-          message.classList.add('p3');
-      }
-      messageContainer.appendChild(message);
-    }
-  })
-<</script>>
+<script>
+  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
+</script>
 
 <div class="wrapper">
   <h1><<txt>></h1>
   <br/>
-	<div id="messageContainer" class="message"></div>
+	<<secret>>
 </div>
 
 <div class="btn-group">
@@ -1349,7 +1325,7 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
 
-  <<if !$letter.includes(0) and $ende is 0>>
+  <<if $hotspot === 10>>
     <button class="next">[[|outro.init]]</button>
   <<elseif $playerCount === 1>>
     <button class="next">[[|main.navigator]]</button>
@@ -1361,22 +1337,156 @@ $(document).one(":passagedisplay", function() {
 :: outro.init {"position":"1500,500","size":"100,100"}
 
 <<script>>
-  $.wiki('<<goto "outro.message">>')
+  $.wiki('<<goto "outro.1">>')
 <</script>>
 
-:: outro.message {"position":"1500,700","size":"100,100"}
+:: outro.1 {"position":"700,700","size":"100,100"}
+
+<<audio ":playing:not(:bg)" stop>>
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.2]]</button>
+</div>
+
+:: outro.2 {"position":"700,900","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="return">[[|outro.1]]</button>
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.3]]</button>
+</div>
+
+:: outro.3 {"position":"700,1100","size":"100,100"}
+
+<script>
+  $('#story').attr('style', 'background-image:url(images/outro.3.jpg)');
+</script>
 
 <div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>>
-    <br>
-    <br><<txt>>
-    <br>
-    <br><<txt>>
-    <br>
-    <br>
-    <<txt>><a href="https://forms.gle/jcGPPbrbbnwDLNC28">"Link"</a><<txt>>
-  </h2>
+  <h2><<txt>></h2>
+  <br/>
+	<<secret>>
+</div>
+
+<div class="btn-group">
+  <<button setup.text['outro.3'][2][setup.i18n.langs[settings.lang]]>>
+    <<goto "outro.4.ball">>
+  <</button>>
+  <<button setup.text['outro.3'][3][setup.i18n.langs[settings.lang]]>>
+    <<goto "outro.4.mask">>
+  <</button>>
+  <<button setup.text['outro.3'][4][setup.i18n.langs[settings.lang]]>>
+    <<goto "outro.4.book">>
+  <</button>>
+</div>
+
+:: outro.4.ball {"position":"700,1300","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.5.ball]]</button>
+</div>
+
+:: outro.4.mask {"position":"700,1300","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.5.mask]]</button>
+</div>
+
+:: outro.4.book {"position":"700,1300","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.5.book]]</button>
+</div>
+
+:: outro.5.ball {"position":"700,1300","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.6]]</button>
+</div>
+
+:: outro.5.mask {"position":"700,1300","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.7]]</button>
+</div>
+
+:: outro.5.book {"position":"700,1300","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.7]]</button>
+</div>
+
+:: outro.6 {"position":"700,1700","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.7]]</button>
+</div>
+
+:: outro.7 {"position":"700,1900","size":"100,100"}
+
+<<script>>
+  $(document).one(":passagedisplay", function() {
+    $('#story').attr('style', 'background-image:url(images/outro.7.jpg)');
+  });
+<</script>>
+
+<div class="wrapper">
+  <h2><<txt>></h2>
+  <model-viewer 
+    id="model-viewer" 
+    ar auto-rotate 
+    src="models/outro/outro.7.glb" 
+    ios-src="models/outro/outro.7.usdz"
+    poster="images/loading.png"
+    autoplay 
+    shadow-intensity="2"
+    shadow-softness="0"
+    camera-controls>
+    <button slot="ar-button" id="ar-button"><<txt>></button>
+  </model-viewer>
+</div>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.8]]</button>
+</div>
+
+:: outro.8 {"position":"700,2100","size":"100,100"}
+
+<script>
+  $('#story').attr('style', 'background-image:url(images/outro.8.jpg)');
+</script>
+
+<div class="wrapper">
+  <h2><<txt>></h2>
+  <h2><<txt>></h2>
+  <h2><<txt>><a href="mailto:feedback@geomazing.com">"feedback@geomazing.com"</a><<txt>></h2>
 </div>
 
 <div class="btn-group">
@@ -2154,7 +2264,7 @@ border: 2px solid var(--secondary-color);
   font-size: 4vh;
   font-weight: 400;
   line-height: 4vh;
-  margin: 2vh;
+  margin: 1vh;
   text-shadow: 1px 1px 20px var(--secondary-color);
 }
 
@@ -2422,7 +2532,8 @@ tw-hook[name="fade-out"] {
 
 .message h2 {
   /* color: var(--text-light-color); */
-  margin-right: 10px;
+  letter-spacing: normal;
+  margin: 8px;
 }
 
 #numberbox--answer {

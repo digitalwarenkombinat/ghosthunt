@@ -1,5 +1,7 @@
 sugarcube-2:
   macros:
+    secret:
+      name: secret
     txt:
       name: txt
     video:

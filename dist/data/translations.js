@@ -479,22 +479,22 @@ getTranslations = function () {
   }
   text["hotspot.ar"] = {
     "1": {
-      de: 'Ghost Cam aktivieren',
-      en: 'Activate Ghost Cam'
-    },
-    "2": {
       de: 'Öffne die Ghost Cam, untersuche den Tatort und mache Fotos von allem, das dir wichtig erscheint.',
       en: 'Open the ghost cam, examine the crime scene and take photos of everything that seems important to you.'
+    },
+    "2": {
+      de: 'Ghost Cam aktivieren',
+      en: 'Activate Ghost Cam'
     }
   }
   text["hotspot.ghost"] = {
     "1": {
-      de: 'Ghost Cam aktivieren',
-      en: 'Activate Ghost Cam'
-    },
-    "2": {
       de: 'Ein neuer Geist ist ab sofort in deinem Inventar verfügbar.',
       en: 'A new ghost is now available in your inventory.'
+    },
+    "2": {
+      de: 'Ghost Cam aktivieren',
+      en: 'Activate Ghost Cam'
     }
   }
   text["hotspot.solution"] = {
@@ -597,10 +597,12 @@ getTranslations = function () {
     "1": {
       de: 'Ziel',
       en: 'Goal'
-    },
-    "2": {
-      de: 'Der Dämon der Dame ruht im Armreif.',
-      en: 'The Lady´s demon rests in the bracelet.'
+    }
+  }
+  text["secret"] = {
+    "1": {
+      de: 'Das magische Buch nimmt Unheil in Kauf, verdunkelt durch die Maskerade. So besiegst du nur des Schicksals Lauf, vernichtest du der Kugel Gnade.',
+      en: 'The magic book accepts disaster, hidden by the masquerade. By destroying the ball`s mercy, you defeat the course of fate.'
     },
   }
   text["hotspot.intro"] = {
@@ -702,74 +704,88 @@ getTranslations = function () {
     "1": {
       de: 'Wie heißt der dämonische Gegenstand?',
       en: 'Wie heißt der dämonische Gegenstand?'
+    },
+    "2": {
+      de: 'Kristallkugel',
+      en: 'Kristallkugel'
+    },
+    "3": {
+      de: 'Voodoo-Maske',
+      en: 'Voodoo-Maske'
+    },
+    "4": {
+      de: 'Zauberbuch',
+      en: 'Zauberbuch'
     }
   }
-  text["outro.4"] = {
+  text["outro.4.ball"] = {
     "1": {
-      de: 'Outro',
-      en: 'Outro'
+      de: 'Die Kristallkugel auf dem Dachboden?§Natürlich!§Es ist so offensichtlich.§Ich bin auf dem Weg.',
+      en: 'Die Kristallkugel auf dem Dachboden?§Natürlich!§Es ist so offensichtlich.§Ich bin auf dem Weg.'
     }
   }
-  text["outro.5"] = {
+  text["outro.4.mask"] = {
     "1": {
-      de: 'Outro',
-      en: 'Outro'
+      de: 'Die Voodoo-Maske im Verlies?§Natürlich!§Es ist so offensichtlich.§Ich bin auf dem Weg.',
+      en: 'Die Voodoo-Maske im Verlies?§Natürlich!§Es ist so offensichtlich.§Ich bin auf dem Weg.'
+    }
+  }
+  text["outro.4.book"] = {
+    "1": {
+      de: 'Das Zauberbuch im Arbeitszimmer?§Natürlich!§Es ist so offensichtlich.§Ich bin auf dem Weg.',
+      en: 'Das Zauberbuch im Arbeitszimmer?§Natürlich!§Es ist so offensichtlich.§Ich bin auf dem Weg.'
+    }
+  }
+  text["outro.5.ball"] = {
+    "1": {
+      de: '',
+      en: ''
+    }
+  }
+  text["outro.5.mask"] = {
+    "1": {
+      de: '',
+      en: ''
+    }
+  }
+  text["outro.5.book"] = {
+    "1": {
+      de: '',
+      en: ''
     }
   }
   text["outro.6"] = {
     "1": {
-      de: 'Outro',
-      en: 'Outro'
+      de: 'Hey Leute. Holger hier!§Ich wollte euch nochmal danken und euch gratulieren.§Ihr habt die Feuertaufe bestanden und seit nun vollwertige Ghostwalker.§Der nächste Fall kommt bestimmt.§Ich melde mich. Holger out!',
+      en: 'Hey Leute. Holger hier!§Ich wollte euch nochmal danken und euch gratulieren.§Ihr habt die Feuertaufe bestanden und seit nun vollwertige Ghostwalker.§Der nächste Fall kommt bestimmt.§Ich melde mich. Holger out!'
     }
   }
   text["outro.7"] = {
     "1": {
-      de: 'Teile dieses Foto unter dem Hashtag #ghostwalker',
-      en: 'Teile dieses Foto unter dem Hashtag #ghostwalker'
+      de: 'Teile dieses Foto unter dem Hashtag #hashtag',
+      en: 'Teile dieses Foto unter dem Hashtag #hashtag'
+    },
+    "2": {
+      de: 'AR-Kamera öffnen',
+      en: 'Open AR camera'
     }
   }
   text["outro.8"] = {
     "1": {
-      de: 'Vielen Dank, dass ihr Ghostwalker gespielt habt.§Wir hoffen sehr, dass es euch gefallen hat.§Wenn dem so ist, freuen wir uns sehr über eine gute Bewertung bei GetYourGuide.§Deine Fragen, Anmerkungen & Kritik kannst du uns gerne an feedback@geomazing.com schicken.',
-      en: 'Vielen Dank, dass ihr Ghostwalker gespielt habt.§Wir hoffen sehr, dass es euch gefallen hat.§Wenn dem so ist, freuen wir uns sehr über eine gute Bewertung bei GetYourGuide.§Deine Fragen, Anmerkungen & Kritik kannst du uns gerne an feedback@geomazing.com schicken.'
-    }
-  }
-  text["outro.9"] = {
-    "1": {
-      de: 'In unserem Shop auf geomazing.com findest du weitere Rallyes.§Mit deinem Accesstoken erhälst du 10% Rabatt auf deine nächste Tour.§Unsere Rallyes sind in vielen weiteren Städten verfügbar und eignen sich hervorragend als Geschenk für Freunde & Familie.',
-      en: 'In unserem Shop auf geomazing.com findest du weitere Rallyes.§Mit deinem Accesstoken erhälst du 10% Rabatt auf deine nächste Tour.§Unsere Rallyes sind in vielen weiteren Städten verfügbar und eignen sich hervorragend als Geschenk für Freunde & Familie.'
-    }
-  }
-  text["outro.10"] = {
-    "1": {
-      de: 'Trage dich in unseren Newsletter ein und erfahre frühzeitig, wenn wir eine neue Rallye veröffentlichen.',
-      en: 'Trage dich in unseren Newsletter ein und erfahre frühzeitig, wenn wir eine neue Rallye veröffentlichen.'
-    }
-  }
-  text["outro.message"] = {
-    "1": {
-      de: 'Unser Ziel',
-      en: 'Our Goal'
+      de: 'Vielen Dank, dass ihr Ghost Hunt gespielt habt. Wir hoffen sehr, dass es euch gefallen hat.',
+      en: 'Vielen Dank, dass ihr Ghost Hunt gespielt habt.§Wir hoffen sehr, dass es euch gefallen hat.'
     },
     "2": {
-      de: 'Wir wollen ein Team-Event kreieren, bei dem sich die Menschen draußen an der frischen Luft bewegen, zusammen arbeiten, um Rätsel zu lösen und mit Hilfe moderner Technik in neue gruselige Welten eintauchen.',
-      en: 'We want to create a team event where people get outside in the fresh air, work together to solve puzzles and immerse themselves in new spooky worlds with the help of modern technology'
+      de: 'Wenn dem so ist, freuen wir uns sehr über eine gute Bewertung bei GetYourGuide.',
+      en: 'Wenn dem so ist, freuen wir uns sehr über eine gute Bewertung bei GetYourGuide.'
     },
     "3": {
-      de: 'Unser Ziel ist es, zu Ostern 2024 die erste Rallye im Friedenspark Leipzig zu veröffentlichen. Weitere Städte werden folgen.',
-      en: 'Our goal is to publish the first rally in Friedenspark, Leipzig at Easter 2024. Other cities will follow.'
+      de: 'Deine Fragen, Anmerkungen & Kritik kannst du uns gerne an ',
+      en: 'Deine Fragen, Anmerkungen & Kritik kannst du uns gerne an '
     },
     "4": {
-      de: 'Unsere Rallye wird ausschließlich auf den Smartphones unserer Kunden gespielt. Es gibt keinen Guide vor Ort. Daher ist es uns sehr wichtig, dass die Technik gut funktioniert.',
-      en: 'Our rally is played exclusively on the smartphones of our customers. There is no guide on site. It is therefore very important to us that the technology works well'
-    },
-    "5": {
-      de: 'Um zu evaluieren, ob uns das gelingt benötigen wir dein Feedback.',
-      en: 'We need your feedback to evaluate whether we are successful.'
-    },
-    "6": {
-      de: 'Hier erreichst du unseren Fragebogen. Vielen Dank.',
-      en: 'Here you can access our questionnaire. Thank you very much.'
+      de: ' schicken.',
+      en: ' schicken.'
     }
   }
   text["Impressum"] = {
