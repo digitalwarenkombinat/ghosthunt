@@ -1270,8 +1270,8 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <<if $hotspot === 10 && $isScanner>>
-    <button class="next">[[|outro.init]]</button>
+  <<if $hotspot === 10 && ($isScanner || $isNavigatorScanner)>>
+    <button class="next">[[|outro.scanner.init]]</button>
   <<elseif $isScanner>>
     <button class="next">[[|main.scanner]]</button>
   <<elseif $isNavigatorScanner>>
@@ -1357,19 +1357,13 @@ $(document).one(":passagedisplay", function() {
   <button class="retry">[[|passage()]]</button>
 
   <<if $hotspot === 10>>
-    <button class="next">[[|outro.init]]</button>
+    <button class="next">[[|outro.1]]</button>
   <<elseif $playerCount === 1>>
     <button class="next">[[|main.navigator]]</button>
   <<else>>
     <button class="next">[[|main.storyteller]]</button>
   <</if>>
 </div>
-
-:: outro.init {"position":"1500,500","size":"100,100"}
-
-<<script>>
-  $.wiki('<<goto "outro.1">>')
-<</script>>
 
 :: outro.navigator.init {"position":"1500,500","size":"100,100"}
 
@@ -1392,7 +1386,7 @@ $(document).one(":passagedisplay", function() {
       <<goto "outro.8">>
     <<else>>
       <<script>>UI.alert(setup.text[passage()][4][setup.i18n.langs[settings.lang]]);<</script>>
-      <<goto "outro.scanner.init">>
+      <<goto "outro.navigator.init">>
     <</if>>
   <</button>>
 </div>
