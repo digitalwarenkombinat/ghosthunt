@@ -485,6 +485,14 @@ getTranslations = function () {
     "2": {
       de: 'Ghost Cam aktivieren',
       en: 'Activate Ghost Cam'
+    },
+    "3": {
+      de: 'Check',
+      en: 'Check'
+    },
+    "4": {
+      de: 'Bist du sicher? Der Tatort kann nicht erneut betreten werden.',
+      en: 'Bist du sicher? Der Tatort kann nicht erneut betreten werden.'
     }
   }
   text["hotspot.ghost"] = {
@@ -645,6 +653,14 @@ getTranslations = function () {
     "10": {
       de: 'Ich hab eine geheime Tür im Keller gefunden, die mich in dieses Verlies geführt hat.§Ein schauriger Ort.§Ich will gar nicht wissen, was ihr hier findet.',
       en: 'Ich hab eine geheime Tür im Keller gefunden, die mich in dieses Verlies geführt hat.§Ein schauriger Ort.§Ich will gar nicht wissen, was ihr hier findet.'
+    },
+    "11": {
+      de: 'Check',
+      en: 'Check'
+    },
+    "12": {
+      de: 'Bist du bereit?',
+      en: 'Are you ready?'
     }
   }
   text["hotspot.outro"] = {
@@ -688,6 +704,48 @@ getTranslations = function () {
       en: 'Schon wieder der Henker!'
     },
   }
+  text["outro.navigator.init"] = {
+    "1": {
+      de: 'Outro',
+      en: 'Outro'
+    },
+    "2": {
+      de: 'Hilf dem Storyteller beim Finale und erhalte anschließend eine Frequenz',
+      en: 'Hilf dem Storyteller beim Finale und erhalte anschließend eine Frequenz'
+    },
+    "3": {
+      de: 'Du hast keine Frequenz angegeben!',
+      en: 'You did not supply a frequency!'
+    },
+    "4": {
+      de: 'Die eingegebene Frequenz ist nicht korrekt!',
+      en: 'The entered frequency is not correct!'
+    }
+  }
+  text["outro.scanner.init"] = {
+    "1": {
+      de: 'Outro',
+      en: 'Outro'
+    },
+    "2": {
+      de: 'Hilf dem Storyteller beim Finale und erhalte anschließend eine Frequenz',
+      en: 'Hilf dem Storyteller beim Finale und erhalte anschließend eine Frequenz'
+    },
+    "3": {
+      de: 'Du hast keine Frequenz angegeben!',
+      en: 'You did not supply a frequency!'
+    },
+    "4": {
+      de: 'Die eingegebene Frequenz ist nicht korrekt!',
+      en: 'The entered frequency is not correct!'
+    }
+  }
+  text["outro.storyteller.init"] = {
+    "1": {
+      de: 'Teile diese Frequenz mit deinem Team, um das Spiel abzuschließen.',
+      en: 'Teile diese Frequenz mit deinem Team, um das Spiel abzuschließen.'
+    }
+  }
   text["outro.1"] = {
     "1": {
       de: 'Ok.Ich habe das ganze Haus durchsucht und kann keine einzige Rune mehr finden.§Das was ihr bis jetzt übersetzt habt, muss uns reichen.',
@@ -716,6 +774,14 @@ getTranslations = function () {
     "4": {
       de: 'Zauberbuch',
       en: 'Zauberbuch'
+    },
+    "5": {
+      de: 'Antwort',
+      en: 'Antwort'
+    },
+    "6": {
+      de: 'Bist du sicher?',
+      en: 'Bist du sicher?'
     }
   }
   text["outro.4.ball"] = {

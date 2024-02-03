@@ -126,8 +126,7 @@ Spuk & Schreck
       const secretMessage = setup.text['secret'][1][setup.i18n.langs[settings.lang]];
 
       const messageContainer = document.getElementById('messageContainer');
-      console.log(secretMessage);
-      console.log(messageContainer);
+
       let lettersFound = [];
       State.variables.letter.forEach((isTrue, index) => {
         if (isTrue) {
@@ -184,6 +183,8 @@ Spuk & Schreck
 
 <<set $validGhostFrequences = [201, 723, 447, 304, 521, 656, 133, 421, 890, 667]>>
 
+<<set $validOutroFrequence = 999>>
+
 <<set $letter to [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]>>
 
 <<set $inventory to [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]>>
@@ -234,7 +235,7 @@ Spuk & Schreck
 <<link [[$shortcutText|"Dev"]]>><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
 
 <<set $feedbackText = setup.text['StoryMenu'][5][setup.i18n.langs[settings.lang]]>>
-<<link [[$feedbackText|"outro.init"]]>><<addclass "#ui-bar" "stowed">><</link>>
+<<link [[$feedbackText|"outro.8"]]>><<addclass "#ui-bar" "stowed">><</link>>
 
 /* <<set $helpText = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
 <<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
@@ -1034,7 +1035,19 @@ $(document).one(":passagedisplay", function() {
   <<elseif $playerCount === 1>>
     <button class="next">[[|hotspot.ar]]</button>
   <<else>>
-    <button class="next">[[|hotspot.questions]]</button>
+    <<button OK>>
+      <<script>>
+      jQuery(Dialog
+          .setup(setup.text[passage()][11][setup.i18n.langs[settings.lang]]))
+          .append("<p>".concat(setup.text[passage()][12][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+          .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+          .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+          .find("#restart-ok")
+          .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "hotspot.questions" >>');})),Dialog.close()})
+        ),!0;
+      Dialog.open();
+      <</script>>
+    <</button>>    
   <</if>>
 </div>
 
@@ -1121,7 +1134,7 @@ $(document).one(":passagedisplay", function() {
     <<if $isNavigator>>
       <<script>>
         $(document).one(":passagedisplay", function() {
-          $('<button class="return" tabindex="0"><a data-passage="hotspot.questions" class="link-internal" role="link" tabindex="0"></a></button>')
+          $('<button class="return" tabindex="0"><a class="link-internal" role="link" tabindex="0"></a></button>')
             .ariaClick((function(){return $.wiki('<<if $riddleCount === 2>><<goto "hotspot.frequence">><<else>><<set $riddleCount to $riddleCount - 2>><<goto "hotspot.questions">><</if>>');}))
             .prependTo('.btn-group');
         })
@@ -1163,7 +1176,7 @@ $(document).one(":passagedisplay", function() {
         .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
         .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
         .find("#restart-ok")
-        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<if $hotspot === 10>><<goto "outro.init">><<else>><<goto "main.navigator">><</if>>');})),Dialog.close()})),!0;
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<if $hotspot === 10>><<goto "outro.navigator.init">><<else>><<goto "main.navigator">><</if>>');})),Dialog.close()})),!0;
         $("#restart-cancel")
         .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<set $riddleCount to $riddleCount - 1>><<goto "hotspot.questions" >>');})),Dialog.close()})),!0;
     Dialog.open();
@@ -1208,7 +1221,19 @@ $(document).one(":passagedisplay", function() {
   <<elseif $isNavigatorScanner>>
     <button class="next">[[|hotspot.ghost]]</button>
   <<else>>
-    <button class="next">[[|hotspot.questions]]</button>
+    <<button OK>>
+      <<script>>
+      jQuery(Dialog
+          .setup(setup.text[passage()][3][setup.i18n.langs[settings.lang]]))
+          .append("<p>".concat(setup.text[passage()][4][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+          .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+          .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+          .find("#restart-ok")
+          .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "hotspot.questions" >>');})),Dialog.close()})
+        ),!0;
+      Dialog.open();
+      <</script>>
+    <</button>>
   <</if>>
 </div>
 
@@ -1340,6 +1365,74 @@ $(document).one(":passagedisplay", function() {
   $.wiki('<<goto "outro.1">>')
 <</script>>
 
+:: outro.navigator.init {"position":"1500,500","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <<numberbox "_answer" 0>>
+
+  <<button "Check">>
+    <<if _answer is "">>
+      <<script>>UI.alert(setup.text[passage()][3][setup.i18n.langs[settings.lang]]);<</script>>
+    <<elseif $validOutroFrequence === _answer>>
+      <<goto "outro.8">>
+    <<else>>
+      <<script>>UI.alert(setup.text[passage()][4][setup.i18n.langs[settings.lang]]);<</script>>
+      <<goto "outro.scanner.init">>
+    <</if>>
+  <</button>>
+</div>
+
+:: outro.scanner.init {"position":"1500,500","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <<numberbox "_answer" 0>>
+
+  <<button "Check">>
+    <<if _answer is "">>
+      <<script>>UI.alert(setup.text[passage()][3][setup.i18n.langs[settings.lang]]);<</script>>
+    <<elseif $validOutroFrequence === _answer>>
+      <<goto "outro.7">>
+    <<else>>
+      <<script>>UI.alert(setup.text[passage()][4][setup.i18n.langs[settings.lang]]);<</script>>
+      <<goto "outro.scanner.init">>
+    <</if>>
+  <</button>>
+</div>
+
+:: outro.storyteller.init {"position":"1500,500","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<print $validOutroFrequence>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.8]]</button>
+</div>
+
 :: outro.1 {"position":"700,700","size":"100,100"}
 
 <<audio ":playing:not(:bg)" stop>>
@@ -1375,13 +1468,43 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <<button setup.text['outro.3'][2][setup.i18n.langs[settings.lang]]>>
-    <<goto "outro.4.ball">>
+    <<script>>
+    jQuery(Dialog
+        .setup(setup.text[passage()][5][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][6][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "outro.4.ball" >>');})),Dialog.close()})
+      ),!0;
+    Dialog.open();
+    <</script>>
   <</button>>
   <<button setup.text['outro.3'][3][setup.i18n.langs[settings.lang]]>>
-    <<goto "outro.4.mask">>
+    <<script>>
+    jQuery(Dialog
+        .setup(setup.text[passage()][5][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][6][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "outro.4.mask" >>');})),Dialog.close()})
+      ),!0;
+    Dialog.open();
+    <</script>>
   <</button>>
   <<button setup.text['outro.3'][4][setup.i18n.langs[settings.lang]]>>
-    <<goto "outro.4.book">>
+    <<script>>
+    jQuery(Dialog
+        .setup(setup.text[passage()][5][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][6][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "outro.4.book" >>');})),Dialog.close()})
+      ),!0;
+    Dialog.open();
+    <</script>>
   <</button>>
 </div>
 
@@ -1427,7 +1550,11 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|outro.7]]</button>
+  <<if $playerCount === 1>>
+    <button class="next">[[|outro.7]]</button>
+  <<else>>
+    <button class="next">[[|outro.storyteller.init]]</button>
+  <</if>>
 </div>
 
 :: outro.5.book {"position":"700,1300","size":"100,100"}
@@ -1436,7 +1563,11 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|outro.7]]</button>
+  <<if $playerCount === 1>>
+    <button class="next">[[|outro.7]]</button>
+  <<else>>
+    <button class="next">[[|outro.storyteller.init]]</button>
+  <</if>>
 </div>
 
 :: outro.6 {"position":"700,1700","size":"100,100"}
@@ -1445,7 +1576,11 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|outro.7]]</button>
+  <<if $playerCount === 1>>
+    <button class="next">[[|outro.7]]</button>
+  <<else>>
+    <button class="next">[[|outro.storyteller.init]]</button>
+  <</if>>
 </div>
 
 :: outro.7 {"position":"700,1900","size":"100,100"}
@@ -1490,6 +1625,11 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
+  <<if $playerCount === 1 || $isScanner || $isNavigatorScanner>>
+    <button class="return">[[|outro.7]]</button>
+  <<elseif $isStoryteller>>
+    <button class="return">[[|outro.storyteller.init]]</button>
+  <</if>>
   <button class="retry">[[|passage()]]</button>
 </div>
 
