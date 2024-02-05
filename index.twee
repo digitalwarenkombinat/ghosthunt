@@ -237,7 +237,7 @@ Spuk & Schreck
 <<set $feedbackText = setup.text['StoryMenu'][5][setup.i18n.langs[settings.lang]]>>
 <<link [[$feedbackText|"outro.8"]]>><<addclass "#ui-bar" "stowed">><</link>>
 
-/* <<set $helpText = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
+/*<<set $helpText = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
 <<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
 
 <<set $legalText = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
@@ -609,7 +609,6 @@ $(document).one(":passagedisplay", function() {
 <<set $setupCompleted to true>>
 
 <div class="wrapper">
-  <h2><<txt>></h2>
   <model-viewer 
     id="model-viewer" 
     ar auto-rotate 
@@ -622,6 +621,7 @@ $(document).one(":passagedisplay", function() {
     camera-controls>
     <button slot="ar-button" id="ar-button"><<txt>></button>
   </model-viewer>
+  <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
@@ -908,7 +908,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: main.scanner.init {"position":"1100,500","size":"100,100"}
-<<audio ":playing:not(bg)" stop>>
+<<audio ":playing:not(:bg)" stop>>
 
 <div class="wrapper">
   <h1><<txt>></h1>
@@ -924,7 +924,7 @@ $(document).one(":passagedisplay", function() {
 :: main.scanner {"position":"1100,700","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/setup.scanner.jpg)');
 <</script>>
 
 <<audio ":playing:not(:bg)" stop>>
@@ -955,7 +955,7 @@ $(document).one(":passagedisplay", function() {
 :: main.scanner.ghost {"position":"1100,700","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/setup.scanner.jpg)');
 <</script>>
 
 <div class="wrapper">
@@ -982,15 +982,15 @@ $(document).one(":passagedisplay", function() {
 :: main.storyteller {"position":"1300,700","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/setup.storyteller.jpg)');
 <</script>>
 
 <div class="wrapper">
   <h1><<txt>></h1>
-  <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
+  <h2><<txt>></h2>
   <<numberbox "_answer" 0 autofocus>>
   <<button "Check">>
     <<if _answer is "">>
@@ -1025,7 +1025,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: hotspot.intro {"position":"1300,1700","size":"100,100"}
-<<audio ":playing:not(bg)" stop>>
+<<audio ":playing:not(:bg)" stop>>
 <<video>>
 
 <div class="btn-group">
@@ -1097,7 +1097,7 @@ $(document).one(":passagedisplay", function() {
 :: hotspot.questions {"position":"900,1500","size":"100,100"}
 
 <script>
-  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 </script>
 
 <<if $riddleCount <= 5>>
@@ -1193,7 +1193,7 @@ $(document).one(":passagedisplay", function() {
 :: hotspot.ar {"position":"1100,900","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 
   $(document).one(":passagedisplay", function() {
     const modelViewer = document.getElementById('model-viewer');
@@ -1205,7 +1205,6 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 
 <div class="wrapper">
-  <h2><<txt>></h2>
   <model-viewer 
     id="model-viewer" 
     ar auto-rotate 
@@ -1216,6 +1215,7 @@ $(document).one(":passagedisplay", function() {
     camera-controls>
     <button slot="ar-button" id="ar-button"><<txt>></button>
   </model-viewer>
+  <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
@@ -1254,11 +1254,9 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 
 <div class="wrapper">
-  <h2><<txt>></h2>
   <model-viewer 
     id="model-viewer" 
-    ar
-    auto-rotate 
+    ar auto-rotate 
     poster="images/loading.png"
     autoplay 
     shadow-intensity="2"
@@ -1266,6 +1264,7 @@ $(document).one(":passagedisplay", function() {
     camera-controls>
     <button slot="ar-button" id="ar-button"><<txt>></button>
   </model-viewer>
+  <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
@@ -1284,7 +1283,7 @@ $(document).one(":passagedisplay", function() {
 :: hotspot.solution {"position":"1300,1100","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 <</script>>
 
 <div class="wrapper">
@@ -1310,7 +1309,7 @@ $(document).one(":passagedisplay", function() {
 :: hotspot.rune {"position":"1300,1300","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 <</script>>
 
 <<audio ":playing:not(:bg)" stop>>
@@ -1335,7 +1334,7 @@ $(document).one(":passagedisplay", function() {
 :: hotspot.secret {"position":"1300,1500","size":"100,100"}
 
 <script>
-  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 </script>
 
 <div class="wrapper">
@@ -2057,7 +2056,7 @@ audio, canvas, progress, video {
 
 h1 {
   font-family: "Creepster", sans-serif;
-  font-size: 8vh;
+  font-size: 6vh;
   font-style: normal;
   font-weight: 400;
   line-height: 8vh;

@@ -158,8 +158,8 @@ getTranslations = function () {
   }
   text["setup.storyteller"] = {
     "1": {
-      de: 'Storyteller',
-      en: 'Storyteller'
+      de: 'Wähle deine Rolle',
+      en: 'Choose your role'
     },
     "2": {
       de: 'Storyteller behalten den Überblick. Sie sammeln Geschichtenfragmente und lösen Rätsel unter Zeitdruck.',
@@ -172,16 +172,16 @@ getTranslations = function () {
   }
   text["setup.navigator"] = {
     "1": {
-      de: 'Navigator/Scanner',
-      en: 'Navigator/Scanner'
+      de: 'Wähle deine Rolle',
+      en: 'Choose your role'
     },
     "2": {
       de: 'Navigatoren/Scanner sind aufmerksam. Ihre Aufgabe ist es, ihr Team zu den Tatorten zu führen und diese mit der Kamera zu untersuchen',
       en: 'Navigators/Scanners are methodical. Their job is to lead your team to the crime scenes and investigate them with your AR camera.'
     },
     "3": {
-      de: 'Navigator',
-      en: 'Navigator'
+      de: 'Wähle deine Rolle',
+      en: 'Choose your role'
     },
     "4": {
       de: 'Navigatoren kennen sich mit Karten aus. Ihre Aufgabe ist es, das Team zu den Tatorten zu führen.',
@@ -194,8 +194,8 @@ getTranslations = function () {
   }
   text["setup.scanner"] = {
     "1": {
-      de: 'Scanner',
-      en: 'Scanner'
+      de: 'Wähle deine Rolle',
+      en: 'Choose your role'
     },
     "2": {
       de: 'Scanner brauchen ein gutes Auge. Mit Hilfe der AR-Kamera können sie Geistertatorte sichtbar machen und nach Hinweisen suchen.',
@@ -222,12 +222,12 @@ getTranslations = function () {
   }
   text["setup.camera"] = {
     "1": {
-      de: 'Wir benötigen Zugriff auf deine Kamera, um dir die Geister zu zeigen.',
-      en: 'We need access to your camera to show you the ghosts.'
+      de: 'AR-Kamera Test',
+      en: 'AR-Kamera Test'
     },
     "2": {
-      de: 'AR-Kamera Test',
-      en: 'AR-Kamera Test '
+      de: 'Wir benötigen Zugriff auf deine Kamera, um dir die Geister zu zeigen.',
+      en: 'We need access to your camera to show you the ghosts.'
     }
   }
   text["intro.welcome"] = {
@@ -293,7 +293,7 @@ getTranslations = function () {
   }
   text["intro.6"] = {
     "1": {
-      de: 'Geheimbotschaft',
+      de: 'Okkulte Botschaft',
       en: 'Secret message'
     }
   }
@@ -389,8 +389,8 @@ getTranslations = function () {
   }
   text["main.storyteller"] = {
     "1": {
-      de: 'Storyteller',
-      en: 'Storyteller'
+      de: 'Frequenz Eingabe',
+      en: 'Input Frequency'
     },
     "2": {
       de: 'Wenn ihr einen Tatort erreicht habt, gibt der Navigator dir eine Frequenz, die du hier eingegeben musst.',
@@ -479,12 +479,12 @@ getTranslations = function () {
   }
   text["hotspot.ar"] = {
     "1": {
-      de: 'Öffne die Ghost Cam, untersuche den Tatort und mache Fotos von allem, das dir wichtig erscheint.',
-      en: 'Open the ghost cam, examine the crime scene and take photos of everything that seems important to you.'
-    },
-    "2": {
       de: 'Ghost Cam aktivieren',
       en: 'Activate Ghost Cam'
+    },
+    "2": {
+      de: 'Öffne die Ghost Cam, untersuche den Tatort und mache Fotos von allem, das dir wichtig erscheint.',
+      en: 'Open the ghost cam, examine the crime scene and take photos of everything that seems important to you.'
     },
     "3": {
       de: 'Check',
@@ -497,12 +497,12 @@ getTranslations = function () {
   }
   text["hotspot.ghost"] = {
     "1": {
-      de: 'Ein neuer Geist ist ab sofort in deinem Inventar verfügbar.',
-      en: 'A new ghost is now available in your inventory.'
-    },
-    "2": {
       de: 'Ghost Cam aktivieren',
       en: 'Activate Ghost Cam'
+    },
+    "2": {
+      de: 'Ein neuer Geist ist ab sofort in deinem Inventar verfügbar.',
+      en: 'A new ghost is now available in your inventory.'
     }
   }
   text["hotspot.solution"] = {
@@ -593,8 +593,8 @@ getTranslations = function () {
       en: 'Very good! All questions have been answered correctly. You have translated an occult rune.'
     },
     "11": {
-      de: 'Rune',
-      en: 'Rune'
+      de: 'Okkulte Rune',
+      en: 'Occult Runes'
     },
     "12": {
       de: 'Leider wurden nicht alle Fragen richtig beantwortet. Daher kannst du keine weitere Rune entschlüsseln.',
@@ -603,8 +603,8 @@ getTranslations = function () {
   }
   text["hotspot.secret"] = {
     "1": {
-      de: 'Ziel',
-      en: 'Goal'
+      de: 'Okkulte Botschaft',
+      en: 'Occult Message'
     }
   }
   text["secret"] = {
