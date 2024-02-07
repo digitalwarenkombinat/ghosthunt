@@ -612,7 +612,7 @@ $(document).one(":passagedisplay", function() {
   <model-viewer 
     id="model-viewer" 
     ar auto-rotate 
-    src="models/setup/setup.camera.glb" 
+    src="models/setup/setup.camera.glb"
     ios-src="models/setup/setup.camera.usdz"
     poster="images/loading.png"
     autoplay 
@@ -1720,43 +1720,55 @@ $(document).one(":passagedisplay", function() {
   <<script>>
     $(document).one(":passagedisplay", function() {
 
-      function createModelViewer(element) {
-        const modelViewer = document.createElement('model-viewer');
-        modelViewer.src = `models/${element}/${element}.glb`;
-        modelViewer.iosSrc = `models/${element}/${element}.usdz`;
-        modelViewer.setAttribute('ar', true);
-        modelViewer.setAttribute('auto-rotate', true);
-        modelViewer.setAttribute('poster', 'images/loading.png');
-        modelViewer.setAttribute('autoplay', true);
-        modelViewer.setAttribute('shadow-intensity', '2');
-        modelViewer.setAttribute('shadow-softness', '0');
-        modelViewer.setAttribute('camera-controls', true);
+      const modelViewer = document.querySelector("model-viewer");
 
-        const arButton = document.createElement('button');
-        arButton.slot = 'ar-button';
-        arButton.id = 'ar-button';
-        arButton.textContent = setup.text['Inventar'][3][setup.i18n.langs[settings.lang]];
-
-        modelViewer.appendChild(arButton);
-
-        return modelViewer;
+      window.switchSrc = (element, name) => {
+        const base = `models/${name}.hotspot/${name}.hotspot.ghost`;
+        modelViewer.src = base + '.glb';
+        modelViewer.iosSrc = base + '.usdz';
+        const slides = document.querySelectorAll(".slide");
+        slides.forEach((element) => {element.classList.remove("selected");});
+        element.classList.add("selected");
       };
 
-      const container = document.getElementById('model-viewer-container');
-      for (const element of State.variables.inventory) {
-        if (element != 0) {
-          const modelViewerElement = createModelViewer(element);
-          container.appendChild(modelViewerElement);
-
-          const title = document.createElement("h1");
-          const titleText = document.createTextNode(element);
-          title.appendChild(titleText);
-          container.insertBefore(title, modelViewerElement);
-        }
+      if (modelViewer) {
+        document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
+          ev.preventDefault();
+        });
       }
     })
   <</script>>
-  <div id="model-viewer-container"></div>
+  <<if $hotspot > 0>>
+    <model-viewer
+      id="model-viewer" 
+      ar auto-rotate 
+      src="models/1.hotspot/1.hotspot.ghost.glb"
+      ios-src="models/1.hotspot/1.hotspot.ghost.glb"
+      poster="models/1.hotspot/1.hotspot.poster.webp"
+      autoplay 
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls
+      alt="A spook carousel">
+
+      <button slot="ar-button" id="ar-button"><<txt>></button>
+
+      <div class="slider">
+        <div class="slides">
+          <button class="slide selected" onclick="switchSrc(this, '1')" style="background-image: url('models/1.hotspot/1.hotspot.poster.webp');"></button>
+          <<if $hotspot > 1>><button class="slide" onclick="switchSrc(this, '2')" style="background-image: url('models/2.hotspot/2.hotspot.poster.webp');"></button><</if>>
+          <<if $hotspot > 2>><button class="slide" onclick="switchSrc(this, '3')" style="background-image: url('models/3.hotspot/3.hotspot.poster.webp');"></button><</if>>
+          <<if $hotspot > 3>><button class="slide" onclick="switchSrc(this, '4')" style="background-image: url('models/4.hotspot/4.hotspot.poster.webp');"></button><</if>>
+          <<if $hotspot > 4>><button class="slide" onclick="switchSrc(this, '5')" style="background-image: url('models/5.hotspot/5.hotspot.poster.webp');"></button><</if>>
+          <<if $hotspot > 5>><button class="slide" onclick="switchSrc(this, '6')" style="background-image: url('models/6.hotspot/6.hotspot.poster.webp');"></button><</if>>
+          <<if $hotspot > 6>><button class="slide" onclick="switchSrc(this, '7')" style="background-image: url('models/7.hotspot/7.hotspot.poster.webp');"></button><</if>>
+          <<if $hotspot > 7>><button class="slide" onclick="switchSrc(this, '8')" style="background-image: url('models/8.hotspot/8.hotspot.poster.webp');"></button><</if>>
+          <<if $hotspot > 8>><button class="slide" onclick="switchSrc(this, '9')" style="background-image: url('models/9.hotspot/9.hotspot.poster.webp');"></button><</if>>
+          <<if $hotspot > 9>><button class="slide" onclick="switchSrc(this, '10')" style="background-image: url('models/10.hotspot/10.hotspot.poster.webp');"></button><</if>>
+        </div>
+      </div>
+    </model-viewer>
+  <</if>>
 
 </div>
 
@@ -2473,6 +2485,50 @@ model-viewer {
   height: 50vh;
   margin: 0 2vw;
   width: 90%;
+}
+
+.slider {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  position: absolute;
+  top: 16px;
+}
+
+.slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slide {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--background-color);
+  margin-right: 10px;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+}
+
+.slide.selected {
+  background-color: var(--background-color);
+  border: 2px solid var(--primary-dark-color);
+}
+
+.slide:focus {
+  outline: none;
+}
+
+.slide:focus-visible {
+  outline: 1px solid var(--primary-dark-color);
 }
 
 .Hotspot {
