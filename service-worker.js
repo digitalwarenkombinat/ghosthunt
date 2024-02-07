@@ -1,4 +1,4 @@
-const cacheName = "ghosthunt-v0.3.7";
+const cacheName = "ghosthunt-v0.3.8";
 const urlsToCacheiOS = [
   '/',
   '/index.html',
@@ -19,6 +19,7 @@ const urlsToCacheiOS = [
   '/images/icon-192.png',
   '/images/icon-512.png',
   '/images/icon.png',
+  '/images/intro.1.jpg',
   '/images/intro.1.png',
   '/images/intro.1.title.png',
   '/images/intro.3.jpg',
@@ -26,6 +27,12 @@ const urlsToCacheiOS = [
   '/images/ios_share.svg',
   '/images/loading.png',
   '/images/menu.jpg',
+  '/images/outro.3.jpg',
+  '/images/outro.7.jpg',
+  '/images/outro.8.jpg',
+  '/images/setup.navigator.jpg',
+  '/images/setup.scanner.jpg',
+  '/images/setup.storyteller.jpg',
   '/models/1.hotspot/1.hotspot.ghost.usdz',
   '/models/1.hotspot/1.hotspot.usdz',
   '/models/2.hotspot/2.hotspot.ghost.usdz',
@@ -74,6 +81,12 @@ const urlsToCacheiOS = [
   '/videos/intro.5.mp4',
   '/videos/intro.7.mp4',
   '/videos/intro.8.mp4',
+  '/videos/outro.1.mp4',
+  '/videos/outro.2.mp4',
+  '/videos/outro.4.mp4',
+  '/videos/outro.ball.mp4',
+  '/videos/outro.book.mp4',
+  '/videos/outro.mask.mp4',
 ];
 
 const urlsToCacheAndroid = [
@@ -96,6 +109,7 @@ const urlsToCacheAndroid = [
   '/images/icon-192.png',
   '/images/icon-512.png',
   '/images/icon.png',
+  '/images/intro.1.jpg',
   '/images/intro.1.png',
   '/images/intro.1.title.png',
   '/images/intro.3.jpg',
@@ -103,6 +117,12 @@ const urlsToCacheAndroid = [
   '/images/ios_share.svg',
   '/images/loading.png',
   '/images/menu.jpg',
+  '/images/outro.3.jpg',
+  '/images/outro.7.jpg',
+  '/images/outro.8.jpg',
+  '/images/setup.navigator.jpg',
+  '/images/setup.scanner.jpg',
+  '/images/setup.storyteller.jpg',
   '/models/1.hotspot/1.hotspot.ghost.glb',
   '/models/1.hotspot/1.hotspot.glb',
   '/models/2.hotspot/2.hotspot.ghost.glb',
@@ -151,6 +171,12 @@ const urlsToCacheAndroid = [
   '/videos/intro.5.mp4',
   '/videos/intro.7.mp4',
   '/videos/intro.8.mp4',
+  '/videos/outro.1.mp4',
+  '/videos/outro.2.mp4',
+  '/videos/outro.4.mp4',
+  '/videos/outro.ball.mp4',
+  '/videos/outro.book.mp4',
+  '/videos/outro.mask.mp4',
   ];
 
 const self = this;
