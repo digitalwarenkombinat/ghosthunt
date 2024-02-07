@@ -1848,6 +1848,17 @@ Setting.addList('lang', {
 
 setup.text = getTranslations();
 
+var settingMusic = function () {
+  SimpleAudio.mute(!settings.music);
+};
+
+Setting.addToggle("music", {
+	label    : "Audio",
+	default  : true,
+	onInit   : settingMusic,
+	onChange : settingMusic
+});
+
 /*************
 Mapbox imports
 *************/
