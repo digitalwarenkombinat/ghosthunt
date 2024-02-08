@@ -293,7 +293,7 @@ getTranslations = function () {
   }
   text["intro.6"] = {
     "1": {
-      de: 'Okkulte Botschaft',
+      de: 'Runenbotschaft',
       en: 'Secret message'
     }
   }
@@ -603,8 +603,8 @@ getTranslations = function () {
   }
   text["hotspot.secret"] = {
     "1": {
-      de: 'Okkulte Botschaft',
-      en: 'Occult Message'
+      de: 'Runenbotschaft',
+      en: 'Secret Message'
     }
   }
   text["secret"] = {
@@ -822,14 +822,14 @@ getTranslations = function () {
   }
   text["outro.6"] = {
     "1": {
-      de: 'Hey Leute. Holger hier!§Ich wollte euch nochmal danken und euch gratulieren.§Ihr habt die Feuertaufe bestanden und seit nun vollwertige Ghostwalker.§Der nächste Fall kommt bestimmt.§Ich melde mich. Holger out!',
-      en: 'Hey Leute. Holger hier!§Ich wollte euch nochmal danken und euch gratulieren.§Ihr habt die Feuertaufe bestanden und seit nun vollwertige Ghostwalker.§Der nächste Fall kommt bestimmt.§Ich melde mich. Holger out!'
+      de: 'Hey Leute. Holger hier!§Ich wollte euch nochmal danken und euch gratulieren.§Ihr habt die Feuertaufe bestanden und seit nun vollwertige Geisterjäger.§Der nächste Fall kommt bestimmt.§Ich melde mich. Holger out!',
+      en: 'Hey Leute. Holger hier!§Ich wollte euch nochmal danken und euch gratulieren.§Ihr habt die Feuertaufe bestanden und seit nun vollwertige Geisterjäger.§Der nächste Fall kommt bestimmt.§Ich melde mich. Holger out!'
     }
   }
   text["outro.7"] = {
     "1": {
-      de: 'Teile dieses Foto unter dem Hashtag #hashtag',
-      en: 'Teile dieses Foto unter dem Hashtag #hashtag'
+      de: 'Teile dieses Foto unter dem Hashtag #spooktours',
+      en: 'Teile dieses Foto unter dem Hashtag #spooktours'
     },
     "2": {
       de: 'AR-Kamera öffnen',
@@ -838,8 +838,8 @@ getTranslations = function () {
   }
   text["outro.8"] = {
     "1": {
-      de: 'Vielen Dank, dass ihr Ghost Hunt gespielt habt. Wir hoffen sehr, dass es euch gefallen hat.',
-      en: 'Vielen Dank, dass ihr Ghost Hunt gespielt habt.§Wir hoffen sehr, dass es euch gefallen hat.'
+      de: 'Vielen Dank, dass ihr Spook Tours gespielt habt. Wir hoffen sehr, dass es euch gefallen hat.',
+      en: 'Vielen Dank, dass ihr Spook Tours gespielt habt.§Wir hoffen sehr, dass es euch gefallen hat.'
     },
     "2": {
       de: 'Wenn dem so ist, freuen wir uns sehr über eine gute Bewertung bei GetYourGuide.',
