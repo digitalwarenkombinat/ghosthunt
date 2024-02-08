@@ -1326,6 +1326,11 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
+  <<if $$playerCount === 1>>
+    <button class="return">[[|hotspot.ghost]]</button>
+  <<else>>
+    <button class="return">[[|hotspot.frequence.ghost]]</button>
+  <</if>>
   <button class="retry">[[|passage()]]</button>
   <<set $riddleCorrectCount to 0>>
   <button class="next">[[|hotspot.secret]]</button>
@@ -1344,6 +1349,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
+  <button class="return">[[|hotspot.rune]]</button>
   <button class="retry">[[|passage()]]</button>
   <button class="next">[[|hotspot.outro]]</button>
 </div>
@@ -1353,6 +1359,7 @@ $(document).one(":passagedisplay", function() {
 <<video>>
 
 <div class="btn-group">
+  <button class="return">[[|hotspot.secret]]</button>
   <button class="retry">[[|passage()]]</button>
 
   <<if $hotspot === 10>>
