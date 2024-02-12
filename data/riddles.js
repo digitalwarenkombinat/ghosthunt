@@ -93,8 +93,8 @@ getRiddles = function () {
       },
       {
         question: {
-          de: "Was ist nicht in der Szene?",
-          en: "What is not in the scene?"
+          de: "Was befindet sich nicht an diesem paranormalen Ort?",
+          en: "What can’t be found in this paranormal place?"
         },
         answers: [
           { de: "Teller", en: "plates", correct: false, points: 0 },
@@ -175,56 +175,56 @@ getRiddles = function () {
       {
         question: {
           de: "Wer lauert in der Ecke?",
-          en: "Wer lauert in der Ecke?"
+          en: "Who is lurking in the corner?"
         },
         answers: [
-          { de: "Vampir", en: "Vampir", correct: false, points: 0 },
-          { de: "Hexe", en: "exe", correct: false, points: 0 },
-          { de: "Werwolf", en: "Werwolf", correct: true, points: 10 }
+          { de: "Vampir", en: "vampire", correct: false, points: 0 },
+          { de: "Hexe", en: "witch", correct: false, points: 0 },
+          { de: "Werwolf", en: "werewolf", correct: true, points: 10 }
         ]
       },
       {
         question: {
           de: "Wer ist das Opfer?",
-          en: "Wer ist das Opfer?"
+          en: "Who is the victim?"
         },
         answers: [
-          { de: "Frau", en: "Frau", correct: true, points: 10 },
-          { de: "Mann", en: "Mann", correct: false, points: 0 },
-          { de: "Junge", en: "Junge", correct: false, points: 0 }
+          { de: "Frau", en: "woman", correct: true, points: 10 },
+          { de: "Mann", en: "man", correct: false, points: 0 },
+          { de: "Junge", en: "boy", correct: false, points: 0 }
         ]
       },
       {
         question: {
           de: "Wodurch ist das Opfer gestorben?",
-          en: "Wodurch ist das Opfer gestorben?"
+          en: "What killed the victim?"
         },
         answers: [
-          { de: "Elektroschock", en: "Elektroschock", correct: true, points: 10 },
-          { de: "Ertrinken", en: "Ertrinken", correct: false, points: 0 },
-          { de: "Guillotine", en: "Guillotine", correct: false, points: 0 }
+          { de: "Elektroschock", en: "electric shock", correct: true, points: 10 },
+          { de: "Ertrinken", en: "drowning", correct: false, points: 0 },
+          { de: "Guillotine", en: "guillotine", correct: false, points: 0 }
         ]
       },
       {
         question: {
           de: "Wovon gibt es genau drei?",
-          en: "Wovon gibt es genau drei?"
+          en: "Of which there are exactly three?"
         },
         answers: [
-          { de: "Bücher", en: "Bücher", correct: false, points: 0 },
-          { de: "Kerzen", en: "Kerzen", correct: true, points: 10 },
-          { de: "Klopapierrollen", en: "Klopapierrollen", correct: false, points: 0 }
+          { de: "Bücher", en: "books", correct: false, points: 0 },
+          { de: "Kerzen", en: "candles", correct: true, points: 10 },
+          { de: "Klopapierrollen", en: "toilet paper rolls", correct: false, points: 0 }
         ]
       },
       {
         question: {
           de: "Was steht nicht offen?",
-          en: "Was steht nicht offen?"
+          en: "What is not open?"
         },
         answers: [
-          { de: "Fenster", en: "Fenster", correct: false, points: 0 },
-          { de: "Hängeschrank", en: "Hängeschrank", correct: false, points: 0 },
-          { de: "Spülkasten", en: "Spülkasten", correct: true, points: 10 }
+          { de: "Fenster", en: "window", correct: false, points: 0 },
+          { de: "Hängeschrank", en: "wall cupboard", correct: false, points: 0 },
+          { de: "Spülkasten", en: "flushing cistern", correct: true, points: 10 }
         ]
       }
     ],
@@ -232,56 +232,56 @@ getRiddles = function () {
       {
         question: {
           de: "Was passiert hier?",
-          en: "Was passiert hier?"
+          en: "What happens here?"
         },
         answers: [
-          { de: "Beschwörung", en: "Beschwörung", correct: true, points: 10 },
-          { de: "Exorzismus", en: "Exorzismus", correct: false, points: 0 },
-          { de: "Folter", en: "Folter", correct: false, points: 0 }
+          { de: "Beschwörung", en: "conjuration", correct: true, points: 10 },
+          { de: "Exorzismus", en: "exocism", correct: false, points: 0 },
+          { de: "Folter", en: "torture", correct: false, points: 0 }
         ]
       },
       {
         question: {
           de: "Was hat die Beschwörerin in der Hand?",
-          en: "Was hat die Beschwörerin in der Hand?"
+          en: "What does the conjurer have in her hand?"
         },
         answers: [
-          { de: "Kerze", en: "Kerze", correct: false, points: 0 },
-          { de: "Messer", en: "Messer", correct: false, points: 0 },
-          { de: "Buch", en: "Buch", correct: true, points: 10 }
+          { de: "Kerze", en: "candle", correct: false, points: 0 },
+          { de: "Messer", en: "knife", correct: false, points: 0 },
+          { de: "Buch", en: "book", correct: true, points: 10 }
         ]
       },
       {
         question: {
-          de: "Was trägt die Beschwörerin im Gesicht?",
-          en: "Was trägt die Beschwörerin im Gesicht?"
+          de: "Was steht hinter dem Schreibtisch?",
+          en: "What is behind the desk?"
         },
         answers: [
-          { de: "Maske", en: "Maske", correct: true, points: 10 },
-          { de: "Nichts", en: "Nichts", correct: false, points: 0 },
-          { de: "Schleier", en: "Schleier", correct: false, points: 0 }
+          { de: "Truhe", en: "trunk", correct: true, points: 10 },
+          { de: "Koffer", en: "suitcase", correct: false, points: 0 },
+          { de: "Bücherstapel", en: "pile of books", correct: false, points: 0 }
         ]
       },
       {
         question: {
           de: "Wer wurde beschworen?",
-          en: "Wer wurde beschworen?"
+          en: "Who was conjured?"
         },
         answers: [
-          { de: "Zombie", en: "Zombie", correct: false, points: 0 },
-          { de: "Dämon", en: "Dämon", correct: true, points: 10 },
-          { de: "Guhl", en: "Guhl", correct: false, points: 0 }
+          { de: "Zombie", en: "zombie", correct: false, points: 0 },
+          { de: "Dämon", en: "demon", correct: true, points: 10 },
+          { de: "Guhl", en: "ghoul", correct: false, points: 0 }
         ]
       },
       {
         question: {
           de: "Was befindet sich auf dem Boden?",
-          en: "Was befindet sich auf dem Boden?"
+          en: "What is on the floor?"
         },
         answers: [
-          { de: "Lampe", en: "Lampe", correct: false, points: 0 },
-          { de: "Telefon", en: "Telefon", correct: false, points: 0 },
-          { de: "Pentagramm", en: "Pentagramm", correct: true, points: 10 }
+          { de: "Lampe", en: "lamp", correct: false, points: 0 },
+          { de: "Telefon", en: "telephone", correct: false, points: 0 },
+          { de: "Pentagramm", en: "pentagram", correct: true, points: 10 }
         ]
       }
     ],
@@ -289,56 +289,56 @@ getRiddles = function () {
       {
         question: {
           de: "Wer sitzt im Schaukelstuhl?",
-          en: "Wer sitzt im Schaukelstuhl?"
+          en: "Who is sitting in the rocking chair?"
         },
         answers: [
-          { de: "Henker", en: "Henker", correct: false, points: 0 },
-          { de: "Vampir", en: "Vampir", correct: true, points: 10 },
-          { de: "Guhl", en: "Guhl", correct: false, points: 0 }
+          { de: "Henker", en: "executioner", correct: false, points: 0 },
+          { de: "Vampir", en: "vampire", correct: true, points: 10 },
+          { de: "Guhl", en: "ghoul", correct: false, points: 0 }
         ]
       },
       {
         question: {
-          de: "Was hat der Mann in der Hand?",
-          en: "Was hat der Mann in der Hand?"
+          de: "Was hält der Mann in der Hand?",
+          en: "What is the man holding in his hand?"
         },
         answers: [
-          { de: "Kreuz", en: "Kreuz", correct: true, points: 10 },
-          { de: "Ampulle", en: "Ampulle", correct: false, points: 0 },
-          { de: "Fackel", en: "Fackel", correct: false, points: 0 }
+          { de: "Kreuz", en: "cross", correct: true, points: 10 },
+          { de: "Ampulle", en: "vial", correct: false, points: 0 },
+          { de: "Fackel", en: "torch", correct: false, points: 0 }
         ]
       },
       {
         question: {
           de: "Was ist zerbrochen?",
-          en: "Was ist zerbrochen?"
+          en: "What is broken?"
         },
         answers: [
-          { de: "Spiegel", en: "Spiegel", correct: true, points: 10 },
-          { de: "Flasche", en: "Flasche", correct: false, points: 0 },
-          { de: "Kristallkugel", en: "Kristallkugel", correct: false, points: 0 }
+          { de: "Spiegel", en: "mirror", correct: true, points: 10 },
+          { de: "Flasche", en: "bottle", correct: false, points: 0 },
+          { de: "Kristallkugel", en: "crystal ball", correct: false, points: 0 }
         ]
       },
       {
         question: {
           de: "Wer lauert in der Ecke?",
-          en: "Wer lauert in der Ecke?"
+          en: "Who is lurking in the corner?"
         },
         answers: [
-          { de: "Hexe", en: "Hexe", correct: false, points: 0 },
-          { de: "Zombie", en: "Zombie", correct: false, points: 0 },
-          { de: "Guhl", en: "Guhl", correct: true, points: 10 }
+          { de: "Hexe", en: "witch", correct: false, points: 0 },
+          { de: "Zombie", en: "zombie", correct: false, points: 0 },
+          { de: "Guhl", en: "ghoul", correct: true, points: 10 }
         ]
       },
       {
         question: {
           de: "Was schwebt in der Luft?",
-          en: "Was schwebt in der Luft?"
+          en: "What is floating in the air?"
         },
         answers: [
-          { de: "Holzpfahl", en: "Holzpfahl", correct: false, points: 0 },
-          { de: "Kristallkugel", en: "Kristallkugel", correct: true, points: 10 },
-          { de: "Koffer", en: "Koffer", correct: false, points: 0 }
+          { de: "Holzpfahl", en: "wooden stake", correct: false, points: 0 },
+          { de: "Kristallkugel", en: "crystal ball", correct: true, points: 10 },
+          { de: "Koffer", en: "suitcase", correct: false, points: 0 }
         ]
       }
     ],
@@ -346,56 +346,56 @@ getRiddles = function () {
       {
         question: {
           de: "Wer tanzt umher?",
-          en: "Wer tanzt umher?"
+          en: "Who is dancing around?"
         },
         answers: [
-          { de: "Zombies", en: "Zombies", correct: false, points: 0 },
-          { de: "Hexen", en: "Hexen", correct: false, points: 0 },
-          { de: "Skelette", en: "Skelette", correct: true, points: 10 }
+          { de: "Zombies", en: "zombies", correct: false, points: 0 },
+          { de: "Hexen", en: "witches", correct: false, points: 0 },
+          { de: "Skelette", en: "skeletons", correct: true, points: 10 }
         ]
       },
       {
         question: {
           de: "Was hat die Frau im Rücken?",
-          en: "Was hat die Frau im Rücken?"
+          en: "What has the woman got in her back?"
         },
         answers: [
-          { de: "Messer", en: "Messer", correct: true, points: 10 },
-          { de: "Pistolenkugel", en: "Pistolenkugel", correct: false, points: 0 },
-          { de: "Beil", en: "Axe", correct: false, points: 0 }
+          { de: "Messer", en: "knife", correct: true, points: 10 },
+          { de: "Pistolenkugel", en: "pistol bullet", correct: false, points: 0 },
+          { de: "Beil", en: "axe", correct: false, points: 0 }
         ]
       },
       {
         question: {
           de: "Wovon gibt es genau fünf?",
-          en: "Wovon gibt es genau fünf?"
+          en: "Of which there are exactly five?"
         },
         answers: [
-          { de: "Kerzen", en: "Kerzen", correct: false, points: 0 },
-          { de: "Flaschen", en: "Flaschen", correct: true, points: 10 },
-          { de: "Buchseiten", en: "Buchseiten", correct: false, points: 0 }
+          { de: "Kerzen", en: "candles", correct: false, points: 0 },
+          { de: "Flaschen", en: "bottles", correct: true, points: 10 },
+          { de: "Buchseiten", en: "book pages", correct: false, points: 0 }
         ]
       },
       {
         question: {
           de: "Worauf oder worin liegt die Pistole?",
-          en: "Worauf oder worin liegt die Pistole?"
+          en: "What does the gun lie on or in?"
         },
         answers: [
-          { de: "Sideboard", en: "Sideboard", correct: false, points: 0 },
-          { de: "Sofa", en: "Sofa", correct: false, points: 0 },
-          { de: "Schublade", en: "Schublade", correct: true, points: 10 }
+          { de: "Sideboard", en: "sideboard", correct: false, points: 0 },
+          { de: "Sofa", en: "sofa", correct: false, points: 0 },
+          { de: "Schublade", en: "drawer", correct: true, points: 10 }
         ]
       },
       {
         question: {
           de: "Wovon gibt es genau drei?",
-          en: "Wovon gibt es genau drei?"
+          en: "Of which there are exactly three?"
         },
         answers: [
-          { de: "Schädel", en: "Schädel", correct: false, points: 0 },
-          { de: "Zigaretten", en: "Zigaretten", correct: false, points: 0 },
-          { de: "Kerzen", en: "Kerzen", correct: true, points: 10 }
+          { de: "Schädel", en: "skull", correct: false, points: 0 },
+          { de: "Zigaretten", en: "cigarettes", correct: false, points: 0 },
+          { de: "Kerzen", en: "candles", correct: true, points: 10 }
         ]
       }
     ],
@@ -403,7 +403,7 @@ getRiddles = function () {
       {
         question: {
           de: "Wieviele Knochen trägt die Hexe um den Hals?",
-          en: "Wieviele Knochen trägt die Hexe um den Hals?"
+          en: "How many bones does the witch have around her neck?"
         },
         answers: [
           { de: "7", en: "7", correct: false, points: 0 },
@@ -414,45 +414,45 @@ getRiddles = function () {
       {
         question: {
           de: "Wer wird gefüttert?",
-          en: "Wer wird gefüttert?"
+          en: "Who is being fed?"
         },
         answers: [
-          { de: "Skelette", en: "Skelette", correct: false, points: 0 },
-          { de: "Monster-Baby", en: "Monster-Baby", correct: true, points: 10 },
-          { de: "Dämonen-Hund", en: "Dämonen-Hund", correct: false, points: 0 }
+          { de: "Skelette", en: "skeletons", correct: false, points: 0 },
+          { de: "Monster-Baby", en: "monster baby", correct: true, points: 10 },
+          { de: "Dämonen-Hund", en: "Demon dog", correct: false, points: 0 }
         ]
       },
       {
         question: {
-          de: "Was gibt's zum Essen?",
-          en: "Was gibt's zum Essen?"
+          de: "Was gibt’s zum Essen?",
+          en: "What’s for dinner?"
         },
         answers: [
-          { de: "Hand", en: "Hand", correct: true, points: 10 },
-          { de: "Schlange", en: "Schlange", correct: false, points: 0 },
-          { de: "Knochen", en: "Knochen", correct: false, points: 0 }
+          { de: "Hand", en: "hand", correct: true, points: 10 },
+          { de: "Schlange", en: "snake", correct: false, points: 0 },
+          { de: "Knochen", en: "bone", correct: false, points: 0 }
         ]
       },
       {
         question: {
           de: "Was befindet sich hinter Glas?",
-          en: "Was befindet sich hinter Glas?"
+          en: "What is behind glass?"
         },
         answers: [
-          { de: "Buch", en: "Buch", correct: false, points: 0 },
-          { de: "Monster", en: "Monster", correct: false, points: 0 },
-          { de: "Schädel", en: "Schädel", correct: true, points: 10 }
+          { de: "Buch", en: "book", correct: false, points: 0 },
+          { de: "Monster", en: "monster", correct: false, points: 0 },
+          { de: "Schädel", en: "skull", correct: true, points: 10 }
         ]
       },
       {
         question: {
-          de: "Was gibt es nicht in der Szene?",
-          en: "Was gibt es nicht in der Szene?"
+          de: "Was gibt es nicht an diesem paranormalen Ort?",
+          en: "What can’t be found in this paranormal place?"
         },
         answers: [
-          { de: "Hochbeete", en: "Hochbeete", correct: false, points: 0 },
-          { de: "Flaschen", en: "Flaschen", correct: false, points: 0 },
-          { de: "Feuerstelle", en: "Feuerstelle", correct: true, points: 10 }
+          { de: "Hochbeete", en: "raised beds", correct: false, points: 0 },
+          { de: "Flaschen", en: "bottles", correct: false, points: 0 },
+          { de: "Feuerstelle", en: "fire place", correct: true, points: 10 }
         ]
       }
     ],
@@ -460,18 +460,18 @@ getRiddles = function () {
       {
         question: {
           de: "Was hält der Gimp in der Hand?",
-          en: "Was hält der Gimp in der Hand?"
+          en: "What is the Gimp holding in its hand?"
         },
         answers: [
-          { de: "Fleisch", en: "Fleisch", correct: true, points: 10 },
-          { de: "Axt", en: "Axt", correct: false, points: 0 },
-          { de: "Säge", en: "Säge", correct: false, points: 0 }
+          { de: "Fleisch", en: "meat", correct: true, points: 10 },
+          { de: "Axt", en: "axe", correct: false, points: 0 },
+          { de: "Säge", en: "saw", correct: false, points: 0 }
         ]
       },
       {
         question: {
           de: "Wieviel abgetrennte Arme zählst du?",
-          en: "Wieviel abgetrennte Arme zählst du?"
+          en: "How many severed arms do you count?"
         },
         answers: [
           { de: "5", en: "5", correct: false, points: 0 },
@@ -482,18 +482,18 @@ getRiddles = function () {
       {
         question: {
           de: "Was hat zwei Drehknöpfe?",
-          en: "Was hat zwei Drehknöpfe?"
+          en: "What has two rotary knobs?"
         },
         answers: [
-          { de: "Kühlschrank", en: "Kühlschrank", correct: false, points: 0 },
-          { de: "Ofen", en: "Ofen", correct: false, points: 0 },
-          { de: "Grammophon", en: "Grammophon", correct: true, points: 10 }
+          { de: "Kühlschrank", en: "fridge", correct: false, points: 0 },
+          { de: "Ofen", en: "oven", correct: false, points: 0 },
+          { de: "Grammophon", en: "Gramophone", correct: true, points: 10 }
         ]
       },
       {
         question: {
           de: "Wie viele Klappen hat der Ofen?",
-          en: "Wie viele Klappen hat der Ofen?"
+          en: "How many flaps does the oven have?"
         },
         answers: [
           { de: "4", en: "4", correct: false, points: 0 },
@@ -504,12 +504,12 @@ getRiddles = function () {
       {
         question: {
           de: "Was liegt auf dem Tisch?",
-          en: "Was liegt auf dem Tisch?"
+          en: "What’s on the table?"
         },
         answers: [
-          { de: "Leichnam", en: "Leichnam", correct: true, points: 10 },
-          { de: "Tierkadaver", en: "Tierkadaver", correct: false, points: 0 },
-          { de: "Dämonenkind", en: "Dämonenkind", correct: false, points: 0 }
+          { de: "Leichnam", en: "corpse", correct: true, points: 10 },
+          { de: "Tierkadaver", en: "animal cadavers", correct: false, points: 0 },
+          { de: "Dämonenkind", en: "demon child", correct: false, points: 0 }
         ]
       }
     ],
@@ -517,18 +517,18 @@ getRiddles = function () {
       {
         question: {
           de: "Was hat der Maurer-Zombie in der Hand?",
-          en: "Was hat der Maurer-Zombie in der Hand?"
+          en: "What does the bricklayer zombie have in his hand?"
         },
         answers: [
-          { de: "Helm", en: "Helm", correct: false, points: 0 },
-          { de: "Zementsack", en: "Zementsack", correct: false, points: 0 },
-          { de: "Kelle", en: "Kelle", correct: true, points: 10 }
+          { de: "Helm", en: "helmet", correct: false, points: 0 },
+          { de: "Zementsack", en: "cement bag", correct: false, points: 0 },
+          { de: "Kelle", en: "trowel", correct: true, points: 10 }
         ]
       },
       {
         question: {
           de: "Wieviel Zement-Säcke zählst du?",
-          en: "Wieviel Zement-Säcke zählst du?"
+          en: "How many bags of cement do you count?"
         },
         answers: [
           { de: "4", en: "4", correct: false, points: 0 },
@@ -539,34 +539,34 @@ getRiddles = function () {
       {
         question: {
           de: "Was ist gelb?",
-          en: "Was ist gelb?"
+          en: "What is yellow?"
         },
         answers: [
-          { de: "Hemd der Frau", en: "Hemd der Frau", correct: false, points: 0 },
-          { de: "Zement-Mischer", en: "Zement-Mischer", correct: true, points: 10 },
-          { de: "Werkzeugkasten", en: "Werkzeugkasten", correct: false, points: 0 }
+          { de: "Hemd der Frau", en: "shirt of the woman", correct: false, points: 0 },
+          { de: "Zement-Mischer", en: "cement mixer", correct: true, points: 10 },
+          { de: "Werkzeugkasten", en: "toolbox", correct: false, points: 0 }
         ]
       },
       {
         question: {
           de: "Was hat das Skelett am Arm?",
-          en: "Was hat das Skelett am Arm?"
+          en: "What does the skeleton have on its arm?"
         },
         answers: [
-          { de: "Hundeleine", en: "Hundeleine", correct: false, points: 0 },
-          { de: "Knochensplitter", en: "Knochensplitter", correct: false, points: 0 },
-          { de: "Handschelle", en: "Handschelle", correct: true, points: 10 }
+          { de: "Hundeleine", en: "dog leash", correct: false, points: 0 },
+          { de: "Knochensplitter", en: "bone splinters", correct: false, points: 0 },
+          { de: "Handschelle", en: "handcuff", correct: true, points: 10 }
         ]
       },
       {
         question: {
           de: "Was liegt auf der Palette?",
-          en: "Was liegt auf der Palette?"
+          en: "What's on the pallet?"
         },
         answers: [
-          { de: "Ziegel", en: "Ziegel", correct: true, points: 10 },
-          { de: "Zementsäcke", en: "Zementsäcke", correct: false, points: 0 },
-          { de: "Holzlatten", en: "Holzlatten", correct: false, points: 0 }
+          { de: "Ziegel", en: "bricks", correct: true, points: 10 },
+          { de: "Zementsäcke", en: "cement bags", correct: false, points: 0 },
+          { de: "Holzlatten", en: "wooden slats", correct: false, points: 0 }
         ]
       }
     ]
