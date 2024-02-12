@@ -1608,8 +1608,6 @@ $(document).one(":passagedisplay", function() {
 :: outro.7 {"position":"700,1900","size":"100,100"}
 
 <div class="wrapper">
-  <h2><<txt>></h2>
-
   <<script>>
     $(document).one(":passagedisplay", function() {
       $('#story').attr('style', 'background-image:url(images/outro.7.jpg)');
@@ -1656,7 +1654,7 @@ $(document).one(":passagedisplay", function() {
       </div>
     </div>
   </model-viewer>
-
+  <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
@@ -1772,7 +1770,6 @@ $(document).one(":passagedisplay", function() {
 
 <div class="wrapper">
   <h1><<txt>></h1>
-  <h2><<txt>></h2>
   <<script>>
     $(document).one(":passagedisplay", function() {
 
@@ -1807,7 +1804,7 @@ $(document).one(":passagedisplay", function() {
       camera-controls
       alt="A spook carousel">
 
-      <button slot="ar-button" id="ar-button"><<txt>></button>
+      <button slot="ar-button" id="ar-button"><<txt 2>></button>
 
       <div class="slider">
         <div class="slides">
@@ -1825,6 +1822,7 @@ $(document).one(":passagedisplay", function() {
       </div>
     </model-viewer>
   <</if>>
+  <h2><<txt 3>></h2>
 
 </div>
 

@@ -849,12 +849,12 @@ getTranslations = function () {
   }
   text["outro.7"] = {
     "1": {
-      de: 'Hier könnt ihr noch Abschlussfotos mit einigen Spukgestalten machen. Teilt diese Fotos gern unter dem Hashtag #spooktours',
-      en: 'Here you can still take final photos with some spooky characters. Feel free to share these photos under the hashtag #spooktours'
-    },
-    "2": {
       de: 'Spook Cam öffnen',
       en: 'Open Spook Cam'
+    },
+    "2": {
+      de: 'Hier könnt ihr noch Abschlussfotos mit einigen Spukgestalten machen. Teilt diese Fotos gern unter dem Hashtag #spooktours',
+      en: 'Here you can still take final photos with some spooky characters. Feel free to share these photos under the hashtag #spooktours'
     }
   }
   text["outro.8"] = {
@@ -887,12 +887,12 @@ getTranslations = function () {
       en: 'Spooky creatures'
     },
     "2": {
-      de: 'Hier werden dir alle gesammelten Spukgestalten angezeigt.',
-      en: 'All the spooky creatures you have collected are displayed here.'
-    },
-    "3": {
       de: 'Spook-Cam öffnen',
       en: 'Open Spook Cam'
+    },
+    "3": {
+      de: 'Hier werden dir alle gesammelten Spukgestalten angezeigt.',
+      en: 'All the spooky creatures you have collected are displayed here.'
     }
   }
   text["Hilfe"] = {
