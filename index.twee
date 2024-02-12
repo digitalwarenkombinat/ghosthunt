@@ -218,6 +218,8 @@ Spuk & Schreck
 
 <<set $riddleCorrectCount to 0>>
 
+<<set $secretCorrect to 0>>
+
 <<set $isStoryteller to false>>
 <<set $isScanner to false>>
 <<set $isNavigator to false>>
@@ -231,17 +233,18 @@ Spuk & Schreck
   <<link [[$inventoryText|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
 <</if>>
 
+
+<<set $helpText = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
+<<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
+
+<<set $legalText = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
+<<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>>
+
 <<set $shortcutText = setup.text['StoryMenu'][4][setup.i18n.langs[settings.lang]]>>
 <<link [[$shortcutText|"Dev"]]>><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
 
 <<set $feedbackText = setup.text['StoryMenu'][5][setup.i18n.langs[settings.lang]]>>
 <<link [[$feedbackText|"outro.8"]]>><<addclass "#ui-bar" "stowed">><</link>>
-
-/*<<set $helpText = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
-<<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
-
-<<set $legalText = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
-<<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 
 :: setup.init {"position":"100,300","size":"100,100"}
 
@@ -610,8 +613,9 @@ $(document).one(":passagedisplay", function() {
 
 <div class="wrapper">
   <model-viewer 
-    id="model-viewer" 
-    ar auto-rotate 
+    id="model-viewer"
+    ar auto-rotate
+    ar-modes="scene-viewer quick-look"
     src="models/setup/setup.camera.glb"
     ios-src="models/setup/setup.camera.usdz"
     poster="images/loading.png"
@@ -658,9 +662,11 @@ $(document).one(":passagedisplay", function() {
   <h2><<txt 4>></h2>
   <</if>>
   <h2><<txt 5>></h2>
+  <h2><<txt 6>></h2>
 </div>
 
 <div class="btn-group">
+  <button class="help">[[|Hilfe]]</button>
   <button class="retry">[[|passage()]]</button>
   <button class="next">[[|intro.1]]</button>
 </div>
@@ -1110,10 +1116,11 @@ $(document).one(":passagedisplay", function() {
   <div class="wrapper">
     <span id="heading">
       <<if $isStoryteller and $playerCount === 3>>
-        <h1><<txt 6>> $riddleCount</h1>
+        <<set $countdown = setup.text[passage()][8][setup.i18n.langs[settings.lang]]>>
         <<set $seconds to 30>>
-        <<set $countdown = setup.text[passage()][7][setup.i18n.langs[settings.lang]]>>
-        <h2 id="countdown">$seconds $countdown</h2>
+        <h1 id="countdown">$seconds $countdown</h1>
+        <h2><<txt 6>>$riddleCount</h2>
+        <h2><<txt 7>></h2>
         <<silently>>
           <<repeat 1s>>
             <<set $seconds to $seconds - 1>>
@@ -1175,8 +1182,8 @@ $(document).one(":passagedisplay", function() {
   <<if $isNavigator>>
     <<script>>
     jQuery(Dialog
-        .setup(setup.text[passage()][8][setup.i18n.langs[settings.lang]]))
-        .append("<p>".concat(setup.text[passage()][9][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .setup(setup.text[passage()][9][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][10][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
         .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
         .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
         .find("#restart-ok")
@@ -1544,6 +1551,7 @@ $(document).one(":passagedisplay", function() {
 :: outro.5.ball {"position":"700,1300","size":"100,100"}
 
 <<video noHotspot>>
+<<set $secretCorrect to 1>>
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
@@ -1556,11 +1564,7 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <<if $playerCount === 1>>
-    <button class="next">[[|outro.7]]</button>
-  <<else>>
-    <button class="next">[[|outro.storyteller.init]]</button>
-  <</if>>
+  <button class="next">[[|outro.6]]</button>
 </div>
 
 :: outro.5.book {"position":"700,1300","size":"100,100"}
@@ -1569,16 +1573,28 @@ $(document).one(":passagedisplay", function() {
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <<if $playerCount === 1>>
-    <button class="next">[[|outro.7]]</button>
-  <<else>>
-    <button class="next">[[|outro.storyteller.init]]</button>
-  <</if>>
+  <button class="next">[[|outro.6]]</button>
 </div>
 
 :: outro.6 {"position":"700,1700","size":"100,100"}
 
-<<video noHotspot>>
+<<script>>
+  if (State.variables.secretCorrect) {
+    $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  } else {
+    $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  };
+<</script>>
+
+<div class="wrapper">
+  <<if $secretCorrect>>
+    <h2><<txt 1>></h2>
+    <h2><<txt 2>></h2>
+  <<else>>
+    <h2><<txt 3>></h2>
+    <h2><<txt 4>></h2>
+  <</if>>
+</div>
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
@@ -1591,26 +1607,56 @@ $(document).one(":passagedisplay", function() {
 
 :: outro.7 {"position":"700,1900","size":"100,100"}
 
-<<script>>
-  $(document).one(":passagedisplay", function() {
-    $('#story').attr('style', 'background-image:url(images/outro.7.jpg)');
-  });
-<</script>>
-
 <div class="wrapper">
   <h2><<txt>></h2>
-  <model-viewer 
+
+  <<script>>
+    $(document).one(":passagedisplay", function() {
+      $('#story').attr('style', 'background-image:url(images/outro.7.jpg)');
+      
+      const modelViewer = document.querySelector("model-viewer");
+
+      window.switchSrc = (element, name) => {
+        const base = `models/outro/outro.${name}`;
+        modelViewer.src = base + '.glb';
+        modelViewer.iosSrc = base + '.usdz';
+        const slides = document.querySelectorAll(".slide");
+        slides.forEach((element) => {element.classList.remove("selected");});
+        element.classList.add("selected");
+      };
+
+      if (modelViewer) {
+        document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
+          ev.preventDefault();
+        });
+      }
+    })
+  <</script>>
+
+  <model-viewer
     id="model-viewer" 
     ar auto-rotate 
     src="models/outro/outro.7.glb" 
     ios-src="models/outro/outro.7.usdz"
-    poster="images/loading.png"
+    poster="models/outro/outro.7.poster.webp"
     autoplay 
     shadow-intensity="2"
     shadow-softness="0"
-    camera-controls>
+    camera-controls
+    alt="A spook carousel">
+
     <button slot="ar-button" id="ar-button"><<txt>></button>
+
+    <div class="slider">
+      <div class="slides">
+        <button class="slide selected" onclick="switchSrc(this, '7')" style="background-image: url('models/outro/outro.7.poster.webp');"></button>
+        <button class="slide" onclick="switchSrc(this, '7.guide')" style="background-image: url('models/outro/outro.7.guide.poster.webp');"></button>
+        <button class="slide" onclick="switchSrc(this, '7.scanner')" style="background-image: url('models/outro/outro.7.scanner.poster.webp');"></button>
+        <button class="slide" onclick="switchSrc(this, '7.storyteller')" style="background-image: url('models/outro/outro.7.storyteller.poster.webp');"></button>
+      </div>
+    </div>
   </model-viewer>
+
 </div>
 
 <div class="btn-group">
@@ -1647,19 +1693,22 @@ $(document).one(":passagedisplay", function() {
   <br/>
   <br/>
   <div class="btn-group">
-  <<for _i to 1; _i lte 10; _i++>>
-    <<capture _i>>
-    <<set $chapterText = setup.text['Dev'][_i][setup.i18n.langs[settings.lang]]>>
-    <<button $chapterText+$validFrequences[_i-1]>>
-      <<set $hotspot to _i>>
-      <<if $isStoryteller>>
-        <<goto "hotspot.splash">>
-      <<else>>
-        <<goto "hotspot.frequence">>
-      <</if>>
+    <<for _i to 1; _i lte 10; _i++>>
+      <<capture _i>>
+      <<set $chapterText = setup.text['Dev'][_i][setup.i18n.langs[settings.lang]]>>
+      <<button $chapterText+$validFrequences[_i-1]>>
+        <<set $hotspot to _i>>
+        <<if $isStoryteller>>
+          <<goto "hotspot.splash">>
+        <<else>>
+          <<goto "hotspot.frequence">>
+        <</if>>
+      <</button>>
+      <</capture>>
+    <</for>>
+    <<button "Outro">>
+      <<goto "outro.1">>	
     <</button>>
-    <</capture>>
-  <</for>>
     <<set $mapText = setup.text['Dev'][13][setup.i18n.langs[settings.lang]]>>
     <<button $mapText>>
       <<goto "main.navigator">>	
@@ -2076,7 +2125,6 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  padding-top: env(safe-area-inset-top);
 }
 
 audio, canvas, progress, video {
@@ -2412,7 +2460,6 @@ border: 2px solid var(--secondary-color);
 }
 
 .btn-group {  
-  margin-bottom: env(safe-area-inset-bottom);
   margin: 0 auto 2vh;
   text-align: center;
   z-index: 20;
@@ -2468,7 +2515,7 @@ border: 2px solid var(--secondary-color);
   padding-left: 8px;
 }
 
-.help:before {
+.help a:before {
 	content: "\e808\00a0";
   font-family: tme-fa-icons;
   padding-left: 8px;
