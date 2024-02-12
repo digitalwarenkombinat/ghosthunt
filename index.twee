@@ -2695,6 +2695,7 @@ model-viewer {
 #video {
   bottom: 0;
   height: 100%;
+  left: 0;
   margin-left: 50vw;
   position: fixed;
   transform: translate(-50%);
@@ -2803,5 +2804,5 @@ tw-hook[name="fade-out"] {
   font-size: 6vw;
   margin-left: 5vw;
   margin-right: 5vw;
-  max-width: 100px;
+  max-width: 33%;
 }
