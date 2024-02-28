@@ -2155,7 +2155,7 @@ h1 {
   letter-spacing: 8px;
   word-break: break-word;
   color: #ffffff00;
-  -webkit-text-stroke: 3px var(--text-light-color);
+  -webkit-text-stroke: 2px var(--text-light-color);
   /* text-shadow: 0 0 20px var(--text-light-color); */
 }
 

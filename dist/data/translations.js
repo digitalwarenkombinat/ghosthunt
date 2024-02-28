@@ -751,7 +751,7 @@ getTranslations = function () {
   }
   text["outro.storyteller.init"] = {
     "1": {
-      de: 'Teile diese Frequenz mit deinem Team, um daie Tour abzuschließen.',
+      de: 'Teile diese Frequenz mit deinem Team, um die Tour abzuschließen.',
       en: 'Share this frequency with your team to complete the tour.'
     }
   }
