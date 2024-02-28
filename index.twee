@@ -357,6 +357,8 @@ Spook Tours
 
 :: setup.music {"position":"100,900","size":"100,100"}
 
+<<playlist "bg" volume 0 fadeto 0.3>>
+
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 <</script>>
@@ -372,8 +374,6 @@ Spook Tours
 </div>
 
 :: setup.player {"position":"100,900","size":"100,100"}
-
-<<playlist "bg" volume 0 fadeto 0.3>>
 
 <<script>>
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
