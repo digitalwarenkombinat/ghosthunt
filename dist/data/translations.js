@@ -142,8 +142,8 @@ getTranslations = function () {
       en: 'Music'
     },
     "2": {
-      de: 'Wir bedanken uns bei Karl Casey @ White Bat Audio für die coole Hintergrundmusik. Du kannst Sie im Seitenmenu unter Einstellungen stummschalten.',
-      en: 'We like to thank Karl Casey @ White Bat Audio for our cool background-music. You can mute it in the sidemenu under "Settings"'
+      de: 'Wir bedanken uns bei Karl Casey @ White Bat Audio für die Hintergrundmusik.§§Du kannst Sie im Seitenmenu unter Einstellungen stummschalten.',
+      en: 'We like to thank Karl Casey @ White Bat Audio for our background-music.§§You can mute it in the sidemenu under "Settings"'
     }
   }
   text["setup.player"] = {
