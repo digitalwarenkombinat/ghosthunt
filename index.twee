@@ -333,7 +333,6 @@ Spuk & Schreck
   <h2 class="iosHelp"><<txt>><img height="64" width="64" src="images/ios_share.svg" /><<txt>></h2>
   <h2 class="androidHelp"><<txt>><img src="images/android_install.svg" /><<txt>></h2>
   <h2><<txt>></h2>
-  <img src="images/icon.png" class="image-size-50" />
 </div>
 
 <div class="btn-group">
