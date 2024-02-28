@@ -4,7 +4,7 @@
   "description" : "Eine digitale Schnitzeljagd durch den Leipziger Friedenspark",
   "theme_color": "#9CF299",
   "background_color": "#000000",
-  "display": "fullscreen",
+  "display": "standalone",
   "start_url": "/ghosthunt/",
   "scope": "/ghosthunt/",
   "icons": [

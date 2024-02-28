@@ -29,7 +29,7 @@ Spuk & Schreck
 
 -------------------------SETUP-------------------------------
 
-<<set $is_pwa to window.matchMedia('(display-mode: window-controls-overlay)').matches || window.matchMedia('(display-mode: fullscreen)').matches>>
+<<set $is_pwa to window.matchMedia('(display-mode: window-controls-overlay)').matches || window.matchMedia('(display-mode: standalone)').matches>>
 <<set $is_safari to navigator.userAgent.indexOf('Safari') > -1 && 
   navigator.userAgent.indexOf('Chrome') <= -1 && navigator.userAgent.indexOf("Edg") <= -1 &&
   navigator.userAgent.indexOf('SamsungBrowser') <= - 1>>
@@ -1903,11 +1903,11 @@ Setting.addList('lang', {
 setup.text = getTranslations();
 
 var settingMusic = function () {
-  SimpleAudio.mute(!settings.music);
+  SimpleAudio.select(":playing:not(bg)").mute((!settings.music));
 };
 
 Setting.addToggle("music", {
-	label    : "Audio",
+	label    : "Music",
 	default  : true,
 	onInit   : settingMusic,
 	onChange : settingMusic
