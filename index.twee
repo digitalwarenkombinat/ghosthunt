@@ -152,6 +152,8 @@ Spook Tours
 
 <<cacheaudio "click" "audio/click.mp3">>
 <<cacheaudio "ring" "audio/ring.mp3">>
+<<cacheaudio "right" "audio/right.mp3">>
+<<cacheaudio "wrong" "audio/wrong.mp3">>
 <<cacheaudio "bg.1" "audio/bg.1.mp3">>
 <<cacheaudio "bg.2" "audio/bg.2.mp3">>
 
