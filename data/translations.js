@@ -142,8 +142,8 @@ getTranslations = function () {
       en: 'Music'
     },
     "2": {
-      de: 'Diese App spielt Musik ab. Du kannst die Lautstärke über dein Handy regeln oder im Seitenmenü ganz ausschalten.',
-      en: 'This app plays music. You can adjust the volume via your cell phone or switch it off completely in the side menu.'
+      de: 'Wir bedanken uns bei Karl Casey @ White Bat Audio für die coole Hintergrundmusik. Du kannst Sie im Seitenmenu unter Einstellungen stummschalten.',
+      en: 'We like to thank Karl Casey @ White Bat Audio for our cool background-music. You can mute it in the sidemenu under "Settings"'
     }
   }
   text["setup.player"] = {
