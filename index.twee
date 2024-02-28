@@ -344,7 +344,7 @@ Spook Tours
 :: setup.splash {"position":"100,900","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/intro.1.jpg)');
+  $('#story').attr('style', 'background-image:url(images/setup.splash.jpg)');
 <</script>>
 
 <div class="wrapper">
