@@ -250,10 +250,10 @@ Spook Tours
 
 <<script>>
   if (State.variables.is_pwa) {
-    $.wiki('<<goto "setup.music">>')
+    $.wiki('<<goto "setup.splash">>')
   };
 
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/intro.1.jpg)');
 
   window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
@@ -339,6 +339,20 @@ Spook Tours
   <button class="return">[[|setup.init]]</button>
   <button class="retry">[[|passage()]]</button>
   <button class="install"></button>
+</div>
+
+:: setup.splash {"position":"100,900","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+</div>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|setup.music]]</button>
 </div>
 
 :: setup.music {"position":"100,900","size":"100,100"}
