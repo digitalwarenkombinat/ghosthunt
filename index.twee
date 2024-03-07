@@ -1774,6 +1774,58 @@ $(document).one(":passagedisplay", function() {
 
 <div class="wrapper">
   <h1><<txt>></h1>
+  <h2>
+    <br/>
+    <<txt>>
+    <a target="_blank" href="https://www.geomazing.com/shop">GEOMAZING</a>
+    <<txt>>
+    <a target="_blank" href="https://digitalwarenkombinat.de/">Digitalwarenkombinat GbR</a>
+    <<txt>>
+  </h2>
+  
+  <div>
+    <br/>
+    <h3><<txt>></h3>
+    <br/>
+    <p><<txt>></p>
+    <p><<txt>></p>
+    <p><<txt>></p>
+    <p><<txt>></p>
+    <p><<txt>></p>
+  </div>
+
+  <div>
+    <br/>
+    <h3><<txt>></h3>
+    <br/>
+    <p><<txt>></p>
+    <p><<txt>></p>
+    <p><<txt>></p>
+  </div>
+  
+  <div>
+    <br/>
+    <h3><<txt>></h3>
+    <p><<txt>></p>
+  </div>
+
+  <div>
+    <br/>
+    <h3><<txt>></h3>
+    <p><<txt>></p>
+  </div>
+  
+  <div>
+    <br/>
+    <h3><<txt>></h3>
+    <p><<txt>></p>
+  </div>
+
+  <div>
+    <br/>
+    <h3><<txt>></h3>
+    <p><<txt>></p>
+  </div>
 </div>
 
 <div class="btn-group">
