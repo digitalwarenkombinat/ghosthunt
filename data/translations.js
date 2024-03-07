@@ -16,8 +16,8 @@ getTranslations = function () {
   };
   text["StoryMenu"] = {
     "1": {
-      de: 'Spukgestalten',
-      en: 'Spooky Creatures'
+      de: 'Spookies',
+      en: 'Spookies'
     },
     "2": {
       de: 'Hilfe',
@@ -78,8 +78,8 @@ getTranslations = function () {
       en: 'DEV'
     },
     "12": {
-      de: 'Mit diesen Links kannst du direkt zu den paranormalen Orten springen. Diese Abkürzungen sind nur zum Testen und werden später entfernt.',
-      en: 'With these links you can jump directly to the paranormal locations. These shortcuts are for testing purposes only and will be removed later.'
+      de: 'Mit diesen Links springst du direkt zu den paranormalen Orten. Diese Abkürzungen sind nur zum Testen und werden später entfernt.',
+      en: 'With these links you jump directly to the paranormal locations. These shortcuts are for testing purposes only and will be removed later.'
     },
     "13": {
       de: 'Karte',
@@ -194,8 +194,8 @@ getTranslations = function () {
       en: 'Choose your role'
     },
     "2": {
-      de: 'Ein Scanner braucht ein gutes Auge. Mithilfe der Spook-Cam kann dieses Team-Mitglied paranormale Orte sichtbar machen und nach Hinweisen suchen.',
-      en: 'A scanner needs a good eye. With the help of the Spook Cam, this team member can detect paranormal locations and search for clues.'
+      de: 'Ein Scanner braucht ein gutes Auge. Mithilfe der Spook-Cam macht dieses Team-Mitglied paranormale Orte sichtbar und sucht nach Hinweisen.',
+      en: 'A scanner needs a good eye. With the help of the Spook Cam, this team member visualizes paranormal locations and searches for clues'
     },
     "3": {
       de: 'Bist du sicher? Jede Rolle kann nur einmal gewählt werden.',
@@ -222,8 +222,8 @@ getTranslations = function () {
       en: 'Spook Cam Check'
     },
     "2": {
-      de: 'Wir benötigen Zugriff auf deine Kamera, um dir die Spukgestalten zu zeigen.',
-      en: 'We need access to your camera to show you the spooky creatures.'
+      de: 'Wir benötigen Zugriff auf deine Kamera, um dir die Spookies zu zeigen.',
+      en: 'We need access to your camera to show you the Spookies.'
     }
   }
   text["intro.welcome"] = {
@@ -232,8 +232,8 @@ getTranslations = function () {
       en: 'Check'
     },
     "2": {
-      de: 'Hallo Spookies. Hat alles geklappt?',
-      en: 'Hello Spookies. Did everything work out?'
+      de: 'Hallo Leute. Hat alles geklappt?',
+      en: 'Hello folks. Did everything work out?'
     },
     "3": {
       de: 'Konnte der Detector den Geist und die Karte sehen?',
@@ -315,8 +315,8 @@ getTranslations = function () {
       en: 'Check'
     },
     "2": {
-      de: 'Alles funktioniert. Deine Aufgabe ist es, dein Team zu den paranormalen Orten zu führen.',
-      en: 'Everything works. Your job is to lead your team to the paranormal locations.'
+      de: 'Alles funktioniert. Führe dein Team zu den paranormalen Orten.',
+      en: 'Everything works. Lead your team to the paranormal locations.'
     },
     "3": {
       de: 'Warte, bis der Storyteller die Tour startet.',
@@ -329,11 +329,11 @@ getTranslations = function () {
       en: 'Lead your team to the paranormal locations as soon as the Storyteller gives the green light'
     },
     "2": {
-      de: 'Du kannst einen beliebigen paranormalen Ort auswählen. Die Reihenfolge spielt keine Rolle.',
-      en: 'You can choose any paranormal location. The order does not matter.'
+      de: 'Wähle einen beliebigen paranormalen Ort aus. Die Reihenfolge spielt keine Rolle.',
+      en: 'Choose any paranormal location. The order does not matter.'
     },
     "3": {
-      de: 'Gehe zu einem beliebigen pinken Kreis. Wenn er grün leuchtet, kannst du ihn anklicken, um den paranormalen Ort zu betreten.',
+      de: 'Gehe zu einem beliebigen pinken Kreis. Leuchtet er grün, kannst du ihn anklicken, um den paranormalen Ort zu betreten.',
       en: 'Go to any pink circle. When it lights up green, you can click on it to enter the paranormal location.'
     }
   }
@@ -343,8 +343,8 @@ getTranslations = function () {
       en: 'Check'
     },
     "2": {
-      de: 'Alles funktioniert. Deine Aufgabe ist es, mit Hilfe der Spook-Cam paranormalen Orte sichtbar zu machen und nach Hinweisen zu suchen.',
-      en: 'Everything works. Your task is to use the Spook Cam to detect paranormal locations and search for clues.'
+      de: 'Alles funktioniert. Mache mit Hilfe der Spook-Cam die paranormalen Orte sichtbar und finde wichtige Hinweise.',
+      en: 'Everything works. Use the Spook Cam to visualize the paranormal locations and find important clues.'
     },
     "3": {
       de: 'Warte, bis der Guide euch zu einem paranormalen Ort führt.',
@@ -435,8 +435,8 @@ getTranslations = function () {
       en: 'Frequency received'
     },
     "2": {
-      de: 'Teile diese Frequenz mit deinem Team, um die Spukgestalt zu sehen.',
-      en: 'Share this frequency with your team to see the spooky creature.'
+      de: 'Teile diese Frequenz mit deinem Team, um den Spooky zu sehen.',
+      en: 'Share this frequency with your team to see the Spooky.'
     }
   }
   text["hotspot.questions"] = {
@@ -487,7 +487,7 @@ getTranslations = function () {
       en: 'Activate Spook Cam'
     },
     "2": {
-      de: 'Öffne die Spook-Cam, untersuche den paranormalen Ort und mache Fotos von allem, das dir wichtig erscheint.',
+      de: 'Öffne die Spook-Cam, untersuche den paranormalen Ort und fotografiere alles, was dir wichtig erscheint.',
       en: 'Open the Spook Cam, examine the paranormal location and take photos of everything that seems important to you.'
     },
     "3": {
@@ -505,8 +505,8 @@ getTranslations = function () {
       en: 'Activate Spook Cam'
     },
     "2": {
-      de: 'Ein neue Spukgestalt ist ab sofort in deinem Inventar verfügbar.',
-      en: 'A new spooky creature is now available in your inventory.'
+      de: 'Ein neuer Spooky ist ab sofort in deinem Inventar verfügbar.',
+      en: 'A new Spooky is now available in your inventory.'
     }
   }
   text["hotspot.solution"] = {
@@ -827,8 +827,8 @@ getTranslations = function () {
   }
   text["outro.6"] = {
     "1": {
-      de: 'Hey Leute, hier ist nochmal Holger. Ich muss euch echt danken und gratulieren! Ihr habt die Feuertaufe bestanden und seid nun vollwertige Spookies. Der nächste Fall wartet schon auf euch! Ihr hört von mir. Holger out!',
-      en: 'Hey guys, here’s Holger again. I really have to thank you and congratulate you! You’ve passed your baptism of fire and are now fully-fledged Spookies. The next case is already waiting for you! You’ll hear from me. Holger out!'
+      de: 'Hey Leute, hier ist nochmal Holger. Ich muss euch echt danken und gratulieren! Ihr habt die Feuertaufe bestanden. Der nächste Fall wartet schon auf euch! Ihr hört von mir. Holger out!',
+      en: 'Hey guys, here’s Holger again. I really have to thank you and congratulate you! You’ve passed your baptism of fire. The next case is already waiting for you! You’ll hear from me. Holger out!'
     },
     "2": {
       de: 'Meine Geschichte endet hier. Aber auf euch wartet noch eine Überraschung!',
@@ -849,18 +849,18 @@ getTranslations = function () {
       en: 'Open Spook Cam'
     },
     "2": {
-      de: 'Hier könnt ihr noch Abschlussfotos mit einigen Spukgestalten machen. Teilt diese Fotos gern unter dem Hashtag #spooktours',
-      en: 'Here you can still take final photos with some spooky characters. Feel free to share these photos under the hashtag #spooktours'
+      de: 'Spooky-Überraschung! Mache zum Abschluss ein Foto mit den Spookies und teile es mit dem Hashtag #spooktours',
+      en: 'Spooky surprise! Finally, take a photo with the Spookies and share it with the hashtag #spooktours'
     }
   }
   text["outro.8"] = {
     "1": {
-      de: 'Vielen Dank, dass ihr eine unserer Spook Tours gespielt habt. Wir hoffen sehr, dass es euch gefallen hat.',
-      en: 'Thank you very much for playing one of our Spook Tours. We hope you enjoyed it.'
+      de: 'Vielen Dank, dass ihr unsere Spook Tour gespielt habt. Wir hoffen sehr, dass es euch gefallen hat.',
+      en: 'Thank you very much for playing our Spook Tour. We hope you enjoyed it.'
     },
     "2": {
-      de: 'Wenn dem so ist, freuen wir uns sehr über eine gute Bewertung bei GetYourGuide.',
-      en: 'If so, we would be delighted to receive a good review on GetYourGuide.'
+      de: 'Wenn dem so ist, bewertet uns gern bei GetYourGuide.',
+      en: 'If so, please rate us on GetYourGuide.'
     },
     "3": {
       de: 'Eure Fragen, Anmerkungen & Kritik könnt ihr uns gerne an ',
@@ -875,20 +875,104 @@ getTranslations = function () {
     "1": {
       de: 'Impressum',
       en: 'Legal Notice'
+    },
+    "2": {
+      de: 'Spook Tours ist eine Produktion von ',
+      en: 'Spook Tours is a production of '
+    },
+    "3": {
+      de: ', die in Kooperation mit der ',
+      en: ', which was created in cooperation with'
+    },
+    "4": {
+      de: ' erstellt wurde.',
+      en: '.'
+    },
+    "5": {
+      de: 'Angaben gemäß § 5 TMG:',
+      en: 'Information in accordance with § 5 TMG:'
+    },
+    "6": {
+      de: 'GEOMAZING',
+      en: 'GEOMAZING'
+    },
+    "7": {
+      de: 'Inhaber: Gregor Assfalg',
+      en: 'Owner: Gregor Assfalg'
+    },
+    "8": {
+      de: 'Arno-Nitzsche-Str.11',
+      en: 'Arno-Nitzsche-Str.11'
+    },
+    "9": {
+      de: '04277 Leipzig',
+      en: '04277 Leipzig'
+    },
+    "10": {
+      de: 'Deutschland',
+      en: 'Germany'
+    },
+    "11": {
+      de: 'Kontakt:',
+      en: 'Contact:'
+    },
+    "12": {
+      de: 'Telefon: 0341-97854975',
+      en: 'Telephone: +4934197854975'
+    },
+    "13": {
+      de: 'E-Mail: getlost@geomazing.com',
+      en: 'E-Mail: getlost@geomazing.com'
+    },
+    "14": {
+      de: 'Umsatzsteuer-ID: DE322360228',
+      en: 'VAT ID: DE322360228'
+    },
+    "15": {
+      de: 'Streitbeilegungsverfahren',
+      en: 'Dispute resolution procedure'
+    },
+    "16": {
+      de: 'Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
+      en: 'We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.'
+    },
+    "17": {
+      de: 'Haftung für Inhalte',
+      en: 'Liability for content'
+    },
+    "18": {
+      de: 'Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.',
+      en: 'As a service provider, we are responsible for our own content on these pages in accordance with Section 7 (1) TMG (German Telemedia Act) and general legislation. According to §§ 8 to 10 TMG, however, we as a service provider are not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information in accordance with general legislation remain unaffected by this. However, liability in this respect is only possible from the time of knowledge of a specific infringement. As soon as we become aware of such infringements, we will remove this content immediately.'
+    },
+    "19": {
+      de: 'Haftung für Links',
+      en: 'Liability for links'
+    },
+    "20": {
+      de: 'Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.',
+      en: 'Our website contains links to external third-party websites over whose content we have no influence. Therefore, we cannot accept any liability for this third-party content. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal contents were not recognisable at the time of linking. However, permanent monitoring of the content of the linked pages is not reasonable without concrete evidence of an infringement. If we become aware of any legal infringements, we will remove such links immediately.'
+    },
+    "21": {
+      de: 'Urheberrecht',
+      en: 'Copyright'
+    },
+    "22": {
+      de: 'Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.',
+      en: 'The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution and any kind of utilisation outside the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use. Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is labelled as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately.'
     }
   }
   text["Inventar"] = {
     "1": {
-      de: 'Spukgestalten',
-      en: 'Spooky creatures'
+      de: 'Spookies',
+      en: 'Spookies'
     },
     "2": {
       de: 'Spook-Cam öffnen',
       en: 'Open Spook Cam'
     },
     "3": {
-      de: 'Hier werden dir alle gesammelten Spukgestalten angezeigt.',
-      en: 'All the spooky creatures you have collected are displayed here.'
+      de: 'Hier werden dir alle gesammelten Spookies angezeigt.',
+      en: 'All the Spookies you have collected are displayed here.'
     }
   }
   text["Hilfe"] = {
@@ -913,8 +997,8 @@ getTranslations = function () {
       en: 'Does each player need a cell phone?'
     },
     "6": {
-      de: 'Wir empfehlen die Tour als Gruppe mit 3 Spielenden und einem Handy pro Person zu spielen. Natürlich könnte ihr aber auch jeder alleine mit einem Handy losziehen. Es gibt keine vorgeschriebene Reihenfolge für die Orte. Am Ende könnt ihr vergleichen, wer mehr Punkte und Spukgestalten gesammelt hat.',
-      en: 'We recommend playing the game as a group with a cell phone. Of course, you could also each go off on your own with a cell phone. There is no predefined order for the locations. At the end you can compare who has collected more points and spooky creatures.'
+      de: 'Wir empfehlen die Tour als Gruppe mit 3 Spielenden und einem Handy pro Person zu spielen. Natürlich könnte ihr aber auch jeder alleine mit einem Handy losziehen. Es gibt keine vorgeschriebene Reihenfolge für die Orte. Am Ende könnt ihr vergleichen, wer mehr Punkte und Spookies gesammelt hat.',
+      en: 'We recommend playing the game as a group with a cell phone. Of course, you could also each go off on your own with a cell phone. There is no predefined order for the locations. At the end you can compare who has collected more points and Spookies.'
     },
     "7": {
       de: 'Wie kann ich die Fragen lösen?',
