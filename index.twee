@@ -239,14 +239,14 @@ Spook Tours
 <<set $helpText = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
 <<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
 
+
+:: StorySubtitle {"position":"300,100","size":"100,100"}
+
 <<set $legalText = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
 <<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>>
 
 <<set $shortcutText = setup.text['StoryMenu'][4][setup.i18n.langs[settings.lang]]>>
 <<link [[$shortcutText|"Dev"]]>><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
-
-<<set $feedbackText = setup.text['StoryMenu'][5][setup.i18n.langs[settings.lang]]>>
-<<link [[$feedbackText|"outro.8"]]>><<addclass "#ui-bar" "stowed">><</link>>
 
 :: setup.init {"position":"100,300","size":"100,100"}
 
@@ -1650,7 +1650,7 @@ $(document).one(":passagedisplay", function() {
     ar auto-rotate 
     src="models/outro/outro.7.glb" 
     ios-src="models/outro/outro.7.usdz"
-    poster="models/outro/outro.7.poster.webp"
+    poster="models/outro/outro.7.poster.jpg"
     autoplay 
     shadow-intensity="2"
     shadow-softness="0"
@@ -1661,10 +1661,10 @@ $(document).one(":passagedisplay", function() {
 
     <div class="slider">
       <div class="slides">
-        <button class="slide selected" onclick="switchSrc(this, '7')" style="background-image: url('models/outro/outro.7.poster.webp');"></button>
-        <button class="slide" onclick="switchSrc(this, '7.guide')" style="background-image: url('models/outro/outro.7.guide.poster.webp');"></button>
-        <button class="slide" onclick="switchSrc(this, '7.scanner')" style="background-image: url('models/outro/outro.7.scanner.poster.webp');"></button>
-        <button class="slide" onclick="switchSrc(this, '7.storyteller')" style="background-image: url('models/outro/outro.7.storyteller.poster.webp');"></button>
+        <button class="slide selected" onclick="switchSrc(this, '7')" style="background-image: url('models/outro/outro.7.poster.jpg');"></button>
+        <button class="slide" onclick="switchSrc(this, '7.guide')" style="background-image: url('models/outro/outro.7.guide.poster.jpg');"></button>
+        <button class="slide" onclick="switchSrc(this, '7.scanner')" style="background-image: url('models/outro/outro.7.scanner.poster.jpg');"></button>
+        <button class="slide" onclick="switchSrc(this, '7.storyteller')" style="background-image: url('models/outro/outro.7.storyteller.poster.jpg');"></button>
       </div>
     </div>
   </model-viewer>
@@ -1811,7 +1811,7 @@ $(document).one(":passagedisplay", function() {
       ar auto-rotate 
       src="models/1.hotspot/1.hotspot.ghost.glb"
       ios-src="models/1.hotspot/1.hotspot.ghost.glb"
-      poster="models/1.hotspot/1.hotspot.poster.webp"
+      poster="models/1.hotspot/1.hotspot.poster.jpg"
       autoplay 
       shadow-intensity="2"
       shadow-softness="0"
@@ -1822,16 +1822,16 @@ $(document).one(":passagedisplay", function() {
 
       <div class="slider">
         <div class="slides">
-          <button class="slide selected" onclick="switchSrc(this, '1')" style="background-image: url('models/1.hotspot/1.hotspot.poster.webp');"></button>
-          <<if $hotspot > 1>><button class="slide" onclick="switchSrc(this, '2')" style="background-image: url('models/2.hotspot/2.hotspot.poster.webp');"></button><</if>>
-          <<if $hotspot > 2>><button class="slide" onclick="switchSrc(this, '3')" style="background-image: url('models/3.hotspot/3.hotspot.poster.webp');"></button><</if>>
-          <<if $hotspot > 3>><button class="slide" onclick="switchSrc(this, '4')" style="background-image: url('models/4.hotspot/4.hotspot.poster.webp');"></button><</if>>
-          <<if $hotspot > 4>><button class="slide" onclick="switchSrc(this, '5')" style="background-image: url('models/5.hotspot/5.hotspot.poster.webp');"></button><</if>>
-          <<if $hotspot > 5>><button class="slide" onclick="switchSrc(this, '6')" style="background-image: url('models/6.hotspot/6.hotspot.poster.webp');"></button><</if>>
-          <<if $hotspot > 6>><button class="slide" onclick="switchSrc(this, '7')" style="background-image: url('models/7.hotspot/7.hotspot.poster.webp');"></button><</if>>
-          <<if $hotspot > 7>><button class="slide" onclick="switchSrc(this, '8')" style="background-image: url('models/8.hotspot/8.hotspot.poster.webp');"></button><</if>>
-          <<if $hotspot > 8>><button class="slide" onclick="switchSrc(this, '9')" style="background-image: url('models/9.hotspot/9.hotspot.poster.webp');"></button><</if>>
-          <<if $hotspot > 9>><button class="slide" onclick="switchSrc(this, '10')" style="background-image: url('models/10.hotspot/10.hotspot.poster.webp');"></button><</if>>
+          <button class="slide selected" onclick="switchSrc(this, '1')" style="background-image: url('models/1.hotspot/1.hotspot.poster.jpg');"></button>
+          <<if $hotspot > 1>><button class="slide" onclick="switchSrc(this, '2')" style="background-image: url('models/2.hotspot/2.hotspot.poster.jpg');"></button><</if>>
+          <<if $hotspot > 2>><button class="slide" onclick="switchSrc(this, '3')" style="background-image: url('models/3.hotspot/3.hotspot.poster.jpg');"></button><</if>>
+          <<if $hotspot > 3>><button class="slide" onclick="switchSrc(this, '4')" style="background-image: url('models/4.hotspot/4.hotspot.poster.jpg');"></button><</if>>
+          <<if $hotspot > 4>><button class="slide" onclick="switchSrc(this, '5')" style="background-image: url('models/5.hotspot/5.hotspot.poster.jpg');"></button><</if>>
+          <<if $hotspot > 5>><button class="slide" onclick="switchSrc(this, '6')" style="background-image: url('models/6.hotspot/6.hotspot.poster.jpg');"></button><</if>>
+          <<if $hotspot > 6>><button class="slide" onclick="switchSrc(this, '7')" style="background-image: url('models/7.hotspot/7.hotspot.poster.jpg');"></button><</if>>
+          <<if $hotspot > 7>><button class="slide" onclick="switchSrc(this, '8')" style="background-image: url('models/8.hotspot/8.hotspot.poster.jpg');"></button><</if>>
+          <<if $hotspot > 8>><button class="slide" onclick="switchSrc(this, '9')" style="background-image: url('models/9.hotspot/9.hotspot.poster.jpg');"></button><</if>>
+          <<if $hotspot > 9>><button class="slide" onclick="switchSrc(this, '10')" style="background-image: url('models/10.hotspot/10.hotspot.poster.jpg');"></button><</if>>
         </div>
       </div>
     </model-viewer>
@@ -2354,6 +2354,15 @@ progress[value]::-webkit-progress-value {
   width: 34vh;
 }
 
+#ui-bar-body #title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 #ui-bar-toggle {
   border: none;
   color: var(--text-light-color);
@@ -2413,11 +2422,16 @@ border: 2px solid var(--secondary-color);
 
 #menu ul {
   border: none;
+  margin: 0;
 }
 
 #menu-core {
   /* position: fixed;
   bottom: 2em; */
+}
+
+#menu-story li:first-child {
+  margin-bottom: 12rem;
 }
 
 #menu li a {
@@ -2449,6 +2463,16 @@ border: 2px solid var(--secondary-color);
 
 #story-title {
   display: none;
+}
+
+#story-subtitle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#story-subtitle a:last-child{
+  color: var(--text-light-color);
 }
 
 #passages {
