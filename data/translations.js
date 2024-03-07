@@ -28,13 +28,9 @@ getTranslations = function () {
       en: 'Legal Notice'
     },
     "4": {
-      de: 'DEV',
-      en: 'DEV'
+      de: 'Version 0.4',
+      en: 'Version 0.4'
     },
-    "5": {
-      de: 'Feedback',
-      en: 'Feedback'
-    }
   };
   text["Dev"] = {
     "1": {
