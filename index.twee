@@ -2352,6 +2352,7 @@ progress[value]::-webkit-progress-value {
   height: 100%;
   margin: 0;
   width: 34vh;
+  position: relative;
 }
 
 #ui-bar-body #title {
@@ -2363,6 +2364,10 @@ progress[value]::-webkit-progress-value {
   padding-right: 1rem;
 }
 
+#ui-bar-tray {
+  z-index: 10;
+}
+
 #ui-bar-toggle {
   border: none;
   color: var(--text-light-color);
@@ -2370,7 +2375,7 @@ progress[value]::-webkit-progress-value {
   left:0;
   position: fixed;
   right: unset;
-  top: 6vh;
+  top: 4vh;
 }
 
 #ui-bar-toggle:before {
