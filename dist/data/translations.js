@@ -132,14 +132,20 @@ getTranslations = function () {
       en: 'Exit the browser and open the newly added app.'
     }
   }
+  text["setup.splash"] = {
+    "1": {
+      de: 'Es beginnt...',
+      en: 'It begins...'
+    }
+  }
   text["setup.music"] = {
     "1": {
       de: 'Musik',
       en: 'Music'
     },
     "2": {
-      de: 'Wir bedanken uns bei Karl Casey @ White Bat Audio für die Hintergrundmusik. Du kannst Sie im Seitenmenu unter Einstellungen stummschalten.',
-      en: 'We like to thank Karl Casey @ White Bat Audio for our background-music. You can mute it in the sidemenu under "Settings"'
+      de: 'Mit Musik von Karl Casey @ White Bat Audio. Du kannst Sie im Seitenmenu unter Einstellungen stummschalten.',
+      en: 'With music from Karl Casey @ White Bat Audio. You can mute it in the sidemenu under "Settings"'
     }
   }
   text["setup.player"] = {
