@@ -640,10 +640,9 @@ $(document).one(":passagedisplay", function() {
   <model-viewer 
     id="model-viewer"
     ar auto-rotate
-    ar-modes="scene-viewer quick-look"
     src="models/setup/setup.camera.glb"
     ios-src="models/setup/setup.camera.usdz"
-    poster="images/loading.png"
+    poster="models/setup/setup.camera.webp"
     autoplay 
     shadow-intensity="2"
     shadow-softness="0"
@@ -1232,6 +1231,7 @@ $(document).one(":passagedisplay", function() {
     if (modelViewer){
       modelViewer.src = `models/${State.variables.hotspot}.hotspot/${State.variables.hotspot}.hotspot.glb`;
       modelViewer.iosSrc = `models/${State.variables.hotspot}.hotspot/${State.variables.hotspot}.hotspot.usdz`;
+      modelViewer.poster = `models/${State.variables.hotspot}.hotspot/${State.variables.hotspot}.hotspot.poster.webp`;
     }
   })
 <</script>>
@@ -1240,7 +1240,6 @@ $(document).one(":passagedisplay", function() {
   <model-viewer 
     id="model-viewer" 
     ar auto-rotate 
-    poster="images/loading.png"
     autoplay 
     shadow-intensity="2"
     shadow-softness="0"
@@ -1281,6 +1280,7 @@ $(document).one(":passagedisplay", function() {
     if (modelViewer){
       modelViewer.src = `models/${State.variables.hotspot}.${passage().split(".")[0]}/${State.variables.hotspot}.${passage()}.glb`;
       modelViewer.iosSrc = `models/${State.variables.hotspot}.${passage().split(".")[0]}/${State.variables.hotspot}.${passage()}.usdz`;
+      modelViewer.poster = `models/${State.variables.hotspot}.${passage().split(".")[0]}/${State.variables.hotspot}.${passage()}.poster.webp`;
     }
   })
 <</script>>
@@ -1289,7 +1289,6 @@ $(document).one(":passagedisplay", function() {
   <model-viewer 
     id="model-viewer" 
     ar auto-rotate 
-    poster="images/loading.png"
     autoplay 
     shadow-intensity="2"
     shadow-softness="0"
@@ -1659,9 +1658,9 @@ $(document).one(":passagedisplay", function() {
   <model-viewer
     id="model-viewer" 
     ar auto-rotate 
-    src="models/outro/outro.7.glb" 
-    ios-src="models/outro/outro.7.usdz"
-    poster="models/outro/outro.7.poster.jpg"
+    src="models/outro/outro.7.team.glb" 
+    ios-src="models/outro/outro.7.team.usdz"
+    poster="models/outro/outro.7.team.poster.webp"
     autoplay 
     shadow-intensity="2"
     shadow-softness="0"
@@ -1672,10 +1671,10 @@ $(document).one(":passagedisplay", function() {
 
     <div class="slider">
       <div class="slides">
-        <button class="slide selected" onclick="switchSrc(this, '7')" style="background-image: url('models/outro/outro.7.poster.jpg');"></button>
-        <button class="slide" onclick="switchSrc(this, '7.guide')" style="background-image: url('models/outro/outro.7.guide.poster.jpg');"></button>
+        <button class="slide selected" onclick="switchSrc(this, '7.team')" style="background-image: url('models/outro/outro.7.team.poster.webp');"></button>
+        <button class="slide" onclick="switchSrc(this, '7.guide')" style="background-image: url('models/outro/outro.7.guide.poster.webp');"></button>
         <button class="slide" onclick="switchSrc(this, '7.scanner')" style="background-image: url('models/outro/outro.7.scanner.poster.jpg');"></button>
-        <button class="slide" onclick="switchSrc(this, '7.storyteller')" style="background-image: url('models/outro/outro.7.storyteller.poster.jpg');"></button>
+        <button class="slide" onclick="switchSrc(this, '7.storyteller')" style="background-image: url('models/outro/outro.7.storyteller.poster.webp');"></button>
       </div>
     </div>
   </model-viewer>
@@ -1913,7 +1912,7 @@ $(document).one(":passagedisplay", function() {
       ar auto-rotate 
       src="models/1.hotspot/1.hotspot.ghost.glb"
       ios-src="models/1.hotspot/1.hotspot.ghost.glb"
-      poster="models/1.hotspot/1.hotspot.poster.jpg"
+      poster="models/1.hotspot/1.hotspot.ghost.poster.webp"
       autoplay 
       shadow-intensity="2"
       shadow-softness="0"
@@ -1924,16 +1923,16 @@ $(document).one(":passagedisplay", function() {
 
       <div class="slider">
         <div class="slides">
-          <button class="slide selected" onclick="switchSrc(this, '1')" style="background-image: url('models/1.hotspot/1.hotspot.poster.jpg');"></button>
-          <<if $hotspot > 1>><button class="slide" onclick="switchSrc(this, '2')" style="background-image: url('models/2.hotspot/2.hotspot.poster.jpg');"></button><</if>>
-          <<if $hotspot > 2>><button class="slide" onclick="switchSrc(this, '3')" style="background-image: url('models/3.hotspot/3.hotspot.poster.jpg');"></button><</if>>
-          <<if $hotspot > 3>><button class="slide" onclick="switchSrc(this, '4')" style="background-image: url('models/4.hotspot/4.hotspot.poster.jpg');"></button><</if>>
-          <<if $hotspot > 4>><button class="slide" onclick="switchSrc(this, '5')" style="background-image: url('models/5.hotspot/5.hotspot.poster.jpg');"></button><</if>>
-          <<if $hotspot > 5>><button class="slide" onclick="switchSrc(this, '6')" style="background-image: url('models/6.hotspot/6.hotspot.poster.jpg');"></button><</if>>
-          <<if $hotspot > 6>><button class="slide" onclick="switchSrc(this, '7')" style="background-image: url('models/7.hotspot/7.hotspot.poster.jpg');"></button><</if>>
-          <<if $hotspot > 7>><button class="slide" onclick="switchSrc(this, '8')" style="background-image: url('models/8.hotspot/8.hotspot.poster.jpg');"></button><</if>>
-          <<if $hotspot > 8>><button class="slide" onclick="switchSrc(this, '9')" style="background-image: url('models/9.hotspot/9.hotspot.poster.jpg');"></button><</if>>
-          <<if $hotspot > 9>><button class="slide" onclick="switchSrc(this, '10')" style="background-image: url('models/10.hotspot/10.hotspot.poster.jpg');"></button><</if>>
+          <button class="slide selected" onclick="switchSrc(this, '1')" style="background-image: url('models/1.hotspot/1.hotspot.ghost.poster.webp');"></button>
+          <<if $hotspot > 1>><button class="slide" onclick="switchSrc(this, '2')" style="background-image: url('models/2.hotspot/2.hotspot.ghost.poster.webp');"></button><</if>>
+          <<if $hotspot > 2>><button class="slide" onclick="switchSrc(this, '3')" style="background-image: url('models/3.hotspot/3.hotspot.ghost.poster.webp');"></button><</if>>
+          <<if $hotspot > 3>><button class="slide" onclick="switchSrc(this, '4')" style="background-image: url('models/4.hotspot/4.hotspot.ghost.poster.webp');"></button><</if>>
+          <<if $hotspot > 4>><button class="slide" onclick="switchSrc(this, '5')" style="background-image: url('models/5.hotspot/5.hotspot.ghost.poster.webp');"></button><</if>>
+          <<if $hotspot > 5>><button class="slide" onclick="switchSrc(this, '6')" style="background-image: url('models/6.hotspot/6.hotspot.ghost.poster.webp');"></button><</if>>
+          <<if $hotspot > 6>><button class="slide" onclick="switchSrc(this, '7')" style="background-image: url('models/7.hotspot/7.hotspot.ghost.poster.webp');"></button><</if>>
+          <<if $hotspot > 7>><button class="slide" onclick="switchSrc(this, '8')" style="background-image: url('models/8.hotspot/8.hotspot.ghost.poster.webp');"></button><</if>>
+          <<if $hotspot > 8>><button class="slide" onclick="switchSrc(this, '9')" style="background-image: url('models/9.hotspot/9.hotspot.ghost.poster.webp');"></button><</if>>
+          <<if $hotspot > 9>><button class="slide" onclick="switchSrc(this, '10')" style="background-image: url('models/10.hotspot/10.hotspot.ghost.poster.webp');"></button><</if>>
         </div>
       </div>
     </model-viewer>
