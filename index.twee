@@ -245,7 +245,10 @@ Spook Tours
 <<set $legalText = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
 <<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>>
 
-<<set $shortcutText = setup.text['StoryMenu'][4][setup.i18n.langs[settings.lang]]>>
+<<set $legalText = setup.text['StoryMenu'][4][setup.i18n.langs[settings.lang]]>>
+<<link [[$legalText|"About"]]>><<addclass "#ui-bar" "stowed">><</link>>
+
+<<set $shortcutText = setup.text['StoryMenu'][5][setup.i18n.langs[settings.lang]]>>
 <<link [[$shortcutText|"Dev"]]>><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
 
 :: setup.init {"position":"100,300","size":"100,100"}
@@ -1782,6 +1785,59 @@ $(document).one(":passagedisplay", function() {
 
 <div class="wrapper">
   <h1><<txt>></h1>
+  
+  <div>
+    <br/>
+    <h3><<txt>></h3>
+    <br/>
+    <p><<txt>></p>
+    <p><<txt>></p>
+    <p><<txt>></p>
+    <p><<txt>></p>
+    <p><<txt>></p>
+  </div>
+
+  <div>
+    <br/>
+    <h3><<txt>></h3>
+    <br/>
+    <p><<txt>></p>
+    <p><<txt>></p>
+  </div>
+  
+  <div>
+    <br/>
+    <h3><<txt>></h3>
+    <p><<txt>></p>
+  </div>
+
+  <div>
+    <br/>
+    <h3><<txt>></h3>
+    <p><<txt>></p>
+  </div>
+  
+  <div>
+    <br/>
+    <h3><<txt>></h3>
+    <p><<txt>></p>
+  </div>
+
+  <div>
+    <br/>
+    <h3><<txt>></h3>
+    <p><<txt>></p>
+  </div>
+</div>
+
+<div class="btn-group">
+  <<return>>
+</div>
+
+:: About {"position":"1100,100","size":"100,100"}
+
+<div class="wrapper">
+  <h1><<txt>></h1>
   <h2>
     <br/>
     <<txt>>
@@ -1790,15 +1846,11 @@ $(document).one(":passagedisplay", function() {
     <a target="_blank" href="https://digitalwarenkombinat.de/">Digitalwarenkombinat GbR</a>
     <<txt>>
   </h2>
-  
+
   <div>
     <br/>
     <h3><<txt>></h3>
     <br/>
-    <p><<txt>></p>
-    <p><<txt>></p>
-    <p><<txt>></p>
-    <p><<txt>></p>
     <p><<txt>></p>
   </div>
 
@@ -1807,31 +1859,21 @@ $(document).one(":passagedisplay", function() {
     <h3><<txt>></h3>
     <br/>
     <p><<txt>></p>
-    <p><<txt>></p>
-    <p><<txt>></p>
-  </div>
-  
-  <div>
-    <br/>
-    <h3><<txt>></h3>
-    <p><<txt>></p>
   </div>
 
   <div>
     <br/>
     <h3><<txt>></h3>
-    <p><<txt>></p>
-  </div>
-  
-  <div>
     <br/>
-    <h3><<txt>></h3>
     <p><<txt>></p>
   </div>
 
   <div>
     <br/>
-    <h3><<txt>></h3>
+    <p><<txt>></p>
+    <br/>
+    <p><<txt>></p>
+    <br/>
     <p><<txt>></p>
   </div>
 </div>

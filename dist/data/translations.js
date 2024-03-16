@@ -28,6 +28,10 @@ getTranslations = function () {
       en: 'Legal Notice'
     },
     "4": {
+      de: 'Über uns',
+      en: 'About'
+    },
+    "5": {
       de: 'Version 0.4',
       en: 'Version 0.4'
     },
@@ -883,6 +887,92 @@ getTranslations = function () {
       en: 'Legal Notice'
     },
     "2": {
+      de: 'Angaben gemäß § 5 TMG:',
+      en: 'Information in accordance with § 5 TMG:'
+    },
+    "3": {
+      de: 'GEOMAZING',
+      en: 'GEOMAZING'
+    },
+    "4": {
+      de: 'Inhaber: Gregor Assfalg',
+      en: 'Owner: Gregor Assfalg'
+    },
+    "5": {
+      de: 'Arno-Nitzsche-Str.11',
+      en: 'Arno-Nitzsche-Str.11'
+    },
+    "6": {
+      de: '04277 Leipzig',
+      en: '04277 Leipzig'
+    },
+    "7": {
+      de: 'Deutschland',
+      en: 'Germany'
+    },
+    "8": {
+      de: 'Kontakt:',
+      en: 'Contact:'
+    },
+    "9": {
+      de: 'E-Mail: getlost@geomazing.com',
+      en: 'E-Mail: getlost@geomazing.com'
+    },
+    "10": {
+      de: 'Umsatzsteuer-ID: DE322360228',
+      en: 'VAT ID: DE322360228'
+    },
+    "11": {
+      de: 'Streitbeilegungsverfahren',
+      en: 'Dispute resolution procedure'
+    },
+    "12": {
+      de: 'Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
+      en: 'We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.'
+    },
+    "13": {
+      de: 'Haftung für Inhalte',
+      en: 'Liability for content'
+    },
+    "14": {
+      de: 'Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.',
+      en: 'As a service provider, we are responsible for our own content on these pages in accordance with Section 7 (1) TMG (German Telemedia Act) and general legislation. According to §§ 8 to 10 TMG, however, we as a service provider are not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information in accordance with general legislation remain unaffected by this. However, liability in this respect is only possible from the time of knowledge of a specific infringement. As soon as we become aware of such infringements, we will remove this content immediately.'
+    },
+    "15": {
+      de: 'Haftung für Links',
+      en: 'Liability for links'
+    },
+    "16": {
+      de: 'Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.',
+      en: 'Our website contains links to external third-party websites over whose content we have no influence. Therefore, we cannot accept any liability for this third-party content. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal contents were not recognisable at the time of linking. However, permanent monitoring of the content of the linked pages is not reasonable without concrete evidence of an infringement. If we become aware of any legal infringements, we will remove such links immediately.'
+    },
+    "17": {
+      de: 'Urheberrecht',
+      en: 'Copyright'
+    },
+    "18": {
+      de: 'Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.',
+      en: 'The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution and any kind of utilisation outside the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use. Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is labelled as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately.'
+    },
+    "19": {
+      de: 'Die Anwendung enthält keine Cookies und speichert keine Daten.',
+      en: 'The application does not contain any cookies and does not store any data.'
+    },
+    "20": {
+      de: 'Die Webanwendung nutzt eingebundene Maxbox-Karten für die Darstellung der GPS-Orte. Mapbox, ein Kartendienst von Mapbox, Inc. wird dazu in Verbindung mit OpenStreepMap eingesetzt. Durch die Nutzung der Mapbox werden Informationen über die Benutzung dieser Website einschließlich Ihrer IP-Adresse an Mapbox und die Open-Street-Map-Foundation übertragen. Für genauere Informationen verweisen wir auf die AGB von Mapbox.',
+      en: 'The web application uses integrated Maxbox maps to display the GPS locations. Mapbox, a map service from Mapbox, Inc. is used in conjunction with OpenStreepMap. By using Mapbox, information about the use of this website, including your IP address, is transmitted to Mapbox and the OpenStreetMap Foundation. For more detailed information, please refer to the terms and conditions of Mapbox.'
+    },
+    "21": {
+      de: 'Die Anwendung benötigt die Freigabe der Kamera und des Standorts (GPS). Ohne diese Freigabe ist die Anwendung nur eingeschränkt nutzbar.',
+      en: 'The application requires the permission of the camera and the location (GPS). Without this permission, the application can only be used to a limited extent.'
+    }
+  }
+  text["About"] = {
+    "1": {
+      de: 'Über uns',
+      en: 'About'
+    },
+    "2": {
       de: 'Spook Tours ist eine Produktion von ',
       en: 'Spook Tours is a production of '
     },
@@ -895,77 +985,41 @@ getTranslations = function () {
       en: '.'
     },
     "5": {
-      de: 'Angaben gemäß § 5 TMG:',
-      en: 'Information in accordance with § 5 TMG:'
+      de: 'Gregor Assfalg',
+      en: 'Gregor Assfalg'
     },
     "6": {
-      de: 'GEOMAZING',
-      en: 'GEOMAZING'
+      de: 'Game Design, 2D Design, 3D Design, Audio, Story',
+      en: 'game design, 2D design, 3D design, audio, story'
     },
     "7": {
-      de: 'Inhaber: Gregor Assfalg',
-      en: 'Owner: Gregor Assfalg'
+      de: 'Gerd Müller',
+      en: 'Gerd Müller'
     },
     "8": {
-      de: 'Arno-Nitzsche-Str.11',
-      en: 'Arno-Nitzsche-Str.11'
+      de: 'Entwicklung',
+      en: 'Web Development'
     },
     "9": {
-      de: '04277 Leipzig',
-      en: '04277 Leipzig'
+      de: 'Anne Mühlich',
+      en: 'Anne Mühlich'
     },
     "10": {
-      de: 'Deutschland',
-      en: 'Germany'
+      de: 'Story, Lektorat, Projektmanagement',
+      en: 'story, editing, project management'
     },
     "11": {
-      de: 'Kontakt:',
-      en: 'Contact:'
+      de: 'Die genutzten 3D Assets stammen von Synty Studios.',
+      en: 'The 3D assets used come from Synty Studios.'
     },
     "12": {
-      de: 'Telefon: 0341-97854975',
-      en: 'Telephone: +4934197854975'
+      de: 'Ein großer Dank geht an die Twine-Community, deren Open Source Software wir für die Entwicklung der Spook Tours verwendet haben.',
+      en: 'A big thank you goes to the Twine community, whose open source software we used to develop the Spook Tours.'
     },
     "13": {
-      de: 'E-Mail: getlost@geomazing.com',
-      en: 'E-Mail: getlost@geomazing.com'
+      de: 'Danke sagen wir auch allen Testerinnen und Testern, die sich bereit erklärt haben, die Spook Tour auf unterschiedlichen Entwicklungsstufen auszuprobieren und uns damit geholfen haben, sie stetig zu verbessern.',
+      en: 'We would also like to thank all the testers who have agreed to try out the Spook Tour at various stages of development and have thus helped us to continuously improve it.'
     },
-    "14": {
-      de: 'Umsatzsteuer-ID: DE322360228',
-      en: 'VAT ID: DE322360228'
-    },
-    "15": {
-      de: 'Streitbeilegungsverfahren',
-      en: 'Dispute resolution procedure'
-    },
-    "16": {
-      de: 'Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
-      en: 'We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.'
-    },
-    "17": {
-      de: 'Haftung für Inhalte',
-      en: 'Liability for content'
-    },
-    "18": {
-      de: 'Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.',
-      en: 'As a service provider, we are responsible for our own content on these pages in accordance with Section 7 (1) TMG (German Telemedia Act) and general legislation. According to §§ 8 to 10 TMG, however, we as a service provider are not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information in accordance with general legislation remain unaffected by this. However, liability in this respect is only possible from the time of knowledge of a specific infringement. As soon as we become aware of such infringements, we will remove this content immediately.'
-    },
-    "19": {
-      de: 'Haftung für Links',
-      en: 'Liability for links'
-    },
-    "20": {
-      de: 'Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.',
-      en: 'Our website contains links to external third-party websites over whose content we have no influence. Therefore, we cannot accept any liability for this third-party content. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal contents were not recognisable at the time of linking. However, permanent monitoring of the content of the linked pages is not reasonable without concrete evidence of an infringement. If we become aware of any legal infringements, we will remove such links immediately.'
-    },
-    "21": {
-      de: 'Urheberrecht',
-      en: 'Copyright'
-    },
-    "22": {
-      de: 'Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.',
-      en: 'The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution and any kind of utilisation outside the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use. Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is labelled as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately.'
-    }
   }
   text["Inventar"] = {
     "1": {
