@@ -268,7 +268,7 @@ Spook Tours
 <</script>>
 
 <div class="wrapper">
-  <h1>Version 0.4</h1>
+  <h1>Spook Tours</h1>
   <h2><<txt>></h2>
   <p class="p3">spui</p>
 </div>
@@ -1774,6 +1774,7 @@ $(document).one(":passagedisplay", function() {
       <p><<txt>></p>
     </div>
   </details>
+  <h2><<txt>> <a href="mailto:getlost@geomazing.com">getlost@geomazing.com</a></h2>
 </div>
 
 <div class="btn-group">
@@ -1825,6 +1826,15 @@ $(document).one(":passagedisplay", function() {
   <div>
     <br/>
     <h3><<txt>></h3>
+    <p><<txt>></p>
+  </div>
+
+  <div>
+    <br/>
+    <h3><<txt>></h3>
+    <p><<txt>></p>
+    <p><<txt>></p>
+    <p><<txt>></p>
     <p><<txt>></p>
   </div>
 </div>

@@ -32,8 +32,8 @@ getTranslations = function () {
       en: 'About'
     },
     "5": {
-      de: 'Version 0.4',
-      en: 'Version 0.4'
+      de: 'Version 0.9',
+      en: 'Version 0.9'
     },
   };
   text["Dev"] = {
@@ -92,8 +92,8 @@ getTranslations = function () {
   }
   text["setup.init"] = {
     "1": {
-      de: 'Diese Spook Tour befindet sich in der Entwicklung und ist nicht das finale Produkt. Diese Version ist nur für Testzwecke bestimmt.',
-      en: 'This Spook Tour is a test version and not the final product. It is intended for testing purposes only.'
+      de: 'Diese Spook Tour findet im Leipziger Friedenspark statt.',
+      en: 'This Spook Tour takes place in Leipzig´s Friedenspark.'
     }
   }
   text["setup.browsercheck"] = {
@@ -624,7 +624,7 @@ getTranslations = function () {
   text["secret"] = {
     "1": {
       de: 'Das magische Buch nimmt Unheil in Kauf, verdunkelt durch die Maskerade. So besiegst du nur des Schicksals Lauf, vernichtest du der Kugel Gnade.',
-      en: 'The magic book accepts disaster, hidden by the masquerade. By destroying the ball`s mercy, you defeat the course of fate.'
+      en: 'The magic book accepts disaster, hidden by the masquerade. By destroying the ball´s mercy, you defeat the course of fate.'
     },
   }
   text["hotspot.intro"] = {
@@ -955,14 +955,22 @@ getTranslations = function () {
       en: 'The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution and any kind of utilisation outside the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use. Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is labelled as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately.'
     },
     "19": {
-      de: 'Die Anwendung enthält keine Cookies und speichert keine Daten.',
-      en: 'The application does not contain any cookies and does not store any data.'
+      de: 'Datennutzung & Datenspeicherung',
+      en: 'Data use & data storage'
     },
     "20": {
-      de: 'Die Webanwendung nutzt eingebundene Maxbox-Karten für die Darstellung der GPS-Orte. Mapbox, ein Kartendienst von Mapbox, Inc. wird dazu in Verbindung mit OpenStreepMap eingesetzt. Durch die Nutzung der Mapbox werden Informationen über die Benutzung dieser Website einschließlich Ihrer IP-Adresse an Mapbox und die Open-Street-Map-Foundation übertragen. Für genauere Informationen verweisen wir auf die AGB von Mapbox.',
-      en: 'The web application uses integrated Maxbox maps to display the GPS locations. Mapbox, a map service from Mapbox, Inc. is used in conjunction with OpenStreepMap. By using Mapbox, information about the use of this website, including your IP address, is transmitted to Mapbox and the OpenStreetMap Foundation. For more detailed information, please refer to the terms and conditions of Mapbox.'
+      de: 'Die Webanwendung nutzt eingebundene Maxbox-Karten für die Darstellung der GPS-Orte.',
+      en: 'The web application uses integrated Maxbox maps to display the GPS locations.'
     },
     "21": {
+      de: 'Unsere Website verwendet Mapbox, um auf einigen Unterseiten interaktive Karten anzuzeigen. Die Mapbox API ist ein Kartendienst von Mapbox Inc. (Mapbox). Durch die Nutzung der Mapbox API können Informationen über die Nutzung dieser Website, einschließlich Ihrer IP-Adresse, an Mapbox in den Vereinigten Staaten übertragen werden. Wenn Sie eine Seite besuchen, die Mapbox Karten enthält, stellt Ihr Browser eine direkte Verbindung zu den Mapbox-Servern her. Mapbox sendet den Karteninhalt direkt an Ihren Browser und bindet ihn in die Website ein. Wir haben daher keinen Einfluss auf den Umfang der Daten, die Mapbox auf diese Weise erhebt. Wenn Sie nicht möchten, dass Mapbox über unsere Website Daten über Sie erhebt, verarbeitet oder nutzt, können Sie JavaScript in Ihren Browsereinstellungen deaktivieren. In diesem Fall können Sie jedoch den Kartenviewer nicht nutzen.',
+      en: 'Our website uses Mapbox to display interactive maps on some subpages. The Mapbox API is a map service of Mapbox Inc. (Mapbox). By using the Mapbox API, information about the use of this website, including your IP address, may be transmitted to Mapbox in the United States. When you visit a page that contains Mapbox maps, your browser establishes a direct connection to the Mapbox servers. Mapbox will send the map content directly to your browser and integrate it into the website. Therefore, we have no control over the amount of data collected by Mapbox in this way. If you do not want Mapbox to collect, process or use data about you through our website, you can disable JavaScript in your browser settings. However, you will not be able to use the map viewer in this case.'
+    },
+    "22": {
+      de: 'Zweck und Umfang der Datenerhebung und die weitere Verarbeitung und Nutzung der Daten durch Mapbox sowie Ihre diesbezüglichen Rechte und Einstellungsmöglichkeiten zum Schutz Ihrer Privatsphäre entnehmen Sie bitte den Datenschutzhinweisen von Mapbox unter https://www.mapbox.com/privacy/. Dort werden unter anderem die IP-Adresse des Besuchers, die Adresse der besuchten Seite, Datum und Uhrzeit sowie die aufgerufenen Seiten gespeichert. Mapbox gibt an, diese Informationen ausschließlich zur Verbesserung des angebotenen Dienstes für Diagnose- und Analysezwecke zu verwenden. Mapbox gibt keine persönlichen Daten an Dritte weiter. Sie haben auch die Möglichkeit, Mapbox-Cookies zu verhindern, indem Sie Cookies von Drittanbietern in Ihren Browsereinstellungen deaktivieren.',
+      en: 'For more information about the purpose and scope of the data collection, as well as the further processing and use of the data by Mapbox, your related rights and privacy settings, please refer to the Mapbox Privacy Policy at https://www.mapbox.com/privacy/ , Among other things, it stores the IP address of the visitor, the address of the visited page, the date and time, and the pages being accessed. Mapbox claims to use this information solely to improve the service provided for diagnostic and analytical purposes. Mapbox does not disclose personal data to third parties. You also have the option to prevent Mapbox cookies by disabling third party cookies in your browser settings.'
+    },
+    "23": {
       de: 'Die Anwendung benötigt die Freigabe der Kamera und des Standorts (GPS). Ohne diese Freigabe ist die Anwendung nur eingeschränkt nutzbar.',
       en: 'The application requires the permission of the camera and the location (GPS). Without this permission, the application can only be used to a limited extent.'
     }
@@ -1068,6 +1076,11 @@ getTranslations = function () {
       de: 'Die Fragen während der Tour können nur durch genaues Absuchen der entdeckten AR-Szenen (paranormale Orte) gelöst werden. Manchmal müsste ihr auch um die Szenen herum laufen und eure Sichtachse ändern, um das Gesuchte zu finden. wenn ihr allein spielt, braucht ihr ein gutes Gedächtnis und müsst euch möglichst viel einprägen, um die Fragen beantworten zu können.',
       en: 'The questions during the tour can only be solved by carefully searching the discovered AR scenes (paranormal locations). Sometimes you will have to walk around the scenes and change your line of sight to find what you are looking for. If you are playing alone, you will need a good memory and have to memorize as much as possible to answer the questions.'
     },
+    "9": {
+      de: 'Für alle weiteren Fragen verwendet die E-Mail',
+      en: 'For all other questions use the e-mail'
+    },
+    
   }
   return text;
 };
