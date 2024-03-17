@@ -1751,11 +1751,71 @@ $(document).one(":passagedisplay", function() {
       <h5><<txt>></h5>
     </summary>
     <div>
-      <p><<txt>>
-      <<link "Menu">>
-	      <<script>>UIBar.unstow().show()<</script>>
-      <</link>>
-      </p>
+      <p><<txt>></p>
+    </div>
+  </details>
+  <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>></p>
+    </div>
+  </details>
+  <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>></p>
+    </div>
+  </details>
+   <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>></p>
+    </div>
+  </details>
+   <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>></p>
+    </div>
+  </details>
+   <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>></p>
+    </div>
+  </details>
+   <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>></p>
+    </div>
+  </details>
+   <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>></p>
+    </div>
+  </details>
+  <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>></p>
     </div>
   </details>
   <details>
@@ -1774,6 +1834,23 @@ $(document).one(":passagedisplay", function() {
       <p><<txt>></p>
     </div>
   </details>
+  <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>></p>
+    </div>
+  </details>
+  <details>
+    <summary>
+      <h5><<txt>></h5>
+    </summary>
+    <div>
+      <p><<txt>></p>
+    </div>
+  </details>
+  
   <h2><<txt>> <a href="mailto:getlost@geomazing.com">getlost@geomazing.com</a></h2>
 </div>
 
