@@ -32,8 +32,8 @@ getTranslations = function () {
       en: 'About'
     },
     "5": {
-      de: 'Version 0.9',
-      en: 'Version 0.9'
+      de: 'Version 1.0',
+      en: 'Version 1.0'
     },
   };
   text["Dev"] = {
