@@ -1970,6 +1970,10 @@ $(document).one(":passagedisplay", function() {
 
 :: Inventar {"position":"700,100","size":"100,100"}
 
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
 <div class="wrapper">
   <h1><<txt>></h1>
   <<script>>
@@ -2028,8 +2032,8 @@ $(document).one(":passagedisplay", function() {
 
 </div>
 
-<div class="btn-group">
-  <<return>>
+<div class="btn-group"> 
+ <<return>>
 </div>
 
 :: StoryScript [script]
@@ -2714,10 +2718,11 @@ border: 2px solid var(--secondary-color);
 }
 
 .macro-return {
-  background: var(--background-darken-color);
-  border-radius: 4px;
-  border: 2px solid var(--secondary-color);
-  box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
+  //background: var(--background-darken-color);
+  //border-radius: 4px;
+  //border: 2px solid var(--secondary-color);
+  //box-shadow: 2px 2px rgba(0,0,0,0.2), 2px 2px rgba(0,0,0,0.19);
+  text-shadow: 1px 1px 20px var(--secondary-color);
   color: var(--secondary-color);
   font-family: 'Averia Serif Libre', serif;
   font-size: 4vh;
