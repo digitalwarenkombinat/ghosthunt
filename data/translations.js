@@ -238,12 +238,12 @@ getTranslations = function () {
   }
   text["intro.welcome"] = {
     "1": {
-      de: 'Check',
-      en: 'Check'
+      de: 'Setup beendet',
+      en: 'Setup complete'
     },
     "2": {
-      de: 'Hallo Leute. Hat alles geklappt?',
-      en: 'Hello folks. Did everything work out?'
+      de: 'Hat alles geklappt?',
+      en: 'Did everything work out?'
     },
     "3": {
       de: 'Konnte der Detector den Geist und die Karte sehen?',
