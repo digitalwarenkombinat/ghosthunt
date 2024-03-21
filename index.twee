@@ -255,7 +255,7 @@ Spook Tours
 
 <<script>>
   if (State.variables.is_pwa) {
-    $.wiki('<<goto "setup.splash">>')
+    $.wiki('<<goto "setup.player">>')
   };
 
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -382,7 +382,7 @@ Spook Tours
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|setup.player]]</button>
+  <button class="next">[[|intro.2]]</button>
 </div>
 
 :: setup.player {"position":"100,900","size":"100,100"}
@@ -709,7 +709,7 @@ $(document).one(":passagedisplay", function() {
 <div class="btn-group">
   <button class="return">[[|intro.welcome]]</button>
   <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|intro.2]]</button>
+  <button class="next">[[|setup.music]]</button>
 </div>
 
 :: intro.2 {"position":"700,900","size":"100,100"}
