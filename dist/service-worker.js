@@ -2,7 +2,6 @@ const cacheName = "ghosthunt-v1.0";
 const urlsToCacheiOS = [
   '/',
   '/index.html',
-  '/data/locations.js',
   '/data/mapbox.js',
   '/data/riddles.js',
   '/data/translations.js',
@@ -87,7 +86,6 @@ const urlsToCacheiOS = [
 const urlsToCacheAndroid = [
   '/',
   '/index.html',
-  '/data/locations.js',
   '/data/mapbox.js',
   '/data/riddles.js',
   '/data/translations.js',

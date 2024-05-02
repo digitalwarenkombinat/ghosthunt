@@ -64,8 +64,9 @@ Spook Tours
   <<set $passage = passage()>>
   <<set $hasHotspot = $args.raw === "">>
   <<set $storyText = setup.text[passage()][State.variables.hasHotspot ? State.variables.hotspot : 1][setup.i18n.langs[settings.lang]]>>
+  <<set $citiesText = setup.text['cities'][State.variables.selectedCity][setup.i18n.langs[settings.lang]]>>
   <<script>>
-    const videoText = State.variables.storyText.split('§');
+    const videoText = State.variables.storyText.replace('$selectedCity', State.variables.citiesText).split('§');
     const videoTextDuration = 3000;
 
     let counter = 0;
@@ -191,6 +192,10 @@ Spook Tours
 
 <<set $inventory to [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]>>
 
+<<set $cities to { "Leipzig" : "leipzig"}>>
+
+<<set $selectedCity = "leipzig">>
+
 <<set $enteredLocations to []>>
 
 <<set $runes to [
@@ -255,7 +260,7 @@ Spook Tours
 
 <<script>>
   if (State.variables.is_pwa) {
-    $.wiki('<<goto "setup.player">>')
+    $.wiki('<<goto "setup.city">>')
   };
 
   $('#story').attr('style', 'background-image:url(images/bg.jpg)');
@@ -383,6 +388,30 @@ Spook Tours
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
   <button class="next">[[|intro.2]]</button>
+</div>
+
+:: setup.city {"position":"100,300","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <<listbox "$selectedCity" autoselect>>
+    <<optionsfrom $cities>>
+  <</listbox>>
+</div>
+
+<div class="btn-group">
+  <button class="next">[[|setup.player]]</button>
 </div>
 
 :: setup.player {"position":"100,900","size":"100,100"}
@@ -552,7 +581,7 @@ $(document).one(":passagedisplay", function() {
 
       const map = new mapboxgl.Map({
         container: 'map',
-        style: getStyle()
+        style: getStyle(State.variables.selectedCity)
       });
 
       const geolocate = new mapboxgl.GeolocateControl(window.geolocation.getGeolocateControl());
@@ -827,15 +856,14 @@ $(document).one(":passagedisplay", function() {
 
 <<script>>
   $(document).one(":passagedisplay", function() {
-    requestScriptLoad({
-      id     : 'lib-mapbox-js',
-      src    : 'https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js',
-      onload : function (evt) {
+
+    importScripts(`./data/locations/${State.variables.selectedCity}.js`, 'https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js')
+      .then(function () {
         mapboxgl.accessToken = getAccessToken();
 
         const map = new mapboxgl.Map({
           container: 'map',
-          style: getStyle(),
+          style: getStyle(State.variables.selectedCity),
         });
 
         const geolocate = new mapboxgl.GeolocateControl(window.geolocation.getGeolocateControl());
@@ -895,8 +923,10 @@ $(document).one(":passagedisplay", function() {
             });
           }
         };
-      }
-    });
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
   });
 <</script>>
 
@@ -1743,6 +1773,8 @@ $(document).one(":passagedisplay", function() {
 
 :: Hilfe {"position":"900,100","size":"100,100"}
 
+<<set $citiesText = setup.text['cities'][$selectedCity][setup.i18n.langs[settings.lang]]>>
+
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
@@ -1751,7 +1783,7 @@ $(document).one(":passagedisplay", function() {
       <h5><<txt>></h5>
     </summary>
     <div>
-      <p><<txt>></p>
+      <p><<txt>>$citiesText<<txt>></p>
     </div>
   </details>
   <details>
@@ -2527,6 +2559,16 @@ progress[value]::-webkit-progress-bar {
 progress[value]::-webkit-progress-value {
   background-color: var(--secondary-color);
   border-radius: 2px; 
+}
+
+select {
+  display: block;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 4vh;
+  text-align: center;
+  text-shadow: 3px 3px 1px black;
 }
 
 /* ####################SUGARCUBE#################### */

@@ -1,7 +1,7 @@
 {
   "short_name": "Spook Tours",
   "name": "Spook Tours",
-  "description" : "Eine digitale Schnitzeljagd durch den Leipziger Friedenspark",
+  "description" : "Eine GPS-basierte AR-Geisterjagd in deiner Stadt",
   "theme_color": "#9CF299",
   "background_color": "#000000",
   "display": "fullscreen",
