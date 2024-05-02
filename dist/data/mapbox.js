@@ -6,6 +6,8 @@ getStyle = function (selectedCity) {
   switch (selectedCity) {
     case 'leipzig':
       return 'mapbox://styles/gregger/cjpkxg68s0fb22sqnjhzm8vvb';
+    case 'muenchen':
+      return 'mapbox://styles/gregger/cjpkxg68s0fb22sqnjhzm8vvb';
     default:
       return 'mapbox://styles/gregger/cjpkxg68s0fb22sqnjhzm8vvb';
   };

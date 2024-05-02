@@ -94,6 +94,10 @@ getTranslations = function () {
     "leipzig": {
       de: 'im Leipziger Friedenspark',
       en: 'in Leipzig´s Friedenspark'
+    },
+    "muenchen": {
+      de: 'im Englischen Garten München',
+      en: 'in English Garden in Munich'
     }
   }
   text["setup.init"] = {

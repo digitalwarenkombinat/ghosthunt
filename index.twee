@@ -192,7 +192,7 @@ Spook Tours
 
 <<set $inventory to [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]>>
 
-<<set $cities to { "Leipzig" : "leipzig"}>>
+<<set $cities to { "Leipzig" : "leipzig", "München" : "muenchen"}>>
 
 <<set $selectedCity = "leipzig">>
 
