@@ -1,5 +1,5 @@
 :: StoryTitle
-Spuk & Schreck
+Spook Tours
 
 :: StoryData
 {
@@ -14,11 +14,16 @@ Spuk & Schreck
 :: StoryCaption {"position":"500,100","size":"100,100"}
 
   <<set $menuText = setup.text['StoryCaption'][1][setup.i18n.langs[settings.lang]]>>
-  <<set $pointsText = setup.text['StoryCaption'][2][setup.i18n.langs[settings.lang]]>>
+  <<set $progressText = setup.text['StoryCaption'][2][setup.i18n.langs[settings.lang]]>>
+  <<set $pointsText = setup.text['StoryCaption'][3][setup.i18n.langs[settings.lang]]>>
   <<set $pointsMaximum to 600>>
   <h1>$menuText</h1>
-  <h5>$pointsText</h5>
-  <h3>$points / $pointsMaximum</h3>
+  <h5>$progressText</h5>
+  <progress @value="$hotspot" max="10"></progress>
+  <<if $isStoryteller>>
+    <h5>$pointsText</h5>
+    <h3>$points / $pointsMaximum</h3>
+  <</if>>
 
 :: StoryInit {"position":"100,100","size":"100,100"}
 
@@ -56,25 +61,54 @@ Spuk & Schreck
 
 -------------------------VIDEO-------------------------------
 <<widget "video">>
-  <<set $hasHotspot = $args.raw === "">>
   <<set $passage = passage()>>
+  <<set $hasHotspot = $args.raw === "">>
   <<set $storyText = setup.text[passage()][State.variables.hasHotspot ? State.variables.hotspot : 1][setup.i18n.langs[settings.lang]]>>
   <<set $citiesText = setup.text['cities'][State.variables.selectedCity][setup.i18n.langs[settings.lang]]>>
   <<script>>
     const videoText = State.variables.storyText.replace('$selectedCity', State.variables.citiesText).split('§');
     const videoTextDuration = 3000;
 
+    let counter = 0;
+    let videoTextTimeout;
+    let timerOn = false;
+
+    function timedVideoText() {
+      if (counter < videoText.length) {
+        document.getElementById("videoText").innerText = videoText[counter];
+        counter++;
+        videoTextTimeout = setTimeout(timedVideoText, videoTextDuration);
+      }
+    }
+
+    function startVideoText() {
+      const videoTextElem = document.getElementById("videoText");
+      if (videoTextElem && !timerOn) {
+        timerOn = true;
+        timedVideoText();
+      }
+    }
+
+    function stopVideoText() {
+      clearTimeout(videoTextTimeout);
+      timerOn = false;
+    }
+
     $(document).one(":passagedisplay", function() {
-      let video = document.getElementById("video");
+      const video = document.getElementById("video");
       if (video) {
-        let srcPassage = State.variables.hasHotspot ? State.variables.passage : State.variables.passage.split(".")[0];
-        let srcHotspot = State.variables.hasHotspot ? State.variables.hotspot : State.variables.passage.split(".")[1];
-        video.src = `videos/${srcHotspot}.${srcPassage}.mp4`;
+        const videoSource = State.variables.hasHotspot
+          ? `videos/${State.variables.hotspot}.${State.variables.passage}.mp4`
+          : `videos/${State.variables.passage}.mp4`;
+        video.src = videoSource;
         video.load();
-        window.video.displayStringsSequentially(videoText, videoTextDuration);
+        startVideoText();
         video.play();
       }
-    })
+    });
+
+    $(document).one(":passageinit", stopVideoText);
+
   <</script>>
 
   <video autoplay muted id="video" playsinline loop>
@@ -86,14 +120,73 @@ Spuk & Schreck
   </div>
 <</widget>>
 
+<<widget "secret">>
+  <div id="messageContainer" class="message"></div>
+  <<script>>
+    $(document).one(":passagedisplay", function() {
+      const secretMessage = setup.text['secret'][1][setup.i18n.langs[settings.lang]];
+
+      const messageContainer = document.getElementById('messageContainer');
+
+      let lettersFound = [];
+      State.variables.letter.forEach((isTrue, index) => {
+        if (isTrue) {
+            lettersFound.push(State.variables.runes[index][0]);
+            lettersFound.push(State.variables.runes[index][1]);
+        }
+      });
+
+      for (let i = 0; i < secretMessage.length; i++) {
+        const message = document.createElement('h2');
+        message.textContent = secretMessage[i];
+        const matchingLetter = lettersFound.find(pair => pair.includes(secretMessage[i].toLowerCase()));
+        if (!secretMessage[i].includes(',','.','`') && !matchingLetter) {
+            message.classList.add('p3');
+        }
+        messageContainer.appendChild(message);
+      };
+    })
+  <</script>>
+<</widget>>
+
 --------------------------AUDIO---------------------------------------
 
-/* <<cacheaudio "bg" "audio/bg.mp3">>
 <<cacheaudio "click" "audio/click.mp3">>
-<<cacheaudio "ring" "audio/ring.mp3">> */
+<<cacheaudio "ring" "audio/ring.mp3">>
+<<cacheaudio "right" "audio/right.mp3">>
+<<cacheaudio "wrong" "audio/wrong.mp3">>
+<<cacheaudio "bg.1" "audio/bg.1.mp3">>
+<<cacheaudio "bg.2" "audio/bg.2.mp3">>
+
+<<createaudiogroup ":bg">>
+	<<track "bg.1">>
+  <<track "bg.2">>
+<</createaudiogroup>>
+
+<<createplaylist "bg">>
+  <<track "bg.1">>
+  <<track "bg.2">>
+<</createplaylist>>
+
+<<script>>
+  postdisplay["setupAudioOnClick"] = function () {
+    const trackId = "click";
+
+    $("#story").find("a.link-internal,button.link-internal")
+      .on("click", function () {
+        new Wikifier(null, '<<audio "' + trackId + '" play>>');
+      });
+  };
+<</script>>
 
 -------------------------STARTVARIABLEN-------------------------------
 <<set $hotspot to 0>>
+
+<<set $validFrequences = [101, 247, 404, 721, 333, 121, 911, 451, 143, 666]>>
+
+<<set $validGhostFrequences = [201, 723, 447, 304, 521, 656, 133, 421, 890, 667]>>
+
+<<set $validOutroFrequence = 999>>
 
 <<set $letter to [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]>>
 
@@ -106,13 +199,13 @@ Spuk & Schreck
 <<set $enteredLocations to []>>
 
 <<set $runes to [
-    ["a", "ä"], 
-    ["s", "u"], 
+    ["k", "p"],
+    ["s", "u"],
     ["m", "l"],
     ["c", "h"],
-    ["i", "y"],
+    ["i", "a"],
     ["b", "f"],
-    ["d", "k"],
+    ["d", "y"],
     ["e", "j"],
     ["g", "r"],
     ["o", "q"],
@@ -128,22 +221,32 @@ Spuk & Schreck
 
 <<set $points to 0>>
 
-<<set $riddle to 1>>
+<<set $riddleCount to 1>>
 
 <<set $riddleCorrectCount to 0>>
 
-<<set $ende to 0>>
+<<set $secretCorrect to 0>>
 
 <<set $isStoryteller to false>>
 <<set $isScanner to false>>
 <<set $isNavigator to false>>
 <<set $isNavigatorScanner to false>>
-<<set $playerCount to 0>>
+<<set $playerCount to 1>>
 
 :: StoryMenu {"position":"300,100","size":"100,100"}
 
-<<set $inventoryText = setup.text['StoryMenu'][1][setup.i18n.langs[settings.lang]]>>
+<<if $playerCount === 1 || $isScanner || $isNavigatorScanner>>
+  <<set $inventoryText = setup.text['StoryMenu'][1][setup.i18n.langs[settings.lang]]>>
+  <<link [[$inventoryText|"Inventar"]]>><<addclass "#ui-bar" "stowed">><</link>>
+<</if>>
+
+
 <<set $helpText = setup.text['StoryMenu'][2][setup.i18n.langs[settings.lang]]>>
+<<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
+
+
+:: StorySubtitle {"position":"300,100","size":"100,100"}
+
 <<set $legalText = setup.text['StoryMenu'][3][setup.i18n.langs[settings.lang]]>>
 <<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>>
 
@@ -152,18 +255,10 @@ Spuk & Schreck
 
 <<set $shortcutText = setup.text['StoryMenu'][5][setup.i18n.langs[settings.lang]]>>
 <<link [[$shortcutText|"Dev"]]>><<addclass "#ui-bar" "stowed">><<goto "Dev">><</link>>
-<<link [[$feedbackText|"outro.init"]]>><<addclass "#ui-bar" "stowed">><</link>>
-/* <<link [[$helpText|"Hilfe"]]>><<addclass "#ui-bar" "stowed">><</link>>
-<<link [[$legalText|"Impressum"]]>><<addclass "#ui-bar" "stowed">><</link>> */
 
 :: setup.init {"position":"100,300","size":"100,100"}
 
 <<script>>
-
-  function redirectPlayer() {
-    $.wiki('<<goto "setup.player">>')
-  }
-
   if (State.variables.is_pwa) {
     $.wiki('<<goto "setup.city">>')
   };
@@ -245,14 +340,14 @@ Spuk & Schreck
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
-  <h2 class="iosHelp"><<txt>><img src="images/ios_share.svg" /><<txt>></h2>
+  <h2 class="iosHelp"><<txt>><img height="64" width="64" src="images/ios_share.svg" /><<txt>></h2>
   <h2 class="androidHelp"><<txt>><img src="images/android_install.svg" /><<txt>></h2>
   <h2><<txt>></h2>
-  <img src="images/icon.png" class="image-size-50" />
 </div>
 
 <div class="btn-group">
   <button class="return">[[|setup.init]]</button>
+  <button class="retry">[[|passage()]]</button>
   <button class="install"></button>
 </div>
 
@@ -338,64 +433,119 @@ Spuk & Schreck
   <</button>>
   <<button 2>>
     <<set $playerCount = 2>>
-    <<goto "setup.role">>
+    <<goto "setup.storyteller">>
   <</button>>
   <<button 3>>
     <<set $playerCount = 3>>
-    <<goto "setup.role">>
+    <<goto "setup.storyteller">>
   <</button>>
 </div>
 
-:: setup.role {"position":"100,1100","size":"100,100"}
+:: setup.storyteller {"position":"100,1100","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/setup.storyteller.jpg)');
 <</script>>
 
 <div class="wrapper">
   <h1><<txt>></h1>
+  
+</div>
+
+<div class="btn-group">
+<h2><<txt>></h2>
+  <button class="return">[[|setup.player]]</button>
+  <<button OK>>
+    <<set $isStoryteller = true>>
+    <<script>>
+    jQuery(Dialog
+        .setup(setup.text[passage()][1][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][3][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "intro.init" >>');})),Dialog.close()})
+      ),!0;
+    Dialog.open();
+    <</script>>
+  <</button>>
+  <button class="next">[[|setup.navigator]]</button>
+</div>
+
+:: setup.navigator {"position":"100,1100","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/setup.navigator.jpg)');
+<</script>>
+
+<div class="wrapper">
   <<if $playerCount === 2>>
-    <h2><<txt 2>></h2>
-    <h2><<txt 3>></h2>
+    <h1><<txt 1>></h1>
   <<elseif $playerCount === 3>>
-    <h2><<txt 2>></h2>
-    <br/>
-    <h2><<txt 4>></h2>
-    <br/>
-    <h2><<txt 5>></h2>
+    <h1><<txt 3>></h1>
   <</if>>
 </div>
 
 <div class="btn-group">
-  <<set $alertText = setup.text['setup.role'][6][setup.i18n.langs[settings.lang]]>>
   <<if $playerCount === 2>>
-    <<button Storyteller>>
-      <<script>>UI.alert(State.variables.alertText);<</script>>
-      <<set $isStoryteller = true>>
-      <<goto "intro.init">>
-    <</button>>
-    <<button Navigator/Scanner>>
-      <<script>>UI.alert(State.variables.alertText);<</script>>
-      <<set $isNavigatorScanner = true>>
-      <<goto "setup.location">>
-    <</button>>
+    <h2><<txt 2>></h2>
   <<elseif $playerCount === 3>>
-    <<button Storyteller>>
-      <<script>>UI.alert(State.variables.alertText);<</script>>
-      <<set $isStoryteller = true>>
-      <<goto "intro.init">>
-    <</button>>
-    <<button Navigator>>
-      <<script>>UI.alert(State.variables.alertText);<</script>>
-      <<set $isNavigator = true>>
-      <<goto "setup.location">>
-    <</button>>
-    <<button Scanner>>
-      <<script>>UI.alert(State.variables.alertText);<</script>>
-      <<set $isScanner = true>>
-      <<goto "setup.camera">>
-    <</button>>
+    <h2><<txt 4>></h2>
   <</if>>
+  <button class="return">[[|setup.storyteller]]</button>
+  <<button OK>>
+    <<if $playerCount === 2>>
+      <<set $isNavigatorScanner = true>>
+    <<elseif $playerCount === 3>> 
+      <<set $isNavigator = true>>
+    <</if>>
+    <<script>>
+      jQuery(Dialog
+        .setup(setup.text[passage()][3][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][5][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "setup.location" >>');})),Dialog.close()})
+      ),!0;
+      Dialog.open();
+    <</script>>
+  <</button>>
+  <<if $playerCount === 3>>
+    <button class="next">[[|setup.scanner]]</button>
+  <<else>>
+    <button class="next">[[|setup.storyteller]]</button>
+  <</if>>
+</div>
+
+:: setup.scanner {"position":"100,1100","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/setup.scanner.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+</div>
+
+<div class="btn-group">
+  <h2><<txt>></h2>
+  <button class="return">[[|setup.navigator]]</button>
+  <<button OK>>
+    <<set $isScanner = true>>
+    <<script>>
+      jQuery(Dialog
+        .setup(setup.text[passage()][1][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][3][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "setup.camera" >>');})),Dialog.close()})
+      ),!0;
+      Dialog.open();
+    <</script>>
+  <</button>>
+  <button class="next">[[|setup.storyteller]]</button>
 </div>
 
 :: setup.location {"position":"300,500","size":"100,100"}
@@ -410,6 +560,7 @@ Spuk & Schreck
   <button class="geolocation"><<txt>></button>
   <button class="settings"><a href="x-apple.systempreferences:com.apple.preference.security?Privacy_LocationServices"><<txt>></a></button>
   <button class="help"></button>
+  <button class="retry">[[|passage()]]</button>
 
   <<if $isNavigator>>
     <button class="next">[[|main.navigator.init]]</button>
@@ -502,6 +653,13 @@ $(document).one(":passagedisplay", function() {
     $('#story').attr('style', 'background-image:url(images/bg.jpg)');
     const helpBtn = document.querySelector('.help');
     helpBtn.style.display = 'none';
+    const nextBtn = document.querySelector('.next');
+    nextBtn.style.display = 'none';
+  
+    const arBtn = document.querySelector('#ar-button');
+    arBtn.addEventListener('click', async () => {
+      nextBtn.style.display = 'inline';
+    });
   });
 <</script>>
 
@@ -520,11 +678,13 @@ $(document).one(":passagedisplay", function() {
     camera-controls>
     <button slot="ar-button" id="ar-button"><<txt>></button>
   </model-viewer>
-    <h2><<txt>></h2>
+  <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
+  
   <button class="help"></button>
+  <button class="retry">[[|passage()]]</button>
   <<if $isNavigatorScanner>>
     <button class="next">[[|main.navigator]]</button>
   <<elseif $isScanner>>
@@ -535,6 +695,8 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: intro.init {"position":"700,500","size":"100,100"}
+
+<<audio ":playing:not(:bg)" stop>>
 
 <<if $setupCompleted and $introCompleted>>
 	<<goto "main.storyteller">>
@@ -547,11 +709,17 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
-  <h2><<txt>></h2>
-  <h2><<txt>></h2>
+  <<if $playerCount === 2>>
+    <h2><<txt 3>></h2>
+  <<elseif $playerCount === 3>>
+  <h2><<txt 4>></h2>
+  <</if>>
+  <h2><<txt 5>></h2>
+  <h2><<txt 6>></h2>
 </div>
 
 <div class="btn-group">
+  <button class="help">[[|Hilfe]]</button>
   <button class="retry">[[|passage()]]</button>
   <button class="next">[[|intro.1]]</button>
 </div>
@@ -559,15 +727,11 @@ $(document).one(":passagedisplay", function() {
 :: intro.1 {"position":"700,700","size":"100,100"}
 
 <script>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/intro.1.jpg)');
 </script>
 
 <div class="wrapper">
-  <br>
-  <br>
-  <img src="images/intro.1.png" class="image-size-50" />
   <h1><<txt>></h1>
-  <br>
   <h2><<txt>></h2>
 </div>
 
@@ -578,10 +742,9 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: intro.2 {"position":"700,900","size":"100,100"}
+<<audio ":playing:not(:bg)" stop>>
 
 <<video noHotspot>>
-
-<div class="wrapper"></div>
 
 <div class="btn-group">
   <button class="return">[[|intro.1]]</button>
@@ -590,6 +753,7 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: intro.3 {"position":"700,1100","size":"100,100"}
+<<audio "ring" play loop>>
 
 <script>
   $('#story').attr('style', 'background-image:url(images/intro.3.jpg)');
@@ -608,10 +772,9 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 :: intro.4 {"position":"700,1300","size":"100,100"}
+<<audio ":playing:not(:bg)" stop>>
 
 <<video noHotspot>>
-
-<div class="wrapper"></div>
 
 <div class="btn-group">
   <button class="return">[[|intro.3]]</button>
@@ -623,8 +786,6 @@ $(document).one(":passagedisplay", function() {
 
 <<video noHotspot>>
 
-<div class="wrapper"></div>
-
 <div class="btn-group">
   <button class="return">[[|intro.4]]</button>
   <button class="retry">[[|passage()]]</button>
@@ -633,38 +794,14 @@ $(document).one(":passagedisplay", function() {
 
 :: intro.6 {"position":"700,1700","size":"100,100"}
 
-<<script>>
-  $(document).one(":passagedisplay", function() {
-    $('#story').attr('style', 'background-image:url(images/bg.jpg)');
-
-    const secretMessage = setup.text['hotspot.secret'][2][setup.i18n.langs[settings.lang]];
-
-    const messageContainer = document.getElementById('messageContainer');
-
-    let lettersFound = [];
-    State.variables.letter.forEach((isTrue, index) => {
-      if (isTrue) {
-          lettersFound.push(State.variables.runes[index][0]);
-          lettersFound.push(State.variables.runes[index][1]);
-      }
-    });
-
-    for (let i = 0; i < secretMessage.length; i++) {
-      const message = document.createElement('h2');
-      message.textContent = secretMessage[i];
-      const matchingLetter = lettersFound.find(pair => pair.includes(secretMessage[i]));
-      if (!matchingLetter) {
-          message.classList.add('p3');
-      }
-      messageContainer.appendChild(message);
-    }
-  })
-<</script>>
+<script>
+  $('#story').attr('style', 'background-image:url(images/intro.6.jpg)');
+</script>
 
 <div class="wrapper">
-  <h2><<txt>></h2>
+  <h1><<txt>></h1>
   <br/>
-	<div id="messageContainer" class="message"></div>
+	<<secret>>
 </div>
 
 <div class="btn-group">
@@ -675,14 +812,22 @@ $(document).one(":passagedisplay", function() {
 
 :: intro.7 {"position":"700,1900","size":"100,100"}
 
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="return">[[|intro.6]]</button>
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|intro.8]]</button>
+</div>
+
+:: intro.8 {"position":"700,2100","size":"100,100"}
+
 <<set $introCompleted to true>>
 
 <<video noHotspot>>
 
-<div class="wrapper"></div>
-
 <div class="btn-group">
-  <button class="return">[[|intro.6]]</button>
+  <button class="return">[[|intro.7]]</button>
   <button class="retry">[[|passage()]]</button>
   <<if $playerCount === 1>>
     <button class="next">[[|main.navigator]]</button>
@@ -693,10 +838,21 @@ $(document).one(":passagedisplay", function() {
 
 :: main.navigator.init {"position":"900,500","size":"100,100"}
 
-	<<goto "main.navigator">>
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|main.navigator]]</button>
+</div>
 
 :: main.navigator [autosave] {"position":"900,700","size":"100,100"}
 <div id="map"></div>
+
+<<audio ":playing:not(:bg)" stop>>
 
 <<script>>
   $(document).one(":passagedisplay", function() {
@@ -715,6 +871,7 @@ $(document).one(":passagedisplay", function() {
         map.addControl(geolocate);
         const locations = getLocations();
         const remainingLocations = locations.filter(loc => !State.variables.enteredLocations.includes(loc.id));
+        const clickEventAdded = {};
 
         geolocate.on('geolocate', ({ coords }) => {
           const lat = coords.latitude;
@@ -722,16 +879,25 @@ $(document).one(":passagedisplay", function() {
 
           for (const location of remainingLocations) {
             if (window.geolocation.inside(location.latitude, location.longitude, location.radius, lat, lon)) {
-              map.setPaintProperty( location.id, 'fill-color', '#9CF299');
+              map.setPaintProperty(location.id, 'fill-color', '#9CF299');
 
-              map.on('click', location.id, (e) => {
-                State.variables.enteredLocations.push(location.id);
-                $.wiki('<<set $hotspot to $hotspot + 1>>');
-                $.wiki('<<goto "hotspot.intro">>');
-              });
+              if (!clickEventAdded[location.id]) {
+                map.on('click', location.id, (e) => {
+                  State.variables.enteredLocations.push(location.id);
+                  $.wiki('<<set $hotspot++>>');
+                  if (State.variables.isStoryteller) {
+                    $.wiki('<<goto "hotspot.splash">>');
+                  } else {
+                    $.wiki('<<goto "hotspot.frequence">>');
+                  }
+                });
+
+                clickEventAdded[location.id] = true;
+              }
 
             } else {
-              map.setPaintProperty( location.id, 'fill-color', '#F299CA');
+              map.setPaintProperty(location.id, 'fill-color', '#F299CA');              
+              clickEventAdded[location.id] = false;
             }
           }
         });
@@ -767,24 +933,89 @@ $(document).one(":passagedisplay", function() {
 <div class="wrapper" style="z-index: unset"></div>
 
 <div class="btn-group">
-  <h2>
-    <<txt>>
-    <br>
-    <<txt>>
-  </h2> 
-  <button class="retry">[[|main.navigator]]</button>
+  <<if $showMaptip>>
+    <span id="mapTip">
+      <<if $playerCount === 1>>
+        <h2><<txt 2>></h2>
+        <<button "OK">>
+          <<replace "#mapTip">>
+            <h2><<txt 3>></h2>
+          <</replace>>
+          <<set $showMaptip to false>>
+        <</button>>
+      <<else>>
+        <h2><<txt>></h2>
+        <<button "OK">>
+          <<replace "#mapTip">>
+            <h2><<txt>></h2>
+            <<button "OK">>
+              <<replace "#mapTip">>
+                <h2><<txt>></h2>
+              <</replace>>
+            <</button>>
+          <</replace>>
+          <<set $showMaptip to false>>
+        <</button>>
+      <</if>>
+    </span>
+  <<else>>
+    <<button "?">>
+      <<set $showMaptip to true>>
+      <<goto "main.navigator">>
+    <</button>>
+  <</if>>
+  <button class="retry">[[|passage()]]</button>
 </div>
 
 :: main.scanner.init {"position":"1100,500","size":"100,100"}
+<<audio ":playing:not(:bg)" stop>>
 
-<<script>>
-  $.wiki('<<goto "main.scanner">>')
-<</script>>
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|main.scanner]]</button>
+</div>
 
 :: main.scanner {"position":"1100,700","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/setup.scanner.jpg)');
+<</script>>
+
+<<audio ":playing:not(:bg)" stop>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <<if $hotspot >= 1>>
+    <button class="return">[[|hotspot.ghost]]</button>
+  <</if>>
+  <<numberbox "_answer" 0>>
+  <<button "Check">>
+    <<if _answer is "">>
+      <<script>>UI.alert(setup.text[passage()][3][setup.i18n.langs[settings.lang]]);<</script>>
+    <<elseif $validFrequences.includes(_answer)>>
+      <<set $hotspot = $validFrequences.indexOf(_answer) + 1>>
+      <<goto "hotspot.ar">>
+    <<else>>
+      <<script>>UI.alert(setup.text[passage()][4][setup.i18n.langs[settings.lang]]);<</script>>
+      <<goto "main.scanner">>
+    <</if>>
+  <</button>>
+</div>
+
+:: main.scanner.ghost {"position":"1100,700","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/setup.scanner.jpg)');
 <</script>>
 
 <div class="wrapper">
@@ -793,27 +1024,17 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-<<textbox "_answer" "">>
+  <button class="return">[[|hotspot.ar]]</button>
+  <<numberbox "_answer" 0>>
   <<button "Check">>
     <<if _answer is "">>
-      <<set $alertNoText = setup.text['main.scanner'][3][setup.i18n.langs[settings.lang]]>>
-      <<script>>UI.alert(State.variables.alertNoText);<</script>>
+      <<script>>UI.alert(setup.text[passage()][3][setup.i18n.langs[settings.lang]]);<</script>>
+    <<elseif $validGhostFrequences.includes(_answer)>>
+      <<set $hotspot = $validGhostFrequences.indexOf(_answer) + 1>>
+      <<goto "hotspot.ghost">>
     <<else>>
-      <<set _answer to _answer.trim().toLowerCase()>>
-      <<set $hotspotAlertText = setup.text['main.scanner'][4][setup.i18n.langs[settings.lang]]>>
-      <<if _answer is "263">>
-        <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
-        <<set $hotspot to 1>>
-        <<goto "hotspot.ar">>
-      <<elseif _answer is "815">>
-        <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
-        <<set $hotspot to 2>>
-        <<goto "hotspot.ar">>
-      <<else>>
-        <<set $alertWrongText = setup.text['main.scanner'][5][setup.i18n.langs[settings.lang]]>>
-        <<script>>UI.alert(State.variables.alertWrongText);<</script>>
-        <<goto "main.scanner">>
-      <</if>>
+      <<script>>UI.alert(setup.text[passage()][4][setup.i18n.langs[settings.lang]]);<</script>>
+      <<goto "main.scanner.ghost">>
     <</if>>
   <</button>>
 </div>
@@ -821,54 +1042,51 @@ $(document).one(":passagedisplay", function() {
 :: main.storyteller {"position":"1300,700","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  $('#story').attr('style', 'background-image:url(images/setup.storyteller.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+</div>
+
+<div class="btn-group">
+  <h2><<txt>></h2>
+  <<numberbox "_answer" 0 autofocus>>
+  <<button "Check">>
+    <<if _answer is "">>
+      <<script>>UI.alert(setup.text[passage()][3][setup.i18n.langs[settings.lang]]);<</script>>
+    <<elseif $validFrequences.includes(_answer)>>
+      <<script>>UI.alert(setup.text[passage()][4][setup.i18n.langs[settings.lang]]);<</script>>
+      <<set $hotspot = $validFrequences.indexOf(_answer) + 1>>
+      <<goto "hotspot.splash">>
+    <<else>>
+      <<script>>UI.alert(setup.text[passage()][5][setup.i18n.langs[settings.lang]]);<</script>>
+      <<goto "main.storyteller">>
+    <</if>>
+  <</button>>
+</div>
+
+:: hotspot.splash {"position":"900,900","size":"100,100"}
+<<audio "ring" play loop>>
+
+<<script>>
+  $('#story').attr('style', `background-image:url(images/hotspot.splash.jpg)`);
 <</script>>
 
 <div class="wrapper">
   <h1><<txt>></h1>
   <h2><<txt>></h2>
+  <img src="images/holger.png" class="image-size-50">
 </div>
 
 <div class="btn-group">
-<<textbox "_answer" "">>
-  <<button "Check">>
-    <<if _answer is "">>
-      <<set $alertNoText = setup.text['main.storyteller'][3][setup.i18n.langs[settings.lang]]>>
-      <<script>>UI.alert(State.variables.alertNoText);<</script>>
-    <<else>>
-      <<set _answer to _answer.trim().toLowerCase()>>
-      <<set $hotspotAlertText = setup.text['main.storyteller'][4][setup.i18n.langs[settings.lang]]>>
-      <<if _answer is "263">>
-        <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
-        <<set $hotspot to 1>>
-        <<goto "hotspot.intro">>
-      <<elseif _answer is "815">>
-      <<script>>UI.alert(State.variables.hotspotAlertText);<</script>>
-        <<set $hotspot to 2>>
-        <<goto "hotspot.intro">>
-      <<else>>
-        <<set $alertWrongText = setup.text['main.storyteller'][5][setup.i18n.langs[settings.lang]]>>
-        <<script>>UI.alert(State.variables.alertWrongText);<</script>>
-        <<goto "main.storyteller">>
-      <</if>>
-    <</if>>
-  <</button>>
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|hotspot.intro]]</button>
 </div>
 
-:: hotspot.intro {"position":"900,900","size":"100,100"}
-
-<<script>>
-  $('#story').attr('style', `background-image:url(images/hotspot.jpg)`);
-<</script>>
-
-<<if $hotspot is 1>>
-  <<video>>
-<<else>>
-  <div class="wrapper">
-    <h1><<txt 11>></h1>
-    <h2><<txt 12>></h2>
-  </div>
-<</if>>
+:: hotspot.intro {"position":"1300,1700","size":"100,100"}
+<<audio ":playing:not(:bg)" stop>>
+<<video>>
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
@@ -881,7 +1099,19 @@ $(document).one(":passagedisplay", function() {
   <<elseif $playerCount === 1>>
     <button class="next">[[|hotspot.ar]]</button>
   <<else>>
-    <button class="next">[[|hotspot.questions]]</button>
+    <<button OK>>
+      <<script>>
+      jQuery(Dialog
+          .setup(setup.text[passage()][11][setup.i18n.langs[settings.lang]]))
+          .append("<p>".concat(setup.text[passage()][12][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+          .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+          .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+          .find("#restart-ok")
+          .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "hotspot.questions" >>');})),Dialog.close()})
+        ),!0;
+      Dialog.open();
+      <</script>>
+    <</button>>    
   <</if>>
 </div>
 
@@ -892,50 +1122,89 @@ $(document).one(":passagedisplay", function() {
 <</script>>
 
 <div class="wrapper">
-  <<if $hotspot is 1>>
-    <h1>263</h1>
-  <<elseif $hotspot is 2>>
-    <h1>815</h1>
-  <</if>>
-<h2><<txt 1>></h2>
-<h2><<txt 2>></h2>
+  <h1><<print $validFrequences[$hotspot-1]>></h1>
+  <h2><<txt 1>></h2>
+  <h2><<txt 2>></h2>
 </div>
 
 <div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
   <<if $isNavigator>>
+    <<set $riddleCount to 1>>
     <button class="next">[[|hotspot.questions]]</button>    
   <<elseif $isNavigatorScanner>>
     <button class="next">[[|hotspot.ar]]</button>
   <</if>>
 </div>
 
+:: hotspot.frequence.ghost {"position":"900,1300","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<print $validGhostFrequences[$hotspot-1]>></h1>
+  <h2><<txt 1>></h2>
+  <h2><<txt 2>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|hotspot.rune]]</button>
+</div>
+
 :: hotspot.questions {"position":"900,1500","size":"100,100"}
 
 <script>
-  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 </script>
 
-<<if $riddle <= 5>>
+<<if $riddleCount <= 5>>
   <<set _riddles = getRiddles();>>
 
-  <<set _riddle = _riddles[$hotspot - 1][$riddle - 1]>>
+  <<set _riddle = _riddles[$hotspot - 1][$riddleCount - 1]>>
   <<set _question = _riddle.question[setup.i18n.langs[settings.lang]]>>
   <<set _answers = _riddle.answers>>
 
   <div class="wrapper">
-  <span id="heading">
-    <<if $isStoryteller and $playerCount === 3>>
-      <h1><<txt 6>> $riddle</h1>
-    <<else>>
-      <h1><<txt>> $riddle</h1>
-      <h2>_question</h2>
-    <</if>>
-  </span>
+    <span id="heading">
+      <<if $isStoryteller and $playerCount === 3>>
+        <<set $countdown = setup.text[passage()][8][setup.i18n.langs[settings.lang]]>>
+        <<set $seconds to 30>>
+        <h1 id="countdown">$seconds $countdown</h1>
+        <h2><<txt 6>>$riddleCount</h2>
+        <h2><<txt 7>></h2>
+        <<silently>>
+          <<repeat 1s>>
+            <<set $seconds to $seconds - 1>>
+            <<if $seconds gt 0>>
+              <<replace "#countdown">>$seconds $countdown<</replace>>
+            <<else>>
+              <<replace "#countdown">><</replace>>      
+              <<set $riddleCount to $riddleCount + 1>>
+              <<goto "hotspot.questions">>
+              <<stop>>
+            <</if>>
+          <</repeat>>
+        <</silently>>
+      <<else>>
+        <h1><<txt 1>> $riddleCount</h1>
+        <h2>_question</h2>
+      <</if>>
+    </span>
   </div>
 
   <div class="btn-group">
     <<if $isNavigator>>
-      <<set $riddle to $riddle + 1>>
+      <<script>>
+        $(document).one(":passagedisplay", function() {
+          $('<button class="return" tabindex="0"><a class="link-internal" role="link" tabindex="0"></a></button>')
+            .ariaClick((function(){return $.wiki('<<if $riddleCount === 2>><<goto "hotspot.frequence">><<else>><<set $riddleCount to $riddleCount - 2>><<goto "hotspot.questions">><</if>>');}))
+            .prependTo('.btn-group');
+        })
+      <</script>>
+      <<set $riddleCount to $riddleCount + 1>>
       <button class="next">[[|hotspot.questions]]</button>
     <<else>>
       <<set $resultTextCorrect = setup.text[passage()][2][setup.i18n.langs[settings.lang]]>>
@@ -946,14 +1215,14 @@ $(document).one(":passagedisplay", function() {
         <<capture _data>>
           <<button _data[setup.i18n.langs[settings.lang]]>>
             <<set _resultText = _data.correct ? $resultTextCorrect : $resultTextIncorrect>>
-            <<set _points = _data.points > 0 ? "+" + _data.points + $pointsTextCorrect : $pointsTextCorrect>>
+            <<set _points = _data.points > 0 ? "+" + _data.points + $pointsTextCorrect : $pointsTextIncorrect>>
             <<replace "#heading">>
               <h1>_resultText</h1>
               <h2>_points</h2>
             <</replace>>
             <<timed 1s>>
               <<set $points to $points + _data.points>>
-              <<set $riddle to $riddle + 1>>
+              <<set $riddleCount to $riddleCount + 1>>
               <<set $riddleCorrectCount = _data.correct && $riddleCorrectCount + 1 >>
               <<goto "hotspot.questions">>
             <</timed>>
@@ -965,7 +1234,18 @@ $(document).one(":passagedisplay", function() {
 
 <<else>>
   <<if $isNavigator>>
-    <<goto "main.navigator">>
+    <<script>>
+    jQuery(Dialog
+        .setup(setup.text[passage()][9][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][10][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<if $hotspot === 10>><<goto "outro.navigator.init">><<else>><<goto "main.navigator">><</if>>');})),Dialog.close()})),!0;
+        $("#restart-cancel")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<set $riddleCount to $riddleCount - 1>><<goto "hotspot.questions" >>');})),Dialog.close()})),!0;
+    Dialog.open();
+    <</script>>
   <<else>>
     <<goto "hotspot.solution">>
   <</if>>
@@ -974,7 +1254,7 @@ $(document).one(":passagedisplay", function() {
 :: hotspot.ar {"position":"1100,900","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 
   $(document).one(":passagedisplay", function() {
     const modelViewer = document.getElementById('model-viewer');
@@ -1000,12 +1280,25 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
   <<if $isScanner>>
-    <button class="next">[[|hotspot.ghost]]</button>
+    <button class="next">[[|main.scanner.ghost]]</button>
   <<elseif $isNavigatorScanner>>
     <button class="next">[[|hotspot.ghost]]</button>
   <<else>>
-    <button class="next">[[|hotspot.questions]]</button>
+    <<button OK>>
+      <<script>>
+      jQuery(Dialog
+          .setup(setup.text[passage()][3][setup.i18n.langs[settings.lang]]))
+          .append("<p>".concat(setup.text[passage()][4][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+          .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+          .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+          .find("#restart-ok")
+          .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "hotspot.questions" >>');})),Dialog.close()})
+        ),!0;
+      Dialog.open();
+      <</script>>
+    <</button>>
   <</if>>
 </div>
 
@@ -1021,11 +1314,8 @@ $(document).one(":passagedisplay", function() {
     }
   })
 <</script>>
-<<set $inventoryNames to ['', 'herbert', 'rosa']>>
-<<set $inventory[$hotspot] to $inventoryNames[$hotspot]>>
 
 <div class="wrapper">
- /*<h1>$inventoryNames[$hotspot]</h1>*/
   <model-viewer 
     id="model-viewer" 
     ar auto-rotate 
@@ -1035,12 +1325,14 @@ $(document).one(":passagedisplay", function() {
     camera-controls>
     <button slot="ar-button" id="ar-button"><<txt>></button>
   </model-viewer>
-   <h2><<txt>></h2>
+  <h2><<txt>></h2>
 </div>
 
 <div class="btn-group">
   <button class="retry">[[|passage()]]</button>
-  <<if $isScanner>>
+  <<if $hotspot === 10 && ($isScanner || $isNavigatorScanner)>>
+    <button class="next">[[|outro.scanner.init]]</button>
+  <<elseif $isScanner>>
     <button class="next">[[|main.scanner]]</button>
   <<elseif $isNavigatorScanner>>
     <button class="next">[[|main.navigator]]</button>
@@ -1052,7 +1344,7 @@ $(document).one(":passagedisplay", function() {
 :: hotspot.solution {"position":"1300,1100","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 <</script>>
 
 <div class="wrapper">
@@ -1062,19 +1354,26 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
-  <<set $riddle to 1>>  
+  <button class="retry">[[|passage()]]</button>
+  <<set $riddleCount to 1>>
   <<if $playerCount === 1>>
+    /* Skip hotspot.solution passage */
+    <<goto "hotspot.ghost">>
     <button class="next">[[|hotspot.ghost]]</button>
   <<else>>
-    <button class="next">[[|hotspot.rune]]</button>
+    /* Skip hotspot.solution passage */
+    <<goto "hotspot.frequence.ghost">>
+    <button class="next">[[|hotspot.frequence.ghost]]</button>
   <</if>>
 </div>
 
 :: hotspot.rune {"position":"1300,1300","size":"100,100"}
 
 <<script>>
-  $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 <</script>>
+
+<<audio ":playing:not(:bg)" stop>>
 
 <div class="wrapper">
   <h1><<txt 11>></h1>
@@ -1088,68 +1387,44 @@ $(document).one(":passagedisplay", function() {
 </div>
 
 <div class="btn-group">
+  <<if $$playerCount === 1>>
+    <button class="return">[[|hotspot.ghost]]</button>
+  <<else>>
+    <button class="return">[[|hotspot.frequence.ghost]]</button>
+  <</if>>
+  <button class="retry">[[|passage()]]</button>
   <<set $riddleCorrectCount to 0>>
   <button class="next">[[|hotspot.secret]]</button>
 </div>
 
 :: hotspot.secret {"position":"1300,1500","size":"100,100"}
 
-<<script>>
-  $(document).one(":passagedisplay", function() {
-    $('#story').attr('style', 'background-image:url(images/hotspot.jpg)');
-
-    const secretMessage = setup.text['hotspot.secret'][2][setup.i18n.langs[settings.lang]];
-
-    const messageContainer = document.getElementById('messageContainer');
-
-    let lettersFound = [];
-    State.variables.letter.forEach((isTrue, index) => {
-      if (isTrue) {
-          lettersFound.push(State.variables.runes[index][0]);
-          lettersFound.push(State.variables.runes[index][1]);
-      }
-    });
-
-    for (let i = 0; i < secretMessage.length; i++) {
-      const message = document.createElement('h2');
-      message.textContent = secretMessage[i];
-      const matchingLetter = lettersFound.find(pair => pair.includes(secretMessage[i]));
-      if (!matchingLetter) {
-          message.classList.add('p3');
-      }
-      messageContainer.appendChild(message);
-    }
-  })
-<</script>>
+<script>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+</script>
 
 <div class="wrapper">
   <h1><<txt>></h1>
   <br/>
-	<div id="messageContainer" class="message"></div>
+	<<secret>>
 </div>
 
 <div class="btn-group">
-  <button class="next">[[|hotspot.outro.1]]</button>
+  <button class="return">[[|hotspot.rune]]</button>
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|hotspot.outro]]</button>
 </div>
 
-:: hotspot.outro.1 {"position":"1300,1700","size":"100,100"}
+:: hotspot.outro {"position":"1300,1700","size":"100,100"}
 
 <<video>>
 
 <div class="btn-group">
-  <button class="retry">[[|passage()]]</button>
-  <button class="next">[[|hotspot.outro.2]]</button>
-</div>
-
-:: hotspot.outro.2 {"position":"1300,1700","size":"100,100"}
-
-<<video>>
-
-<div class="btn-group">
+  <button class="return">[[|hotspot.secret]]</button>
   <button class="retry">[[|passage()]]</button>
 
-  <<if !$letter.includes(0) and $ende is 0>>
-    <button class="next">[[|outro.init]]</button>
+  <<if $hotspot === 10>>
+    <button class="next">[[|outro.1]]</button>
   <<elseif $playerCount === 1>>
     <button class="next">[[|main.navigator]]</button>
   <<else>>
@@ -1157,11 +1432,258 @@ $(document).one(":passagedisplay", function() {
   <</if>>
 </div>
 
-:: outro.init {"position":"1500,500","size":"100,100"}
+:: outro.navigator.init {"position":"1500,500","size":"100,100"}
 
 <<script>>
-  $.wiki('<<goto "outro.message">>')
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
 <</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <<numberbox "_answer" 0>>
+
+  <<button "Check">>
+    <<if _answer is "">>
+      <<script>>UI.alert(setup.text[passage()][3][setup.i18n.langs[settings.lang]]);<</script>>
+    <<elseif $validOutroFrequence === _answer>>
+      <<goto "outro.8">>
+    <<else>>
+      <<script>>UI.alert(setup.text[passage()][4][setup.i18n.langs[settings.lang]]);<</script>>
+      <<goto "outro.navigator.init">>
+    <</if>>
+  <</button>>
+</div>
+
+:: outro.scanner.init {"position":"1500,500","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<txt>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <<numberbox "_answer" 0>>
+
+  <<button "Check">>
+    <<if _answer is "">>
+      <<script>>UI.alert(setup.text[passage()][3][setup.i18n.langs[settings.lang]]);<</script>>
+    <<elseif $validOutroFrequence === _answer>>
+      <<goto "outro.7">>
+    <<else>>
+      <<script>>UI.alert(setup.text[passage()][4][setup.i18n.langs[settings.lang]]);<</script>>
+      <<goto "outro.scanner.init">>
+    <</if>>
+  <</button>>
+</div>
+
+:: outro.storyteller.init {"position":"1500,500","size":"100,100"}
+
+<<script>>
+  $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+<</script>>
+
+<div class="wrapper">
+  <h1><<print $validOutroFrequence>></h1>
+  <h2><<txt>></h2>
+</div>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.8]]</button>
+</div>
+
+:: outro.1 {"position":"700,700","size":"100,100"}
+
+<<audio ":playing:not(:bg)" stop>>
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.2]]</button>
+</div>
+
+:: outro.2 {"position":"700,900","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="return">[[|outro.1]]</button>
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.3]]</button>
+</div>
+
+:: outro.3 {"position":"700,1100","size":"100,100"}
+
+<script>
+  $('#story').attr('style', 'background-image:url(images/outro.3.jpg)');
+</script>
+
+<div class="wrapper">
+  <h2><<txt>></h2>
+  <br/>
+	<<secret>>
+</div>
+
+<div class="btn-group">
+  <<button setup.text['outro.3'][2][setup.i18n.langs[settings.lang]]>>
+    <<script>>
+    jQuery(Dialog
+        .setup(setup.text[passage()][5][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][6][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "outro.4.ball" >>');})),Dialog.close()})
+      ),!0;
+    Dialog.open();
+    <</script>>
+  <</button>>
+  <<button setup.text['outro.3'][3][setup.i18n.langs[settings.lang]]>>
+    <<script>>
+    jQuery(Dialog
+        .setup(setup.text[passage()][5][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][6][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "outro.4.mask" >>');})),Dialog.close()})
+      ),!0;
+    Dialog.open();
+    <</script>>
+  <</button>>
+  <<button setup.text['outro.3'][4][setup.i18n.langs[settings.lang]]>>
+    <<script>>
+    jQuery(Dialog
+        .setup(setup.text[passage()][5][setup.i18n.langs[settings.lang]]))
+        .append("<p>".concat(setup.text[passage()][6][setup.i18n.langs[settings.lang]],'</p><ul class="buttons">')+'<li><button id="restart-ok">'
+        .concat(L10n.get(["restartOk","ok"]),"</button></li>")+'<li><button id="restart-cancel" class="ui-close">'
+        .concat(L10n.get(["restartCancel","cancel"]),"</button></li>")+"</ul>")
+        .find("#restart-ok")
+        .ariaClick({one:!0},(function(){jQuery(document).one(":dialogclosed",(function(){return $.wiki('<<goto "outro.4.book" >>');})),Dialog.close()})
+      ),!0;
+    Dialog.open();
+    <</script>>
+  <</button>>
+</div>
+
+:: outro.4.ball {"position":"700,1300","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.5.ball]]</button>
+</div>
+
+:: outro.4.mask {"position":"700,1300","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.5.mask]]</button>
+</div>
+
+:: outro.4.book {"position":"700,1300","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.5.book]]</button>
+</div>
+
+:: outro.5.ball {"position":"700,1300","size":"100,100"}
+
+<<video noHotspot>>
+<<set $secretCorrect to 1>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.6]]</button>
+</div>
+
+:: outro.5.mask {"position":"700,1300","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.6]]</button>
+</div>
+
+:: outro.5.book {"position":"700,1300","size":"100,100"}
+
+<<video noHotspot>>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <button class="next">[[|outro.6]]</button>
+</div>
+
+:: outro.6 {"position":"700,1700","size":"100,100"}
+
+<<script>>
+  if (State.variables.secretCorrect) {
+    $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  } else {
+    $('#story').attr('style', 'background-image:url(images/bg.jpg)');
+  };
+<</script>>
+
+<div class="wrapper">
+  <<if $secretCorrect>>
+    <h2><<txt 1>></h2>
+    <h2><<txt 2>></h2>
+  <<else>>
+    <h2><<txt 3>></h2>
+    <h2><<txt 4>></h2>
+  <</if>>
+</div>
+
+<div class="btn-group">
+  <button class="retry">[[|passage()]]</button>
+  <<if $playerCount === 1>>
+    <button class="next">[[|outro.7]]</button>
+  <<else>>
+    <button class="next">[[|outro.storyteller.init]]</button>
+  <</if>>
+</div>
+
+:: outro.7 {"position":"700,1900","size":"100,100"}
+
+<div class="wrapper">
+  <<script>>
+    $(document).one(":passagedisplay", function() {
+      $('#story').attr('style', 'background-image:url(images/outro.7.jpg)');
+      
+      const modelViewer = document.querySelector("model-viewer");
+
+      window.switchSrc = (element, name) => {
+        const base = `models/outro/outro.${name}`;
+        modelViewer.src = base + '.glb';
+        modelViewer.iosSrc = base + '.usdz';
+        const slides = document.querySelectorAll(".slide");
+        slides.forEach((element) => {element.classList.remove("selected");});
+        element.classList.add("selected");
+      };
+
+      if (modelViewer) {
+        document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
+          ev.preventDefault();
+        });
+      }
+    })
+  <</script>>
 
   <model-viewer
     id="model-viewer" 
@@ -1201,43 +1723,47 @@ $(document).one(":passagedisplay", function() {
 </script>
 
 <div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>>
-    <br>
-    <br><<txt>>
-    <br>
-    <br><<txt>>
-    <br>
-    <br>
-    <<txt>><a href="https://forms.gle/jcGPPbrbbnwDLNC28">"Link"</a><<txt>>
-  </h2>
+  <h2><<txt>></h2>
+  <h2><<txt>></h2>
+  <h2><<txt>><a href="mailto:feedback@geomazing.com">"feedback@geomazing.com"</a><<txt>></h2>
 </div>
 
 <div class="btn-group">
-  <<button "Zurück" `previous()`>><</button>>
+  <<if $playerCount === 1 || $isScanner || $isNavigatorScanner>>
+    <button class="return">[[|outro.7]]</button>
+  <<elseif $isStoryteller>>
+    <button class="return">[[|outro.storyteller.init]]</button>
+  <</if>>
+  <button class="retry">[[|passage()]]</button>
 </div>
 
 :: Dev {"position":"1300,100","size":"100,100"}
 
 <div class="wrapper">
-  <h1><<txt>></h1>
-  <h2><<txt>></h2>
+  <h1><<txt 11>></h1>
+  <h2><<txt 12>></h2>
   <br/>
   <br/>
   <div class="btn-group">
-    <<set $chapter1Text = setup.text['Dev'][3][setup.i18n.langs[settings.lang]]>>
-    <<button $chapter1Text>>
-      <<set $hotspot to 1>>
-      <<goto "hotspot.intro">>	
+    <<for _i to 1; _i lte 10; _i++>>
+      <<capture _i>>
+      <<set $chapterText = setup.text['Dev'][_i][setup.i18n.langs[settings.lang]]>>
+      <<button $chapterText+$validFrequences[_i-1]>>
+        <<set $hotspot to _i>>
+        <<if $isStoryteller>>
+          <<goto "hotspot.splash">>
+        <<else>>
+          <<goto "hotspot.frequence">>
+        <</if>>
+      <</button>>
+      <</capture>>
+    <</for>>
+    <<button "Outro">>
+      <<goto "outro.1">>	
     <</button>>
-    <<set $chapter2Text = setup.text['Dev'][4][setup.i18n.langs[settings.lang]]>>
-    <<button $chapter2Text>>
-      <<set $hotspot to 2>>
-      <<goto "hotspot.intro">>	
-    <</button>>
-    <<set $mapText = setup.text['Dev'][5][setup.i18n.langs[settings.lang]]>>
+    <<set $mapText = setup.text['Dev'][13][setup.i18n.langs[settings.lang]]>>
     <<button $mapText>>
-      <<goto "main.navigator.init">>	
+      <<goto "main.navigator">>	
     <</button>>
   </div>
 </div>
@@ -1482,43 +2008,24 @@ $(document).one(":passagedisplay", function() {
 
 <div class="wrapper">
   <h1><<txt>></h1>
-  <h2><<txt>></h2>
   <<script>>
     $(document).one(":passagedisplay", function() {
 
-      function createModelViewer(element) {
-        const modelViewer = document.createElement('model-viewer');
-        modelViewer.src = `models/${element}/${element}.glb`;
-        modelViewer.iosSrc = `models/${element}/${element}.usdz`;
-        modelViewer.setAttribute('ar', true);
-        modelViewer.setAttribute('auto-rotate', true);
-        modelViewer.setAttribute('poster', 'images/loading.png');
-        modelViewer.setAttribute('autoplay', true);
-        modelViewer.setAttribute('shadow-intensity', '2');
-        modelViewer.setAttribute('shadow-softness', '0');
-        modelViewer.setAttribute('camera-controls', true);
+      const modelViewer = document.querySelector("model-viewer");
 
-        const arButton = document.createElement('button');
-        arButton.slot = 'ar-button';
-        arButton.id = 'ar-button';
-        arButton.textContent = setup.text['Inventar'][3][setup.i18n.langs[settings.lang]];
-
-        modelViewer.appendChild(arButton);
-
-        return modelViewer;
+      window.switchSrc = (element, name) => {
+        const base = `models/${name}.hotspot/${name}.hotspot.ghost`;
+        modelViewer.src = base + '.glb';
+        modelViewer.iosSrc = base + '.usdz';
+        const slides = document.querySelectorAll(".slide");
+        slides.forEach((element) => {element.classList.remove("selected");});
+        element.classList.add("selected");
       };
 
-      const container = document.getElementById('model-viewer-container');
-      for (const element of State.variables.inventory) {
-        if (element != 0) {
-          const modelViewerElement = createModelViewer(element);
-          container.appendChild(modelViewerElement);
-
-          const title = document.createElement("h1");
-          const titleText = document.createTextNode(element);
-          title.appendChild(titleText);
-          container.insertBefore(title, modelViewerElement);
-        }
+      if (modelViewer) {
+        document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
+          ev.preventDefault();
+        });
       }
     })
   <</script>>
@@ -1633,6 +2140,17 @@ Setting.addList('lang', {
 
 setup.text = getTranslations();
 
+var settingMusic = function () {
+  SimpleAudio.select(":playing:not(bg)").mute((!settings.music));
+};
+
+Setting.addToggle("music", {
+	label    : "Music",
+	default  : true,
+	onInit   : settingMusic,
+	onChange : settingMusic
+});
+
 /*************
 Mapbox imports
 *************/
@@ -1662,7 +2180,7 @@ Window Geolocation
     
 		/* Test ob eine Location innerhalb der aktuellen Geokoordinaten ist */
     inside: function(lat1, lon1, radius, lat2, lon2) {
-		  const R = 6371; // Earth's radius in km
+		  const R = 6371;
       const dLat = (lat2-lat1) * Math.PI / 180;
       const dLon = (lon2-lon1) * Math.PI / 180;
       const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
@@ -1727,31 +2245,6 @@ Window Video
           };
         };
       });
-    },
-
-    splitTextByTrimmer: function(input) {
-      const substringsArray = input.split('§');
-      for (let i = 0; i < substringsArray.length - 1; i++) {
-        substringsArray[i] = substringsArray[i];
-      }
-      return substringsArray;
-    },
-
-    displayStringsSequentially: function(stringsArray, duration) {
-      let index = 0;
-
-      function displayNextString() {
-        if (index < stringsArray.length) {
-          const videoText = document.getElementById("videoText");
-          if (videoText) {
-            document.getElementById("videoText").innerText = stringsArray[index];
-            index++;
-            setTimeout(displayNextString, duration);
-          }
-        }
-      }
-
-      displayNextString();
     }
   }
 
@@ -1821,7 +2314,7 @@ External script loading module
   /* Textfarben */
   --button-color: #26262670;
   --text-color: #323140;
-  --text-hover-color: #F5553B;
+  --text-hover-color: #FFFFFF;
   --text-light-color: #FFFFFF;
 }
 
@@ -1877,7 +2370,7 @@ audio, canvas, progress, video {
 
 h1 {
   font-family: "Creepster", sans-serif;
-  font-size: 8vh;
+  font-size: 6vh;
   font-style: normal;
   font-weight: 400;
   line-height: 8vh;
@@ -1888,8 +2381,8 @@ h1 {
   letter-spacing: 8px;
   word-break: break-word;
   color: #ffffff00;
-  -webkit-text-stroke: 3px var(--text-light-color);
-  //text-shadow: 0 0 20px var(--text-light-color);
+  -webkit-text-stroke: 2px var(--text-light-color);
+  /* text-shadow: 0 0 20px var(--text-light-color); */
 }
 
 h2 {
@@ -2086,12 +2579,27 @@ select {
 
 #ui-bar-body {
   background-color: var(--background-color);
-  background-image: url('images/menu.jpg');
+  background-image: url('images/setup.storyteller.jpg');
   background-position: center;
+  background-size: cover;
   border-right: solid 2px var(--secondary-color);
   height: 100%;
   margin: 0;
   width: 34vh;
+  position: relative;
+}
+
+#ui-bar-body #title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#ui-bar-tray {
+  z-index: 10;
 }
 
 #ui-bar-toggle {
@@ -2101,7 +2609,7 @@ select {
   left:0;
   position: fixed;
   right: unset;
-  top: 6vh;
+  top: 4vh;
 }
 
 #ui-bar-toggle:before {
@@ -2128,6 +2636,15 @@ select {
   content: "\e82e";
 }
 
+#ui-dialog-title {
+  color: var(--text-light-color);
+  font-family: 'Averia Serif Libre', serif;
+  font-weight: 900;
+  line-height: 4vh;
+  word-break: break-word;
+  -webkit-text-stroke: inherit;
+}
+
 #ui-dialog-body ul {
   display: flex;
   justify-content: center;
@@ -2144,11 +2661,16 @@ border: 2px solid var(--secondary-color);
 
 #menu ul {
   border: none;
+  margin: 0;
 }
 
 #menu-core {
-    position: fixed;
-    bottom: 2em;
+  /* position: fixed;
+  bottom: 2em; */
+}
+
+#menu-story li:first-child {
+  margin-bottom: 12rem;
 }
 
 #menu li a {
@@ -2182,6 +2704,16 @@ border: 2px solid var(--secondary-color);
   display: none;
 }
 
+#story-subtitle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#story-subtitle a:last-child{
+  color: var(--text-light-color);
+}
+
 #passages {
   height: 100%;
 }
@@ -2199,7 +2731,7 @@ border: 2px solid var(--secondary-color);
   height: 100%;
   overflow: auto;
   z-index: 20;
-  margin: 10%;
+  margin: 5vw;
 }
 
 .btn-group {  
@@ -2223,7 +2755,7 @@ border: 2px solid var(--secondary-color);
   font-size: 4vh;
   font-weight: 400;
   line-height: 4vh;
-  margin: 2vh;
+  margin: 1vh;
   text-shadow: 1px 1px 20px var(--secondary-color);
 }
 
@@ -2255,7 +2787,7 @@ border: 2px solid var(--secondary-color);
   padding-left: 8px;
 }
 
-.help:before {
+.help a:before {
 	content: "\e808\00a0";
   font-family: tme-fa-icons;
   padding-left: 8px;
@@ -2279,17 +2811,61 @@ border: 2px solid var(--secondary-color);
 }
 
 /* Macht den Geolocate-Button unsichtbar */
-.mapboxgl-ctrl-group button.mapboxgl-ctrl-geolocate { 
+.mapboxgl-ctrl-group button.mapboxgl-ctrl-geolocate ,.mapboxgl-ctrl-bottom-right{ 
   display: none;
 }
   
 /* ####################MODEL VIEWER#################### */
 model-viewer {
   /* background-color: rgba(0, 0, 0, 0.75); */
-  background-color: none;
+  background-color: transparent;
   height: 50vh;
-  margin: 0 5%;
+  margin: 0 2vw;
   width: 90%;
+}
+
+.slider {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  position: absolute;
+  top: 16px;
+}
+
+.slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slide {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--background-color);
+  margin-right: 10px;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+}
+
+.slide.selected {
+  background-color: var(--background-color);
+  border: 2px solid var(--primary-dark-color);
+}
+
+.slide:focus {
+  outline: none;
+}
+
+.slide:focus-visible {
+  outline: 1px solid var(--primary-dark-color);
 }
 
 .Hotspot {
@@ -2391,6 +2967,7 @@ model-viewer {
 #video {
   bottom: 0;
   height: 100%;
+  left: 0;
   margin-left: 50vw;
   position: fixed;
   transform: translate(-50%);
@@ -2405,9 +2982,9 @@ model-viewer {
   font-style: normal;
   font-weight: 700;
   line-height: 5vh;
-  margin-left: 20px;
+  /* margin-left: 20px;
   margin-right: 30px;
-  margin-top: 10vh;
+  margin-top: 10vh; */
   text-align: center;
   text-shadow: 3px 3px 1px black;
   word-break: break-word;
@@ -2487,18 +3064,17 @@ tw-hook[name="fade-out"] {
 }
 
 .message h2 {
-  //color: var(--text-light-color);
-  margin-right: 10px;
+  /* color: var(--text-light-color); */
+  letter-spacing: normal;
+  margin: 8px;
 }
 
-#textbox--answer {
+#numberbox--answer {
   border: 2px solid var(--secondary-color);
   background-color: var(--text-light-color);
   color: black;
-  font-size: 5vw;
+  font-size: 6vw;
   margin-left: 5vw;
   margin-right: 5vw;
-}
-input[type=text] {
-min-width: 1em
+  max-width: 33%;
 }

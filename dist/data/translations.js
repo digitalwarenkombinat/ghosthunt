@@ -90,10 +90,20 @@ getTranslations = function () {
       en: 'Map'
     }
   }
+  text["cities"] = {
+    "leipzig": {
+      de: 'im Leipziger Friedenspark',
+      en: 'in Leipzig´s Friedenspark'
+    },
+    "muenchen": {
+      de: 'im Englischen Garten München',
+      en: 'in English Garden in Munich'
+    }
+  }
   text["setup.init"] = {
     "1": {
-      de: 'Diese Spook Tour findet im Leipziger Friedenspark statt.',
-      en: 'This Spook Tour takes place in Leipzig´s Friedenspark.'
+      de: 'Willkommen bei Spook Tours findet.',
+      en: 'Welcome to Spook Tours takes.'
     }
   }
   text["setup.browsercheck"] = {
@@ -150,6 +160,16 @@ getTranslations = function () {
     "2": {
       de: 'Mit Musik von Karl Casey @ White Bat Audio. Du kannst Sie im Seitenmenu unter Einstellungen stummschalten.',
       en: 'With music from Karl Casey @ White Bat Audio. You can mute it in the sidemenu under "Settings"'
+    }
+  }
+  text["setup.city"] = {
+    "1": {
+      de: 'Stadt',
+      en: 'City'
+    },
+    "2": {
+      de: 'Bitte wähle die Stadt aus.',
+      en: 'Please select the city.'
     }
   }
   text["setup.player"] = {
@@ -297,8 +317,8 @@ getTranslations = function () {
   }
   text["intro.5"] = {
     "1": {
-      de: 'Genial!§Hier sind überall Runen an den Wänden§ und ein paar davon kommen mir tatsächlich bekannt vor.§Ich hatte vor Jahren mal einen Fall im Leipziger Friedenspark,§wo ich zwei dieser Runen entziffert habe.§Ich glaube, es handelt sich um eine Botschaft.§Ich zeige euch das mal kurz.',
-      en: 'Ingenious!§There are runes all over the walls§and a few of them actually look familiar to me.§Years ago I had a case in a park called Friedenspark in Leipzig,§where I deciphered two of these runes.§I think it’s a message.§I’ll show you briefly.'
+      de: 'Genial!§Hier sind überall Runen an den Wänden§ und ein paar davon kommen mir tatsächlich bekannt vor.§Ich hatte vor Jahren mal einen Fall $selectedCity,§wo ich zwei dieser Runen entziffert habe.§Ich glaube, es handelt sich um eine Botschaft.§Ich zeige euch das mal kurz.',
+      en: 'Ingenious!§There are runes all over the walls§and a few of them actually look familiar to me.§Years ago I had a case in $selectedCity,§where I deciphered two of these runes.§I think it’s a message.§I’ll show you briefly.'
     }
   }
   text["intro.6"] = {
@@ -365,14 +385,10 @@ getTranslations = function () {
     "1": {
       de: 'Scanner',
       en: 'Scanner'
-      de: 'Geister Scanner',
-      en: 'Ghost Scanner'
     },
     "2": {
       de: 'Wenn ihr einen paranormalen Ort erreicht habt, gibt der Guide dir eine Frequenz, die du hier eingegeben musst.',
       en: 'When you have reached a paranormal location, the Guide will give you a frequency which you must enter here.'
-      de: 'Gib eine Frequenz ein',
-      en: 'Enter a frequency'
     },
     "3": {
       de: 'Du hast keine Frequenz eingegeben!',
@@ -399,23 +415,16 @@ getTranslations = function () {
     "4": {
       de: 'Die eingegebene Frequenz ist nicht korrekt!',
       en: 'The entered frequency is not correct!'
-    "5": {
-      de: 'Entschuldigung. Keine Geister unter dieser Frequenz',
-      en: 'Sorry! No Ghost at this frequency'
     }
   }
   text["main.storyteller"] = {
     "1": {
       de: 'Frequenz Eingabe',
       en: 'Enter Frequency'
-      de: 'Ghost Scanner',
-      en: 'Ghost Scanner'
     },
     "2": {
       de: 'Wenn ihr einen paranormalen Ort erreicht habt, gibt der Guide dir eine Frequenz, die du hier eingegeben musst.',
       en: 'When you have reached a paranormal location, the Guide will give you a frequency which you must enter here.'
-      de: 'Gib eine Frequenz ein',
-      en: 'Enter a frequency'
     },
     "3": {
       de: 'Du hast keine Frequenz eingegeben!',
@@ -438,19 +447,12 @@ getTranslations = function () {
     "2": {
       de: 'ruft an',
       en: 'is calling'
-    "11": {
-      de: 'Tatort',
-      en: 'Crime Szene'
-    },
-    "12": {
-      de: 'Dieser Ort ist Schauplatz eines ungeklärten Verbrechens. Die Geister fordern Gerechtigkeit. Kläre den Fall und beende den Spuk.',
-      en: 'This place has seen death! The souls of the victims demand justice! Solve the case and stop the haunting.'
     }
   }
   text["hotspot.frequence"] = {
     "1": {
-      de: 'Neue Frequenz erhalten',
-      en: 'New Frequency received'
+      de: 'Frequenz erhalten',
+      en: 'Frequency received'
     },
     "2": {
       de: 'Teile diese Frequenz mit deinem Team, um den paranormalen Ort sichtbar zu machen.',
@@ -465,8 +467,6 @@ getTranslations = function () {
     "2": {
       de: 'Teile diese Frequenz mit deinem Team, um den Spooky zu sehen.',
       en: 'Share this frequency with your team to see the Spooky.'
-      de: 'Gib die erhaltene Frequenz an deine Mitspielenden weiter, damit Sie die Toten sehen können.',
-      en: 'Pass on the frequency to your fellow players, so they can see the dead.'
     }
   }
   text["hotspot.questions"] = {
@@ -1077,106 +1077,110 @@ getTranslations = function () {
       en: 'Where exactly does the tour take place and how long does it last?'
     },
     "4": {
-      de: 'Die Tour findet ausschließlich im Leipziger Friedenpark statt und dauert ca. 1,5-2 Stunden.',
-      en: 'The tour takes place exclusively in Leipzig’s Friedenpark and takes approx. 1.5-2 hours.'
+      de: 'Die Tour findet ausschließlich ',
+      en: 'The tour takes place exclusively '
     },
     "5": {
+      de: ' statt und dauert ca. 1,5-2 Stunden.',
+      en: ' and takes approx. 1.5-2 hours.'
+    },
+    "6": {
       de: 'Benötigt jedes Team-Mitglied ein eigenes Smartphone?',
       en: 'Does every team member need their own smartphone?'
     },
-    "6": {
+    "7": {
       de: 'Wir empfehlen die Tour als Gruppe mit 3 Spielenden und einem Smartphone pro Person zu spielen. Natürlich könnte ihr aber auch jeder alleine mit einem Smartphone losziehen. Es gibt keine vorgeschriebene Reihenfolge für die Orte. Am Ende könnt ihr vergleichen, wer mehr Punkte und Spookies gesammelt hat.',
       en: 'We recommend playing the tour as a group with 3 players and one smartphone per person. Of course, you could also go off on your own with one smartphone. There is no prescribed order for the locations. At the end, you can compare who has collected more points and Spookies.'
     },
-    "7": {
+    "8": {
       de: 'Gibt es eine bestimmte Reihenfolge, in der die 10 GPS-Orte (paranormale Orte) angesteuert werden müssen?',
       en: 'Is there a specific order in which the 10 GPS locations (paranormal locations) must be approached?'
     },
-    "8": {
+    "9": {
       de: 'Nein, es gibt keine festgelegte Reihenfolge für die 10 Orte. Ihr könnt jeden beliebigen GPS-Ort ansteuern. Er verschwindet von eurer Karte, sobald ihr ihn gespielt habt.',
       en: 'No, there is no set order for the 10 places. You can go to any GPS location. It disappears from your map as soon as you have played it.'
     },
-    "9": {
+    "10": {
       de: 'Wie betritt man einen GPS-Ort (paranormalen Ort)?',
       en: 'How do you enter a GPS location (paranormal location)?'
     },
-    "10": {
+    "11": {
       de: 'Wenn ihr nah genug an einem der pinken Kreise auf der Karte seid, wird dieser grün. Dann könnt ihr auf den grünen Punkt tippen und ihr betretet somit den paranormalen Ort.',
       en: 'If you are close enough to one of the pink circles on the map, it will turn green. You can then tap on the green dot to enter the paranormal location.'
     },
-    "11": {
+    "12": {
       de: 'Welches Betriebssystem und welchen Browser benötige ich, um diese Spook Tour zu spielen?',
       en: 'Which operating system and browser do I need to play this Spook Tour?'
     },
-    "12": {
+    "13": {
       de: 'Diese Spook Tour funktioniert optimal unter Android mit dem Chrome-Bowser oder unter iOS mit dem Safari-Browser. Der Firefox-Browser wird leider nicht unterstützt.',
       en: 'This Spook Tour works best on Android with the Chrome browser or on iOS with the Safari browser. Unfortunately, the Firefox browser is not supported.'
     },
-    "13": {
+    "14": {
       de: 'Welche technischen Voraussetzungen muss mein Smartphone zusätzlich erfüllen?',
       en: 'What additional technical requirements must my smartphone meet?'
     },
-    "14": {
+    "15": {
       de: 'Um die Tour optimal spielen zu können, müsst ihr (je nach Rolle) den Standort und die Kamera freigeben. Den Standort benötigen wir, damit ihr die GPS-Felder sehen könnt, die ihr ansteuern müsst. Die Kamera benötigt ihr, um die AR-Elemente sehen zu können. Eure Smartphones sollten voll geladen sein, damit euer Akku für die gesamte Tour reicht. Außerdem benötigt ihr während der gesamten Tour mobiles Internet.',
       en: 'To be able to play the tour optimally, you must (depending on the role) release the location and the camera. We need the location so that you can see the GPS fields that you need to navigate to. You need the camera to be able to see the AR elements. Your smartphones should be fully charged so that your battery lasts for the entire tour. You will also need mobile internet throughout the tour.'
     },
-    "15": {
+    "16": {
       de: 'Welche Freigaben muss ich erteilen, wenn ich allein spiele?',
       en: 'What permissions do I need to give if I play alone?'
     },
-    "16": {
+    "17": {
       de: 'Wenn du allein spielst, musst du sowohl den Standort (GPS) und die Kamera freigeben.',
       en: 'If you are playing alone, you must share both the location (GPS) and the camera.'
     },
-    "17": {
+    "18": {
       de: 'Welche Freigaben müssen wir erteilen, wenn wir zu zweit spielen?',
       en: 'What permissions do we need to give if we play in a group of two?'
     },
-    "18": {
+    "19": {
       de: 'Wenn ihr zu zweit spielt, habt ihr die Wahl zwischen Storyteller und Detector. Der Detector erteilt die Kamerafreigabe und die Standortfreigabe. Der Storyteller braucht keine weiteren Freigaben. Idealerweise ist die Person mit dem älteren Smartphone der Storyteller. Das ist auch eine Option, falls eine Person keine Freigaben erteilen will.',
       en: 'If you are playing as a group of two, you have the choice between Storyteller and Detector. The Detector gives camera approval and location approval. The Storyteller does not need any further approval. Ideally, the person with the older smartphone is the Storyteller. This is also an option if a person does not want to give any permissions.'
     },
-    "19": {
+    "20": {
       de: 'Welche Freigaben müssen wir erteilen, wenn wir zu dritt spielen?',
       en: 'What permissions do we need to give if we play in a group of three?'
     },
-    "20": {
+    "21": {
       de: 'Wenn ihr zu dritt spielt, habt ihr die Wahl zwischen Storyteller, Guide und Scanner. Der Scanner erteilt die Kamerafreigabe, der Guide erteilt die Standortfreigabe. Der Storyteller hingegen braucht keine zusätzlichen Freigaben.Idealerweise ist die Person mit dem älteren Smartphone der Storyteller. Das ist auch eine Option, falls eine Person keine Freigaben erteilen will.',
       en: 'If there are three of you playing, you can choose between Storyteller, Guide and Scanner. The scanner gives the camera permission, the guide gives the location permission. Ideally, the person with the older smartphone is the Storyteller. This is also an option if a person does not want to give any permissions.'
     },
-    "21": {
+    "22": {
       de: 'Wann ist die beste Zeit, das Game zu spielen?',
       en: 'When is the best time to play the game?'
     },
-    "22": {
+    "23": {
       de: 'Am besten spielt ihr bei ganz leicht beginnender Dämmerung oder an bedeckten oder wolkigen Tagen. Wenn es zu dunkel ist, wird sich die AR-Szene nicht aufbauen können und wenn es zu sommersonnig ist, werdet ihr schwer etwas auf den Displays sehen. Bedenkt das, bevor ihr losgeht.',
       en: 'It is best to play at dusk or on overcast or cloudy days. If it’s too dark, the AR scene won’t be able to set up and if it’s too sunny, you’ll struggle to see anything on the displays. Bear this in mind before you set off.'
     },
-    "23": {
+    "24": {
       de: 'Wie kann ich die Fragen lösen?',
       en: 'How can I solve the questions?'
     },
-    "24": {
+    "25": {
       de: 'Die Fragen während der Tour können nur durch genaues Absuchen der entdeckten AR-Szenen (paranormale Orte) gelöst werden. Manchmal müsste ihr auch um die Szenen herum laufen und eure Sichtachse ändern, um das Gesuchte zu finden. wenn ihr allein spielt, braucht ihr ein gutes Gedächtnis und müsst euch möglichst viel einprägen, um die Fragen beantworten zu können.',
       en: 'The questions during the tour can only be solved by carefully searching the discovered AR scenes (paranormal locations). Sometimes you will have to walk around the scenes and change your line of sight to find what you are looking for. If you are playing alone, you will need a good memory and have to memorize as much as possible to answer the questions.'
     },
-    "25": {
+    "26": {
       de: 'Wie kann ich die Spookies fotografieren?',
       en: 'How can I take photos of the Spookies?'
     },
-    "26": {
+    "27": {
       de: 'Bei einigen Smartphones wird direkt in der AR-Szene ein Kamera-Auslöser angezeigt. Dann kannst du direkt in der AR-Szene fotografieren. Bei manchen Smartphones geht das nicht. Dann kannst du statt Fotos Screenshots der AR-Szene aufnehmen. Dies funktioniert per Tastendruck-Kombinationen, die von Hersteller zu Hersteller unterschiedlich sind. Wenn ihr Fotos macht, teilt sie gern unter #spooktours',
       en: 'On some smartphones, a camera shutter button is displayed directly in the AR scene. You can then take photos directly in the AR scene. On some smartphones, this is not possible. In this case, you can take screenshots of the AR scene instead of photos. This works by pressing combinations of buttons that vary from manufacturer to manufacturer. If you take photos, please share them under #spooktours'
     },
-    "27": {
+    "28": {
       de: 'Gibt es Spook Tours auch in anderen Städten?',
       en: 'Are Spook Tours also available in other cities?'
     },
-    "28": {
+    "29": {
       de: 'Wir arbeiten daran. Schau regelmäßig bei GetYourGuide rein, um zu sehen, ob es etwas Neues von uns gibt.',
       en: 'We are working on it. Check GetYourGuide regularly to see if there’s anything new from us.'
     },
-    "29": {
+    "30": {
       de: 'Für alle weiteren Fragen schreib uns gern an diese E-Mail',
       en: 'For all further questions please write to this e-mail'
     },
